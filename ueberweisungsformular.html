@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Überweisungsformular — Blanko</title>
+  <link rel="stylesheet" href="../css/evaluationsbogen.css">
+  <style>
+    :root { --farbe: #1E40AF; --farbe-hell: #EFF6FF; }
+    .formfeld {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 11px;
+    }
+    .formfeld-label {
+      font-weight: 600;
+      color: var(--text);
+      min-width: 110px;
+      flex-shrink: 0;
+      font-size: 10.5px;
+    }
+    .formfeld-linie {
+      flex: 1;
+      border-bottom: 1.5px dotted var(--border-mid);
+      height: 20px;
+    }
+    .formfeld-kurz .formfeld-linie { max-width: 180px; }
+    .form-gruppe {
+      margin-bottom: 14px;
+      padding: 10px 12px 8px;
+      background: #FAFBFC;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .form-gruppe-titel {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--farbe);
+      margin-bottom: 8px;
+      padding-bottom: 4px;
+      border-bottom: 1.5px solid color-mix(in srgb, var(--farbe) 20%, white);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .checkbox-zeile {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-right: 14px;
+      font-size: 10.5px;
+      margin-bottom: 4px;
+    }
+    .checkbox-feld {
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--border-mid);
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .schreibfeld {
+      width: 100%;
+      border-bottom: 1.5px dotted var(--border-mid);
+      min-height: 22px;
+      margin-bottom: 4px;
+    }
+    .zwei-felder {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .unterschrift-bereich {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 16px;
+    }
+    .unterschrift-feld {
+      text-align: center;
+    }
+    .unterschrift-linie {
+      border-bottom: 1.5px solid var(--text);
+      height: 40px;
+      margin-bottom: 4px;
+    }
+    .unterschrift-label {
+      font-size: 9px;
+      color: var(--grau);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .datenschutz {
+      background: #FFFBEB;
+      border: 1px solid #FCD34D;
+      border-radius: var(--radius-sm);
+      padding: 8px 10px;
+      font-size: 8.5px;
+      color: #92400E;
+      line-height: 1.5;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="druck-leiste">
+    <a href="../index.html" class="btn-zurueck">&#8592; Zurück</a>
+    <button class="btn-drucken" onclick="window.print()">&#128424; Drucken</button>
+  </div>
+
+  <!-- ==================== SEITE 1 ==================== -->
+  <div class="seite">
+    <div class="kopfzeile">
+      <div class="kopfzeile-links">
+        <div class="schule-label">Pathways · Formular</div>
+        <div class="ab-titel">Überweisungsformular</div>
+        <div class="ab-untertitel">Vertraulich — Weiterleitung an Fachstelle</div>
+      </div>
+      <div class="kopfzeile-icon">📋</div>
+    </div>
+
+    <div class="zwei-felder" style="margin-bottom:14px;">
+      <div class="formfeld formfeld-kurz">
+        <span class="formfeld-label">Datum:</span>
+        <div class="formfeld-linie"></div>
+      </div>
+      <div class="formfeld formfeld-kurz">
+        <span class="formfeld-label">Dossier-Nr.:</span>
+        <div class="formfeld-linie"></div>
+      </div>
+    </div>
+
+    <!-- Angaben zum Kind -->
+    <div class="form-gruppe">
+      <div class="form-gruppe-titel">👧 Angaben zum Kind / Jugendlichen</div>
+      <div class="zwei-felder">
+        <div class="formfeld">
+          <span class="formfeld-label">Name:</span>
+          <div class="formfeld-linie"></div>
+        </div>
+        <div class="formfeld">
+          <span class="formfeld-label">Vorname:</span>
+          <div class="formfeld-linie"></div>
+        </div>
+      </div>
+      <div class="zwei-felder">
+        <div class="formfeld">
+          <span class="formfeld-label">Geburtsdatum:</span>
+          <div class="formfeld-linie"></div>
+        </div>
+        <div class="formfeld">
+          <span class="formfeld-label">Nationalität:</span>
+          <div class="formfeld-linie"></div>
+        </div>
+      </div>
+      <div class="formfeld">
+        <span class="formfeld-label">Klasse / Gruppe:</span>
+        <div class="formfeld-linie"></div>
+      </div>
+    </div>
+
+    <!-- Sorgeberechtigte -->
+    <div class="form-gruppe">
+      <div class="form-gruppe-titel">👨‍👩‍👧 Sorgeberechtigte</div>
+      <div class="formfeld">
+        <span class="formfeld-label">Name(n):</span>
+        <div class="formfeld-linie"></div>
+      </div>
+      <div class="formfeld">
+        <span class="formfeld-label">Adresse:</span>
+        <div class="formfeld-linie"></div>
+      </div>
+      <div class="zwei-felder">
+        <div class="formfeld">
+          <span class="formfeld-label">Telefon:</span>
+          <div class="formfeld-linie"></div>
+        </div>
+        <div class="formfeld">
+          <span class="formfeld-label">E-Mail:</span>
+          <div class="formfeld-linie"></div>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:10.5px;">
+        <strong>Einverständnis eingeholt?</strong>
+        <span class="checkbox-zeile"><div class="checkbox-feld"></div> Ja</span>
+        <span class="checkbox-zeile"><div class="checkbox-feld"></div> Nein</span>
+        <span class="checkbox-zeile"><div class="checkbox-feld"></div> Nicht möglich (Kindeswohlgefährdung)</span>
+      </div>
+    </div>
+
+    <!-- Überweisende Fachkraft -->
+    <div class="form-gruppe">
+      <div class="form-gruppe-titel">🧑‍💼 Überweisende Fachkraft</div>
+      <div class="zwei-felder">
+        <div class="formfeld">
+          <span class="formfeld-label">Name:</span>
+          <div class="formfeld-linie"></div>
+        </div>
+        <div class="formfeld">
+          <span class="formfeld-label">Funktion:</span>
+          <div class="formfeld-linie"></div>
+        </div>
+      </div>
+      <div class="formfeld">
+        <span class="formfeld-label">Institution:</span>
+        <div class="formfeld-linie"></div>
+      </div>
+      <div class="zwei-felder">
+        <div class="formfeld">
+          <span class="formfeld-label">Telefon:</span>
+          <div class="formfeld-linie"></div>
+        </div>
+        <div class="formfeld">
+          <span class="formfeld-label">E-Mail:</span>
+          <div class="formfeld-linie"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empfangende Stelle -->
+    <div class="form-gruppe">
+      <div class="form-gruppe-titel">🏥 Empfangende Stelle</div>
+      <div style="font-size:10.5px; display:flex; flex-wrap:wrap; gap:2px 0;">
+        <span class="checkbox-zeile"><div class="checkbox-feld"></div> SCAS</span>
+        <span class="checkbox-zeile"><div class="checkbox-feld"></div> ONE</span>
+        <span class="checkbox-zeile"><div class="checkbox-feld"></div> OPJ</span>
+        <span class="checkbox-zeile"><div class="checkbox-feld"></div> SePAS</span>
+        <span class="checkbox-zeile"><div class="checkbox-feld"></div> CPOS</span>
+        <span class="checkbox-zeile"><div class="checkbox-feld"></div> CHL</span>
+        <span class="checkbox-zeile"><div class="checkbox-feld"></div> CHNP</span>
+        <span class="checkbox-zeile"><div class="checkbox-feld"></div> Croix-Rouge</span>
+        <span class="checkbox-zeile"><div class="checkbox-feld"></div> Caritas</span>
+      </div>
+      <div class="formfeld" style="margin-top:4px;">
+        <span class="formfeld-label">Andere:</span>
+        <div class="formfeld-linie"></div>
+      </div>
+    </div>
+
+    <!-- Grund der Überweisung -->
+    <div class="form-gruppe">
+      <div class="form-gruppe-titel">📝 Grund der Überweisung</div>
+      <div class="schreibfeld"></div>
+      <div class="schreibfeld"></div>
+      <div class="schreibfeld"></div>
+      <div class="schreibfeld"></div>
+    </div>
+
+    <!-- Bisherige Maßnahmen -->
+    <div class="form-gruppe">
+      <div class="form-gruppe-titel">📂 Bisherige Maßnahmen</div>
+      <div class="schreibfeld"></div>
+      <div class="schreibfeld"></div>
+      <div class="schreibfeld"></div>
+    </div>
+
+    <!-- Dringlichkeit -->
+    <div class="form-gruppe">
+      <div class="form-gruppe-titel">⏱️ Dringlichkeit</div>
+      <div style="font-size:10.5px; display:flex; flex-wrap:wrap; gap:2px 0;">
+        <span class="checkbox-zeile"><div class="checkbox-feld"></div> Routinemäßig</span>
+        <span class="checkbox-zeile"><div class="checkbox-feld"></div> Bald (innerhalb 2 Wochen)</span>
+        <span class="checkbox-zeile"><div class="checkbox-feld"></div> Dringend (innerhalb 48h)</span>
+        <span class="checkbox-zeile"><div class="checkbox-feld" style="border-color:#DC2626;"></div> <strong style="color:#DC2626;">Notfall (sofort)</strong></span>
+      </div>
+    </div>
+
+    <!-- Beigefügte Dokumente -->
+    <div class="form-gruppe">
+      <div class="form-gruppe-titel">📎 Beigefügte Dokumente</div>
+      <div style="font-size:10.5px; display:flex; flex-wrap:wrap; gap:2px 0;">
+        <span class="checkbox-zeile"><div class="checkbox-feld"></div> Bericht</span>
+        <span class="checkbox-zeile"><div class="checkbox-feld"></div> Einverständniserklärung</span>
+        <span class="checkbox-zeile"><div class="checkbox-feld"></div> Diagnostik</span>
+        <span class="checkbox-zeile"><div class="checkbox-feld"></div> Krisenprotokoll</span>
+      </div>
+      <div class="formfeld" style="margin-top:4px;">
+        <span class="formfeld-label">Andere:</span>
+        <div class="formfeld-linie"></div>
+      </div>
+    </div>
+
+    <!-- Unterschriften -->
+    <div class="unterschrift-bereich">
+      <div class="unterschrift-feld">
+        <div class="unterschrift-linie"></div>
+        <div class="unterschrift-label">Unterschrift Fachkraft</div>
+      </div>
+      <div class="unterschrift-feld">
+        <div class="unterschrift-linie"></div>
+        <div class="unterschrift-label">Stempel Institution</div>
+      </div>
+    </div>
+
+    <div class="datenschutz">
+      <strong>🔒 Datenschutzhinweis:</strong> Dieses Formular enthält vertrauliche personenbezogene Daten und unterliegt dem luxemburgischen Datenschutzgesetz (Loi du 1er août 2018) sowie der DSGVO. Die Weitergabe erfolgt ausschließlich im Rahmen des Kindeswohls und der gesetzlichen Grundlagen (Loi du 10 août 1992 relative à la protection de la jeunesse). Der Empfänger verpflichtet sich zur vertraulichen Behandlung.
+    </div>
+
+    <div class="fusszeile">
+      <span>Pathways — Überweisungsformular</span>
+      <span>Vertraulich · Seite 1 / 1</span>
+    </div>
+  </div>
+
+</body>
+</html>

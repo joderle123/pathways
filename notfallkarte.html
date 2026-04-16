@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notfallkarte — Krisennummern Luxemburg</title>
+  <link rel="stylesheet" href="../css/evaluationsbogen.css">
+  <style>
+    :root { --farbe: #DC2626; --farbe-hell: #FEF2F2; }
+    .notfall-nummer {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      margin-bottom: 8px;
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      transition: border-color 0.15s;
+    }
+    .notfall-nummer:hover { border-color: var(--farbe); }
+    .notfall-nr {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--farbe);
+      min-width: 130px;
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+    .notfall-info { flex: 1; }
+    .notfall-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .notfall-detail {
+      font-size: 10px;
+      color: var(--grau);
+      line-height: 1.4;
+    }
+    .notfall-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .notfall-kategorie {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      color: var(--grau);
+      margin-bottom: 8px;
+      margin-top: 14px;
+      padding-bottom: 4px;
+      border-bottom: 1.5px solid var(--border);
+    }
+    .notfall-kategorie:first-of-type { margin-top: 0; }
+    .krisen-box {
+      background: linear-gradient(135deg, #FEF2F2 0%, #FECACA 100%);
+      border: 2px solid #F87171;
+      border-radius: var(--radius-lg);
+      padding: 14px 16px;
+      margin-top: 16px;
+    }
+    .krisen-titel {
+      font-size: 13px;
+      font-weight: 800;
+      color: #991B1B;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .krisen-schritt {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-size: 11.5px;
+      line-height: 1.5;
+    }
+    .krisen-schritt:last-child { margin-bottom: 0; }
+    .schritt-nr {
+      width: 24px;
+      height: 24px;
+      background: #DC2626;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .hinweis-box {
+      background: #FFFBEB;
+      border: 1.5px solid #FCD34D;
+      border-radius: var(--radius);
+      padding: 10px 12px;
+      margin-top: 12px;
+      font-size: 10px;
+      line-height: 1.6;
+      color: #92400E;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="druck-leiste">
+    <a href="../index.html" class="btn-zurueck">&#8592; Zurück</a>
+    <button class="btn-drucken" onclick="window.print()">&#128424; Drucken</button>
+  </div>
+
+  <!-- ==================== SEITE 1 ==================== -->
+  <div class="seite">
+    <div class="kopfzeile">
+      <div class="kopfzeile-links">
+        <div class="schule-label">Pathways · Notfallkarte</div>
+        <div class="ab-titel">Krisennummern Luxemburg</div>
+        <div class="ab-untertitel">Ausdrucken — Aufhängen — Dabeihaben</div>
+      </div>
+      <div class="kopfzeile-icon">🆘</div>
+    </div>
+
+    <div class="notfall-kategorie">Sofortige Lebensrettung</div>
+
+    <div class="notfall-nummer" style="border-color:#DC2626; background:#FEF2F2;">
+      <div class="notfall-icon">🚑</div>
+      <div class="notfall-info">
+        <div class="notfall-name">Rettungsdienst / Notarzt</div>
+        <div class="notfall-detail">Bei akuter Lebensgefahr, Vergiftung, schwerer Verletzung, Suizidversuch</div>
+      </div>
+      <div class="notfall-nr">112</div>
+    </div>
+
+    <div class="notfall-nummer" style="border-color:#DC2626; background:#FEF2F2;">
+      <div class="notfall-icon">🚔</div>
+      <div class="notfall-info">
+        <div class="notfall-name">Polizei</div>
+        <div class="notfall-detail">Bei Gewalt, akuter Bedrohung, häuslicher Gewalt, Vermisste</div>
+      </div>
+      <div class="notfall-nr">113</div>
+    </div>
+
+    <div class="notfall-kategorie">Psychische Krisen &amp; Beratung</div>
+
+    <div class="notfall-nummer">
+      <div class="notfall-icon">📞</div>
+      <div class="notfall-info">
+        <div class="notfall-name">SOS-Détresse</div>
+        <div class="notfall-detail">24h-Krisentelefon · Anonym · Kostenlos · Für alle psychischen Notlagen</div>
+      </div>
+      <div class="notfall-nr">454545</div>
+    </div>
+
+    <div class="notfall-nummer">
+      <div class="notfall-icon">👧</div>
+      <div class="notfall-info">
+        <div class="notfall-name">Kanner-Jugendtelefon</div>
+        <div class="notfall-detail">Beratung für Kinder &amp; Jugendliche · Anonym · Auch Online-Chat: www.kjt.lu</div>
+      </div>
+      <div class="notfall-nr">116 111</div>
+    </div>
+
+    <div class="notfall-nummer">
+      <div class="notfall-icon">🌐</div>
+      <div class="notfall-info">
+        <div class="notfall-name">BEE SECURE Helpline</div>
+        <div class="notfall-detail">Cybermobbing · Sexting · Online-Gefahren · Digitale Sicherheit</div>
+      </div>
+      <div class="notfall-nr">8002 1234</div>
+    </div>
+
+    <div class="notfall-kategorie">Psychiatrische Notaufnahme</div>
+
+    <div class="notfall-nummer">
+      <div class="notfall-icon">🏥</div>
+      <div class="notfall-info">
+        <div class="notfall-name">CHL Kannerklinik — Urgences Pédopsychiatriques</div>
+        <div class="notfall-detail">Pädopsychiatrische Notaufnahme · 24/7 · Kinder &amp; Jugendliche · Luxembourg-Ville</div>
+      </div>
+      <div class="notfall-nr">4411-6347</div>
+    </div>
+
+    <div class="notfall-nummer">
+      <div class="notfall-icon">🏥</div>
+      <div class="notfall-info">
+        <div class="notfall-name">CHNP Ettelbréck — Kinder- &amp; Jugendpsychiatrie</div>
+        <div class="notfall-detail">Stationäre &amp; teilstationäre Psychiatrie · Norden Luxemburgs</div>
+      </div>
+      <div class="notfall-nr">2682-1</div>
+    </div>
+
+    <div class="krisen-box">
+      <div class="krisen-titel">⚡ Was tun bei akuter Krise?</div>
+      <div class="krisen-schritt">
+        <div class="schritt-nr">1</div>
+        <div><strong>Ruhe bewahren</strong> — Sie sind nicht allein. Atmen Sie tief durch.</div>
+      </div>
+      <div class="krisen-schritt">
+        <div class="schritt-nr">2</div>
+        <div><strong>Sofort Hilfe rufen</strong> — 112 bei Lebensgefahr, 454545 bei psychischer Krise.</div>
+      </div>
+      <div class="krisen-schritt">
+        <div class="schritt-nr">3</div>
+        <div><strong>Bei der Person bleiben</strong> — Lassen Sie die Person nicht allein, bis Hilfe eintrifft.</div>
+      </div>
+      <div class="krisen-schritt">
+        <div class="schritt-nr">4</div>
+        <div><strong>Zuhören, nicht urteilen</strong> — „Ich bin für dich da. Wir finden zusammen eine Lösung."</div>
+      </div>
+      <div class="krisen-schritt">
+        <div class="schritt-nr">5</div>
+        <div><strong>Professionelle Nachsorge</strong> — Stellen Sie sicher, dass im Anschluss Fachpersonen eingebunden werden.</div>
+      </div>
+    </div>
+
+    <div class="hinweis-box">
+      <strong>💡 Hinweis für Fachkräfte:</strong> Bei Verdacht auf Kindeswohlgefährdung besteht eine Meldepflicht (Art. 7 Loi du 10 août 1992). Wenden Sie sich an Ihre Leitung und kontaktieren Sie das ONE (247-73400) oder im Akutfall das OPJ (247-86717). Dokumentieren Sie Ihre Beobachtungen sachlich und zeitnah.
+    </div>
+
+    <div class="fusszeile">
+      <span>Pathways — Notfallkarte Krisennummern</span>
+      <span>Stand: April 2026 · Alle Nummern sind aus dem luxemburgischen Festnetz &amp; Mobilnetz erreichbar</span>
+    </div>
+  </div>
+
+</body>
+</html>
