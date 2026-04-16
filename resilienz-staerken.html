@@ -1,261 +1,295 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Arbeitsblatt – Resilienz & Stärken</title>
-  <link rel="stylesheet" href="../css/arbeitsblatt.css">
-  <style>
-    :root { --farbe: #F59E0B; --farbe-hell: #FFFBEB; }
-    .strength-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:7px; margin:8px 0; }
-    .strength-card { border:2px solid #D1D5DB; border-radius:10px; padding:7px 6px; text-align:center; background:#F9FAFB; cursor:pointer; }
-    .strength-card .sc-emoji { font-size:17px; }
-    .strength-card .sc-name { font-size:9.5px; font-weight:700; color:#374151; margin-top:3px; display:block; }
-    .pillar-row { display:grid; grid-template-columns:110px 1fr 85px; gap:8px; align-items:center; margin-bottom:6px; }
-    .pillar-label { font-size:11px; font-weight:700; }
-    .pillar-scale { display:flex; gap:4px; }
-    .pillar-box { flex:1; height:18px; border:2px solid var(--farbe); border-radius:4px; background:white; }
-    .pillar-desc { font-size:9.5px; color:#6B7280; }
-    .reframe-card { border:2px solid var(--farbe); border-radius:10px; padding:10px; margin-bottom:8px; background:var(--farbe-hell); }
-    .rc-arrow { text-align:center; font-size:18px; padding:4px 0; color:var(--farbe); }
-    .toolkit-item { display:grid; grid-template-columns:28px 1fr; gap:8px; align-items:start; margin-bottom:6px; }
-    .toolkit-nr { background:var(--farbe); color:white; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex-shrink:0; }
-    .story-box { background:linear-gradient(135deg,#FFFBEB,#FEF3C7); border:2px solid #F59E0B; border-radius:12px; padding:12px; }
-    .story-step { display:grid; grid-template-columns:24px 1fr; gap:8px; margin-bottom:6px; }
-    .story-dot { background:#F59E0B; color:white; width:20px; height:20px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:700; flex-shrink:0; margin-top:2px; }
-    .wusstest { background:#FFFBEB; border-left:4px solid #F59E0B; border-radius:0 8px 8px 0; padding:8px 10px; margin:8px 0; font-size:10.5px; }
-    .wusstest strong { color:#92400E; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachkraft-Modul: Resilienz stärken & Lebenssinn</title>
+<link rel="stylesheet" href="../fachkraft-modul.css">
+<style>:root { --farbe: #16A34A; }</style>
 </head>
 <body>
+<div class="fm-dokument">
 
-<div class="druck-leiste">
-  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
-  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
-</div>
-
-<!-- ===== SEITE 1 ===== -->
-<div class="seite">
-  <div class="kopfzeile">
-    <div class="kopfzeile-links">
-      <div class="schule-label">Pathways · Joey Guedes</div>
-      <div class="ab-titel">Du bist stärker als du denkst</div>
-      <div class="ab-untertitel">Resilienz & Stärken · Kategorie: Persönlichkeit & Wachstum</div>
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-left">
+      <span class="fm-kategorie">Prävention & Stärkung</span>
+      <h1 class="fm-titel">Resilienz stärken & Lebenssinn</h1>
+      <p class="fm-untertitel">Resilienzförderung · Sinnfindung · Zugehörigkeit · Post-traumatisches Wachstum · Stärkenorientierung</p>
     </div>
-    <div class="kopfzeile-icon">💪</div>
-  </div>
-
-  <div class="schuelerinfo">
-    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
-  </div>
-
-  <div class="infobox">
-    <div class="infobox-titel">💡 Resilienz – was ist das eigentlich?</div>
-    <p>Resilienz ist nicht, keine Probleme zu haben. Es ist die Fähigkeit, nach einem Sturm <strong>wieder aufzustehen</strong> – mit den Ressourcen, die du hast. Du bist wie ein Bambus: biegst dich im Sturm, brichst aber nicht.</p>
-    <p>🧠 <em><strong>Wusstest du?</strong> Resilienz ist kein Persönlichkeitsmerkmal, mit dem man geboren wird – das Gehirn kann Resilienz buchstäblich trainieren, ähnlich wie einen Muskel (Neuroplastizität). Jede schwierige Situation, die du überlebst, macht dein Gehirn buchstäblich widerstandsfähiger.</em></p>
-  </div>
-
-  <!-- Übung 1: Meine Resilienz-Geschichte -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">1</div>
-      <div class="uebung-titel">Meine Resilienz-Story – ich habe schon Schwieriges überlebt</div>
-    </div>
-    <div class="uebung-beschreibung">Denk an eine schwierige Zeit, die du überstanden hast. Kleines oder großes Ereignis – alles gilt. <em>Du bist nicht allein damit.</em></div>
-
-    <div class="story-box">
-      <div class="story-step">
-        <div class="story-dot">1</div>
-        <div>
-          <div style="font-size:10.5px; font-weight:700; color:#92400E; margin-bottom:3px;">Die schwierige Sache war:</div>
-          <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-        </div>
+    <div class="fm-header-right">
+      <div class="fm-icd">
+        <span class="fm-icd-code">Z73</span>
+        <span class="fm-icd-label">Probleme mit Bezug auf Schwierigkeiten bei der Lebensbewältigung</span>
       </div>
-      <div class="story-step">
-        <div class="story-dot">2</div>
-        <div>
-          <div style="font-size:10.5px; font-weight:700; color:#92400E; margin-bottom:3px;">Was mir damals geholfen hat (Personen, Dinge, innere Stärken):</div>
-          <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-        </div>
-      </div>
-      <div class="story-step">
-        <div class="story-dot">3</div>
-        <div>
-          <div style="font-size:10.5px; font-weight:700; color:#92400E; margin-bottom:3px;">Was ich dabei über mich gelernt habe:</div>
-          <div class="schreiblinien"><div class="schreiblinie"></div></div>
-        </div>
+      <div class="fm-icd">
+        <span class="fm-icd-code">Z55–Z65</span>
+        <span class="fm-icd-label">Psychosoziale Belastungsfaktoren</span>
       </div>
     </div>
   </div>
 
-  <!-- Übung 2: Stärken-Finder -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">2</div>
-      <div class="uebung-titel">Stärken-Finder – kreise 5 ein, die sich wie DU anfühlen</div>
+  <div class="fm-quickinfo">
+    <div class="fm-qi-item">
+      <span class="fm-qi-zahl">70%</span>
+      <span class="fm-qi-label">der Kinder aus Hochrisiko-Familien entwickeln sich trotzdem positiv (Werner & Smith, Kauai 1982)</span>
     </div>
-    <div class="uebung-beschreibung">24 Charakterstärken (nach dem VIA-Modell). Kreise die Karten ein, die zu dir passen – egal ob du sie gerade siehst oder nicht.</div>
-
-    <div class="strength-grid">
-      <div class="strength-card"><span class="sc-emoji">🎨</span><span class="sc-name">Kreativität</span></div>
-      <div class="strength-card"><span class="sc-emoji">🔍</span><span class="sc-name">Neugier</span></div>
-      <div class="strength-card"><span class="sc-emoji">🧩</span><span class="sc-name">Urteilsvermögen</span></div>
-      <div class="strength-card"><span class="sc-emoji">📚</span><span class="sc-name">Lernfreude</span></div>
-      <div class="strength-card"><span class="sc-emoji">🦉</span><span class="sc-name">Weisheit</span></div>
-      <div class="strength-card"><span class="sc-emoji">🦁</span><span class="sc-name">Mut</span></div>
-      <div class="strength-card"><span class="sc-emoji">🏋️</span><span class="sc-name">Durchhaltevermögen</span></div>
-      <div class="strength-card"><span class="sc-emoji">💯</span><span class="sc-name">Ehrlichkeit</span></div>
-      <div class="strength-card"><span class="sc-emoji">⚡</span><span class="sc-name">Energie & Vitalität</span></div>
-      <div class="strength-card"><span class="sc-emoji">💝</span><span class="sc-name">Fürsorge</span></div>
-      <div class="strength-card"><span class="sc-emoji">🤝</span><span class="sc-name">Hilfsbereitschaft</span></div>
-      <div class="strength-card"><span class="sc-emoji">🫂</span><span class="sc-name">Soziale Intelligenz</span></div>
-      <div class="strength-card"><span class="sc-emoji">👥</span><span class="sc-name">Teamwork</span></div>
-      <div class="strength-card"><span class="sc-emoji">⚖️</span><span class="sc-name">Fairness</span></div>
-      <div class="strength-card"><span class="sc-emoji">🌟</span><span class="sc-name">Führung</span></div>
-      <div class="strength-card"><span class="sc-emoji">🕊️</span><span class="sc-name">Vergebung</span></div>
-      <div class="strength-card"><span class="sc-emoji">🙏</span><span class="sc-name">Bescheidenheit</span></div>
-      <div class="strength-card"><span class="sc-emoji">🎯</span><span class="sc-name">Besonnenheit</span></div>
-      <div class="strength-card"><span class="sc-emoji">🔒</span><span class="sc-name">Selbstregulation</span></div>
-      <div class="strength-card"><span class="sc-emoji">✨</span><span class="sc-name">Schönheitssinn</span></div>
-      <div class="strength-card"><span class="sc-emoji">🙌</span><span class="sc-name">Dankbarkeit</span></div>
-      <div class="strength-card"><span class="sc-emoji">🌈</span><span class="sc-name">Hoffnung</span></div>
-      <div class="strength-card"><span class="sc-emoji">😄</span><span class="sc-name">Humor</span></div>
-      <div class="strength-card"><span class="sc-emoji">🔥</span><span class="sc-name">Sinnhaftigkeit</span></div>
+    <div class="fm-qi-item">
+      <span class="fm-qi-zahl">1 Person</span>
+      <span class="fm-qi-label">reicht — eine stabile Bezugsperson genügt für Resilienzentwicklung (Werner)</span>
     </div>
-
-    <div style="font-size:11px; margin-top:6px;">Meine 5 wichtigsten Stärken: _____________, _____________, _____________, _____________, _____________</div>
+    <div class="fm-qi-item">
+      <span class="fm-qi-zahl">PTG</span>
+      <span class="fm-qi-label">Post-Traumatisches Wachstum: nach schweren Krisen wachsen 50–70% der Betroffenen über ihr vorheriges Niveau hinaus</span>
+    </div>
+    <div class="fm-qi-item">
+      <span class="fm-qi-zahl">PERMA</span>
+      <span class="fm-qi-label">Seligmans 5 Wohlbefindens-Säulen als Rahmen für Resilienzförderung</span>
+    </div>
   </div>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Resilienz & Stärken · Seite 1</span>
+  <h2 class="fm-abschnitt-titel">Theoretischer Hintergrund</h2>
+  <div class="fm-zwei-spalten">
+    <div>
+      <h3 class="fm-unter-titel">Resilienz — Definitionen und Modelle</h3>
+      <p><strong>Resilienz</strong> = dynamische Anpassungsfähigkeit angesichts von Widrigkeiten. Kein festes Persönlichkeitsmerkmal, sondern prozesshafter Zustand — erlernbar und förderbar.</p>
+      <p><strong>Kauai-Longitudinalstudie (Werner & Smith 1982):</strong> 40-Jahres-Follow-up von Hochrisikokindern. Resilienz-Schutzfaktoren: mindestens eine stabile Bezugsperson, sozialer Support, Selbstwirksamkeitserleben, prosoziales Umfeld.</p>
+      <p><strong>Systemisches Resilienzmodell (Kumpfer 1999):</strong> 5 interne Schutzfaktoren: kognitive Kompetenz, emotionale Stabilität, soziale Kompetenz, Selbstwertgefühl, spirituelle/motivationale Stärken.</p>
+
+      <h3 class="fm-unter-titel">Post-traumatisches Wachstum (Tedeschi & Calhoun 1996)</h3>
+      <p>PTG = positive psychologische Veränderungen nach Kampf mit highly challenging life circumstances. 5 Bereiche: neue Möglichkeiten, Beziehungen zu anderen, persönliche Stärke, Spiritualität, Wertschätzung des Lebens. Kein Automatismus — braucht Begleitung, Narrative, Zeit.</p>
+    </div>
+    <div>
+      <h3 class="fm-unter-titel">Lebenssinn und Zugehörigkeit</h3>
+      <p><strong>Frankls Logotherapie:</strong> Sinn als primäre Motivation des Menschen. Sinn kann gefunden werden durch: Schöpfen (Werke, Leistungen), Erleben (Liebe, Natur, Wahrheit), Einstellung zum unvermeidlichen Leiden. Sinnverlust → "existenzielles Vakuum" → Langeweile, Aggression, Depression.</p>
+      <p><strong>Belongingness Hypothesis (Baumeister & Leary):</strong> Zugehörigkeit ist Grundbedürfnis. Zugehörigkeit zu Gruppen (Familie, Schule, Peer, Gemeinschaft) als Kernschutzfaktor.</p>
+      <p><strong>Self-Determination Theory (Deci & Ryan):</strong> 3 psychologische Grundbedürfnisse für Wohlbefinden: Autonomie, Kompetenz, Verbundenheit (Relatedness). Alle drei müssen erfüllt sein für nachhaltige Motivation und Gesundheit.</p>
+
+      <div class="fm-cave">
+        <strong>Cave Toxic Positivity:</strong> "Immer das Positive sehen" ist keine Resilienz. Echte Resilienz schließt das Annehmen von Schmerz, Trauer und Realität ein. "Alles wird gut" invalidiert. "Du hast es schon schwieriges überstanden, du kannst das hier auch" — das ist Resilienz-Stärkung.
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- ===== SEITE 2 ===== -->
-<div class="seite">
-
-  <!-- Übung 3: Resilienzsäulen -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">3</div>
-      <div class="uebung-titel">Meine 7 Resilienzsäulen – male die Balken ein (1–5 Kästchen)</div>
+<div class="fm-seite">
+  <h2 class="fm-seite-titel">Erkennen & Einschätzen</h2>
+  <div class="fm-ampel-system">
+    <div class="fm-ampel-box gruen">
+      <div class="fm-ampel-titel">GRÜN — Gute Resilienz-Ressourcen</div>
+      <ul class="fm-ampel-liste">
+        <li>Mindestens eine verlässliche Bezugsperson (Familie, Schule, Peers)</li>
+        <li>Kann aus früheren Schwierigkeiten Stärke ableiten</li>
+        <li>Eigene Stärken bekannt und benennbar</li>
+        <li>Zukunftsperspektive vorhanden</li>
+        <li>CYRM-R ≥40 (Canadian Youth Resilience Measure)</li>
+        <li>→ Stärken aktiv benennen, PTG-Narrative fördern, Sinn explorieren</li>
+      </ul>
     </div>
-    <div class="uebung-beschreibung">Wie stark ist jede Säule bei dir gerade? Male von links nach rechts, so viele Kästchen wie du möchtest.</div>
-
-    <div class="pillar-row">
-      <div class="pillar-label">🤝 Beziehungen</div>
-      <div class="pillar-scale">
-        <div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div>
-      </div>
-      <div class="pillar-desc">Habe Vertraute, auf die ich zählen kann</div>
+    <div class="fm-ampel-box gelb">
+      <div class="fm-ampel-titel">GELB — Eingeschränkte Resilienz</div>
+      <ul class="fm-ampel-liste">
+        <li>Schutzfaktoren vorhanden aber wenig aktiviert</li>
+        <li>Keine klare Vorstellung eigener Stärken</li>
+        <li>Zukunftsperspektive diffus oder pessimistisch</li>
+        <li>Schwierigkeiten, aus Rückschlägen Erfahrungen zu ziehen</li>
+        <li>Wenig Verbundenheit mit Schule/Gemeinschaft</li>
+        <li>→ Stärken-Assessment, Sinn-Exploration, Zugehörigkeit fördern</li>
+      </ul>
     </div>
-    <div class="pillar-row">
-      <div class="pillar-label">🎯 Sinn & Ziele</div>
-      <div class="pillar-scale">
-        <div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div>
-      </div>
-      <div class="pillar-desc">Weiß warum ich aufstehe</div>
-    </div>
-    <div class="pillar-row">
-      <div class="pillar-label">🛠️ Coping-Strategien</div>
-      <div class="pillar-scale">
-        <div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div>
-      </div>
-      <div class="pillar-desc">Weiß, wie ich mit Stress umgehe</div>
-    </div>
-    <div class="pillar-row">
-      <div class="pillar-label">💭 Emotionen</div>
-      <div class="pillar-scale">
-        <div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div>
-      </div>
-      <div class="pillar-desc">Erkenne und reguliere meine Gefühle</div>
-    </div>
-    <div class="pillar-row">
-      <div class="pillar-label">💪 Körper</div>
-      <div class="pillar-scale">
-        <div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div>
-      </div>
-      <div class="pillar-desc">Schlaf, Bewegung, Ernährung okay</div>
-    </div>
-    <div class="pillar-row">
-      <div class="pillar-label">🧠 Mindset</div>
-      <div class="pillar-scale">
-        <div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div>
-      </div>
-      <div class="pillar-desc">Glaube, dass es besser werden kann</div>
-    </div>
-    <div class="pillar-row">
-      <div class="pillar-label">🆘 Hilfe holen</div>
-      <div class="pillar-scale">
-        <div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div><div class="pillar-box"></div>
-      </div>
-      <div class="pillar-desc">Kann um Hilfe bitten, wenn nötig</div>
-    </div>
-
-    <div class="wusstest">
-      <strong>🧠 Wusstest du?</strong> Studien zeigen: Die stärkste einzelne Resilienzsäule ist eine einzige vertrauensvolle Beziehung. Selbst wenn alle anderen Faktoren fehlen – eine Person, die wirklich da ist, ändert alles.
+    <div class="fm-ampel-box rot">
+      <div class="fm-ampel-titel">ROT — Resilienz-Ressourcen erschöpft</div>
+      <ul class="fm-ampel-liste">
+        <li>Keine funktionierende Bezugsperson identifizierbar</li>
+        <li>Tiefe Hoffnungslosigkeit, keine Zukunftsvorstellung</li>
+        <li>Kumulative Belastungen (Armut + Trauma + Isolation)</li>
+        <li>CYRM-R &lt;30 (kritischer Bereich)</li>
+        <li>Komorbide klinische Störungen</li>
+        <li>→ Psychiatrisches Konsil, intensive Jugendhilfe, SCAS-Koordination</li>
+      </ul>
     </div>
   </div>
 
-  <!-- Übung 4: Obstacle Reframe -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">4</div>
-      <div class="uebung-titel">Challenge → Growth: Hindernisse umdeuten</div>
+  <h3 class="fm-unter-titel">Screening — Stärken & Resilienz</h3>
+  <div class="fm-zwei-spalten">
+    <div>
+      <p><strong>CYRM-R (Canadian Youth Resilience Measure):</strong></p>
+      <ul class="fm-liste">
+        <li>17 Items, 3 Subskalen: Individuum, Beziehungen, Gemeinschaft</li>
+        <li>&lt;30: niedriger Unterstützungsbedarf; &lt;40: erhöhter Bedarf</li>
+        <li>Stärkenorientiert, nicht pathologisierend</li>
+      </ul>
     </div>
-    <div class="uebung-beschreibung">Denk an eine aktuelle Herausforderung. Was kannst du daraus lernen? Was bringt dich das weiter?</div>
-
-    <div class="reframe-card">
-      <div style="font-size:10.5px; font-weight:700; color:#92400E; margin-bottom:4px;">😤 Meine aktuelle Herausforderung:</div>
-      <div class="schreiblinien"><div class="schreiblinie"></div></div>
-      <div class="rc-arrow">⬇️ Reframe</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
-        <div style="background:white; border-radius:8px; padding:7px; border:1.5px solid #F59E0B;">
-          <div style="font-size:10px; font-weight:700; color:#92400E; margin-bottom:3px;">💡 Was ich dabei lernen kann:</div>
-          <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-        </div>
-        <div style="background:white; border-radius:8px; padding:7px; border:1.5px solid #F59E0B;">
-          <div style="font-size:10px; font-weight:700; color:#92400E; margin-bottom:3px;">🌱 Wie mich das stärker macht:</div>
-          <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-        </div>
-      </div>
+    <div>
+      <p><strong>VIA-Charakterstärken (Peterson & Seligman):</strong></p>
+      <ul class="fm-liste">
+        <li>24 Stärken in 6 Tugend-Kategorien</li>
+        <li>Kostenloser Test: viacharacter.org (auf Deutsch)</li>
+        <li>Top-5 "Signaturstärken" identifizieren → gezielt einsetzen</li>
+        <li>Ab 10 Jahren Jugendversion verfügbar</li>
+      </ul>
     </div>
-  </div>
-
-  <!-- Übung 5: Bounce-Back Toolkit -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">5</div>
-      <div class="uebung-titel">Mein persönliches Bounce-Back Toolkit</div>
-    </div>
-    <div class="uebung-beschreibung">5 Strategien, die mir helfen, wenn es mich umhaut. Schreib sie auf – und dann weißt du, wo du anfangen kannst.</div>
-
-    <div class="toolkit-item"><div class="toolkit-nr">1</div><div style="font-size:11px;">Wenn ich mich schlecht fühle, tue ich zuerst: <div class="schreiblinien"><div class="schreiblinie"></div></div></div></div>
-    <div class="toolkit-item"><div class="toolkit-nr">2</div><div style="font-size:11px;">Die Person, die ich anrufen oder schreiben kann: <div class="schreiblinien"><div class="schreiblinie"></div></div></div></div>
-    <div class="toolkit-item"><div class="toolkit-nr">3</div><div style="font-size:11px;">Der Ort, an dem ich mich besser fühle: <div class="schreiblinien"><div class="schreiblinie"></div></div></div></div>
-    <div class="toolkit-item"><div class="toolkit-nr">4</div><div style="font-size:11px;">Die Aktivität, die mich erdet oder ablenkt: <div class="schreiblinien"><div class="schreiblinie"></div></div></div></div>
-    <div class="toolkit-item"><div class="toolkit-nr">5</div><div style="font-size:11px;">Ein Satz, den ich mir sage: <div class="schreiblinien"><div class="schreiblinie"></div></div></div></div>
-  </div>
-
-  <!-- Reflexion -->
-  <div class="reflexion">
-    <div class="reflexion-titel">💬 Reflexion</div>
-    <p>Schreib dir selbst einen Brief-Satz: "Ich bin stolz auf mich, weil ich schon..."</p>
-    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-  </div>
-
-  <div class="fachhinweis">
-    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
-    <strong>ICD-10 Bezug:</strong> Ressourcenorientierung ist komplementär zur Diagnosearbeit und besonders relevant bei F43.x (Anpassungsstörungen), F32-F33 (Depression) und F40-F42 (Angst/Zwang). Das 7-Säulen-Modell basiert auf Reivich & Shatté (2002); die Stärkenidentifikation folgt dem VIA Classification of Character Strengths (Peterson & Seligman, 2004), wissenschaftlich validiert. <strong>Schutzfaktorenforschung</strong> (Emmy Werner, Kauai-Studie): Mindestens eine stabile Bezugsperson ist der stärkste Einzelfaktor. Bei Jugendlichen im therapeutischen Kontext: Stärken explizit benennen und spiegeln, bevor Problemexploration erfolgt. "Posting positives" (Bandura, Selbstwirksamkeit) täglich in Sitzungen einbauen.
-  </div>
-
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Resilienz & Stärken · Seite 2</span>
   </div>
 </div>
 
+<div class="fm-seite">
+  <h2 class="fm-seite-titel">Im Gespräch</h2>
+  <div class="fm-gespraech-grid">
+    <div class="fm-gespraech-gut">
+      <div class="fm-gespraech-label gut">Hilfreiche Gesprächsführung</div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Vergangene Bewältigungen aktivieren</p>
+        <p class="fm-zitat">"Du hast mir erzählt, wie schwer das letzte Jahr war. Wie hast du das durchgehalten? Was hat dir geholfen — auch wenn es nur ein kleines Ding war?"</p>
+      </div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Stärken benennen (auch versteckte)</p>
+        <p class="fm-zitat">"Ich höre dir zu und merke: du bist jemand, der auch im Schwierigen nach Lösungen sucht. Weißt du, dass das eine echte Stärke ist?"</p>
+      </div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Sinn und Werte erkunden</p>
+        <p class="fm-zitat">"Was ist dir wirklich wichtig im Leben — nicht was andere von dir erwarten, sondern was dir am Herzen liegt?"</p>
+      </div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Zugehörigkeit stärken</p>
+        <p class="fm-zitat">"Wo fühlst du dich dazugehörig — auch wenn es nur eine kleine Gruppe ist? Wer würde merken, wenn du nicht da bist?"</p>
+      </div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">PTG-Narrative fördern</p>
+        <p class="fm-zitat">"Was hat dich diese Erfahrung gelehrt — über dich, über andere, über das Leben? Was trägst du davon mit?"</p>
+      </div>
+    </div>
+    <div class="fm-gespraech-schlecht">
+      <div class="fm-gespraech-label schlecht">Kontraproduktiv — vermeiden</div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Forced Positivity</p>
+        <p class="fm-zitat">"Sieh das doch positiv! Du wirst gestärkt daraus hervorgehen."</p>
+        <p class="fm-erklaerung">Toxic positivity invalidiert Schmerz. PTG kann nicht erzwungen werden — es entsteht, wenn Schmerz zuerst angenommen wird.</p>
+      </div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Sinn aufzwingen</p>
+        <p class="fm-zitat">"Alles passiert aus einem Grund."</p>
+        <p class="fm-erklaerung">Externaler Sinn wirkt hohl. Eigene Sinnkonstruktion ist der Kern der Logotherapie — nicht fremde Deutungen.</p>
+      </div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Vergleiche mit "stärkeren" anderen</p>
+        <p class="fm-zitat">"Andere haben Schlimmeres erlebt und sind stark geworden."</p>
+        <p class="fm-erklaerung">Invalidiert individuelles Leiden. Resilienz ist kein Wettbewerb.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="fm-seite">
+  <h2 class="fm-seite-titel">Interventionen & Methoden</h2>
+  <div class="fm-methoden-grid">
+
+    <div class="fm-methode">
+      <div class="fm-methode-header">
+        <span class="fm-methode-name">Penn Resiliency Program (PRP)</span>
+        <span class="fm-evidence-stars">★★★</span>
+      </div>
+      <p>12-sitziges schulbasiertes Programm. Inhalte: Optimistisches Denken (ABCs nach Ellis), Problemlösen, Entspannung, Assertivität, soziale Kompetenz. RCT (Gillham et al. 2007): signifikante Reduktion depressiver Symptome bei gefährdeten Jugendlichen. Für Schulen in Luxemburg adaptierbar.</p>
+    </div>
+
+    <div class="fm-methode">
+      <div class="fm-methode-header">
+        <span class="fm-methode-name">Positive Psychologie Interventionen (PPIs)</span>
+        <span class="fm-evidence-stars">★★☆</span>
+      </div>
+      <p>Drei-Gute-Dinge täglich (positiver Affekt), Dankbarkeitsbrief (stärkster Einzeleffekt), Stärken-Einsatz (VIA Top-5 täglich anders nutzen), Best Possible Self (Zukunftsbild schreiben). Meta-Analyse Sin & Lyubomirsky 2009: signifikante Steigerung Wohlbefinden, Reduktion depressiver Symptome.</p>
+    </div>
+
+    <div class="fm-methode">
+      <div class="fm-methode-header">
+        <span class="fm-methode-name">Service-Learning & Ehrenamtliches Engagement</span>
+        <span class="fm-evidence-stars">★★★</span>
+      </div>
+      <p>Anderen helfen → Selbstwirksamkeit, Zugehörigkeit, Sinn gleichzeitig. Meta-Analyse Celio et al. 2011: Service-Learning verbessert soziales Verantwortungsgefühl, Schulengagement, Selbstkonzept. Besonders wirksam bei Jugendlichen aus schwierigen Verhältnissen. SNJ Freiwilligendienst, Caritas, lokale Vereine.</p>
+    </div>
+
+    <div class="fm-methode">
+      <div class="fm-methode-header">
+        <span class="fm-methode-name">Narrative Therapie — Reauthoring (White & Epston)</span>
+        <span class="fm-evidence-stars">★★☆</span>
+      </div>
+      <p>Jugendliche als Autor ihrer eigenen Geschichte. Problem-gesättigte Narrative → alternative Geschichten entdecken: "Wann hast du das Problem überwunden? Was war da in dir?" Externalizing: Problem ist nicht Person ("Die Angst greift mich an" statt "Ich bin ängstlich"). Besonders wertvoll für Resilienz- und Sinn-Arbeit.</p>
+    </div>
+
+    <div class="fm-methode">
+      <div class="fm-methode-header">
+        <span class="fm-methode-name">Acceptance and Commitment Therapy — Werte-Modul (ACT)</span>
+        <span class="fm-evidence-stars">★★★</span>
+      </div>
+      <p>Werteklärung als Kern: "Was ist dir wirklich wichtig — nicht Ziele, sondern Richtungen?" Committed Action: Schritte in Richtung Werte trotz schwieriger Gedanken und Gefühle. Werte-basiertes Handeln als Quelle von Sinn und Resilienz. Besonders wirksam wenn Jugendliche feststeckend und richtungslos sind.</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="fm-seite">
+  <h2 class="fm-seite-titel">Netzwerk & Ressourcen Luxemburg</h2>
+  <div class="fm-ressourcen-grid">
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">SNJ – Service National de la Jeunesse</div>
+      <div class="fm-ressource-tel">247-86100</div>
+      <div class="fm-ressource-info">Freiwilligendienst, Jugendgruppen, European Solidarity Corps. Zugehörigkeit, Sinn, Kompetenzerleben in strukturiertem Rahmen.</div>
+    </div>
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Caritas Luxemburg</div>
+      <div class="fm-ressource-tel">40 21 31-1</div>
+      <div class="fm-ressource-info">Ehrenamtliche Angebote, Gemeinschaftsprojekte, psychosoziale Beratung. Sinn durch Beitrag zur Gemeinschaft.</div>
+    </div>
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Maisons des Jeunes</div>
+      <div class="fm-ressource-tel">lokal</div>
+      <div class="fm-ressource-info">Gemeinschafts-Zugehörigkeit, Aktivitäten, informelle Stärkung. Niedrigschwellig, ohne Anmeldung.</div>
+    </div>
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">SPOS in der Schule</div>
+      <div class="fm-ressource-tel">In der Schule</div>
+      <div class="fm-ressource-info">Schulische Resilienz-Programme, Stärken-Assessment, Förderplanung. Koordination von präventiven Maßnahmen.</div>
+    </div>
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Ligue HygièneMentale</div>
+      <div class="fm-ressource-tel">49 15 14</div>
+      <div class="fm-ressource-info">PPIs, ACT, positive Psychologie-Interventionen in therapeutischem Rahmen. Jugendangebote vorhanden.</div>
+    </div>
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Kanner-Jugendtelefon</div>
+      <div class="fm-ressource-tel">116 111</div>
+      <div class="fm-ressource-info">Wenn Sinn-Suche in existenzielle Krisen mündet. Anonym, kostenlos, 24/7.</div>
+    </div>
+
+  </div>
+
+  <div class="fm-krisen-box">
+    <h3 class="fm-krisen-titel">Stärken-Inventar — Mini-Übung für das Gespräch (10 Minuten)</h3>
+    <ol class="fm-krisen-liste">
+      <li>"Nenn mir 3 Dinge, die du gut kannst — auch kleine Dinge, auch informelle."</li>
+      <li>"Wann hast du zuletzt etwas gemeistert? Was war das — auch wenn es klein war?"</li>
+      <li>"Was sagen Leute, die dich kennen und mögen, über dich? Was schätzen sie?"</li>
+      <li>"Was würdest du jemanden lehren wollen, der weniger Erfahrung hat als du?"</li>
+      <li>Antworten aufschreiben → Stärken-Karte, die Jugendlicher mitnehmen kann</li>
+    </ol>
+  </div>
+
+  <div class="fm-tipp">
+    <strong>Bezugspädagoge als Resilienz-Faktor:</strong> Du selbst bist die wichtigste Intervention. Eine verlässliche, wertschätzende Bezugsperson kann bei einem Jugendlichen ohne andere Schutzfaktoren ausreichen. Deine Konsistenz, dein Glaube an den Jugendlichen, deine Nicht-Aufgabe — das ist Resilienzförderung in Reinform.
+  </div>
+
+  <div class="fm-footer">
+    <span>Pathways — Fachkraft-Modul</span>
+    <span>Resilienz stärken & Lebenssinn</span>
+    <span>Stand: 2025 | ICD-10: Z73, Z55–Z65</span>
+  </div>
+</div>
+
+</div>
 </body>
 </html>

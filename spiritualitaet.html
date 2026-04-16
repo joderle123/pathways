@@ -1,188 +1,300 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Arbeitsblatt – Spiritualität &amp; Sinn</title>
-  <link rel="stylesheet" href="../css/arbeitsblatt.css">
-  <style>
-    :root { --farbe: #7C3AED; --farbe-hell: #F5F3FF; }
-    .bubble-grid { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:10px; }
-    .bubble { border:2px solid #C4B5FD; border-radius:20px; padding:5px 11px; font-size:11px; font-weight:600; background:#F5F3FF; cursor:default; }
-    .star-row { display:flex; align-items:center; gap:10px; margin-bottom:7px; }
-    .star-label { width:150px; flex-shrink:0; font-size:11px; }
-    .star-scale { display:flex; gap:6px; align-items:center; }
-    .star-icon { font-size:16px; cursor:default; }
-    .ritual-row { display:flex; gap:8px; align-items:center; margin-bottom:6px; }
-    .ritual-bubble { border:2px solid #C4B5FD; border-radius:16px; padding:4px 10px; font-size:11px; background:#F5F3FF; font-weight:600; flex-shrink:0; }
-    .question-box { background:#F5F3FF; border:1.5px dashed #A78BFA; border-radius:8px; padding:10px; margin-bottom:7px; }
-    .question-prompt { font-size:12px; font-weight:700; color:#7C3AED; margin-bottom:5px; }
-    .larger-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:7px; margin-bottom:8px; }
-    .larger-box { background:#FAF5FF; border:1.5px solid #C4B5FD; border-radius:8px; padding:9px; text-align:center; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachkraft-Modul: Spiritualität & Religiosität</title>
+<link rel="stylesheet" href="../fachkraft-modul.css">
 </head>
 <body>
+<style>:root { --farbe: #7C3AED; }</style>
 
-<div class="druck-leiste">
-  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
-  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
-</div>
-
-<!-- ===== SEITE 1 ===== -->
-<div class="seite">
-  <div class="kopfzeile">
-    <div class="kopfzeile-links">
-      <div class="schule-label">Pathways · Joey Guedes</div>
-      <div class="ab-titel">Was meinem Leben Bedeutung gibt</div>
-      <div class="ab-untertitel">Spiritualität &amp; Sinn · Kategorie: Identität &amp; Werte</div>
+<!-- SEITE 1: ÜBERBLICK & ENTSTEHUNG -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">🕊️</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Spiritualität & Religiosität</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
     </div>
-    <div class="kopfzeile-icon">✨</div>
+    <div class="fm-seitenzahl">1 / 5</div>
   </div>
 
-  <div class="schuelerinfo">
-    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  <div class="fm-quickinfo">
+    <div class="fm-qi-item"><span class="fm-qi-label">ICD-10</span><span class="fm-qi-wert">Z65.2 · Z60 (Weltanschauungskonflikte) · V62.89 (Religiöse Krise)</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Prävalenz</span><span class="fm-qi-wert">~75 % weltweiter Jugendlicher identifizieren sich mit einer Religion/Spiritualität</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Luxemburg</span><span class="fm-qi-wert">Christlich (41 %), ohne Religion (29 %), Muslimisch (3 %), andere; hohe Vielfalt durch Migration</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Doppelrolle</span><span class="fm-qi-wert">Religion kann Schutzfaktor (Sinn, Gemeinschaft) UND Risikofaktor (Stigma, Radikalisierung) sein</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Forschung</span><span class="fm-qi-wert">Religiöse Beteiligung: Suizid ↓, Substanzkonsum ↓, Depression ↓ (bei positiver Religiosität)</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Fachkraft-Haltung</span><span class="fm-qi-wert">Weltanschauliche Neutralität + Kulturelle Kompetenz</span></div>
   </div>
 
-  <div class="infobox">
-    <div class="infobox-titel">💡 Sinn finden hat nichts mit Religion zu tun – aber kann damit zu tun haben.</div>
-    <p>Menschen finden Bedeutung auf sehr unterschiedliche Wege: Glaube, Natur, Gemeinschaft, Kunst, Wissen, Liebe. Dieses Blatt hat keine richtigen oder falschen Antworten. Es geht darum, deine eigene innere Welt besser zu kennen.</p>
-    <p>🧠 <em>Wusstest du? Forscher haben herausgefunden, dass ein Sinngefühl das Leben verlängert – unabhängig von Reichtum, Gesundheit oder sozialem Status. Sinn ist also buchstäblich lebenswichtig.</em></p>
-  </div>
+  <h2 class="fm-abschnitt-titel">Theoretische Grundlage</h2>
+  <p class="fm-text">Spiritualität und Religiosität sind multidimensionale Konstrukte. Unterscheidung wichtig: Religiosität (institutionell, formell: Kirchenbesuch, Gebete, Rituale) vs. Spiritualität (persönlich, transzendent: Sinnsuche, Verbundenheit, Staunen).</p>
 
-  <!-- Übung 1: Sinnquellen -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">1</div>
-      <div class="uebung-titel">Was gibt meinem Leben Sinn? – Kreise ein, was auf dich zutrifft</div>
+  <h3 class="fm-unter-titel">Pargament (1997) — Religiöses Coping</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>Positives religiöses Coping:</strong><br>
+      • Spirituelle Verbundenheit in Krisen<br>
+      • Göttliche Vergebung annehmen<br>
+      • Kollaborativer Umgang: „Wir lösen das gemeinsam (Gott und ich)"<br>
+      → Korreliert mit psychischer Gesundheit ↑
     </div>
-    <div class="uebung-beschreibung">Kreise alles ein, was sich für dich wahr anfühlt – auch mehrere Dinge gleichzeitig.</div>
-    <div class="bubble-grid">
-      <div class="bubble">💞 Beziehungen &amp; Freundschaft</div>
-      <div class="bubble">🏆 Etwas erreichen</div>
-      <div class="bubble">🌿 Natur &amp; Schönheit</div>
-      <div class="bubble">🎨 Kreativität &amp; Ausdruck</div>
-      <div class="bubble">🙏 Glaube &amp; Spiritualität</div>
-      <div class="bubble">🌍 Anderen helfen</div>
-      <div class="bubble">😄 Freude &amp; Genuss</div>
-      <div class="bubble">📚 Wachsen &amp; Lernen</div>
-      <div class="bubble">🕊️ Erinnerung hinterlassen</div>
-      <div class="bubble">✨ Schönheit erleben</div>
+    <div class="fm-spalte">
+      <strong>Negatives religiöses Coping:</strong><br>
+      • „Gott bestraft mich" (religiöser Zwang)<br>
+      • Passives Abwarten: „Gott wird es lösen"<br>
+      • Religiöse Scham bei sexueller Identität<br>
+      → Korreliert mit psychischer Gesundheit ↓
     </div>
-    <div style="font-size:11px;font-weight:600;margin-bottom:3px;">Das gibt mir gerade am meisten Sinn:</div>
-    <div class="schreiblinien"><div class="schreiblinie"></div></div>
   </div>
 
-  <!-- Übung 2: Werte-Konstellation -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">2</div>
-      <div class="uebung-titel">Meine Werte-Konstellation – Wie viele Sterne bekommt jeder Wert?</div>
-    </div>
-    <div class="uebung-beschreibung">Bewerte jeden Wert: Wie wichtig ist er dir gerade? (1 Stern = kaum / 5 Sterne = sehr)</div>
-    <div class="star-row"><div class="star-label">🤝 Gerechtigkeit</div><div class="star-scale"><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span></div></div>
-    <div class="star-row"><div class="star-label">❤️ Liebe &amp; Zugehörigkeit</div><div class="star-scale"><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span></div></div>
-    <div class="star-row"><div class="star-label">🕊️ Freiheit</div><div class="star-scale"><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span></div></div>
-    <div class="star-row"><div class="star-label">💡 Wissen &amp; Wahrheit</div><div class="star-scale"><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span></div></div>
-    <div class="star-row"><div class="star-label">🌍 Verantwortung</div><div class="star-scale"><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span></div></div>
-    <div class="star-row"><div class="star-label">✨ Schönheit &amp; Kreativität</div><div class="star-scale"><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span></div></div>
-    <div class="star-row"><div class="star-label">💪 Mut &amp; Authentizität</div><div class="star-scale"><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span></div></div>
-    <div class="star-row"><div class="star-label">🤗 Mitgefühl</div><div class="star-scale"><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span><span class="star-icon">☆</span></div></div>
-  </div>
+  <h3 class="fm-unter-titel">Adoleszente Glaubensentwicklung (Fowler 1981)</h3>
+  <ul class="fm-liste">
+    <li><strong>Stufe 3 — Synthetic-Conventional (12–18 J.):</strong> Glaube aus Gemeinschaft übernommen, noch unreflektiert. Autoritäten der eigenen Gruppe werden unkritisch übernommen. Krisen entstehen wenn diese Autoritäten versagen oder im Widerspruch stehen.</li>
+    <li><strong>Stufe 4 — Individuative-Reflective (ab ~18 J.):</strong> Eigene Auseinandersetzung mit Glaubensfragen. Oft mit Krisen verbunden (Glaubenszweifel, Ausstieg, Neuorientierung).</li>
+  </ul>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Spiritualität &amp; Sinn · Seite 1</span>
+  <h3 class="fm-unter-titel">Radikalisierungsrisiko</h3>
+  <p class="fm-text">Politische und religiöse Radikalisierung: Sinnsuche + soziale Isolation + extremistische Gruppe. Schutzfaktoren: Kritisches Denken, sichere Bindungen, positive Identität. Früherkennung: Extremistische Online-Gruppen, Abgrenzung von Freunden, Schwarz-Weiß-Denken.</p>
+
+  <div class="fm-cave">
+    <strong>⚠ Eigene Weltanschauung neutral halten:</strong> Fachkraft darf keine religiöse Überzeugung auf Jugendlichen übertragen (weder religiös noch anti-religiös). Aufgabe: Jugendlichem helfen, eigene Überzeugungen zu reflektieren.
   </div>
 </div>
 
-<!-- ===== SEITE 2 ===== -->
-<div class="seite">
+<!-- SEITE 2: ERKENNEN & EINSCHÄTZEN -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">🕊️</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Spiritualität & Religiosität</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-seitenzahl">2 / 5</div>
+  </div>
 
-  <!-- Übung 3: Existenzielle Fragen -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">3</div>
-      <div class="uebung-titel">Fragen, die ich mit mir trage</div>
+  <h2 class="fm-abschnitt-titel">Erkennen & Einschätzen</h2>
+
+  <div class="fm-ampel">
+    <div class="fm-ampel-item fm-gruen">
+      <div class="fm-ampel-farbe">🟢</div>
+      <div class="fm-ampel-titel">Spiritualität als Ressource</div>
+      <ul>
+        <li>Glaube/Spiritualität gibt Sinn und Halt</li>
+        <li>Religiöse Gemeinschaft als Unterstützung</li>
+        <li>Kann über Glauben sprechen ohne Dogmatismus</li>
+        <li>Spiritualität hilft in Krisen</li>
+        <li>Kein Konflikt mit anderen Lebensbereichen</li>
+        <li>Offenheit für andere Überzeugungen</li>
+      </ul>
+      <div class="fm-ampel-handlung">Ressource anerkennen, in Beratung einbeziehen</div>
     </div>
-    <div class="uebung-beschreibung">Es gibt Fragen, auf die es keine fertigen Antworten gibt. Trotzdem hilft es, sie zu benennen.</div>
-    <div class="question-box">
-      <div class="question-prompt">❓ Eine Frage, die mich beschäftigt:</div>
-      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+    <div class="fm-ampel-item fm-gelb">
+      <div class="fm-ampel-farbe">🟡</div>
+      <div class="fm-ampel-titel">Religiöse Konflikte / Krise</div>
+      <ul>
+        <li>Glaubenszweifel ohne sichere Gesprächspartner</li>
+        <li>Konflikt zwischen Religion und Identität (LGBTIQ+)</li>
+        <li>Familienkonflikt durch Religionswechsel</li>
+        <li>Negatives religiöses Coping (Scham, Strafe)</li>
+        <li>Religiöser Druck von Familie/Gemeinschaft</li>
+      </ul>
+      <div class="fm-ampel-handlung">Sicherer Raum für Reflexion, kein Urteil, Identitätsunterstützung</div>
     </div>
-    <div class="question-box">
-      <div class="question-prompt">🌙 Eine Frage über mein Leben, die ich noch nicht beantworten kann:</div>
-      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-    </div>
-    <div class="question-box">
-      <div class="question-prompt">💬 Eine Frage, die ich gerne mit jemandem besprechen würde:</div>
-      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+    <div class="fm-ampel-item fm-rot">
+      <div class="fm-ampel-farbe">🔴</div>
+      <div class="fm-ampel-titel">Religiöse Extremisierung / Schwere Krise</div>
+      <ul>
+        <li>Zeichen von Radikalisierung (extremistische Gruppe)</li>
+        <li>Religiöse Scham führt zu Suizidgedanken</li>
+        <li>Zwanghaft-religiöse Symptome (F42 Überschneidung)</li>
+        <li>Religiöse Zugehörigkeit mit Gewaltbereitschaft</li>
+        <li>Ausstiegs-Krise (Trauma nach Gemeinschaftsverlust)</li>
+      </ul>
+      <div class="fm-ampel-handlung">SOFORT: Fachstelle Radikalisierung (Info-H), CHL KJP, SCAS</div>
     </div>
   </div>
 
-  <!-- Übung 4: Meine Rituale -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">4</div>
-      <div class="uebung-titel">Meine Rituale der Reflexion – Was mache ich schon?</div>
+  <h3 class="fm-unter-titel">FICA-Modell — Spirituelle Anamnese im Gespräch</h3>
+  <p class="fm-text">Kurze Einschätzung spiritueller Bedürfnisse (Puchalski & Romer 2000):</p>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>F</strong>aith — Welchen Glauben hast du?<br>
+      <strong>I</strong>mportance — Wie wichtig ist das für dich?
     </div>
-    <div class="uebung-beschreibung">Kreise ein, was du machst – oder unterstreiche, was du ausprobieren möchtest.</div>
-    <div class="bubble-grid">
-      <div class="bubble">🧘 Meditation</div>
-      <div class="bubble">🙏 Gebet</div>
-      <div class="bubble">✍️ Tagebuch schreiben</div>
-      <div class="bubble">🌲 In der Natur sein</div>
-      <div class="bubble">🎵 Musik hören / machen</div>
-      <div class="bubble">🕯️ Stille aushalten</div>
-      <div class="bubble">🏃 Laufen / Bewegung</div>
-      <div class="bubble">🎨 Kreativ sein</div>
-      <div class="bubble">💬 Tiefe Gespräche</div>
-      <div class="bubble">📖 Philosophie / Bücher</div>
+    <div class="fm-spalte">
+      <strong>C</strong>ommunity — Bist du Teil einer Gemeinschaft?<br>
+      <strong>A</strong>ddress — Was brauchst du von mir?
     </div>
-    <div style="font-size:11px;font-weight:600;margin-bottom:3px;">Was ich gerne neu ausprobieren würde:</div>
-    <div class="schreiblinien"><div class="schreiblinie"></div></div>
+  </div>
+</div>
+
+<!-- SEITE 3: IM GESPRÄCH -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">🕊️</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Spiritualität & Religiosität</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-seitenzahl">3 / 5</div>
   </div>
 
-  <!-- Übung 5: Etwas Größeres -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">5</div>
-      <div class="uebung-titel">Mit etwas Größerem verbunden sein – 3 Wege die mir authentisch sind</div>
+  <h2 class="fm-abschnitt-titel">Im Gespräch mit Jugendlichen</h2>
+
+  <div class="fm-gespraech-grid">
+    <div class="fm-gespraech-gut">
+      <div class="fm-gespraech-label">✓ Hilfreiche Formulierungen</div>
+      <div class="fm-gespraech-beispiel">„Spielt Glaube oder Spiritualität für dich eine Rolle — auch wenn das für jeden sehr anders ist?"</div>
+      <div class="fm-gespraech-beispiel">„Wie verträgt sich das, was du glaubst, mit dem, was du fühlst oder erlebst?"</div>
+      <div class="fm-gespraech-beispiel">„Gibt es in deiner religiösen Gemeinschaft jemanden, der dir in dieser Frage helfen könnte — oder ist das eher ein Problem?"</div>
+      <div class="fm-gespraech-beispiel">„Du musst hier nichts glauben oder nicht glauben. Ich bin neugierig auf dich, wie du bist."</div>
+      <div class="fm-gespraech-beispiel">„Was bedeutet Spiritualität für dich — was gibt es dir?"</div>
     </div>
-    <div class="uebung-beschreibung">Manche fühlen sich durch Glaube, andere durch die Natur, andere durch eine Gemeinschaft verbunden. Was stimmt für dich?</div>
-    <div class="larger-row">
-      <div class="larger-box">
-        <div style="font-size:16px;margin-bottom:4px;">🌊</div>
-        <div style="font-size:10px;font-weight:700;color:#7C3AED;margin-bottom:4px;">Weg 1</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+    <div class="fm-gespraech-schlecht">
+      <div class="fm-gespraech-label">✗ Vermeiden</div>
+      <div class="fm-gespraech-beispiel">Eigene religiöse Überzeugungen einbringen</div>
+      <div class="fm-gespraech-beispiel">Religion als Problem oder als Lösung verkaufen</div>
+      <div class="fm-gespraech-beispiel">„Religion ist doch nur Tradition." → Abwertend für religiöse Jugendliche</div>
+      <div class="fm-gespraech-beispiel">„Du solltest dir das genauer überlegen." → Beim Glaubensaustritt oder -eintritt</div>
+      <div class="fm-gespraech-beispiel">Religiöse Erfahrungen als Symptom pathologisieren (außer bei echten Halluzinationen)</div>
+    </div>
+  </div>
+
+  <h3 class="fm-unter-titel">LGBTIQ+ und Religion — Besonders sensibles Thema</h3>
+  <p class="fm-text">Viele LGBTIQ+-Jugendliche kommen aus religiösen Familien und Gemeinschaften. Der Konflikt zwischen Identität und Glauben ist real und schmerzhaft. Suizidrisiko erhöht. Ansatz:</p>
+  <ul class="fm-liste">
+    <li>Nicht „du musst dich entscheiden" → beides kann koexistieren (für viele Menschen)</li>
+    <li>Affirmativer Theologe / religious diversity within faiths aufzeigen</li>
+    <li>Rosa Lëtzebuerg: hat Erfahrung mit LGBTIQ+ und Religion</li>
+    <li>Sicherheit geht vor — religiöse Konversionstherapie ist in Luxemburg verboten (Loi 2023)</li>
+  </ul>
+
+  <div class="fm-tipp">
+    <strong>💡 Radikalisierungs-Früherkennung:</strong> Wenn Jugendlicher zunehmend extremistische Aussagen macht (Hass auf bestimmte Gruppen, Gewalt gerechtfertigt), Veränderung in Kleidung/Sprache, Rückzug aus Familie → Info-H (Beratungsstelle Extremismus, Luxemburg) kontaktieren. Kein Vorwurf an Jugendlichen — Unterstützung anbieten.
+  </div>
+</div>
+
+<!-- SEITE 4: INTERVENTIONEN -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">🕊️</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Spiritualität & Religiosität</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-seitenzahl">4 / 5</div>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Evidenzbasierte Interventionen</h2>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Spiritually Augmented CBT (SACBT)</span>
+      <span class="fm-sterne">★★★</span>
+    </div>
+    <p class="fm-text">KVT angepasst an religiösen Kontext: Religiöse Metaphern und Werte als Rahmen nutzen, ohne die Überzeugungen selbst infrage zu stellen. Besonders wirksam für religiöse Jugendliche, die säkulare Therapie ablehnen. Meta-Analyse Worthington et al. (2011): gleichwertig oder besser als Standard-KVT bei religiösen Klienten.</p>
+  </div>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Existenzielle und Sinn-orientierte Therapie</span>
+      <span class="fm-sterne">★★☆</span>
+    </div>
+    <p class="fm-text">Frankls Logotherapie: Sinnsuche als Kernmotivation. Spirituelle Sinnquellen explizit anerkennen. Für Jugendliche mit spirituellen Krisen oder existentieller Leere. In Kombination mit ACT (Werte-Arbeit) besonders wirksam.</p>
+  </div>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Deradikalisierungsprogramme (EXIT-Methodik)</span>
+      <span class="fm-sterne">★★☆</span>
+    </div>
+    <p class="fm-text">Für Jugendliche in Radikalisierungsprozessen: Alternativen zur extremistischen Identität aufbauen, soziale Angebote, Selbstwert stärken. Info-H Luxemburg koordiniert. Freiwilligkeitsbasis wichtig — Druck erhöht Widerstand.</p>
+  </div>
+
+  <h3 class="fm-unter-titel">Umgang mit religiösem Coping in der Beratung</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>Positives religiöses Coping nutzen:</strong><br>
+      „Du sagst, dein Glaube gibt dir Kraft — was genau daran hilft dir?"<br>
+      Ressource bewusst machen, Gebet/Ritual integrieren wenn gewünscht, Gemeinschaft stärken
+    </div>
+    <div class="fm-spalte">
+      <strong>Negatives religiöses Coping ansprechen:</strong><br>
+      „Du sagst, Gott bestraft dich — wer hat dir das gesagt? Glaubst du das wirklich?"<br>
+      Theologische Pluralität zeigen, schädigende Überzeugungen hinterfragen
+    </div>
+  </div>
+</div>
+
+<!-- SEITE 5: NETZWERK & RESSOURCEN -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">🕊️</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Spiritualität & Religiosität</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-seitenzahl">5 / 5</div>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Luxemburger Versorgungsnetzwerk</h2>
+
+  <div class="fm-ressourcen-grid">
+    <div class="fm-ressource-karte fm-ressource-krise">
+      <div class="fm-ressource-name">Info-H — Beratungsstelle Extremismus</div>
+      <div class="fm-ressource-tel">800 20 320</div>
+      <div class="fm-ressource-info">Nationale Anlaufstelle bei Radikalisierung (religiös/politisch). Beratung für Jugendliche, Eltern, Schulen. Kostenlos, vertraulich.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Kanner-Jugendtelefon</div>
+      <div class="fm-ressource-tel">116 111</div>
+      <div class="fm-ressource-info">Bei spirituellen Krisen, Glaubenszweifeln, religiösem Druck. Kostenlos, anonym, 24/7. Weltanschaulich neutral.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Rosa Lëtzebuerg</div>
+      <div class="fm-ressource-tel">26 19 00 75</div>
+      <div class="fm-ressource-info">LGBTIQ+ Beratung inkl. Thema Religion/Identität. Erfahrung mit Konflikt zwischen queerer Identität und religiöser Familie.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">CHL Kinder- und Jugendpsychiatrie</div>
+      <div class="fm-ressource-tel">4411-6100</div>
+      <div class="fm-ressource-info">Wenn religiöse Krise zu Depression, Suizid-Gedanken oder Psychose-Symptomen führt. Kulturell und spirituell sensible Behandlung.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Aumônerie scolaire (Schulseelsorge)</div>
+      <div class="fm-ressource-tel">Über Schule</div>
+      <div class="fm-ressource-info">Schulseelsorge (konfessionsgebunden). Für Jugendliche die religiöse Begleitung suchen. Kooperation mit der Beratung möglich.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">OMEGA 90</div>
+      <div class="fm-ressource-tel">44 40 40</div>
+      <div class="fm-ressource-info">Bei religiös begründeten Suizidgedanken (z.B. Scham, Sünde). Krisenintervention, weltanschaulich neutral.</div>
+    </div>
+  </div>
+
+  <div class="fm-krisen-box">
+    <div class="fm-krisen-titel">📋 Radikalisierungs-Früherkennung — Warnsignale</div>
+    <div class="fm-krisen-schritte">
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">1</span>
+        <span class="fm-schritt-text"><strong>Wir/Die-Denken:</strong> Strikte Trennung zwischen „unserer Gruppe" (gut) und allen anderen (böse/minderwertig)</span>
       </div>
-      <div class="larger-box">
-        <div style="font-size:16px;margin-bottom:4px;">🌟</div>
-        <div style="font-size:10px;font-weight:700;color:#7C3AED;margin-bottom:4px;">Weg 2</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">2</span>
+        <span class="fm-schritt-text"><strong>Legitimierung von Gewalt:</strong> Aussagen dass Gewalt gerechtfertigt oder notwendig sei für die Sache</span>
       </div>
-      <div class="larger-box">
-        <div style="font-size:16px;margin-bottom:4px;">🔥</div>
-        <div style="font-size:10px;font-weight:700;color:#7C3AED;margin-bottom:4px;">Weg 3</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">3</span>
+        <span class="fm-schritt-text"><strong>Soziale Isolation:</strong> Plötzlicher Rückzug aus bisherigem Netzwerk, neue unbekannte Gruppe</span>
+      </div>
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">4</span>
+        <span class="fm-schritt-text"><strong>Handlung:</strong> Nicht konfrontieren sondern stabilisierende Beziehung anbieten + Info-H (800 20 320) konsultieren</span>
       </div>
     </div>
-  </div>
-
-  <div class="reflexion">
-    <div class="reflexion-titel">💬 Mein nächster Schritt</div>
-    <p>Welche Frage oder welches Ritual möchte ich diese Woche weiter erkunden?</p>
-    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-  </div>
-
-  <div class="fachhinweis">
-    <div class="fachhinweis-titel">🎓 Hinweis für Bezugspersonen</div>
-    Spiritualität und Sinnerleben sind bedeutsame Schutzfaktoren für psychische Gesundheit (Pargament, 2011; Frankl). Das Arbeitsblatt ist bewusst konfessionsunabhängig und offen formuliert – für religiöse wie nichtreligiöse Jugendliche. <strong>In Luxembourg</strong> treffen in Schulen viele Glaubensrichtungen und Kulturen aufeinander – kulturelle Sensibilität ist entscheidend. Bei religiösen Konflikten (z.B. Spannung zwischen Elternwerten und eigener Identität): achtsam explorieren ohne zu werten. <strong>Klinischer Hinweis:</strong> Anhaltende Sinnlosigkeit oder Perspektivlosigkeit können Zeichen einer Depression oder Suizidalität sein und müssen klinisch ernst genommen werden. Das Erleben von Schönheit, Verbindung und Sinn ist nachweislich protektiv – dieses zu fördern ist legitime pädagogische Arbeit.
-  </div>
-
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Spiritualität &amp; Sinn · Seite 2</span>
   </div>
 </div>
 

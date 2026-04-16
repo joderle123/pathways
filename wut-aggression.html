@@ -1,215 +1,396 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Arbeitsblatt – Wut &amp; Aggression</title>
-  <link rel="stylesheet" href="../css/arbeitsblatt.css">
-  <style>
-    :root { --farbe: #DC2626; --farbe-hell: #FEF2F2; }
-    .bubble-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-bottom:10px; }
-    .bubble { background:var(--farbe-hell); border:1.5px solid #FECACA; border-radius:8px; padding:7px 8px; font-size:11px; }
-    .thermo-zone { border-left:5px solid; border-radius:0 8px 8px 0; padding:8px 10px; margin-bottom:5px; }
-    .tipp-card { border-radius:8px; padding:10px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachkraft-Modul: Wut & Aggression</title>
+<link rel="stylesheet" href="../css/fachkraft-modul.css">
+<style>:root { --farbe: #DC2626; }</style>
 </head>
 <body>
 
-<div class="druck-leiste">
-  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
-  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+<!-- SEITE 1: Überblick & Entstehung -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">🔥</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Wut & Aggression</div>
+      <div class="fm-kopf-untertitel">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-kopf-icd">F91/F63 · ICD-10</div>
+  </div>
+
+  <div class="fm-quickinfo">
+    <div class="fm-quick-zelle">
+      <div class="fm-quick-zahl">Normal</div>
+      <div class="fm-quick-label">Wut ist eine normale, wichtige Emotion</div>
+    </div>
+    <div class="fm-quick-zelle">
+      <div class="fm-quick-zahl">Jungen</div>
+      <div class="fm-quick-label">Häufiger externale Aggression; Mädchen häufiger relational</div>
+    </div>
+    <div class="fm-quick-zelle">
+      <div class="fm-quick-zahl">Hinter Wut</div>
+      <div class="fm-quick-label">Fast immer eine andere Emotion: Angst, Schmerz, Scham</div>
+    </div>
+    <div class="fm-quick-zelle">
+      <div class="fm-quick-zahl">Erlernbar</div>
+      <div class="fm-quick-label">Wutregulation ist eine Fähigkeit, die man lernen kann</div>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Wut verstehen: Funktion und Arten</div>
+    <div class="fm-sektion-inhalt">
+      <p>Wut ist eine evolutionär wichtige Schutzemotion — sie signalisiert Grenzverletzungen, Ungerechtigkeit oder Bedrohung. Das Problem ist nicht die Wut selbst, sondern der Umgang damit.</p>
+
+      <div class="fm-zweispalten">
+        <div>
+          <strong>Aggression: Formen</strong>
+          <ul class="fm-liste">
+            <li><strong>Reaktive Aggression:</strong> Impulsiv auf Provokation/Bedrohung; hohe Erregung; schlechte Kontrolle</li>
+            <li><strong>Proaktive Aggression:</strong> Geplant, instrumentell; um Ziele zu erreichen; kältere Kontrolle</li>
+            <li><strong>Relationale Aggression:</strong> Soziale Ausgrenzung, Gerüchte; häufiger bei Mädchen</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Häufige ICD-10-Diagnosen bei Aggression</strong>
+          <ul class="fm-liste">
+            <li>F91.0 — Störung des Sozialverhaltens, familiär</li>
+            <li>F91.3 — Störung mit oppositionellem Trotzverhalten</li>
+            <li>F91.9 — Störung des Sozialverhaltens, n.n.b.</li>
+            <li>F63.8 — Intermittierende explosible Störung</li>
+            <li>ADHS-bedingte Impulsivität (F90)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Hinter der Wut: Sekundäre Emotionen</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-tipp">
+        <strong>Eisberg-Modell:</strong> Wut ist oft die sichtbare Spitze — darunter liegen Scham, Angst, Verletzung, Traurigkeit, Hilflosigkeit. Diese "primären" Emotionen anzusprechen ist der Schlüssel zur Wutarbeit. Frage: "Was war da, bevor die Wut kam?"
+      </div>
+      <div class="fm-zweispalten">
+        <div>
+          <strong>Typische Auslöser bei Jugendlichen</strong>
+          <ul class="fm-liste">
+            <li>Ungerechtigkeit erleben (real oder wahrgenommen)</li>
+            <li>Grenzverletzungen durch andere</li>
+            <li>Verlust von Kontrolle / Hilflosigkeit</li>
+            <li>Scham in sozialen Situationen</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Verstärkende Faktoren</strong>
+          <ul class="fm-liste">
+            <li>Schlafmangel, Hunger (physiologisch)</li>
+            <li>Substanzkonsum</li>
+            <li>Traumatische Erfahrungen</li>
+            <li>Modellierung durch Umgebung</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-fusszeile">Wut & Aggression · Seite 1/5 · Pathways · Joey Guedes</div>
 </div>
 
-<!-- SEITE 1 -->
-<div class="seite">
-  <div class="kopfzeile">
-    <div class="kopfzeile-links">
-      <div class="schule-label">Pathways · Joey Guedes</div>
-      <div class="ab-titel">Wut ist okay – es kommt drauf an, was du damit machst</div>
-      <div class="ab-untertitel">Wut &amp; Aggression · Kategorie: Emotionen &amp; Wohlbefinden</div>
+<!-- SEITE 2: Erkennen & Einschätzen -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">🔥</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Wut & Aggression</div>
+      <div class="fm-kopf-untertitel">Erkennen & Einschätzen</div>
     </div>
-    <div class="kopfzeile-icon">🔥</div>
+    <div class="fm-kopf-icd">Seite 2/5</div>
   </div>
 
-  <div class="schuelerinfo">
-    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
-  </div>
-
-  <div class="infobox">
-    <div class="infobox-titel">🔥 Wut zeigt dir: Eine Grenze wurde überschritten.</div>
-    <p>Wut ist keine schlechte Emotion – sie schützt dich. Sie sagt: "Etwas Wichtiges ist in Gefahr." Das Problem entsteht nicht durch die Wut, sondern wenn man ihr blind folgt oder sie komplett schluckt. Beides schadet.</p>
-    <p>🧠 <em>Wusstest du? Hinter fast jeder Wut steckt ein tieferes Gefühl – Enttäuschung, Verletzung, Angst oder Scham. Wut ist wie ein Eisberg: Man sieht nur die Spitze.</em></p>
-  </div>
-
-  <!-- Übung 1 -->
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">1</div><div class="uebung-titel">Das Wut-Thermometer – 4 Zonen kennenlernen</div></div>
-    <div class="uebung-beschreibung">Wut eskaliert in Stufen. Wenn du frühe Zeichen erkennst, kannst du früher eingreifen. Schreibe deine persönlichen Zeichen in jede Zone:</div>
-    <div style="display:grid;grid-template-columns:50px 1fr;gap:10px;align-items:stretch;margin-bottom:10px;">
-      <!-- Thermometer -->
-      <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
-        <div style="background:linear-gradient(to bottom, #DC2626 0%, #F97316 30%, #FBBF24 60%, #4ADE80 100%);width:20px;flex:1;border-radius:10px 10px 0 0;"></div>
-        <div style="background:#DC2626;width:32px;height:32px;border-radius:50%;"></div>
-        <div style="font-size:9px;color:var(--grau);margin-top:2px;">0–100</div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Warnsignale — Ampelsystem</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-ampel-zeile gruen">
+        <div class="fm-ampel-label">NORMAL</div>
+        <div class="fm-ampel-inhalt">Gelegentliche Wutausbrüche bei Frustration; verbale Auseinandersetzungen; Pubertätstypische Reizbarkeit; Konflikte mit Eltern/Lehrern — wenn nicht eskalierend und nicht häufig</div>
       </div>
-      <!-- Zones -->
-      <div style="display:flex;flex-direction:column;gap:5px;">
-        <div class="thermo-zone" style="border-color:#DC2626;background:#FEF2F2;">
-          <div style="font-size:11px;font-weight:700;color:#DC2626;">🔴 Zone 4 · 76–100 · Explodiert</div>
-          <div style="font-size:10px;color:var(--grau);margin:3px 0;">Kontrollverlust, schreien, schlagen, weglaufen – Körper &amp; Geist außer Kontrolle</div>
-          <div style="font-size:10px;">Meine Zeichen: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:200px;"></span></div>
+      <div class="fm-ampel-zeile gelb">
+        <div class="fm-ampel-label">BEGLEITEN</div>
+        <div class="fm-ampel-inhalt">Häufige Konflikte (mehrmals pro Woche); Sachbeschädigung; verbale Aggressivität als Muster; Schulverweise wegen Verhalten; Probleme in mehreren Lebensbereichen; zunehmende Eskalationen</div>
+      </div>
+      <div class="fm-ampel-zeile rot">
+        <div class="fm-ampel-label">HANDELN</div>
+        <div class="fm-ampel-inhalt">Körperliche Aggression gegen Personen; Waffen; schwere Sachbeschädigung; Bedrohung von Personen; Mobbing als Täter; kriminelle Handlungen; Fremdgefährdung</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Risikofaktoren für persistente Aggression</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-zweispalten">
+        <div>
+          <strong>Individuelle Faktoren</strong>
+          <ul class="fm-liste">
+            <li>ADHS (Impulsivität)</li>
+            <li>Frühkindliche Bindungsstörung</li>
+            <li>Traumatische Erfahrungen</li>
+            <li>Niedrige Frustrationstoleranz</li>
+            <li>Eingeschränkte Empathiefähigkeit</li>
+          </ul>
         </div>
-        <div class="thermo-zone" style="border-color:#F97316;background:#FFF7ED;">
-          <div style="font-size:11px;font-weight:700;color:#F97316;">🟠 Zone 3 · 51–75 · Sehr wütend</div>
-          <div style="font-size:10px;color:var(--grau);margin:3px 0;">Stimme lauter, kaum zuhören können, Körper angespannt, kurzangebunden</div>
-          <div style="font-size:10px;">Meine Zeichen: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:200px;"></span></div>
-        </div>
-        <div class="thermo-zone" style="border-color:#FBBF24;background:#FFFBEB;">
-          <div style="font-size:11px;font-weight:700;color:#D97706;">🟡 Zone 2 · 26–50 · Gereizt</div>
-          <div style="font-size:10px;color:var(--grau);margin:3px 0;">Ungeduldig, kurze Antworten, genervt, Konzentration schwindet</div>
-          <div style="font-size:10px;">Meine Zeichen: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:200px;"></span></div>
-        </div>
-        <div class="thermo-zone" style="border-color:#4ADE80;background:#F0FDF4;">
-          <div style="font-size:11px;font-weight:700;color:#16A34A;">🟢 Zone 1 · 0–25 · Leicht genervt</div>
-          <div style="font-size:10px;color:var(--grau);margin:3px 0;">Früheste Warnsignale – JETZT eingreifen ist am einfachsten!</div>
-          <div style="font-size:10px;">Meine Zeichen: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:200px;"></span></div>
+        <div>
+          <strong>Umgebungsfaktoren</strong>
+          <ul class="fm-liste">
+            <li>Gewalt in der Familie (Modellieren)</li>
+            <li>Peer-Gruppen mit aggressiven Normen</li>
+            <li>Mangelnde Konsequenz bei Verhalten</li>
+            <li>Sozioökonomische Benachteiligung</li>
+            <li>Substanzmissbrauch</li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Übung 2 -->
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">2</div><div class="uebung-titel">Körpersignale – Was spürst du wenn Wut kommt? Kreise ein:</div></div>
-    <div class="bubble-grid">
-      <div class="bubble">🔥 Hitze im Gesicht / Röte</div>
-      <div class="bubble">💓 Herzrasen / Herzklopfen</div>
-      <div class="bubble">✊ Fäuste ballen sich</div>
-      <div class="bubble">😬 Kiefer zusammenbeißen</div>
-      <div class="bubble">🫁 Flacher, schneller Atem</div>
-      <div class="bubble">😤 Druck in der Brust</div>
-      <div class="bubble">🦴 Angespannte Schultern</div>
-      <div class="bubble">🌡️ Schwitzen / Zittern</div>
-    </div>
+  <div class="fm-cave">
+    <strong>Sicherheitsbeurteilung bei Aggression:</strong> Bei Androhung konkreter Gewalt gegen Personen (Mitschüler, Lehrer, Familie) → sofortiges Einschalten von Schulleitung, Eltern und bei Bedarf Polizei. Bezugsperson alleine kann das nicht managen.
   </div>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Wut &amp; Aggression · Seite 1</span>
-  </div>
+  <div class="fm-fusszeile">Wut & Aggression · Seite 2/5 · Pathways · Joey Guedes</div>
 </div>
 
-<!-- SEITE 2 -->
-<div class="seite">
-
-  <!-- Übung 3 -->
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">3</div><div class="uebung-titel">Auslöser-Wolke – Was macht dich wütend? Kreise ein!</div></div>
-    <div class="uebung-beschreibung">Kreise alle Wörter ein die bei dir Wut auslösen können:</div>
-    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;">
-      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">🏫 Unrecht in der Schule</div>
-      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">👥 Ausgeschlossen werden</div>
-      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">🗣️ Nicht zugehört werden</div>
-      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">😒 Respektlosigkeit</div>
-      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">😤 Verräter / Lügen</div>
-      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">🏠 Streit zuhause</div>
-      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">📱 Ignoriert werden (Chat)</div>
-      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">😤 Befehle ohne Erklärung</div>
-      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">💔 Enttäuschung</div>
-      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">🎓 Noten / Prüfungen</div>
-      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">😞 Kontrollverlust</div>
-      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">👤 Mobbing / Ausgrenzung</div>
-      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">🔇 Kein Gehör finden</div>
-      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">⏰ Ungeduld / Stress</div>
-      <div style="background:#F9FAFB;border:1.5px dashed var(--border);border-radius:20px;padding:5px 10px;font-size:11px;">+ Eigenes: ___________</div>
+<!-- SEITE 3: Im Gespräch -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">🔥</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Wut & Aggression</div>
+      <div class="fm-kopf-untertitel">Im Gespräch</div>
     </div>
-    <p style="font-size:11px;color:var(--grau);">Mein stärkster Auslöser gerade: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:220px;"></span></p>
+    <div class="fm-kopf-icd">Seite 3/5</div>
   </div>
 
-  <!-- Übung 4 -->
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">4</div><div class="uebung-titel">TIPP-Skills für Wut – Jetzt sofort anwenden</div></div>
-    <div class="uebung-beschreibung">DBT-Skill TIPP verändert deine Körperchemie direkt – schnell und ohne Schaden. Was könntest du ausprobieren?</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
-      <div class="tipp-card" style="background:#EFF6FF;border:1.5px solid #93C5FD;">
-        <div style="font-size:12px;font-weight:900;color:#2563EB;margin-bottom:4px;">T – Temperature</div>
-        <div style="font-size:11px;color:var(--grau);margin-bottom:6px;">Kaltes Wasser ins Gesicht tauchen · Eiswürfel in die Hand · Kalt duschen → senkt Herzrate sofort</div>
-        <div style="font-size:10px;">Ich probiere: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:120px;"></span></div>
-      </div>
-      <div class="tipp-card" style="background:#FEF2F2;border:1.5px solid #FCA5A5;">
-        <div style="font-size:12px;font-weight:900;color:#DC2626;margin-bottom:4px;">I – Intensive Bewegung</div>
-        <div style="font-size:11px;color:var(--grau);margin-bottom:6px;">20 Jumping Jacks · Rennen · Kissen schlagen · Lautstark singen → Adrenalin raus</div>
-        <div style="font-size:10px;">Ich probiere: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:120px;"></span></div>
-      </div>
-      <div class="tipp-card" style="background:#F0FDF4;border:1.5px solid #6EE7B7;">
-        <div style="font-size:12px;font-weight:900;color:#059669;margin-bottom:4px;">P – Paced Breathing</div>
-        <div style="font-size:11px;color:var(--grau);margin-bottom:6px;">Ausatmen länger als einatmen · 4 Sek. rein / 7 Sek. raus → Parasympathikus an</div>
-        <div style="font-size:10px;">Ich probiere: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:120px;"></span></div>
-      </div>
-      <div class="tipp-card" style="background:#F5F3FF;border:1.5px solid #C4B5FD;">
-        <div style="font-size:12px;font-weight:900;color:#7C3AED;margin-bottom:4px;">P – Progressive Relaxation</div>
-        <div style="font-size:11px;color:var(--grau);margin-bottom:6px;">Fäuste 7 Sek. ballen – loslassen · Schultern hochziehen – fallen lassen → Spannung weg</div>
-        <div style="font-size:10px;">Ich probiere: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:120px;"></span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Übung 5 -->
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">5</div><div class="uebung-titel">Ich-Botschaften – Wut kommunizieren ohne Angriff</div></div>
-    <div class="uebung-beschreibung">Statt "Du machst mich wütend!" → Ich-Botschaft: Wenn... fühle ich... weil... ich wünsche mir... Fülle 2 Beispiele aus:</div>
-    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:8px;">
-      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:8px;padding:10px;font-size:11px;">
-        <div style="display:grid;grid-template-columns:70px 1fr;gap:6px;align-items:center;">
-          <span style="color:var(--farbe);font-weight:700;">Wenn …</span><span style="border-bottom:1px dashed var(--border);height:18px;"></span>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Gesprächsführung</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-gespraech-grid">
+        <div class="fm-gespraech-item gut">
+          <div class="fm-gespraech-label">Gut ✓</div>
+          <div>"Ich sehe, dass du sehr wütend bist. Wut ist okay — lass uns reden, wenn du etwas ruhiger bist." (Erst regulieren, dann reden)</div>
         </div>
-        <div style="display:grid;grid-template-columns:70px 1fr;gap:6px;align-items:center;margin-top:4px;">
-          <span style="color:var(--farbe);font-weight:700;">fühle ich …</span><span style="border-bottom:1px dashed var(--border);height:18px;"></span>
+        <div class="fm-gespraech-item schlecht">
+          <div class="fm-gespraech-label">Vermeiden ✗</div>
+          <div>"Hör sofort auf, dich so zu benehmen!" (Im Hyperarousal nicht ansprechbar)</div>
         </div>
-        <div style="display:grid;grid-template-columns:70px 1fr;gap:6px;align-items:center;margin-top:4px;">
-          <span style="color:var(--farbe);font-weight:700;">weil …</span><span style="border-bottom:1px dashed var(--border);height:18px;"></span>
+        <div class="fm-gespraech-item gut">
+          <div class="fm-gespraech-label">Gut ✓</div>
+          <div>"Was war das, das dich so getriggert hat? Erzähl mir, was passiert ist." (Auslöser verstehen)</div>
         </div>
-        <div style="display:grid;grid-template-columns:70px 1fr;gap:6px;align-items:center;margin-top:4px;">
-          <span style="color:var(--farbe);font-weight:700;">Ich wünsche mir …</span><span style="border-bottom:1px dashed var(--border);height:18px;"></span>
+        <div class="fm-gespraech-item schlecht">
+          <div class="fm-gespraech-label">Vermeiden ✗</div>
+          <div>"Immer machst du das. Du bist einfach so." (Personalisierung statt Verhalten)</div>
         </div>
-      </div>
-      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:8px;padding:10px;font-size:11px;">
-        <div style="display:grid;grid-template-columns:70px 1fr;gap:6px;align-items:center;">
-          <span style="color:var(--farbe);font-weight:700;">Wenn …</span><span style="border-bottom:1px dashed var(--border);height:18px;"></span>
+        <div class="fm-gespraech-item gut">
+          <div class="fm-gespraech-label">Gut ✓</div>
+          <div>"Wut ist eine Botschaft: Was wollte deine Wut dir sagen? Was hat dich verletzt oder unfair behandelt gefühlt?"</div>
         </div>
-        <div style="display:grid;grid-template-columns:70px 1fr;gap:6px;align-items:center;margin-top:4px;">
-          <span style="color:var(--farbe);font-weight:700;">fühle ich …</span><span style="border-bottom:1px dashed var(--border);height:18px;"></span>
-        </div>
-        <div style="display:grid;grid-template-columns:70px 1fr;gap:6px;align-items:center;margin-top:4px;">
-          <span style="color:var(--farbe);font-weight:700;">weil …</span><span style="border-bottom:1px dashed var(--border);height:18px;"></span>
-        </div>
-        <div style="display:grid;grid-template-columns:70px 1fr;gap:6px;align-items:center;margin-top:4px;">
-          <span style="color:var(--farbe);font-weight:700;">Ich wünsche mir …</span><span style="border-bottom:1px dashed var(--border);height:18px;"></span>
+        <div class="fm-gespraech-item schlecht">
+          <div class="fm-gespraech-label">Vermeiden ✗</div>
+          <div>"Männer weinen nicht / sich so aufregen ist unreif." (Geschlechterstereotypen)</div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="reflexion">
-    <div class="reflexion-titel">💬 Reflexion</div>
-    <p>Welche Zone erkennst du am häufigsten bei dir? Was hilft dir am besten wenn du in Zone 2 oder 3 bist?</p>
-    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">De-Eskalation bei akuter Wut</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-schritte">
+        <div class="fm-schritt">
+          <div class="fm-schritt-nr">1</div>
+          <div class="fm-schritt-text"><strong>Eigene Ruhe bewahren:</strong> Ruhige Körpersprache; Stimme senken (nicht heben); Raum geben; keine Macht-Konfrontation im Affekt</div>
+        </div>
+        <div class="fm-schritt">
+          <div class="fm-schritt-nr">2</div>
+          <div class="fm-schritt-text"><strong>Validieren ohne Verhalten zu bestätigen:</strong> "Ich höre, dass dich das sehr wütend macht. Das Verhalten (Schlagen/Schreien) geht trotzdem nicht." — Emotion ja, Verhalten nein</div>
+        </div>
+        <div class="fm-schritt">
+          <div class="fm-schritt-nr">3</div>
+          <div class="fm-schritt-text"><strong>Raum anbieten:</strong> "Möchtest du kurz raus, um dich abzukühlen?" — Auszeit ist keine Bestrafung, sondern Regulation</div>
+        </div>
+        <div class="fm-schritt">
+          <div class="fm-schritt-nr">4</div>
+          <div class="fm-schritt-text"><strong>Konsequenzen klar kommunizieren:</strong> Ruhig, sachlich, ohne Drohung — was passiert danach. Konsequenz ≠ Bestrafung</div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="fachhinweis">
-    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
-    <strong>ICD-10:</strong> F63.81 (Intermittierende explosible Störung), F90 (ADHS mit Impulskontrollproblemen), F91 (Störungen des Sozialverhaltens), F43 (Trauma-assoziierte Dysregulation). DBT-Wut-Modul relevant.<br>
-    <strong>Methoden:</strong> Wut-Thermometer = etabliertes KVT-Instrument. TIPP-Skill = DBT-Krisentoleranzmodul (Linehan) – biologische Regulation vor kognitiver Umstrukturierung. Ich-Botschaften = ART (Aggression Replacement Training, Goldstein) + Gordon-Kommunikationsmodell.<br>
-    <strong>Eisberg-Modell:</strong> Primäre Emotionen (Angst, Scham, Verletzung) unter der Wut identifizieren – zentral in DBT und emotionsfokussierter Therapie (EFT).<br>
-    <strong>Abklärung empfehlen</strong> bei Kontrollverlusten mit Fremdgefährdung, wiederholten Eskalationen, neurologischen Auffälligkeiten (ADHS, Impulskontrolle).<br>
-    <strong>Ressourcen:</strong> ART-Gruppen, kJP-Ambulanz, DBT-A bei schwererer Dysregulation.
+  <div class="fm-fusszeile">Wut & Aggression · Seite 3/5 · Pathways · Joey Guedes</div>
+</div>
+
+<!-- SEITE 4: Interventionen -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">🔥</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Wut & Aggression</div>
+      <div class="fm-kopf-untertitel">Interventionen & Methoden</div>
+    </div>
+    <div class="fm-kopf-icd">Seite 4/5</div>
   </div>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Wut &amp; Aggression · Seite 2</span>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Evidenzbasierte Methoden</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-methode">
+        <div class="fm-methode-kopf">
+          <span class="fm-methode-name">KVT — Ärgermanagement (ART)</span>
+          <span class="fm-methode-sterne">★★★</span>
+        </div>
+        <p>Aggression Replacement Training (Goldstein): Wutauslöser erkennen; Wutthermometer; Coping-Statements; Skills-Training. Strukturiertes Programm, auch in Gruppen einsetzbar. Gut für Schulkontext.</p>
+      </div>
+
+      <div class="fm-methode">
+        <div class="fm-methode-kopf">
+          <span class="fm-methode-name">DBT-Skills: Notfallkoffer</span>
+          <span class="fm-methode-sterne">★★★</span>
+        </div>
+        <p>TIPP-Skills (intensive Bewegung, kaltes Wasser); Wut herunterkühlen; Pause; Atemübungen. Besonders für akute Wutreduktion. Personalisierter Notfallplan mit Jugendlichem erstellen.</p>
+      </div>
+
+      <div class="fm-methode">
+        <div class="fm-methode-kopf">
+          <span class="fm-methode-name">Empathietraining (Social Skills Training)</span>
+          <span class="fm-methode-sterne">★★☆</span>
+        </div>
+        <p>Perspektivübernahme; Konsequenzdenken; Soziale Problemlösung. Rollenspiele; Feedback. Bei proaktiver Aggression (kälter) besonders wichtig: Konsequenzdenken und Empathieförderung.</p>
+      </div>
+
+      <div class="fm-methode">
+        <div class="fm-methode-kopf">
+          <span class="fm-methode-name">Multisystemische Therapie (MST) / FFT</span>
+          <span class="fm-methode-sterne">★★★</span>
+        </div>
+        <p>Bei schwerer Störung des Sozialverhaltens: Systemische Intervention in Familie, Schule, Peers. Intensive Familientherapie; Funktionale Familientherapie (FFT). Für schwere Fälle — braucht spezialisierte Fachkräfte.</p>
+      </div>
+    </div>
   </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Wutthermometer — Praktisches Tool</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-tipp">
+        <strong>Wutthermometer erstellen:</strong> Gemeinsam mit Jugendlichem erarbeiten — Wut bei 1-3 (leicht gereizt): was hilft? Bei 4-6 (zunehmend aufgebracht): was hilft? Bei 7-9 (kurz vor Explosion): was hilft? Bei 10 (Explosion): Plan A und B. Diesen Plan schriftlich festhalten und üben.
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-fusszeile">Wut & Aggression · Seite 4/5 · Pathways · Joey Guedes</div>
+</div>
+
+<!-- SEITE 5: Netzwerk & Ressourcen -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">🔥</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Wut & Aggression</div>
+      <div class="fm-kopf-untertitel">Netzwerk & Ressourcen</div>
+    </div>
+    <div class="fm-kopf-icd">Seite 5/5</div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Handlungspfad nach Schweregrad</div>
+    <div class="fm-sektion-inhalt">
+      <table class="fm-tabelle">
+        <tr>
+          <th>Schweregrad</th>
+          <th>Maßnahme</th>
+          <th>Ressource</th>
+        </tr>
+        <tr>
+          <td>Gelegentliche Wutausbrüche</td>
+          <td>Skills-Arbeit, Wutthermometer, Bezugsarbeit</td>
+          <td>Bezugsperson</td>
+        </tr>
+        <tr>
+          <td>Wiederholte Konflikte, Schulverweise</td>
+          <td>Elterninformation; ADHS/Trauma abklären; Therapie</td>
+          <td>SCAS / KJP / Schulpsychologie</td>
+        </tr>
+        <tr>
+          <td>Körperliche Aggression, Fremdgefährdung</td>
+          <td>Schulleitung; Eltern; Sicherheitsplan; Therapieüberweisung</td>
+          <td>KJP (4411-6100) + MST-Programm</td>
+        </tr>
+        <tr>
+          <td>Waffen, direkte Bedrohung</td>
+          <td>Polizei; sofortige Krisenintervention</td>
+          <td>113 (Polizei) / 112 (Notfall)</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Luxemburger Netzwerk</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">SCAS (Service de Consultations et d'Actions)</div>
+        <div class="fm-ressource-info">📞 247-86000 · Psychosoziale Unterstützung · Familienbegleitung</div>
+      </div>
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">CHL Kanner-Jugendpsychiatrie (KJP)</div>
+        <div class="fm-ressource-info">📞 4411-6100 · Diagnostik und Therapie · ADHS, Trauma, Störung des Sozialverhaltens</div>
+      </div>
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">Kanner-Jugendtelefon</div>
+        <div class="fm-ressource-info">📞 116 111 · Für Jugendliche + Fachkräfte · Beratung bei Aggressionsproblemen</div>
+      </div>
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">Police Grand-Ducale (Prévention)</div>
+        <div class="fm-ressource-info">📞 113 · Schulpräventionsteam · Bei schwerer Bedrohung oder kriminellen Handlungen</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Literatur & weiterführende Ressourcen</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-literatur-item">
+        <span class="fm-lit-autor">Goldstein, A.P., Glick, B. & Gibbs, J.C. (1998)</span>
+        <span class="fm-lit-titel">Aggression Replacement Training: A Comprehensive Intervention for Aggressive Youth.</span>
+        <span class="fm-lit-info">Research Press — ART-Programmhandbuch</span>
+      </div>
+      <div class="fm-literatur-item">
+        <span class="fm-lit-autor">Petermann, F. & Petermann, U. (2019)</span>
+        <span class="fm-lit-titel">Training mit aggressiven Kindern.</span>
+        <span class="fm-lit-info">Beltz — Deutschsprachiges Trainingsmanual</span>
+      </div>
+      <div class="fm-literatur-item">
+        <span class="fm-lit-autor">Henggeler, S.W. et al. (2009)</span>
+        <span class="fm-lit-titel">Multisystemic Therapy for Antisocial Behavior in Children and Adolescents.</span>
+        <span class="fm-lit-info">Guilford Press — MST Praxisbuch</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-krisen-box">
+    <div class="fm-krisen-titel">Krisenressourcen Luxembourg</div>
+    <div class="fm-krisen-nummern">
+      <div class="fm-krisen-nr"><span class="fm-kr-name">Polizei</span><span class="fm-kr-num">113</span></div>
+      <div class="fm-krisen-nr"><span class="fm-kr-name">Notruf</span><span class="fm-kr-num">112</span></div>
+      <div class="fm-krisen-nr"><span class="fm-kr-name">KJP Notaufnahme</span><span class="fm-kr-num">4411-4411</span></div>
+      <div class="fm-krisen-nr"><span class="fm-kr-name">SCAS</span><span class="fm-kr-num">247-86000</span></div>
+    </div>
+  </div>
+
+  <div class="fm-fusszeile">Wut & Aggression · Seite 5/5 · Pathways · Joey Guedes · 2025</div>
 </div>
 
 </body>

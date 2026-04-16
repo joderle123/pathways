@@ -2,208 +2,255 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Arbeitsblatt – Stress &amp; Angst</title>
-  <link rel="stylesheet" href="../css/arbeitsblatt.css">
-  <style>
-    :root { --farbe: #DC2626; --farbe-hell: #FEF2F2; }
-    .bubble-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px; }
-    .bubble { background:var(--farbe-hell); border:1.5px solid #FECACA; border-radius:8px; padding:8px 10px; font-size:11px; }
-    .box-breathing-side { display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; color:var(--farbe); }
-  </style>
+  <title>Fachkraft-Modul – Stress & Angst</title>
+  <link rel="stylesheet" href="../css/fachkraft-modul.css">
+  <style>:root { --farbe: #DC2626; --farbe-hell: #FEF2F2; }</style>
 </head>
 <body>
-
 <div class="druck-leiste">
   <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
   <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
 </div>
 
 <!-- SEITE 1 -->
-<div class="seite">
-  <div class="kopfzeile">
-    <div class="kopfzeile-links">
-      <div class="schule-label">Pathways · Joey Guedes</div>
-      <div class="ab-titel">Wenn der Kopf nicht abschaltet – Stress &amp; Angst verstehen</div>
-      <div class="ab-untertitel">Stress &amp; Generalisierte Angst · Kategorie: Emotionen &amp; Wohlbefinden</div>
-    </div>
-    <div class="kopfzeile-icon">🌪️</div>
-  </div>
-
-  <div class="schuelerinfo">
-    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
-  </div>
-
-  <div class="infobox">
-    <div class="infobox-titel">💡 Dein Körper meint es gut – auch wenn er nervt.</div>
-    <p>Stress und Angst sind keine Fehler deines Gehirns – sie sind Schutzreaktionen. Dein Körper schüttet Adrenalin aus, das Herz schlägt schneller, die Muskeln spannen sich an. Das nennt man <strong>Kampf-oder-Flucht-Reaktion</strong>. Das Problem: Sie geht auch bei Prüfungsangst und Streit an.</p>
-    <p>🧠 <em>Wusstest du? Dauerstress schrumpft den Hippocampus – das Gehirnareal fürs Lernen und Gedächtnis. Aber: Entspannungstechniken können diesen Effekt rückgängig machen. Dein Gehirn ist plastisch!</em></p>
-  </div>
-
-  <!-- Übung 1 -->
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">1</div><div class="uebung-titel">Dein Stress-o-Meter – Wo sitzt der Stress im Körper?</div></div>
-    <div class="uebung-beschreibung">Zeichne Pfeile oder Punkte in die Körpersilhouette: Wo spürst du Stress, wenn er kommt? Beschrifte die Stellen.</div>
-    <div style="display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:start;margin-bottom:8px;">
-      <div style="text-align:center;">
-        <!-- Körpersilhouette als einfache ASCII-Grafik -->
-        <div style="border:2px solid #FECACA;border-radius:12px;padding:10px;background:var(--farbe-hell);min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-          <div style="font-size:42px;line-height:1;">🧍</div>
-          <div style="font-size:9px;color:var(--grau);margin-top:4px;">← Hier zeichnen / beschriften</div>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:6px;">
-        <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:4px;">Meine Körpersignale bei Stress:</div>
-        <div style="background:#FFF5F5;border:1px solid #FECACA;border-radius:6px;padding:7px;font-size:11px;">😶‍🌫️ <strong>Kopf:</strong> <span style="border-bottom:1px dashed var(--border);display:inline-block;width:140px;"></span></div>
-        <div style="background:#FFF5F5;border:1px solid #FECACA;border-radius:6px;padding:7px;font-size:11px;">😤 <strong>Hals/Brust:</strong> <span style="border-bottom:1px dashed var(--border);display:inline-block;width:120px;"></span></div>
-        <div style="background:#FFF5F5;border:1px solid #FECACA;border-radius:6px;padding:7px;font-size:11px;">🫁 <strong>Bauch:</strong> <span style="border-bottom:1px dashed var(--border);display:inline-block;width:140px;"></span></div>
-        <div style="background:#FFF5F5;border:1px solid #FECACA;border-radius:6px;padding:7px;font-size:11px;">💪 <strong>Schultern/Arme:</strong> <span style="border-bottom:1px dashed var(--border);display:inline-block;width:100px;"></span></div>
-        <div style="background:#FFF5F5;border:1px solid #FECACA;border-radius:6px;padding:7px;font-size:11px;">🦵 <strong>Beine/Füße:</strong> <span style="border-bottom:1px dashed var(--border);display:inline-block;width:130px;"></span></div>
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopfzeile-links">
+      <div class="fm-schule-label">Pathways · Fachkraft-Modul</div>
+      <div class="fm-titel">Stress & Generalisierte Angst</div>
+      <div class="fm-meta">
+        <span class="fm-badge">ICD-10: F41.1 / F43.0</span>
+        <span class="fm-badge">Emotionen & Wohlbefinden</span>
+        <span class="fm-badge">5 Seiten · Fachkraft-Referenz</span>
       </div>
     </div>
+    <div class="fm-kopfzeile-icon">🌪️</div>
   </div>
-
-  <!-- Übung 2 -->
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">2</div><div class="uebung-titel">Deine Stressoren – Kreise ein, was dich gerade beschäftigt</div></div>
-    <div class="uebung-beschreibung">Welche dieser Themen belasten dich? Kreise ein, was zutrifft (mehrere möglich):</div>
-    <div class="bubble-grid">
-      <div class="bubble">📚 Schule / Prüfungen / Noten</div>
-      <div class="bubble">👨‍👩‍👧 Familie / Streit zuhause</div>
-      <div class="bubble">🔮 Zukunft / Was wird aus mir?</div>
-      <div class="bubble">🪞 Körper / Aussehen / Vergleiche</div>
-      <div class="bubble">💬 Freundschaften / Konflikte</div>
-      <div class="bubble">❤️ Beziehungen / Liebe / Einsamkeit</div>
-      <div class="bubble">📱 Social Media / was andere denken</div>
-      <div class="bubble">🌍 Welt / Klimakrise / Nachrichten</div>
+  <div class="fm-quickinfo">
+    <div class="fm-qi-box"><div class="fm-qi-label">Prävalenz GAD Jugendl.</div><div class="fm-qi-wert">3–8%</div></div>
+    <div class="fm-qi-box"><div class="fm-qi-label">Erstmanifestation</div><div class="fm-qi-wert">Ø 11–13 J.</div></div>
+    <div class="fm-qi-box"><div class="fm-qi-label">Geschlecht</div><div class="fm-qi-wert">♀ 2× häufiger</div></div>
+    <div class="fm-qi-box"><div class="fm-qi-label">Chronifizierung</div><div class="fm-qi-wert">ohne Behandlung 75%</div></div>
+  </div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">📋 Definition & Klinisches Bild</div>
+    <div class="fm-sektion-inhalt">
+      <strong>Generalisierte Angststörung (F41.1)</strong> bei Jugendlichen: anhaltende, unkontrollierbare Sorgen über mehrere Lebensbereiche (Schule, Gesundheit, Zukunft, Familie), die mindestens 6 Monate bestehen und Funktionsbeeinträchtigung verursachen. Körperliche Begleitsymptome: Muskelverspannung, Schlafprobleme, Konzentrationsprobleme, Reizbarkeit, Erschöpfung. <strong>Stress</strong> (F43.0) ist die häufigere, noch keine Störungsebene erreichende Form. Jugendliche erleben Stress anders: stärker schulbezogen, sozialer Druck, Identitätsunsicherheit, Zukunftsangst in einer komplexen Welt.
     </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;background:var(--farbe-hell);border-radius:8px;padding:10px;margin-top:4px;">
-      <span style="font-size:10px;">😌 Kaum Stress</span>
-      <div style="display:flex;gap:5px;">
-        <span style="font-size:18px;border:1.5px solid #FECACA;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;">1</span>
-        <span style="font-size:18px;border:1.5px solid #FECACA;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;">2</span>
-        <span style="font-size:18px;border:1.5px solid #FECACA;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;">3</span>
-        <span style="font-size:18px;border:1.5px solid #FECACA;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;">4</span>
-        <span style="font-size:18px;border:1.5px solid #FECACA;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;">5</span>
-        <span style="font-size:18px;border:1.5px solid #FECACA;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;">6</span>
-        <span style="font-size:18px;border:1.5px solid #FECACA;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;">7</span>
-        <span style="font-size:18px;border:1.5px solid #FECACA;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;">8</span>
-        <span style="font-size:18px;border:1.5px solid #FECACA;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;">9</span>
-        <span style="font-size:18px;border:1.5px solid #FECACA;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;">10</span>
+  </div>
+  <div class="fm-zweispalten">
+    <div class="fm-sektion">
+      <div class="fm-sektion-titel">🧬 Entstehung</div>
+      <div class="fm-sektion-inhalt">
+        <strong style="font-size:10px;color:var(--grau);text-transform:uppercase;">Biologisch</strong>
+        <ul class="fm-liste"><li>Amygdala-Überaktivität, verminderte präfrontale Hemmung</li><li>HPA-Achse: chronisch erhöhtes Cortisol</li><li>Genetische Prädisposition (30–40%)</li></ul>
+        <strong style="font-size:10px;color:var(--grau);text-transform:uppercase;margin-top:5px;display:block;">Psychologisch</strong>
+        <ul class="fm-liste"><li>Überschätzung von Gefahr, Unterschätzung von Bewältigung</li><li>Intoleranz gegenüber Unsicherheit</li><li>Grübelneigung (worry) als Vermeidungsstrategie</li></ul>
+        <strong style="font-size:10px;color:var(--grau);text-transform:uppercase;margin-top:5px;display:block;">Sozial</strong>
+        <ul class="fm-liste"><li>Leistungsdruck Schule/Eltern</li><li>Soziale Vergleiche (Social Media)</li><li>Klimaangst, Zukunftsunsicherheit</li><li>Familiäre Angstmodellierung</li></ul>
       </div>
-      <span style="font-size:10px;">🤯 Überwältigt</span>
     </div>
-    <p style="font-size:10px;color:var(--grau);margin-top:4px;">Kreise dein aktuelles Stresslevel ein.</p>
+    <div>
+      <div class="fm-sektion" style="margin-bottom:10px;">
+        <div class="fm-sektion-titel">⬆️ Risikofaktoren</div>
+        <div class="fm-sektion-inhalt"><ul class="fm-liste">
+          <li>Ängstliches Temperament</li><li>Elterliche Angststörung</li><li>Überbehütender Erziehungsstil</li><li>Traumatische Erlebnisse</li><li>Perfektionismus</li><li>Chronische Erkrankung</li><li>Hoher Schulleistungsdruck</li>
+        </ul></div>
+      </div>
+      <div class="fm-sektion">
+        <div class="fm-sektion-titel">🛡️ Schutzfaktoren</div>
+        <div class="fm-sektion-inhalt"><ul class="fm-liste">
+          <li>Toleranz gegenüber Unsicherheit</li><li>Gute Problemlösekompetenz</li><li>Regelmäßige Bewegung</li><li>Unterstützende Eltern</li><li>Achtsamkeitspraxis</li>
+        </ul></div>
+      </div>
+    </div>
   </div>
-
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Stress &amp; Angst · Seite 1</span>
-  </div>
+  <div class="fm-fusszeile"><span>Pathways · Fachkraft-Modul</span><span>Stress & Angst · Seite 1 von 5</span></div>
 </div>
 
 <!-- SEITE 2 -->
-<div class="seite">
-
-  <!-- Übung 3 -->
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">3</div><div class="uebung-titel">Box-Breathing – Atme das Nervensystem runter</div></div>
-    <div class="uebung-beschreibung">Box Breathing (4–4–4–4) aktiviert den Parasympathikus – dein Ruhesystem. Folge dem Quadrat mit dem Finger:</div>
-    <div style="display:flex;gap:16px;align-items:center;margin-bottom:10px;">
-      <div style="flex-shrink:0;">
-        <!-- Box Breathing Diagram -->
-        <div style="position:relative;width:140px;height:140px;border:3px solid var(--farbe);border-radius:6px;background:var(--farbe-hell);">
-          <!-- Arrows and labels on each side -->
-          <div style="position:absolute;top:-18px;left:0;right:0;text-align:center;font-size:10px;font-weight:700;color:var(--farbe);">⬆️ EINATMEN · 4 Sek.</div>
-          <div style="position:absolute;bottom:-18px;left:0;right:0;text-align:center;font-size:10px;font-weight:700;color:var(--farbe);">⬇️ AUSATMEN · 4 Sek.</div>
-          <div style="position:absolute;right:-52px;top:50%;transform:translateY(-50%);font-size:10px;font-weight:700;color:var(--farbe);white-space:nowrap;">➡️ HALTEN<br>4 Sek.</div>
-          <div style="position:absolute;left:-52px;top:50%;transform:translateY(-50%);font-size:10px;font-weight:700;color:var(--farbe);white-space:nowrap;text-align:right;">⬅️ HALTEN<br>4 Sek.</div>
-          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:24px;">🌬️</div>
-        </div>
-      </div>
-      <div style="flex:1;margin-left:60px;">
-        <div style="font-size:12px;font-weight:700;margin-bottom:8px;color:var(--farbe);">Jetzt ausprobieren!</div>
-        <div style="display:flex;flex-direction:column;gap:5px;">
-          <div style="background:#FFF5F5;border-radius:6px;padding:7px;font-size:11px;">🔴 <strong>4 Sek. einatmen</strong> – tief durch die Nase</div>
-          <div style="background:#FFF5F5;border-radius:6px;padding:7px;font-size:11px;">🟡 <strong>4 Sek. halten</strong> – ruhig bleiben</div>
-          <div style="background:#FFF5F5;border-radius:6px;padding:7px;font-size:11px;">🟢 <strong>4 Sek. ausatmen</strong> – durch den Mund</div>
-          <div style="background:#FFF5F5;border-radius:6px;padding:7px;font-size:11px;">⚪ <strong>4 Sek. halten</strong> – vor dem nächsten Atemzug</div>
-        </div>
-        <p style="font-size:11px;color:var(--grau);margin-top:6px;">Wie fühlst du dich nach 4 Runden? <span style="border-bottom:1px dashed var(--border);display:inline-block;width:100px;"></span></p>
+<div class="fm-seite">
+  <div class="fm-seiten-nav"><span class="fm-seiten-nr">Seite 2</span> Erkennen & Einschätzen</div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">🚦 Warnzeichen nach Schweregrad</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-ampel-container">
+        <div class="fm-ampel-zeile gruen"><div class="fm-ampel-dot"></div><div class="fm-ampel-text"><strong>Normaler Stress — Beobachten</strong>Phasenweise Sorgen um Prüfungen/Zukunft, körperliche Verspannung in Stresssituationen, kurze Schlafprobleme</div></div>
+        <div class="fm-ampel-zeile gelb"><div class="fm-ampel-dot"></div><div class="fm-ampel-text"><strong>Moderat — Aktiv unterstützen</strong>Sorgen die schwer zu kontrollieren sind, Vermeidungsverhalten, körperliche Beschwerden ohne Befund (Kopf-/Bauchschmerzen), Schlafstörungen >2 Wochen, Schulleistungsabfall</div></div>
+        <div class="fm-ampel-zeile rot"><div class="fm-ampel-dot"></div><div class="fm-ampel-text"><strong>Schwer — Fachperson einbeziehen</strong>Schulverweigerung, vollständige Vermeidung sozialer Situationen, Panikattacken, körperliche Symptome trotz medizinischer Abklärung, Funktionsausfall</div></div>
       </div>
     </div>
   </div>
-
-  <!-- Übung 4 -->
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">4</div><div class="uebung-titel">Sorgenzeit-Methode – Sorgen haben einen festen Platz</div></div>
-    <div class="uebung-beschreibung">Wenn Sorgen dich den ganzen Tag verfolgen: Bestimme eine feste Zeit (15 Min.) zum Sorgen. Außerhalb dieser Zeit: Sorge aufschreiben → auf später verschieben. Das Gehirn lernt: "Später ist sicher."</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px;">
-      <div style="border:1.5px solid #FECACA;border-radius:8px;padding:10px;">
-        <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:6px;">😰 Meine Sorgen heute</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-      </div>
-      <div style="border:1.5px solid #FECACA;border-radius:8px;padding:10px;">
-        <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:6px;">🎯 Kann ich das beeinflussen?</div>
-        <div style="font-size:10px;color:var(--grau);margin-bottom:4px;">JA – Was kann ich tun?</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-        <div style="font-size:10px;color:var(--grau);margin:6px 0;">NEIN – Loslassen üben:</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div></div>
-      </div>
+  <div class="fm-zweispalten">
+    <div class="fm-sektion">
+      <div class="fm-sektion-titel">📊 Screening</div>
+      <div class="fm-sektion-inhalt"><ul class="fm-liste">
+        <li><strong>GAD-7</strong> (7 Items, Cutoff ≥10 = moderate Angst): einfach, validiert ab 15 J.</li>
+        <li><strong>SCARED</strong> (41 Items, Kinder/Jugendliche): differenziert GAD, Trennungsangst, Sozialangst, Panik</li>
+        <li><strong>STAI-C</strong> (State-Trait Anxiety Inventory für Kinder): Zustand vs. Eigenschaft</li>
+        <li><strong>Klinisches Gespräch</strong>: „Worüber machst du dir am meisten Sorgen?"</li>
+      </ul></div>
     </div>
-    <div style="background:var(--farbe-hell);border-radius:8px;padding:10px;font-size:11px;">
-      ⏰ <strong>Meine feste Sorgenzeit:</strong> Täglich um <span style="border-bottom:1px dashed var(--border);display:inline-block;width:40px;"></span> Uhr für <span style="border-bottom:1px dashed var(--border);display:inline-block;width:40px;"></span> Minuten. Danach: Heft zu, Thema wechseln.
-    </div>
-  </div>
-
-  <!-- Übung 5 -->
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">5</div><div class="uebung-titel">Mein Coping-Toolkit – 4 Werkzeuge gegen Stress</div></div>
-    <div class="uebung-beschreibung">Jede Kategorie hilft anders. Schreibe in jede Box mindestens 2 Dinge, die dir helfen:</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
-      <div style="border:1.5px solid #FCA5A5;border-radius:8px;padding:10px;background:#FFF5F5;">
-        <div style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:6px;">🏃 Körperlich</div>
-        <div style="font-size:10px;color:var(--grau);margin-bottom:4px;">Sport, Bewegung, Atem, Kälte…</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-      </div>
-      <div style="border:1.5px solid #FCA5A5;border-radius:8px;padding:10px;background:#FFF5F5;">
-        <div style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:6px;">🧠 Gedanklich (kognitiv)</div>
-        <div style="font-size:10px;color:var(--grau);margin-bottom:4px;">Umdeuten, Perspektive wechseln…</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-      </div>
-      <div style="border:1.5px solid #FCA5A5;border-radius:8px;padding:10px;background:#FFF5F5;">
-        <div style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:6px;">👥 Sozial</div>
-        <div style="font-size:10px;color:var(--grau);margin-bottom:4px;">Jemanden anrufen, rausgehen…</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-      </div>
-      <div style="border:1.5px solid #FCA5A5;border-radius:8px;padding:10px;background:#FFF5F5;">
-        <div style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:6px;">🎨 Kreativ</div>
-        <div style="font-size:10px;color:var(--grau);margin-bottom:4px;">Musik, Zeichnen, Schreiben…</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+    <div class="fm-sektion">
+      <div class="fm-sektion-titel">⚖️ Differentialdiagnose</div>
+      <div class="fm-sektion-inhalt">
+        <table class="fm-tabelle">
+          <thead><tr><th>Diagnose</th><th>Unterschied zu GAD</th></tr></thead>
+          <tbody>
+            <tr><td>Soziale Phobie F40.1</td><td>Angst nur in sozialen Situationen</td></tr>
+            <tr><td>Panikstörung F41.0</td><td>Episodisch, körperlich intensiv</td></tr>
+            <tr><td>Depression F32</td><td>Anhedonie, Antriebslosigkeit im Vordergrund</td></tr>
+            <tr><td>ADHS F90</td><td>Konzentration durch Ablenkung, nicht Sorgen</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-
-  <div class="reflexion">
-    <div class="reflexion-titel">💬 Reflexion</div>
-    <p>Welche Strategie möchtest du diese Woche konkret ausprobieren? Wann genau?</p>
-    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  <div class="fm-cave">
+    <div class="fm-cave-titel">⚠️ Red Flags</div>
+    Schulverweigerung >2 Wochen · Somatische Symptome trotz mehrfacher medizinischer Abklärung · Suizidgedanken (Angst kann zu Hoffnungslosigkeit führen) · Substanzkonsum zur Angstbewältigung
   </div>
-
-  <div class="fachhinweis">
-    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
-    <strong>ICD-10:</strong> F41.1 (Generalisierte Angststörung), F43.0 (Akute Belastungsreaktion), Z73 (Probleme mit Bezug auf Lebensbewältigung / Burnout-Vorläufer).<br>
-    <strong>Methoden:</strong> Box Breathing / Zwerchfellatmung aktiviert den Parasympathikus (HRV-Biofeedback-Forschung). Sorgenzeit-Technik nach Borkovec (Metakognitive Therapie, MCT). Coping-Toolkit basiert auf Lazarus' transaktionalem Stressmodell.<br>
-    <strong>Screening:</strong> GAD-7 (ab 12 J.), SCARED für Kinder/Jugendliche, DASS-21. Bei anhaltenden Angstsymptomen (&gt;6 Monate), Vermeidungsverhalten oder Schulabsentismus: psychiatrische Abklärung. Expositionstherapie bei spezifischen Phobien (nur durch Fachpersonen).<br>
-    <strong>Notfallnummern:</strong> Kanner-Jugendtelefon 116 111 · SOS Détresse 454545
-  </div>
-
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Stress &amp; Angst · Seite 2</span>
-  </div>
+  <div class="fm-fusszeile"><span>Pathways · Fachkraft-Modul</span><span>Stress & Angst · Seite 2 von 5</span></div>
 </div>
 
+<!-- SEITE 3 -->
+<div class="fm-seite">
+  <div class="fm-seiten-nav"><span class="fm-seiten-nr">Seite 3</span> Im Gespräch mit dem Jugendlichen</div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">💬 Wie ansprechen</div>
+    <div class="fm-sektion-inhalt">
+      <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:8px;">
+        <div style="background:#FEF2F2;border-left:3px solid #DC2626;padding:6px 10px;border-radius:4px;font-size:11px;font-style:italic;">„Ich bemerke, dass du dir sehr viele Sorgen machst. Das klingt erschöpfend. Erzähl mir — worüber machst du dir am meisten Gedanken?"</div>
+        <div style="background:#FEF2F2;border-left:3px solid #DC2626;padding:6px 10px;border-radius:4px;font-size:11px;font-style:italic;">„Dein Körper und dein Kopf arbeiten auf Hochtouren. Das macht Sinn — dein Alarmsystem ist überaktiv. Das lässt sich verändern."</div>
+        <div style="background:#FEF2F2;border-left:3px solid #DC2626;padding:6px 10px;border-radius:4px;font-size:11px;font-style:italic;">„Viele Jugendliche kennen dieses Gefühl. Du bist nicht allein damit — und du musst das nicht alleine bewältigen."</div>
+      </div>
+      <div class="fm-tipp"><div class="fm-tipp-titel">💡 Praxis-Tipp</div>Sorgen externalisieren lassen: „Wenn deine Sorge eine Figur wäre — wie sähe sie aus? Was sagt sie?" Distanz zum Gedanken schafft Handlungsspielraum (ACT-Defusion).</div>
+    </div>
+  </div>
+  <div class="fm-gespraech-grid">
+    <div>
+      <div class="fm-gespraech-kopf gut">✅ Hilfreich</div>
+      <div class="fm-gespraech-item gut">Sorgen ernst nehmen, nicht relativieren</div>
+      <div class="fm-gespraech-item gut">Körpersignale erfragen und normalisieren</div>
+      <div class="fm-gespraech-item gut">Unterschied Stress/Angststörung erklären</div>
+      <div class="fm-gespraech-item gut">Konkrete Bewältigungsstrategien einüben</div>
+      <div class="fm-gespraech-item gut">Vermeidung sanft ansprechen</div>
+      <div class="fm-gespraech-item gut">Fortschritte auch kleine anerkennen</div>
+    </div>
+    <div>
+      <div class="fm-gespraech-kopf schlecht">❌ Kontraproduktiv</div>
+      <div class="fm-gespraech-item schlecht">„Das ist doch kein Grund zur Aufregung."</div>
+      <div class="fm-gespraech-item schlecht">Beruhigen durch Versicherungen (verstärkt Angst)</div>
+      <div class="fm-gespraech-item schlecht">Konfrontation ohne Vorbereitung</div>
+      <div class="fm-gespraech-item schlecht">Vermeidung ermöglichen / schuldfrei stellen</div>
+      <div class="fm-gespraech-item schlecht">„Denk einfach positiv."</div>
+      <div class="fm-gespraech-item schlecht">Eltern übermäßig in Beruhigung einbeziehen</div>
+    </div>
+  </div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">🗣️ Typische Aussagen & Antworten</div>
+    <div class="fm-sektion-inhalt">
+      <table class="fm-tabelle">
+        <thead><tr><th>Jugendliche/r sagt...</th><th>Hilfreiche Antwort</th></tr></thead>
+        <tbody>
+          <tr><td>„Ich mache mir um alles Sorgen."</td><td>„Das klingt wirklich erschöpfend. Welche Sorge ist gerade am lautesten?"</td></tr>
+          <tr><td>„Was wenn etwas Schlimmes passiert?"</td><td>„Das ist eine 'Was-wenn'-Frage. Dein Gehirn liebt die. Lass uns mal schauen: Wie wahrscheinlich ist das wirklich?"</td></tr>
+          <tr><td>„Ich kann nicht schlafen, weil ich so viel denke."</td><td>„Dein Kopf macht abends Überstunden. Das ist sehr häufig bei Angst. Es gibt Techniken, die das verändern können."</td></tr>
+          <tr><td>„Ich kann nicht in die Schule, mir wird schlecht."</td><td>„Dein Körper schickt ein echtes Signal. Und gleichzeitig: wenn wir das vermeiden, wird die Angst größer. Lass uns gemeinsam schauen was helfen kann."</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="fm-fusszeile"><span>Pathways · Fachkraft-Modul</span><span>Stress & Angst · Seite 3 von 5</span></div>
+</div>
+
+<!-- SEITE 4 -->
+<div class="fm-seite">
+  <div class="fm-seiten-nav"><span class="fm-seiten-nr">Seite 4</span> Evidenzbasierte Interventionen</div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">⭐ Methoden (★ = Evidenzgrad)</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-methode"><div class="fm-methode-sterne">★★★</div><div class="fm-methode-text"><div class="fm-methode-name">Kognitive Verhaltenstherapie (KVT)</div><div class="fm-methode-beschreibung">Goldstandard. Kognitive Umstrukturierung (Gedanken prüfen), Exposition (Vermeidung reduzieren), Entspannungstechniken. Effektgröße d=0.86.</div></div></div>
+      <div class="fm-methode"><div class="fm-methode-sterne">★★★</div><div class="fm-methode-text"><div class="fm-methode-name">Exposition (graduiert)</div><div class="fm-methode-beschreibung">Angststufenleiter: vom Leichten zum Schweren. In Bezugsarbeit: kleine Schritte gemeinsam planen. Cave: keine Überexposition ohne Vorbereitung.</div></div></div>
+      <div class="fm-methode"><div class="fm-methode-sterne">★★★</div><div class="fm-methode-text"><div class="fm-methode-name">Atemtechniken & PMR</div><div class="fm-methode-beschreibung">Box-Breathing (4-4-4-4), physiologischer Seufzer, Progressive Muskelrelaxation nach Jacobson. Direkt in Bezugsarbeit einsetzbar.</div></div></div>
+      <div class="fm-methode"><div class="fm-methode-sterne">★★☆</div><div class="fm-methode-text"><div class="fm-methode-name">Akzeptanz- & Commitment-Therapie (ACT)</div><div class="fm-methode-beschreibung">Sorgen defusionieren (als Gedanken sehen, nicht als Wahrheit), Werte klären, Engagement trotz Angst. Gut für Jugendliche geeignet.</div></div></div>
+      <div class="fm-methode"><div class="fm-methode-sterne">★★☆</div><div class="fm-methode-text"><div class="fm-methode-name">Achtsamkeit (MBSR/MBCT)</div><div class="fm-methode-beschreibung">Im Hier-und-Jetzt bleiben statt Zukunftssorgen. Wissenschaftlich gut belegt. Apps wie Headspace/Calm als Einstieg geeignet.</div></div></div>
+    </div>
+  </div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">🗺️ Schritt-für-Schritt in der Bezugsarbeit</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-schritte">
+        <div class="fm-schritt"><div class="fm-schritt-nr">1</div><div class="fm-schritt-inhalt"><div class="fm-schritt-titel">Psychoedukation (Sitzung 1–2)</div><div class="fm-schritt-text">Angst als Alarmsystem erklären. Teufelskreis der Angst zeigen. Normalisieren: Angst ist nicht gefährlich, nur unangenehm.</div></div></div>
+        <div class="fm-schritt"><div class="fm-schritt-nr">2</div><div class="fm-schritt-inhalt"><div class="fm-schritt-titel">Körpersignale erkennen (Sitzung 2)</div><div class="fm-schritt-text">Körper-Landkarte: wo sitzt der Stress? Frühwarnzeichen identifizieren bevor Angst eskaliert.</div></div></div>
+        <div class="fm-schritt"><div class="fm-schritt-nr">3</div><div class="fm-schritt-inhalt"><div class="fm-schritt-titel">Atemtechnik einüben (Sitzung 2–3)</div><div class="fm-schritt-text">Box-Breathing gemeinsam üben. Als Hausaufgabe täglich 5 Minuten. Physiologischer Seufzer für akute Momente.</div></div></div>
+        <div class="fm-schritt"><div class="fm-schritt-nr">4</div><div class="fm-schritt-inhalt"><div class="fm-schritt-titel">Gedanken prüfen (Sitzung 3–4)</div><div class="fm-schritt-text">Sorgen aufschreiben. Realitätscheck: Wie wahrscheinlich? Was wäre dann? Kann ich damit umgehen?</div></div></div>
+        <div class="fm-schritt"><div class="fm-schritt-nr">5</div><div class="fm-schritt-inhalt"><div class="fm-schritt-titel">Vermeidung schrittweise abbauen (Sitzung 4–6)</div><div class="fm-schritt-text">Angststufenleiter gemeinsam erstellen. Kleinen ersten Schritt gehen. Erfolg feiern.</div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">📄 Arbeitsblätter</div>
+    <div class="fm-sektion-inhalt">
+      <table class="fm-tabelle">
+        <thead><tr><th>Arbeitsblatt</th><th>Einsatz</th><th>Ziel</th></tr></thead>
+        <tbody>
+          <tr><td>stress-angst.html</td><td>Schritt 2–3</td><td>Stressoren, Body-Map, Box-Breathing</td></tr>
+          <tr><td>angstanfaelle.html</td><td>Schritt 3</td><td>Atemtechniken, 5-4-3-2-1</td></tr>
+          <tr><td>emotionsregulation.html</td><td>Schritt 4</td><td>STOPP-Technik, Gedanken beobachten</td></tr>
+          <tr><td>schlaf-gesundheit.html</td><td>Schritt 1</td><td>Schlaf-Angst-Kreislauf durchbrechen</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="fm-fusszeile"><span>Pathways · Fachkraft-Modul</span><span>Stress & Angst · Seite 4 von 5</span></div>
+</div>
+
+<!-- SEITE 5 -->
+<div class="fm-seite">
+  <div class="fm-seiten-nav"><span class="fm-seiten-nr">Seite 5</span> Netzwerk & Ressourcen (Luxemburg)</div>
+  <div class="fm-zweispalten">
+    <div class="fm-sektion">
+      <div class="fm-sektion-titel">🏥 Wann überweisen?</div>
+      <div class="fm-sektion-inhalt">
+        <div class="fm-ampel-container">
+          <div class="fm-ampel-zeile gruen"><div class="fm-ampel-dot"></div><div class="fm-ampel-text"><strong>Bezugsarbeit reicht</strong>GAD-7 &lt;10, kein Vermeidungsverhalten, funktionsfähig</div></div>
+          <div class="fm-ampel-zeile gelb"><div class="fm-ampel-dot"></div><div class="fm-ampel-text"><strong>Ambulante Therapie empfehlen</strong>GAD-7 ≥10, Schulvermeidung, Somatisierung</div></div>
+          <div class="fm-ampel-zeile rot"><div class="fm-ampel-dot"></div><div class="fm-ampel-text"><strong>KJP / Sofort</strong>Vollständiger Funktionsausfall, Suizidalität, Substanzkonsum</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="fm-sektion">
+      <div class="fm-sektion-titel">⚖️ Rechtliches</div>
+      <div class="fm-sektion-inhalt"><ul class="fm-liste">
+        <li><strong>Schulverweigerung</strong>: Schulpflicht beachten, Schulpsychologin einbeziehen</li>
+        <li><strong>Eltern</strong>: Frühzeitig einbeziehen, Überbehütung ansprechen</li>
+        <li><strong>Médecin scolaire</strong>: Somatische Beschwerden abklären lassen</li>
+      </ul></div>
+    </div>
+  </div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">📞 Anlaufstellen Luxemburg</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-ressourcen-grid">
+        <div class="fm-ressource-karte"><div class="fm-ressource-name">Kanner-Jugendtelefon</div><div class="fm-ressource-detail">Anonym, kostenlos, 24h</div><div class="fm-ressource-kontakt">📞 116 111</div></div>
+        <div class="fm-ressource-karte"><div class="fm-ressource-name">CHL – KJP Ambulanz</div><div class="fm-ressource-detail">Angststörungen Kinder/Jugendliche</div><div class="fm-ressource-kontakt">📞 4411-6100</div></div>
+        <div class="fm-ressource-karte"><div class="fm-ressource-name">Médecin scolaire</div><div class="fm-ressource-detail">Somatische Abklärung, Überweisung</div><div class="fm-ressource-kontakt">Via Schulleitung</div></div>
+        <div class="fm-ressource-karte"><div class="fm-ressource-name">SCAS</div><div class="fm-ressource-detail">Soziale Unterstützung, Vermittlung</div><div class="fm-ressource-kontakt">📞 247-86000</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">📚 Schlüsselliteratur</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-literatur-item"><strong>Kendall, P.C. & Hedtke, K.A. (2006).</strong> Coping Cat Workbook (2nd ed.). Workbook Publishing.</div>
+      <div class="fm-literatur-item"><strong>Beesdo, K. et al. (2009).</strong> Anxiety and anxiety disorders in children and adolescents. <em>Psychiatric Clinics of North America, 32(3)</em>, 483–524.</div>
+      <div class="fm-literatur-item"><strong>NICE Guideline CG113 (2019).</strong> Generalised anxiety disorder and panic disorder in adults. NICE, London.</div>
+      <div class="fm-literatur-item"><strong>Essau, C.A. (Hrsg., 2020).</strong> Angststörungen bei Kindern und Jugendlichen (3. Aufl.). Hogrefe.</div>
+      <div class="fm-literatur-item"><strong>Hayes, S.C. et al. (2012).</strong> Acceptance and Commitment Therapy (2nd ed.). Guilford Press.</div>
+    </div>
+  </div>
+  <div class="fm-fusszeile"><span>Pathways · Fachkraft-Modul</span><span>Stress & Angst · Seite 5 von 5</span></div>
+</div>
 </body>
 </html>

@@ -1,189 +1,390 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Arbeitsblatt – Prüfungsangst</title>
-  <link rel="stylesheet" href="../css/arbeitsblatt.css">
-  <style>
-    :root { --farbe: #D97706; --farbe-hell: #FFFBEB; }
-    .symptom-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px; }
-    .symptom-item { background:var(--farbe-hell); border:1.5px solid #FDE68A; border-radius:10px; padding:7px 9px; font-size:11px; cursor:default; }
-    .symptom-item:hover { background:#FEF3C7; }
-    .katastrophen-leiter { display:flex; flex-direction:column; gap:4px; margin-bottom:10px; }
-    .kata-stufe { border-radius:8px; padding:8px 12px; font-size:11px; }
-    .grounding-box { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px; }
-    .grounding-schritt { background:var(--farbe-hell); border:1.5px solid #FDE68A; border-radius:8px; padding:8px; font-size:11px; }
-    .affirmation-karte { border:1.5px solid #FDE68A; border-radius:10px; padding:9px; background:white; margin-bottom:6px; }
-    .taktik-karte { background:var(--farbe-hell); border:1.5px solid #FDE68A; border-radius:10px; padding:9px; font-size:11px; }
-    .taktik-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px; }
-    .atem-visual { display:flex; gap:8px; align-items:center; justify-content:center; margin:8px 0; }
-    .atem-kreis { border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:10px; color:white; text-align:center; line-height:1.2; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachkraft-Modul: Prüfungsangst</title>
+<link rel="stylesheet" href="../css/fachkraft-modul.css">
+<style>:root { --farbe: #7C3AED; }</style>
 </head>
 <body>
 
-<div class="druck-leiste">
-  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
-  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+<!-- SEITE 1: Überblick & Entstehung -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">📝</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Prüfungsangst & Leistungsangst</div>
+      <div class="fm-kopf-untertitel">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-kopf-icd">F41.1 / F93.2 · ICD-10</div>
+  </div>
+
+  <div class="fm-quickinfo">
+    <div class="fm-quick-zelle">
+      <div class="fm-quick-zahl">25–40%</div>
+      <div class="fm-quick-label">Jugendliche mit klinisch relevanter Prüfungsangst</div>
+    </div>
+    <div class="fm-quick-zelle">
+      <div class="fm-quick-zahl">Kein Wissens-</div>
+      <div class="fm-quick-label">Problem — sondern Abrufproblem unter Angst</div>
+    </div>
+    <div class="fm-quick-zelle">
+      <div class="fm-quick-zahl">Cortisol</div>
+      <div class="fm-quick-label">Stresshormon blockiert Hippocampus-Abruf</div>
+    </div>
+    <div class="fm-quick-zelle">
+      <div class="fm-quick-zahl">Behandelbar</div>
+      <div class="fm-quick-label">KVT und Expositionsarbeit sehr wirksam</div>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Was ist Prüfungsangst?</div>
+    <div class="fm-sektion-inhalt">
+      <p>Prüfungsangst ist eine situationsspezifische Angstreaktion auf bewertende Situationen. Sie kann legitimes Lernen und Prüfungsleistung massiv beeinträchtigen — nicht weil das Wissen fehlt, sondern weil die Angstreaktion den Abruf blockiert.</p>
+
+      <div class="fm-zweispalten">
+        <div>
+          <strong>Komponenten der Prüfungsangst</strong>
+          <ul class="fm-liste">
+            <li><strong>Kognitiv:</strong> Sorgen, Katastrophendenken, Blackout-Erwartung, Bewertungsangst</li>
+            <li><strong>Emotional:</strong> Panik, Hilflosigkeit, Scham, Versagensangst</li>
+            <li><strong>Physiologisch:</strong> Herzklopfen, Schwitzen, Zittern, Übelkeit, Bauchschmerzen</li>
+            <li><strong>Behavioral:</strong> Prokrastination, Vermeidung, Flucht, Leistungsabfall</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Neurobiologischer Mechanismus</strong>
+          <p>Amygdala-Aktivierung durch Bedrohung → Cortisol-Ausschüttung → Hippocampus-Funktion beeinträchtigt → Gedächtnisabruf blockiert.</p>
+          <p>"Blackout" ist keine Faulheit — es ist messbare Stressinhibition des Gedächtnisses.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Entstehung & Risikofaktoren</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-dreispalten">
+        <div>
+          <strong>Psychologisch</strong>
+          <ul class="fm-liste">
+            <li>Perfektionismus</li>
+            <li>Geringer Selbstwert</li>
+            <li>Negativen Erfahrungen</li>
+            <li>Angstbereitschaft</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Kontextuell</strong>
+          <ul class="fm-liste">
+            <li>Elterlicher Leistungsdruck</li>
+            <li>Hohe Schulanforderungen</li>
+            <li>Schlechte Vorbereitung</li>
+            <li>Vergleichsdruck Peers</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Verstärkend</strong>
+          <ul class="fm-liste">
+            <li>Bisherige Misserfolge</li>
+            <li>Schlafmangel vor Prüfung</li>
+            <li>Keine Bewältigungsstrategien</li>
+            <li>Vermeidung als Teufelskreis</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-fusszeile">Prüfungsangst · Seite 1/5 · Pathways · Joey Guedes</div>
 </div>
 
-<!-- ===== SEITE 1 ===== -->
-<div class="seite">
-  <div class="kopfzeile">
-    <div class="kopfzeile-links">
-      <div class="schule-label">Pathways · Joey Guedes</div>
-      <div class="ab-titel">Prüfungsangst – Dein Körper meint es eigentlich gut.</div>
-      <div class="ab-untertitel">Prüfungsangst &amp; Schulstress · Kategorie: Schule &amp; Zukunft</div>
+<!-- SEITE 2: Erkennen & Einschätzen -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">📝</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Prüfungsangst</div>
+      <div class="fm-kopf-untertitel">Erkennen & Einschätzen</div>
     </div>
-    <div class="kopfzeile-icon">📝</div>
+    <div class="fm-kopf-icd">Seite 2/5</div>
   </div>
 
-  <div class="schuelerinfo">
-    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
-  </div>
-
-  <div class="infobox">
-    <div class="infobox-titel">💡 Herzrasen vor Prüfungen? Das ist Biologie – keine Schwäche.</div>
-    <p>Wenn dein Körper Prüfungsangst spürt, schüttet er Adrenalin aus – er will dir <em>helfen</em>. Das Problem: Das Gehirn unterscheidet nicht zwischen "Säbelzahntiger" und "Mathetest". <strong>Du bist nicht schwach. Du bist menschlich.</strong></p>
-    <p>🧠 <em>Wusstest du? Forscher haben herausgefunden: Wer Prüfungsangst als "Aufregung" (statt als "Bedrohung") interpretiert, schneidet nachweislich besser ab. Dein Körper ist bereit – dein Kopf muss nur die Geschichte ändern.</em></p>
-  </div>
-
-  <!-- Übung 1 – Körper-Symptome -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">1</div>
-      <div class="uebung-titel">Was passiert in mir vor/während Prüfungen? Kreise ein! 🫀</div>
-    </div>
-    <div class="uebung-beschreibung">Kreise alles ein was du kennst. Kein Symptom ist peinlich – alle diese Reaktionen sind normal und erklärbar.</div>
-    <div class="symptom-grid">
-      <div class="symptom-item">💓 Herzrasen / Herzstolpern</div>
-      <div class="symptom-item">🤢 Bauchschmerzen / Übelkeit</div>
-      <div class="symptom-item">💧 Schwitzen (Hände, Achseln)</div>
-      <div class="symptom-item">😶 Gedanken-Blackout / Leere</div>
-      <div class="symptom-item">🫁 Flaches / schnelles Atmen</div>
-      <div class="symptom-item">🦵 Zittern (Hände, Beine)</div>
-      <div class="symptom-item">😤 "Ich schaffe das nie" – Gedanken</div>
-      <div class="symptom-item">💤 Schlafprobleme davor</div>
-      <div class="symptom-item">🔴 Röte / Erröten</div>
-      <div class="symptom-item">📵 Lernen vermeiden / aufschieben</div>
-      <div class="symptom-item">😡 Gereiztheit vor der Prüfung</div>
-      <div class="symptom-item">🙈 Alles vergessen was ich wusste</div>
-    </div>
-    <div style="font-size:11px;margin-top:4px;">Das kenne ich am meisten: <span style="border-bottom:1px dashed #FDE68A;display:inline-block;width:250px;">&nbsp;</span></div>
-  </div>
-
-  <!-- Übung 2 – Katastrophen-Leiter -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">2</div>
-      <div class="uebung-titel">Die Katastrophen-Leiter – wie wahrscheinlich ist das wirklich? 🪜</div>
-    </div>
-    <div class="uebung-beschreibung">Angst denkt gerne in Extremen. Lass uns den schlimmsten Fall realistisch durchdenken – das macht ihn kleiner.</div>
-    <div class="katastrophen-leiter">
-      <div class="kata-stufe" style="background:#FEF2F2;border:1.5px solid #FCA5A5;">
-        <strong style="font-size:11px;color:#DC2626;">😱 Was ist meine schlimmste Befürchtung?</strong>
-        <div style="border-bottom:1px dashed #FCA5A5;height:16px;margin-top:4px;"></div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Warnsignale — Ampelsystem</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-ampel-zeile gruen">
+        <div class="fm-ampel-label">NORMAL</div>
+        <div class="fm-ampel-inhalt">Nervosität vor wichtigen Prüfungen; Lampenfieber; kurze Schlafprobleme vor Prüfung — wenn die Leistung nicht stark beeinträchtigt wird und nach der Prüfung vergeht</div>
       </div>
-      <div style="text-align:center;font-size:12px;color:#6B7280;">⬇ Wie wahrscheinlich ist das wirklich? (0–100%)</div>
-      <div class="kata-stufe" style="background:#FFFBEB;border:1.5px solid #FDE68A;">
-        <strong style="font-size:11px;color:#D97706;">🤔 Realistischere Einschätzung:</strong> ____% wahrscheinlich
-        <div style="border-bottom:1px dashed #FDE68A;height:16px;margin-top:4px;"></div>
+      <div class="fm-ampel-zeile gelb">
+        <div class="fm-ampel-label">UNTERSTÜTZEN</div>
+        <div class="fm-ampel-inhalt">Prüfungsleistung deutlich schlechter als Wissen; regelmäßiges Blackout; Bauchschmerzen/Übelkeit vor Prüfungen; ausgeprägtes Vermeidungsverhalten; Prokrastination als Regel; körperliche Beschwerden die Prüfungen verhindern</div>
       </div>
-      <div style="text-align:center;font-size:12px;color:#6B7280;">⬇ Und wenn es doch passiert – was dann?</div>
-      <div class="kata-stufe" style="background:#F0FDF4;border:1.5px solid #86EFAC;">
-        <strong style="font-size:11px;color:#059669;">🌱 Ich würde damit umgehen indem ich:</strong>
-        <div style="border-bottom:1px dashed #86EFAC;height:16px;margin-top:4px;"></div>
+      <div class="fm-ampel-zeile rot">
+        <div class="fm-ampel-label">ABKLÄREN</div>
+        <div class="fm-ampel-inhalt">Schulverweigerung durch Prüfungsangst; Panikattacken in Prüfungen; vollständige Blockade; komorbide Depression/allgemeine Angststörung; Schulabbruch-Gefahr; Eltern-Kind-Konflikte eskalieren durch Noten</div>
       </div>
     </div>
-    <div style="background:#EFF6FF;border-radius:8px;padding:7px;font-size:11px;text-align:center;color:#1D4ED8;">
-      💬 <em>"Ich bin mehr als eine Note." – Das ist wahr, egal wie die Prüfung läuft.</em>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Screening-Instrumente</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-zweispalten">
+        <div>
+          <strong>TAI-G (Test Anxiety Inventory)</strong>
+          <ul class="fm-liste">
+            <li>Spielberger (deutsch adaptiert)</li>
+            <li>20 Items; Selbstauskunft</li>
+            <li>Subskalen: Besorgtheit, Aufgeregtheit</li>
+            <li>Klinisch auffällig: Gesamtwert &gt; 52</li>
+          </ul>
+        </div>
+        <div>
+          <strong>PAF (Prüfungsangst-Fragebogen)</strong>
+          <ul class="fm-liste">
+            <li>Hodapp (1991) — deutschsprachig</li>
+            <li>30 Items; 4 Subskalen</li>
+            <li>Kognitive Interferenz; Aufgeregtheit; Mangelndes Zutrauen; Emotionalität</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Prüfungsangst · Seite 1</span>
+  <div class="fm-tipp">
+    <strong>Unterschied: Echte Prüfungsangst vs. fehlende Vorbereitung:</strong> Bei echter Prüfungsangst ist das Wissen bei Entspannung gut abrufbar (zu Hause alles können, in der Prüfung Blackout). Bei fehlender Vorbereitung: auch zu Hause kein Wissen. Diese Unterscheidung ist klinisch wichtig.
   </div>
+
+  <div class="fm-fusszeile">Prüfungsangst · Seite 2/5 · Pathways · Joey Guedes</div>
 </div>
 
-<!-- ===== SEITE 2 ===== -->
-<div class="seite">
-
-  <!-- Übung 3 – Grounding vor der Prüfung -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">3</div>
-      <div class="uebung-titel">Pre-Exam Grounding – 60 Sekunden die alles ändern 🧘</div>
+<!-- SEITE 3: Im Gespräch -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">📝</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Prüfungsangst</div>
+      <div class="fm-kopf-untertitel">Im Gespräch</div>
     </div>
-    <div class="uebung-beschreibung">Direkt vor der Prüfung: Körper erden, Nervensystem beruhigen. Das dauert 1 Minute und funktioniert wirklich.</div>
-    <div class="grounding-box">
-      <div class="grounding-schritt">
-        <strong>👣 Schritt 1: Füße spüren</strong><br>
-        <span style="color:#6B7280;">Drücke beide Füße fest auf den Boden. Spüre den Kontakt. 3 Sekunden halten.</span>
+    <div class="fm-kopf-icd">Seite 3/5</div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Gesprächsführung</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-gespraech-grid">
+        <div class="fm-gespraech-item gut">
+          <div class="fm-gespraech-label">Gut ✓</div>
+          <div>"Ein Blackout bedeutet nicht, dass du es nicht weißt — dein Gehirn ist durch Stress blockiert. Das ist biologisch erklärbar."</div>
+        </div>
+        <div class="fm-gespraech-item schlecht">
+          <div class="fm-gespraech-label">Vermeiden ✗</div>
+          <div>"Du hast nicht genug gelernt, deshalb klappt es nicht." (Wenn Prüfungsangst Ursache ist)</div>
+        </div>
+        <div class="fm-gespraech-item gut">
+          <div class="fm-gespraech-label">Gut ✓</div>
+          <div>"Was passiert bei dir kurz vor der Prüfung? Was denkst du? Was spürst du im Körper?" (Genau explorieren)</div>
+        </div>
+        <div class="fm-gespraech-item schlecht">
+          <div class="fm-gespraech-label">Vermeiden ✗</div>
+          <div>"So schlimm ist das doch nicht! Alle haben Prüfungsangst." (Minimieren)</div>
+        </div>
+        <div class="fm-gespraech-item gut">
+          <div class="fm-gespraech-label">Gut ✓</div>
+          <div>"Angst vor Prüfungen ist behandelbar. Wir können konkrete Techniken üben, die nachweislich helfen."</div>
+        </div>
+        <div class="fm-gespraech-item schlecht">
+          <div class="fm-gespraech-label">Vermeiden ✗</div>
+          <div>"Reiß dich einfach zusammen während der Prüfung!" (Keine Handlungsmöglichkeit)</div>
+        </div>
       </div>
-      <div class="grounding-schritt">
-        <strong>🪑 Schritt 2: Rücken spüren</strong><br>
-        <span style="color:#6B7280;">Lehne dich zurück. Spüre den Stuhl unter dir. Lass die Schultern sinken.</span>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Psychoedukation zum Angst-Teufelskreis</div>
+    <div class="fm-sektion-inhalt">
+      <p>Den Teufelskreis visuell erklären hilft Jugendlichen, ihre Erfahrung zu verstehen:</p>
+      <div class="fm-tipp">
+        <strong>Angst → Vermeidung → weniger Übung → mehr Angst → Vermeidung</strong><br>
+        Und: Angst → Blackout → schlechte Note → Überzeugung "ich kann das nicht" → mehr Angst → Vermeidung<br><br>
+        Durchbrechen durch: Exposition (entgegen der Angst in Prüfungssituationen gehen) + Techniken
       </div>
-      <div class="grounding-schritt">
-        <strong>🫁 Schritt 3: 3 tiefe Atemzüge</strong><br>
-        <span style="color:#6B7280;">Tief ein (4 Sek.) – kurz halten – langsam aus (6 Sek.). 3× wiederholen.</span>
+    </div>
+  </div>
+
+  <div class="fm-fusszeile">Prüfungsangst · Seite 3/5 · Pathways · Joey Guedes</div>
+</div>
+
+<!-- SEITE 4: Interventionen -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">📝</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Prüfungsangst</div>
+      <div class="fm-kopf-untertitel">Interventionen & Methoden</div>
+    </div>
+    <div class="fm-kopf-icd">Seite 4/5</div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Evidenzbasierte Methoden</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-methode">
+        <div class="fm-methode-kopf">
+          <span class="fm-methode-name">KVT — Kognitive Umstrukturierung + Exposition</span>
+          <span class="fm-methode-sterne">★★★</span>
+        </div>
+        <p>Automatische Katastrophengedanken identifizieren ("Wenn ich durchfalle, ist mein Leben ruiniert") und realistisch überprüfen. Dann: Expositionsübungen (Prüfungssimulationen unter Zeitdruck, vor Anderen präsentieren). Habituation reduziert Angst nachhaltig.</p>
       </div>
-      <div class="grounding-schritt">
-        <strong>👁️ Schritt 4: 5 Dinge sehen</strong><br>
-        <span style="color:#6B7280;">Schaue dich um, benenne 5 Dinge die du siehst. Du bist im Hier und Jetzt.</span>
+
+      <div class="fm-methode">
+        <div class="fm-methode-kopf">
+          <span class="fm-methode-name">Expressive Writing (Angstaufschreiben)</span>
+          <span class="fm-methode-sterne">★★★</span>
+        </div>
+        <p>Ramirez & Beilock (2011): 10 Minuten Sorgen aufschreiben direkt VOR der Prüfung → Leistung verbessert sich messbar. Sorgen aus dem Arbeitsgedächtnis "auslagern" → mehr Kapazität für Aufgaben. Einfach, kostenlos, sofort nutzbar.</p>
+      </div>
+
+      <div class="fm-methode">
+        <div class="fm-methode-kopf">
+          <span class="fm-methode-name">Atemregulation & Entspannung</span>
+          <span class="fm-methode-sterne">★★☆</span>
+        </div>
+        <p>Physiologischer Seufzer (doppelter Einatem, langer Ausatem); Box-Breathing; Progressive Muskelentspannung. Als Routine VOR Prüfungen üben — nicht erst wenn Panik da ist. Körperliche Arousal-Reduktion.</p>
+      </div>
+
+      <div class="fm-methode">
+        <div class="fm-methode-kopf">
+          <span class="fm-methode-name">Anxiety Reappraisal</span>
+          <span class="fm-methode-sterne">★★☆</span>
+        </div>
+        <p>Angst umdeuten: "Ich bin aufgeregt" statt "Ich bin ängstlich" — physiologisch identisch, aber kognitive Neubewertung aktiviert Annäherung statt Vermeidung. Brooks (2014): Leistung messbar besser.</p>
       </div>
     </div>
-    <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:7px;font-size:11px;text-align:center;">
-      Jetzt ausprobieren! Wie fühlt sich das an? <span style="border-bottom:1px dashed #FDE68A;display:inline-block;width:200px;">&nbsp;</span>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Prüfungsvorbereitung optimieren</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-tipp">
+        <strong>Anti-Angst Prüfungsvorbereitung:</strong>
+        <ul class="fm-liste">
+          <li>Retrieval Practice statt passivem Lesen (reduziert Prüfungsangst durch Übung)</li>
+          <li>Prüfungsbedingungen simulieren (Zeit, Stille, alleine)</li>
+          <li>Schlaf die Nacht vor der Prüfung schützen (wichtiger als eine Stunde mehr lernen)</li>
+          <li>Angst-Aufschreiben 10 Minuten vor Prüfung (Expressive Writing)</li>
+          <li>Kleine Belohnungen nach dem Lernen planen</li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <!-- Übung 4 – Affirmationskarten -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">4</div>
-      <div class="uebung-titel">Meine persönlichen Stärke-Sätze – fülle sie aus! 💪</div>
+  <div class="fm-fusszeile">Prüfungsangst · Seite 4/5 · Pathways · Joey Guedes</div>
+</div>
+
+<!-- SEITE 5: Netzwerk & Ressourcen -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">📝</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Prüfungsangst</div>
+      <div class="fm-kopf-untertitel">Netzwerk & Ressourcen</div>
     </div>
-    <div class="uebung-beschreibung">Diese Sätze sind dein innerer Coach. Schreibe sie fertig und lese sie laut vor der nächsten Prüfung.</div>
-    <div class="affirmation-karte"><span style="font-size:11px;color:#D97706;">✨</span> "Ich habe mich vorbereitet. Ich weiß <span style="border-bottom:1px dashed #FDE68A;display:inline-block;width:180px;">&nbsp;</span>"</div>
-    <div class="affirmation-karte"><span style="font-size:11px;color:#D97706;">✨</span> "Ich schaffe diese Prüfung, weil <span style="border-bottom:1px dashed #FDE68A;display:inline-block;width:190px;">&nbsp;</span>"</div>
-    <div class="affirmation-karte"><span style="font-size:11px;color:#D97706;">✨</span> "Mein Wert als Mensch hängt nicht von <span style="border-bottom:1px dashed #FDE68A;display:inline-block;width:155px;">&nbsp;</span> ab."</div>
-    <div class="affirmation-karte"><span style="font-size:11px;color:#D97706;">✨</span> "Wenn mein Kopf leer wird, atme ich kurz durch und <span style="border-bottom:1px dashed #FDE68A;display:inline-block;width:110px;">&nbsp;</span>"</div>
-    <div class="affirmation-karte"><span style="font-size:11px;color:#D97706;">✨</span> "Mein eigener Satz: <span style="border-bottom:1px dashed #FDE68A;display:inline-block;width:250px;">&nbsp;</span>"</div>
+    <div class="fm-kopf-icd">Seite 5/5</div>
   </div>
 
-  <!-- Übung 5 – Prüfungs-Taktiken -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">5</div>
-      <div class="uebung-titel">4 Prüfungs-Taktiken die wirklich helfen 🎯</div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Handlungspfad</div>
+    <div class="fm-sektion-inhalt">
+      <table class="fm-tabelle">
+        <tr>
+          <th>Schweregrad</th>
+          <th>Maßnahme</th>
+          <th>Ressource</th>
+        </tr>
+        <tr>
+          <td>Leichte Prüfungsangst</td>
+          <td>Techniken lernen, Expressive Writing, Schlafhygiene</td>
+          <td>Bezugsperson + Arbeitsblätter</td>
+        </tr>
+        <tr>
+          <td>Moderate Prüfungsangst</td>
+          <td>KVT-Ansatz; Expositionsübungen; Selbsthilfebuch</td>
+          <td>SPOS / SCAS-Beratung</td>
+        </tr>
+        <tr>
+          <td>Schwere Prüfungsangst (Schulverweigerung)</td>
+          <td>KVT + ggf. Nachteilsausgleich + Psychotherapie</td>
+          <td>KJP / Niedergelassener Psych.</td>
+        </tr>
+        <tr>
+          <td>Komorbide allg. Angststörung</td>
+          <td>Umfassende Angstbehandlung notwendig</td>
+          <td>CHL KJP (4411-6100)</td>
+        </tr>
+      </table>
     </div>
-    <div class="taktik-grid">
-      <div class="taktik-karte"><strong>📋 Erst überfliegen</strong><br><span style="color:#6B7280;font-size:10px;">Zuerst alle Aufgaben lesen, bevor du anfängst. Gibt Überblick und stoppt Panik.</span></div>
-      <div class="taktik-karte"><strong>✅ Leichtes zuerst</strong><br><span style="color:#6B7280;font-size:10px;">Fange mit dem an was du sicher kannst. Jeder Erfolg baut Vertrauen auf.</span></div>
-      <div class="taktik-karte"><strong>⏱️ Zeit im Blick</strong><br><span style="color:#6B7280;font-size:10px;">Teile Punkte durch Zeit. 1 Aufgabe steckengeblieben? Markieren, weitermachen.</span></div>
-      <div class="taktik-karte"><strong>💭 Blackout = Pause</strong><br><span style="color:#6B7280;font-size:10px;">3 tiefe Atemzüge, Blick nach unten, Schreibe irgendwas – das öffnet den Zugang wieder.</span></div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Luxemburger Netzwerk</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">SPOS (Schulpsychologischer Dienst)</div>
+        <div class="fm-ressource-info">Schulangst und Prüfungsangst · Schulische Beratung · Nachteilsausgleich-Beantragung</div>
+      </div>
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">SCAS</div>
+        <div class="fm-ressource-info">📞 247-86000 · Psychosoziale Beratung · Angst und Schulstress</div>
+      </div>
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">CHL KJP</div>
+        <div class="fm-ressource-info">📞 4411-6100 · Bei schwerer Angststörung + Schulverweigerung</div>
+      </div>
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">Kanner-Jugendtelefon</div>
+        <div class="fm-ressource-info">📞 116 111 · Beratung bei schulischem Stress und Prüfungsangst</div>
+      </div>
     </div>
   </div>
 
-  <div class="reflexion">
-    <div class="reflexion-titel">💬 Reflexion</div>
-    <p>Welche Strategie aus diesem Blatt willst du bei deiner nächsten Prüfung ausprobieren? Was brauche ich dafür?</p>
-    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Literatur & weiterführende Ressourcen</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-literatur-item">
+        <span class="fm-lit-autor">Ramirez, G. & Beilock, S.L. (2011)</span>
+        <span class="fm-lit-titel">Writing about testing worries boosts exam performance in the classroom.</span>
+        <span class="fm-lit-info">Science — Expressive Writing Studie</span>
+      </div>
+      <div class="fm-literatur-item">
+        <span class="fm-lit-autor">Brooks, A.W. (2014)</span>
+        <span class="fm-lit-titel">Get Excited: Reappraising Pre-Performance Anxiety as Excitement.</span>
+        <span class="fm-lit-info">Journal of Experimental Psychology — Anxiety Reappraisal</span>
+      </div>
+      <div class="fm-literatur-item">
+        <span class="fm-lit-autor">Fehm, L. & Fydrich, T. (2011)</span>
+        <span class="fm-lit-titel">Prüfungsangst: Fortschritte der Psychotherapie.</span>
+        <span class="fm-lit-info">Hogrefe — Deutschsprachiges Praxisbuch</span>
+      </div>
+    </div>
   </div>
 
-  <div class="fachhinweis">
-    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
-    <strong>ICD-10:</strong> F41.1 (Generalisierte Angststörung), F40.8 (spezifische Phobie, leistungsbezogen), F43.0 (akute Belastungsreaktion). Prüfungsangst: kognitive Komponente (Katastrophisieren, Überschätzung der Gefahr) und physiologische Überaktivierung (Sympathikusaktivierung). <strong>CBT-Interventionen:</strong> kognitive Umstrukturierung (Katastrophen-Leiter = "decatastrophizing", Beck), Expositionsbasiertes Vorgehen. <strong>Umdeuten der Erregung:</strong> "Reappraisal" – Angst als Aufregung interpretieren senkt Leistungsbeeinträchtigung (Brooks, 2014). <strong>Grounding</strong> (5-4-3-2-1) und Atemübungen aktivieren Parasympathikus (N. vagus). Affirmationen = ACT-Defusion + Selbstmitgefühlsansatz. Körperbasierte Übungen aus DBT (TIPP-Skill). <strong>Bei schwerer oder persistierender Prüfungsangst:</strong> Schulpsychologischen Dienst, kinder- und jugendpsychiatrische Abklärung einbeziehen.
+  <div class="fm-krisen-box">
+    <div class="fm-krisen-titel">Krisenressourcen Luxembourg</div>
+    <div class="fm-krisen-nummern">
+      <div class="fm-krisen-nr"><span class="fm-kr-name">Kanner-Jugendtelefon</span><span class="fm-kr-num">116 111</span></div>
+      <div class="fm-krisen-nr"><span class="fm-kr-name">SCAS</span><span class="fm-kr-num">247-86000</span></div>
+      <div class="fm-krisen-nr"><span class="fm-kr-name">KJP Ambulanz</span><span class="fm-kr-num">4411-6100</span></div>
+      <div class="fm-krisen-nr"><span class="fm-kr-name">SPL</span><span class="fm-kr-num">45 45 45</span></div>
+    </div>
   </div>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Prüfungsangst · Seite 2</span>
-  </div>
+  <div class="fm-fusszeile">Prüfungsangst · Seite 5/5 · Pathways · Joey Guedes · 2025</div>
 </div>
 
 </body>

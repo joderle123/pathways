@@ -1,191 +1,278 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Arbeitsblatt – Trennung &amp; Scheidung</title>
-  <link rel="stylesheet" href="../css/arbeitsblatt.css">
-  <style>:root { --farbe: #8B5CF6; --farbe-hell: #F5F3FF; }</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachkraft-Modul: Trennung & Scheidung</title>
+<link rel="stylesheet" href="../fachkraft-modul.css">
 </head>
 <body>
-<div class="druck-leiste">
-  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
-  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
-</div>
+<style>:root { --farbe: #DC2626; }</style>
 
-<!-- SEITE 1 -->
-<div class="seite">
-  <div class="kopfzeile">
-    <div class="kopfzeile-links">
-      <div class="schule-label">Pathways · Joey Guedes</div>
-      <div class="ab-titel">Wenn Eltern getrennte Wege gehen</div>
-      <div class="ab-untertitel">Trennung &amp; Scheidung · Kategorie: Familie &amp; Soziales Umfeld</div>
+<!-- SEITE 1: ÜBERBLICK & ENTSTEHUNG -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">💔</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Trennung & Scheidung</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
     </div>
-    <div class="kopfzeile-icon">💔</div>
-  </div>
-  <div class="schuelerinfo">
-    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+    <div class="fm-seitenzahl">1 / 5</div>
   </div>
 
-  <div class="infobox">
-    <div class="infobox-titel">💡 Du bist nicht schuld</div>
-    <p>Wenn sich Eltern trennen, verändert sich vieles – aber eines bleibt: Du bist und bleibst ihr Kind, und du bist nicht der Grund für die Trennung. Deine Gefühle dazu – egal welche – sind völlig in Ordnung.</p>
-    <p>🧠 <em>Wusstest du? Studien zeigen, dass die meisten Jugendlichen nach einer Trennung der Eltern langfristig gut zurechtkommen, besonders wenn sie offen über ihre Gefühle sprechen können (Amato, 2010). Es ist normal, dass es eine Zeit dauert.</em></p>
+  <div class="fm-quickinfo">
+    <div class="fm-qi-item"><span class="fm-qi-label">ICD-10</span><span class="fm-qi-wert">Z63.5 (Trennung/Scheidung) · F43.2 (Anpassungsstörung)</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Prävalenz</span><span class="fm-qi-wert">~30–40 % der Kinder in Luxemburg betroffen; Scheidungsrate LU: ~55 %</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Altersgruppe</span><span class="fm-qi-wert">6–18 Jahre; höchste Vulnerabilität 6–12 Jahre</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Geschlecht</span><span class="fm-qi-wert">Jungen: mehr Externalisierung; Mädchen: mehr Internalisierung</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Relevanz</span><span class="fm-qi-wert">Häufigster familiärer Belastungsfaktor in Klientel</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Screening</span><span class="fm-qi-wert">CBCL (Achenbach), SDQ, Familien-APGAR</span></div>
   </div>
 
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">1</div><div class="uebung-titel">Meine Geschichte – Was ist passiert?</div></div>
-    <div class="uebung-beschreibung">Erzähle in deinen Worten, was sich verändert hat. Du bestimmst, wie viel du teilst:</div>
-    <table style="width:100%;border-collapse:collapse;font-size:11px;">
-      <thead>
-        <tr style="background:var(--farbe-hell);">
-          <th style="padding:6px;border:1px solid var(--border);text-align:left;width:35%;">Frage</th>
-          <th style="padding:6px;border:1px solid var(--border);text-align:left;">Meine Antwort</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td style="padding:7px;border:1px solid var(--border);font-size:10px;">📅 Wann haben sich meine Eltern getrennt?</td><td style="padding:7px;border:1px solid var(--border);height:24px;"></td></tr>
-        <tr><td style="padding:7px;border:1px solid var(--border);font-size:10px;">🏠 Wie sieht mein Alltag jetzt aus? (Wohnung, Wechsel…)</td><td style="padding:7px;border:1px solid var(--border);height:24px;"></td></tr>
-        <tr><td style="padding:7px;border:1px solid var(--border);font-size:10px;">👤 Wer weiß davon? Mit wem rede ich darüber?</td><td style="padding:7px;border:1px solid var(--border);height:24px;"></td></tr>
-        <tr><td style="padding:7px;border:1px solid var(--border);font-size:10px;">💭 Was hat sich am meisten verändert für mich?</td><td style="padding:7px;border:1px solid var(--border);height:24px;"></td></tr>
-      </tbody>
-    </table>
-  </div>
+  <h2 class="fm-abschnitt-titel">Theoretische Grundlage</h2>
+  <p class="fm-text">Elterliche Trennung ist für Kinder und Jugendliche eine der einschneidendsten Lebensereignisse. Nicht die Trennung an sich, sondern das Konfliktniveau zwischen den Eltern bestimmt maßgeblich die psychische Anpassung des Kindes (Amato 2001, Wallerstein 2000).</p>
 
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">2</div><div class="uebung-titel">Mein Gefühle-Wetter – Was fühle ich?</div></div>
-    <div class="uebung-beschreibung">Trennung löst viele Gefühle gleichzeitig aus. Kreuze an, was du kennst, und markiere die Stärke (1 = leicht, 5 = sehr stark):</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px;">
-      <div style="background:#FEF2F2;border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;font-size:11px;">
-        <span>😢 Traurigkeit</span><span style="color:var(--grau);font-size:10px;">1 · 2 · 3 · 4 · 5</span>
-      </div>
-      <div style="background:#FEF3C7;border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;font-size:11px;">
-        <span>😡 Wut</span><span style="color:var(--grau);font-size:10px;">1 · 2 · 3 · 4 · 5</span>
-      </div>
-      <div style="background:#EDE9FE;border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;font-size:11px;">
-        <span>😰 Angst / Sorge</span><span style="color:var(--grau);font-size:10px;">1 · 2 · 3 · 4 · 5</span>
-      </div>
-      <div style="background:#FFF7ED;border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;font-size:11px;">
-        <span>😐 Nichts fühlen / Taubheit</span><span style="color:var(--grau);font-size:10px;">1 · 2 · 3 · 4 · 5</span>
-      </div>
-      <div style="background:#ECFDF5;border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;font-size:11px;">
-        <span>😌 Erleichterung</span><span style="color:var(--grau);font-size:10px;">1 · 2 · 3 · 4 · 5</span>
-      </div>
-      <div style="background:#F0F9FF;border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;font-size:11px;">
-        <span>🫤 Schuld / Scham</span><span style="color:var(--grau);font-size:10px;">1 · 2 · 3 · 4 · 5</span>
-      </div>
-      <div style="background:#F5F3FF;border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;font-size:11px;">
-        <span>🤞 Hoffnung, dass sie wieder zusammenkommen</span><span style="color:var(--grau);font-size:10px;">1 · 2 · 3 · 4 · 5</span>
-      </div>
-      <div style="background:#F9FAFB;border:1px dashed var(--border);border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;font-size:11px;">
-        <span>+ Anderes: _______</span><span style="color:var(--grau);font-size:10px;">1 · 2 · 3 · 4 · 5</span>
-      </div>
+  <h3 class="fm-unter-titel">Loyalitätskonflikt-Modell (Boszormenyi-Nagy 1973)</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>Unsichtbare Bindungen</strong><br>
+      Kinder fühlen sich beiden Eltern verpflichtet. Wenn Eltern das Kind als Bündnispartner rekrutieren, entsteht ein unlösbarer Loyalitätskonflikt.<br><br>
+      <strong>Warnsignale:</strong><br>
+      • Kind lehnt einen Elternteil plötzlich ab<br>
+      • Botschafter-Rolle zwischen Eltern<br>
+      • Parentifizierung (Kind tröstet Elternteil)
     </div>
-    <div style="font-size:11px;background:var(--farbe-hell);border-radius:6px;padding:7px;">💡 <strong>Wichtig:</strong> Alle diese Gefühle – auch gleichzeitig – sind normal. Es gibt kein „richtiges" Gefühl bei einer Trennung.</div>
-  </div>
-
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">3</div><div class="uebung-titel">Loyalitätsfalle – Zwischen den Stühlen</div></div>
-    <div class="uebung-beschreibung">Viele Jugendliche fühlen sich „zwischen" den Eltern. Erkennst du dich wieder?</div>
-    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:10px;">
-      <label style="display:flex;gap:8px;align-items:flex-start;font-size:11px;padding:6px 8px;background:#FAFAFA;border-radius:6px;">
-        <span style="font-size:14px;">☐</span><span>Ich fühle mich manchmal wie ein Bote zwischen meinen Eltern</span>
-      </label>
-      <label style="display:flex;gap:8px;align-items:flex-start;font-size:11px;padding:6px 8px;background:#FAFAFA;border-radius:6px;">
-        <span style="font-size:14px;">☐</span><span>Ein Elternteil redet schlecht über den anderen – und ich soll zustimmen</span>
-      </label>
-      <label style="display:flex;gap:8px;align-items:flex-start;font-size:11px;padding:6px 8px;background:#FAFAFA;border-radius:6px;">
-        <span style="font-size:14px;">☐</span><span>Ich habe das Gefühl, ich muss mich für eine Seite entscheiden</span>
-      </label>
-      <label style="display:flex;gap:8px;align-items:flex-start;font-size:11px;padding:6px 8px;background:#FAFAFA;border-radius:6px;">
-        <span style="font-size:14px;">☐</span><span>Ich passe auf, was ich bei wem erzähle</span>
-      </label>
-      <label style="display:flex;gap:8px;align-items:flex-start;font-size:11px;padding:6px 8px;background:#FAFAFA;border-radius:6px;">
-        <span style="font-size:14px;">☐</span><span>Ich versuche, beide Seiten glücklich zu machen</span>
-      </label>
+    <div class="fm-spalte">
+      <strong>Hochkonflikt-Trennungen</strong><br>
+      ~10–15 % aller Trennungen; definiert durch:<br>
+      • Anhaltende Feindseligkeit (> 2 Jahre)<br>
+      • Instrumentalisierung des Kindes<br>
+      • Juristischer Dauerkampf<br>
+      • Verweigerung von Kooperation<br><br>
+      <em>Cave: Abgrenzung von berechtigtem Kontaktabbruch bei Gewalt/Missbrauch!</em>
     </div>
-    <div style="font-size:11px;background:#FEF3C7;border-radius:6px;padding:8px;">⚠️ <strong>Merke:</strong> Du bist das Kind, nicht der Richter, nicht der Bote und nicht der Therapeut. Du darfst <strong>beide</strong> Elternteile lieb haben – das ist dein Recht.</div>
   </div>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Trennung &amp; Scheidung · Seite 1</span>
+  <h3 class="fm-unter-titel">Auswirkungen nach Altersgruppe</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>6–12 Jahre</strong><br>
+      • Schuldgefühle ("Ich bin schuld")<br>
+      • Wiedervereinigungsfantasien<br>
+      • Somatische Beschwerden<br>
+      • Schulleistungsabfall<br>
+      • Regression (Einnässen, Klammern)
+    </div>
+    <div class="fm-spalte">
+      <strong>13–18 Jahre</strong><br>
+      • Wut auf einen oder beide Elternteile<br>
+      • Beschleunigter Ablösungsprozess<br>
+      • Parentifizierung<br>
+      • Risikoverhalten (Substanzen, Delinquenz)<br>
+      • Beziehungsängste
+    </div>
   </div>
 </div>
 
-<!-- SEITE 2 -->
-<div class="seite">
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">4</div><div class="uebung-titel">Was bleibt, was ändert sich – Meine zwei Welten</div></div>
-    <div class="uebung-beschreibung">Manchmal hilft es, aufzuschreiben, was gleich geblieben ist und was neu ist:</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
-      <div style="background:#ECFDF5;border-radius:8px;padding:12px;">
-        <div style="font-weight:700;font-size:11px;margin-bottom:6px;color:#065F46;">✅ Was gleich geblieben ist:</div>
-        <div style="border-bottom:1px dashed var(--border);min-height:18px;margin-bottom:5px;"></div>
-        <div style="border-bottom:1px dashed var(--border);min-height:18px;margin-bottom:5px;"></div>
-        <div style="border-bottom:1px dashed var(--border);min-height:18px;margin-bottom:5px;"></div>
-        <div style="border-bottom:1px dashed var(--border);min-height:18px;"></div>
-      </div>
-      <div style="background:#FEF2F2;border-radius:8px;padding:12px;">
-        <div style="font-weight:700;font-size:11px;margin-bottom:6px;color:#991B1B;">🔄 Was sich verändert hat:</div>
-        <div style="border-bottom:1px dashed var(--border);min-height:18px;margin-bottom:5px;"></div>
-        <div style="border-bottom:1px dashed var(--border);min-height:18px;margin-bottom:5px;"></div>
-        <div style="border-bottom:1px dashed var(--border);min-height:18px;margin-bottom:5px;"></div>
-        <div style="border-bottom:1px dashed var(--border);min-height:18px;"></div>
-      </div>
+<!-- SEITE 2: ERKENNUNG & DIFFERENZIERUNG -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">💔</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Trennung & Scheidung</div>
+      <div class="fm-header-sub">Erkennung & Differenzierung</div>
     </div>
-    <div style="font-size:11px;">Die Veränderung, die mich am meisten beschäftigt: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:250px;"></span></div>
+    <div class="fm-seitenzahl">2 / 5</div>
   </div>
 
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">5</div><div class="uebung-titel">Mein Werkzeugkasten – Was mir hilft</div></div>
-    <div class="uebung-beschreibung">Auch in schwierigen Zeiten gibt es Dinge, die dir guttun. Finde deine Strategien:</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px;">
-      <div style="background:var(--farbe-hell);border-radius:8px;padding:10px;text-align:center;font-size:11px;">
-        <div style="font-size:20px;margin-bottom:4px;">🗣️</div>
-        <div style="font-weight:700;margin-bottom:3px;">Darüber reden</div>
-        <div style="color:var(--grau);font-size:10px;">Mit wem? ________</div>
-      </div>
-      <div style="background:var(--farbe-hell);border-radius:8px;padding:10px;text-align:center;font-size:11px;">
-        <div style="font-size:20px;margin-bottom:4px;">📝</div>
-        <div style="font-weight:700;margin-bottom:3px;">Aufschreiben</div>
-        <div style="color:var(--grau);font-size:10px;">Tagebuch, Brief, Notizen</div>
-      </div>
-      <div style="background:var(--farbe-hell);border-radius:8px;padding:10px;text-align:center;font-size:11px;">
-        <div style="font-size:20px;margin-bottom:4px;">🏃</div>
-        <div style="font-weight:700;margin-bottom:3px;">Mich bewegen</div>
-        <div style="color:var(--grau);font-size:10px;">Sport, Spazieren, Tanzen</div>
-      </div>
+  <h2 class="fm-abschnitt-titel">Warnsignale im therapeutischen Kontext</h2>
+  <div class="fm-ampel">
+    <div class="fm-ampel-item gruen">
+      <strong>Normale Anpassung</strong><br>
+      Traurigkeit, Wut, vorübergehender Leistungsabfall (< 6 Monate). Kind kann über beide Eltern positiv sprechen. Freundschaften intakt.
     </div>
-    <div style="font-size:11px;">Was ich mir von meinen Eltern wünsche: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:280px;"></span></div>
-    <div style="font-size:11px;margin-top:6px;">Was ich mir von anderen Erwachsenen wünsche: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:230px;"></span></div>
-  </div>
-
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">6</div><div class="uebung-titel">Mein Brief – Was ich sagen möchte</div></div>
-    <div class="uebung-beschreibung">Schreibe einen kurzen Brief an eine Person (Mama, Papa, dich selbst, deine Geschwister…). Du musst ihn nicht abschicken:</div>
-    <div style="font-size:11px;margin-bottom:4px;">Liebe/r <span style="border-bottom:1px dashed var(--border);display:inline-block;width:120px;"></span>,</div>
-    <div class="schreiblinien">
-      <div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div>
+    <div class="fm-ampel-item gelb">
+      <strong>Belastungsreaktion</strong><br>
+      Anhaltende Schulprobleme, sozialer Rückzug, psychosomatische Beschwerden, Loyalitätskonflikt sichtbar, Kind vermeidet Thema aktiv.
+    </div>
+    <div class="fm-ampel-item rot">
+      <strong>Pathologische Reaktion</strong><br>
+      Kontaktabbruch zu einem Elternteil, Selbstverletzung, schwere Verhaltensauffälligkeiten, Parentifizierung, Suizidgedanken.
     </div>
   </div>
 
-  <div class="reflexion">
-    <div class="reflexion-titel">💬 Reflexion</div>
-    <p style="font-size:12px;color:#92400E;margin-bottom:6px;">Was brauche ich gerade am meisten – und von wem?</p>
-    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  <h2 class="fm-abschnitt-titel">Red Flags</h2>
+  <div class="fm-box rot">
+    <strong>Parentifizierung:</strong> Kind übernimmt emotionale Versorgung eines Elternteils ("Mama weint jeden Abend, ich muss für sie da sein").<br>
+    <strong>Elterliche Entfremdung:</strong> Systematische Beeinflussung gegen anderen Elternteil. Cave: Abgrenzung von berechtigter Angst bei Gewalt!<br>
+    <strong>Instrumentalisierung:</strong> Kind als Spion, Botschafter oder Richter missbraucht.
   </div>
 
-  <div class="fachhinweis">
-    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
-    Anpassungsstörung F43.2 ist die häufigste Diagnose bei Trennungskindern. Loyalitätskonflikte (Boszormenyi-Nagy) sind ein Kernrisikofaktor: Kinder, die trianguliert werden, zeigen signifikant höhere Internalising-Symptome (Buchanan et al., 1991). Parentifizierung häufig komorbid. Schutzfaktoren: stabile Beziehung zu mindestens einem Elternteil, altersgemäße Aufklärung, keine Instrumentalisierung. Amato (2010) Meta-Analyse: Effektstärke d=0.19 für Anpassungsprobleme – klein, aber real. Bei hochkonflikthaften Trennungen: KEINE gemeinsamen Elterngespräche erzwingen. Luxemburg: SCAS (Service Central d'Assistance Sociale), SPL für Familienmediation.
-  </div>
-
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Trennung &amp; Scheidung · Seite 2</span>
+  <h2 class="fm-abschnitt-titel">Differentialdiagnostik</h2>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>Normale Trauer vs. Depression</strong><br>
+      Trauer: Wellenförmig, situativ ausgelöst, Zukunftsperspektive vorhanden<br>
+      Depression: Persistent, generalisiert, Hoffnungslosigkeit
+    </div>
+    <div class="fm-spalte">
+      <strong>Anpassungsstörung vs. PTBS</strong><br>
+      Anpassung: Reaktion auf Stressor, < 6 Monate nach Ereignis<br>
+      PTBS: Nur bei Traumatisierung (Gewalt, Bedrohung), Flashbacks, Vermeidung
+    </div>
   </div>
 </div>
+
+<!-- SEITE 3: INTERVENTIONEN -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">💔</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Trennung & Scheidung</div>
+      <div class="fm-header-sub">Interventionen</div>
+    </div>
+    <div class="fm-seitenzahl">3 / 5</div>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Evidenzbasierte Interventionen</h2>
+
+  <div class="fm-methode">
+    <div class="fm-methode-titel">1. Loyalitätsentlastung</div>
+    <div class="fm-methode-beschreibung">
+      <strong>Ziel:</strong> Kind aus dem Loyalitätskonflikt befreien<br>
+      <strong>Vorgehen:</strong> Explizite Erlaubnis geben, beide Eltern lieben zu dürfen. "Du musst dich nicht entscheiden." Kein Elternteil-Bashing erlauben — aber Gefühle validieren.<br>
+      <strong>Evidenz:</strong> Boszormenyi-Nagy (1973), Emery (2004)
+    </div>
+  </div>
+
+  <div class="fm-methode">
+    <div class="fm-methode-titel">2. Wechselmodell-Beratung (Garde alternée)</div>
+    <div class="fm-methode-beschreibung">
+      <strong>Luxemburg-Kontext:</strong> Seit 2018 ist die garde alternée (résidence alternée) gesetzlich verankert. Nicht für alle Familien geeignet — Voraussetzung: Mindestmaß an elterlicher Kooperation.<br>
+      <strong>Rolle Fachkraft:</strong> Stabilisierung des Kindes im Wechsel, Routinen aufbauen, Übergänge begleiten.
+    </div>
+  </div>
+
+  <div class="fm-methode">
+    <div class="fm-methode-titel">3. Narrative Therapie: "Meine zwei Welten"</div>
+    <div class="fm-methode-beschreibung">
+      <strong>Vorgehen:</strong> Kind erzählt oder malt seine Geschichte mit beiden Elternteilen — ohne Bewertung. Externalisierung: "Die Trennung" als eigenständiges Wesen, nicht Schuld eines Elternteils.<br>
+      <strong>Geeignet für:</strong> 8–16 Jahre
+    </div>
+  </div>
+
+  <div class="fm-methode">
+    <div class="fm-methode-titel">4. Altersgerechte Psychoedukation</div>
+    <div class="fm-methode-beschreibung">
+      <strong>6–10:</strong> "Mama und Papa streiten sich, aber das ist nicht deine Schuld. Sie haben dich beide lieb."<br>
+      <strong>11–14:</strong> Erklärung dass Erwachsene manchmal nicht zusammenpassen. Normalisierung der Gefühle.<br>
+      <strong>15–18:</strong> Offenes Gespräch über Beziehungsdynamiken. Reflexion eigener Beziehungsmuster.
+    </div>
+  </div>
+</div>
+
+<!-- SEITE 4: PRAXIS & ÜBUNGEN -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">💔</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Trennung & Scheidung</div>
+      <div class="fm-header-sub">Praxis & Übungen</div>
+    </div>
+    <div class="fm-seitenzahl">4 / 5</div>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Übung 1: Zwei-Häuser-Bild (6–12 Jahre)</h2>
+  <div class="fm-box">
+    <strong>Material:</strong> Papier, Buntstifte<br>
+    <strong>Dauer:</strong> 25 Minuten<br><br>
+    <strong>Schritt 1:</strong> "Male zwei Häuser — eines für Mama und eines für Papa."<br>
+    <strong>Schritt 2:</strong> "Was passiert in jedem Haus? Wer ist da? Was machst du gerne?"<br>
+    <strong>Schritt 3:</strong> "Was vermisst du im einen Haus, was es im anderen gibt?"<br>
+    <strong>Schritt 4:</strong> "Zeichne dich selbst dazwischen — wie fühlst du dich?"<br>
+    <strong>Reflexion:</strong> Gefühle validieren, Brücken bauen ("Was könnte helfen, damit du dich in beiden Häusern wohl fühlst?")
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Übung 2: Entlastungsbrief (10–18 Jahre)</h2>
+  <div class="fm-box">
+    <strong>Material:</strong> Briefpapier, Umschlag<br>
+    <strong>Dauer:</strong> 20–25 Minuten<br><br>
+    <strong>Anleitung:</strong> "Schreibe einen Brief an dich selbst. Schreibe alles auf, woran du NICHT schuld bist. Beginne jeden Satz mit: Ich bin nicht schuld daran, dass..."<br>
+    <strong>Danach:</strong> Brief in Umschlag, zukleben. "Wenn Schuldgefühle kommen, lies den Brief."<br>
+    <em>Variante:</em> Brief an die Trennung selbst ("Liebe Trennung, was du mir angetan hast...")
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Übung 3: Loyalitätsskala (12–18 Jahre)</h2>
+  <div class="fm-box">
+    <strong>Dauer:</strong> 20 Minuten<br><br>
+    <strong>Schritt 1:</strong> Skala von 0–10 auf Papier. "0 = komplett bei Mama, 10 = komplett bei Papa."<br>
+    <strong>Schritt 2:</strong> "Wo stehst du heute? Wo möchtest du stehen?"<br>
+    <strong>Schritt 3:</strong> "Was bräuchtest du, um in der Mitte stehen zu können?"<br>
+    <strong>Ziel:</strong> Sichtbar machen, dass Kind sich zerrissen fühlt. Entlastung: "Du darfst in der Mitte sein."
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Anlaufstellen Luxemburg</h2>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>Fachkraft</strong> — Bezugsarbeit vor Ort<br>
+      <strong>Service de Médiation Familiale</strong><br>
+      Tribunal d'arrondissement<br>
+      Tel: (+352) 475981-1
+    </div>
+    <div class="fm-spalte">
+      <strong>Ombudsman fir Kanner a Jugendlecher (OKaJu)</strong><br>
+      okaju.lu · Tel: (+352) 26 123 124<br>
+      <strong>Kanner-Jugendtelefon:</strong> 116 111
+    </div>
+  </div>
+</div>
+
+<!-- SEITE 5: NOTIZEN & SUPERVISION -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">💔</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Trennung & Scheidung</div>
+      <div class="fm-header-sub">Notizen & Supervision</div>
+    </div>
+    <div class="fm-seitenzahl">5 / 5</div>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Supervisionsfragen</h2>
+  <div class="fm-box">
+    <ul style="margin:0;padding-left:18px;">
+      <li>Welche Gefühle löst die Trennungssituation dieses Kindes in mir aus?</li>
+      <li>Identifiziere ich mich mit einem Elternteil? Welchem? Warum?</li>
+      <li>Wo ist die Grenze zwischen Loyalitätsentlastung und Elternarbeit (die nicht meine Aufgabe ist)?</li>
+      <li>Habe ich eigene Trennungserfahrungen die meine Wahrnehmung beeinflussen?</li>
+      <li>Bin ich in Gefahr, Partei zu ergreifen?</li>
+    </ul>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Gegenübertragung beachten</h2>
+  <p class="fm-text">Trennungssituationen aktivieren häufig eigene Erfahrungen. Achten Sie besonders auf: Rettungsfantasien ("Ich werde es diesem Kind besser machen"), Wut auf einen Elternteil, oder das Bedürfnis, das Kind vor einem Elternteil zu "schützen" ohne konkreten Schutzauftrag.</p>
+
+  <h2 class="fm-abschnitt-titel">Dokumentationsvorlage</h2>
+  <div class="fm-box">
+    <strong>Trennungssituation:</strong> ___________________________<br>
+    <strong>Loyalitätskonflikt (0–10):</strong> ___<br>
+    <strong>Kontakt zu beiden Elternteilen:</strong> □ Ja □ Nein → Wenn nein: __________<br>
+    <strong>Parentifizierung erkennbar:</strong> □ Ja □ Nein<br>
+    <strong>Nächste Schritte:</strong> ___________________________
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Notizen</h2>
+  <div class="fm-notizfeld">
+    <div class="fm-notiz-linie"></div>
+    <div class="fm-notiz-linie"></div>
+    <div class="fm-notiz-linie"></div>
+    <div class="fm-notiz-linie"></div>
+    <div class="fm-notiz-linie"></div>
+    <div class="fm-notiz-linie"></div>
+    <div class="fm-notiz-linie"></div>
+    <div class="fm-notiz-linie"></div>
+  </div>
+</div>
+
 </body>
 </html>

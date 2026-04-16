@@ -1,199 +1,319 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Arbeitsblatt – Trauma-Stabilisierung</title>
-  <link rel="stylesheet" href="../css/arbeitsblatt.css">
-  <style>
-    :root { --farbe: #0F766E; --farbe-hell: #F0FDFA; }
-    .bubble-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px; }
-    .bubble { background:var(--farbe-hell); border:1.5px solid #99F6E4; border-radius:8px; padding:8px 10px; font-size:11px; }
-    .safe-box { border:1.5px solid #5EEAD4; border-radius:8px; padding:10px; background:var(--farbe-hell); }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachkraft-Modul: Trauma & Stabilisierung</title>
+<link rel="stylesheet" href="../fachkraft-modul.css">
+<style>:root { --farbe: #B45309; }</style>
 </head>
 <body>
+<div class="fm-dokument">
 
-<div class="druck-leiste">
-  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
-  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
-</div>
-
-<!-- SEITE 1 -->
-<div class="seite">
-  <div class="kopfzeile">
-    <div class="kopfzeile-links">
-      <div class="schule-label">Pathways · Joey Guedes</div>
-      <div class="ab-titel">Hier und Jetzt – Sicherheit finden nach schwierigen Erfahrungen</div>
-      <div class="ab-untertitel">Trauma-Stabilisierung · Kategorie: Krisen &amp; Trauma</div>
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-left">
+      <span class="fm-kategorie">Trauma & Stabilisierung</span>
+      <h1 class="fm-titel">Trauma & Stabilisierung</h1>
+      <p class="fm-untertitel">PTBS · Komplextrauma · Trennungsangst · Stabilisierungsphase · Traumasensibilität</p>
     </div>
-    <div class="kopfzeile-icon">🛡️</div>
-  </div>
-
-  <div class="schuelerinfo">
-    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
-  </div>
-
-  <div class="infobox">
-    <div class="infobox-titel">🛡️ Dein Gehirn hat dich geschützt – das ist keine Schwäche.</div>
-    <p>Wenn etwas Schlimmes passiert, reagiert das Gehirn automatisch: Es speichert das Erlebnis anders als normale Erinnerungen. Flashbacks, Schreckhaftigkeit, Taubheit – das sind normale Reaktionen auf abnormale Situationen. <strong>Du bist nicht kaputt.</strong></p>
-    <p>🧠 <em>Wusstest du? Traumatische Erinnerungen werden im Gehirn ohne "Zeitstempel" gespeichert – deshalb fühlen sie sich manchmal so an als passieren sie gerade. Stabilisierungsübungen helfen dem Gehirn, sich zu erinnern: "Das ist vorbei. Ich bin jetzt sicher."</em></p>
-    <p style="font-size:11px;color:#0F766E;background:#CCFBF1;border-radius:6px;padding:6px;margin-top:6px;">⚠️ <strong>Wichtig:</strong> Dieses Blatt ist zur <em>Stabilisierung</em> – nicht zur Traumabearbeitung. Belastende Erinnerungen werden hier nicht geöffnet.</p>
-  </div>
-
-  <!-- Übung 1 -->
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">1</div><div class="uebung-titel">Sicherheitscheck – Wo bin ich gerade sicher?</div></div>
-    <div class="uebung-beschreibung">Bevor alles andere: Schauen wir, wo du gerade Sicherheit findest. Schreibe 3 Orte auf wo du dich sicher fühlst:</div>
-    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:10px;">
-      <div style="display:grid;grid-template-columns:30px 1fr;gap:8px;align-items:center;background:var(--farbe-hell);border-radius:8px;padding:10px;">
-        <div style="font-size:18px;text-align:center;">🏠</div>
-        <div>
-          <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:4px;">Ort 1 (z.B. zuhause, ein Zimmer):</div>
-          <div style="border-bottom:1px dashed var(--border);height:16px;"></div>
-        </div>
+    <div class="fm-header-right">
+      <div class="fm-icd">
+        <span class="fm-icd-code">F43.1</span>
+        <span class="fm-icd-label">Posttraumatische Belastungsstörung</span>
       </div>
-      <div style="display:grid;grid-template-columns:30px 1fr;gap:8px;align-items:center;background:var(--farbe-hell);border-radius:8px;padding:10px;">
-        <div style="font-size:18px;text-align:center;">🌳</div>
-        <div>
-          <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:4px;">Ort 2 (draußen, in der Natur, ein besonderer Platz):</div>
-          <div style="border-bottom:1px dashed var(--border);height:16px;"></div>
-        </div>
+      <div class="fm-icd">
+        <span class="fm-icd-code">6B41</span>
+        <span class="fm-icd-label">Komplexe PTBS (ICD-11)</span>
       </div>
-      <div style="display:grid;grid-template-columns:30px 1fr;gap:8px;align-items:center;background:var(--farbe-hell);border-radius:8px;padding:10px;">
-        <div style="font-size:18px;text-align:center;">💭</div>
-        <div>
-          <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:4px;">Ort 3 (in Gedanken – real oder fantasiert):</div>
-          <div style="border-bottom:1px dashed var(--border);height:16px;"></div>
-        </div>
+      <div class="fm-icd">
+        <span class="fm-icd-code">F93.0</span>
+        <span class="fm-icd-label">Trennungsangststörung</span>
       </div>
     </div>
   </div>
 
-  <!-- Übung 2 -->
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">2</div><div class="uebung-titel">Körper-Sicherheitskarte – Wo fühlt sich dein Körper okay an?</div></div>
-    <div class="uebung-beschreibung">Zeichne in die Körpersilhouette: Wo in deinem Körper fühlst du dich sicher oder neutral? Wo ist es angenehm oder okay? Markiere diese Stellen mit einem + oder einer Farbe.</div>
-    <div style="display:grid;grid-template-columns:130px 1fr;gap:14px;align-items:start;">
-      <div style="text-align:center;border:2px solid #5EEAD4;border-radius:12px;padding:10px;background:var(--farbe-hell);min-height:170px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-        <div style="font-size:44px;line-height:1;">🧍</div>
-        <div style="font-size:9px;color:var(--grau);margin-top:4px;">+ = sicher/okay</div>
-      </div>
-      <div>
-        <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:8px;">Was fühle ich gerade in diesem Körperteil?</div>
-        <div style="display:flex;flex-direction:column;gap:5px;">
-          <div style="background:#F0FDFA;border:1px solid #5EEAD4;border-radius:6px;padding:7px;font-size:11px;">👣 <strong>Füße auf dem Boden:</strong> <span style="border-bottom:1px dashed var(--border);display:inline-block;width:130px;"></span></div>
-          <div style="background:#F0FDFA;border:1px solid #5EEAD4;border-radius:6px;padding:7px;font-size:11px;">🪑 <strong>Rücken auf dem Stuhl:</strong> <span style="border-bottom:1px dashed var(--border);display:inline-block;width:130px;"></span></div>
-          <div style="background:#F0FDFA;border:1px solid #5EEAD4;border-radius:6px;padding:7px;font-size:11px;">🖐️ <strong>Hände (Textur, Temperatur):</strong> <span style="border-bottom:1px dashed var(--border);display:inline-block;width:110px;"></span></div>
-          <div style="background:#F0FDFA;border:1px solid #5EEAD4;border-radius:6px;padding:7px;font-size:11px;">😮‍💨 <strong>Atem im Bauch:</strong> <span style="border-bottom:1px dashed var(--border);display:inline-block;width:140px;"></span></div>
-        </div>
-        <p style="font-size:10px;color:var(--grau);margin-top:6px;">Nimm dir einen Moment. Atme. Beschreibe, was du gerade wirklich spürst.</p>
-      </div>
+  <div class="fm-quickinfo">
+    <div class="fm-qi-item">
+      <span class="fm-qi-zahl">26%</span>
+      <span class="fm-qi-label">Jugendliche erleben mind. ein traumatisches Ereignis bis 18 J. (WHO-Daten Europa)</span>
+    </div>
+    <div class="fm-qi-item">
+      <span class="fm-qi-zahl">15–25%</span>
+      <span class="fm-qi-label">der Traumatisierten entwickeln PTBS (je nach Traumatyp und Resilienz)</span>
+    </div>
+    <div class="fm-qi-item">
+      <span class="fm-qi-zahl">Typ I/II</span>
+      <span class="fm-qi-label">Einmaltrauma vs. wiederholtes/chronisches Trauma (unterschiedliche Intervention)</span>
+    </div>
+    <div class="fm-qi-item">
+      <span class="fm-qi-zahl">80%</span>
+      <span class="fm-qi-label">ACE-Score ≥4: massiv erhöhtes Risiko psychischer und somatischer Erkrankungen (Felitti 1998)</span>
     </div>
   </div>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Trauma-Stabilisierung · Seite 1</span>
+  <h2 class="fm-abschnitt-titel">Theoretischer Hintergrund</h2>
+  <div class="fm-zwei-spalten">
+    <div>
+      <h3 class="fm-unter-titel">Trauma-Neurobiologie (van der Kolk / LeDoux)</h3>
+      <p>Traumatisches Erleben = überwältigende Erfahrung, die normales Verarbeitungssystem übersteigt. Neurobiologisch:</p>
+      <ul class="fm-liste">
+        <li>Amygdala "Brandmelder" überaktiv → permanente Gefahrenwahrnehmung</li>
+        <li>Hippocampus-Funktion beeinträchtigt → fragmentierte, zeitlose Erinnerungen</li>
+        <li>Präfrontaler Cortex "offline" → eingeschränkte Regulations- und Reflektionsfähigkeit</li>
+        <li>HPA-Achse dauerhaft dysreguliert → Cortisol-Dysbalance</li>
+        <li>"The body keeps the score" — Trauma im Körper gespeichert</li>
+      </ul>
+
+      <h3 class="fm-unter-titel">Komplextrauma (ICD-11: 6B41)</h3>
+      <p>Zusätzlich zu PTBS-Kernsymptomen: schwere Störungen der Selbstorganisation (Affektregulation, Selbstwahrnehmung, Beziehungsgestaltung). Entsteht durch wiederholtes, frühes interpersonelles Trauma (Misshandlung, Vernachlässigung, häusliche Gewalt). Sehr häufig bei Jugendlichen in Jugendhilfe/Pflegefamilien.</p>
+    </div>
+    <div>
+      <h3 class="fm-unter-titel">Traumareaktion — Vier Systeme</h3>
+      <ul class="fm-liste">
+        <li><strong>Fight:</strong> Aggressivität, Wutausbrüche</li>
+        <li><strong>Flight:</strong> Rückzug, Vermeidung, Schulvermeidung</li>
+        <li><strong>Freeze:</strong> Dissoziation, emotionale Taubheit, "abwesend sein"</li>
+        <li><strong>Fawn (Appease):</strong> übermäßige Anpassung, People-Pleasing, keine eigenen Grenzen</li>
+      </ul>
+
+      <h3 class="fm-unter-titel">Trennungsangst (F93.0)</h3>
+      <p>Entwicklungspsychologisch normal bis ca. 3 J. Ab Schulalter klinisch relevant wenn: exzessive Angst vor Trennung von Bindungspersonen, Schulvermeidung, Schlafprobleme, Alpträume über Trennung. Häufig nach traumatischen Trennungen (Elternverlust, Migration, Fremdunterbringung).</p>
+
+      <div class="fm-cave">
+        <strong>CAVE Re-Traumatisierung:</strong> Traumaexposition ohne ausreichende Stabilisierung kann schaden. Reihenfolge: ERST Sicherheit & Stabilisierung → DANN Traumabearbeitung (Phasenmodell Herman 1992). Bezugspädagogen arbeiten in Phase 1.
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- SEITE 2 -->
-<div class="seite">
-
-  <!-- Übung 3 -->
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">3</div><div class="uebung-titel">3-Punkte-Erdung – Füße, Rücken, Hände (jetzt, hier)</div></div>
-    <div class="uebung-beschreibung">Diese Übung bringt dich in den Moment zurück. Folge den Schritten langsam:</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px;">
-      <div style="border:1.5px solid #5EEAD4;border-radius:8px;padding:12px;text-align:center;background:var(--farbe-hell);">
-        <div style="font-size:24px;margin-bottom:6px;">👣</div>
-        <div style="font-size:12px;font-weight:700;color:var(--farbe);margin-bottom:4px;">Füße</div>
-        <div style="font-size:10px;color:var(--grau);margin-bottom:8px;">Drücke beide Füße auf den Boden. Spüre den Boden. Ist er hart? Kalt? Warm?</div>
-        <div style="border-bottom:1px dashed var(--border);font-size:10px;height:16px;text-align:left;">Ich spüre: ________</div>
-      </div>
-      <div style="border:1.5px solid #5EEAD4;border-radius:8px;padding:12px;text-align:center;background:var(--farbe-hell);">
-        <div style="font-size:24px;margin-bottom:6px;">🪑</div>
-        <div style="font-size:12px;font-weight:700;color:var(--farbe);margin-bottom:4px;">Rücken</div>
-        <div style="font-size:10px;color:var(--grau);margin-bottom:8px;">Lehne dich zurück. Spüre wie der Stuhl dich hält. Hart oder weich? Warm?</div>
-        <div style="border-bottom:1px dashed var(--border);font-size:10px;height:16px;text-align:left;">Ich spüre: ________</div>
-      </div>
-      <div style="border:1.5px solid #5EEAD4;border-radius:8px;padding:12px;text-align:center;background:var(--farbe-hell);">
-        <div style="font-size:24px;margin-bottom:6px;">🖐️</div>
-        <div style="font-size:12px;font-weight:700;color:var(--farbe);margin-bottom:4px;">Hände</div>
-        <div style="font-size:10px;color:var(--grau);margin-bottom:8px;">Lege die Hände auf die Oberschenkel. Welche Textur? Warm oder kühl?</div>
-        <div style="border-bottom:1px dashed var(--border);font-size:10px;height:16px;text-align:left;">Ich spüre: ________</div>
-      </div>
+<div class="fm-seite">
+  <h2 class="fm-seite-titel">Erkennen & Einschätzen</h2>
+  <div class="fm-ampel-system">
+    <div class="fm-ampel-box gruen">
+      <div class="fm-ampel-titel">GRÜN — Akute Reaktion / Gute Stabilität</div>
+      <ul class="fm-ampel-liste">
+        <li>Kurz nach Traumaereignis: normale Stressreaktion (Schreckhaftigkeit, Schlafprobleme, Traurigkeit)</li>
+        <li>Grundlegende Alltagsfunktion erhalten</li>
+        <li>Mindestens eine stabile Bezugsperson vorhanden</li>
+        <li>Keine Suizidalität, keine NSSV</li>
+        <li>Erste 4 Wochen: "Akute Belastungsreaktion" F43.0 — kein PTBS-Label</li>
+        <li>→ Traumasensible Begleitung, Sicherheit herstellen, abwarten</li>
+      </ul>
     </div>
-    <p style="font-size:11px;color:var(--grau);">Wie fühle ich mich nach dieser Übung? <span style="border-bottom:1px dashed var(--border);display:inline-block;width:200px;"></span></p>
-  </div>
-
-  <!-- Übung 4 -->
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">4</div><div class="uebung-titel">Container-Technik – Pack es ein, wenn es zu viel wird</div></div>
-    <div class="uebung-beschreibung">Stell dir einen starken, sicheren Behälter vor. Du kannst Schwieriges dort hineintun – nicht für immer, nur für jetzt. Beschreibe deinen Container:</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
-      <div class="safe-box">
-        <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:6px;">📦 Wie sieht mein Container aus?</div>
-        <div style="font-size:10px;color:var(--grau);margin-bottom:4px;">(Kiste, Safe, Raumstation, Fels im Meer…)</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-      </div>
-      <div class="safe-box">
-        <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:6px;">🔒 Wie schließe ich ihn ab?</div>
-        <div style="font-size:10px;color:var(--grau);margin-bottom:4px;">(Zahlenschloss, Magie, ein Schlüssel den ich aufbewahre…)</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-      </div>
+    <div class="fm-ampel-box gelb">
+      <div class="fm-ampel-titel">GELB — PTBS-Symptome / Stabilisierungsbedarf</div>
+      <ul class="fm-ampel-liste">
+        <li>Intrusionen (Flashbacks, Alpträume) &gt; 4 Wochen nach Ereignis</li>
+        <li>Vermeidung trauma-assoziierter Reize (Orte, Personen, Themen)</li>
+        <li>Übererregung (Schreckhaftigkeit, Schlafprobleme, Konzentrationsprobleme)</li>
+        <li>Schulleistung deutlich beeinträchtigt</li>
+        <li>CPSS-5 oder CPTSD-I positiv</li>
+        <li>→ Sofort an TF-KVT-Spezialisten überweisen, Stabilisierung parallel</li>
+      </ul>
     </div>
-    <div style="background:var(--farbe-hell);border:1.5px solid #5EEAD4;border-radius:8px;padding:10px;font-size:11px;">
-      💡 <strong>Übung:</strong> Schließe kurz die Augen. Stell dir vor, wie du etwas Schwieriges in diesen Container legst, abschließt – und ihn an einem sicheren Ort abstellst. Du kannst ihn jederzeit wieder öffnen, wenn du bereit bist.
+    <div class="fm-ampel-box rot">
+      <div class="fm-ampel-titel">ROT — Akute Krise / Komplextrauma</div>
+      <ul class="fm-ampel-liste">
+        <li>Akute Dissoziation (Person "nicht erreichbar", reagiert nicht)</li>
+        <li>Suizidalität oder NSSV im Traumakontext</li>
+        <li>Komplexe PTBS mit Selbstregulationsversagen</li>
+        <li>Aktive Gefährdungssituation noch vorhanden (Misshandlung ongoing)</li>
+        <li>Totaler Funktionsverlust</li>
+        <li>→ SCAS (247-86000) Meldung + CHL KJP (4411-6100), Sicherheitsplanung</li>
+      </ul>
     </div>
   </div>
 
-  <!-- Übung 5 -->
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">5</div><div class="uebung-titel">Ressourcen-Anker – Eine gute Erinnerung als innere Kraft</div></div>
-    <div class="uebung-beschreibung">Denke an einen Moment wo du dich gut, sicher, stark oder glücklich gefühlt hast – auch ein kleiner Moment reicht:</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:8px;">
-      <div class="safe-box">
-        <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:4px;">🌟 Die Erinnerung</div>
-        <div style="font-size:10px;color:var(--grau);margin-bottom:6px;">Was war das? Wann? Wo?</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-      </div>
-      <div class="safe-box">
-        <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:4px;">🫀 Das Körpergefühl</div>
-        <div style="font-size:10px;color:var(--grau);margin-bottom:6px;">Wo im Körper spürst du das? Wie fühlt sich das an?</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-      </div>
-      <div class="safe-box">
-        <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:4px;">🔑 Mein Ankerwort</div>
-        <div style="font-size:10px;color:var(--grau);margin-bottom:6px;">Ein Wort das diese Erinnerung zusammenfasst:</div>
-        <div style="border:1.5px solid #5EEAD4;border-radius:6px;height:32px;background:white;margin-top:6px;"></div>
-      </div>
+  <h3 class="fm-unter-titel">Screening</h3>
+  <div class="fm-zwei-spalten">
+    <div>
+      <p><strong>CPSS-5 (Child PTSD Symptom Scale for DSM-5):</strong></p>
+      <ul class="fm-liste">
+        <li>20 Items, Selbstbericht, ab 8 Jahren</li>
+        <li>PTBS-Diagnose + Schweregrad</li>
+        <li>Cutoff ≥11: klinisch bedeutsam</li>
+      </ul>
+      <p><strong>Child Trauma Screening Questionnaire (CTSQ):</strong></p>
+      <ul class="fm-liste">
+        <li>10 Items, Kurzform, sehr schnell</li>
+        <li>Geeignet als erstes Screening in nicht-klinischen Settings</li>
+      </ul>
     </div>
-    <p style="font-size:11px;color:var(--grau);">💡 Wenn es schwer wird: Nenne dein Ankerwort – spüre das Körpergefühl. Das kann deinen Zustand verändern.</p>
-  </div>
-
-  <div class="reflexion">
-    <div class="reflexion-titel">💬 Reflexion</div>
-    <p>Welche dieser Übungen hat sich am stärksten angefühlt? Was nimmst du heute mit?</p>
-    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-  </div>
-
-  <div class="fachhinweis">
-    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
-    <strong>ICD-10:</strong> F43.1 (Posttraumatische Belastungsstörung), F43.2 (Anpassungsstörung). Prävalenz PTSD bei Jugendlichen: ca. 3–10 %, bei traumatisierten Populationen deutlich höher.<br>
-    <strong>Phasenmodell (Herman 1992):</strong> Phase 1 – Stabilisierung (diese Übungen). Phase 2 – Traumakonfrontation (nur durch ausgebildete Fachpersonen). Phase 3 – Integration.<br>
-    <strong>Methoden hier:</strong> Sicherer Ort (EMDR-Ressourcenarbeit, Shapiro), Container-Technik (Reddemann, PITT), Körpergrounding (Levine, Somatic Experiencing), Ressourcenverankerung (EMDR Phase 2).<br>
-    <strong>Dissoziation erkennen:</strong> Leerer Blick, keine Reaktion, Amnesie, Depersonalisation. Bei Dissoziation: nur Grounding, keine emotionale Vertiefung.<br>
-    <strong>Verweisungen Luxemburg:</strong> CePT (Centre de Psychotraumatologie) · CHNP kJP · Kanner-Jugendtelefon 116 111
-  </div>
-
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Trauma-Stabilisierung · Seite 2</span>
+    <div>
+      <p><strong>ACE-Questionnaire (Adverse Childhood Experiences):</strong></p>
+      <ul class="fm-liste">
+        <li>10 Fragen zu Kindheitstraumata</li>
+        <li>Score ≥4: stark erhöhtes Risiko, immer Abklärung</li>
+        <li>Kein Diagnose-Tool — Risikostratifizierung</li>
+      </ul>
+      <p><strong>CPTSD-I (ICD-11 based):</strong></p>
+      <ul class="fm-liste">
+        <li>Differenziert PTBS vs. komplexe PTBS</li>
+        <li>Wichtig für Therapieplanung (TF-KVT vs. Stabilisierungsphase first)</li>
+      </ul>
+    </div>
   </div>
 </div>
 
+<div class="fm-seite">
+  <h2 class="fm-seite-titel">Im Gespräch</h2>
+  <div class="fm-gespraech-grid">
+    <div class="fm-gespraech-gut">
+      <div class="fm-gespraech-label gut">Traumasensible Gesprächsführung</div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Sicherheit und Kontrolle vermitteln</p>
+        <p class="fm-zitat">"Du bestimmst, was du mir erzählst und was nicht. Du musst hier gar nichts. Ich bin da — für das, was du möchtest."</p>
+      </div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Gegenwart verankern (Grounding)</p>
+        <p class="fm-zitat">"Wenn du merkst, dass du gerade weg bist — schau mal, was du hier siehst. Nenn mir drei Dinge. Wir sind hier, jetzt, und du bist sicher."</p>
+      </div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Reaktionen normalisieren</p>
+        <p class="fm-zitat">"Was du beschreibst — Flashbacks, Schreckhaftigkeit, nicht schlafen können — das sind normale Reaktionen auf außergewöhnliche Situationen. Das bedeutet nicht, dass etwas mit dir nicht stimmt."</p>
+      </div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Ressourcen erkunden</p>
+        <p class="fm-zitat">"Wann fühlst du dich am sichersten? Gibt es einen Ort, eine Person, eine Aktivität, wo du ein bisschen durchatmen kannst?"</p>
+      </div>
+    </div>
+    <div class="fm-gespraech-schlecht">
+      <div class="fm-gespraech-label schlecht">Kontraproduktiv — vermeiden</div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Zur Detailerzählung drängen</p>
+        <p class="fm-zitat">"Erzähl mir genau, was passiert ist — von Anfang bis Ende."</p>
+        <p class="fm-erklaerung">Unkontrollierte Traumaexposition ohne Therapierahmen = Re-Traumatisierung. Bezugspädagogen machen keine Traumabearbeitung.</p>
+      </div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Bagatellisieren</p>
+        <p class="fm-zitat">"Das liegt doch alles hinter dir jetzt — mach dir keine Gedanken mehr."</p>
+        <p class="fm-erklaerung">Traumaerinnerungen haben keine Zeitstempel. Das Gehirn erlebt sie als gegenwärtig.</p>
+      </div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Eigene Reaktion zeigen</p>
+        <p class="fm-zitat">"Das ist ja schrecklich!" (mit sichtbarer Erschütterung)</p>
+        <p class="fm-erklaerung">Eigene emotionale Reaktion der Fachkraft überträgt sich → Kind fühlt sich schuldig, die Fachkraft belastet zu haben.</p>
+      </div>
+    </div>
+  </div>
+  <div class="fm-cave">
+    <strong>CAVE Sekundärtraumatisierung:</strong> Wiederholtes Anhören von Traumaerzählungen belastet Fachkräfte. Supervision, kollegialer Austausch und Selbstfürsorge sind professionelle Pflicht, nicht Luxus. Bei Erschöpfung oder eigenen Alpträumen nach Gesprächen: sofort Supervision suchen.
+  </div>
+</div>
+
+<div class="fm-seite">
+  <h2 class="fm-seite-titel">Interventionen & Methoden (Stabilisierungsphase)</h2>
+  <div class="fm-methoden-grid">
+
+    <div class="fm-methode">
+      <div class="fm-methode-header">
+        <span class="fm-methode-name">Traumafokussierte KVT (TF-KVT, Cohen et al.)</span>
+        <span class="fm-evidence-stars">★★★</span>
+      </div>
+      <p>Goldstandard für kindliche/adoleszente PTBS. 12–16 Sitzungen: Psychoedukation, Elternarbeit, Entspannung, Affektregulation, kognitive Bewältigung, Traumanarration, In-vivo-Exposition. NNT=2–3. Auch bei Komplextrauma wirksam (längeres Format). ACHTUNG: Nur für ausgebildete Therapeuten.</p>
+    </div>
+
+    <div class="fm-methode">
+      <div class="fm-methode-header">
+        <span class="fm-methode-name">EMDR (Eye Movement Desensitization and Reprocessing)</span>
+        <span class="fm-evidence-stars">★★★</span>
+      </div>
+      <p>WHO-empfohlen für PTBS. Bilaterale Stimulation während Traumaexposition → Verarbeitung fragmentierter Erinnerungen. EMDR-Protokoll für Kinder/Jugendliche (EMDR-Child). Voraussetzung: stabile Alltagsfunktion, ausreichende Distanzierungsfähigkeit. Nur für ausgebildete EMDR-Therapeuten.</p>
+    </div>
+
+    <div class="fm-methode">
+      <div class="fm-methode-header">
+        <span class="fm-methode-name">Stabilisierungstechniken (Phase 1 — für Bezugspädagogen)</span>
+        <span class="fm-evidence-stars">★★★</span>
+      </div>
+      <p><strong>Sicherer Ort:</strong> Imaginative Übung — inneres Bild eines sicheren, angenehmen Ortes verankern. <strong>Tresor-Technik:</strong> Belastende Gedanken bildlich in Tresor "einschließen" für später. <strong>Grounding 5-4-3-2-1</strong>: sensorische Gegenwartsorientierung. <strong>Körperankern:</strong> Füße auf Boden, Hände auf Oberschenkel — spüren "Ich bin hier". Diese Techniken kann die Bezugsperson im Alltag einsetzen.</p>
+    </div>
+
+    <div class="fm-methode">
+      <div class="fm-methode-header">
+        <span class="fm-methode-name">Traumasensible Beziehungsgestaltung</span>
+        <span class="fm-evidence-stars">★★★</span>
+      </div>
+      <p>Verlässlichkeit, Vorhersehbarkeit, Konsistenz als therapeutische Haltung. Termine einhalten, Ankündigungen machen, keine Überraschungen. "Earned Security" — sichere Bindung zu Bezugsperson kann frühe Traumatisierung partiell kompensieren. Beziehung selbst ist Intervention. Körperliche Distanz respektieren, Berührungen immer ankündigen.</p>
+    </div>
+
+    <div class="fm-methode">
+      <div class="fm-methode-header">
+        <span class="fm-methode-name">Trennungsangst: Graduierte Exposition + Elternarbeit</span>
+        <span class="fm-evidence-stars">★★★</span>
+      </div>
+      <p>Schrittweise Trennung von Bezugsperson (Angststufenleiter): kurze Trennungszeiten, positiv verstärken, Sicherheitsobjekte nutzen. Elternarbeit: Überberuhigung verringern, Selbstwirksamkeit des Kindes stärken. KVT + Elterntraining signifikant wirksam (Meta-Analyse Higa-McMillan 2016).</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="fm-seite">
+  <h2 class="fm-seite-titel">Netzwerk & Ressourcen Luxemburg</h2>
+  <div class="fm-ressourcen-grid">
+
+    <div class="fm-ressource-karte notfall">
+      <div class="fm-ressource-name">SCAS — Meldestelle Kinderschutz</div>
+      <div class="fm-ressource-tel">247-86000</div>
+      <div class="fm-ressource-info">Bei Verdacht auf aktive Misshandlung/Vernachlässigung sofort melden. Meldepflicht für Fachkräfte. 24/7. Koordiniert Schutzmaßnahmen.</div>
+    </div>
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">CHL – Kinder- und Jugendpsychiatrie</div>
+      <div class="fm-ressource-tel">4411-6100</div>
+      <div class="fm-ressource-info">TF-KVT und EMDR für Jugendliche mit PTBS. Stationäre Aufnahme bei akuter Krise. Komplextrauma-Behandlung.</div>
+    </div>
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">VISAVI — Opferhilfe</div>
+      <div class="fm-ressource-tel">26 19 92 92</div>
+      <div class="fm-ressource-info">Beratung und Begleitung für Opfer von Gewalt und Missbrauch. Traumaspezialisiert, auch für Jugendliche. Kostenlos.</div>
+    </div>
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Kanner-Jugendtelefon</div>
+      <div class="fm-ressource-tel">116 111</div>
+      <div class="fm-ressource-info">Krisentelefon, auch bei Trauma-Auslösern erreichbar. Anonym, kostenlos, 24/7.</div>
+    </div>
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Kannerklinik</div>
+      <div class="fm-ressource-tel">4411-4411</div>
+      <div class="fm-ressource-info">Kinder unter 16 mit akuter Traumareaktion oder Trennungsangst. Medizinische und psychiatrische Erstversorgung.</div>
+    </div>
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">OMEGA 90</div>
+      <div class="fm-ressource-tel">44 40 40</div>
+      <div class="fm-ressource-info">Bei Trauma nach Suizid (Survivors), Postvention. Spezialisierte Trauerbegleitung.</div>
+    </div>
+
+  </div>
+
+  <div class="fm-krisen-box">
+    <h3 class="fm-krisen-titel">Stabilisierungsübung: Sicherer Ort (5 Minuten)</h3>
+    <ol class="fm-krisen-liste">
+      <li>Bequeme Position einnehmen, Augen schließen oder Blick senken</li>
+      <li>"Stell dir einen Ort vor, wo du dich wirklich sicher und wohl fühlst — real oder vorgestellt"</li>
+      <li>"Was siehst du dort? Was hörst du? Was riechst du? Was spürst du?"</li>
+      <li>"Merk dir dieses Gefühl. Du kannst es dir jederzeit wieder vorstellen."</li>
+      <li>Augen öffnen, Boden spüren, zurück in den Raum kommen</li>
+      <li>Nachbesprechen: "Wie ist es dir dabei gegangen?"</li>
+    </ol>
+  </div>
+
+  <div class="fm-tipp">
+    <strong>Phasenmodell (Herman 1992) — Rolle der Bezugspädagogin:</strong> Phase 1 (Sicherheit & Stabilisierung) ist der Arbeitsbereich der Bezugsperson. Phase 2 (Traumabearbeitung) und Phase 3 (Reintegration) gehören in fachtherapeutische Hände. Übergabe aktiv gestalten — nicht warten bis Jugendlicher selbst Therapie sucht.
+  </div>
+
+  <div class="fm-footer">
+    <span>Pathways — Fachkraft-Modul</span>
+    <span>Trauma & Stabilisierung</span>
+    <span>Stand: 2025 | ICD-10: F43.1, F93.0 | ICD-11: 6B41</span>
+  </div>
+</div>
+
+</div>
 </body>
 </html>

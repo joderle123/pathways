@@ -1,206 +1,305 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Arbeitsblatt – Polizei &amp; Justiz</title>
-  <link rel="stylesheet" href="../css/arbeitsblatt.css">
-  <style>
-    :root { --farbe: #1D4ED8; --farbe-hell: #EFF6FF; }
-    .right-card { background:#EFF6FF; border:1.5px solid #BFDBFE; border-radius:8px; padding:10px; margin-bottom:6px; }
-    .right-title { font-size:12px; font-weight:700; color:#1D4ED8; margin-bottom:3px; }
-    .right-text { font-size:10px; color:#374151; line-height:1.5; }
-    .right-NOT { font-size:10px; color:#DC2626; font-style:italic; margin-top:3px; }
-    .situation-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:7px; margin-bottom:10px; }
-    .situation-card { border-radius:8px; padding:10px; border:1.5px solid; }
-    .measure-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px; }
-    .measure-box { border-radius:8px; padding:10px; }
-    .org-card { background:#EFF6FF; border:1.5px solid #BFDBFE; border-radius:8px; padding:8px 10px; margin-bottom:5px; display:flex; align-items:center; gap:8px; }
-    .org-name { font-size:11px; font-weight:700; color:#1D4ED8; }
-    .org-info { font-size:10px; color:#374151; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachkraft-Modul: Polizei, Justiz & Bürgerrechte</title>
+<link rel="stylesheet" href="../fachkraft-modul.css">
+<style>:root { --farbe: #1E40AF; }</style>
 </head>
 <body>
+<div class="fm-dokument">
 
-<div class="druck-leiste">
-  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
-  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
-</div>
-
-<!-- ===== SEITE 1 ===== -->
-<div class="seite">
-  <div class="kopfzeile">
-    <div class="kopfzeile-links">
-      <div class="schule-label">Pathways · Joey Guedes</div>
-      <div class="ab-titel">Polizei, Justiz &amp; meine Rechte</div>
-      <div class="ab-untertitel">Polizei &amp; Justiz · Kategorie: Recht &amp; Gesellschaft</div>
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-left">
+      <span class="fm-kategorie">Recht & Justiz</span>
+      <h1 class="fm-titel">Polizei, Justiz & Bürgerrechte</h1>
+      <p class="fm-untertitel">Polizeikontakt · Jugendstrafrecht Lux · Bürgerrechte · Diskriminierung · Rechtsberatung</p>
     </div>
-    <div class="kopfzeile-icon">🔵</div>
-  </div>
-
-  <div class="schuelerinfo">
-    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
-  </div>
-
-  <div class="infobox">
-    <div class="infobox-titel">💡 Du hast Rechte – auch gegenüber der Polizei.</div>
-    <p>Das Jugendstrafrecht in Luxembourg behandelt Minderjährige anders als Erwachsene. Der Fokus liegt auf Erziehung und Unterstützung – nicht auf Bestrafung. Trotzdem: Wer seine Rechte kennt, ist vorbereitet und kann ruhiger reagieren.</p>
-    <p>🧠 <em>Wusstest du? In Luxembourg ist das Tribunal de la Jeunesse für alle Fälle zuständig, die Minderjährige betreffen. Richter dort haben eine spezielle Ausbildung für die Arbeit mit jungen Menschen.</em></p>
-  </div>
-
-  <!-- Übung 1: Meine Rechte bei einer Polizeibegegnung -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">1</div>
-      <div class="uebung-titel">Meine 5 Rechte bei einer Polizeibegegnung</div>
-    </div>
-    <div class="uebung-beschreibung">Diese Rechte gelten immer – auch wenn du nervös bist oder die Situation unfair erscheint.</div>
-    <div class="right-card">
-      <div class="right-title">1️⃣ Das Recht zu schweigen</div>
-      <div class="right-text">Du musst deine Identität angeben (Name, Geburtsdatum, Adresse). Alles andere – keine Aussage ohne Anwalt. Sag ruhig: "Ich möchte von meinem Schweigerecht Gebrauch machen."</div>
-    </div>
-    <div class="right-card">
-      <div class="right-title">2️⃣ Das Recht auf einen Anwalt / eine Vertrauensperson</div>
-      <div class="right-text">Unter 18 Jahren muss ein Erziehungsberechtigter oder eine Vertrauensperson informiert werden. Du kannst anrufen lassen.</div>
-    </div>
-    <div class="right-card">
-      <div class="right-title">3️⃣ Das Recht auf Erklärung</div>
-      <div class="right-text">Du kannst fragen: "Warum werde ich angehalten?" und "Worum geht es?" – höflich und ruhig.</div>
-      <div class="right-NOT">Nicht: aggressiv werden, weglaufen, Beamte behindern – das eskaliert die Situation.</div>
-    </div>
-    <div class="right-card">
-      <div class="right-title">4️⃣ Das Recht auf Würde</div>
-      <div class="right-text">Du musst keine erniedrigenden Aussagen über dich hinnehmen. Diskriminierung (wegen Hautfarbe, Herkunft, Religion) ist illegal – auch durch Polizei.</div>
-    </div>
-    <div class="right-card">
-      <div class="right-title">5️⃣ Das Recht auf Beschwerde</div>
-      <div class="right-text">Wenn du glaubst, dass deine Rechte verletzt wurden: notiere alles (Datum, Uhrzeit, Ort, was passiert ist) und kontaktiere OKaJu oder einen Anwalt.</div>
-    </div>
-  </div>
-
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Polizei &amp; Justiz · Seite 1</span>
-  </div>
-</div>
-
-<!-- ===== SEITE 2 ===== -->
-<div class="seite">
-
-  <!-- Übung 2: Jugendstrafjustiz in Luxembourg -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">2</div>
-      <div class="uebung-titel">Wie läuft das ab? – Erziehungsmaßnahmen vs. Strafe</div>
-    </div>
-    <div class="uebung-beschreibung">Das Luxemburger Jugendrecht setzt auf Unterstützung statt auf Bestrafung.</div>
-    <div class="measure-grid">
-      <div class="measure-box" style="background:#F0FDF4;border:1.5px solid #86EFAC;">
-        <div style="font-size:11px;font-weight:700;color:#16A34A;margin-bottom:6px;">🌱 Erziehungsmaßnahmen (häufigste Reaktion)</div>
-        <div style="font-size:10px;color:#374151;line-height:1.9;">
-          ✔ Verwarnung / Gespräch mit Richter<br>
-          ✔ Beratung durch SCAS<br>
-          ✔ Gemeinnützige Arbeit<br>
-          ✔ Begleitung durch Fachperson<br>
-          ✔ Schulische oder berufliche Maßnahmen
-        </div>
+    <div class="fm-header-right">
+      <div class="fm-icd">
+        <span class="fm-icd-code">Z65.3</span>
+        <span class="fm-icd-label">Probleme im Zusammenhang mit anderen rechtlichen Umständen</span>
       </div>
-      <div class="measure-box" style="background:#FEF2F2;border:1.5px solid #FECACA;">
-        <div style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:6px;">⚠️ Strafrechtliche Konsequenzen (schwere Fälle)</div>
-        <div style="font-size:10px;color:#374151;line-height:1.9;">
-          ⚡ Nur bei schweren Delikten<br>
-          ⚡ Freiheitsentzug in Jugendzentrum<br>
-          ⚡ Ab 16: kann an Erwachsenenstrafe angenähert werden<br>
-          ⚡ Jugendstrafakten werden mit 18 Jahren normalerweise gelöscht
-        </div>
+      <div class="fm-icd">
+        <span class="fm-icd-code">F91</span>
+        <span class="fm-icd-label">Störungen des Sozialverhaltens</span>
+      </div>
+      <div class="fm-icd">
+        <span class="fm-icd-code">Z60.5</span>
+        <span class="fm-icd-label">Ziel von wahrgenommener Diskriminierung</span>
       </div>
     </div>
   </div>
 
-  <!-- Übung 3: Zeuge / Opfer / Beschuldigter -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">3</div>
-      <div class="uebung-titel">Meine Rolle – Zeuge, Opfer oder Beschuldigter?</div>
+  <div class="fm-quickinfo">
+    <div class="fm-qi-item">
+      <span class="fm-qi-zahl">18 J.</span>
+      <span class="fm-qi-label">Volljährigkeit in Luxemburg — davor Jugendstrafrecht (Tribunal de la Jeunesse)</span>
     </div>
-    <div class="situation-grid">
-      <div class="situation-card" style="background:#EFF6FF;border-color:#BFDBFE;">
-        <div style="font-size:11px;font-weight:700;color:#1D4ED8;margin-bottom:5px;">👁️ Als Zeuge</div>
-        <div style="font-size:10px;color:#374151;line-height:1.7;">Du hast eine Straftat beobachtet. Du kannst aussagen, musst es aber oft nicht. Deine Sicherheit hat Vorrang.</div>
-        <div style="font-size:10px;color:#1D4ED8;margin-top:4px;font-weight:600;">Mögliche Reaktion: Polizei informieren oder bei einer Vertrauensperson Rat holen.</div>
-      </div>
-      <div class="situation-card" style="background:#F0FDF4;border-color:#86EFAC;">
-        <div style="font-size:11px;font-weight:700;color:#16A34A;margin-bottom:5px;">💚 Als Opfer</div>
-        <div style="font-size:10px;color:#374151;line-height:1.7;">Dir ist etwas Schlimmes passiert. Du hast das Recht auf Unterstützung, Beratung und Entschädigung. Es ist NICHT deine Schuld.</div>
-        <div style="font-size:10px;color:#16A34A;margin-top:4px;font-weight:600;">Hilfe: Aide aux Victimes, Kanner-Jugendtelefon 116 111</div>
-      </div>
-      <div class="situation-card" style="background:#FFFBEB;border-color:#FDE68A;">
-        <div style="font-size:11px;font-weight:700;color:#92400E;margin-bottom:5px;">⚠️ Als Beschuldigter</div>
-        <div style="font-size:10px;color:#374151;line-height:1.7;">Du wirst verdächtigt. Du hast das Recht auf einen Anwalt. Schweige bis ein Anwalt da ist. Dein Erziehungsberechtigter wird informiert.</div>
-        <div style="font-size:10px;color:#92400E;margin-top:4px;font-weight:600;">Wichtig: Ruhig bleiben, nicht lügen, nichts unterschreiben ohne Anwalt.</div>
-      </div>
+    <div class="fm-qi-item">
+      <span class="fm-qi-zahl">10 J.</span>
+      <span class="fm-qi-label">Mindeststrafmündigkeit Luxemburg (unter 10: keine strafrechtliche Verantwortlichkeit)</span>
+    </div>
+    <div class="fm-qi-item">
+      <span class="fm-qi-zahl">Diversion</span>
+      <span class="fm-qi-label">Erstdelikte: Jugendrichter bevorzugt Maßnahmen vor Strafe (Loi du 10 août 1992)</span>
+    </div>
+    <div class="fm-qi-item">
+      <span class="fm-qi-zahl">18+</span>
+      <span class="fm-qi-label">Jugendstrafregister wird mit 18 automatisch gelöscht (Neueintragungen ausgenommen)</span>
     </div>
   </div>
 
-  <!-- Übung 4: Organisationen -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">4</div>
-      <div class="uebung-titel">Wer hilft jungen Menschen mit Justizfragen?</div>
-    </div>
-    <div class="org-card">
-      <div style="font-size:20px;">⚖️</div>
-      <div><div class="org-name">SCAS – Service Central d'Assistance Sociale</div><div class="org-info">Sozialhilfe im Justizsystem für Jugendliche · Tel: 247 86 060</div></div>
-    </div>
-    <div class="org-card">
-      <div style="font-size:20px;">🏛️</div>
-      <div><div class="org-name">OPJ – Office de la Protection de la Jeunesse</div><div class="org-info">Schutz und Begleitung für Jugendliche im Verfahren</div></div>
-    </div>
-    <div class="org-card">
-      <div style="font-size:20px;">🌟</div>
-      <div><div class="org-name">OKaJu – Ombudsmann fir Kanner a Jugendlecher</div><div class="org-info">Beschwerden bei Rechtsverletzungen · okaju.lu · kostenlos</div></div>
-    </div>
-    <div class="org-card">
-      <div style="font-size:20px;">📞</div>
-      <div><div class="org-name">Aide aux Victimes (Justizministerium)</div><div class="org-info">Opferberatung und rechtliche Unterstützung · 247-88450</div></div>
-    </div>
-  </div>
+  <h2 class="fm-abschnitt-titel">Theoretischer Hintergrund & Rechtslage Luxemburg</h2>
+  <div class="fm-zwei-spalten">
+    <div>
+      <h3 class="fm-unter-titel">Jugendstrafrecht Luxemburg (Loi du 10 août 1992)</h3>
+      <p>Jugendschutzgesetz priorisiert Erziehung vor Strafe. Zuständig: <strong>Tribunal de la Jeunesse</strong> in Luxemburg-Stadt. Mögliche Maßnahmen:</p>
+      <ul class="fm-liste">
+        <li>Verwarnung, Rüge</li>
+        <li>Bewährung unter Aufsicht (Service de probation)</li>
+        <li>Gemeinnützige Arbeit (Travail d'intérêt général, TIG)</li>
+        <li>Intensive Betreuungsmaßnahmen</li>
+        <li>Heimunterbringung (Centre Pénitentiaire de Givenich — für Jugendliche ab 16)</li>
+        <li>Bei schweren Delikten ab 16: Erwachsenenstrafrecht möglich</li>
+      </ul>
 
-  <!-- Übung 5: Sicherheitsplan -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">5</div>
-      <div class="uebung-titel">Sicherheitsplan nach einem belastenden Erlebnis</div>
+      <h3 class="fm-unter-titel">Rechte bei Polizeikontakt</h3>
+      <ul class="fm-liste">
+        <li><strong>Schweigerecht:</strong> Kein Jugendlicher muss sich selbst belasten</li>
+        <li><strong>Recht auf Anwalt:</strong> vor und während Befragung</li>
+        <li><strong>Recht auf Information:</strong> über Vorwürfe auf Verständlich-Niveau</li>
+        <li><strong>Recht auf Elterninformation:</strong> bei Festnahme Minderjähriger</li>
+        <li><strong>Recht auf Dolmetscher:</strong> bei Sprachbarrieren</li>
+      </ul>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-      <div style="background:#EFF6FF;border:1.5px solid #BFDBFE;border-radius:8px;padding:9px;">
-        <div style="font-size:11px;font-weight:700;color:#1D4ED8;margin-bottom:4px;">🔒 Sichere Orte, wohin ich gehen kann:</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+    <div>
+      <h3 class="fm-unter-titel">Racial Profiling & Diskriminierung durch Behörden</h3>
+      <p>Racial Profiling = Kontrollen basierend auf ethnischen Merkmalen, Hautfarbe, Religion ohne konkreten Verdacht. Nachgewiesen in Luxemburg und europaweit. Folgen für Jugendliche:</p>
+      <ul class="fm-liste">
+        <li>Misstrauen gegenüber Behörden</li>
+        <li>Chronischer Stress (Minority Stress, Meyer)</li>
+        <li>Schulvermeidung in kontrollierten Bereichen</li>
+        <li>Internalisierung negativer Stereotypen</li>
+      </ul>
+      <p>Beschwerdemöglichkeit: CEAL (22 18 46) oder Ombudsman (26 12 47 00).</p>
+
+      <h3 class="fm-unter-titel">Diversion — Ziel: Strafregister vermeiden</h3>
+      <p>Diversionsmaßnahmen bei Erstdelikten: Täter-Opfer-Ausgleich (Restorative Justice), gemeinnützige Arbeit, Auflagen. Ziel: Reintegration statt Stigmatisierung. Jugendrichter hat großen Ermessensspielraum.</p>
+
+      <div class="fm-cave">
+        <strong>CAVE Schweigepflicht vs. Anzeigepflicht:</strong> Wenn ein Jugendlicher eine Straftat begeht oder plant, die eine dritte Person gefährdet, muss die Fachkraft abwägen. Strafanzeige ist keine Pflicht — aber Schutzpflicht gegenüber Opfern kann überwiegen. Im Zweifelsfall Rechtsberatung: CEAL (22 18 46).
       </div>
-      <div style="background:#EFF6FF;border:1.5px solid #BFDBFE;border-radius:8px;padding:9px;">
-        <div style="font-size:11px;font-weight:700;color:#1D4ED8;margin-bottom:4px;">👥 Sichere Menschen, die ich anrufen kann:</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-      </div>
     </div>
-  </div>
-
-  <div class="reflexion">
-    <div class="reflexion-titel">💬 Mein nächster Schritt</div>
-    <p>Gibt es eine Situation aus meiner Vergangenheit oder Gegenwart, über die ich mit meiner Bezugsperson reden möchte?</p>
-    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-  </div>
-
-  <div class="fachhinweis">
-    <div class="fachhinweis-titel">🎓 Hinweis für Bezugspersonen</div>
-    <strong>Jugendstrafrecht Luxembourg:</strong> Code de la Jeunesse (Loi du 4 juillet 2008) stellt Erziehungsmaßnahmen vor Strafe. Tribunal de la Jeunesse ist für alle Minderjährigen zuständig. Strafmündigkeit ab 14 Jahren; ab 16 kann in schweren Fällen das erwachsene Strafrecht angewendet werden. <strong>Praxis:</strong> Frühe Rechtskenntnisse reduzieren Delinquenz nachweislich. Bei konkretem Risiko: Einbeziehung von SCAS und OPJ. Diskriminierungserfahrungen durch Polizei ernst nehmen und dokumentieren – Centre pour l'Egalité de Traitement (CET) ist zuständige Anlaufstelle. Bei Opfern von Gewalt: Trauma-sensibles Vorgehen; akute Sicherheit geht vor Aussagen und Dokumentation.
-  </div>
-
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Polizei &amp; Justiz · Seite 2</span>
   </div>
 </div>
 
+<div class="fm-seite">
+  <h2 class="fm-seite-titel">Erkennen & Einschätzen</h2>
+  <div class="fm-ampel-system">
+    <div class="fm-ampel-box gruen">
+      <div class="fm-ampel-titel">GRÜN — Polizeikontakt ohne strafrechtliche Folgen</div>
+      <ul class="fm-ampel-liste">
+        <li>Polizeilicher Kontakt ohne Strafanzeige (Kontrolle, Befragung)</li>
+        <li>Einmaliges Ordnungswidrigkeiten-Delikt ohne Wiederholung</li>
+        <li>Jugendlicher kooperiert, zeigt Einsicht</li>
+        <li>Familienunterstützung vorhanden</li>
+        <li>→ Aufklärung Rechte, Reflexion, kein eskalierender Handlungsbedarf</li>
+      </ul>
+    </div>
+    <div class="fm-ampel-box gelb">
+      <div class="fm-ampel-titel">GELB — Laufendes Verfahren / Schutzmaßnahmen nötig</div>
+      <ul class="fm-ampel-liste">
+        <li>Ermittlungsverfahren beim Tribunal de la Jeunesse</li>
+        <li>Mehrfache Delikte, Bewährungs-Auflage</li>
+        <li>Racial Profiling / Diskriminierung durch Behörden</li>
+        <li>Familiäre Eskalation durch Polizeikontakt</li>
+        <li>→ CEAL-Rechtsberatung, Anwalt, Kooperation mit Jugendrichter</li>
+      </ul>
+    </div>
+    <div class="fm-ampel-box rot">
+      <div class="fm-ampel-titel">ROT — Haft / Akute Gefährdung</div>
+      <ul class="fm-ampel-liste">
+        <li>Untersuchungshaft oder Jugendheim-Unterbringung</li>
+        <li>Schwere Delikte (Gewalt, Drogenhandel)</li>
+        <li>Komorbide psychische Erkrankung in Haftkontext</li>
+        <li>Deportationsbedrohung (aufenthaltsrechtliche Fragen)</li>
+        <li>→ Anwalt PFLICHT, psychiatrisches Konsil, SCAS, CEAL sofort</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="fm-unter-titel">Ressourcen-Check bei Polizeikontakt</h3>
+  <div class="fm-zwei-spalten">
+    <div>
+      <p><strong>Schutzfaktoren stärken:</strong></p>
+      <ul class="fm-liste">
+        <li>Anwalt oder Rechtsberatung aktiviert?</li>
+        <li>Eltern informiert und unterstützend?</li>
+        <li>Jugendrichter über Kontext informiert?</li>
+        <li>Schulischer Kontext gesichert während Verfahren?</li>
+      </ul>
+    </div>
+    <div>
+      <p><strong>Risikofaktoren dokumentieren:</strong></p>
+      <ul class="fm-liste">
+        <li>Wohnstatus/Aufenthaltsrecht betroffen?</li>
+        <li>Familiäre Gewalt als Kontext?</li>
+        <li>Peers mit kriminellem Umfeld?</li>
+        <li>Substanzabhängigkeit als Auslöser?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="fm-seite">
+  <h2 class="fm-seite-titel">Im Gespräch</h2>
+  <div class="fm-gespraech-grid">
+    <div class="fm-gespraech-gut">
+      <div class="fm-gespraech-label gut">Hilfreiche Gesprächsführung</div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Rechte erklären (Psychoedukation)</p>
+        <p class="fm-zitat">"Bei einer Polizeikontrolle hast du das Recht zu schweigen. Du musst nichts sagen außer deinem Namen. Das ist kein Widerstand — das ist dein Recht."</p>
+      </div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Diskriminierungserfahrung validieren</p>
+        <p class="fm-zitat">"Was du erlebt hast — kontrolliert zu werden ohne Grund, nur wegen deines Aussehens — das ist Racial Profiling. Das ist real, das ist dokumentiert, und das ist nicht okay."</p>
+      </div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Konsequenzen realistisch einschätzen</p>
+        <p class="fm-zitat">"Lass uns schauen, was jetzt wirklich passiert. Bis 18 wird das aus dem Register gelöscht — das heißt, das blockiert nicht deinen Weg, wenn wir jetzt klug handeln."</p>
+      </div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Restorative Justice erklären</p>
+        <p class="fm-zitat">"Es gibt eine Möglichkeit, das direkt mit dem Opfer zu klären — das kann viel besser sein als ein formelles Verfahren. Willst du das verstehen?"</p>
+      </div>
+    </div>
+    <div class="fm-gespraech-schlecht">
+      <div class="fm-gespraech-label schlecht">Kontraproduktiv — vermeiden</div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Vorverurteilung</p>
+        <p class="fm-zitat">"Das war dumm, das hättest du wissen müssen."</p>
+        <p class="fm-erklaerung">Beschädigt Vertrauen sofort. Jugendlicher braucht jetzt Unterstützung, keine Kritik.</p>
+      </div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Behörden uncritisch verteidigen</p>
+        <p class="fm-zitat">"Die Polizei hat ihre Gründe — die machen das nicht ohne Grund."</p>
+        <p class="fm-erklaerung">Racial Profiling ist dokumentierte Realität. Diskriminierungserfahrungen abwiegeln verstärkt Misstrauen und psychische Belastung.</p>
+      </div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Rechtliche Beratung ersetzen</p>
+        <p class="fm-zitat">"Ich weiß, was du machen sollst — sag beim Verhör X."</p>
+        <p class="fm-erklaerung">Fachkräfte ohne Rechtsausbildung dürfen keine Rechtsberatung erteilen. Immer an CEAL oder Anwalt verweisen.</p>
+      </div>
+    </div>
+  </div>
+  <div class="fm-tipp">
+    <strong>Polizeikontakt-Vorbereitung (präventiv):</strong> Mit Jugendlichen aus marginalisierten Gruppen präventiv besprechen: Wie verhalte ich mich bei einer Kontrolle? Ruhe bewahren, Hände sichtbar, Ausweis zeigen, Schweigerecht kennen. Nicht als Zeichen von Schuld — als Rechte-Bildung.
+  </div>
+</div>
+
+<div class="fm-seite">
+  <h2 class="fm-seite-titel">Interventionen & Methoden</h2>
+  <div class="fm-methoden-grid">
+
+    <div class="fm-methode">
+      <div class="fm-methode-header">
+        <span class="fm-methode-name">Diversion & Restorative Justice</span>
+        <span class="fm-evidence-stars">★★★</span>
+      </div>
+      <p>Täter-Opfer-Ausgleich (TOA): direkte Begegnung mit Opfer unter Begleitung → Wiedergutmachung, Verständnis, Entschuldigung. Meta-Analyse (Bradshaw et al. 2006): –27% Rückfallraten, höhere Opfer-Zufriedenheit als traditionelle Justiz. Jugendrichter in Luxemburg kann TOA anordnen — Fachkraft kann Unterstützung bei Vorbereitung anbieten.</p>
+    </div>
+
+    <div class="fm-methode">
+      <div class="fm-methode-header">
+        <span class="fm-methode-name">Multisystemische Therapie (MST, Henggeler)</span>
+        <span class="fm-evidence-stars">★★★</span>
+      </div>
+      <p>Intensiv-Intervention für jugendliche Straftäter: Familie, Schule, Peers, Gemeinschaft gleichzeitig. Therapeut kommt ins Zuhause, 24/7-Erreichbarkeit. Deutliche Reduktion von Rückfällen und Inhaftierungen. In Luxemburg nicht direkt verfügbar, aber Analogien über intensive Familienbegleitung SCAS möglich.</p>
+    </div>
+
+    <div class="fm-methode">
+      <div class="fm-methode-header">
+        <span class="fm-methode-name">Diskriminierungs-Empowerment (Know Your Rights)</span>
+        <span class="fm-evidence-stars">★★☆</span>
+      </div>
+      <p>Rechte-Bildung als Schutzfaktor: Jugendliche kennen ihre Rechte → weniger Opfer von Willkür, mehr Selbstwirksamkeit. "Know Your Rights"-Workshops (CEAL bietet an). Diskriminierungsdokumentation: Datum, Ort, Beamter, Zeugen notieren → Beschwerdeweg nutzen. Stärkend statt ohnmächtig.</p>
+    </div>
+
+    <div class="fm-methode">
+      <div class="fm-methode-header">
+        <span class="fm-methode-name">Funktionale Familientherapie (FFT)</span>
+        <span class="fm-evidence-stars">★★★</span>
+      </div>
+      <p>Für Jugendliche mit Verhaltensauffälligkeiten und Familienkonflikten als Kontext. 12–15 Sitzungen. Fokus: Kommunikationsmuster, elterliche Aufsicht, Familienfunktionalität. Bewährt als Diversion-Ergänzung. Reduziert Rückfälle deutlich.</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="fm-seite">
+  <h2 class="fm-seite-titel">Netzwerk & Ressourcen Luxemburg</h2>
+  <div class="fm-ressourcen-grid">
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">CEAL – Centre d'Accès au Droit</div>
+      <div class="fm-ressource-tel">22 18 46</div>
+      <div class="fm-ressource-info">Kostenlose Rechtsberatung für sozial benachteiligte Personen inkl. Jugendliche. Juristische Erstberatung, Verfahrensbegleitung, Beschwerden gegen Diskriminierung.</div>
+    </div>
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Ombudsman fir Kanner a Jugendlecher</div>
+      <div class="fm-ressource-tel">26 12 47 00</div>
+      <div class="fm-ressource-info">Ombudsstelle für Kinderrechte. Bei Rechtsverletzungen durch staatliche Stellen (Polizei, Schule, Behörden). Kostenlos, unabhängig.</div>
+    </div>
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Tribunal de la Jeunesse</div>
+      <div class="fm-ressource-tel">via Gericht Lux</div>
+      <div class="fm-ressource-info">Jugendgericht für alle Strafsachen unter 18 J. Richter kann Diversion anordnen. Fachkräfte können als Unterstützungsschreiben einreichen.</div>
+    </div>
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">SCAS – Service de Probation</div>
+      <div class="fm-ressource-tel">247-86000</div>
+      <div class="fm-ressource-info">Bewährungs- und Betreuungsmaßnahmen für straffällige Jugendliche. Koordination zwischen Gericht, Familie, Schule.</div>
+    </div>
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Kanner-Jugendtelefon</div>
+      <div class="fm-ressource-tel">116 111</div>
+      <div class="fm-ressource-info">Bei Notlagen durch Polizeikontakt, Festnahme, Verfahren. Anonyme Krisenberatung, auch nachts.</div>
+    </div>
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">CEFIS – Interkulturalität</div>
+      <div class="fm-ressource-tel">26 19 14 19</div>
+      <div class="fm-ressource-info">Bei Diskriminierung durch Behörden oder institutionellem Rassismus. Beratung und Beschwerdeunterstützung für Migranten und Minderheiten.</div>
+    </div>
+
+  </div>
+
+  <div class="fm-krisen-box">
+    <h3 class="fm-krisen-titel">Sofortprotokoll bei Festnahme eines Jugendlichen</h3>
+    <ol class="fm-krisen-liste">
+      <li><strong>Ruhe bewahren:</strong> Nicht mit Polizei konfrontieren — ruhige Kooperation ist Schutz</li>
+      <li><strong>Schweigerecht nutzen:</strong> Name angeben — sonst schweigen bis Anwalt da</li>
+      <li><strong>Eltern kontaktieren:</strong> Pflicht der Polizei — wenn nicht geschehen: einfordern</li>
+      <li><strong>CEAL anrufen:</strong> 22 18 46 — kostenlose Rechtsberatung, auch telefonisch</li>
+      <li><strong>Anwalt vor Aussage:</strong> Keine Aussage vor juristischer Beratung</li>
+      <li><strong>Dokumentieren:</strong> Namen der Beamten, Ort, Zeit, Zeugen notieren sobald möglich</li>
+    </ol>
+  </div>
+
+  <div class="fm-footer">
+    <span>Pathways — Fachkraft-Modul</span>
+    <span>Polizei, Justiz & Bürgerrechte</span>
+    <span>Stand: 2025 | ICD-10: Z65.3, F91, Z60.5</span>
+  </div>
+</div>
+
+</div>
 </body>
 </html>
