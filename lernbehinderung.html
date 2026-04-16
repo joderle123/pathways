@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Lernen mit Hindernissen</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #2980B9; --farbe-hell: #E8F4FD; }
+    .lernplan-grid { display:grid; grid-template-columns:80px repeat(5,1fr); gap:3px; margin-bottom:10px; font-size:10px; }
+    .lernplan-kopf { background:var(--farbe); color:white; border-radius:6px; padding:5px 4px; text-align:center; font-weight:700; }
+    .lernplan-zeit { background:var(--farbe-hell); border:1.5px solid #AED6F1; border-radius:6px; padding:5px 4px; text-align:center; font-weight:600; color:#1A5276; }
+    .lernplan-feld { background:white; border:1.5px dashed #AED6F1; border-radius:6px; padding:4px; min-height:28px; }
+    .toolbox-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px; }
+    .toolbox-item { background:var(--farbe-hell); border:1.5px solid #AED6F1; border-radius:10px; padding:7px 9px; font-size:11px; }
+    .toolbox-item:hover { background:#D6EAF8; }
+    .matching-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px; }
+    .matching-person { background:var(--farbe-hell); border:1.5px solid #AED6F1; border-radius:10px; padding:8px 10px; font-size:11px; }
+    .matching-verbindung { display:flex; align-items:center; gap:6px; font-size:11px; margin-bottom:5px; }
+    .matching-linie { flex:1; border-bottom:1.5px dashed #AED6F1; }
+    .tipp-box { background:#EBF5FB; border:1.5px solid #AED6F1; border-left:4px solid var(--farbe); border-radius:8px; padding:8px 10px; font-size:11px; margin-top:6px; }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- ===== SEITE 1 ===== -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">Lernen mit Hindernissen — meine Stärken</div>
+      <div class="ab-untertitel">Lernbehinderung · Kategorie: Schule &amp; Zukunft</div>
+    </div>
+    <div class="kopfzeile-icon">🧩</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">💡 Anders lernen heisst nicht schlechter lernen</div>
+    <p>Legasthenie, Dyskalkulie, ADHS — viele erfolgreiche Menschen haben Lernunterschiede. <strong>Einstein hatte Probleme mit dem Kopfrechnen. Richard Branson hat Legasthenie.</strong> Dein Gehirn arbeitet anders — nicht schlechter.</p>
+    <p>🧠 <em>Wusstest du? Lernunterschiede haben nichts mit Intelligenz zu tun. Sie bedeuten nur, dass dein Gehirn Informationen auf einem anderen Weg verarbeitet — und das ist oft sogar eine versteckte Stärke.</em></p>
+  </div>
+
+  <!-- Übung 1 -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">1</div>
+      <div class="uebung-titel">Wie lerne ich am besten?</div>
+    </div>
+    <div class="uebung-beschreibung">Kreise ein was dir hilft:</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+      <label class="check-label"><input type="checkbox"><span>👂 Zuhören (Audios, Gespräche)</span></label>
+      <label class="check-label"><input type="checkbox"><span>👁️ Sehen (Bilder, Videos, Farben)</span></label>
+      <label class="check-label"><input type="checkbox"><span>✋ Anfassen / Ausprobieren</span></label>
+      <label class="check-label"><input type="checkbox"><span>📝 Selbst aufschreiben</span></label>
+      <label class="check-label"><input type="checkbox"><span>🗣️ Anderen erklären</span></label>
+      <label class="check-label"><input type="checkbox"><span>🎵 Mit Musik im Hintergrund</span></label>
+      <label class="check-label"><input type="checkbox"><span>🏃 In Bewegung lernen</span></label>
+      <label class="check-label"><input type="checkbox"><span>⏱️ Kurze Einheiten (max. 15 Min)</span></label>
+    </div>
+  </div>
+
+  <!-- Übung 2 -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">2</div>
+      <div class="uebung-titel">Meine Stärken ausserhalb der Schule</div>
+    </div>
+    <div class="uebung-beschreibung">Was kannst du gut — ganz unabhängig von Noten?</div>
+    <div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Lernbehinderung · Seite 1</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 2 ===== -->
+<div class="seite">
+
+  <!-- Übung 3 -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">3</div>
+      <div class="uebung-titel">Was mir hilft — Nachteilsausgleich</div>
+    </div>
+    <div class="uebung-beschreibung">Welche Unterstützung gibt es? Kreuze an was du nutzt oder nutzen möchtest:</div>
+    <label class="check-label"><input type="checkbox"><span>Mehr Zeit bei Prüfungen</span></label>
+    <label class="check-label"><input type="checkbox"><span>Mündliche statt schriftliche Prüfung</span></label>
+    <label class="check-label"><input type="checkbox"><span>Laptop statt Handschrift</span></label>
+    <label class="check-label"><input type="checkbox"><span>Vorgelesene Aufgaben</span></label>
+    <label class="check-label"><input type="checkbox"><span>Ruhiger Raum für Prüfungen</span></label>
+    <label class="check-label"><input type="checkbox"><span>Nachhilfe / Lernbegleitung</span></label>
+  </div>
+
+  <!-- Übung 4 -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">4</div>
+      <div class="uebung-titel">Mein Erfolgsmoment</div>
+    </div>
+    <div class="uebung-beschreibung">Beschreibe einen Moment, in dem du etwas geschafft hast, obwohl es schwer war:</div>
+    <div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div>
+    <div style="font-size:11px;margin-top:6px;font-style:italic;">Was sagt das über dich als Person? <div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Lernbehinderung · Seite 2</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 3 ===== -->
+<div class="seite">
+
+  <!-- Übung 5 -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">5</div>
+      <div class="uebung-titel">Mein Lernplan — Wann lerne ich was? 📅</div>
+    </div>
+    <div class="uebung-beschreibung">Trage ein, wann du welches Fach lernen willst. Plane auch Pausen ein!</div>
+    <div class="lernplan-grid">
+      <div class="lernplan-kopf">Uhrzeit</div>
+      <div class="lernplan-kopf">Mo</div>
+      <div class="lernplan-kopf">Di</div>
+      <div class="lernplan-kopf">Mi</div>
+      <div class="lernplan-kopf">Do</div>
+      <div class="lernplan-kopf">Fr</div>
+
+      <div class="lernplan-zeit">14–15 Uhr</div>
+      <div class="lernplan-feld"></div>
+      <div class="lernplan-feld"></div>
+      <div class="lernplan-feld"></div>
+      <div class="lernplan-feld"></div>
+      <div class="lernplan-feld"></div>
+
+      <div class="lernplan-zeit">15–16 Uhr</div>
+      <div class="lernplan-feld"></div>
+      <div class="lernplan-feld"></div>
+      <div class="lernplan-feld"></div>
+      <div class="lernplan-feld"></div>
+      <div class="lernplan-feld"></div>
+
+      <div class="lernplan-zeit">16–17 Uhr</div>
+      <div class="lernplan-feld"></div>
+      <div class="lernplan-feld"></div>
+      <div class="lernplan-feld"></div>
+      <div class="lernplan-feld"></div>
+      <div class="lernplan-feld"></div>
+
+      <div class="lernplan-zeit">17–18 Uhr</div>
+      <div class="lernplan-feld"></div>
+      <div class="lernplan-feld"></div>
+      <div class="lernplan-feld"></div>
+      <div class="lernplan-feld"></div>
+      <div class="lernplan-feld"></div>
+    </div>
+    <div class="tipp-box">
+      ⏱️ <strong>Pomodoro-Tipp:</strong> 25 Minuten lernen → 5 Minuten Pause. Schwieriges immer zuerst — wenn dein Kopf noch frisch ist. Nach 4 Einheiten: 20 Minuten grosse Pause verdient!
+    </div>
+  </div>
+
+  <!-- Übung 6 -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">6</div>
+      <div class="uebung-titel">Meine Hilfsmittel-Toolbox 🧰</div>
+    </div>
+    <div class="uebung-beschreibung">Welche Werkzeuge kennst du? Kreuze an was du schon nutzt (✓) oder ausprobieren möchtest (?):</div>
+    <div class="toolbox-grid">
+      <label class="check-label"><input type="checkbox"><span>🔊 Vorlesefunktion (Text-to-Speech)</span></label>
+      <label class="check-label"><input type="checkbox"><span>🧮 Taschenrechner erlaubt</span></label>
+      <label class="check-label"><input type="checkbox"><span>🖊️ Farbige Markierungen &amp; Stifte</span></label>
+      <label class="check-label"><input type="checkbox"><span>🗺️ Mind-Maps &amp; Skizzen</span></label>
+      <label class="check-label"><input type="checkbox"><span>📱 Lern-Apps (z.B. Quizlet, Khan Academy)</span></label>
+      <label class="check-label"><input type="checkbox"><span>⏱️ Timer / Stoppuhr</span></label>
+      <label class="check-label"><input type="checkbox"><span>🎧 Noise-Cancelling Kopfhörer</span></label>
+      <label class="check-label"><input type="checkbox"><span>🃏 Karteikarten (physisch oder digital)</span></label>
+    </div>
+    <div style="font-size:11px;margin-top:6px;">
+      🌟 Das Hilfsmittel, das ich als nächstes ausprobieren will:
+      <div class="schreiblinie"></div>
+      Weil: <div class="schreiblinie"></div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Lernbehinderung · Seite 3</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 4 ===== -->
+<div class="seite">
+
+  <!-- Übung 7 -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">7</div>
+      <div class="uebung-titel">Berühmte Menschen mit Lernunterschieden 🌟</div>
+    </div>
+    <div class="uebung-beschreibung">Verbinde die Person mit ihrem Lernunterschied — und was sie trotzdem (oder gerade deshalb) erreicht haben:</div>
+    <div class="matching-grid">
+      <div class="matching-person">
+        <strong>🧑‍🔬 Albert Einstein</strong><br>
+        <span style="color:#6B7280;font-size:10px;">Physiker · Nobelpreisträger</span><br>
+        <div style="margin-top:4px;border-bottom:1px dashed #AED6F1;height:16px;"></div>
+      </div>
+      <div class="matching-person">
+        <strong>✈️ Richard Branson</strong><br>
+        <span style="color:#6B7280;font-size:10px;">Unternehmer · Virgin-Gründer</span><br>
+        <div style="margin-top:4px;border-bottom:1px dashed #AED6F1;height:16px;"></div>
+      </div>
+      <div class="matching-person">
+        <strong>🤸 Simone Biles</strong><br>
+        <span style="color:#6B7280;font-size:10px;">Turnerin · Olympiasiegerin</span><br>
+        <div style="margin-top:4px;border-bottom:1px dashed #AED6F1;height:16px;"></div>
+      </div>
+      <div class="matching-person">
+        <strong>🎬 Steven Spielberg</strong><br>
+        <span style="color:#6B7280;font-size:10px;">Regisseur · Oscar-Gewinner</span><br>
+        <div style="margin-top:4px;border-bottom:1px dashed #AED6F1;height:16px;"></div>
+      </div>
+    </div>
+    <div style="background:#EBF5FB;border-radius:8px;padding:8px 10px;font-size:11px;margin-bottom:8px;">
+      <strong>Zur Auflösung:</strong> Einstein → Dyskalkulie (Rechenschwierigkeiten) · Branson → Legasthenie (Lese-Rechtschreibschwäche) · Biles → ADHS · Spielberg → Legasthenie
+    </div>
+    <div style="font-size:11px;">
+      💬 Was zeigt dir das?
+      <div class="schreiblinie"></div><div class="schreiblinie"></div>
+    </div>
+  </div>
+
+  <!-- Reflexion -->
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Reflexion</div>
+    <p><strong>1.</strong> Was habe ich heute über mich und mein Lernen herausgefunden?</p>
+    <div class="schreiblinie"></div><div class="schreiblinie"></div>
+    <p style="margin-top:8px;"><strong>2.</strong> Welche Unterstützung wünsche ich mir — in der Schule / im Heim?</p>
+    <div class="schreiblinie"></div><div class="schreiblinie"></div>
+    <p style="margin-top:8px;"><strong>3.</strong> Ein Satz, den ich mir merken will:</p>
+    <div class="schreiblinie"></div>
+  </div>
+
+  <!-- Fachhinweis -->
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
+    <p style="margin:0 0 5px 0;"><strong>ICD-10:</strong> F81.0 Lese- und Rechtschreibstörung (Legasthenie) · F81.2 Rechenstörung (Dyskalkulie) · F81.3 Kombinierte Störung schulischer Fertigkeiten · F90 Hyperkinetische Störung (ADHS). Lernbehinderung (F79/F70-F79) ist abzugrenzen von umschriebenen Entwicklungsstörungen und setzt eine globale Intelligenzminderung voraus — der Begriff wird im schulischen Kontext Luxemburgs jedoch häufig breiter verwendet.</p>
+    <p style="margin:0 0 5px 0;"><strong>Methodische Ansätze:</strong> Nachteilsausgleich / <em>aménagements raisonnables</em> (gesetzl. Grundlage: Loi du 10 août 2018 relative à l'éducation inclusive) · Multimodaler Ansatz (auditiv, visuell, kinästhetisch) · Stärkenorientierte Pädagogik (strength-based approach) · Pomodoro-Technik bei ADHS-assoziierter Konzentrationsschwäche · Strukturierung und Visualisierung des Lernumfelds.</p>
+    <p style="margin:0;"><strong>Luxemburgische Ressourcen:</strong> CPOS (Centre de Psychologie et d'Orientation Scolaires) · Commission d'inclusion scolaire · SePAS (Service de Psychologie et d'Action Scolaires) · EDIFF (Kompetenzzentrum für inklusive Bildung) · CRE (Centre de Rééducation) · Bei Verdacht auf Lese-Rechtschreib- oder Rechenstörung: Abklärung durch Schulpsychologischen Dienst und ggf. Kinderpsychiatrie empfehlenswert.</p>
+  </div>
+
+  <div class="fussnote">
+    <p>📎 Dieses Arbeitsblatt gehört zu deiner persönlichen Dokumentation. Es wird vertraulich behandelt.</p>
+    <p style="font-size:9px;color:#94A3B8;">Pathways · Joey Guedes-Tool · Lernbehinderung · v2.0</p>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Lernbehinderung · Seite 4</span>
+  </div>
+</div>
+
+</body>
+</html>

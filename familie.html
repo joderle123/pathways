@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Familie & Beziehungen zuhause</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #D97706; --farbe-hell: #FFFBEB; }
+    .family-map { position:relative; width:240px; height:240px; margin:0 auto 8px; }
+    .family-ring { position:absolute; border-radius:50%; border:2.5px solid; display:flex; align-items:center; justify-content:center; }
+    .family-me { position:absolute; inset:100px; background:#D97706; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:800; font-size:11px; }
+    .ring-label { position:absolute; font-size:8.5px; font-weight:600; text-align:center; width:100%; }
+    .role-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; margin:8px 0; }
+    .role-card { border:2px solid #D1D5DB; border-radius:10px; padding:7px 5px; text-align:center; background:#FFFBEB; cursor:pointer; }
+    .role-emoji { font-size:17px; display:block; }
+    .role-name { font-size:9px; font-weight:700; color:#374151; display:block; margin-top:2px; }
+    .role-desc { font-size:8.5px; color:#6B7280; margin-top:2px; display:block; }
+    .comm-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:8px 0; }
+    .comm-card { border:2.5px solid; border-radius:10px; padding:10px; }
+    .comm-title { font-size:11px; font-weight:800; margin-bottom:4px; }
+    .comm-example { font-size:10px; font-style:italic; background:white; border-radius:6px; padding:4px 7px; margin-bottom:4px; border-left:3px solid; }
+    .comm-check { font-size:10px; display:flex; gap:6px; align-items:center; margin-top:5px; }
+    .needs-box { border:2px dashed #D97706; border-radius:12px; padding:12px; background:linear-gradient(135deg,#FFFBEB,#FEF3C7); margin:8px 0; }
+    .rights-row { display:grid; grid-template-columns:28px 1fr; gap:8px; align-items:start; margin-bottom:7px; }
+    .rights-nr { background:#D97706; color:white; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex-shrink:0; }
+    .wusstest { background:#FFFBEB; border-left:4px solid #D97706; border-radius:0 8px 8px 0; padding:8px 10px; margin:8px 0; font-size:10.5px; }
+    .wusstest strong { color:#92400E; }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- ===== SEITE 1 ===== -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">Zuhause – meine Welt, meine Beziehungen</div>
+      <div class="ab-untertitel">Familie & Beziehungen zuhause · Kategorie: Familie & Soziales Umfeld</div>
+    </div>
+    <div class="kopfzeile-icon">🏠</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">🏠 Familie ist mehr als Blutsverwandtschaft</div>
+    <p>Familie bedeutet nicht immer dieselbe biologische Familie. Familie sind die Menschen, mit denen du aufgewachsen bist, die sich um dich gekümmert haben – oder die du dir ausgesucht hast. Patchwork, Pflegefamilie, Großeltern, Wahlfamilie: Alles gilt.</p>
+    <p>🧠 <em><strong>Wusstest du?</strong> Die ersten Beziehungen in unserer Familie "programmieren" buchstäblich, wie unser Gehirn mit späteren Beziehungen umgeht. Das Gute daran: Das Gehirn bleibt bis ins Erwachsenenalter formbar – neue positive Erfahrungen können das verändern.</em></p>
+  </div>
+
+  <!-- Übung 1: Familienkarte mit konzentrischen Kreisen -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">1</div>
+      <div class="uebung-titel">Meine Familienkarte – wer gehört zu mir?</div>
+    </div>
+    <div class="uebung-beschreibung">Schreibe Namen in die Ringe. Innen = die Menschen mit denen du wohnst oder sehr eng bist. Außen = weitere Verwandte und Wahlfamilie.</div>
+
+    <div style="display:grid; grid-template-columns:240px 1fr; gap:12px; align-items:start;">
+      <div>
+        <div class="family-map">
+          <div class="family-ring" style="inset:0; border-color:#FDE68A; background:#FFFDE7;">
+            <div class="ring-label" style="top:6px; color:#B45309;">Wahlfamilie / Weitere</div>
+          </div>
+          <div class="family-ring" style="inset:50px; border-color:#FCD34D; background:#FFFBEB;">
+            <div class="ring-label" style="top:4px; color:#92400E;">Erweiterte Familie</div>
+          </div>
+          <div class="family-ring" style="inset:100px; border-color:#D97706; background:#FEF3C7;"></div>
+          <div class="family-me">ICH</div>
+        </div>
+        <div style="font-size:9px; color:#6B7280; text-align:center;">Innerster Kreis = Haushalt / engste Personen</div>
+      </div>
+      <div>
+        <div style="font-size:11px; font-weight:700; color:#92400E; margin-bottom:6px;">Dazu schreibe ich:</div>
+        <div style="font-size:10.5px; margin-bottom:3px;">Wer wohnt bei mir?</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div></div>
+        <div style="font-size:10.5px; margin-bottom:3px; margin-top:5px;">Zu wem habe ich regelmäßig Kontakt?</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div></div>
+        <div style="font-size:10.5px; margin-bottom:3px; margin-top:5px;">Wen betrachte ich als Familie, auch wenn wir nicht verwandt sind?</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Übung 2: Familienrollen -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">2</div>
+      <div class="uebung-titel">Familienrollen – wer spielt welche Rolle? (kreise ein)</div>
+    </div>
+    <div class="uebung-beschreibung">In vielen Familien übernehmen Menschen unbewusst bestimmte Rollen. Kreise ein, welche du kennst – auch bei dir selbst.</div>
+
+    <div class="role-grid">
+      <div class="role-card">
+        <span class="role-emoji">🕊️</span>
+        <span class="role-name">Peacemaker</span>
+        <span class="role-desc">Versucht Streit zu vermeiden</span>
+      </div>
+      <div class="role-card">
+        <span class="role-emoji">🦅</span>
+        <span class="role-name">Rebel</span>
+        <span class="role-desc">Bricht gegen die Regeln</span>
+      </div>
+      <div class="role-card">
+        <span class="role-emoji">🤲</span>
+        <span class="role-name">Caretaker</span>
+        <span class="role-desc">Kümmert sich um alle</span>
+      </div>
+      <div class="role-card">
+        <span class="role-emoji">🌟</span>
+        <span class="role-name">Hero</span>
+        <span class="role-desc">Muss perfekt sein</span>
+      </div>
+      <div class="role-card">
+        <span class="role-emoji">🎭</span>
+        <span class="role-name">Scapegoat</span>
+        <span class="role-desc">Bekommt die Schuld</span>
+      </div>
+      <div class="role-card">
+        <span class="role-emoji">👻</span>
+        <span class="role-name">Lost Child</span>
+        <span class="role-desc">Zieht sich zurück</span>
+      </div>
+      <div class="role-card">
+        <span class="role-emoji">😄</span>
+        <span class="role-name">Clown</span>
+        <span class="role-desc">Macht Witze, lenkt ab</span>
+      </div>
+      <div class="role-card">
+        <span class="role-emoji">🤝</span>
+        <span class="role-name">Helper</span>
+        <span class="role-desc">Löst alle Probleme</span>
+      </div>
+      <div class="role-card">
+        <span class="role-emoji">⚖️</span>
+        <span class="role-name">Mediator</span>
+        <span class="role-desc">Vermittelt zwischen anderen</span>
+      </div>
+      <div class="role-card">
+        <span class="role-emoji">✏️</span>
+        <span class="role-name">Andere</span>
+        <span class="role-desc">_______________</span>
+      </div>
+    </div>
+
+    <div style="font-size:11px; margin-top:5px;">Welche Rolle spielst du in deiner Familie? Fühlt sie sich richtig an oder wurde sie dir aufgezwungen?</div>
+    <div class="schreiblinien"><div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Familie & Beziehungen zuhause · Seite 1</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 2 ===== -->
+<div class="seite">
+
+  <!-- Übung 3: Kommunikationsstile -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">3</div>
+      <div class="uebung-titel">Wie redet meine Familie? – 4 Kommunikationsstile</div>
+    </div>
+    <div class="uebung-beschreibung">Kreise den Stil ein, der bei euch am häufigsten vorkommt. Familien können mehrere Stile mischen.</div>
+
+    <div class="comm-grid">
+      <div class="comm-card" style="border-color:#059669; background:#ECFDF5;">
+        <div class="comm-title" style="color:#065F46;">✅ Direkt & offen</div>
+        <div class="comm-example" style="border-color:#059669;">"Ich fühle mich verletzt, wenn..."</div>
+        <div style="font-size:10px; color:#065F46;">Konflikte werden angesprochen und gelöst. Gefühle dürfen sein.</div>
+        <div class="comm-check">□ Das kennen wir</div>
+      </div>
+      <div class="comm-card" style="border-color:#94A3B8; background:#F8FAFC;">
+        <div class="comm-title" style="color:#475569;">🌀 Indirekt / passiv</div>
+        <div class="comm-example" style="border-color:#94A3B8;">"Mir geht's gut." (meint eigentlich: nicht gut)</div>
+        <div style="font-size:10px; color:#475569;">Dinge werden nicht ausgesprochen. Man muss zwischen den Zeilen lesen.</div>
+        <div class="comm-check">□ Das kennen wir</div>
+      </div>
+      <div class="comm-card" style="border-color:#DC2626; background:#FEF2F2;">
+        <div class="comm-title" style="color:#991B1B;">💥 Explosiv</div>
+        <div class="comm-example" style="border-color:#DC2626;">"Du immer wieder! Das ist unglaublich!"</div>
+        <div style="font-size:10px; color:#991B1B;">Konflikte eskalieren schnell. Schreien, Türknallen. Dann wieder "normal".</div>
+        <div class="comm-check">□ Das kennen wir</div>
+      </div>
+      <div class="comm-card" style="border-color:#6B7280; background:#F9FAFB;">
+        <div class="comm-title" style="color:#374151;">🧊 Vermeidend</div>
+        <div class="comm-example" style="border-color:#6B7280;">"Darüber reden wir nicht."</div>
+        <div style="font-size:10px; color:#374151;">Schwierige Themen werden totgeschwiegen. Dinge bleiben ungelöst.</div>
+        <div class="comm-check">□ Das kennen wir</div>
+      </div>
+    </div>
+
+    <div class="wusstest">
+      <strong>🧠 Wusstest du?</strong> Der Kommunikationsstil, den wir als Kind gelernt haben, beeinflusst automatisch, wie wir auch später mit Freunden und Partnern kommunizieren. <em>Das Gute: Jeder Stil kann verändert werden.</em>
+    </div>
+  </div>
+
+  <!-- Übung 4: Was ich brauche -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">4</div>
+      <div class="uebung-titel">Was ich zuhause brauche, das ich nicht immer bekomme</div>
+    </div>
+    <div class="uebung-beschreibung">Das hier ist ein sicherer Raum. Du kannst ehrlich sein – es gibt keine falschen Antworten.</div>
+
+    <div class="needs-box">
+      <div style="font-size:11px; font-weight:700; color:#92400E; margin-bottom:8px;">Was ich mir von meiner Familie wünsche:</div>
+      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      <div style="font-size:11px; font-weight:700; color:#92400E; margin-top:8px; margin-bottom:4px;">Was ich stattdessen wo anders finde (Freunde, Schule, Sport, Erzieher):</div>
+      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+    </div>
+  </div>
+
+  <!-- Übung 5: Meine Rechte zuhause -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">5</div>
+      <div class="uebung-titel">Meine Grundrechte in meiner Familie</div>
+    </div>
+    <div class="uebung-beschreibung">Diese Rechte gelten immer – egal wie schwierig die Situation zuhause ist.</div>
+
+    <div class="rights-row">
+      <div class="rights-nr">1</div>
+      <div style="font-size:11px;"><strong style="color:#D97706;">🔒 Das Recht auf Sicherheit:</strong> Niemand darf dir körperlich oder seelisch schaden. Gewalt ist keine Form von Liebe. <em>Du hast das Recht, in Sicherheit zu leben.</em></div>
+    </div>
+    <div class="rights-row">
+      <div class="rights-nr">2</div>
+      <div style="font-size:11px;"><strong style="color:#D97706;">🌟 Das Recht auf Respekt:</strong> Deine Gefühle und Meinungen sind gültig. Du darfst anderer Meinung sein als deine Familie. <em>Respekt ist keine Einbahnstraße.</em></div>
+    </div>
+    <div class="rights-row">
+      <div class="rights-nr">3</div>
+      <div style="font-size:11px;"><strong style="color:#D97706;">💭 Das Recht auf eigene Gedanken:</strong> Du darfst deine eigene Meinung haben und eigene Entscheidungen treffen (immer mehr, je älter du wirst). <em>Deine Identität gehört dir.</em></div>
+    </div>
+
+    <div style="background:#FEF3C7; border:1.5px solid #FCD34D; border-radius:8px; padding:8px; font-size:10.5px; margin-top:6px;">
+      <strong>Wenn eines dieser Rechte verletzt wird:</strong> Du kannst mit deiner Bezugsperson sprechen, dem Kanner-Jugendtelefon (116 111) oder dem OPJ (okaju.lu). Du bist nicht allein.
+    </div>
+  </div>
+
+  <!-- Reflexion -->
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Reflexion</div>
+    <p>Was ist die stärkste Sache, die du von deiner Familie mitgenommen hast – eine Fähigkeit, ein Wert, eine Stärke?</p>
+    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
+    <strong>ICD-10 Bezug:</strong> Z62 (Probleme in Bezug auf die Erziehung), Z63 (andere Probleme mit dem primären Bezugsrahmen). Familiäre Dysfunktion erhöht Risiko für F32-F33 (Depression), F40-F42 (Angst), F43 (Anpassungs-/Traumafolgestörungen). Die <strong>Familienrollen</strong> (Übung 2) stammen aus der systemischen Familientherapie (Sharon Wegscheider-Cruse, Satir). Das Genogramm (Murray Bowen) sollte parallel erarbeitet werden – Übung 1 kann als Einstieg dienen. <strong>Kommunikationsstile</strong> basieren auf Gottman's Forschung und der Gewaltfreien Kommunikation. <strong>Bei familiärer Gewalt/Vernachlässigung:</strong> Meldepflicht prüfen (Art. 26 Code de la famille, Luxembourg). Einbindung OPJ (Office National de l'Enfance) und SCAS.
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Familie & Beziehungen zuhause · Seite 2</span>
+  </div>
+</div>
+
+</body>
+</html>

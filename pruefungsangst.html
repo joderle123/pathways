@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Prüfungsangst</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #D97706; --farbe-hell: #FFFBEB; }
+    .symptom-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px; }
+    .symptom-item { background:var(--farbe-hell); border:1.5px solid #FDE68A; border-radius:10px; padding:7px 9px; font-size:11px; cursor:default; }
+    .symptom-item:hover { background:#FEF3C7; }
+    .katastrophen-leiter { display:flex; flex-direction:column; gap:4px; margin-bottom:10px; }
+    .kata-stufe { border-radius:8px; padding:8px 12px; font-size:11px; }
+    .grounding-box { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px; }
+    .grounding-schritt { background:var(--farbe-hell); border:1.5px solid #FDE68A; border-radius:8px; padding:8px; font-size:11px; }
+    .affirmation-karte { border:1.5px solid #FDE68A; border-radius:10px; padding:9px; background:white; margin-bottom:6px; }
+    .taktik-karte { background:var(--farbe-hell); border:1.5px solid #FDE68A; border-radius:10px; padding:9px; font-size:11px; }
+    .taktik-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px; }
+    .atem-visual { display:flex; gap:8px; align-items:center; justify-content:center; margin:8px 0; }
+    .atem-kreis { border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:10px; color:white; text-align:center; line-height:1.2; }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- ===== SEITE 1 ===== -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">Prüfungsangst – Dein Körper meint es eigentlich gut.</div>
+      <div class="ab-untertitel">Prüfungsangst &amp; Schulstress · Kategorie: Schule &amp; Zukunft</div>
+    </div>
+    <div class="kopfzeile-icon">📝</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">💡 Herzrasen vor Prüfungen? Das ist Biologie – keine Schwäche.</div>
+    <p>Wenn dein Körper Prüfungsangst spürt, schüttet er Adrenalin aus – er will dir <em>helfen</em>. Das Problem: Das Gehirn unterscheidet nicht zwischen "Säbelzahntiger" und "Mathetest". <strong>Du bist nicht schwach. Du bist menschlich.</strong></p>
+    <p>🧠 <em>Wusstest du? Forscher haben herausgefunden: Wer Prüfungsangst als "Aufregung" (statt als "Bedrohung") interpretiert, schneidet nachweislich besser ab. Dein Körper ist bereit – dein Kopf muss nur die Geschichte ändern.</em></p>
+  </div>
+
+  <!-- Übung 1 – Körper-Symptome -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">1</div>
+      <div class="uebung-titel">Was passiert in mir vor/während Prüfungen? Kreise ein! 🫀</div>
+    </div>
+    <div class="uebung-beschreibung">Kreise alles ein was du kennst. Kein Symptom ist peinlich – alle diese Reaktionen sind normal und erklärbar.</div>
+    <div class="symptom-grid">
+      <div class="symptom-item">💓 Herzrasen / Herzstolpern</div>
+      <div class="symptom-item">🤢 Bauchschmerzen / Übelkeit</div>
+      <div class="symptom-item">💧 Schwitzen (Hände, Achseln)</div>
+      <div class="symptom-item">😶 Gedanken-Blackout / Leere</div>
+      <div class="symptom-item">🫁 Flaches / schnelles Atmen</div>
+      <div class="symptom-item">🦵 Zittern (Hände, Beine)</div>
+      <div class="symptom-item">😤 "Ich schaffe das nie" – Gedanken</div>
+      <div class="symptom-item">💤 Schlafprobleme davor</div>
+      <div class="symptom-item">🔴 Röte / Erröten</div>
+      <div class="symptom-item">📵 Lernen vermeiden / aufschieben</div>
+      <div class="symptom-item">😡 Gereiztheit vor der Prüfung</div>
+      <div class="symptom-item">🙈 Alles vergessen was ich wusste</div>
+    </div>
+    <div style="font-size:11px;margin-top:4px;">Das kenne ich am meisten: <span style="border-bottom:1px dashed #FDE68A;display:inline-block;width:250px;">&nbsp;</span></div>
+  </div>
+
+  <!-- Übung 2 – Katastrophen-Leiter -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">2</div>
+      <div class="uebung-titel">Die Katastrophen-Leiter – wie wahrscheinlich ist das wirklich? 🪜</div>
+    </div>
+    <div class="uebung-beschreibung">Angst denkt gerne in Extremen. Lass uns den schlimmsten Fall realistisch durchdenken – das macht ihn kleiner.</div>
+    <div class="katastrophen-leiter">
+      <div class="kata-stufe" style="background:#FEF2F2;border:1.5px solid #FCA5A5;">
+        <strong style="font-size:11px;color:#DC2626;">😱 Was ist meine schlimmste Befürchtung?</strong>
+        <div style="border-bottom:1px dashed #FCA5A5;height:16px;margin-top:4px;"></div>
+      </div>
+      <div style="text-align:center;font-size:12px;color:#6B7280;">⬇ Wie wahrscheinlich ist das wirklich? (0–100%)</div>
+      <div class="kata-stufe" style="background:#FFFBEB;border:1.5px solid #FDE68A;">
+        <strong style="font-size:11px;color:#D97706;">🤔 Realistischere Einschätzung:</strong> ____% wahrscheinlich
+        <div style="border-bottom:1px dashed #FDE68A;height:16px;margin-top:4px;"></div>
+      </div>
+      <div style="text-align:center;font-size:12px;color:#6B7280;">⬇ Und wenn es doch passiert – was dann?</div>
+      <div class="kata-stufe" style="background:#F0FDF4;border:1.5px solid #86EFAC;">
+        <strong style="font-size:11px;color:#059669;">🌱 Ich würde damit umgehen indem ich:</strong>
+        <div style="border-bottom:1px dashed #86EFAC;height:16px;margin-top:4px;"></div>
+      </div>
+    </div>
+    <div style="background:#EFF6FF;border-radius:8px;padding:7px;font-size:11px;text-align:center;color:#1D4ED8;">
+      💬 <em>"Ich bin mehr als eine Note." – Das ist wahr, egal wie die Prüfung läuft.</em>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Prüfungsangst · Seite 1</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 2 ===== -->
+<div class="seite">
+
+  <!-- Übung 3 – Grounding vor der Prüfung -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">3</div>
+      <div class="uebung-titel">Pre-Exam Grounding – 60 Sekunden die alles ändern 🧘</div>
+    </div>
+    <div class="uebung-beschreibung">Direkt vor der Prüfung: Körper erden, Nervensystem beruhigen. Das dauert 1 Minute und funktioniert wirklich.</div>
+    <div class="grounding-box">
+      <div class="grounding-schritt">
+        <strong>👣 Schritt 1: Füße spüren</strong><br>
+        <span style="color:#6B7280;">Drücke beide Füße fest auf den Boden. Spüre den Kontakt. 3 Sekunden halten.</span>
+      </div>
+      <div class="grounding-schritt">
+        <strong>🪑 Schritt 2: Rücken spüren</strong><br>
+        <span style="color:#6B7280;">Lehne dich zurück. Spüre den Stuhl unter dir. Lass die Schultern sinken.</span>
+      </div>
+      <div class="grounding-schritt">
+        <strong>🫁 Schritt 3: 3 tiefe Atemzüge</strong><br>
+        <span style="color:#6B7280;">Tief ein (4 Sek.) – kurz halten – langsam aus (6 Sek.). 3× wiederholen.</span>
+      </div>
+      <div class="grounding-schritt">
+        <strong>👁️ Schritt 4: 5 Dinge sehen</strong><br>
+        <span style="color:#6B7280;">Schaue dich um, benenne 5 Dinge die du siehst. Du bist im Hier und Jetzt.</span>
+      </div>
+    </div>
+    <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:7px;font-size:11px;text-align:center;">
+      Jetzt ausprobieren! Wie fühlt sich das an? <span style="border-bottom:1px dashed #FDE68A;display:inline-block;width:200px;">&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- Übung 4 – Affirmationskarten -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">4</div>
+      <div class="uebung-titel">Meine persönlichen Stärke-Sätze – fülle sie aus! 💪</div>
+    </div>
+    <div class="uebung-beschreibung">Diese Sätze sind dein innerer Coach. Schreibe sie fertig und lese sie laut vor der nächsten Prüfung.</div>
+    <div class="affirmation-karte"><span style="font-size:11px;color:#D97706;">✨</span> "Ich habe mich vorbereitet. Ich weiß <span style="border-bottom:1px dashed #FDE68A;display:inline-block;width:180px;">&nbsp;</span>"</div>
+    <div class="affirmation-karte"><span style="font-size:11px;color:#D97706;">✨</span> "Ich schaffe diese Prüfung, weil <span style="border-bottom:1px dashed #FDE68A;display:inline-block;width:190px;">&nbsp;</span>"</div>
+    <div class="affirmation-karte"><span style="font-size:11px;color:#D97706;">✨</span> "Mein Wert als Mensch hängt nicht von <span style="border-bottom:1px dashed #FDE68A;display:inline-block;width:155px;">&nbsp;</span> ab."</div>
+    <div class="affirmation-karte"><span style="font-size:11px;color:#D97706;">✨</span> "Wenn mein Kopf leer wird, atme ich kurz durch und <span style="border-bottom:1px dashed #FDE68A;display:inline-block;width:110px;">&nbsp;</span>"</div>
+    <div class="affirmation-karte"><span style="font-size:11px;color:#D97706;">✨</span> "Mein eigener Satz: <span style="border-bottom:1px dashed #FDE68A;display:inline-block;width:250px;">&nbsp;</span>"</div>
+  </div>
+
+  <!-- Übung 5 – Prüfungs-Taktiken -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">5</div>
+      <div class="uebung-titel">4 Prüfungs-Taktiken die wirklich helfen 🎯</div>
+    </div>
+    <div class="taktik-grid">
+      <div class="taktik-karte"><strong>📋 Erst überfliegen</strong><br><span style="color:#6B7280;font-size:10px;">Zuerst alle Aufgaben lesen, bevor du anfängst. Gibt Überblick und stoppt Panik.</span></div>
+      <div class="taktik-karte"><strong>✅ Leichtes zuerst</strong><br><span style="color:#6B7280;font-size:10px;">Fange mit dem an was du sicher kannst. Jeder Erfolg baut Vertrauen auf.</span></div>
+      <div class="taktik-karte"><strong>⏱️ Zeit im Blick</strong><br><span style="color:#6B7280;font-size:10px;">Teile Punkte durch Zeit. 1 Aufgabe steckengeblieben? Markieren, weitermachen.</span></div>
+      <div class="taktik-karte"><strong>💭 Blackout = Pause</strong><br><span style="color:#6B7280;font-size:10px;">3 tiefe Atemzüge, Blick nach unten, Schreibe irgendwas – das öffnet den Zugang wieder.</span></div>
+    </div>
+  </div>
+
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Reflexion</div>
+    <p>Welche Strategie aus diesem Blatt willst du bei deiner nächsten Prüfung ausprobieren? Was brauche ich dafür?</p>
+    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
+    <strong>ICD-10:</strong> F41.1 (Generalisierte Angststörung), F40.8 (spezifische Phobie, leistungsbezogen), F43.0 (akute Belastungsreaktion). Prüfungsangst: kognitive Komponente (Katastrophisieren, Überschätzung der Gefahr) und physiologische Überaktivierung (Sympathikusaktivierung). <strong>CBT-Interventionen:</strong> kognitive Umstrukturierung (Katastrophen-Leiter = "decatastrophizing", Beck), Expositionsbasiertes Vorgehen. <strong>Umdeuten der Erregung:</strong> "Reappraisal" – Angst als Aufregung interpretieren senkt Leistungsbeeinträchtigung (Brooks, 2014). <strong>Grounding</strong> (5-4-3-2-1) und Atemübungen aktivieren Parasympathikus (N. vagus). Affirmationen = ACT-Defusion + Selbstmitgefühlsansatz. Körperbasierte Übungen aus DBT (TIPP-Skill). <strong>Bei schwerer oder persistierender Prüfungsangst:</strong> Schulpsychologischen Dienst, kinder- und jugendpsychiatrische Abklärung einbeziehen.
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Prüfungsangst · Seite 2</span>
+  </div>
+</div>
+
+</body>
+</html>

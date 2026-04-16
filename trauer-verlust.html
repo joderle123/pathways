@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Trauer & Verlust</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #475569; --farbe-hell: #F8FAFC; }
+    .loss-bubble-grid { display:flex; flex-wrap:wrap; gap:7px; margin:8px 0; }
+    .loss-bubble { background:#F1F5F9; border:2px solid #CBD5E1; border-radius:18px; padding:5px 11px; font-size:10.5px; font-weight:600; color:#334155; cursor:pointer; }
+    .grief-expressions { display:grid; grid-template-columns:repeat(5,1fr); gap:7px; margin:8px 0; }
+    .grief-card { border:2px solid #CBD5E1; border-radius:10px; padding:7px; text-align:center; background:#F8FAFC; }
+    .grief-emoji { font-size:19px; display:block; }
+    .grief-label { font-size:9.5px; font-weight:600; color:#374151; display:block; margin-top:3px; }
+    .wave-area { border:2px dashed #94A3B8; border-radius:10px; min-height:90px; background:linear-gradient(to bottom, #F8FAFC 60%, #E8F4FD 100%); position:relative; display:flex; align-items:flex-end; justify-content:center; padding:8px; margin:8px 0; }
+    .wave-hint { font-size:10px; color:#94A3B8; text-align:center; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); }
+    .wave-baseline { position:absolute; bottom:18px; left:10px; right:10px; border-bottom:1px dashed #CBD5E1; }
+    .memory-box { border:2px solid #CBD5E1; border-radius:12px; padding:10px; background:#F8FAFC; margin-bottom:8px; }
+    .memory-nr { display:inline-block; background:#475569; color:white; width:20px; height:20px; border-radius:50%; text-align:center; line-height:20px; font-size:9px; font-weight:700; margin-right:5px; }
+    .bond-row { display:grid; grid-template-columns:1fr 40px 1fr; gap:8px; align-items:center; margin-bottom:6px; }
+    .bond-box { border:1.5px solid #CBD5E1; border-radius:8px; padding:8px; background:#F8FAFC; }
+    .bond-box .bb-lbl { font-size:10px; font-weight:700; color:#475569; margin-bottom:4px; }
+    .bond-arrow { text-align:center; font-size:18px; color:#94A3B8; }
+    .wusstest { background:#F1F5F9; border-left:4px solid #475569; border-radius:0 8px 8px 0; padding:8px 10px; margin:8px 0; font-size:10.5px; }
+    .wusstest strong { color:#1E293B; }
+    .validate-box { background:#F1F5F9; border:2px solid #94A3B8; border-radius:10px; padding:10px; margin:6px 0; font-size:11px; font-style:italic; color:#334155; }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- ===== SEITE 1 ===== -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">Wenn etwas oder jemand fehlt</div>
+      <div class="ab-untertitel">Trauer & Verlust · Kategorie: Gefühle & Emotionen</div>
+    </div>
+    <div class="kopfzeile-icon">🕊️</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">🕊️ Trauer ist so individuell wie du selbst</div>
+    <p>Trauer ist die natürliche Reaktion auf Verlust. Es gibt kein "richtig" oder "falsch" dabei – kein richtiges Tempo, keine richtige Art. <strong>Deine Trauer ist gültig.</strong></p>
+    <p>🧠 <em><strong>Wusstest du?</strong> Trauer aktiviert dieselben Hirnregionen wie körperlicher Schmerz. Wenn jemand sagt "das bricht mir das Herz" – das ist fast buchstäblich wahr. Trauerschmerz ist echter Schmerz.</em></p>
+  </div>
+
+  <!-- Übung 1: Was ich verloren habe -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">1</div>
+      <div class="uebung-titel">Was ich verloren habe – Verluste haben viele Gesichter</div>
+    </div>
+    <div class="uebung-beschreibung">Verlust ist nicht nur Tod. Kreise ein, was für dich zutrifft – so viele wie du möchtest. Du musst nichts erklären.</div>
+
+    <div class="loss-bubble-grid">
+      <div class="loss-bubble">💔 Freundschaft</div>
+      <div class="loss-bubble">💑 Beziehung</div>
+      <div class="loss-bubble">🕯️ Tod eines Menschen</div>
+      <div class="loss-bubble">🐾 Tod eines Tieres</div>
+      <div class="loss-bubble">🏠 Zuhause / Umzug</div>
+      <div class="loss-bubble">🏫 Schule / Klasse</div>
+      <div class="loss-bubble">🌍 Heimat / Kultur</div>
+      <div class="loss-bubble">💭 Ein Traum / Plan</div>
+      <div class="loss-bubble">🔒 Sicherheit</div>
+      <div class="loss-bubble">🌅 Kindheit / Unbeschwertheit</div>
+      <div class="loss-bubble">🏥 Gesundheit</div>
+      <div class="loss-bubble">😴 Normalität</div>
+    </div>
+
+    <div style="font-size:11px; margin-top:6px;">Was davon beschäftigt mich gerade am meisten?</div>
+    <div class="schreiblinien"><div class="schreiblinie"></div></div>
+
+    <div class="validate-box">
+      "Trauer um ein Ende einer Freundschaft ist genauso real wie Trauer um einen Tod. Kein Verlust ist 'zu klein' um traurig zu sein." – Das stimmt. Du bist nicht überempfindlich.
+    </div>
+  </div>
+
+  <!-- Übung 2: Trauer sieht anders aus -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">2</div>
+      <div class="uebung-titel">Trauer sieht anders aus – kreise ein, was du kennst</div>
+    </div>
+    <div class="uebung-beschreibung">Trauer kann sich auf viele Arten zeigen. Alle davon sind normal. Kreise ein, was du schon erlebt hast.</div>
+
+    <div class="grief-expressions">
+      <div class="grief-card"><span class="grief-emoji">😭</span><span class="grief-label">Weinen</span></div>
+      <div class="grief-card"><span class="grief-emoji">😡</span><span class="grief-label">Wut</span></div>
+      <div class="grief-card"><span class="grief-emoji">😶</span><span class="grief-label">Taubheit / Leere</span></div>
+      <div class="grief-card"><span class="grief-emoji">😮‍💨</span><span class="grief-label">Erleichterung</span></div>
+      <div class="grief-card"><span class="grief-emoji">😰</span><span class="grief-label">Schuldgefühle</span></div>
+      <div class="grief-card"><span class="grief-emoji">😄</span><span class="grief-label">Lachen (auch das!)</span></div>
+      <div class="grief-card"><span class="grief-emoji">🙈</span><span class="grief-label">Vergessen / Verdrängen</span></div>
+      <div class="grief-card"><span class="grief-emoji">😴</span><span class="grief-label">Erschöpfung</span></div>
+      <div class="grief-card"><span class="grief-emoji">🌀</span><span class="grief-label">Gedankenkarussell</span></div>
+      <div class="grief-card"><span class="grief-emoji">🍔</span><span class="grief-label">Viel / wenig essen</span></div>
+    </div>
+
+    <div class="wusstest">
+      <strong>🧠 Wusstest du?</strong> Lachen in der Trauer ist nicht respektlos – es ist eine natürliche Schutzreaktion des Nervensystems. Gleichzeitig weinen und lachen? Völlig normal. <em>Das macht Sinn.</em>
+    </div>
+  </div>
+
+  <!-- Übung 3: Trauer kommt in Wellen -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">3</div>
+      <div class="uebung-titel">Trauer kommt in Wellen – zeichne deine Welle</div>
+    </div>
+    <div class="uebung-beschreibung">Trauer ist nicht linear. Sie kommt und geht wie Wellen. Manchmal unerwartet, manchmal langsam. Zeichne, wie deine Trauer in den letzten Wochen war (die Linie oben = sehr intensiv, unten = leichter):</div>
+
+    <div class="wave-area">
+      <div class="wave-hint">Zeichne hier eine Wellenlinie – hoch wenn die Trauer stark war, tief wenn es besser war</div>
+      <div class="wave-baseline"></div>
+    </div>
+    <div style="display:flex; justify-content:space-between; font-size:9px; color:#94A3B8; padding:0 4px;">
+      <span>Vor einigen Wochen</span><span>Letzte Woche</span><span>Heute</span>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Trauer & Verlust · Seite 1</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 2 ===== -->
+<div class="seite">
+
+  <!-- Übung 4: Memory Keeper -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">4</div>
+      <div class="uebung-titel">Memory Keeper – was ich behalten will</div>
+    </div>
+    <div class="uebung-beschreibung">Trauern bedeutet nicht vergessen. Schreibe 3 Dinge auf, die du dir bewahren willst – Erinnerungen, Eigenschaften, Momente, Lehren.</div>
+
+    <div class="memory-box">
+      <div style="font-size:11px;"><span class="memory-nr">1</span> <strong>Eine Erinnerung, die ich festhalte:</strong></div>
+      <div class="schreiblinien" style="margin-top:5px;"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+    </div>
+    <div class="memory-box">
+      <div style="font-size:11px;"><span class="memory-nr">2</span> <strong>Etwas, das ich durch diesen Verlust gelernt habe:</strong></div>
+      <div class="schreiblinien" style="margin-top:5px;"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+    </div>
+    <div class="memory-box">
+      <div style="font-size:11px;"><span class="memory-nr">3</span> <strong>Ein Satz, den ich dieser Person / diesem Ding sagen möchte:</strong></div>
+      <div class="schreiblinien" style="margin-top:5px;"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+    </div>
+  </div>
+
+  <!-- Übung 5: Continuing Bonds -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">5</div>
+      <div class="uebung-titel">Continuing Bonds – Verbunden bleiben und trotzdem weiterleben</div>
+    </div>
+    <div class="uebung-beschreibung">Trauer bedeutet nicht, loszulassen. Es bedeutet, die Verbindung zu verändern – von anwesend zu innerlich getragen. Wie kannst du die Verbindung halten?</div>
+
+    <div class="bond-row">
+      <div class="bond-box">
+        <div class="bb-lbl">🔗 Die Verbindung, die ich hatte:</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+      <div class="bond-arrow">→</div>
+      <div class="bond-box">
+        <div class="bb-lbl">💫 Wie ich sie weiter trage:</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+    </div>
+
+    <div style="font-size:11px; margin-top:4px; margin-bottom:4px; font-weight:600;">Ideen: Was könnte helfen, die Verbindung zu halten? Kreise ein:</div>
+    <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:6px;">
+      <span style="background:#F1F5F9; border:1.5px solid #CBD5E1; border-radius:14px; padding:4px 10px; font-size:10px;">🕯️ Kerze anzünden</span>
+      <span style="background:#F1F5F9; border:1.5px solid #CBD5E1; border-radius:14px; padding:4px 10px; font-size:10px;">✉️ Brief schreiben</span>
+      <span style="background:#F1F5F9; border:1.5px solid #CBD5E1; border-radius:14px; padding:4px 10px; font-size:10px;">📷 Foto aufstellen</span>
+      <span style="background:#F1F5F9; border:1.5px solid #CBD5E1; border-radius:14px; padding:4px 10px; font-size:10px;">🎵 Lieblingssong</span>
+      <span style="background:#F1F5F9; border:1.5px solid #CBD5E1; border-radius:14px; padding:4px 10px; font-size:10px;">🌱 Etwas pflanzen</span>
+      <span style="background:#F1F5F9; border:1.5px solid #CBD5E1; border-radius:14px; padding:4px 10px; font-size:10px;">📖 Tagebuch schreiben</span>
+      <span style="background:#F1F5F9; border:1.5px solid #CBD5E1; border-radius:14px; padding:4px 10px; font-size:10px;">🎨 Etwas Kreatives</span>
+    </div>
+
+    <div class="wusstest">
+      <strong>🧠 Wusstest du?</strong> Die moderne Trauerforschung (Klass, Silverman) zeigt: Weiterleben bedeutet nicht loslassen. Wer eine innere Verbindung zum Verlorenen aufrechthält, trauert oft gesünder als jemand, der versucht "abzuschließen". <em>Du musst nicht loslassen.</em>
+    </div>
+  </div>
+
+  <!-- Reflexion -->
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Reflexion</div>
+    <p>Was brauchst du gerade am meisten? (Ruhe, Gespräch, Ablenkung, jemanden der zuhört, Zeit – alles ist okay.)</p>
+    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
+    <strong>ICD-10 Bezug:</strong> F43.21 (prolongierte Trauerstörung, neu in ICD-11: 6B42) – Abgrenzung von normaler Trauer: Symptome länger als 6–12 Monate, deutliche Funktionsbeeinträchtigung, anhaltende Sehnsucht/Schmerz. Das Phasenmodell (Kübler-Ross) wird hier bewusst <em>nicht</em> als lineares Schema verwendet – neuere Forschung (Stroebe & Schut, Dual Process Model) betont den Wechsel zwischen Verlustorientierung und Restaurationsorientierung. <strong>Continuing Bonds</strong> (Klass et al., 1996) ist klinisch evidenzbasiert als Trauerprozessmodell. <strong>Risikogruppen:</strong> Trauer nach Suizid, plötzlichem Tod, Gewalt oder bei kumulativen Verlusten (Migrationserfahrung). Bei Jugendlichen: Trauer kann als Aggression, risikohaftes Verhalten oder Schulversagen erscheinen. Fachzugang: traumasensitive Begleitung, ggf. Überweisung Traumatherapie.
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Trauer & Verlust · Seite 2</span>
+  </div>
+</div>
+
+</body>
+</html>

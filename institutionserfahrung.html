@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Mein Weg</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #4A90D9; --farbe-hell: #EBF5FF; }
+
+    /* Vertrauenskreis – konzentrische Kreise */
+    .vertrauenskreis-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin-bottom: 10px;
+    }
+    .kreis-diagramm {
+      flex-shrink: 0;
+      width: 160px;
+      height: 160px;
+      position: relative;
+    }
+    .kreis-aussen {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: #DBEAFE;
+      border: 2px solid #93C5FD;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .kreis-mitte {
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      background: #BFDBFE;
+      border: 2px solid #60A5FA;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .kreis-innen {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #4A90D9;
+      border: 2px solid #2563EB;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 800;
+      color: white;
+      text-align: center;
+      line-height: 1.2;
+      padding: 4px;
+    }
+    .kreis-legend { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+    .kreis-legend-item { font-size: 11px; }
+    .kreis-legend-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+
+    /* Rechte-Karten mit Checkbox */
+    .recht-karte {
+      background: var(--farbe-hell);
+      border: 1.5px solid #93C5FD;
+      border-radius: 8px;
+      padding: 9px 11px;
+      font-size: 11px;
+    }
+    .recht-karte-titel {
+      font-weight: 700;
+      color: var(--farbe);
+      margin-bottom: 3px;
+      font-size: 11px;
+    }
+    .recht-karte-text {
+      color: #374151;
+      font-size: 10px;
+      margin-bottom: 5px;
+    }
+    .check-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10.5px;
+      color: #374151;
+      cursor: default;
+      margin-top: 2px;
+    }
+    .check-label input[type="checkbox"] {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      accent-color: var(--farbe);
+    }
+
+    /* Brief-Vorlage */
+    .brief-block {
+      background: #FFFBF0;
+      border: 1.5px dashed #FCD34D;
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 11.5px;
+      line-height: 2.1;
+    }
+    .brief-zeile {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 2px;
+      flex-wrap: wrap;
+    }
+    .brief-prompt {
+      white-space: nowrap;
+      font-weight: 600;
+      color: #92400E;
+    }
+    .brief-linie {
+      flex: 1;
+      min-width: 120px;
+      border-bottom: 1.5px solid #E2E8F0;
+      height: 22px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- ===== SEITE 1 ===== -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">Mein Weg — Leben in Institutionen</div>
+      <div class="ab-untertitel">Institutionserfahrung · Kategorie: Familie &amp; Soziales Umfeld</div>
+    </div>
+    <div class="kopfzeile-icon">🗺️</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">💡 Dein Weg ist besonders — und das ist OK</div>
+    <p>Viele Jugendliche haben verschiedene Stationen in ihrem Leben durchlaufen: Zuhause, Heim, Pflegefamilie, Wohngruppe. <strong>Jede Station hat dich geprägt — aber keine definiert dich.</strong></p>
+  </div>
+
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">1</div><div class="uebung-titel">Meine Stationen — eine Timeline</div></div>
+    <div class="uebung-beschreibung">Zeichne deinen Weg. Für jede Station: Wo? Wie alt? Was war gut? Was war schwer?</div>
+    <div style="display:flex;gap:8px;margin-bottom:8px;">
+      <div style="flex:1;background:var(--farbe-hell);border-radius:8px;padding:10px;font-size:10px;"><strong>Station 1</strong><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      <div style="flex:1;background:var(--farbe-hell);border-radius:8px;padding:10px;font-size:10px;"><strong>Station 2</strong><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      <div style="flex:1;background:var(--farbe-hell);border-radius:8px;padding:10px;font-size:10px;"><strong>Station 3</strong><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+    </div>
+  </div>
+
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">2</div><div class="uebung-titel">Was ich mitgenommen habe</div></div>
+    <div class="uebung-beschreibung">Von jeder Station: eine gute Erinnerung, eine Person, etwas das ich gelernt habe:</div>
+    <div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Institutionserfahrung · Seite 1</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 2 ===== -->
+<div class="seite">
+
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">3</div><div class="uebung-titel">Vertrauens-Barometer</div></div>
+    <div class="uebung-beschreibung">Wie leicht fällt es dir, neuen Menschen zu vertrauen?</div>
+    <div style="display:flex;justify-content:space-between;margin:8px 0;font-size:10px;"><span>Sehr schwer 1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10 Leicht</span></div>
+    <div style="height:12px;background:linear-gradient(to right,#DC2626,#EAB308,#22C55E);border-radius:6px;margin-bottom:8px;"></div>
+    <div style="font-size:11px;">Was brauche ich um jemandem zu vertrauen? <div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">4</div><div class="uebung-titel">Mein sicherer Ort</div></div>
+    <div class="uebung-beschreibung">Stell dir einen Ort vor an dem du dich sicher fühlst. Das kann real oder ausgedacht sein.</div>
+    <div style="font-size:11px;">Wie sieht er aus? <div class="schreiblinie"></div>Was höre ich dort? <div class="schreiblinie"></div>Wie fühlt es sich an? <div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fussnote">
+    <p>📎 Dieses Arbeitsblatt gehört zu deiner persönlichen Dokumentation. Es wird vertraulich behandelt.</p>
+    <p style="font-size:9px;color:#94A3B8;">Pathways · Joey Guedes-Tool · Institutionserfahrung · v1.0</p>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Institutionserfahrung · Seite 2</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 3 ===== -->
+<div class="seite">
+
+  <!-- Übung 5: Mein Vertrauenskreis -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">5</div>
+      <div class="uebung-titel">Mein Vertrauenskreis</div>
+    </div>
+    <div class="uebung-beschreibung">Schreibe 2–3 Namen in jeden Ring. Der innere Kreis steht für die Menschen, denen du am meisten vertraust.</div>
+
+    <div class="vertrauenskreis-wrapper">
+      <div class="kreis-diagramm">
+        <div class="kreis-aussen">
+          <div class="kreis-mitte">
+            <div class="kreis-innen">Ganz<br>nah</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kreis-legend">
+        <div class="kreis-legend-item">
+          <span class="kreis-legend-dot" style="background:#4A90D9;border:1.5px solid #2563EB;"></span>
+          <strong>Innen — Ganz nah:</strong> Wem vertraue ich am meisten?
+          <div class="schreiblinien" style="margin-top:4px;">
+            <div class="schreiblinie"></div>
+            <div class="schreiblinie"></div>
+          </div>
+        </div>
+        <div class="kreis-legend-item">
+          <span class="kreis-legend-dot" style="background:#BFDBFE;border:1.5px solid #60A5FA;"></span>
+          <strong>Mitte — Wichtig:</strong> Wer gehört zu meinem Leben?
+          <div class="schreiblinien" style="margin-top:4px;">
+            <div class="schreiblinie"></div>
+            <div class="schreiblinie"></div>
+          </div>
+        </div>
+        <div class="kreis-legend-item">
+          <span class="kreis-legend-dot" style="background:#DBEAFE;border:1.5px solid #93C5FD;"></span>
+          <strong>Außen — Bekannt:</strong> Wen kenne ich?
+          <div class="schreiblinien" style="margin-top:4px;">
+            <div class="schreiblinie"></div>
+            <div class="schreiblinie"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--farbe-hell);border-radius:8px;padding:9px 12px;font-size:11px;">
+      💭 <strong>Gibt es Menschen, die du gerne näher hättest?</strong>
+      <div class="schreiblinie" style="margin-top:4px;"></div>
+      <div class="schreiblinie"></div>
+    </div>
+  </div>
+
+  <!-- Übung 6: Meine Rechte -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">6</div>
+      <div class="uebung-titel">Meine Rechte — UN-Kinderrechtskonvention</div>
+    </div>
+    <div class="uebung-beschreibung">Diese Rechte gelten für dich — egal wo du lebst. Kreuze an, wie du das erlebst.</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;">
+
+      <div class="recht-karte">
+        <div class="recht-karte-titel">🗣️ Recht auf Gehört-Werden (Art. 12)</div>
+        <div class="recht-karte-text">Deine Meinung muss bei Entscheidungen über dein Leben berücksichtigt werden.</div>
+        <label class="check-label"><input type="checkbox"><span>Wird bei mir respektiert</span></label>
+        <label class="check-label"><input type="checkbox"><span>Manchmal</span></label>
+        <label class="check-label"><input type="checkbox"><span>Noch nicht genug</span></label>
+      </div>
+
+      <div class="recht-karte">
+        <div class="recht-karte-titel">🔒 Recht auf Privatsphäre (Art. 16)</div>
+        <div class="recht-karte-text">Du hast das Recht auf private Gespräche, Briefe und einen persönlichen Bereich.</div>
+        <label class="check-label"><input type="checkbox"><span>Wird bei mir respektiert</span></label>
+        <label class="check-label"><input type="checkbox"><span>Manchmal</span></label>
+        <label class="check-label"><input type="checkbox"><span>Noch nicht genug</span></label>
+      </div>
+
+      <div class="recht-karte">
+        <div class="recht-karte-titel">👨‍👩‍👧 Recht auf Familienkontakt (Art. 9)</div>
+        <div class="recht-karte-text">Der Kontakt zu deiner Familie darf nicht ohne guten Grund eingeschränkt werden.</div>
+        <label class="check-label"><input type="checkbox"><span>Wird bei mir respektiert</span></label>
+        <label class="check-label"><input type="checkbox"><span>Manchmal</span></label>
+        <label class="check-label"><input type="checkbox"><span>Noch nicht genug</span></label>
+      </div>
+
+      <div class="recht-karte">
+        <div class="recht-karte-titel">📚 Recht auf Bildung (Art. 28)</div>
+        <div class="recht-karte-text">Du hast das Recht auf Schulbesuch und Unterstützung beim Lernen.</div>
+        <label class="check-label"><input type="checkbox"><span>Wird bei mir respektiert</span></label>
+        <label class="check-label"><input type="checkbox"><span>Manchmal</span></label>
+        <label class="check-label"><input type="checkbox"><span>Noch nicht genug</span></label>
+      </div>
+
+      <div class="recht-karte" style="grid-column:1/-1;">
+        <div class="recht-karte-titel">🛡️ Recht auf Schutz vor Gewalt (Art. 19)</div>
+        <div class="recht-karte-text">Kein Mensch darf dich körperlich oder seelisch verletzen oder beschämen — in keiner Einrichtung.</div>
+        <div style="display:flex;gap:20px;margin-top:2px;">
+          <label class="check-label"><input type="checkbox"><span>Wird bei mir respektiert</span></label>
+          <label class="check-label"><input type="checkbox"><span>Manchmal</span></label>
+          <label class="check-label"><input type="checkbox"><span>Noch nicht genug</span></label>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="background:var(--farbe-hell);border-radius:8px;padding:8px 11px;font-size:11px;">
+      💬 Gibt es ein Recht, über das du mehr sprechen möchtest?
+      <div class="schreiblinie" style="margin-top:4px;"></div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Institutionserfahrung · Seite 3</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 4 ===== -->
+<div class="seite">
+
+  <!-- Übung 7: Brief an mein zukünftiges Ich -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">7</div>
+      <div class="uebung-titel">Brief an mein zukünftiges Ich</div>
+    </div>
+    <div class="uebung-beschreibung">Schreibe einen Brief an dich selbst — wie du in 5 Jahren sein wirst. Was möchtest du dir mitgeben?</div>
+
+    <div class="brief-block">
+      <div class="brief-zeile">
+        <span class="brief-prompt">Liebe/r</span>
+        <div class="brief-linie"></div>
+        <span class="brief-prompt">in 5 Jahren,</span>
+      </div>
+      <div class="brief-zeile">
+        <span class="brief-prompt">Heute bin ich</span>
+        <div class="brief-linie" style="max-width:60px;"></div>
+        <span class="brief-prompt">Jahre alt und lebe in</span>
+        <div class="brief-linie"></div>
+      </div>
+      <div style="margin-top:8px;margin-bottom:2px;font-weight:700;font-size:11.5px;color:#92400E;">Was ich dir sagen möchte:</div>
+      <div class="schreiblinie"></div>
+      <div class="schreiblinie"></div>
+      <div style="margin-top:8px;margin-bottom:2px;font-weight:700;font-size:11.5px;color:#92400E;">Was ich mir für dich wünsche:</div>
+      <div class="schreiblinie"></div>
+      <div class="schreiblinie"></div>
+      <div style="margin-top:8px;margin-bottom:2px;font-weight:700;font-size:11.5px;color:#92400E;">Was ich heute schon gut kann:</div>
+      <div class="schreiblinie"></div>
+      <div class="schreiblinie"></div>
+      <div style="margin-top:14px;font-size:11px;color:#92400E;display:flex;align-items:baseline;gap:8px;">
+        <span style="font-weight:600;">Alles Liebe,</span>
+        <div class="brief-linie" style="max-width:200px;"></div>
+        <span style="font-weight:600;">(dein heutiges Ich)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reflexion -->
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Reflexion</div>
+    <p style="font-size:12px;color:#92400E;margin-bottom:8px;font-weight:600;">Was macht dich besonders — unabhängig davon, wo du lebst?</p>
+    <div class="uebung-beschreibung" style="font-size:11px;margin-bottom:8px;">Denk an deine Stärken, deine Interessen, das was dich zum Lachen bringt, das was du gut kannst. Das gehört nur dir.</div>
+    <div class="schreiblinien">
+      <div class="schreiblinie"></div>
+      <div class="schreiblinie"></div>
+      <div class="schreiblinie"></div>
+    </div>
+  </div>
+
+  <!-- Fachhinweis -->
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
+    <p style="margin-bottom:5px;"><strong>Diagnostische Einordnung (ICD-10):</strong> F94.1 Reaktive Bindungsstörung des Kindesalters; F43 Anpassungsstörungen (inkl. F43.2 Anpassungsstörung mit Angst und depressiver Stimmung) als häufige Begleitdiagnosen bei institutionalisierten Jugendlichen.</p>
+    <p style="margin-bottom:5px;"><strong>Methodische Grundlagen:</strong> Bindungstheorie nach Bowlby (1969) — sichere Basis als Voraussetzung für Exploration; Narrative Therapie (White &amp; Epston, 1990) — Biographiearbeit und Reauthoring als Identitätsstärkung; Resilienzforschung nach Werner &amp; Smith (1992) — protektive Faktoren: mindestens eine stabile Bezugsperson, Selbstwirksamkeitserleben, soziale Einbindung.</p>
+    <p style="margin-bottom:5px;"><strong>UN-Kinderrechtskonvention (UNCRC):</strong> Art. 9 (Familienkontakt), Art. 12 (Partizipation), Art. 16 (Privatsphäre), Art. 19 (Schutz vor Gewalt), Art. 28 (Bildung). In Luxemburg gilt Loi du 4 juillet 2008 portant introduction du Code de la Jeunesse.</p>
+    <p><strong>Luxembourg — Anlaufstellen:</strong> ONA — Office National de l'Accueil (Unterbringungskoordination); Ombudsman fir Kanner a Jugendlecher (OKaJu) — Beschwerdestelle für Kinder und Jugendliche, Tel. 26 123-124.</p>
+  </div>
+
+  <!-- Fussnote -->
+  <div class="fussnote">
+    <p>📎 Dieses Arbeitsblatt gehört zu deiner persönlichen Dokumentation. Es wird vertraulich behandelt und nur mit deinem Einverständnis weitergegeben.</p>
+    <p style="font-size:9px;color:#94A3B8;">Pathways · Joey Guedes-Tool · Institutionserfahrung · v2.0</p>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Institutionserfahrung · Seite 4</span>
+  </div>
+</div>
+
+</body>
+</html>

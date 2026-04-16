@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Wut &amp; Aggression</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #DC2626; --farbe-hell: #FEF2F2; }
+    .bubble-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-bottom:10px; }
+    .bubble { background:var(--farbe-hell); border:1.5px solid #FECACA; border-radius:8px; padding:7px 8px; font-size:11px; }
+    .thermo-zone { border-left:5px solid; border-radius:0 8px 8px 0; padding:8px 10px; margin-bottom:5px; }
+    .tipp-card { border-radius:8px; padding:10px; }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- SEITE 1 -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">Wut ist okay – es kommt drauf an, was du damit machst</div>
+      <div class="ab-untertitel">Wut &amp; Aggression · Kategorie: Emotionen &amp; Wohlbefinden</div>
+    </div>
+    <div class="kopfzeile-icon">🔥</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">🔥 Wut zeigt dir: Eine Grenze wurde überschritten.</div>
+    <p>Wut ist keine schlechte Emotion – sie schützt dich. Sie sagt: "Etwas Wichtiges ist in Gefahr." Das Problem entsteht nicht durch die Wut, sondern wenn man ihr blind folgt oder sie komplett schluckt. Beides schadet.</p>
+    <p>🧠 <em>Wusstest du? Hinter fast jeder Wut steckt ein tieferes Gefühl – Enttäuschung, Verletzung, Angst oder Scham. Wut ist wie ein Eisberg: Man sieht nur die Spitze.</em></p>
+  </div>
+
+  <!-- Übung 1 -->
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">1</div><div class="uebung-titel">Das Wut-Thermometer – 4 Zonen kennenlernen</div></div>
+    <div class="uebung-beschreibung">Wut eskaliert in Stufen. Wenn du frühe Zeichen erkennst, kannst du früher eingreifen. Schreibe deine persönlichen Zeichen in jede Zone:</div>
+    <div style="display:grid;grid-template-columns:50px 1fr;gap:10px;align-items:stretch;margin-bottom:10px;">
+      <!-- Thermometer -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
+        <div style="background:linear-gradient(to bottom, #DC2626 0%, #F97316 30%, #FBBF24 60%, #4ADE80 100%);width:20px;flex:1;border-radius:10px 10px 0 0;"></div>
+        <div style="background:#DC2626;width:32px;height:32px;border-radius:50%;"></div>
+        <div style="font-size:9px;color:var(--grau);margin-top:2px;">0–100</div>
+      </div>
+      <!-- Zones -->
+      <div style="display:flex;flex-direction:column;gap:5px;">
+        <div class="thermo-zone" style="border-color:#DC2626;background:#FEF2F2;">
+          <div style="font-size:11px;font-weight:700;color:#DC2626;">🔴 Zone 4 · 76–100 · Explodiert</div>
+          <div style="font-size:10px;color:var(--grau);margin:3px 0;">Kontrollverlust, schreien, schlagen, weglaufen – Körper &amp; Geist außer Kontrolle</div>
+          <div style="font-size:10px;">Meine Zeichen: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:200px;"></span></div>
+        </div>
+        <div class="thermo-zone" style="border-color:#F97316;background:#FFF7ED;">
+          <div style="font-size:11px;font-weight:700;color:#F97316;">🟠 Zone 3 · 51–75 · Sehr wütend</div>
+          <div style="font-size:10px;color:var(--grau);margin:3px 0;">Stimme lauter, kaum zuhören können, Körper angespannt, kurzangebunden</div>
+          <div style="font-size:10px;">Meine Zeichen: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:200px;"></span></div>
+        </div>
+        <div class="thermo-zone" style="border-color:#FBBF24;background:#FFFBEB;">
+          <div style="font-size:11px;font-weight:700;color:#D97706;">🟡 Zone 2 · 26–50 · Gereizt</div>
+          <div style="font-size:10px;color:var(--grau);margin:3px 0;">Ungeduldig, kurze Antworten, genervt, Konzentration schwindet</div>
+          <div style="font-size:10px;">Meine Zeichen: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:200px;"></span></div>
+        </div>
+        <div class="thermo-zone" style="border-color:#4ADE80;background:#F0FDF4;">
+          <div style="font-size:11px;font-weight:700;color:#16A34A;">🟢 Zone 1 · 0–25 · Leicht genervt</div>
+          <div style="font-size:10px;color:var(--grau);margin:3px 0;">Früheste Warnsignale – JETZT eingreifen ist am einfachsten!</div>
+          <div style="font-size:10px;">Meine Zeichen: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:200px;"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Übung 2 -->
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">2</div><div class="uebung-titel">Körpersignale – Was spürst du wenn Wut kommt? Kreise ein:</div></div>
+    <div class="bubble-grid">
+      <div class="bubble">🔥 Hitze im Gesicht / Röte</div>
+      <div class="bubble">💓 Herzrasen / Herzklopfen</div>
+      <div class="bubble">✊ Fäuste ballen sich</div>
+      <div class="bubble">😬 Kiefer zusammenbeißen</div>
+      <div class="bubble">🫁 Flacher, schneller Atem</div>
+      <div class="bubble">😤 Druck in der Brust</div>
+      <div class="bubble">🦴 Angespannte Schultern</div>
+      <div class="bubble">🌡️ Schwitzen / Zittern</div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Wut &amp; Aggression · Seite 1</span>
+  </div>
+</div>
+
+<!-- SEITE 2 -->
+<div class="seite">
+
+  <!-- Übung 3 -->
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">3</div><div class="uebung-titel">Auslöser-Wolke – Was macht dich wütend? Kreise ein!</div></div>
+    <div class="uebung-beschreibung">Kreise alle Wörter ein die bei dir Wut auslösen können:</div>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;">
+      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">🏫 Unrecht in der Schule</div>
+      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">👥 Ausgeschlossen werden</div>
+      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">🗣️ Nicht zugehört werden</div>
+      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">😒 Respektlosigkeit</div>
+      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">😤 Verräter / Lügen</div>
+      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">🏠 Streit zuhause</div>
+      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">📱 Ignoriert werden (Chat)</div>
+      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">😤 Befehle ohne Erklärung</div>
+      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">💔 Enttäuschung</div>
+      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">🎓 Noten / Prüfungen</div>
+      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">😞 Kontrollverlust</div>
+      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">👤 Mobbing / Ausgrenzung</div>
+      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">🔇 Kein Gehör finden</div>
+      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:20px;padding:5px 10px;font-size:11px;">⏰ Ungeduld / Stress</div>
+      <div style="background:#F9FAFB;border:1.5px dashed var(--border);border-radius:20px;padding:5px 10px;font-size:11px;">+ Eigenes: ___________</div>
+    </div>
+    <p style="font-size:11px;color:var(--grau);">Mein stärkster Auslöser gerade: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:220px;"></span></p>
+  </div>
+
+  <!-- Übung 4 -->
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">4</div><div class="uebung-titel">TIPP-Skills für Wut – Jetzt sofort anwenden</div></div>
+    <div class="uebung-beschreibung">DBT-Skill TIPP verändert deine Körperchemie direkt – schnell und ohne Schaden. Was könntest du ausprobieren?</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+      <div class="tipp-card" style="background:#EFF6FF;border:1.5px solid #93C5FD;">
+        <div style="font-size:12px;font-weight:900;color:#2563EB;margin-bottom:4px;">T – Temperature</div>
+        <div style="font-size:11px;color:var(--grau);margin-bottom:6px;">Kaltes Wasser ins Gesicht tauchen · Eiswürfel in die Hand · Kalt duschen → senkt Herzrate sofort</div>
+        <div style="font-size:10px;">Ich probiere: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:120px;"></span></div>
+      </div>
+      <div class="tipp-card" style="background:#FEF2F2;border:1.5px solid #FCA5A5;">
+        <div style="font-size:12px;font-weight:900;color:#DC2626;margin-bottom:4px;">I – Intensive Bewegung</div>
+        <div style="font-size:11px;color:var(--grau);margin-bottom:6px;">20 Jumping Jacks · Rennen · Kissen schlagen · Lautstark singen → Adrenalin raus</div>
+        <div style="font-size:10px;">Ich probiere: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:120px;"></span></div>
+      </div>
+      <div class="tipp-card" style="background:#F0FDF4;border:1.5px solid #6EE7B7;">
+        <div style="font-size:12px;font-weight:900;color:#059669;margin-bottom:4px;">P – Paced Breathing</div>
+        <div style="font-size:11px;color:var(--grau);margin-bottom:6px;">Ausatmen länger als einatmen · 4 Sek. rein / 7 Sek. raus → Parasympathikus an</div>
+        <div style="font-size:10px;">Ich probiere: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:120px;"></span></div>
+      </div>
+      <div class="tipp-card" style="background:#F5F3FF;border:1.5px solid #C4B5FD;">
+        <div style="font-size:12px;font-weight:900;color:#7C3AED;margin-bottom:4px;">P – Progressive Relaxation</div>
+        <div style="font-size:11px;color:var(--grau);margin-bottom:6px;">Fäuste 7 Sek. ballen – loslassen · Schultern hochziehen – fallen lassen → Spannung weg</div>
+        <div style="font-size:10px;">Ich probiere: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:120px;"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Übung 5 -->
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">5</div><div class="uebung-titel">Ich-Botschaften – Wut kommunizieren ohne Angriff</div></div>
+    <div class="uebung-beschreibung">Statt "Du machst mich wütend!" → Ich-Botschaft: Wenn... fühle ich... weil... ich wünsche mir... Fülle 2 Beispiele aus:</div>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:8px;">
+      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:8px;padding:10px;font-size:11px;">
+        <div style="display:grid;grid-template-columns:70px 1fr;gap:6px;align-items:center;">
+          <span style="color:var(--farbe);font-weight:700;">Wenn …</span><span style="border-bottom:1px dashed var(--border);height:18px;"></span>
+        </div>
+        <div style="display:grid;grid-template-columns:70px 1fr;gap:6px;align-items:center;margin-top:4px;">
+          <span style="color:var(--farbe);font-weight:700;">fühle ich …</span><span style="border-bottom:1px dashed var(--border);height:18px;"></span>
+        </div>
+        <div style="display:grid;grid-template-columns:70px 1fr;gap:6px;align-items:center;margin-top:4px;">
+          <span style="color:var(--farbe);font-weight:700;">weil …</span><span style="border-bottom:1px dashed var(--border);height:18px;"></span>
+        </div>
+        <div style="display:grid;grid-template-columns:70px 1fr;gap:6px;align-items:center;margin-top:4px;">
+          <span style="color:var(--farbe);font-weight:700;">Ich wünsche mir …</span><span style="border-bottom:1px dashed var(--border);height:18px;"></span>
+        </div>
+      </div>
+      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:8px;padding:10px;font-size:11px;">
+        <div style="display:grid;grid-template-columns:70px 1fr;gap:6px;align-items:center;">
+          <span style="color:var(--farbe);font-weight:700;">Wenn …</span><span style="border-bottom:1px dashed var(--border);height:18px;"></span>
+        </div>
+        <div style="display:grid;grid-template-columns:70px 1fr;gap:6px;align-items:center;margin-top:4px;">
+          <span style="color:var(--farbe);font-weight:700;">fühle ich …</span><span style="border-bottom:1px dashed var(--border);height:18px;"></span>
+        </div>
+        <div style="display:grid;grid-template-columns:70px 1fr;gap:6px;align-items:center;margin-top:4px;">
+          <span style="color:var(--farbe);font-weight:700;">weil …</span><span style="border-bottom:1px dashed var(--border);height:18px;"></span>
+        </div>
+        <div style="display:grid;grid-template-columns:70px 1fr;gap:6px;align-items:center;margin-top:4px;">
+          <span style="color:var(--farbe);font-weight:700;">Ich wünsche mir …</span><span style="border-bottom:1px dashed var(--border);height:18px;"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Reflexion</div>
+    <p>Welche Zone erkennst du am häufigsten bei dir? Was hilft dir am besten wenn du in Zone 2 oder 3 bist?</p>
+    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
+    <strong>ICD-10:</strong> F63.81 (Intermittierende explosible Störung), F90 (ADHS mit Impulskontrollproblemen), F91 (Störungen des Sozialverhaltens), F43 (Trauma-assoziierte Dysregulation). DBT-Wut-Modul relevant.<br>
+    <strong>Methoden:</strong> Wut-Thermometer = etabliertes KVT-Instrument. TIPP-Skill = DBT-Krisentoleranzmodul (Linehan) – biologische Regulation vor kognitiver Umstrukturierung. Ich-Botschaften = ART (Aggression Replacement Training, Goldstein) + Gordon-Kommunikationsmodell.<br>
+    <strong>Eisberg-Modell:</strong> Primäre Emotionen (Angst, Scham, Verletzung) unter der Wut identifizieren – zentral in DBT und emotionsfokussierter Therapie (EFT).<br>
+    <strong>Abklärung empfehlen</strong> bei Kontrollverlusten mit Fremdgefährdung, wiederholten Eskalationen, neurologischen Auffälligkeiten (ADHS, Impulskontrolle).<br>
+    <strong>Ressourcen:</strong> ART-Gruppen, kJP-Ambulanz, DBT-A bei schwererer Dysregulation.
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Wut &amp; Aggression · Seite 2</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Diskriminierung & Ausgrenzung</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #7C3AED; --farbe-hell: #F5F3FF; }
+    .disc-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:7px; margin:8px 0; }
+    .disc-card { border:2px solid #DDD6FE; border-radius:10px; padding:8px 6px; text-align:center; background:#F5F3FF; cursor:pointer; }
+    .disc-emoji { font-size:18px; display:block; }
+    .disc-name { font-size:9.5px; font-weight:700; color:#374151; display:block; margin-top:2px; }
+    .disc-desc { font-size:8.5px; color:#6B7280; display:block; margin-top:2px; }
+    .safe-space { background:linear-gradient(135deg,#F5F3FF,#EDE9FE); border:2px solid #7C3AED; border-radius:12px; padding:12px; margin:8px 0; }
+    .bystander-grid { display:flex; flex-direction:column; gap:6px; margin:8px 0; }
+    .bystander-row { display:grid; grid-template-columns:28px 85px 1fr; gap:8px; align-items:start; padding:7px; border-radius:8px; border:1.5px solid; }
+    .bystander-nr { color:white; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex-shrink:0; }
+    .bystander-label { font-size:10.5px; font-weight:700; }
+    .bystander-desc { font-size:10px; color:#374151; }
+    .bystander-check { font-size:9.5px; margin-top:3px; }
+    .support-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:8px 0; }
+    .support-card { border:2px solid #DDD6FE; border-radius:10px; padding:9px; background:#F5F3FF; }
+    .sc-title { font-size:11px; font-weight:700; color:#5B21B6; margin-bottom:5px; }
+    .selfcare-row { display:grid; grid-template-columns:28px 1fr; gap:8px; align-items:start; margin-bottom:6px; }
+    .sc-nr { background:#7C3AED; color:white; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex-shrink:0; }
+    .wusstest { background:#F5F3FF; border-left:4px solid #7C3AED; border-radius:0 8px 8px 0; padding:8px 10px; margin:8px 0; font-size:10.5px; }
+    .wusstest strong { color:#4C1D95; }
+    .validate-box { background:#EDE9FE; border:2px solid #7C3AED; border-radius:10px; padding:10px; margin:6px 0; font-size:11px; color:#3B0764; }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- ===== SEITE 1 ===== -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">Diskriminierung benennen, verstehen, handeln</div>
+      <div class="ab-untertitel">Diskriminierung & Ausgrenzung · Kategorie: Recht & Gesellschaft</div>
+    </div>
+    <div class="kopfzeile-icon">✊</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">✊ Diskriminierung ist nicht dein Fehler – und du bist nicht allein</div>
+    <p>Diskriminierung bedeutet, schlechter behandelt zu werden aufgrund von Merkmalen, die du bist oder hast: Herkunft, Hautfarbe, Religion, Geschlecht, Behinderung, Aussehen, Sexualität und mehr. Das verletzt Menschenwürde und ist in Luxemburg gesetzlich verboten.</p>
+    <p>🧠 <em><strong>Wusstest du?</strong> Diskriminierungserfahrungen aktivieren dieselben Hirnregionen wie körperlicher Schmerz. Ausgrenzung tut buchstäblich weh. Dein Schmerz ist real – und berechtigt.</em></p>
+  </div>
+
+  <!-- Übung 1: Formen der Diskriminierung -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">1</div>
+      <div class="uebung-titel">8 Formen von Diskriminierung – erkenne und benenne sie</div>
+    </div>
+    <div class="uebung-beschreibung">Kreise die Formen ein, die du schon erlebt, beobachtet oder gelesen hast. Du musst nichts erklären.</div>
+
+    <div class="disc-grid">
+      <div class="disc-card">
+        <span class="disc-emoji">🌍</span>
+        <span class="disc-name">Rassismus</span>
+        <span class="disc-desc">Wegen Herkunft / Hautfarbe</span>
+      </div>
+      <div class="disc-card">
+        <span class="disc-emoji">⚧️</span>
+        <span class="disc-name">Sexismus</span>
+        <span class="disc-desc">Wegen Geschlecht / Genderidentität</span>
+      </div>
+      <div class="disc-card">
+        <span class="disc-emoji">🏳️‍🌈</span>
+        <span class="disc-name">Homophobie</span>
+        <span class="disc-desc">Wegen sexueller Orientierung</span>
+      </div>
+      <div class="disc-card">
+        <span class="disc-emoji">♿</span>
+        <span class="disc-name">Ableismus</span>
+        <span class="disc-desc">Wegen Behinderung / Neurodivergenz</span>
+      </div>
+      <div class="disc-card">
+        <span class="disc-emoji">🕌</span>
+        <span class="disc-name">Religiöse Diskriminierung</span>
+        <span class="disc-desc">Wegen Glaube / Weltanschauung</span>
+      </div>
+      <div class="disc-card">
+        <span class="disc-emoji">👁️</span>
+        <span class="disc-name">Lookism</span>
+        <span class="disc-desc">Wegen Aussehen / Körper</span>
+      </div>
+      <div class="disc-card">
+        <span class="disc-emoji">💰</span>
+        <span class="disc-name">Klassismus</span>
+        <span class="disc-desc">Wegen sozialer / finanzieller Herkunft</span>
+      </div>
+      <div class="disc-card">
+        <span class="disc-emoji">✏️</span>
+        <span class="disc-name">Andere Form</span>
+        <span class="disc-desc">___________________</span>
+      </div>
+    </div>
+
+    <div style="font-size:11px; margin-top:5px;">Was fällt dir auf, wenn du dir diese Liste anschaust? Hast du selbst auch schon andere Menschen unbewusst diskriminiert?</div>
+    <div class="schreiblinien"><div class="schreiblinie"></div></div>
+  </div>
+
+  <!-- Übung 2: Meine Erfahrung (Safe Space) -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">2</div>
+      <div class="uebung-titel">Meine Erfahrung – ein sicherer Raum</div>
+    </div>
+    <div class="uebung-beschreibung">Dieser Abschnitt gehört dir. Du musst nichts schreiben. Wenn du schreibst, entscheidest du, wie viel du teilst.</div>
+
+    <div class="safe-space">
+      <div style="font-size:11px; font-weight:700; color:#4C1D95; margin-bottom:8px;">🔒 Hast du eine der oben genannten Formen von Diskriminierung selbst erfahren?</div>
+      <div style="display:flex; gap:12px; font-size:11px; margin-bottom:8px;">
+        <label style="display:flex; align-items:center; gap:5px;"><input type="radio" name="exp"> Ja</label>
+        <label style="display:flex; align-items:center; gap:5px;"><input type="radio" name="exp"> Nein</label>
+        <label style="display:flex; align-items:center; gap:5px;"><input type="radio" name="exp"> Möchte ich nicht sagen</label>
+      </div>
+      <div style="font-size:11px; margin-bottom:4px; font-weight:600;">Wenn ja – wie hat es sich angefühlt? (in deinen Worten, so viel oder wenig wie du möchtest)</div>
+      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      <div style="font-size:11px; margin-top:8px; margin-bottom:4px; font-weight:600;">Was hättest du dir in diesem Moment gewünscht?</div>
+      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+    </div>
+
+    <div class="validate-box">
+      <strong>Was dir passiert ist, ist nicht deine Schuld.</strong> Diskriminierung sagt nichts über deinen Wert als Mensch aus – sie sagt etwas über die Person oder das System, von dem sie ausgeht. <em>Du bist gültig, vollständig und wichtig.</em>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Diskriminierung & Ausgrenzung · Seite 1</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 2 ===== -->
+<div class="seite">
+
+  <!-- Übung 3: Bystander Optionen -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">3</div>
+      <div class="uebung-titel">Was kann ich tun? – 5 Bystander-Optionen</div>
+    </div>
+    <div class="uebung-beschreibung">Wenn du Zeuge von Diskriminierung wirst – du hast mehr Möglichkeiten als du denkst. Kreise ein, was du dir zutraust oder ausprobieren möchtest.</div>
+
+    <div class="bystander-grid">
+      <div class="bystander-row" style="background:#F9FAFB; border-color:#D1D5DB;">
+        <div class="bystander-nr" style="background:#6B7280;">0</div>
+        <div class="bystander-label" style="color:#374151;">Nichts tun</div>
+        <div>
+          <div class="bystander-desc">Manchmal aus Angst, Überforderung oder weil man nicht weiß was tun. <em>Das ist verständlich – aber wenn möglich, gibt es bessere Optionen.</em></div>
+          <div class="bystander-check">□ Das mache ich manchmal (und das ist okay – aber ich kann wachsen)</div>
+        </div>
+      </div>
+      <div class="bystander-row" style="background:#FEF3C7; border-color:#FCD34D;">
+        <div class="bystander-nr" style="background:#D97706;">1</div>
+        <div class="bystander-label" style="color:#92400E;">Dokumentieren</div>
+        <div>
+          <div class="bystander-desc">Situation notieren oder (wenn legal & sicher) fotografieren. Wer? Was? Wann? Wo? – wichtig für spätere Meldungen.</div>
+          <div class="bystander-check">□ Das könnte ich tun</div>
+        </div>
+      </div>
+      <div class="bystander-row" style="background:#EDE9FE; border-color:#C4B5FD;">
+        <div class="bystander-nr" style="background:#7C3AED;">2</div>
+        <div class="bystander-label" style="color:#4C1D95;">Ablenken</div>
+        <div>
+          <div class="bystander-desc">Situation unterbrechen ohne direkt zu konfrontieren. "Hey, kannst du mir helfen?" – Thema wechseln, Aufmerksamkeit verschieben.</div>
+          <div class="bystander-check">□ Das könnte ich tun</div>
+        </div>
+      </div>
+      <div class="bystander-row" style="background:#ECFEFF; border-color:#A5F3FC;">
+        <div class="bystander-nr" style="background:#0891B2;">3</div>
+        <div class="bystander-label" style="color:#0E7490;">Delegieren</div>
+        <div>
+          <div class="bystander-desc">Eine andere Person um Hilfe bitten – Lehrer, Erwachsener, Freund. Du musst das nicht alleine lösen.</div>
+          <div class="bystander-check">□ Das könnte ich tun</div>
+        </div>
+      </div>
+      <div class="bystander-row" style="background:#ECFDF5; border-color:#6EE7B7;">
+        <div class="bystander-nr" style="background:#059669;">4</div>
+        <div class="bystander-label" style="color:#065F46;">Direkt ansprechen</div>
+        <div>
+          <div class="bystander-desc">"Stopp. Das ist nicht okay." – Direkte Konfrontation. Nur wenn du dich sicher fühlst. Danach: Betroffene Person ansprechen.</div>
+          <div class="bystander-check">□ Das könnte ich tun (wenn ich mich sicher fühle)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wusstest">
+      <strong>🧠 Wusstest du?</strong> Studien zeigen: Wenn auch nur eine einzige Person bei Diskriminierung aufsteht, reduziert das den psychologischen Schaden für die betroffene Person dramatisch. <em>Du kannst einen Unterschied machen – auch mit kleinen Gesten.</em>
+    </div>
+  </div>
+
+  <!-- Übung 4: Mein Unterstützungsnetz -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">4</div>
+      <div class="uebung-titel">Mein Unterstützungsnetz – wer steht hinter mir?</div>
+    </div>
+
+    <div class="support-grid">
+      <div class="support-card">
+        <div class="sc-title">🤝 In meinem Umfeld</div>
+        <div style="font-size:10.5px; color:#374151; margin-bottom:5px;">Wem vertraue ich? Wer glaubt mir?</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+      <div class="support-card">
+        <div class="sc-title">🏛️ Anlaufstellen in Luxemburg</div>
+        <div style="font-size:9.5px; color:#374151; line-height:1.7;">
+          🧒 Kanner-Jugendtelefon: <strong>116 111</strong><br>
+          ⚖️ Centre pour l'égalité: <strong>cet.lu</strong><br>
+          🌍 SOS Racisme: <strong>sosracisme.lu</strong><br>
+          👦 OKaJu: <strong>okaju.lu</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Übung 5: Selbstschutz & Selbstfürsorge -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">5</div>
+      <div class="uebung-titel">Nach Diskriminierung – Selbstschutz & Selbstfürsorge</div>
+    </div>
+    <div class="uebung-beschreibung">Diskriminierungserfahrungen sind erschöpfend. Du verdienst es, gut für dich zu sorgen – danach.</div>
+
+    <div class="selfcare-row">
+      <div class="sc-nr">1</div>
+      <div style="font-size:11px;"><strong style="color:#7C3AED;">Validierung holen:</strong> Sprich mit jemandem, dem du vertraust. Sag: "Ich brauche, dass du mir glaubst – ohne mich zu beraten." Was ich nach einer schwierigen Erfahrung brauche: <div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+    </div>
+    <div class="selfcare-row">
+      <div class="sc-nr">2</div>
+      <div style="font-size:11px;"><strong style="color:#7C3AED;">Körperlich runterkommen:</strong> Dein Körper hat den Stress gespeichert. Was hilft dir körperlich (Sport, Schlafen, Natur, Essen, Musik)? <div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+    </div>
+    <div class="selfcare-row">
+      <div class="sc-nr">3</div>
+      <div style="font-size:11px;"><strong style="color:#7C3AED;">Deinen Wert erinnern:</strong> Diskriminierung lügt über deinen Wert. Schreib einen Satz, der dir gehört: "Ich bin _________________________ – und das ist genug."</div>
+    </div>
+  </div>
+
+  <!-- Reflexion -->
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Reflexion</div>
+    <p>Was ist eine Sache, die du nach diesem Arbeitsblatt anders sehen oder tun möchtest – als Betroffene*r oder als Bystander?</p>
+    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
+    <strong>ICD-10 Bezug:</strong> Diskriminierungserfahrungen sind belegter Risikofaktor für F32-F33 (Depression), F41 (Angststörungen) und F43.1 (PTBS) – besonders bei kumulativen Erfahrungen (Minderheitenstress-Modell, Meyer 2003). <strong>Klinisch zentral:</strong> Validierung vor allem anderen – Erfahrungen anerkennen, nicht kleinreden, nicht verteidigen ("das war bestimmt nicht so gemeint"). Empowerment-Ansatz: Handlungsfähigkeit stärken. <strong>Bystander-Ansatz</strong> folgt dem Hollaback! 5D-Modell (wissenschaftlich evaluiert). <strong>Rechtliches in Luxemburg:</strong> Antidiskriminierungsgesetz (loi du 28 novembre 2006); bei strafrechtlich relevanten Vorfällen (Hassrede, Körperverletzung) Meldepflicht beachten. Anlaufstellen: CET (cet.lu), OKaJu (okaju.lu), SOS Racisme. <strong>Achtung:</strong> Beim sicheren Raum (Übung 2) keine Daten ohne Einverständnis weitergeben.
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Diskriminierung & Ausgrenzung · Seite 2</span>
+  </div>
+</div>
+
+</body>
+</html>

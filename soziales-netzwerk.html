@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Mein soziales Netzwerk</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #0891B2; --farbe-hell: #ECFEFF; }
+    .network-map { position:relative; width:250px; height:250px; margin:0 auto 8px; }
+    .net-ring { position:absolute; border-radius:50%; border:2.5px solid; }
+    .net-me { position:absolute; inset:107px; background:#0891B2; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:800; font-size:10px; }
+    .quality-card { border:2px solid #A5F3FC; border-radius:10px; padding:10px; background:#ECFEFF; margin-bottom:8px; }
+    .qc-name { font-size:11px; font-weight:700; color:#0E7490; margin-bottom:6px; }
+    .qc-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+    .qc-box { border:1.5px solid #A5F3FC; border-radius:6px; padding:6px 8px; background:white; }
+    .qc-lbl { font-size:10px; font-weight:700; color:#6B7280; margin-bottom:3px; }
+    .needs-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:7px; margin:8px 0; }
+    .need-card { border:2px solid #A5F3FC; border-radius:10px; padding:8px 6px; text-align:center; background:#ECFEFF; }
+    .need-emoji { font-size:18px; display:block; }
+    .need-name { font-size:9.5px; font-weight:700; color:#0E7490; display:block; margin-top:2px; }
+    .need-scale { display:flex; gap:3px; justify-content:center; margin-top:5px; }
+    .need-box { width:13px; height:13px; border:1.5px solid #0891B2; border-radius:2px; background:white; }
+    .gap-box { border:2px dashed #0891B2; border-radius:10px; padding:12px; background:linear-gradient(135deg,#ECFEFF,#CFFAFE); margin:8px 0; }
+    .expand-step { display:grid; grid-template-columns:28px 1fr; gap:8px; align-items:start; margin-bottom:7px; }
+    .expand-nr { background:#0891B2; color:white; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex-shrink:0; }
+    .wusstest { background:#ECFEFF; border-left:4px solid #0891B2; border-radius:0 8px 8px 0; padding:8px 10px; margin:8px 0; font-size:10.5px; }
+    .wusstest strong { color:#0E7490; }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- ===== SEITE 1 ===== -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">Mein soziales Netzwerk – Wer ist für mich da?</div>
+      <div class="ab-untertitel">Mein soziales Netzwerk · Kategorie: Familie & Soziales Umfeld</div>
+    </div>
+    <div class="kopfzeile-icon">🕸️</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">🕸️ Niemand schafft es alleine</div>
+    <p>Menschen brauchen Menschen – das ist keine Schwäche, sondern Biologie. Dein soziales Netzwerk ist wie ein Sicherheitsnetz: du bemerkst es vielleicht erst, wenn du fällst.</p>
+    <p>🧠 <em><strong>Wusstest du?</strong> Einsamkeit ist so schädlich für den Körper wie 15 Zigaretten am Tag (Holt-Lunstad, 2015). Aber das Gute: Selbst eine einzige echte Verbindung reicht aus, um dieses Risiko erheblich zu senken.</em></p>
+  </div>
+
+  <!-- Übung 1: Netzwerkkarte -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">1</div>
+      <div class="uebung-titel">Meine Netzwerkkarte – schreibe Namen in die Kreise</div>
+    </div>
+    <div class="uebung-beschreibung">Innen = sehr eng/intim. Außen = Bekannte und weitere Kontakte. Schreibe Namen und wenn du magst, kleine Emojis dazu.</div>
+
+    <div style="display:grid; grid-template-columns:250px 1fr; gap:12px; align-items:start;">
+      <div>
+        <div class="network-map">
+          <div class="net-ring" style="inset:0; border-color:#BFDBFE; background:#F0F9FF;">
+            <div style="position:absolute; bottom:5px; width:100%; text-align:center; font-size:8px; color:#64748B; font-weight:600;">Bekannte / Fachpersonen</div>
+          </div>
+          <div class="net-ring" style="inset:55px; border-color:#7DD3FC; background:#E0F2FE;">
+            <div style="position:absolute; bottom:4px; width:100%; text-align:center; font-size:8px; color:#0369A1; font-weight:600;">Freunde</div>
+          </div>
+          <div class="net-ring" style="inset:107px; border-color:#0891B2; background:#CFFAFE;"></div>
+          <div class="net-me">ICH</div>
+          <div style="position:absolute; top:62px; left:50%; transform:translateX(-50%); font-size:8px; color:#0E7490; font-weight:700; white-space:nowrap;">Enge Vertraute</div>
+        </div>
+        <div style="font-size:9px; color:#6B7280; text-align:center; margin-top:2px;">Tipp: Zeichne Verbindungslinien zwischen Personen, die sich kennen</div>
+      </div>
+      <div>
+        <div style="font-size:11px; font-weight:700; color:#0E7490; margin-bottom:6px;">Mein Netz auf einen Blick:</div>
+        <div style="font-size:10.5px; margin-bottom:3px;">Wie viele Menschen habe ich im innersten Kreis?</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div></div>
+        <div style="font-size:10.5px; margin-bottom:3px; margin-top:5px;">Wen würde ich um 2 Uhr nachts anrufen, wenn es mir schlecht geht?</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div></div>
+        <div style="font-size:10.5px; margin-bottom:3px; margin-top:5px;">Wer fehlt mir gerade in meinem Netz?</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Übung 2: Beziehungsqualität -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">2</div>
+      <div class="uebung-titel">Beziehungsqualität – Was gebe ich, was bekomme ich?</div>
+    </div>
+    <div class="uebung-beschreibung">Wähle 3 wichtige Personen aus deinem Netz. Gute Beziehungen sind (meistens) ausgeglichen – nicht perfekt, aber nicht einseitig.</div>
+
+    <div class="quality-card">
+      <div class="qc-name">Person 1: _______________________________</div>
+      <div class="qc-grid">
+        <div class="qc-box"><div class="qc-lbl">🎁 Was ich dieser Person gebe:</div><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+        <div class="qc-box"><div class="qc-lbl">💝 Was ich von ihr bekomme:</div><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+      </div>
+    </div>
+    <div class="quality-card">
+      <div class="qc-name">Person 2: _______________________________</div>
+      <div class="qc-grid">
+        <div class="qc-box"><div class="qc-lbl">🎁 Was ich dieser Person gebe:</div><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+        <div class="qc-box"><div class="qc-lbl">💝 Was ich von ihr bekomme:</div><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+      </div>
+    </div>
+    <div class="quality-card">
+      <div class="qc-name">Person 3: _______________________________</div>
+      <div class="qc-grid">
+        <div class="qc-box"><div class="qc-lbl">🎁 Was ich dieser Person gebe:</div><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+        <div class="qc-box"><div class="qc-lbl">💝 Was ich von ihr bekomme:</div><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Mein soziales Netzwerk · Seite 1</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 2 ===== -->
+<div class="seite">
+
+  <!-- Übung 3: Verbindungsbedürfnisse -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">3</div>
+      <div class="uebung-titel">Meine Verbindungsbedürfnisse – wie gut werden sie gerade erfüllt?</div>
+    </div>
+    <div class="uebung-beschreibung">Wir alle brauchen soziale Verbindung – aber auf unterschiedliche Weise. Male ein, wie gut dieses Bedürfnis bei dir gerade erfüllt wird (1–5 Kästchen).</div>
+
+    <div class="needs-grid">
+      <div class="need-card">
+        <span class="need-emoji">🫂</span>
+        <span class="need-name">Zugehörigkeit</span>
+        <span style="font-size:9px; color:#6B7280;">Irgendwo dazugehören</span>
+        <div class="need-scale">
+          <div class="need-box"></div><div class="need-box"></div><div class="need-box"></div><div class="need-box"></div><div class="need-box"></div>
+        </div>
+      </div>
+      <div class="need-card">
+        <span class="need-emoji">💞</span>
+        <span class="need-name">Intimität</span>
+        <span style="font-size:9px; color:#6B7280;">Wirklich gesehen werden</span>
+        <div class="need-scale">
+          <div class="need-box"></div><div class="need-box"></div><div class="need-box"></div><div class="need-box"></div><div class="need-box"></div>
+        </div>
+      </div>
+      <div class="need-card">
+        <span class="need-emoji">🌟</span>
+        <span class="need-name">Anerkennung</span>
+        <span style="font-size:9px; color:#6B7280;">Geschätzt werden</span>
+        <div class="need-scale">
+          <div class="need-box"></div><div class="need-box"></div><div class="need-box"></div><div class="need-box"></div><div class="need-box"></div>
+        </div>
+      </div>
+      <div class="need-card">
+        <span class="need-emoji">😄</span>
+        <span class="need-name">Spaß</span>
+        <span style="font-size:9px; color:#6B7280;">Zusammen lachen</span>
+        <div class="need-scale">
+          <div class="need-box"></div><div class="need-box"></div><div class="need-box"></div><div class="need-box"></div><div class="need-box"></div>
+        </div>
+      </div>
+      <div class="need-card">
+        <span class="need-emoji">🤝</span>
+        <span class="need-name">Unterstützung</span>
+        <span style="font-size:9px; color:#6B7280;">Jemand hilft mir</span>
+        <div class="need-scale">
+          <div class="need-box"></div><div class="need-box"></div><div class="need-box"></div><div class="need-box"></div><div class="need-box"></div>
+        </div>
+      </div>
+      <div class="need-card">
+        <span class="need-emoji">💭</span>
+        <span class="need-name">Verständnis</span>
+        <span style="font-size:9px; color:#6B7280;">Verstanden werden</span>
+        <div class="need-scale">
+          <div class="need-box"></div><div class="need-box"></div><div class="need-box"></div><div class="need-box"></div><div class="need-box"></div>
+        </div>
+      </div>
+      <div class="need-card">
+        <span class="need-emoji">🔒</span>
+        <span class="need-name">Sicherheit</span>
+        <span style="font-size:9px; color:#6B7280;">Mich vertrauen können</span>
+        <div class="need-scale">
+          <div class="need-box"></div><div class="need-box"></div><div class="need-box"></div><div class="need-box"></div><div class="need-box"></div>
+        </div>
+      </div>
+      <div class="need-card">
+        <span class="need-emoji">🦋</span>
+        <span class="need-name">Freiheit</span>
+        <span style="font-size:9px; color:#6B7280;">Ich selbst sein dürfen</span>
+        <div class="need-scale">
+          <div class="need-box"></div><div class="need-box"></div><div class="need-box"></div><div class="need-box"></div><div class="need-box"></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="font-size:11px;">Welches Bedürfnis ist am wenigsten erfüllt? Was könnte helfen?</div>
+    <div class="schreiblinien"><div class="schreiblinie"></div></div>
+  </div>
+
+  <!-- Übung 4: Network Gaps -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">4</div>
+      <div class="uebung-titel">Was fehlt mir im Netz? – Meine Lücken erkennen</div>
+    </div>
+
+    <div class="gap-box">
+      <div style="font-size:11px; font-weight:700; color:#0E7490; margin-bottom:8px;">Welche Art von Verbindung fehlt mir gerade?</div>
+      <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px;">
+        <span style="border:1.5px solid #0891B2; border-radius:14px; padding:3px 9px; font-size:10px; background:white;">jemand der zuhört</span>
+        <span style="border:1.5px solid #0891B2; border-radius:14px; padding:3px 9px; font-size:10px; background:white;">jemand zum Lachen</span>
+        <span style="border:1.5px solid #0891B2; border-radius:14px; padding:3px 9px; font-size:10px; background:white;">jemand mit denselben Interessen</span>
+        <span style="border:1.5px solid #0891B2; border-radius:14px; padding:3px 9px; font-size:10px; background:white;">ein erwachsener Anker</span>
+        <span style="border:1.5px solid #0891B2; border-radius:14px; padding:3px 9px; font-size:10px; background:white;">eine romantische Verbindung</span>
+        <span style="border:1.5px solid #0891B2; border-radius:14px; padding:3px 9px; font-size:10px; background:white;">jemand aus meiner Kultur / Sprache</span>
+      </div>
+      <div style="font-size:11px; margin-bottom:4px;">Eigene Idee:</div>
+      <div class="schreiblinien"><div class="schreiblinie"></div></div>
+    </div>
+
+    <div class="wusstest">
+      <strong>🧠 Wusstest du?</strong> Ein erwachsener Anker außerhalb der Familie (z.B. ein Lehrer, Trainer, Erzieher) ist nachweislich einer der stärksten Schutzfaktoren für Jugendliche in schwierigen Situationen. <em>Diese Person könnte auch hier sein.</em>
+    </div>
+  </div>
+
+  <!-- Übung 5: Netzwerk ausbauen -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">5</div>
+      <div class="uebung-titel">3 konkrete Schritte – mein Netz ausbauen</div>
+    </div>
+
+    <div class="expand-step">
+      <div class="expand-nr">1</div>
+      <div style="font-size:11px;"><strong style="color:var(--farbe);">Eine bestehende Verbindung stärken:</strong> Wen könnte ich diese Woche kontaktieren – und wie (Nachricht, Anruf, Treffen)?<div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+    </div>
+    <div class="expand-step">
+      <div class="expand-nr">2</div>
+      <div style="font-size:11px;"><strong style="color:var(--farbe);">Einen neuen Kontakt aufbauen:</strong> Verein, Sport, Kurs, Jugendclub, Freiwilligenarbeit, Gemeinsames Hobby – was könnte ich ausprobieren?<div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+    </div>
+    <div class="expand-step">
+      <div class="expand-nr">3</div>
+      <div style="font-size:11px;"><strong style="color:var(--farbe);">Um Hilfe bitten lernen:</strong> Wem könnte ich das nächste Mal sagen: "Ich könnte gerade jemanden zum Reden gebrauchen"?<div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+    </div>
+  </div>
+
+  <!-- Reflexion -->
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Reflexion</div>
+    <p>Was hindert dich manchmal daran, anderen nahe zu kommen oder Hilfe anzunehmen? Woher kommt das?</p>
+    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
+    <strong>ICD-10 Bezug:</strong> Z60 (Probleme in Bezug auf die soziale Umgebung), Z60.2 (allein lebend), Z60.4 (soziale Ausgrenzung). Soziale Isolation ist Risikofaktor für F32-F33 (Depression), F40 (Angststörungen), und erhöht kardiovaskuläres Erkrankungsrisiko. <strong>Diagnostischer Hinweis:</strong> Die Netzwerkkarte (Übung 1) kann Isolation, toxische Beziehungen oder fehlende Erwachsenenankerpunkte sichtbar machen. Bei ausschließlich online-basiertem Netzwerk: Qualität online-Verbindungen nicht unterschätzen, aber auch auf reale Kontakte hinarbeiten. <strong>Intervention:</strong> Einzelkontakt + Gruppenangebote kombinieren. Kanner-Jugendtelefon 116 111. <strong>Continuing Bonds-Ansatz</strong> auch bei Verlust wichtiger Beziehungen (Trennung, Wegzug) anwenden.
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Mein soziales Netzwerk · Seite 2</span>
+  </div>
+</div>
+
+</body>
+</html>

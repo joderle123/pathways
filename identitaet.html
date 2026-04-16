@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Identität &amp; Selbstbild</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #7C3AED; --farbe-hell: #F5F3FF; }
+    .rad-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-bottom:10px; }
+    .rad-segment { border-radius:10px; padding:9px; border:1.5px solid; }
+    .venn-container { display:grid; grid-template-columns:1fr auto 1fr; gap:0; align-items:center; margin-bottom:10px; }
+    .venn-kreis { border-radius:12px; padding:10px; min-height:100px; font-size:10px; }
+    .venn-mitte { width:40px; text-align:center; font-size:10px; color:#6B7280; }
+    .wert-bubble-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:5px; margin-bottom:10px; }
+    .wert-item { background:var(--farbe-hell); border:1.5px solid #C4B5FD; border-radius:10px; padding:5px 7px; font-size:10px; text-align:center; cursor:default; }
+    .wert-item:hover { background:#EDE9FE; }
+    .timeline-box { display:flex; align-items:flex-start; gap:8px; margin-bottom:8px; }
+    .timeline-dot { background:var(--farbe); color:white; border-radius:50%; width:22px; height:22px; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex-shrink:0; margin-top:2px; }
+    .timeline-content { flex:1; border-bottom:1px dashed #C4B5FD; padding-bottom:6px; }
+    .brief-box { background:var(--farbe-hell); border:2px solid var(--farbe); border-radius:10px; padding:12px; margin-bottom:10px; }
+    .brief-prompt { font-size:11px; color:var(--farbe); font-weight:700; margin-bottom:4px; }
+    .top3-box { border:1.5px solid #C4B5FD; border-radius:8px; padding:8px; display:grid; grid-template-columns:25px 1fr auto; gap:6px; align-items:center; margin-bottom:5px; font-size:11px; }
+    .rang-nr { background:var(--farbe); color:white; border-radius:50%; width:20px; height:20px; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- ===== SEITE 1 ===== -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">Wer bin ich – wirklich?</div>
+      <div class="ab-untertitel">Identität &amp; Selbstbild · Kategorie: Identität &amp; Werte</div>
+    </div>
+    <div class="kopfzeile-icon">🪞</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">🪞 "Wer bin ich?" – eine der wichtigsten Fragen deines Lebens.</div>
+    <p>Identität entsteht nicht auf einmal. Sie wächst durch Erfahrungen, Beziehungen, Fehler und Entscheidungen. Du bist im Prozess – das ist kein Problem, das ist Entwicklung. <strong>Du darfst dich erforschen, ohne schon alles wissen zu müssen.</strong></p>
+    <p>🧠 <em>Wusstest du? Das Gehirn verarbeitet in der Adoleszenz den präfrontalen Kortex neu – den Teil der für Identität, Selbstbild und Zukunftsplanung zuständig ist. "Ich weiß nicht wer ich bin" ist buchstäblich eine Gehirnumbauphase, keine Schwäche.</em></p>
+  </div>
+
+  <!-- Übung 1 – Identitätsrad -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">1</div>
+      <div class="uebung-titel">Das Identitätsrad – 8 Teile von mir ausfüllen 🎡</div>
+    </div>
+    <div class="uebung-beschreibung">Fülle jeden Bereich so aus wie es gerade stimmt. Es gibt keine richtigen oder falschen Antworten. Das hier gehört dir.</div>
+    <div class="rad-grid">
+      <div class="rad-segment" style="background:#FFF7ED;border-color:#FED7AA;">
+        <div style="font-size:12px;margin-bottom:3px;">👨‍👩‍👧 <strong>Familie &amp; Herkunft</strong></div>
+        <div style="font-size:9px;color:#6B7280;margin-bottom:4px;">Woher komme ich? Sprachen, Wurzeln</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+      <div class="rad-segment" style="background:#F0FDF4;border-color:#86EFAC;">
+        <div style="font-size:12px;margin-bottom:3px;">👫 <strong>Freunde &amp; Zugehörigkeit</strong></div>
+        <div style="font-size:9px;color:#6B7280;margin-bottom:4px;">Wer sind meine Menschen?</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+      <div class="rad-segment" style="background:var(--farbe-hell);border-color:#C4B5FD;">
+        <div style="font-size:12px;margin-bottom:3px;">⭐ <strong>Werte</strong></div>
+        <div style="font-size:9px;color:#6B7280;margin-bottom:4px;">Was mir wirklich wichtig ist</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+      <div class="rad-segment" style="background:#EFF6FF;border-color:#BFDBFE;">
+        <div style="font-size:12px;margin-bottom:3px;">🎨 <strong>Hobbys &amp; Leidenschaften</strong></div>
+        <div style="font-size:9px;color:#6B7280;margin-bottom:4px;">Was ich gerne mache / was mich lebendig macht</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+      <div class="rad-segment" style="background:#FEF2F2;border-color:#FCA5A5;">
+        <div style="font-size:12px;margin-bottom:3px;">🪞 <strong>Aussehen &amp; Körper</strong></div>
+        <div style="font-size:9px;color:#6B7280;margin-bottom:4px;">Was mir gefällt / was ich schwierig finde</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+      <div class="rad-segment" style="background:#FFFBEB;border-color:#FDE68A;">
+        <div style="font-size:12px;margin-bottom:3px;">🌍 <strong>Kultur &amp; Sprachen</strong></div>
+        <div style="font-size:9px;color:#6B7280;margin-bottom:4px;">Welchen Kulturen fühle ich mich zugehörig?</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+      <div class="rad-segment" style="background:#F0FDF4;border-color:#86EFAC;">
+        <div style="font-size:12px;margin-bottom:3px;">🚀 <strong>Zukunft &amp; Träume</strong></div>
+        <div style="font-size:9px;color:#6B7280;margin-bottom:4px;">Wo will ich hin? Was erhoffe ich mir?</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+      <div class="rad-segment" style="background:#F9FAFB;border-color:#E5E7EB;">
+        <div style="font-size:12px;margin-bottom:3px;">✨ <strong>Anderes / Eigenes</strong></div>
+        <div style="font-size:9px;color:#6B7280;margin-bottom:4px;">Was passt in keine Kategorie aber ist trotzdem du</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Übung 2 – Ich vs. was andere wollen -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">2</div>
+      <div class="uebung-titel">Ich vs. Was andere wollen – zwei Kreise 🔵⚪</div>
+    </div>
+    <div class="uebung-beschreibung">Fülle links ein: Was bin/will ICH wirklich? Rechts: Was wollen andere von mir (Familie, Schule, Gesellschaft)? In der Mitte: was überschneidet sich?</div>
+    <div class="venn-container">
+      <div class="venn-kreis" style="background:#F5F3FF;border:1.5px solid #C4B5FD;">
+        <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:5px;">🙋 Das bin / will ICH</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+      <div class="venn-mitte">←<br>gemeinsam<br>→</div>
+      <div class="venn-kreis" style="background:#EFF6FF;border:1.5px solid #BFDBFE;">
+        <div style="font-size:11px;font-weight:700;color:#1D4ED8;margin-bottom:5px;">👥 Was andere von mir erwarten</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+    </div>
+    <div style="font-size:11px;">Wo gibt es Spannungen? Was macht dir das schwer? <span style="border-bottom:1px dashed #C4B5FD;display:inline-block;width:280px;">&nbsp;</span></div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Identität &amp; Selbstbild · Seite 1</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 2 ===== -->
+<div class="seite">
+
+  <!-- Übung 3 – Werte-Klärung -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">3</div>
+      <div class="uebung-titel">Meine Werte – 20 zur Auswahl, 5 einkreisen, Top 3 ranken 🏆</div>
+    </div>
+    <div class="uebung-beschreibung">Kreise zuerst 5 Werte ein die dir am wichtigsten sind. Dann ranke deine Top 3 unten.</div>
+    <div class="wert-bubble-grid">
+      <div class="wert-item">🕊️ Freiheit</div>
+      <div class="wert-item">⚖️ Fairness</div>
+      <div class="wert-item">👨‍👩‍👧 Familie</div>
+      <div class="wert-item">🤝 Loyalität</div>
+      <div class="wert-item">🙏 Respekt</div>
+      <div class="wert-item">✅ Ehrlichkeit</div>
+      <div class="wert-item">😂 Humor</div>
+      <div class="wert-item">💪 Mut</div>
+      <div class="wert-item">🌍 Abenteuer</div>
+      <div class="wert-item">🛡️ Sicherheit</div>
+      <div class="wert-item">🎨 Kreativität</div>
+      <div class="wert-item">💚 Fürsorge</div>
+      <div class="wert-item">🦅 Unabhängigkeit</div>
+      <div class="wert-item">⚖️ Gerechtigkeit</div>
+      <div class="wert-item">🔮 Spiritualität</div>
+      <div class="wert-item">🏆 Erfolg</div>
+      <div class="wert-item">👫 Freundschaft</div>
+      <div class="wert-item">🌱 Wachstum</div>
+      <div class="wert-item">❤️ Liebe</div>
+      <div class="wert-item" style="border-style:dashed;color:#6B7280;">+ Eigener: ____</div>
+    </div>
+    <div style="font-size:11px;font-weight:700;margin-bottom:5px;">Meine Top 3 – und warum genau diese?</div>
+    <div class="top3-box"><div class="rang-nr">1</div><div style="border-bottom:1px dashed #C4B5FD;height:16px;flex:1;"></div><div style="font-size:10px;color:#6B7280;width:130px;">weil: <span style="border-bottom:1px dashed #C4B5FD;display:inline-block;width:90px;">&nbsp;</span></div></div>
+    <div class="top3-box"><div class="rang-nr">2</div><div style="border-bottom:1px dashed #C4B5FD;height:16px;flex:1;"></div><div style="font-size:10px;color:#6B7280;width:130px;">weil: <span style="border-bottom:1px dashed #C4B5FD;display:inline-block;width:90px;">&nbsp;</span></div></div>
+    <div class="top3-box"><div class="rang-nr">3</div><div style="border-bottom:1px dashed #C4B5FD;height:16px;flex:1;"></div><div style="font-size:10px;color:#6B7280;width:130px;">weil: <span style="border-bottom:1px dashed #C4B5FD;display:inline-block;width:90px;">&nbsp;</span></div></div>
+  </div>
+
+  <!-- Übung 4 – Identitäts-Timeline -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">4</div>
+      <div class="uebung-titel">Meine Identitäts-Timeline – 5 Momente die mich geprägt haben ⏳</div>
+    </div>
+    <div class="uebung-beschreibung">Zeichne oder beschreibe 5 Schlüsselerlebnisse die dich zu dem gemacht haben wer du heute bist – positiv oder schwierig.</div>
+    <div class="timeline-box"><div class="timeline-dot">1</div><div class="timeline-content"><div style="font-size:10px;color:#6B7280;margin-bottom:3px;">Was ist passiert? Was hat das in dir verändert?</div><div class="schreiblinien"><div class="schreiblinie"></div></div></div></div>
+    <div class="timeline-box"><div class="timeline-dot">2</div><div class="timeline-content"><div class="schreiblinien"><div class="schreiblinie"></div></div></div></div>
+    <div class="timeline-box"><div class="timeline-dot">3</div><div class="timeline-content"><div class="schreiblinien"><div class="schreiblinie"></div></div></div></div>
+    <div class="timeline-box"><div class="timeline-dot">4</div><div class="timeline-content"><div class="schreiblinien"><div class="schreiblinie"></div></div></div></div>
+    <div class="timeline-box"><div class="timeline-dot">5</div><div class="timeline-content"><div class="schreiblinien"><div class="schreiblinie"></div></div></div></div>
+  </div>
+
+  <!-- Übung 5 – Brief an zukünftiges Ich -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">5</div>
+      <div class="uebung-titel">Brief an mein zukünftiges Ich ✉️</div>
+    </div>
+    <div class="brief-box">
+      <div style="font-size:12px;font-weight:700;color:var(--farbe);margin-bottom:8px;">Liebes zukünftiges Ich in 5 Jahren,</div>
+      <div class="brief-prompt">💡 Was ich mir für dich wünsche:</div>
+      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      <div class="brief-prompt" style="margin-top:7px;">💡 Was du über diese Zeit wissen solltest:</div>
+      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      <div class="brief-prompt" style="margin-top:7px;">💡 Was ich dir gerne jetzt schon sagen würde:</div>
+      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+    </div>
+  </div>
+
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Reflexion</div>
+    <p>Gibt es Teile von dir die du versteckst? Bei wem kannst du wirklich du selbst sein – und was macht das möglich?</p>
+    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
+    <strong>ICD-10:</strong> Identitätsdiffusion als Merkmal von F60.3 (Borderline-Persönlichkeitsstörung), F64 (Geschlechtsidentitätsstörungen), F92-F94 (Emotionale Störungen des Kindesalters). Normative Identitätskrise vs. klinisch relevante Diffusion: Erikson Stufe 5 (Identität vs. Rollenkonfusion, 12–18 J.), Marcia Identitätsstatus-Modell (Diffusion / Moratorium / Übernommen / Erworben). <strong>ACT (Acceptance and Commitment Therapy):</strong> Werteklärung als zentraler Wirkmechanismus. Brief an zukünftiges Ich = narrative Therapieintervention (Michael White). <strong>Besondere Themen:</strong> Bikulturelle Identität (Herkunftsland vs. Aufnahmeland, Akkulturationsstress), LGBTQIA+-Identität (Coming-Out-Prozesse sensibel und undrückungsfreifrei begleiten), religiöse / spirituelle Konflikte. <strong>Wichtig:</strong> Identitätsarbeit ist keine Pathologie – sie ist Entwicklung. Stabilität und Kontinuität stärken ohne Anpassungsdruck auszuüben. Traumaanamnese beachten: dissoziativer Identitätsstatus bei schwerer Traumatisierung (F44.81).
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Identität &amp; Selbstbild · Seite 2</span>
+  </div>
+</div>
+
+</body>
+</html>

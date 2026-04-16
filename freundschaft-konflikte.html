@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Freundschaft &amp; Konflikte</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #059669; --farbe-hell: #ECFDF5; }
+    .qualitaet-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px; }
+    .qualitaet-item { background:var(--farbe-hell); border:1.5px solid #6EE7B7; border-radius:10px; padding:7px 9px; font-size:11px; cursor:default; }
+    .qualitaet-item:hover { background:#D1FAE5; }
+    .kompass-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px; }
+    .kompass-box { border-radius:10px; padding:10px; border:1.5px solid; }
+    .fair-fight-item { display:flex; align-items:center; gap:8px; background:var(--farbe-hell); border:1px solid #6EE7B7; border-radius:8px; padding:6px 10px; margin-bottom:5px; font-size:11px; }
+    .ich-msg-box { border:1.5px solid #6EE7B7; border-radius:10px; padding:9px; margin-bottom:7px; background:white; }
+    .reparatur-schritt { display:flex; align-items:center; gap:10px; background:#F9FAFB; border-radius:8px; padding:8px 10px; margin-bottom:5px; }
+    .reparatur-nr { background:var(--farbe); color:white; border-radius:50%; width:22px; height:22px; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0; }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- ===== SEITE 1 ===== -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">Echte Freundschaft – und was passiert wenn's kracht?</div>
+      <div class="ab-untertitel">Freundschaft &amp; Konflikte · Kategorie: Soziale Kompetenzen</div>
+    </div>
+    <div class="kopfzeile-icon">🤝</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">🤝 Konflikte in Freundschaften – das ist normal.</div>
+    <p>Echte Freundschaften sind keine Kino-Idylle. Streit und Missverständnisse gehören dazu – und können eine Freundschaft sogar <em>stärker</em> machen, wenn man lernt damit umzugehen. <strong>Das ist lernbar.</strong></p>
+    <p>🧠 <em>Wusstest du? Menschen, die enge Freundschaften haben, leben nachweislich länger, haben ein stärkeres Immunsystem und sind widerstandsfähiger in Krisen. Verbindung ist ein biologisches Grundbedürfnis – kein Luxus.</em></p>
+  </div>
+
+  <!-- Übung 1 – Freundschaftsqualitäten Ranking -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">1</div>
+      <div class="uebung-titel">Was macht echte Freundschaft aus? Kreise deine Top 5 ein! ⭐</div>
+    </div>
+    <div class="uebung-beschreibung">Kreise die 5 Eigenschaften ein die dir in einer Freundschaft am wichtigsten sind. Vergleiche danach mit deinen echten Freundschaften.</div>
+    <div class="qualitaet-grid">
+      <div class="qualitaet-item">🤫 Geheimnisse für sich behalten</div>
+      <div class="qualitaet-item">😂 Zusammen lachen können</div>
+      <div class="qualitaet-item">🙏 Ehrlichkeit – auch wenn es wehtut</div>
+      <div class="qualitaet-item">🆘 Da sein wenn's einem schlecht geht</div>
+      <div class="qualitaet-item">🎯 Gemeinsame Interessen</div>
+      <div class="qualitaet-item">🆓 Ich kann ich selbst sein</div>
+      <div class="qualitaet-item">⚖️ Geben und Nehmen gleich verteilt</div>
+      <div class="qualitaet-item">🚫 Kein Druck, kein Urteilen</div>
+      <div class="qualitaet-item">📞 Erreichbar sein wenn ich es brauche</div>
+      <div class="qualitaet-item">🌱 Ich wachse durch diese Person</div>
+    </div>
+    <div style="font-size:11px;">Meine Top 5: <span style="border-bottom:1px dashed #6EE7B7;display:inline-block;width:280px;">&nbsp;</span></div>
+    <div style="font-size:11px;margin-top:5px;">Haben meine echten Freundschaften diese Qualitäten? <span style="border-bottom:1px dashed #6EE7B7;display:inline-block;width:180px;">&nbsp;</span></div>
+  </div>
+
+  <!-- Übung 2 – Konfliktkompass -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">2</div>
+      <div class="uebung-titel">Mein Konflikt-Kompass – wie reagiere ich meistens? 🧭</div>
+    </div>
+    <div class="uebung-beschreibung">Jeder hat seinen Default-Modus im Konflikt. Welcher bin ich? Kreise an, was auf dich zutrifft.</div>
+    <div class="kompass-grid">
+      <div class="kompass-box" style="background:#FEF2F2;border-color:#FCA5A5;">
+        <div style="font-size:13px;margin-bottom:3px;">⚔️ <strong>Kämpfen</strong></div>
+        <div style="font-size:10px;color:#6B7280;line-height:1.5;">Angreifen, laut werden, Gegenangriff<br>○ Das bin manchmal ich, wenn:<br><span style="border-bottom:1px dashed #FCA5A5;display:inline-block;width:130px;">&nbsp;</span></div>
+      </div>
+      <div class="kompass-box" style="background:#FEF9C3;border-color:#FDE68A;">
+        <div style="font-size:13px;margin-bottom:3px;">🏃 <strong>Fliehen</strong></div>
+        <div style="font-size:10px;color:#6B7280;line-height:1.5;">Weggehen, Kontakt abbrechen, schweigen<br>○ Das bin manchmal ich, wenn:<br><span style="border-bottom:1px dashed #FDE68A;display:inline-block;width:130px;">&nbsp;</span></div>
+      </div>
+      <div class="kompass-box" style="background:#F5F3FF;border-color:#C4B5FD;">
+        <div style="font-size:13px;margin-bottom:3px;">🧊 <strong>Einfrieren</strong></div>
+        <div style="font-size:10px;color:#6B7280;line-height:1.5;">Blockiert sein, nicht reden können<br>○ Das bin manchmal ich, wenn:<br><span style="border-bottom:1px dashed #C4B5FD;display:inline-block;width:130px;">&nbsp;</span></div>
+      </div>
+      <div class="kompass-box" style="background:var(--farbe-hell);border-color:#6EE7B7;">
+        <div style="font-size:13px;margin-bottom:3px;">💬 <strong>Reden</strong></div>
+        <div style="font-size:10px;color:#6B7280;line-height:1.5;">Ansprechen, zuhören, Lösung suchen<br>○ Das gelingt mir, wenn:<br><span style="border-bottom:1px dashed #6EE7B7;display:inline-block;width:130px;">&nbsp;</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Freundschaft &amp; Konflikte · Seite 1</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 2 ===== -->
+<div class="seite">
+
+  <!-- Übung 3 – Fair Fight Rules -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">3</div>
+      <div class="uebung-titel">Die Fair-Fight-Regeln – streiten ohne zu verletzen ⚖️</div>
+    </div>
+    <div class="uebung-beschreibung">Gute Freundschaften brauchen keine Regeln die nie gelten – sondern Regeln die man kennt wenn es schwierig wird. Kreise an was du gut findest!</div>
+    <div class="fair-fight-item">✅ Erst abkühlen – dann reden (nicht im Hitze-Moment)</div>
+    <div class="fair-fight-item">✅ Eine Sache auf einmal – nicht alles auf einmal rausschütten</div>
+    <div class="fair-fight-item">✅ Ich-Botschaften statt Du-Anschuldigungen</div>
+    <div class="fair-fight-item">✅ Ausreden lassen – aktiv zuhören ohne zu unterbrechen</div>
+    <div class="fair-fight-item">✅ Kein Rundum-Schlag ("Du machst immer / nie …")</div>
+    <div class="fair-fight-item">✅ Keine Beleidigungen – Kritik an Verhalten, nicht an Person</div>
+    <div class="fair-fight-item">✅ Kompromiss suchen – kein "ich gewinne, du verlierst"</div>
+    <div class="fair-fight-item">✅ Nach dem Streit: klären ob alles ok ist</div>
+    <div style="font-size:11px;margin-top:6px;">Welche Regel fällt mir am schwersten? <span style="border-bottom:1px dashed #6EE7B7;display:inline-block;width:220px;">&nbsp;</span></div>
+  </div>
+
+  <!-- Übung 4 – Ich-Botschaft üben -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">4</div>
+      <div class="uebung-titel">Ich-Botschaft üben – von "Du machst..." zu "Ich fühle..." ✍️</div>
+    </div>
+    <div class="uebung-beschreibung">Ich-Botschaften greifen nicht an – sie erklären wie es dir geht. Wandle diese Situationen um:</div>
+    <div class="ich-msg-box">
+      <div style="font-size:11px;color:#DC2626;margin-bottom:4px;">😤 "Du antwortest nie auf meine Nachrichten!"</div>
+      <div style="font-size:11px;">→ "Ich fühle mich <span style="border-bottom:1px dashed #6EE7B7;display:inline-block;width:100px;">&nbsp;</span>, wenn <span style="border-bottom:1px dashed #6EE7B7;display:inline-block;width:100px;">&nbsp;</span>, weil mir <span style="border-bottom:1px dashed #6EE7B7;display:inline-block;width:80px;">&nbsp;</span> wichtig ist."</div>
+    </div>
+    <div class="ich-msg-box">
+      <div style="font-size:11px;color:#DC2626;margin-bottom:4px;">😤 "Du erzählst immer allen meine Geheimnisse!"</div>
+      <div style="font-size:11px;">→ "Ich fühle mich <span style="border-bottom:1px dashed #6EE7B7;display:inline-block;width:100px;">&nbsp;</span>, wenn <span style="border-bottom:1px dashed #6EE7B7;display:inline-block;width:100px;">&nbsp;</span>, weil mir <span style="border-bottom:1px dashed #6EE7B7;display:inline-block;width:80px;">&nbsp;</span> wichtig ist."</div>
+    </div>
+    <div class="ich-msg-box">
+      <div style="font-size:11px;color:#374151;margin-bottom:4px;">💡 Eigene Situation aus meinem Leben:</div>
+      <div style="border-bottom:1px dashed #6EE7B7;height:16px;margin-bottom:6px;"></div>
+      <div style="font-size:11px;">→ "Ich fühle mich <span style="border-bottom:1px dashed #6EE7B7;display:inline-block;width:100px;">&nbsp;</span>, wenn <span style="border-bottom:1px dashed #6EE7B7;display:inline-block;width:100px;">&nbsp;</span>, weil mir <span style="border-bottom:1px dashed #6EE7B7;display:inline-block;width:80px;">&nbsp;</span> wichtig ist."</div>
+    </div>
+  </div>
+
+  <!-- Übung 5 – Reparatur-Schritte -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">5</div>
+      <div class="uebung-titel">Beziehungs-Reparatur in 4 Schritten 🔧</div>
+    </div>
+    <div class="reparatur-schritt"><div class="reparatur-nr">1</div><div style="font-size:11px;"><strong>Abkühlen</strong> – mindestens eine Stunde (oder länger) warten. Reden wenn Emotionen hoch sind endet selten gut.</div></div>
+    <div class="reparatur-schritt"><div class="reparatur-nr">2</div><div style="font-size:11px;"><strong>Ich-Botschaft senden</strong> – erklären wie du dich gefühlt hast, ohne Vorwurf.</div></div>
+    <div class="reparatur-schritt"><div class="reparatur-nr">3</div><div style="font-size:11px;"><strong>Zuhören</strong> – die andere Seite verstehen wollen, nicht nur antworten wollen.</div></div>
+    <div class="reparatur-schritt"><div class="reparatur-nr">4</div><div style="font-size:11px;"><strong>Gemeinsam abschließen</strong> – was ändert sich? Kurze Abmachung. "Wir sind wieder okay."</div></div>
+  </div>
+
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Reflexion</div>
+    <p>Gibt es gerade eine Freundschaft oder einen Konflikt der dir auf dem Herzen liegt? Was würde sich ändern wenn du einen ersten Schritt machst?</p>
+    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
+    <strong>ICD-10:</strong> Soziale Kompetenzdefizite als Risikofaktor und Komorbiditätssymptom bei F84 (ASS), F90 (ADHS), F60.3 (Borderline), F43 (Anpassungsstörungen). <strong>Gewaltfreie Kommunikation (GFK)</strong> nach Rosenberg: Beobachtung – Gefühl – Bedürfnis – Bitte. Ich-Botschaften = evidenzbasiertes KVT-Mittel. <strong>Konfliktkompass</strong> entspricht dem Fight-Flight-Freeze-Modell (polyvagale Theorie, Porges) – Freeze und Fawn als häufig übersehene Reaktionen. Soziogramm (Kreis-Übung) diagnostisch nutzbar: soziale Isolation, toxische Beziehungen oder Bindungsarmut identifizieren. <strong>DBT-Interpersonelle Wirksamkeit:</strong> DEAR MAN / GIVE / FAST als weiterführende Module. Rollenspiele zur Konfliktlösung und Grenzsetzung besonders wirksam im Jugendalter (Modeling + Übung).
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Freundschaft &amp; Konflikte · Seite 2</span>
+  </div>
+</div>
+
+</body>
+</html>

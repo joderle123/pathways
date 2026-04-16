@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Stress &amp; Angst</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #DC2626; --farbe-hell: #FEF2F2; }
+    .bubble-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px; }
+    .bubble { background:var(--farbe-hell); border:1.5px solid #FECACA; border-radius:8px; padding:8px 10px; font-size:11px; }
+    .box-breathing-side { display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; color:var(--farbe); }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- SEITE 1 -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">Wenn der Kopf nicht abschaltet – Stress &amp; Angst verstehen</div>
+      <div class="ab-untertitel">Stress &amp; Generalisierte Angst · Kategorie: Emotionen &amp; Wohlbefinden</div>
+    </div>
+    <div class="kopfzeile-icon">🌪️</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">💡 Dein Körper meint es gut – auch wenn er nervt.</div>
+    <p>Stress und Angst sind keine Fehler deines Gehirns – sie sind Schutzreaktionen. Dein Körper schüttet Adrenalin aus, das Herz schlägt schneller, die Muskeln spannen sich an. Das nennt man <strong>Kampf-oder-Flucht-Reaktion</strong>. Das Problem: Sie geht auch bei Prüfungsangst und Streit an.</p>
+    <p>🧠 <em>Wusstest du? Dauerstress schrumpft den Hippocampus – das Gehirnareal fürs Lernen und Gedächtnis. Aber: Entspannungstechniken können diesen Effekt rückgängig machen. Dein Gehirn ist plastisch!</em></p>
+  </div>
+
+  <!-- Übung 1 -->
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">1</div><div class="uebung-titel">Dein Stress-o-Meter – Wo sitzt der Stress im Körper?</div></div>
+    <div class="uebung-beschreibung">Zeichne Pfeile oder Punkte in die Körpersilhouette: Wo spürst du Stress, wenn er kommt? Beschrifte die Stellen.</div>
+    <div style="display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:start;margin-bottom:8px;">
+      <div style="text-align:center;">
+        <!-- Körpersilhouette als einfache ASCII-Grafik -->
+        <div style="border:2px solid #FECACA;border-radius:12px;padding:10px;background:var(--farbe-hell);min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+          <div style="font-size:42px;line-height:1;">🧍</div>
+          <div style="font-size:9px;color:var(--grau);margin-top:4px;">← Hier zeichnen / beschriften</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:4px;">Meine Körpersignale bei Stress:</div>
+        <div style="background:#FFF5F5;border:1px solid #FECACA;border-radius:6px;padding:7px;font-size:11px;">😶‍🌫️ <strong>Kopf:</strong> <span style="border-bottom:1px dashed var(--border);display:inline-block;width:140px;"></span></div>
+        <div style="background:#FFF5F5;border:1px solid #FECACA;border-radius:6px;padding:7px;font-size:11px;">😤 <strong>Hals/Brust:</strong> <span style="border-bottom:1px dashed var(--border);display:inline-block;width:120px;"></span></div>
+        <div style="background:#FFF5F5;border:1px solid #FECACA;border-radius:6px;padding:7px;font-size:11px;">🫁 <strong>Bauch:</strong> <span style="border-bottom:1px dashed var(--border);display:inline-block;width:140px;"></span></div>
+        <div style="background:#FFF5F5;border:1px solid #FECACA;border-radius:6px;padding:7px;font-size:11px;">💪 <strong>Schultern/Arme:</strong> <span style="border-bottom:1px dashed var(--border);display:inline-block;width:100px;"></span></div>
+        <div style="background:#FFF5F5;border:1px solid #FECACA;border-radius:6px;padding:7px;font-size:11px;">🦵 <strong>Beine/Füße:</strong> <span style="border-bottom:1px dashed var(--border);display:inline-block;width:130px;"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Übung 2 -->
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">2</div><div class="uebung-titel">Deine Stressoren – Kreise ein, was dich gerade beschäftigt</div></div>
+    <div class="uebung-beschreibung">Welche dieser Themen belasten dich? Kreise ein, was zutrifft (mehrere möglich):</div>
+    <div class="bubble-grid">
+      <div class="bubble">📚 Schule / Prüfungen / Noten</div>
+      <div class="bubble">👨‍👩‍👧 Familie / Streit zuhause</div>
+      <div class="bubble">🔮 Zukunft / Was wird aus mir?</div>
+      <div class="bubble">🪞 Körper / Aussehen / Vergleiche</div>
+      <div class="bubble">💬 Freundschaften / Konflikte</div>
+      <div class="bubble">❤️ Beziehungen / Liebe / Einsamkeit</div>
+      <div class="bubble">📱 Social Media / was andere denken</div>
+      <div class="bubble">🌍 Welt / Klimakrise / Nachrichten</div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;background:var(--farbe-hell);border-radius:8px;padding:10px;margin-top:4px;">
+      <span style="font-size:10px;">😌 Kaum Stress</span>
+      <div style="display:flex;gap:5px;">
+        <span style="font-size:18px;border:1.5px solid #FECACA;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;">1</span>
+        <span style="font-size:18px;border:1.5px solid #FECACA;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;">2</span>
+        <span style="font-size:18px;border:1.5px solid #FECACA;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;">3</span>
+        <span style="font-size:18px;border:1.5px solid #FECACA;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;">4</span>
+        <span style="font-size:18px;border:1.5px solid #FECACA;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;">5</span>
+        <span style="font-size:18px;border:1.5px solid #FECACA;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;">6</span>
+        <span style="font-size:18px;border:1.5px solid #FECACA;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;">7</span>
+        <span style="font-size:18px;border:1.5px solid #FECACA;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;">8</span>
+        <span style="font-size:18px;border:1.5px solid #FECACA;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;">9</span>
+        <span style="font-size:18px;border:1.5px solid #FECACA;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;">10</span>
+      </div>
+      <span style="font-size:10px;">🤯 Überwältigt</span>
+    </div>
+    <p style="font-size:10px;color:var(--grau);margin-top:4px;">Kreise dein aktuelles Stresslevel ein.</p>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Stress &amp; Angst · Seite 1</span>
+  </div>
+</div>
+
+<!-- SEITE 2 -->
+<div class="seite">
+
+  <!-- Übung 3 -->
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">3</div><div class="uebung-titel">Box-Breathing – Atme das Nervensystem runter</div></div>
+    <div class="uebung-beschreibung">Box Breathing (4–4–4–4) aktiviert den Parasympathikus – dein Ruhesystem. Folge dem Quadrat mit dem Finger:</div>
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:10px;">
+      <div style="flex-shrink:0;">
+        <!-- Box Breathing Diagram -->
+        <div style="position:relative;width:140px;height:140px;border:3px solid var(--farbe);border-radius:6px;background:var(--farbe-hell);">
+          <!-- Arrows and labels on each side -->
+          <div style="position:absolute;top:-18px;left:0;right:0;text-align:center;font-size:10px;font-weight:700;color:var(--farbe);">⬆️ EINATMEN · 4 Sek.</div>
+          <div style="position:absolute;bottom:-18px;left:0;right:0;text-align:center;font-size:10px;font-weight:700;color:var(--farbe);">⬇️ AUSATMEN · 4 Sek.</div>
+          <div style="position:absolute;right:-52px;top:50%;transform:translateY(-50%);font-size:10px;font-weight:700;color:var(--farbe);white-space:nowrap;">➡️ HALTEN<br>4 Sek.</div>
+          <div style="position:absolute;left:-52px;top:50%;transform:translateY(-50%);font-size:10px;font-weight:700;color:var(--farbe);white-space:nowrap;text-align:right;">⬅️ HALTEN<br>4 Sek.</div>
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:24px;">🌬️</div>
+        </div>
+      </div>
+      <div style="flex:1;margin-left:60px;">
+        <div style="font-size:12px;font-weight:700;margin-bottom:8px;color:var(--farbe);">Jetzt ausprobieren!</div>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div style="background:#FFF5F5;border-radius:6px;padding:7px;font-size:11px;">🔴 <strong>4 Sek. einatmen</strong> – tief durch die Nase</div>
+          <div style="background:#FFF5F5;border-radius:6px;padding:7px;font-size:11px;">🟡 <strong>4 Sek. halten</strong> – ruhig bleiben</div>
+          <div style="background:#FFF5F5;border-radius:6px;padding:7px;font-size:11px;">🟢 <strong>4 Sek. ausatmen</strong> – durch den Mund</div>
+          <div style="background:#FFF5F5;border-radius:6px;padding:7px;font-size:11px;">⚪ <strong>4 Sek. halten</strong> – vor dem nächsten Atemzug</div>
+        </div>
+        <p style="font-size:11px;color:var(--grau);margin-top:6px;">Wie fühlst du dich nach 4 Runden? <span style="border-bottom:1px dashed var(--border);display:inline-block;width:100px;"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Übung 4 -->
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">4</div><div class="uebung-titel">Sorgenzeit-Methode – Sorgen haben einen festen Platz</div></div>
+    <div class="uebung-beschreibung">Wenn Sorgen dich den ganzen Tag verfolgen: Bestimme eine feste Zeit (15 Min.) zum Sorgen. Außerhalb dieser Zeit: Sorge aufschreiben → auf später verschieben. Das Gehirn lernt: "Später ist sicher."</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px;">
+      <div style="border:1.5px solid #FECACA;border-radius:8px;padding:10px;">
+        <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:6px;">😰 Meine Sorgen heute</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+      <div style="border:1.5px solid #FECACA;border-radius:8px;padding:10px;">
+        <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:6px;">🎯 Kann ich das beeinflussen?</div>
+        <div style="font-size:10px;color:var(--grau);margin-bottom:4px;">JA – Was kann ich tun?</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+        <div style="font-size:10px;color:var(--grau);margin:6px 0;">NEIN – Loslassen üben:</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div></div>
+      </div>
+    </div>
+    <div style="background:var(--farbe-hell);border-radius:8px;padding:10px;font-size:11px;">
+      ⏰ <strong>Meine feste Sorgenzeit:</strong> Täglich um <span style="border-bottom:1px dashed var(--border);display:inline-block;width:40px;"></span> Uhr für <span style="border-bottom:1px dashed var(--border);display:inline-block;width:40px;"></span> Minuten. Danach: Heft zu, Thema wechseln.
+    </div>
+  </div>
+
+  <!-- Übung 5 -->
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">5</div><div class="uebung-titel">Mein Coping-Toolkit – 4 Werkzeuge gegen Stress</div></div>
+    <div class="uebung-beschreibung">Jede Kategorie hilft anders. Schreibe in jede Box mindestens 2 Dinge, die dir helfen:</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+      <div style="border:1.5px solid #FCA5A5;border-radius:8px;padding:10px;background:#FFF5F5;">
+        <div style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:6px;">🏃 Körperlich</div>
+        <div style="font-size:10px;color:var(--grau);margin-bottom:4px;">Sport, Bewegung, Atem, Kälte…</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+      <div style="border:1.5px solid #FCA5A5;border-radius:8px;padding:10px;background:#FFF5F5;">
+        <div style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:6px;">🧠 Gedanklich (kognitiv)</div>
+        <div style="font-size:10px;color:var(--grau);margin-bottom:4px;">Umdeuten, Perspektive wechseln…</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+      <div style="border:1.5px solid #FCA5A5;border-radius:8px;padding:10px;background:#FFF5F5;">
+        <div style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:6px;">👥 Sozial</div>
+        <div style="font-size:10px;color:var(--grau);margin-bottom:4px;">Jemanden anrufen, rausgehen…</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+      <div style="border:1.5px solid #FCA5A5;border-radius:8px;padding:10px;background:#FFF5F5;">
+        <div style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:6px;">🎨 Kreativ</div>
+        <div style="font-size:10px;color:var(--grau);margin-bottom:4px;">Musik, Zeichnen, Schreiben…</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Reflexion</div>
+    <p>Welche Strategie möchtest du diese Woche konkret ausprobieren? Wann genau?</p>
+    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
+    <strong>ICD-10:</strong> F41.1 (Generalisierte Angststörung), F43.0 (Akute Belastungsreaktion), Z73 (Probleme mit Bezug auf Lebensbewältigung / Burnout-Vorläufer).<br>
+    <strong>Methoden:</strong> Box Breathing / Zwerchfellatmung aktiviert den Parasympathikus (HRV-Biofeedback-Forschung). Sorgenzeit-Technik nach Borkovec (Metakognitive Therapie, MCT). Coping-Toolkit basiert auf Lazarus' transaktionalem Stressmodell.<br>
+    <strong>Screening:</strong> GAD-7 (ab 12 J.), SCARED für Kinder/Jugendliche, DASS-21. Bei anhaltenden Angstsymptomen (&gt;6 Monate), Vermeidungsverhalten oder Schulabsentismus: psychiatrische Abklärung. Expositionstherapie bei spezifischen Phobien (nur durch Fachpersonen).<br>
+    <strong>Notfallnummern:</strong> Kanner-Jugendtelefon 116 111 · SOS Détresse 454545
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Stress &amp; Angst · Seite 2</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Freizeit &amp; Hobbys</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #059669; --farbe-hell: #ECFDF5; }
+    .bubble-grid { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
+    .bubble { border:2px solid #6EE7B7; border-radius:20px; padding:5px 10px; font-size:10px; font-weight:600; background:#ECFDF5; cursor:default; }
+    .day-col { background:#F0FDF4; border:1.5px solid #A7F3D0; border-radius:8px; padding:8px; }
+    .day-label { font-size:11px; font-weight:700; color:#059669; margin-bottom:5px; }
+    .time-slot { font-size:9px; color:#6B7280; margin-bottom:3px; }
+    .barrier-row { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:6px; }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- ===== SEITE 1 ===== -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">Was macht dir wirklich Spaß?</div>
+      <div class="ab-untertitel">Freizeit &amp; Hobbys · Kategorie: Alltag &amp; Leben</div>
+    </div>
+    <div class="kopfzeile-icon">🎨</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">💡 Freizeit ist kein Luxus – sie ist notwendig.</div>
+    <p>Hobbys geben Energie, bauen Stress ab und helfen dir herauszufinden, wer du bist. Jugendliche, die regelmäßig Dinge tun die ihnen Spaß machen, haben bessere Laune, mehr Selbstvertrauen und stärkere soziale Verbindungen.</p>
+    <p>🧠 <em>Wusstest du? Psychologen nennen den Zustand des völligen Aufgehens in einer Tätigkeit "Flow" – und er macht nachweislich glücklicher als passive Mediennutzung.</em></p>
+  </div>
+
+  <!-- Übung 1: Aktivitäts-Inventar -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">1</div>
+      <div class="uebung-titel">Aktivitäts-Inventar – Kreis ein, was du machst oder ausprobieren willst</div>
+    </div>
+    <div class="uebung-beschreibung">Kreise die Aktivitäten ein, die du bereits machst (einfach) oder gerne mal ausprobieren würdest (mit Stern ★).</div>
+    <div class="bubble-grid">
+      <div class="bubble">🎸 Musik machen</div>
+      <div class="bubble">🎧 Musik hören</div>
+      <div class="bubble">⚽ Fußball</div>
+      <div class="bubble">🏀 Basketball</div>
+      <div class="bubble">🏊 Schwimmen</div>
+      <div class="bubble">🚴 Fahrrad fahren</div>
+      <div class="bubble">🎨 Zeichnen / Malen</div>
+      <div class="bubble">📸 Fotografie</div>
+      <div class="bubble">✍️ Schreiben / Journaling</div>
+      <div class="bubble">📚 Lesen</div>
+      <div class="bubble">🎮 Gaming</div>
+      <div class="bubble">🎬 Filme / Serien</div>
+      <div class="bubble">🍳 Kochen / Backen</div>
+      <div class="bubble">🌿 Natur / Wandern</div>
+      <div class="bubble">🐕 Tiere</div>
+      <div class="bubble">🎭 Theater / Roleplay</div>
+      <div class="bubble">💃 Tanzen</div>
+      <div class="bubble">🧩 Puzzeln / Rätsel</div>
+      <div class="bubble">🛹 Skateboard</div>
+      <div class="bubble">🎤 Singen / Rappen</div>
+      <div class="bubble">♟️ Schach / Brettspiele</div>
+      <div class="bubble">🧶 Basteln / Häkeln</div>
+      <div class="bubble">🌱 Gärtnern</div>
+      <div class="bubble">🤝 Freiwilligarbeit</div>
+      <div class="bubble">🎪 Kino / Theater</div>
+      <div class="bubble">🏋️ Krafttraining</div>
+      <div class="bubble">🧘 Yoga / Meditation</div>
+      <div class="bubble">🎲 Karten spielen</div>
+      <div class="bubble">🖥️ Programmieren</div>
+      <div class="bubble">🎡 Ausgehen / Entdecken</div>
+    </div>
+  </div>
+
+  <!-- Übung 2: Flow Detector -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">2</div>
+      <div class="uebung-titel">Mein Flow-Detektor – Wann vergesse ich die Zeit?</div>
+    </div>
+    <div style="background:#ECFDF5;border:1.5px solid #6EE7B7;border-radius:8px;padding:10px;margin-bottom:8px;">
+      <div style="font-size:11px;font-weight:700;color:#059669;margin-bottom:6px;">Ich verliere das Zeitgefühl, wenn ich...</div>
+      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      <div style="font-size:11px;font-weight:700;color:#059669;margin-top:8px;margin-bottom:4px;">Das Hobby, das mir am meisten Energie gibt:</div>
+      <div class="schreiblinien"><div class="schreiblinie"></div></div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Freizeit &amp; Hobbys · Seite 1</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 2 ===== -->
+<div class="seite">
+
+  <!-- Übung 3: Mein ideales Wochenende -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">3</div>
+      <div class="uebung-titel">Mein ideales Wochenende – Gestalte es selbst</div>
+    </div>
+    <div class="uebung-beschreibung">Kein Muss, kein Stress. Wie würde dein perfektes Wochenende aussehen?</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+      <div class="day-col">
+        <div class="day-label">🟡 Samstag</div>
+        <div class="time-slot">Morgen (9–12 Uhr):</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div></div>
+        <div class="time-slot" style="margin-top:5px;">Nachmittag (12–18 Uhr):</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div></div>
+        <div class="time-slot" style="margin-top:5px;">Abend (18+ Uhr):</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div></div>
+      </div>
+      <div class="day-col">
+        <div class="day-label">🟢 Sonntag</div>
+        <div class="time-slot">Morgen (9–12 Uhr):</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div></div>
+        <div class="time-slot" style="margin-top:5px;">Nachmittag (12–18 Uhr):</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div></div>
+        <div class="time-slot" style="margin-top:5px;">Abend (18+ Uhr):</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Übung 4: Barrieren + Lösungen -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">4</div>
+      <div class="uebung-titel">Was mich aufhält – und wie ich es trotzdem schaffe</div>
+    </div>
+    <div class="uebung-beschreibung">Für jede Barriere gibt es einen Weg. Was ist deiner?</div>
+    <div style="font-size:10px;display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:4px;">
+      <div style="font-weight:700;color:#DC2626;padding:4px 6px;background:#FEF2F2;border-radius:4px;">🚧 Barriere</div>
+      <div style="font-weight:700;color:#059669;padding:4px 6px;background:#ECFDF5;border-radius:4px;">💡 Mein Weg drumherum</div>
+    </div>
+    <div class="barrier-row">
+      <div style="background:#FEF2F2;border-radius:6px;padding:7px;font-size:11px;">Kein Geld für das Hobby</div>
+      <div style="background:#ECFDF5;border-radius:6px;padding:7px;"><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+    </div>
+    <div class="barrier-row">
+      <div style="background:#FEF2F2;border-radius:6px;padding:7px;font-size:11px;">Kein Transport / zu weit weg</div>
+      <div style="background:#ECFDF5;border-radius:6px;padding:7px;"><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+    </div>
+    <div class="barrier-row">
+      <div style="background:#FEF2F2;border-radius:6px;padding:7px;font-size:11px;">Keine Zeit (Schule, Stress)</div>
+      <div style="background:#ECFDF5;border-radius:6px;padding:7px;"><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+    </div>
+    <div class="barrier-row">
+      <div style="background:#FEF2F2;border-radius:6px;padding:7px;font-size:11px;">Niemand macht mit</div>
+      <div style="background:#ECFDF5;border-radius:6px;padding:7px;"><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+    </div>
+    <div class="barrier-row">
+      <div style="background:#FEF2F2;border-radius:6px;padding:7px;font-size:11px;">Keine Energie / keine Motivation</div>
+      <div style="background:#ECFDF5;border-radius:6px;padding:7px;"><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+    </div>
+  </div>
+
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Mein nächster Schritt</div>
+    <p>Welche Aktivität probiere ich <strong>noch diese Woche</strong> aus? Was ist der kleinste erste Schritt?</p>
+    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Hinweis für Bezugspersonen</div>
+    Strukturierte Freizeitaktivitäten sind ein starker Schutzfaktor gegen Risikoverhalten im Jugendalter (Mahoney &amp; Stattin, 2000). Flow-Erfahrungen (Csikszentmihalyi) stärken intrinsische Motivation und Selbstwirksamkeit. Übermäßige Bildschirmzeit (&gt;4–5 Std./Tag außer Schule) ist mit schlechterer Stimmung und Schlafproblemen assoziiert. <strong>Angebote in Luxembourg:</strong> Maisons des Jeunes, Sportvereine, Kulturelle Angebote der Gemeinden (viele kostenlos oder günstig). Jugendliche ohne Ressourcen können über SNJ (snj.lu) und Jugendhaus gefördert werden. Flow-Aktivitäten als Einstieg in Beziehungsaufbau nutzen – gemeinsame Aktivitäten fördern Vertrauen.
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Freizeit &amp; Hobbys · Seite 2</span>
+  </div>
+</div>
+
+</body>
+</html>

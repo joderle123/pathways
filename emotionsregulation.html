@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Emotionsregulation</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #F59E0B; --farbe-hell: #FFFBEB; }
+    .bubble-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px; }
+    .bubble { background:var(--farbe-hell); border:1.5px solid #FDE68A; border-radius:8px; padding:8px 10px; font-size:11px; }
+    .emotion-card { border:1.5px solid #FDE68A; border-radius:8px; padding:9px; text-align:center; background:var(--farbe-hell); }
+    .stopp-card { border-radius:10px; padding:12px; text-align:center; }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- SEITE 1 -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">Reite die Welle – Gefühle regulieren statt schlucken</div>
+      <div class="ab-untertitel">Emotionsregulation · Kategorie: Emotionen &amp; Wohlbefinden</div>
+    </div>
+    <div class="kopfzeile-icon">🌊</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">🌊 Gefühle sind wie Wellen – sie kommen, steigen, und gehen wieder.</div>
+    <p>Emotionsregulation bedeutet nicht, keine Gefühle zu haben. Es bedeutet, trotz starker Gefühle <strong>handlungsfähig zu bleiben</strong>. Gefühle zu schlucken macht sie stärker. Sie zu surfen macht dich stärker.</p>
+    <p>🧠 <em>Wusstest du? Gefühle dauern im Schnitt nur 90 Sekunden – wenn man sie nicht durch Gedanken verlängert. Was danach kommt, ist das Festhalten. Loslassen ist eine Fertigkeit die man lernen kann.</em></p>
+  </div>
+
+  <!-- Übung 1 -->
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">1</div><div class="uebung-titel">Das Emotions-Rad – Was fühlst du und wie stark?</div></div>
+    <div class="uebung-beschreibung">Kreise die Grundgefühle ein, die du diese Woche gespürt hast. Schreibe daneben wie intensiv (1–10):</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;margin-bottom:10px;">
+      <div class="emotion-card">
+        <div style="font-size:22px;">😔</div>
+        <div style="font-size:11px;font-weight:700;color:var(--farbe);">Trauer</div>
+        <div style="font-size:10px;color:var(--grau);">Intensität: __/10</div>
+      </div>
+      <div class="emotion-card">
+        <div style="font-size:22px;">😡</div>
+        <div style="font-size:11px;font-weight:700;color:var(--farbe);">Wut</div>
+        <div style="font-size:10px;color:var(--grau);">Intensität: __/10</div>
+      </div>
+      <div class="emotion-card">
+        <div style="font-size:22px;">😰</div>
+        <div style="font-size:11px;font-weight:700;color:var(--farbe);">Angst</div>
+        <div style="font-size:10px;color:var(--grau);">Intensität: __/10</div>
+      </div>
+      <div class="emotion-card">
+        <div style="font-size:22px;">😊</div>
+        <div style="font-size:11px;font-weight:700;color:var(--farbe);">Freude</div>
+        <div style="font-size:10px;color:var(--grau);">Intensität: __/10</div>
+      </div>
+      <div class="emotion-card">
+        <div style="font-size:22px;">🤢</div>
+        <div style="font-size:11px;font-weight:700;color:var(--farbe);">Ekel</div>
+        <div style="font-size:10px;color:var(--grau);">Intensität: __/10</div>
+      </div>
+      <div class="emotion-card">
+        <div style="font-size:22px;">😳</div>
+        <div style="font-size:11px;font-weight:700;color:var(--farbe);">Scham</div>
+        <div style="font-size:10px;color:var(--grau);">Intensität: __/10</div>
+      </div>
+      <div class="emotion-card">
+        <div style="font-size:22px;">😲</div>
+        <div style="font-size:11px;font-weight:700;color:var(--farbe);">Überraschung</div>
+        <div style="font-size:10px;color:var(--grau);">Intensität: __/10</div>
+      </div>
+      <div class="emotion-card">
+        <div style="font-size:22px;">🥰</div>
+        <div style="font-size:11px;font-weight:700;color:var(--farbe);">Zuneigung</div>
+        <div style="font-size:10px;color:var(--grau);">Intensität: __/10</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Übung 2 -->
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">2</div><div class="uebung-titel">Emotions-Körperkarte – Wo spürst du deine Gefühle?</div></div>
+    <div class="uebung-beschreibung">Verbinde (oder schreibe auf), wo du jedes Gefühl im Körper spürst. Jeder Körper ist anders – es gibt keine falsche Antwort.</div>
+    <div style="display:grid;grid-template-columns:100px 1fr;gap:12px;align-items:start;margin-bottom:8px;">
+      <div style="text-align:center;border:1.5px solid #FDE68A;border-radius:10px;padding:8px;background:var(--farbe-hell);min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+        <div style="font-size:38px;line-height:1;">🧍</div>
+        <div style="font-size:8px;color:var(--grau);margin-top:4px;">← hier zeichnen</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:5px;">
+        <div style="display:grid;grid-template-columns:22px 70px 1fr;gap:6px;align-items:center;font-size:11px;background:var(--farbe-hell);border-radius:6px;padding:6px;">
+          <span>😡</span><span style="font-weight:700;">Wut:</span><span style="border-bottom:1px dashed var(--border);height:14px;"></span>
+        </div>
+        <div style="display:grid;grid-template-columns:22px 70px 1fr;gap:6px;align-items:center;font-size:11px;background:var(--farbe-hell);border-radius:6px;padding:6px;">
+          <span>😰</span><span style="font-weight:700;">Angst:</span><span style="border-bottom:1px dashed var(--border);height:14px;"></span>
+        </div>
+        <div style="display:grid;grid-template-columns:22px 70px 1fr;gap:6px;align-items:center;font-size:11px;background:var(--farbe-hell);border-radius:6px;padding:6px;">
+          <span>😔</span><span style="font-weight:700;">Trauer:</span><span style="border-bottom:1px dashed var(--border);height:14px;"></span>
+        </div>
+        <div style="display:grid;grid-template-columns:22px 70px 1fr;gap:6px;align-items:center;font-size:11px;background:var(--farbe-hell);border-radius:6px;padding:6px;">
+          <span>😊</span><span style="font-weight:700;">Freude:</span><span style="border-bottom:1px dashed var(--border);height:14px;"></span>
+        </div>
+        <div style="display:grid;grid-template-columns:22px 70px 1fr;gap:6px;align-items:center;font-size:11px;background:var(--farbe-hell);border-radius:6px;padding:6px;">
+          <span>😳</span><span style="font-weight:700;">Scham:</span><span style="border-bottom:1px dashed var(--border);height:14px;"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Emotionsregulation · Seite 1</span>
+  </div>
+</div>
+
+<!-- SEITE 2 -->
+<div class="seite">
+
+  <!-- Übung 3 -->
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">3</div><div class="uebung-titel">STOPP-Technik – 5 Schritte bevor du reagierst</div></div>
+    <div class="uebung-beschreibung">DBT/ACT-Skill: Wenn du überwältigt bist – STOPP! Folge den 5 Karten:</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:10px;">
+      <div class="stopp-card" style="background:#FEF2F2;border:2px solid #FCA5A5;">
+        <div style="font-size:20px;font-weight:900;color:#DC2626;">S</div>
+        <div style="font-size:11px;font-weight:700;color:#DC2626;margin:3px 0;">STOP</div>
+        <div style="font-size:9px;color:var(--grau);">Pause. Tue nichts. Beweg dich nicht.</div>
+      </div>
+      <div class="stopp-card" style="background:#FFF7ED;border:2px solid #FCD34D;">
+        <div style="font-size:20px;font-weight:900;color:#D97706;">T</div>
+        <div style="font-size:11px;font-weight:700;color:#D97706;margin:3px 0;">TIEF ATMEN</div>
+        <div style="font-size:9px;color:var(--grau);">3 Atemzüge. Bauch rein, Bauch raus.</div>
+      </div>
+      <div class="stopp-card" style="background:#F0FDF4;border:2px solid #6EE7B7;">
+        <div style="font-size:20px;font-weight:900;color:#059669;">O</div>
+        <div style="font-size:11px;font-weight:700;color:#059669;margin:3px 0;">OBSERVE</div>
+        <div style="font-size:9px;color:var(--grau);">Was denke ich? Was fühle ich? Was will ich?</div>
+      </div>
+      <div class="stopp-card" style="background:#EFF6FF;border:2px solid #93C5FD;">
+        <div style="font-size:20px;font-weight:900;color:#2563EB;">P</div>
+        <div style="font-size:11px;font-weight:700;color:#2563EB;margin:3px 0;">PERSPEKTIVE</div>
+        <div style="font-size:9px;color:var(--grau);">Was würde ein Freund sagen? Wie groß ist das wirklich?</div>
+      </div>
+      <div class="stopp-card" style="background:#F5F3FF;border:2px solid #C4B5FD;">
+        <div style="font-size:20px;font-weight:900;color:#7C3AED;">P</div>
+        <div style="font-size:11px;font-weight:700;color:#7C3AED;margin:3px 0;">PROCEED</div>
+        <div style="font-size:9px;color:var(--grau);">Handle achtsam. Was wäre jetzt sinnvoll?</div>
+      </div>
+    </div>
+    <p style="font-size:11px;color:var(--grau);">In welcher Situation wäre STOPP für dich am hilfreichsten? <span style="border-bottom:1px dashed var(--border);display:inline-block;width:200px;"></span></p>
+  </div>
+
+  <!-- Übung 4 -->
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">4</div><div class="uebung-titel">Surf die Welle – Zeichne deine Gefühlswelle</div></div>
+    <div class="uebung-beschreibung">Gefühle kommen in Wellen. Zeichne eine Welle und beschrifte die 3 Phasen:</div>
+    <div style="border:1.5px solid #FDE68A;border-radius:8px;padding:12px;background:var(--farbe-hell);margin-bottom:8px;">
+      <!-- Wave diagram -->
+      <div style="position:relative;height:80px;margin:0 20px;">
+        <!-- Simple SVG wave -->
+        <svg width="100%" height="80" viewBox="0 0 400 80" preserveAspectRatio="none" style="position:absolute;top:0;left:0;">
+          <path d="M0,70 Q50,70 100,35 Q150,0 200,35 Q250,70 300,35 Q350,0 400,25" stroke="#F59E0B" stroke-width="3" fill="none"/>
+        </svg>
+        <!-- Labels -->
+        <div style="position:absolute;left:5%;top:55px;font-size:9px;color:var(--grau);text-align:center;">⬆️ Es baut sich auf<br><span style="border-bottom:1px dashed var(--border);display:inline-block;width:60px;"></span></div>
+        <div style="position:absolute;left:42%;top:2px;font-size:9px;color:var(--grau);text-align:center;">🏔️ Höhepunkt<br><span style="border-bottom:1px dashed var(--border);display:inline-block;width:60px;"></span></div>
+        <div style="position:absolute;left:72%;top:25px;font-size:9px;color:var(--grau);text-align:center;">⬇️ Es zieht vorbei<br><span style="border-bottom:1px dashed var(--border);display:inline-block;width:60px;"></span></div>
+      </div>
+    </div>
+    <p style="font-size:11px;color:var(--grau);">💡 Wenn du eine Welle reiten willst: Beobachte sie ohne wegzulaufen. Sage dir: "Das ist ein Gefühl. Es geht vorbei."</p>
+  </div>
+
+  <!-- Übung 5 -->
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">5</div><div class="uebung-titel">Entgegengesetzt handeln – Opposite Action (DBT)</div></div>
+    <div class="uebung-beschreibung">Manchmal hilft es, entgegen dem Gefühl zu handeln – nicht gegen den Schmerz, aber gegen den Impuls. Fülle die Reihen aus:</div>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px;">
+      <div style="display:grid;grid-template-columns:24px 100px 1fr 1fr;gap:6px;align-items:center;font-size:10px;color:var(--grau);padding:0 6px;">
+        <div></div><div>Gefühl</div><div>Typischer Impuls</div><div>Entgegengesetzte Aktion</div>
+      </div>
+      <div style="display:grid;grid-template-columns:24px 100px 1fr 1fr;gap:6px;align-items:center;background:var(--farbe-hell);border-radius:8px;padding:8px;font-size:11px;">
+        <span>😔</span><span style="font-weight:700;">Trauer</span><span style="color:var(--grau);">Einschließen, Rückzug</span><span style="border-bottom:1px dashed var(--border);height:16px;"></span>
+      </div>
+      <div style="display:grid;grid-template-columns:24px 100px 1fr 1fr;gap:6px;align-items:center;background:var(--farbe-hell);border-radius:8px;padding:8px;font-size:11px;">
+        <span>😡</span><span style="font-weight:700;">Wut</span><span style="color:var(--grau);">Angreifen, schreien</span><span style="border-bottom:1px dashed var(--border);height:16px;"></span>
+      </div>
+      <div style="display:grid;grid-template-columns:24px 100px 1fr 1fr;gap:6px;align-items:center;background:var(--farbe-hell);border-radius:8px;padding:8px;font-size:11px;">
+        <span>😰</span><span style="font-weight:700;">Angst</span><span style="color:var(--grau);">Vermeiden, flüchten</span><span style="border-bottom:1px dashed var(--border);height:16px;"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Reflexion</div>
+    <p>Welche dieser Übungen passt am besten zu dir? Was möchtest du diese Woche bei einem starken Gefühl ausprobieren?</p>
+    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
+    <strong>ICD-10:</strong> Emotionsregulationsstörungen relevant bei F32/33 (Depression), F40/41 (Angst), F60.3 (Borderline), F43 (Trauma), F90 (ADHS).<br>
+    <strong>Methoden:</strong> DBT-Emotionsregulationsmodul (Linehan): Emotions-Wheel-Arbeit, STOPP-Skill, Opposite Action. ACT (Hayes): Akzeptanz + Defusion von Gefühlen als Alternative zur Unterdrückung. "90-Sekunden-Regel" nach Jill Bolte Taylor (neurowissenschaftlich belegt).<br>
+    <strong>Wellen-Metapher:</strong> Urge-Surfing-Technik (Marlatt, ursprünglich aus Suchttherapie) – bewährt auch für Emotionsregulation bei Jugendlichen. Kein Widerstand, keine Fusion – nur Beobachten.<br>
+    <strong>Weiterführend:</strong> DBT-A Jugendgruppe (CHNP), KVT bei spezifischen Störungsbildern.
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Emotionsregulation · Seite 2</span>
+  </div>
+</div>
+
+</body>
+</html>

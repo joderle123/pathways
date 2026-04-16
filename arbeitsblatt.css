@@ -1,0 +1,657 @@
+/* ============================================================
+   Pathways Arbeitsblatt – Shared Styles  (v2 – freundliches Layout)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --farbe: #2563EB;        /* wird per Inline-Style pro Blatt überschrieben */
+  --farbe-hell: #EFF6FF;
+  --farbe-mid: color-mix(in srgb, var(--farbe) 15%, white);
+  --text: #1E293B;
+  --grau: #64748B;
+  --grau-hell: #94A3B8;
+  --border: #E2E8F0;
+  --border-mid: #CBD5E1;
+  --bg-page: #F1F5F9;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --radius-lg: 14px;
+  --shadow-page: 0 4px 32px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-box:  0 1px 4px rgba(0,0,0,0.07);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg-page);
+  padding: 24px 20px;
+  line-height: 1.55;
+}
+
+/* ============================================================
+   SEITE
+   ============================================================ */
+.seite {
+  width: 210mm;
+  min-height: 297mm;
+  background: white;
+  margin: 0 auto 32px;
+  padding: 14mm 17mm 24mm;    /* top 14mm: für Seiten ohne Banner; Banner bricht mit neg. margin heraus */
+  box-shadow: var(--shadow-page);
+  border-radius: 12px;
+  page-break-after: always;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================================
+   KOPFZEILE  – farbige Banner-Leiste oben
+   ============================================================ */
+.kopfzeile {
+  background: linear-gradient(135deg, var(--farbe) 0%, color-mix(in srgb, var(--farbe) 72%, #0F172A) 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  /* Banner bricht aus dem gesamten Seiten-Padding heraus → volle Breite + bis zum Rand oben */
+  margin-top: -14mm;
+  margin-left: -17mm;
+  margin-right: -17mm;
+  padding: 18px 17mm 16px;
+  margin-bottom: 18px;
+  gap: 14px;
+}
+
+.kopfzeile-links { flex: 1; }
+
+.schule-label {
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  color: rgba(255,255,255,0.70);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.ab-titel {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  letter-spacing: -0.3px;
+}
+
+.ab-untertitel {
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.75);
+  font-weight: 500;
+}
+
+.kopfzeile-icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(255,255,255,0.18);
+  border: 1.5px solid rgba(255,255,255,0.30);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+  backdrop-filter: blur(4px);
+}
+
+/* ============================================================
+   SCHÜLERINFO
+   ============================================================ */
+.schuelerinfo {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 18px;
+  background: var(--farbe-hell);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+}
+
+.info-feld { }
+
+.info-feld-label {
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--farbe);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.info-feld-linie {
+  height: 20px;
+  border-bottom: 1.5px solid var(--border-mid);
+}
+
+/* ============================================================
+   INFOBOX
+   ============================================================ */
+.infobox {
+  background: var(--farbe-hell);
+  border: 1.5px solid color-mix(in srgb, var(--farbe) 30%, white);
+  border-radius: var(--radius-lg);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  font-size: 11.5px;
+  line-height: 1.65;
+  position: relative;
+}
+
+.infobox::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 12px; bottom: 12px;
+  width: 3.5px;
+  background: var(--farbe);
+  border-radius: 0 3px 3px 0;
+}
+
+.infobox-titel {
+  font-weight: 700;
+  font-size: 11.5px;
+  color: var(--farbe);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.infobox p { margin-bottom: 5px; }
+.infobox p:last-child { margin-bottom: 0; }
+.infobox ul { padding-left: 15px; margin-top: 4px; }
+.infobox li { margin-bottom: 2px; }
+
+/* ============================================================
+   ÜBUNGSBLOCK
+   ============================================================ */
+.uebung {
+  margin-bottom: 20px;
+  background: #FAFBFC;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 13px 14px 12px;
+  box-shadow: var(--shadow-box);
+}
+
+.uebung-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.uebung-nr {
+  width: 26px;
+  height: 26px;
+  background: var(--farbe);
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px color-mix(in srgb, var(--farbe) 45%, transparent);
+}
+
+.uebung-titel {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.1px;
+}
+
+.uebung-beschreibung {
+  font-size: 11px;
+  color: var(--grau);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+/* ============================================================
+   SCHREIBLINIEN
+   ============================================================ */
+.schreiblinien {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.schreiblinie {
+  border-bottom: 1.5px solid #E2E8F0;
+  height: 26px;
+  width: 100%;
+  border-radius: 0;
+  transition: border-color 0.1s;
+}
+
+/* ============================================================
+   TABELLEN
+   ============================================================ */
+table {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-box);
+}
+
+table thead tr th {
+  background: var(--farbe-hell);
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 7px 8px !important;
+  border-bottom: 1.5px solid var(--border) !important;
+  border-right: 1px solid var(--border);
+}
+
+table thead tr th:last-child { border-right: none; }
+
+table tbody tr td {
+  padding: 6px 8px !important;
+  font-size: 11px;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  vertical-align: top;
+}
+
+table tbody tr td:last-child { border-right: none; }
+table tbody tr:last-child td { border-bottom: none; }
+
+table tbody tr:nth-child(even) td { background: #F8FAFC; }
+
+/* ============================================================
+   GRID-HILFKLASSEN
+   ============================================================ */
+.zwei-spalten {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 11px;
+  margin-bottom: 10px;
+}
+
+.drei-spalten {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 9px;
+}
+
+.box {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px;
+  min-height: 66px;
+  background: #FAFBFC;
+  box-shadow: var(--shadow-box);
+}
+
+.box-label {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--grau);
+  margin-bottom: 5px;
+}
+
+/* ============================================================
+   SKALA
+   ============================================================ */
+.skala {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 9px 0;
+}
+
+.skala-punkt { flex: 1; text-align: center; }
+
+.skala-kreis {
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--border-mid);
+  border-radius: 50%;
+  margin: 0 auto 4px;
+  background: white;
+}
+
+.skala-label { font-size: 8.5px; color: var(--grau); font-weight: 500; }
+
+/* ============================================================
+   KARTEN-RASTER
+   ============================================================ */
+.karten-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+.karte-mini {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 5px;
+  text-align: center;
+  min-height: 60px;
+  background: #FAFBFC;
+  box-shadow: var(--shadow-box);
+  transition: border-color 0.15s;
+}
+
+.karte-mini:hover { border-color: var(--farbe); }
+
+.karte-mini-emoji { font-size: 20px; margin-bottom: 3px; }
+.karte-mini-label { font-size: 10px; font-weight: 600; margin-bottom: 3px; color: var(--text); }
+.karte-mini-linie { border-bottom: 1px solid var(--border); margin: 3px 0; height: 14px; }
+
+/* ============================================================
+   KÖRPERUMRISS
+   ============================================================ */
+.koerper-bereich {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.koerper-silhouette { flex-shrink: 0; width: 98px; }
+.koerper-legende { flex: 1; }
+
+/* ============================================================
+   THERMOMETER
+   ============================================================ */
+.thermometer-wrapper {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.thermometer { width: 50px; flex-shrink: 0; }
+
+.thermo-rohr {
+  width: 18px;
+  height: 155px;
+  border: 2px solid var(--border-mid);
+  border-radius: 9px 9px 0 0;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  background: #F8FAFC;
+}
+
+.thermo-ball {
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--border-mid);
+  border-radius: 50%;
+  margin: -3px auto 0;
+  background: #FEE2E2;
+}
+
+.thermo-skala {
+  position: absolute;
+  left: 0; right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 4px 0;
+}
+
+.thermo-stufe {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 8.5px;
+  color: var(--grau);
+  white-space: nowrap;
+  margin-left: 22px;
+  font-weight: 500;
+}
+
+/* ============================================================
+   REFLEXIONSBLOCK
+   ============================================================ */
+.reflexion {
+  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+  border: 1.5px solid #FCD34D;
+  border-radius: var(--radius-lg);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(252, 211, 77, 0.20);
+}
+
+.reflexion-titel {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #92400E;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ============================================================
+   FACHLICHER HINWEIS
+   ============================================================ */
+.fachhinweis {
+  background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+  border: 1.5px solid #86EFAC;
+  border-radius: var(--radius-lg);
+  padding: 10px 12px;
+  margin-bottom: 13px;
+  font-size: 10.5px;
+  line-height: 1.55;
+  box-shadow: 0 2px 8px rgba(134, 239, 172, 0.20);
+}
+
+.fachhinweis-titel {
+  font-size: 11px;
+  font-weight: 700;
+  color: #166534;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ============================================================
+   TRENNLINIE
+   ============================================================ */
+hr.trennlinie {
+  border: none;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent 0%, var(--border) 20%, var(--border) 80%, transparent 100%);
+  margin: 16px 0;
+}
+
+/* ============================================================
+   FUßZEILE
+   ============================================================ */
+.fusszeile {
+  position: absolute;
+  bottom: 10mm;
+  left: 17mm;
+  right: 17mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 8px;
+  color: var(--grau-hell);
+  border-top: 1px solid var(--border);
+  padding-top: 5px;
+}
+
+/* ============================================================
+   DRUCK-LEISTE (Buttons oben)
+   ============================================================ */
+.druck-leiste {
+  width: 210mm;
+  margin: 0 auto 16px;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.btn-drucken {
+  background: var(--farbe);
+  color: white;
+  border: none;
+  padding: 9px 20px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: opacity 0.15s, transform 0.1s;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--farbe) 40%, transparent);
+}
+
+.btn-drucken:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-drucken:active { transform: translateY(0); }
+
+.btn-zurueck {
+  background: white;
+  color: var(--text);
+  border: 1.5px solid var(--border);
+  padding: 9px 18px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.btn-zurueck:hover { background: #F8FAFC; border-color: var(--border-mid); transform: translateY(-1px); }
+
+/* ============================================================
+   DRUCK-MODUS
+   ============================================================ */
+@media print {
+  /* ── Seitenformat ─────────────────────────────── */
+  @page {
+    size: A4;
+    margin: 0;          /* Ränder komplett über .seite padding */
+  }
+
+  /* ── Alle Farben & Hintergründe drucken ────────── */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  body {
+    background: white;
+    padding: 0;
+    margin: 0;
+    font-size: 11px;    /* leicht kleiner für besseres Fit */
+  }
+
+  /* ── Druckleiste ausblenden ─────────────────────── */
+  .druck-leiste { display: none !important; }
+
+  /* ── Seite = exakt 1 DIN-A4-Blatt ──────────────── */
+  .seite {
+    width: 210mm;
+    height: 297mm;
+    min-height: unset;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 14mm 17mm 20mm;   /* top 14mm wie im Screen-Layout */
+    overflow: hidden;
+    page-break-after: always;
+    break-after: page;
+    position: relative;
+  }
+
+  /* Letzte Seite braucht keinen Umbruch */
+  .seite:last-of-type {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  /* ── Kopfzeile Banner (Gradient erhalten) ────────── */
+  .kopfzeile {
+    margin-top: -14mm;          /* passt zu seite padding-top */
+    margin-left: -17mm;
+    margin-right: -17mm;
+    padding-left: 17mm;
+    padding-right: 17mm;
+    background: linear-gradient(135deg, var(--farbe) 0%, color-mix(in srgb, var(--farbe) 72%, #0F172A) 100%) !important;
+  }
+
+  /* ── Übungsblöcke: Hintergründe erhalten ────────── */
+  .uebung {
+    box-shadow: none;
+    background: #F8FAFC !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* ── Infobox, Reflexion, Fachhinweis ─────────────── */
+  .infobox {
+    background: var(--farbe-hell) !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .reflexion {
+    background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%) !important;
+    box-shadow: none;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .fachhinweis {
+    background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%) !important;
+    box-shadow: none;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* ── Tabellen nicht zerreißen ───────────────────── */
+  table {
+    box-shadow: none;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* ── Schülerinfo Hintergrund erhalten ───────────── */
+  .schuelerinfo {
+    background: var(--farbe-hell) !important;
+  }
+
+  /* ── Fußzeile immer unten ───────────────────────── */
+  .fusszeile {
+    position: absolute;
+    bottom: 8mm;
+    left: 17mm;
+    right: 17mm;
+  }
+
+  /* ── Links nicht unterstrichen im Druck ─────────── */
+  a { text-decoration: none; color: inherit; }
+}

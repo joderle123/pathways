@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Selbstständigkeit &amp; Haushalt</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #78716C; --farbe-hell: #FAFAF9; }
+    .skill-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-bottom:10px; }
+    .skill-card { border:1.5px solid #D6D3D1; border-radius:8px; padding:7px; text-align:center; background:#FAFAF9; }
+    .skill-card .sc-icon { font-size:16px; margin-bottom:3px; }
+    .skill-card .sc-name { font-size:9px; font-weight:700; color:#44403C; margin-bottom:4px; }
+    .skill-card .sc-rate { font-size:10px; color:#78716C; }
+    .week-grid { display:grid; grid-template-columns:60px repeat(7,1fr); gap:2px; margin-bottom:10px; font-size:9px; }
+    .week-header { background:#78716C; color:white; text-align:center; padding:4px 2px; font-weight:700; border-radius:3px; }
+    .week-slot { border:1px solid #E7E5E4; border-radius:3px; min-height:22px; }
+    .week-time { background:#F5F5F4; font-weight:700; color:#78716C; display:flex; align-items:center; justify-content:center; border-radius:3px; font-size:9px; }
+    .checklist-item { display:flex; align-items:center; gap:7px; font-size:11px; padding:4px 0; border-bottom:1px solid #F5F5F4; }
+    .check-box { width:14px; height:14px; border:2px solid #A8A29E; border-radius:3px; flex-shrink:0; display:inline-block; }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- ===== SEITE 1 ===== -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">Mein Leben, mein Haushalt – ich pack das</div>
+      <div class="ab-untertitel">Selbstständigkeit &amp; Haushalt · Kategorie: Alltag &amp; Leben</div>
+    </div>
+    <div class="kopfzeile-icon">🏠</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">💡 Selbstständig werden passiert Schritt für Schritt.</div>
+    <p>Wäsche waschen, kochen, Rechnungen verstehen – niemand kann das von Geburt an. Diese Fähigkeiten werden gelernt, und je früher du anfängst zu üben, desto selbstverständlicher werden sie.</p>
+    <p>🧠 <em>Wusstest du? Laut einer EU-Studie verlassen Jugendliche in Luxembourg im Schnitt mit 26 Jahren das Elternhaus – trotzdem lohnt es sich, früh vorbereitet zu sein.</em></p>
+  </div>
+
+  <!-- Übung 1: Life Skills Inventory -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">1</div>
+      <div class="uebung-titel">Mein Life-Skills-Check – Wie gut bin ich aufgestellt?</div>
+    </div>
+    <div class="uebung-beschreibung">Bewerte dich selbst: 1 = noch nicht / 2 = ein bisschen / 3 = kann ich gut. Kreise die Zahl ein.</div>
+    <div class="skill-grid">
+      <div class="skill-card"><div class="sc-icon">🍳</div><div class="sc-name">Kochen (einfach)</div><div class="sc-rate">1 · 2 · 3</div></div>
+      <div class="skill-card"><div class="sc-icon">🛒</div><div class="sc-name">Einkaufen mit Liste</div><div class="sc-rate">1 · 2 · 3</div></div>
+      <div class="skill-card"><div class="sc-icon">🧺</div><div class="sc-name">Wäsche waschen</div><div class="sc-rate">1 · 2 · 3</div></div>
+      <div class="skill-card"><div class="sc-icon">🧹</div><div class="sc-name">Putzen</div><div class="sc-rate">1 · 2 · 3</div></div>
+      <div class="skill-card"><div class="sc-icon">💶</div><div class="sc-name">Budget planen</div><div class="sc-rate">1 · 2 · 3</div></div>
+      <div class="skill-card"><div class="sc-icon">📋</div><div class="sc-name">Briefe öffnen &amp; verstehen</div><div class="sc-rate">1 · 2 · 3</div></div>
+      <div class="skill-card"><div class="sc-icon">📞</div><div class="sc-name">Termin vereinbaren</div><div class="sc-rate">1 · 2 · 3</div></div>
+      <div class="skill-card"><div class="sc-icon">💊</div><div class="sc-name">Arzttermin selbst regeln</div><div class="sc-rate">1 · 2 · 3</div></div>
+      <div class="skill-card"><div class="sc-icon">🔌</div><div class="sc-name">Kleine Reparaturen</div><div class="sc-rate">1 · 2 · 3</div></div>
+      <div class="skill-card"><div class="sc-icon">🗓️</div><div class="sc-name">Kalender führen</div><div class="sc-rate">1 · 2 · 3</div></div>
+      <div class="skill-card"><div class="sc-icon">🏦</div><div class="sc-name">Bankkonto nutzen</div><div class="sc-rate">1 · 2 · 3</div></div>
+      <div class="skill-card"><div class="sc-icon">🚌</div><div class="sc-name">Öffentlicher Transport</div><div class="sc-rate">1 · 2 · 3</div></div>
+      <div class="skill-card"><div class="sc-icon">🧂</div><div class="sc-name">Kühlschrank managen</div><div class="sc-rate">1 · 2 · 3</div></div>
+      <div class="skill-card"><div class="sc-icon">📦</div><div class="sc-name">Umzug organisieren</div><div class="sc-rate">1 · 2 · 3</div></div>
+      <div class="skill-card"><div class="sc-icon">🗑️</div><div class="sc-name">Müll trennen</div><div class="sc-rate">1 · 2 · 3</div></div>
+      <div class="skill-card"><div class="sc-icon">🤝</div><div class="sc-name">Konflikt lösen</div><div class="sc-rate">1 · 2 · 3</div></div>
+      <div class="skill-card"><div class="sc-icon">⚡</div><div class="sc-name">Strom/Gas verstehen</div><div class="sc-rate">1 · 2 · 3</div></div>
+      <div class="skill-card"><div class="sc-icon">🌡️</div><div class="sc-name">Heizung regulieren</div><div class="sc-rate">1 · 2 · 3</div></div>
+      <div class="skill-card"><div class="sc-icon">📱</div><div class="sc-name">Vertrag abschließen</div><div class="sc-rate">1 · 2 · 3</div></div>
+      <div class="skill-card"><div class="sc-icon">🧴</div><div class="sc-name">Körperpflege planen</div><div class="sc-rate">1 · 2 · 3</div></div>
+    </div>
+    <div style="font-size:11px;font-weight:600;margin-bottom:3px;">Meine Top-3 Lücken, die ich angehen will:</div>
+    <div class="schreiblinien"><div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Selbstständigkeit &amp; Haushalt · Seite 1</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 2 ===== -->
+<div class="seite">
+
+  <!-- Übung 2: Wochenroutine -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">2</div>
+      <div class="uebung-titel">Meine Wochenroutine – Struktur die mich entlastet</div>
+    </div>
+    <div class="uebung-beschreibung">Trage ein, was wann passiert. Routine bedeutet weniger nachdenken – das spart Energie.</div>
+    <div class="week-grid">
+      <div class="week-time"></div>
+      <div class="week-header">Mo</div><div class="week-header">Di</div><div class="week-header">Mi</div>
+      <div class="week-header">Do</div><div class="week-header">Fr</div><div class="week-header">Sa</div><div class="week-header">So</div>
+      <div class="week-time">☀️ Morg.</div>
+      <div class="week-slot"></div><div class="week-slot"></div><div class="week-slot"></div>
+      <div class="week-slot"></div><div class="week-slot"></div><div class="week-slot"></div><div class="week-slot"></div>
+      <div class="week-time">🌤️ Mitt.</div>
+      <div class="week-slot"></div><div class="week-slot"></div><div class="week-slot"></div>
+      <div class="week-slot"></div><div class="week-slot"></div><div class="week-slot"></div><div class="week-slot"></div>
+      <div class="week-time">🌙 Abend</div>
+      <div class="week-slot"></div><div class="week-slot"></div><div class="week-slot"></div>
+      <div class="week-slot"></div><div class="week-slot"></div><div class="week-slot"></div><div class="week-slot"></div>
+    </div>
+  </div>
+
+  <!-- Übung 3: Erste Wohnung Checkliste -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">3</div>
+      <div class="uebung-titel">Erste Wohnung – Was brauche ich wirklich?</div>
+    </div>
+    <div class="uebung-beschreibung">Hake ab was du schon hast (✓) und markiere was du noch brauchst (?).</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px;margin-bottom:8px;">
+      <div>
+        <div class="checklist-item"><span class="check-box"></span> 🛏️ Bett/Matratze</div>
+        <div class="checklist-item"><span class="check-box"></span> 🍳 Kochtopf + Pfanne</div>
+        <div class="checklist-item"><span class="check-box"></span> 🍽️ Teller, Besteck, Gläser</div>
+        <div class="checklist-item"><span class="check-box"></span> 🧴 Waschmittel, Putzmittel</div>
+        <div class="checklist-item"><span class="check-box"></span> 🪥 Erste-Hilfe-Set</div>
+        <div class="checklist-item"><span class="check-box"></span> 💡 Lampe/Tischlampe</div>
+      </div>
+      <div>
+        <div class="checklist-item"><span class="check-box"></span> 🧺 Wäschekorb + Wäscheleine</div>
+        <div class="checklist-item"><span class="check-box"></span> 🌡️ Thermometer</div>
+        <div class="checklist-item"><span class="check-box"></span> 📱 Notfallnummern gespeichert</div>
+        <div class="checklist-item"><span class="check-box"></span> 🗝️ Ersatzschlüssel</div>
+        <div class="checklist-item"><span class="check-box"></span> 🔧 Schraubenzieher / Hammer</div>
+        <div class="checklist-item"><span class="check-box"></span> 📄 Mietvertrag verstanden</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Übung 4: Diese Monat lernen -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">4</div>
+      <div class="uebung-titel">Meine Top-3 Fähigkeiten diesen Monat</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px;">
+      <div style="background:#FAFAF9;border:1.5px solid #D6D3D1;border-radius:8px;padding:9px;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#78716C;margin-bottom:3px;">🎯 Fähigkeit 1: Was genau?</div>
+          <div class="schreiblinien"><div class="schreiblinie"></div></div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#78716C;margin-bottom:3px;">🤝 Wer kann mir das zeigen?</div>
+          <div class="schreiblinien"><div class="schreiblinie"></div></div>
+        </div>
+      </div>
+      <div style="background:#FAFAF9;border:1.5px solid #D6D3D1;border-radius:8px;padding:9px;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#78716C;margin-bottom:3px;">🎯 Fähigkeit 2: Was genau?</div>
+          <div class="schreiblinien"><div class="schreiblinie"></div></div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#78716C;margin-bottom:3px;">🤝 Wer kann mir das zeigen?</div>
+          <div class="schreiblinien"><div class="schreiblinie"></div></div>
+        </div>
+      </div>
+      <div style="background:#FAFAF9;border:1.5px solid #D6D3D1;border-radius:8px;padding:9px;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#78716C;margin-bottom:3px;">🎯 Fähigkeit 3: Was genau?</div>
+          <div class="schreiblinien"><div class="schreiblinie"></div></div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#78716C;margin-bottom:3px;">🤝 Wer kann mir das zeigen?</div>
+          <div class="schreiblinien"><div class="schreiblinie"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Mein nächster Schritt</div>
+    <p>Welche <strong>eine Haushaltsfähigkeit</strong> übe ich noch diese Woche – und mit wem?</p>
+    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Hinweis für Bezugspersonen</div>
+    Life Skills (WHO-Konzept) sind zentrale Indikatoren der Verselbstständigung. Bei Jugendlichen aus Fremdunterbringung besteht oft Nachholbedarf. Schrittweises Einüben im realen Kontext (gemeinsames Kochen, Einkaufen, Putzen als pädagogisches Setting) ist effektiver als theoretische Unterweisung. <strong>Luxembourg:</strong> SCAS (Service Central d'Assistance Sociale) unterstützt den Übergang in betreutes Wohnen; ab 16 Jahren gezielt Life Skills fördern. Auch der SNJ bietet Programme zur Verselbstständigung. Bei finanziellen Fragen: Caritas Crédit Conseil (247 86 868). Ressource: YouTube-Kanäle, Chefkoch.de, Luxemburger Budget-Apps für Jugendliche.
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Selbstständigkeit &amp; Haushalt · Seite 2</span>
+  </div>
+</div>
+
+</body>
+</html>

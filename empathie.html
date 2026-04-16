@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Empathie & Perspektivenwechsel</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #059669; --farbe-hell: #ECFDF5; }
+    .bubble-grid { display:flex; flex-wrap:wrap; gap:7px; margin:8px 0; }
+    .bubble { background:var(--farbe-hell); border:2px solid var(--farbe); border-radius:20px; padding:5px 11px; font-size:11px; font-weight:600; cursor:pointer; user-select:none; }
+    .emoji-scale { display:flex; justify-content:space-between; align-items:flex-end; gap:4px; margin:8px 0; }
+    .emoji-scale-item { text-align:center; flex:1; }
+    .emoji-scale-item .e { font-size:20px; line-height:1; display:block; }
+    .emoji-scale-item .lbl { font-size:9px; color:#6B7280; display:block; margin-top:2px; }
+    .emoji-scale-item .box { width:100%; height:18px; border:2px solid var(--farbe); border-radius:4px; margin-top:3px; background:white; }
+    .scenario-card { border:2px solid var(--farbe); border-radius:10px; padding:10px; margin-bottom:8px; background:var(--farbe-hell); }
+    .scenario-card .sc-label { font-size:10px; font-weight:700; color:var(--farbe); text-transform:uppercase; letter-spacing:.5px; margin-bottom:3px; }
+    .scenario-card .sc-situation { font-size:11px; font-style:italic; color:#374151; margin-bottom:6px; background:white; border-radius:6px; padding:6px 8px; border-left:3px solid var(--farbe); }
+    .two-col-answer { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:4px; }
+    .answer-box { border:1.5px solid var(--border); border-radius:6px; padding:6px 8px; }
+    .answer-box .ab-lbl { font-size:10px; font-weight:700; color:#6B7280; margin-bottom:3px; }
+    .vs-diagram { display:grid; grid-template-columns:1fr 40px 1fr; gap:8px; align-items:start; margin:8px 0; }
+    .vs-box { border-radius:10px; padding:10px; }
+    .vs-empathy { background:#ECFDF5; border:2px solid #059669; }
+    .vs-sympathy { background:#FEF3C7; border:2px solid #D97706; }
+    .vs-middle { display:flex; align-items:center; justify-content:center; font-size:16px; padding-top:20px; }
+    .vs-title { font-size:11px; font-weight:800; margin-bottom:6px; }
+    .vs-quote { font-size:10px; font-style:italic; background:white; border-radius:6px; padding:5px 7px; margin-bottom:4px; }
+    .vs-body { font-size:10px; color:#374151; }
+    .blocker-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; margin:8px 0; }
+    .blocker-card { border:2px solid #D1D5DB; border-radius:10px; padding:8px; text-align:center; background:#F9FAFB; }
+    .blocker-card .bc-emoji { font-size:18px; margin-bottom:3px; }
+    .blocker-card .bc-text { font-size:10px; font-weight:600; color:#374151; }
+    .blocker-card .bc-example { font-size:9px; color:#6B7280; font-style:italic; margin-top:2px; }
+    .listen-row { display:grid; grid-template-columns:28px 1fr; gap:8px; align-items:start; padding:6px 0; border-bottom:1px solid var(--farbe-hell); }
+    .listen-nr { background:var(--farbe); color:white; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex-shrink:0; }
+    .listen-text { font-size:11px; }
+    .listen-name { font-weight:700; color:var(--farbe); }
+    .self-comp { background:linear-gradient(135deg,#ECFDF5,#D1FAE5); border:2px solid #059669; border-radius:12px; padding:12px; margin:8px 0; }
+    .wusstest { background:#F0FFF4; border-left:4px solid #059669; border-radius:0 8px 8px 0; padding:8px 10px; margin:8px 0; font-size:10.5px; }
+    .wusstest strong { color:#065F46; }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- ===== SEITE 1 ===== -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">In den Schuhen anderer gehen</div>
+      <div class="ab-untertitel">Empathie & Perspektivenwechsel · Kategorie: Soziale Kompetenzen</div>
+    </div>
+    <div class="kopfzeile-icon">🤗</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">💡 Empathie vs. Sympathie – nicht dasselbe!</div>
+    <p>Empathie bedeutet: <em>"Ich steige in dein Gefühl hinein."</em> Sympathie bedeutet: <em>"Ich schaue von oben runter und tröste dich."</em> Das klingt ähnlich – aber es fühlt sich komplett anders an.</p>
+    <p>🧠 <em><strong>Wusstest du?</strong> Dein Gehirn hat sogenannte Spiegelneuronen – die "feuern" automatisch mit, wenn du jemanden leiden siehst. Empathie ist buchstäblich in deinen Nervenzellen eingebaut!</em></p>
+  </div>
+
+  <!-- Übung 1: Empathie vs. Sympathie Diagramm -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">1</div>
+      <div class="uebung-titel">Empathie vs. Sympathie – Erkenne den Unterschied</div>
+    </div>
+    <div class="uebung-beschreibung">Schau dir die zwei Seiten an. Welche Reaktion fühlt sich für dich besser an, wenn du selbst in Not bist?</div>
+
+    <div class="vs-diagram">
+      <div class="vs-box vs-empathy">
+        <div class="vs-title" style="color:#065F46;">🤗 Empathie</div>
+        <div class="vs-quote">"Das klingt wirklich schwer. Ich bin bei dir."</div>
+        <div class="vs-quote">"Ich verstehe, warum du dich so fühlst."</div>
+        <div class="vs-quote">"Was brauchst du gerade?"</div>
+        <div class="vs-body" style="margin-top:6px;">→ Ich gehe <strong>runter</strong> zu dir. Auf Augenhöhe.</div>
+      </div>
+      <div class="vs-middle">VS</div>
+      <div class="vs-box vs-sympathy">
+        <div class="vs-title" style="color:#92400E;">😬 Sympathie-Falle</div>
+        <div class="vs-quote">"Wenigstens hast du noch deine Gesundheit!"</div>
+        <div class="vs-quote">"Das wird schon wieder, mach dir keine Sorgen."</div>
+        <div class="vs-quote">"Bei mir war das damals auch so, und ich hab's überlebt."</div>
+        <div class="vs-body" style="margin-top:6px;">→ Ich bleibe <strong>oben</strong> und schaue runter.</div>
+      </div>
+    </div>
+
+    <div style="font-size:11px; margin-top:6px;">Welche dieser Sympathie-Fallen kennst du aus deinem Alltag? Schreibe ein eigenes Beispiel:</div>
+    <div class="schreiblinien"><div class="schreiblinie"></div></div>
+  </div>
+
+  <!-- Übung 2: Walk in their shoes -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">2</div>
+      <div class="uebung-titel">Walk in their Shoes – 3 Szenarien</div>
+    </div>
+    <div class="uebung-beschreibung">Lies die Situation. Stell dir vor, du bist diese Person. Was fühlt sie? Was würde ihr helfen?</div>
+
+    <div class="scenario-card">
+      <div class="sc-label">Szenario A</div>
+      <div class="sc-situation">Lena bekommt als Einzige in der Gruppe keine Einladung zum Geburtstag. Sie erfährt es, weil alle anderen am nächsten Tag davon reden.</div>
+      <div class="two-col-answer">
+        <div class="answer-box"><div class="ab-lbl">😔 Wie fühlt sie sich wohl?</div><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+        <div class="answer-box"><div class="ab-lbl">💚 Was würde helfen?</div><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="sc-label">Szenario B</div>
+      <div class="sc-situation">Karim hat in der Klasse einen Fehler gemacht und alle haben gelacht. Seitdem meldet er sich nie mehr.</div>
+      <div class="two-col-answer">
+        <div class="answer-box"><div class="ab-lbl">😔 Wie fühlt er sich wohl?</div><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+        <div class="answer-box"><div class="ab-lbl">💚 Was würde helfen?</div><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="sc-label">Szenario C</div>
+      <div class="sc-situation">Yasmin ist neu in der Schule und spricht die Sprache noch nicht gut. Sie sitzt immer alleine zu Mittag.</div>
+      <div class="two-col-answer">
+        <div class="answer-box"><div class="ab-lbl">😔 Wie fühlt sie sich wohl?</div><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+        <div class="answer-box"><div class="ab-lbl">💚 Was würde helfen?</div><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Empathie & Perspektivenwechsel · Seite 1</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 2 ===== -->
+<div class="seite">
+
+  <!-- Übung 3: Empathie-Blocker -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">3</div>
+      <div class="uebung-titel">Empathie-Blocker – Kreise ein, was dir manchmal passiert</div>
+    </div>
+    <div class="uebung-beschreibung">Diese 6 Reaktionen meinen es oft gut – aber sie blockieren echte Empathie. Kreis ein, was dir manchmal rausrutscht. <em>Das ist total normal!</em></div>
+
+    <div class="blocker-grid">
+      <div class="blocker-card">
+        <div class="bc-emoji">🏆</div>
+        <div class="bc-text">Vergleichen</div>
+        <div class="bc-example">"Bei mir war das noch schlimmer..."</div>
+      </div>
+      <div class="blocker-card">
+        <div class="bc-emoji">💡</div>
+        <div class="bc-text">Direkt Lösung anbieten</div>
+        <div class="bc-example">"Du solltest einfach..."</div>
+      </div>
+      <div class="blocker-card">
+        <div class="bc-emoji">🎭</div>
+        <div class="bc-text">Kleinreden</div>
+        <div class="bc-example">"Ach, das ist doch nicht so schlimm."</div>
+      </div>
+      <div class="blocker-card">
+        <div class="bc-emoji">🔮</div>
+        <div class="bc-text">Positiv reden (zu schnell)</div>
+        <div class="bc-example">"Schau mal das Positive!"</div>
+      </div>
+      <div class="blocker-card">
+        <div class="bc-emoji">📖</div>
+        <div class="bc-text">Geschichte erzählen</div>
+        <div class="bc-example">"Ich kenn das, mir ist mal..."</div>
+      </div>
+      <div class="blocker-card">
+        <div class="bc-emoji">🤔</div>
+        <div class="bc-text">Verhören</div>
+        <div class="bc-example">"Warum hast du das nicht früher gesagt?"</div>
+      </div>
+    </div>
+
+    <div class="wusstest">
+      <strong>🧠 Wusstest du?</strong> Empathie-Blocker entstehen oft, weil wir selbst das Gefühl der anderen Person nicht aushalten können. Es ist also kein Zeichen, dass du nicht nett bist – sondern dass du auch Grenzen hast. <em>Das macht Sinn.</em>
+    </div>
+  </div>
+
+  <!-- Übung 4: Aktives Zuhören -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">4</div>
+      <div class="uebung-titel">5 Techniken für aktives Zuhören</div>
+    </div>
+    <div class="uebung-beschreibung">Diese 5 Moves machen den Unterschied – markiere, welche du schon beherrschst 💪 und welche du üben willst ⭐</div>
+
+    <div class="listen-row">
+      <div class="listen-nr">1</div>
+      <div class="listen-text"><span class="listen-name">Body language:</span> Augenkontakt halten, nicken, dich zur Person wenden. Dein Körper sagt "Ich bin da." &nbsp;&nbsp; □ kann ich &nbsp; □ übe ich</div>
+    </div>
+    <div class="listen-row">
+      <div class="listen-nr">2</div>
+      <div class="listen-text"><span class="listen-name">Spiegeln:</span> Das Letzte, was jemand sagte, kurz wiederholen: "Du sagst also, dass..." &nbsp;&nbsp; □ kann ich &nbsp; □ übe ich</div>
+    </div>
+    <div class="listen-row">
+      <div class="listen-nr">3</div>
+      <div class="listen-text"><span class="listen-name">Stille aushalten:</span> Nicht sofort reden. 3 Sekunden Stille sind okay – manchmal kommt dann das Wichtige. &nbsp;&nbsp; □ kann ich &nbsp; □ übe ich</div>
+    </div>
+    <div class="listen-row">
+      <div class="listen-nr">4</div>
+      <div class="listen-text"><span class="listen-name">Gefühl benennen:</span> "Ich höre, dass dich das verletzt hat." – Gefühle aussprechen fühlt sich gesehen an. &nbsp;&nbsp; □ kann ich &nbsp; □ übe ich</div>
+    </div>
+    <div class="listen-row">
+      <div class="listen-nr">5</div>
+      <div class="listen-text"><span class="listen-name">Fragen statt urteilen:</span> "Was hat dich dabei am meisten getroffen?" – statt: "Das verstehe ich nicht." &nbsp;&nbsp; □ kann ich &nbsp; □ übe ich</div>
+    </div>
+  </div>
+
+  <!-- Übung 5: Mitgefühl für mich selbst -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">5</div>
+      <div class="uebung-titel">Mitgefühl für mich selbst</div>
+    </div>
+    <div class="self-comp">
+      <div style="font-size:11px; font-weight:700; color:#065F46; margin-bottom:6px;">Stell dir vor: Deine beste Freundin / dein bester Freund erlebt gerade genau das, womit du dich selbst kritisierst.</div>
+      <div style="font-size:11px; margin-bottom:6px;">Was würdest du ihr/ihm sagen? Schreib es hier auf:</div>
+      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      <div style="font-size:11px; margin-top:8px; margin-bottom:4px; font-weight:600;">Jetzt sag dasselbe zu <em>dir selbst</em>. Was ändert sich, wenn du so mit dir redest?</div>
+      <div class="schreiblinien"><div class="schreiblinie"></div></div>
+    </div>
+  </div>
+
+  <!-- Reflexion -->
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Reflexion</div>
+    <p>Denk an eine Person in deinem Leben, die gerade etwas Schwieriges durchmacht. Was ist <em>eine konkrete Sache</em>, die du diese Woche tun könntest, um echte Empathie zu zeigen – nicht nur Mitleid?</p>
+    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
+    <strong>ICD-10 Bezug:</strong> Empathiestörungen können auf F84 (Autismus-Spektrum), F60.2 (dissoziale Persönlichkeit) oder Traumafolgestörungen (F43.1) hinweisen. Kognitive Empathie (Theory of Mind) und affektive Empathie sind neuroanatomisch unterschiedlich verortet. Das Übungsformat "Walk in their Shoes" folgt der Mentalisierungstheorie (Fonagy et al.) und fördert gezielt die Reflective Functioning-Kapazität. Empathieblocker-Bewusstsein entstammt der gewaltfreien Kommunikation (Rosenberg). Bei Jugendlichen mit Trauma­hintergrund: Überaktivierung des Mitfühlens (sekundäre Traumatisierung) beachten – Selbstfürsorge-Element Übung 5 ist klinisch relevant.
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Empathie & Perspektivenwechsel · Seite 2</span>
+  </div>
+</div>
+
+</body>
+</html>
