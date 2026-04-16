@@ -1,285 +1,328 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Arbeitsblatt – Mentale Gesundheit verstehen</title>
-  <link rel="stylesheet" href="../css/arbeitsblatt.css">
-  <style>
-    :root { --farbe: #0891B2; --farbe-hell: #ECFEFF; }
-    .spectrum-bar { border:2px solid var(--farbe); border-radius:12px; overflow:hidden; display:grid; grid-template-columns:1fr 1fr 1fr 1fr 1fr; height:36px; margin:8px 0; }
-    .spectrum-seg { display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:700; text-align:center; padding:2px; }
-    .spectrum-arrow { text-align:center; font-size:10px; color:#6B7280; display:flex; justify-content:space-between; padding:0 4px; margin-bottom:4px; }
-    .myth-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:8px 0; }
-    .myth-card { border:2px solid #D1D5DB; border-radius:10px; padding:9px; background:#F9FAFB; }
-    .myth-text { font-size:10.5px; font-weight:600; color:#374151; margin-bottom:6px; font-style:italic; }
-    .myth-choice { display:flex; gap:8px; font-size:10px; }
-    .myth-choice label { display:flex; align-items:center; gap:3px; cursor:pointer; }
-    .myth-reveal { font-size:9.5px; color:#6B7280; margin-top:4px; }
-    .checkin-area { margin:8px 0; }
-    .checkin-row { display:grid; grid-template-columns:110px 1fr 110px; gap:8px; align-items:center; margin-bottom:6px; }
-    .checkin-label { font-size:11px; font-weight:700; }
-    .checkin-scale { display:flex; gap:5px; justify-content:center; }
-    .checkin-emoji { font-size:17px; text-align:center; line-height:1; }
-    .checkin-box { width:20px; height:20px; border:2px solid var(--farbe); border-radius:4px; background:white; }
-    .help-table { width:100%; border-collapse:collapse; margin:8px 0; }
-    .help-table th { background:var(--farbe-hell); border:1.5px solid #A5F3FC; padding:6px 8px; font-size:10.5px; font-weight:700; color:#0E7490; text-align:center; }
-    .help-table td { border:1.5px solid #E2E8F0; padding:6px 8px; height:28px; vertical-align:top; font-size:10.5px; }
-    .help-table td:first-child { background:#FEF2F2; }
-    .help-table td:nth-child(2) { background:#F9FAFB; }
-    .help-table td:last-child { background:#F0FFF4; }
-    .firstaid-step { display:grid; grid-template-columns:28px 1fr; gap:8px; align-items:start; margin-bottom:7px; }
-    .firstaid-nr { background:var(--farbe); color:white; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex-shrink:0; }
-    .wusstest { background:#ECFEFF; border-left:4px solid #0891B2; border-radius:0 8px 8px 0; padding:8px 10px; margin:8px 0; font-size:10.5px; }
-    .wusstest strong { color:#0E7490; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachkraft-Modul: Mentale Gesundheit & Psychoedukation</title>
+<link rel="stylesheet" href="../fachkraft-modul.css">
 </head>
 <body>
+<style>:root { --farbe: #7C3AED; }</style>
 
-<div class="druck-leiste">
-  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
-  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
-</div>
-
-<!-- ===== SEITE 1 ===== -->
-<div class="seite">
-  <div class="kopfzeile">
-    <div class="kopfzeile-links">
-      <div class="schule-label">Pathways · Joey Guedes</div>
-      <div class="ab-titel">Mentale Gesundheit – Was steckt dahinter?</div>
-      <div class="ab-untertitel">Mentale Gesundheit verstehen · Kategorie: Gesundheit & Körper</div>
+<!-- SEITE 1: ÜBERBLICK & ENTSTEHUNG -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">🧠</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Mentale Gesundheit & Psychoedukation</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
     </div>
-    <div class="kopfzeile-icon">🧠</div>
+    <div class="fm-seitenzahl">1 / 5</div>
   </div>
 
-  <div class="schuelerinfo">
-    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  <div class="fm-quickinfo">
+    <div class="fm-qi-item"><span class="fm-qi-label">ICD-10</span><span class="fm-qi-wert">Z55–Z65 (Sozialer Kontext) · allgemein präventiv</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Prävalenz</span><span class="fm-qi-wert">~20 % aller Jugendlichen erfüllen Kriterien für psychische Störung (WHO 2021)</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Mental Health Literacy</span><span class="fm-qi-wert">Nur ~30 % Jugendliche kennen Symptome psychischer Erkrankungen (Jorm 2012)</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Stigma-Effekt</span><span class="fm-qi-wert">Stigma = stärkste Barriere für Hilfesuche; Interventionen reduzieren Stigma messbar</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Behandlungslücke</span><span class="fm-qi-wert">~75 % Jugendlicher mit psychischer Störung erhalten keine professionelle Hilfe</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Luxemburg</span><span class="fm-qi-wert">Wartezeit Kinder-Psychiatrie: 3–6 Monate ambulant; Schulberater als erste Anlaufstelle</span></div>
   </div>
 
-  <div class="infobox">
-    <div class="infobox-titel">💡 Mentale Gesundheit ist kein An/Aus-Schalter</div>
-    <p>Mentale Gesundheit ist kein Zustand den du entweder "hast" oder "nicht hast". Sie ist ein <strong>Kontinuum</strong> – und alle bewegen sich darauf, jeden Tag anders.</p>
-    <p>🧠 <em><strong>Wusstest du?</strong> Weltweit hat 1 von 5 Jugendlichen eine psychische Erkrankung – aber nur 1 von 4 davon bekommt Hilfe. Die meisten leiden alleine. Du bist definitiv nicht allein.</em></p>
-  </div>
+  <h2 class="fm-abschnitt-titel">Theoretische Grundlage</h2>
+  <p class="fm-text">„Mentale Gesundheit" (WHO-Definition 2001) ist mehr als Abwesenheit von Krankheit: ein Zustand des Wohlbefindens, in dem eine Person ihre Fähigkeiten entfalten, Stress bewältigen, produktiv arbeiten und zur Gemeinschaft beitragen kann. Für Jugendliche ist Mental-Health-Literacy — das Wissen über psychische Gesundheit und Erkrankungen — ein zentraler Schutzfaktor.</p>
 
-  <!-- Übung 1: Das Spektrum -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">1</div>
-      <div class="uebung-titel">Das mentale Gesundheitsspektrum – wo stehst du heute?</div>
+  <h3 class="fm-unter-titel">Mental Health Continuum (Keyes 2002)</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>Zwei-Achsen-Modell:</strong><br>
+      Achse 1: Psychische Erkrankung (vorhanden/nicht vorhanden)<br>
+      Achse 2: Wohlbefinden (flourishing/languishing)<br><br>
+      <strong>4 Quadranten:</strong><br>
+      • Flourishing ohne Erkrankung (optimal)<br>
+      • Languishing ohne Erkrankung (unterschätzt)
     </div>
-    <div class="uebung-beschreibung">Mentale Gesundheit ist kein "krank / gesund" – es gibt alles dazwischen. Kreise ein, wo du dich heute siehst.</div>
-
-    <div class="spectrum-arrow">
-      <span>← Benötige Unterstützung</span>
-      <span>Bin in der Mitte</span>
-      <span>Fühle mich stark →</span>
-    </div>
-    <div class="spectrum-bar">
-      <div class="spectrum-seg" style="background:#FEE2E2; color:#991B1B;">😰<br>Krise</div>
-      <div class="spectrum-seg" style="background:#FEF3C7; color:#92400E;">😟<br>Struggle</div>
-      <div class="spectrum-seg" style="background:#FFF7ED; color:#78350F;">😐<br>Okay</div>
-      <div class="spectrum-seg" style="background:#ECFDF5; color:#065F46;">🙂<br>Gut</div>
-      <div class="spectrum-seg" style="background:#D1FAE5; color:#065F46;">😄<br>Stark</div>
-    </div>
-    <div style="font-size:11px; margin-top:5px;">Heute bin ich hier: <strong>____________________</strong> &nbsp;&nbsp; Letzte Woche war ich: <strong>____________________</strong></div>
-    <div style="font-size:10.5px; color:#6B7280; margin-top:3px;"><em>Gut zu wissen: Das kann sich täglich ändern. Das ist normal.</em></div>
-  </div>
-
-  <!-- Übung 2: Mythen-Buster -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">2</div>
-      <div class="uebung-titel">Mentale Gesundheit Mythen-Buster – Wahr oder Falsch?</div>
-    </div>
-    <div class="uebung-beschreibung">Markiere was du für wahr oder falsch hältst – dann lies die Auflösung.</div>
-
-    <div class="myth-grid">
-      <div class="myth-card">
-        <div class="myth-text">"Psychische Probleme sind ein Zeichen von Schwäche."</div>
-        <div class="myth-choice"><label><input type="radio" name="m1"> ✅ Wahr</label><label><input type="radio" name="m1"> ❌ Falsch</label></div>
-        <div class="myth-reveal">❌ FALSCH. Es braucht Mut, sich Probleme einzugestehen.</div>
-      </div>
-      <div class="myth-card">
-        <div class="myth-text">"Über Probleme reden macht sie schlimmer."</div>
-        <div class="myth-choice"><label><input type="radio" name="m2"> ✅ Wahr</label><label><input type="radio" name="m2"> ❌ Falsch</label></div>
-        <div class="myth-reveal">❌ FALSCH. Aussprechen reduziert den Druck – nachgewiesen.</div>
-      </div>
-      <div class="myth-card">
-        <div class="myth-text">"Psychische Erkrankungen können jeden treffen."</div>
-        <div class="myth-choice"><label><input type="radio" name="m3"> ✅ Wahr</label><label><input type="radio" name="m3"> ❌ Falsch</label></div>
-        <div class="myth-reveal">✅ WAHR. Soziale Schicht, Intelligenz, Herkunft schützen nicht.</div>
-      </div>
-      <div class="myth-card">
-        <div class="myth-text">"Wenn jemand Suizid erwähnt, darf man nicht nachfragen."</div>
-        <div class="myth-choice"><label><input type="radio" name="m4"> ✅ Wahr</label><label><input type="radio" name="m4"> ❌ Falsch</label></div>
-        <div class="myth-reveal">❌ FALSCH. Direkt fragen reduziert das Risiko – wirklich!</div>
-      </div>
-      <div class="myth-card">
-        <div class="myth-text">"Therapie ist nur für 'richtig Verrückte'."</div>
-        <div class="myth-choice"><label><input type="radio" name="m5"> ✅ Wahr</label><label><input type="radio" name="m5"> ❌ Falsch</label></div>
-        <div class="myth-reveal">❌ FALSCH. Profis gehen selbst zur Therapie. Für jeden sinnvoll.</div>
-      </div>
-      <div class="myth-card">
-        <div class="myth-text">"Jugendliche sind zu jung für ernsthafte psychische Probleme."</div>
-        <div class="myth-choice"><label><input type="radio" name="m6"> ✅ Wahr</label><label><input type="radio" name="m6"> ❌ Falsch</label></div>
-        <div class="myth-reveal">❌ FALSCH. 50% aller psychischen Erkrankungen beginnen vor 14.</div>
-      </div>
-      <div class="myth-card">
-        <div class="myth-text">"Sport und Bewegung können bei Depression helfen."</div>
-        <div class="myth-choice"><label><input type="radio" name="m7"> ✅ Wahr</label><label><input type="radio" name="m7"> ❌ Falsch</label></div>
-        <div class="myth-reveal">✅ WAHR. 30 Min. Bewegung = ähnlich wirksam wie leichte Antidepressiva.</div>
-      </div>
-      <div class="myth-card">
-        <div class="myth-text">"Wer Hilfe sucht, ist mutig – nicht schwach."</div>
-        <div class="myth-choice"><label><input type="radio" name="m8"> ✅ Wahr</label><label><input type="radio" name="m8"> ❌ Falsch</label></div>
-        <div class="myth-reveal">✅ WAHR. Das ist eine der stärksten Dinge, die du tun kannst.</div>
-      </div>
+    <div class="fm-spalte">
+      • Flourishing mit Erkrankung (Rehabilitation-Ziel)<br>
+      • Languishing mit Erkrankung (Crisis)<br><br>
+      <strong>Implication:</strong> Prävention bedeutet Wohlbefinden stärken, nicht nur Symptome behandeln. „Languishing" (vague Unzufriedenheit ohne Diagnose) ist häufig und wird oft übersehen.
     </div>
   </div>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Mentale Gesundheit verstehen · Seite 1</span>
+  <h3 class="fm-unter-titel">Biopsychosoziales Modell (Engel 1977)</h3>
+  <ul class="fm-liste">
+    <li><strong>Biologisch:</strong> Genetik, Neurobiologie, körperliche Gesundheit, Schlaf, Ernährung</li>
+    <li><strong>Psychologisch:</strong> Kognitionen, Emotionen, Persönlichkeit, Bewältigungsstrategien, Traumata</li>
+    <li><strong>Sozial:</strong> Familie, Peers, Schule, Kultur, Diskriminierung, Armut, Gemeinschaft</li>
+  </ul>
+  <p class="fm-text">In Psychoedukation mit Jugendlichen: „Keine psychische Erkrankung ist alleine im Gehirn — und keine ist allein durch die Umwelt. Es ist immer beides zusammen."</p>
+
+  <div class="fm-cave">
+    <strong>⚠ Überdiagnose-Gefahr:</strong> Social Media und TikTok führen zu Zunahme von Selbstdiagnosen (besonders ADHD, BPD, ASD). Validieren (Interesse an eigenem Erleben ist gut) + klarstellen (Diagnose braucht professionelle Abklärung).
   </div>
 </div>
 
-<!-- ===== SEITE 2 ===== -->
-<div class="seite">
-
-  <!-- Übung 3: Check-in -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">3</div>
-      <div class="uebung-titel">Mein mentaler Gesundheits-Check-in – heute</div>
+<!-- SEITE 2: ERKENNEN & EINSCHÄTZEN -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">🧠</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Mentale Gesundheit & Psychoedukation</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
     </div>
-    <div class="uebung-beschreibung">5 Bereiche, 5 Fragen. Kreise das Emoji ein, das am besten passt.</div>
+    <div class="fm-seitenzahl">2 / 5</div>
+  </div>
 
-    <div class="checkin-area">
-      <div class="checkin-row">
-        <div class="checkin-label">💪 Körper</div>
-        <div class="checkin-scale">
-          <div style="text-align:center;"><span style="font-size:16px;">😴</span><div class="checkin-box"></div><div style="font-size:9px;">Erschöpft</div></div>
-          <div style="text-align:center;"><span style="font-size:16px;">😔</span><div class="checkin-box"></div><div style="font-size:9px;">Müde</div></div>
-          <div style="text-align:center;"><span style="font-size:16px;">😐</span><div class="checkin-box"></div><div style="font-size:9px;">Okay</div></div>
-          <div style="text-align:center;"><span style="font-size:16px;">🙂</span><div class="checkin-box"></div><div style="font-size:9px;">Gut</div></div>
-          <div style="text-align:center;"><span style="font-size:16px;">⚡</span><div class="checkin-box"></div><div style="font-size:9px;">Energievoll</div></div>
-        </div>
-        <div style="font-size:10px; color:#6B7280;">Schlaf, Energie, Körpergefühl</div>
-      </div>
-      <div class="checkin-row">
-        <div class="checkin-label">💭 Stimmung</div>
-        <div class="checkin-scale">
-          <div style="text-align:center;"><span style="font-size:16px;">😢</span><div class="checkin-box"></div><div style="font-size:9px;">Sehr schlecht</div></div>
-          <div style="text-align:center;"><span style="font-size:16px;">😟</span><div class="checkin-box"></div><div style="font-size:9px;">Schlecht</div></div>
-          <div style="text-align:center;"><span style="font-size:16px;">😐</span><div class="checkin-box"></div><div style="font-size:9px;">Neutral</div></div>
-          <div style="text-align:center;"><span style="font-size:16px;">🙂</span><div class="checkin-box"></div><div style="font-size:9px;">Gut</div></div>
-          <div style="text-align:center;"><span style="font-size:16px;">😄</span><div class="checkin-box"></div><div style="font-size:9px;">Sehr gut</div></div>
-        </div>
-        <div style="font-size:10px; color:#6B7280;">Allgemeine Stimmungslage</div>
-      </div>
-      <div class="checkin-row">
-        <div class="checkin-label">🌀 Gedanken</div>
-        <div class="checkin-scale">
-          <div style="text-align:center;"><span style="font-size:16px;">🌪️</span><div class="checkin-box"></div><div style="font-size:9px;">Chaos</div></div>
-          <div style="text-align:center;"><span style="font-size:16px;">😰</span><div class="checkin-box"></div><div style="font-size:9px;">Viel Sorgen</div></div>
-          <div style="text-align:center;"><span style="font-size:16px;">😐</span><div class="checkin-box"></div><div style="font-size:9px;">Normal</div></div>
-          <div style="text-align:center;"><span style="font-size:16px;">🧘</span><div class="checkin-box"></div><div style="font-size:9px;">Ruhig</div></div>
-          <div style="text-align:center;"><span style="font-size:16px;">✨</span><div class="checkin-box"></div><div style="font-size:9px;">Klar & fokus</div></div>
-        </div>
-        <div style="font-size:10px; color:#6B7280;">Gedankenkarussell?</div>
-      </div>
-      <div class="checkin-row">
-        <div class="checkin-label">🤝 Kontakte</div>
-        <div class="checkin-scale">
-          <div style="text-align:center;"><span style="font-size:16px;">🏝️</span><div class="checkin-box"></div><div style="font-size:9px;">Sehr isoliert</div></div>
-          <div style="text-align:center;"><span style="font-size:16px;">😶</span><div class="checkin-box"></div><div style="font-size:9px;">Einsam</div></div>
-          <div style="text-align:center;"><span style="font-size:16px;">😐</span><div class="checkin-box"></div><div style="font-size:9px;">Okay</div></div>
-          <div style="text-align:center;"><span style="font-size:16px;">😊</span><div class="checkin-box"></div><div style="font-size:9px;">Verbunden</div></div>
-          <div style="text-align:center;"><span style="font-size:16px;">🫂</span><div class="checkin-box"></div><div style="font-size:9px;">Sehr verbunden</div></div>
-        </div>
-        <div style="font-size:10px; color:#6B7280;">Wie verbunden fühle ich mich?</div>
-      </div>
-      <div class="checkin-row">
-        <div class="checkin-label">🏫 Alltag</div>
-        <div class="checkin-scale">
-          <div style="text-align:center;"><span style="font-size:16px;">🔥</span><div class="checkin-box"></div><div style="font-size:9px;">Alles bricht ein</div></div>
-          <div style="text-align:center;"><span style="font-size:16px;">😩</span><div class="checkin-box"></div><div style="font-size:9px;">Schwer</div></div>
-          <div style="text-align:center;"><span style="font-size:16px;">😐</span><div class="checkin-box"></div><div style="font-size:9px;">Bewältigbar</div></div>
-          <div style="text-align:center;"><span style="font-size:16px;">👍</span><div class="checkin-box"></div><div style="font-size:9px;">Gut</div></div>
-          <div style="text-align:center;"><span style="font-size:16px;">🚀</span><div class="checkin-box"></div><div style="font-size:9px;">Läuft super</div></div>
-        </div>
-        <div style="font-size:10px; color:#6B7280;">Schule, Tagesstruktur</div>
-      </div>
+  <h2 class="fm-abschnitt-titel">Erkennen & Einschätzen</h2>
+
+  <div class="fm-ampel">
+    <div class="fm-ampel-item fm-gruen">
+      <div class="fm-ampel-farbe">🟢</div>
+      <div class="fm-ampel-titel">Gute Mental Health Literacy</div>
+      <ul>
+        <li>Jugendlicher kann eigene Gefühle benennen</li>
+        <li>Weiß, wann Hilfe suchen angemessen ist</li>
+        <li>Kein oder geringes Stigma gegenüber Therapie</li>
+        <li>Versteht: Psychische Erkrankung = echte Erkrankung</li>
+        <li>Nutzt Ressourcen präventiv</li>
+        <li>Kann eigenes Wohlbefinden einschätzen</li>
+      </ul>
+      <div class="fm-ampel-handlung">Wissen vertiefen, Resilienz stärken, Prävention</div>
+    </div>
+    <div class="fm-ampel-item fm-gelb">
+      <div class="fm-ampel-farbe">🟡</div>
+      <div class="fm-ampel-titel">Stigma / Wissenslücken</div>
+      <ul>
+        <li>„Therapie ist für Schwache / Verrückte"</li>
+        <li>Schambesetzt über eigene psychische Probleme</li>
+        <li>Selbstdiagnose aus Social Media unkritisch übernommen</li>
+        <li>Verleugnung von Symptomen aus Angst vor Diagnose</li>
+        <li>Eltern verhindern Hilfesuche aus Scham</li>
+        <li>Languishing — vage Unzufriedenheit ohne Benennung</li>
+      </ul>
+      <div class="fm-ampel-handlung">Psychoedukation, Entstigmatisierung, Normalisiierung</div>
+    </div>
+    <div class="fm-ampel-item fm-rot">
+      <div class="fm-ampel-farbe">🔴</div>
+      <div class="fm-ampel-titel">Akute Krise / unbehandelte Störung</div>
+      <ul>
+        <li>Klare Symptome, keine Hilfe gesucht (Wochenlang)</li>
+        <li>Selbstgefährdung</li>
+        <li>Psychotische Symptome (Wahrnehmungsstörungen)</li>
+        <li>Totale Funktionseinschränkung</li>
+        <li>Behandlungsverweigerung trotz Leidensdruck</li>
+      </ul>
+      <div class="fm-ampel-handlung">SOFORT: CHL KJP, Krisenintervention, ggf. Einweisung</div>
     </div>
   </div>
 
-  <!-- Übung 4: Was hilft mir -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">4</div>
-      <div class="uebung-titel">Was hilft mir – was macht es schlimmer?</div>
+  <h3 class="fm-unter-titel">Psychische Erkrankungen im Jugendalter — Häufigkeiten</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      Angststörungen: ~8 % (häufigste)<br>
+      Depression: ~4–5 %<br>
+      ADHS: ~5–7 %<br>
+      Verhaltensstörungen: ~5 %
     </div>
-
-    <table class="help-table">
-      <thead>
-        <tr>
-          <th style="background:#FEE2E2; color:#991B1B;">😰 Macht es schlechter</th>
-          <th style="background:#F9FAFB; color:#374151;">😐 Neutral</th>
-          <th style="background:#ECFDF5; color:#065F46;">💚 Hilft mir wirklich</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td></td><td></td><td></td></tr>
-        <tr><td></td><td></td><td></td></tr>
-        <tr><td></td><td></td><td></td></tr>
-        <tr><td></td><td></td><td></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- Übung 5: First Aid für Freunde -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">5</div>
-      <div class="uebung-titel">Mentale Erste Hilfe für Freunde – 3 Schritte</div>
-    </div>
-    <div class="uebung-beschreibung">Was tust du, wenn jemand dem du wichtig bist, gerade wirklich kämpft?</div>
-
-    <div class="firstaid-step">
-      <div class="firstaid-nr">1</div>
-      <div style="font-size:11px;"><strong style="color:var(--farbe);">Fragen & Da sein:</strong> "Ich mache mir Sorgen um dich. Geht's dir okay?" – Einfach fragen. Nicht werten. Zuhören ohne Rat zu geben.</div>
-    </div>
-    <div class="firstaid-step">
-      <div class="firstaid-nr">2</div>
-      <div style="font-size:11px;"><strong style="color:var(--farbe);">Ernstnehmen:</strong> Nicht kleinreden. Nicht: "Das ist doch nichts." Stattdessen: "Das klingt wirklich schwer. Ich bin froh, dass du mir das sagst."</div>
-    </div>
-    <div class="firstaid-step">
-      <div class="firstaid-nr">3</div>
-      <div style="font-size:11px;"><strong style="color:var(--farbe);">Zu Hilfe ermutigen:</strong> "Hast du schon mit einem Erwachsenen geredet? Ich könnte mitkommen." – Kanner-Jugendtelefon: <strong>116 111</strong> (kostenlos, anonym)</div>
-    </div>
-
-    <div class="wusstest" style="margin-top:8px;">
-      <strong>🧠 Wusstest du?</strong> Einem Freund direkt zu sagen "Ich mache mir Sorgen um dich" und nach Suizidgedanken zu fragen erhöht das Risiko NICHT – Studien zeigen, es verringert es. <em>Das Gespräch zu suchen ist mutig und richtig.</em>
+    <div class="fm-spalte">
+      Essstörungen: ~2 % (Mädchen bis 5 %)<br>
+      Substanzstörungen: ~4 %<br>
+      Zwangsstörungen: ~1–2 %<br>
+      Psychotische Störungen: ~0.5–1 %
     </div>
   </div>
 
-  <!-- Reflexion -->
-  <div class="reflexion">
-    <div class="reflexion-titel">💬 Reflexion</div>
-    <p>Was ist die eine kleine Sache, die du diese Woche für deine mentale Gesundheit tun könntest? (Es darf wirklich klein sein.)</p>
-    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  <h3 class="fm-unter-titel">Warnsignale (allgemein) — Wann psychologische Abklärung?</h3>
+  <ul class="fm-liste">
+    <li>Symptome dauern &gt;2 Wochen an</li>
+    <li>Signifikante Beeinträchtigung in Schule, Familie, sozialem Leben</li>
+    <li>Selbst- oder Fremdgefährdung</li>
+    <li>Keine Erholung trotz gutem Schlaf und Erholung</li>
+    <li>Jugendlicher leidet selbst erkennbar</li>
+  </ul>
+</div>
+
+<!-- SEITE 3: IM GESPRÄCH -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">🧠</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Mentale Gesundheit & Psychoedukation</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-seitenzahl">3 / 5</div>
   </div>
 
-  <div class="fachhinweis">
-    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
-    <strong>ICD-10 Bezug:</strong> Psychische Erkrankungen im Jugendalter: F32 (Depression), F40/F41 (Angststörungen), F43.1 (PTBS), F84 (ASD) – alle beginnen häufig vor dem 18. Lebensjahr. Das Spektrums-Konzept (Übung 1) folgt dem Mental Health Continuum Model (Keyes, 2002). <strong>Screening-Tools:</strong> SDQ (Strengths and Difficulties Questionnaire) als Erstscreening; PHQ-A für Depression; SCARED für Angststörungen. <strong>Mythen-Busting</strong> ist evidenzbasiert für Stigmareduktion (Corrigan, 2016). <strong>Erste Hilfe für Freunde</strong> basiert auf Mental Health First Aid (MHFA) Curriculum. <strong>Bei Krisenzeichen:</strong> Kanner-Jugendtelefon 116 111; psychiatrische Notaufnahme CHL; stationäre Jugendpsychiatrie Luxembourg.
+  <h2 class="fm-abschnitt-titel">Im Gespräch mit Jugendlichen</h2>
+
+  <div class="fm-gespraech-grid">
+    <div class="fm-gespraech-gut">
+      <div class="fm-gespraech-label">✓ Hilfreiche Formulierungen</div>
+      <div class="fm-gespraech-beispiel">„Was du beschreibst klingt wie etwas, das viele Menschen durchmachen — und es gibt Wege, damit umzugehen."</div>
+      <div class="fm-gespraech-beispiel">„Zur Therapie zu gehen bedeutet nicht, dass etwas 'falsch' mit dir ist — es bedeutet, dass du dir Unterstützung holst, genau wie man zum Arzt geht."</div>
+      <div class="fm-gespraech-beispiel">„Hast du mal von etwas gelesen oder gehört, das dich interessiert hat im Bereich psychische Gesundheit?"</div>
+      <div class="fm-gespraech-beispiel">„Wenn du auf einer Skala von 0–10 sagen müsstest, wie es dir geht — was wäre das heute?"</div>
+      <div class="fm-gespraech-beispiel">„Was würde sich verändern, wenn du professionelle Unterstützung hättest?"</div>
+      <div class="fm-gespraech-beispiel">„Es braucht Mut, Hilfe zu holen. Das ist keine Schwäche."</div>
+    </div>
+    <div class="fm-gespraech-schlecht">
+      <div class="fm-gespraech-label">✗ Vermeiden</div>
+      <div class="fm-gespraech-beispiel">„Du solltest das professionell abklären lassen." (zu früh, zu direkt) → Defensivität</div>
+      <div class="fm-gespraech-beispiel">„Das ist keine echte Erkrankung, das ist nur Stress." → Invalidierung</div>
+      <div class="fm-gespraech-beispiel">„Früher gab es das alles nicht." → Generationenvergleich, abwertend</div>
+      <div class="fm-gespraech-beispiel">Diagnosen nennen ohne Diagnostik: „Du hast sicher ADHS." → Übergriffig</div>
+      <div class="fm-gespraech-beispiel">„Das wird schon besser." → Ohne Grundlage, minimiert Leidensdruck</div>
+    </div>
   </div>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Mentale Gesundheit verstehen · Seite 2</span>
+  <h3 class="fm-unter-titel">Psychoedukation einfach erklärt — Kernbotschaften für Jugendliche</h3>
+  <ul class="fm-liste">
+    <li>🧠 „Dein Gehirn ist ein Organ wie das Herz — auch Gehirne können aus dem Gleichgewicht geraten."</li>
+    <li>🔄 „Psychische Erkrankungen haben biologische, psychische und soziale Ursachen — du hast sie dir nicht ausgesucht."</li>
+    <li>💊 „Behandlung wirkt — genau wie Antibiotika bei Infektionen."</li>
+    <li>🤝 „Du musst das nicht alleine durchstehen."</li>
+    <li>🌟 „Viele erfolgreiche Menschen hatten psychische Erkrankungen — du kannst trotzdem ein gutes Leben führen."</li>
+  </ul>
+
+  <div class="fm-tipp">
+    <strong>💡 Mental Health Apps für Jugendliche (evidenzbasiert):</strong> Woebot (CBT-basiert), Headspace (Mindfulness), MoodKit (Stimmungstagenbuch), 7 Cups (Peer-Support). Mit Jugendlichen gemeinsam erkunden, was zu ihnen passt — Apps ersetzen nicht Therapie, können aber unterstützen.
+  </div>
+</div>
+
+<!-- SEITE 4: INTERVENTIONEN -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">🧠</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Mentale Gesundheit & Psychoedukation</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-seitenzahl">4 / 5</div>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Evidenzbasierte Interventionen</h2>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Mental Health First Aid (MHFA) — Jugendversion</span>
+      <span class="fm-sterne">★★★</span>
+    </div>
+    <p class="fm-text">Strukturiertes Training: Psychische Erkrankungen erkennen, erste Hilfe leisten, zu professioneller Hilfe motivieren. Für Jugendliche (teen MHFA) und Erwachsene (MHFA). RCT-Evidenz: Erhöht Mental Health Literacy und Hilfsbereitschaft signifikant (Kitchener & Jorm 2002). Wäre ideal als Schulungsprogramm.</p>
+  </div>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Anti-Stigma Programme (Contact-Based Education)</span>
+      <span class="fm-sterne">★★★</span>
+    </div>
+    <p class="fm-text">Direkte Begegnung mit Menschen mit Betroffenenerfahrung wirksamer als nur Information. „Contact Hypothesis" — persönliche Geschichten reduzieren Stigma effektiver als Statistiken. StigmaPop-Kampagne, Heads Together (UK), Bëss Mir — Bien avec Moi (Luxemburg).</p>
+  </div>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Positive Psychologie-Interventionen (PPIs)</span>
+      <span class="fm-sterne">★★☆</span>
+    </div>
+    <p class="fm-text">Seligman PERMA-Modell: Positive Emotions, Engagement, Relationships, Meaning, Accomplishment. PPIs: 3 gute Dinge pro Tag, Dankbarkeitstagebuch, Stärken nutzen. Meta-Analyse Sin & Lyubomirsky (2009): signifikante Verbesserung Wohlbefinden, Reduktion depressiver Symptome.</p>
+  </div>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Motivational Interviewing für Hilfesuche</span>
+      <span class="fm-sterne">★★★</span>
+    </div>
+    <p class="fm-text">Ambivalenz gegenüber Hilfesuche explorieren. OARS: Open Questions, Affirmation, Reflective Listening, Summary. Change Talk fördern: „Was würde sich verändern, wenn du Unterstützung hättest?" Nie Druck ausüben — MI schützt Autonomie und erhöht Motivation.</p>
+  </div>
+
+  <h3 class="fm-unter-titel">Wartezeit überbrücken: Was tun bis zum Therapeuten?</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>Kurzfristige Überbrückung:</strong><br>
+      • Fachberatung als Übergangsstütze<br>
+      • Kanner-Jugendtelefon 116 111<br>
+      • Online-Ressourcen + Apps<br>
+      • Schulstruktur aufrechterhalten
+    </div>
+    <div class="fm-spalte">
+      <strong>Mittelfristige Unterstützung:</strong><br>
+      • Bezugspersonarbeit intensivieren<br>
+      • Selbsthilfegruppen erkunden<br>
+      • Körperliche Grundlagen: Schlaf, Bewegung, Ernährung<br>
+      • Soziales Netz aktivieren
+    </div>
+  </div>
+</div>
+
+<!-- SEITE 5: NETZWERK & RESSOURCEN -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">🧠</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Mentale Gesundheit & Psychoedukation</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-seitenzahl">5 / 5</div>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Luxemburger Versorgungsnetzwerk</h2>
+
+  <div class="fm-ressourcen-grid">
+    <div class="fm-ressource-karte fm-ressource-krise">
+      <div class="fm-ressource-name">CHL Kinder- und Jugendpsychiatrie</div>
+      <div class="fm-ressource-tel">4411-6100</div>
+      <div class="fm-ressource-info">Ambulante Diagnostik und Therapie für alle psychischen Erkrankungen. Wartezeit ~3–6 Monate. Kriseninterventionen ohne Wartezeit.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Kanner-Jugendtelefon</div>
+      <div class="fm-ressource-tel">116 111</div>
+      <div class="fm-ressource-info">Kostenlos, anonym, 24/7. Erste Anlaufstelle bei psychischen Problemen. Auch während Wartezeit auf Therapieplatz.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">OMEGA 90 — Krisenintervention</div>
+      <div class="fm-ressource-tel">44 40 40</div>
+      <div class="fm-ressource-info">Suizidpräventiv, Krisenbegleitung, psychosoziale Notfallversorgung. Mo–Fr 9–12 + 14–17 Uhr.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">SPL — Ligue Médico-Sociale</div>
+      <div class="fm-ressource-tel">45 45 45</div>
+      <div class="fm-ressource-info">Ambulante psychologische Beratung für Jugendliche und Familien. Kürzere Wartezeiten als CHL KJP.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">MOUVEMENT pour la Santé Mentale</div>
+      <div class="fm-ressource-tel">27 12 00 1</div>
+      <div class="fm-ressource-info">Psychoedukations-Angebote, Anti-Stigma-Kampagnen, Selbsthilfegruppen. Mental Health Awareness.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">CHEM / Robert Schuman Hospital</div>
+      <div class="fm-ressource-tel">57 11 57</div>
+      <div class="fm-ressource-info">Psychiatrische Notfallversorgung Süd-Luxemburg. Pädiatrische Notaufnahme.</div>
+    </div>
+  </div>
+
+  <div class="fm-krisen-box">
+    <div class="fm-krisen-titel">📋 Mental Health Literacy Check — 5 Fragen für Jugendliche</div>
+    <div class="fm-krisen-schritte">
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">1</span>
+        <span class="fm-schritt-text">„Was versteht man unter psychischer Gesundheit — was fällt dir dazu ein?"</span>
+      </div>
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">2</span>
+        <span class="fm-schritt-text">„Wenn du denkst, jemand braucht psychologische Hilfe — wohin würdest du ihn schicken?"</span>
+      </div>
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">3</span>
+        <span class="fm-schritt-text">„Was hältst du von Therapie? Würdest du selbst gehen?" (Stigma-Check)</span>
+      </div>
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">4</span>
+        <span class="fm-schritt-text">„Hast du Erfahrungen mit psychischen Problemen — bei dir oder in deinem Umfeld?"</span>
+      </div>
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">5</span>
+        <span class="fm-schritt-text">„Auf einer Skala 0–10: Wie geht es dir gerade — was bräuchtest du, damit es sich ein bisschen besser anfühlt?"</span>
+      </div>
+    </div>
   </div>
 </div>
 

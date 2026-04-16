@@ -1,184 +1,302 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Arbeitsblatt – Ehrenamt &amp; Engagement</title>
-  <link rel="stylesheet" href="../css/arbeitsblatt.css">
-  <style>
-    :root { --farbe: #F59E0B; --farbe-hell: #FFFBEB; }
-    .bubble-grid { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:10px; }
-    .bubble { border:2px solid #FCD34D; border-radius:20px; padding:5px 11px; font-size:11px; font-weight:600; background:#FFFBEB; cursor:default; }
-    .skill-bubble { border:2px solid #FCD34D; border-radius:20px; padding:5px 11px; font-size:11px; font-weight:600; background:#FFFBEB; cursor:default; }
-    .sector-card { border-radius:8px; padding:9px; text-align:center; border:2px solid #FDE68A; background:#FFFBEB; }
-    .sector-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:7px; margin-bottom:10px; }
-    .time-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px; }
-    .story-box { background:#FFFBEB; border:1.5px solid #FCD34D; border-radius:8px; padding:10px; margin-bottom:7px; }
-    .story-label { font-size:11px; font-weight:700; color:#92400E; margin-bottom:4px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachkraft-Modul: Ehrenamt & Engagement</title>
+<link rel="stylesheet" href="../fachkraft-modul.css">
 </head>
 <body>
+<style>:root { --farbe: #16A34A; }</style>
 
-<div class="druck-leiste">
-  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
-  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
-</div>
-
-<!-- ===== SEITE 1 ===== -->
-<div class="seite">
-  <div class="kopfzeile">
-    <div class="kopfzeile-links">
-      <div class="schule-label">Pathways · Joey Guedes</div>
-      <div class="ab-titel">Was ich der Welt geben kann</div>
-      <div class="ab-untertitel">Ehrenamt &amp; Engagement · Kategorie: Gesellschaft &amp; Werte</div>
+<!-- SEITE 1: ÜBERBLICK & ENTSTEHUNG -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">🤝</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Ehrenamt & Engagement</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
     </div>
-    <div class="kopfzeile-icon">🌟</div>
+    <div class="fm-seitenzahl">1 / 5</div>
   </div>
 
-  <div class="schuelerinfo">
-    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  <div class="fm-quickinfo">
+    <div class="fm-qi-item"><span class="fm-qi-label">ICD-10</span><span class="fm-qi-wert">Präventiv / Z55–Z65 (Wohlbefinden)</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Relevanz</span><span class="fm-qi-wert">Freiwilligenarbeit: Depression ↓, Selbstwert ↑, soziale Integration ↑, Sinnerleben ↑</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Prävalenz</span><span class="fm-qi-wert">~35 % Jugendliche in Luxemburg engagieren sich ehrenamtlich (SNJ 2022)</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Psycholog. Nutzen</span><span class="fm-qi-wert">„Helper's High": Prosoziales Verhalten aktiviert Belohnungssystem (Moll et al. 2006)</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Risiken</span><span class="fm-qi-wert">Überengagement → Burnout, Grenzen setzen, Selbstfürsorge</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Luxemburg</span><span class="fm-qi-wert">SNJ: Service National de la Jeunesse — koordiniert Jugendengagement national</span></div>
   </div>
 
-  <div class="infobox">
-    <div class="infobox-titel">💡 Engagement macht etwas mit dir – auf gute Weise.</div>
-    <p>Ehrenamt bedeutet, sich für andere einzusetzen – ohne dafür bezahlt zu werden. Klingt erstmal seltsam. Aber: Wer sich engagiert, lernt neue Menschen kennen, gewinnt Fähigkeiten, fühlt sich weniger allein und wächst über sich hinaus. Das ist kein Deal zum Verlieren.</p>
-    <p>🧠 <em>Wusstest du? In Luxembourg engagieren sich über 100.000 Menschen ehrenamtlich – das sind fast 1 von 6 Einwohnern. Und Arbeitgeber schauen aktiv auf Freiwilligenarbeit im Lebenslauf.</em></p>
-  </div>
+  <h2 class="fm-abschnitt-titel">Theoretische Grundlage</h2>
+  <p class="fm-text">Ehrenamt und freiwilliges Engagement fördern psychische Gesundheit durch multiple Mechanismen: Sinnerleben (Frankl), soziale Verbundenheit (Baumeister), Selbstwirksamkeit (Bandura) und prosoziales Belohnungssystem (Moll 2006). Für Jugendliche ist Engagement auch ein Identitäts-Erprobungsraum.</p>
 
-  <!-- Übung 1: Meine Werte -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">1</div>
-      <div class="uebung-titel">Meine Werte – Was liegt mir am Herzen?</div>
+  <h3 class="fm-unter-titel">Sinnpsychologie (Frankl 1946 / Baumeister 1991)</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>4 Quellen von Sinnerleben (Baumeister):</strong><br>
+      • Zweck: Handeln für ein Ziel<br>
+      • Effizienz: Wirkung sehen<br>
+      • Wert: Handeln nach eigenen Werten<br>
+      • Selbstwert: Ich bin wertvoll
     </div>
-    <div class="uebung-beschreibung">Kreise die Werte ein, die dir wichtig sind – je mehr du einkringst, desto klarer wird, wo du hingehörst.</div>
-    <div class="bubble-grid">
-      <div class="bubble">🤝 Gerechtigkeit</div>
-      <div class="bubble">🌿 Umweltschutz</div>
-      <div class="bubble">❤️ Mitgefühl</div>
-      <div class="bubble">💪 Stärke für Schwache</div>
-      <div class="bubble">🎨 Kreativität</div>
-      <div class="bubble">🌍 Weltverbesserung</div>
-      <div class="bubble">🧑‍🤝‍🧑 Gemeinschaft</div>
-      <div class="bubble">📚 Bildung</div>
-      <div class="bubble">🏠 Zuhause für alle</div>
-      <div class="bubble">🐾 Tierschutz</div>
-    </div>
-    <div style="font-size:11px;font-weight:600;margin-bottom:3px;">Das liegt mir am meisten am Herzen, weil:</div>
-    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-  </div>
-
-  <!-- Übung 2: Ehrenamtliche Sektoren -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">2</div>
-      <div class="uebung-titel">Wo könnte ich mitmachen? – Kreise interessante Bereiche ein</div>
-    </div>
-    <div class="sector-grid">
-      <div class="sector-card"><div style="font-size:18px;">🏥</div><div style="font-size:10px;font-weight:700;margin-top:3px;">Croix-Rouge Luxembourg</div></div>
-      <div class="sector-card"><div style="font-size:18px;">🤝</div><div style="font-size:10px;font-weight:700;margin-top:3px;">Caritas Luxembourg</div></div>
-      <div class="sector-card"><div style="font-size:18px;">🌿</div><div style="font-size:10px;font-weight:700;margin-top:3px;">Naturschutz (natur&ëmwelt)</div></div>
-      <div class="sector-card"><div style="font-size:18px;">⚽</div><div style="font-size:10px;font-weight:700;margin-top:3px;">Sportverein / Training</div></div>
-      <div class="sector-card"><div style="font-size:18px;">🎭</div><div style="font-size:10px;font-weight:700;margin-top:3px;">Kultur &amp; Kunst</div></div>
-      <div class="sector-card"><div style="font-size:18px;">🐕</div><div style="font-size:10px;font-weight:700;margin-top:3px;">Tierschutz</div></div>
-      <div class="sector-card"><div style="font-size:18px;">👴</div><div style="font-size:10px;font-weight:700;margin-top:3px;">Ältere Menschen</div></div>
-      <div class="sector-card"><div style="font-size:18px;">👶</div><div style="font-size:10px;font-weight:700;margin-top:3px;">Kinder &amp; Jugend (SNJ)</div></div>
+    <div class="fm-spalte">
+      <strong>Ehrenamt erfüllt alle 4:</strong><br>
+      Ziel (Projekt, Organisation), Wirkung sehen (Menschen helfen), Werte leben (Solidarität, Gerechtigkeit), Anerkennung erleben → Dreifach-Sinn-Effekt
     </div>
   </div>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Ehrenamt &amp; Engagement · Seite 1</span>
+  <h3 class="fm-unter-titel">Entwicklungspsychologie — Ehrenamt in der Adoleszenz</h3>
+  <p class="fm-text">Erikson (Stufe 5): Identität vs. Rollendiffusion. Ehrenamt ermöglicht risikoarme Identitätserprobung: „Ich kann Leiter sein / Ich bin jemand der hilft / Ich kann Verantwortung tragen." Besonders wertvoll in Phasen der Orientierungslosigkeit.</p>
+
+  <h3 class="fm-unter-titel">Arten von Engagement für Jugendliche</h3>
+  <ul class="fm-liste">
+    <li><strong>Sportverein:</strong> Trainer, Schiedsrichter, Funktionäre (niedrigschwellig, viele Orte)</li>
+    <li><strong>Soziales Engagement:</strong> Altenheim, Kinderhilfe, Behindertenunterstützung</li>
+    <li><strong>Umwelt/Klima:</strong> Greenpeace, SNJ Natur, Aufräumaktionen</li>
+    <li><strong>Jugendfeuerwehr/Rotes Kreuz:</strong> Strukturierte Ausbildung + Einsatz</li>
+    <li><strong>Schulengagement:</strong> Schülervertretung, Tutoring, Mentoring</li>
+    <li><strong>Online-Engagement:</strong> Moderatoren, Community-Arbeit</li>
+  </ul>
+
+  <div class="fm-cave">
+    <strong>⚠ Ehrenamt kein Pflaster:</strong> Ehrenamt fördert Wohlbefinden, ist aber kein Ersatz für Therapie bei psychischer Erkrankung. Bei schwerer Depression, Sucht oder Trauma: erst Behandlung, dann schrittweise Engagement.
   </div>
 </div>
 
-<!-- ===== SEITE 2 ===== -->
-<div class="seite">
-
-  <!-- Übung 3: Meine Skills -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">3</div>
-      <div class="uebung-titel">Meine Stärken fürs Ehrenamt – Was bring ich mit?</div>
+<!-- SEITE 2: ERKENNEN & EINSCHÄTZEN -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">🤝</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Ehrenamt & Engagement</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
     </div>
-    <div class="uebung-beschreibung">Kreise die Fähigkeiten ein, die du mitbringst. Auch scheinbar "kleine" Dinge zählen!</div>
-    <div class="bubble-grid">
-      <div class="skill-bubble">💬 Gut zuhören</div>
-      <div class="skill-bubble">🗣️ Kommunizieren</div>
-      <div class="skill-bubble">🏃 Körperlich fit</div>
-      <div class="skill-bubble">🎨 Kreativ sein</div>
-      <div class="skill-bubble">🌐 Mehrere Sprachen</div>
-      <div class="skill-bubble">💻 Tech-affin</div>
-      <div class="skill-bubble">🧘 Geduldig sein</div>
-      <div class="skill-bubble">📋 Organisieren</div>
-      <div class="skill-bubble">😄 Humor haben</div>
-      <div class="skill-bubble">🤗 Empathisch sein</div>
+    <div class="fm-seitenzahl">2 / 5</div>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Erkennen & Einschätzen</h2>
+
+  <div class="fm-ampel">
+    <div class="fm-ampel-item fm-gruen">
+      <div class="fm-ampel-farbe">🟢</div>
+      <div class="fm-ampel-titel">Gesundes Engagement</div>
+      <ul>
+        <li>Engagement ist intrinsisch motiviert</li>
+        <li>Klare Grenzen: Engagement neben Schule/Familie</li>
+        <li>Sinnerleben und Freude am Engagement</li>
+        <li>Soziale Verbindungen durch Engagement</li>
+        <li>Kann Nein sagen bei Überlastung</li>
+        <li>Engagement stärkt Selbstwert, erschöpft nicht</li>
+      </ul>
+      <div class="fm-ampel-handlung">Fördern, Reflexion, Zukunftsplanung integrieren</div>
+    </div>
+    <div class="fm-ampel-item fm-gelb">
+      <div class="fm-ampel-farbe">🟡</div>
+      <div class="fm-ampel-titel">Engagement-Probleme</div>
+      <ul>
+        <li>Kein Engagement trotz Interesse (Hemmschwelle)</li>
+        <li>Überengagement, alle Freizeit verplant</li>
+        <li>Engagement aus externem Druck (Eltern, CV)</li>
+        <li>Burnout-Anzeichen durch zu viele Verpflichtungen</li>
+        <li>Engagement als Flucht vor anderen Problemen</li>
+      </ul>
+      <div class="fm-ampel-handlung">Motivationsklärung, Grenzen, Balance</div>
+    </div>
+    <div class="fm-ampel-item fm-rot">
+      <div class="fm-ampel-farbe">🔴</div>
+      <div class="fm-ampel-titel">Burnout durch Überengagement</div>
+      <ul>
+        <li>Erschöpfung, Zynismus, Leistungsabfall</li>
+        <li>Schule leidet unter Engagement-Last</li>
+        <li>Kann nicht mehr „Nein" sagen</li>
+        <li>Eigene Bedürfnisse komplett vernachlässigt</li>
+        <li>Schuldgefühle bei Pause</li>
+      </ul>
+      <div class="fm-ampel-handlung">Burnout-Intervention, Grenzen setzen, psychologische Unterstützung</div>
     </div>
   </div>
 
-  <!-- Übung 4: Zeitverfügbarkeit -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">4</div>
-      <div class="uebung-titel">Wie viel Zeit kann ich geben?</div>
+  <h3 class="fm-unter-titel">Engagement-Barrieren bei Jugendlichen</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>Häufige Hemmschwellen:</strong><br>
+      • „Ich habe keine Zeit" (Zeitmanagement-Problem)<br>
+      • „Ich weiß nicht wo anfangen" (Information fehlt)<br>
+      • „Ich bin nicht gut genug" (Selbstwert)<br>
+      • Soziale Angst in neuen Gruppen
     </div>
-    <div class="time-grid">
-      <div style="background:#FFFBEB;border:1.5px solid #FCD34D;border-radius:8px;padding:9px;">
-        <div style="font-size:11px;font-weight:700;color:#92400E;margin-bottom:6px;">⏰ Pro Woche kann ich geben:</div>
-        <div style="font-size:11px;color:#374151;">
-          ☐ 1–2 Stunden<br>
-          ☐ 3–5 Stunden<br>
-          ☐ Mehr als 5 Stunden<br>
-          ☐ Nur unregelmäßig / nach Bedarf
-        </div>
+    <div class="fm-spalte">
+      <strong>Strukturelle Barrieren:</strong><br>
+      • Transport (→ Modul: Transport)<br>
+      • Sprachbarrieren bei nicht-Luxemburgisch-Sprechenden<br>
+      • Schichtarbeit / Schulüberlastung<br>
+      • Fehlende Anerkennung durch Schule/Familie
+    </div>
+  </div>
+</div>
+
+<!-- SEITE 3: IM GESPRÄCH -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">🤝</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Ehrenamt & Engagement</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-seitenzahl">3 / 5</div>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Im Gespräch mit Jugendlichen</h2>
+
+  <div class="fm-gespraech-grid">
+    <div class="fm-gespraech-gut">
+      <div class="fm-gespraech-label">✓ Hilfreiche Formulierungen</div>
+      <div class="fm-gespraech-beispiel">„Was liegt dir am Herzen — gibt es etwas in der Welt oder in deiner Umgebung, das dich bewegt?"</div>
+      <div class="fm-gespraech-beispiel">„Bist du irgendwo engagiert — in einem Verein, einer Gruppe, für eine Sache?"</div>
+      <div class="fm-gespraech-beispiel">„Was würdest du tun, wenn du wüsstest, dass es keine Rolle spielt ob du gut genug bist?"</div>
+      <div class="fm-gespraech-beispiel">„Du engagierst dich viel — wie geht es dir dabei? Gibt dir das Energie oder nimmt es sie?"</div>
+      <div class="fm-gespraech-beispiel">„Welche Werte sind dir wichtig? Gibt es eine Art, sie in deinem Alltag zu leben?"</div>
+    </div>
+    <div class="fm-gespraech-schlecht">
+      <div class="fm-gespraech-label">✗ Vermeiden</div>
+      <div class="fm-gespraech-beispiel">„Du solltest dich ehrenamtlich engagieren, das sieht gut im Lebenslauf aus." → Instrumentalisierung</div>
+      <div class="fm-gespraech-beispiel">„Das ist doch Pflicht, jeder sollte etwas tun." → Druck ohne intrinsische Motivation</div>
+      <div class="fm-gespraech-beispiel">Engagement als Ablenkung von echten Problemen empfehlen</div>
+    </div>
+  </div>
+
+  <h3 class="fm-unter-titel">Engagement als Identitätsressource</h3>
+  <p class="fm-text">Besonders für Jugendliche in Orientierungsphasen:</p>
+  <ul class="fm-liste">
+    <li>„Ich bin jemand, der/die sich kümmert." → Identitätsanker</li>
+    <li>Kompetenzerleben in neuem Bereich außerhalb Schule</li>
+    <li>Zugehörigkeit zu Gruppe mit geteilten Werten</li>
+    <li>Rollenmodelle und Mentoren durch Engagement</li>
+  </ul>
+
+  <div class="fm-tipp">
+    <strong>💡 SNJ-Freiwilligendienst:</strong> Service National de la Jeunesse bietet strukturierte Freiwilligendienste für Jugendliche an — national (Solidarfonds) und international (European Solidarity Corps). Kostenlos, mit Betreuung, zertifiziert. Ideal für Jugendliche die noch nicht wissen, was sie wollen.
+  </div>
+</div>
+
+<!-- SEITE 4: INTERVENTIONEN -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">🤝</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Ehrenamt & Engagement</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-seitenzahl">4 / 5</div>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Evidenzbasierte Interventionen</h2>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Service-Learning Programme</span>
+      <span class="fm-sterne">★★★</span>
+    </div>
+    <p class="fm-text">Integration von Gemeinschaftsdienst und schulischem Lernen mit strukturierter Reflexion. Meta-Analyse Celio et al. (2011): Service-Learning verbessert akademische Leistung, soziale Kompetenz, bürgerliches Engagement, Selbstwertgefühl und verringert problematisches Verhalten. Wirksamer als reines Volontariat ohne Reflexion.</p>
+  </div>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Positive Youth Development (PYD)</span>
+      <span class="fm-sterne">★★★</span>
+    </div>
+    <p class="fm-text">Stärkenbasierter Ansatz: Jugendliche werden als Ressource gesehen, nicht als Problem. Engagement schafft die 5 Cs: Competence, Confidence, Connection, Character, Caring. Lerner et al. (2005) — Langzeitstudie zeigt signifikante Wohlbefindens-Verbesserungen durch PYD-Programme.</p>
+  </div>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Burnout-Prävention bei Freiwilligen</span>
+      <span class="fm-sterne">★★☆</span>
+    </div>
+    <p class="fm-text">Für Überengagierte: Reflexion Motivationen (intrinsisch vs. extrinsisch), Grenzen-Übung (Assertiveness Training), Selbstfürsorge-Plan, Supervision/Peergruppe zum Austausch. Maslach (1981) Burnout-Modell: Erschöpfung + Zynismus + Leistungsabfall = Warnsignale.</p>
+  </div>
+
+  <h3 class="fm-unter-titel">Stärkenbasierte Engagement-Beratung</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>Schritt 1: Stärken identifizieren</strong><br>
+      VIA-Stärken-Test → Top 3 Stärken<br>
+      „Was machst du gut, das du genießt?"<br>
+      Bisherige Erfolge in Gruppen/Teams?
+    </div>
+    <div class="fm-spalte">
+      <strong>Schritt 2: Engagement-Matching</strong><br>
+      Welche Engagementform nutzt diese Stärken?<br>
+      Wo kann ich Wirkung sehen?<br>
+      Konkrete Einstiegsmöglichkeit in Luxemburg?
+    </div>
+  </div>
+</div>
+
+<!-- SEITE 5: NETZWERK & RESSOURCEN -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">🤝</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Ehrenamt & Engagement</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-seitenzahl">5 / 5</div>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Luxemburger Versorgungsnetzwerk</h2>
+
+  <div class="fm-ressourcen-grid">
+    <div class="fm-ressource-karte fm-ressource-krise">
+      <div class="fm-ressource-name">SNJ — Service National de la Jeunesse</div>
+      <div class="fm-ressource-tel">247-86100</div>
+      <div class="fm-ressource-info">Koordiniert Jugendengagement national. Freiwilligendienste, European Solidarity Corps, Informationen über alle Jugendvereine und -projekte in Luxemburg.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Croix-Rouge Luxembourg — Freiwillige</div>
+      <div class="fm-ressource-tel">27 55 1</div>
+      <div class="fm-ressource-info">Vielfältige Freiwilligeneinsätze für Jugendliche: Erste Hilfe, Besuche bei älteren Menschen, Katastrophenhilfe, internationale Einsätze.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Caritas Freiwilligenzentrum</div>
+      <div class="fm-ressource-tel">40 21 31</div>
+      <div class="fm-ressource-info">Soziales Engagement, Arbeit mit Schutzsuchenden, Armutsbekämpfung. Beratung und Vermittlung für interessierte Jugendliche.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">ACT — Action Locale de Terrain</div>
+      <div class="fm-ressource-tel">Über SNJ</div>
+      <div class="fm-ressource-info">Lokale Gemeinschaftsprojekte für Jugendliche. Quartiersentwicklung, Nachbarschaftshilfe. Besonders für Jugendliche aus benachteiligten Gebieten.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">youth.lu — Engagement-Portal</div>
+      <div class="fm-ressource-tel">26 29 22 00</div>
+      <div class="fm-ressource-info">Datenbank aller Jugendvereine und -projekte in Luxemburg. Suche nach Interessen, Gemeinde, Altersgruppe. Einstieg in Engagement.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Kanner-Jugendtelefon</div>
+      <div class="fm-ressource-tel">116 111</div>
+      <div class="fm-ressource-info">Wenn Überengagement zu Burnout oder Erschöpfung führt. Erste Anlaufstelle für Jugendliche in Distress.</div>
+    </div>
+  </div>
+
+  <div class="fm-krisen-box">
+    <div class="fm-krisen-titel">📋 Engagement-Matching Gespräch (3 Schritte)</div>
+    <div class="fm-krisen-schritte">
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">1</span>
+        <span class="fm-schritt-text"><strong>Interesse erkunden:</strong> „Was bewegt dich? Was findest du ungerecht? Wo würdest du gerne etwas verändern?" — ohne Bewertung brainstormen</span>
       </div>
-      <div style="background:#FFFBEB;border:1.5px solid #FCD34D;border-radius:8px;padding:9px;">
-        <div style="font-size:11px;font-weight:700;color:#92400E;margin-bottom:6px;">📅 Wann bin ich verfügbar?</div>
-        <div style="font-size:11px;color:#374151;">
-          ☐ Wochentags nachmittags<br>
-          ☐ Samstags<br>
-          ☐ Sonntags<br>
-          ☐ In den Schulferien
-        </div>
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">2</span>
+        <span class="fm-schritt-text"><strong>Stärken abgleichen:</strong> VIA oder informelle Stärken-Analyse → welches Engagement passt zu den Stärken?</span>
+      </div>
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">3</span>
+        <span class="fm-schritt-text"><strong>Konkreten ersten Schritt vereinbaren:</strong> Eine Veranstaltung besuchen, SNJ.lu öffnen, eine Person kontaktieren — nicht mehr. Niedrigschwellig anfangen.</span>
       </div>
     </div>
-  </div>
-
-  <!-- Übung 5: Meine Ehrenamtsgeschichte -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">5</div>
-      <div class="uebung-titel">Meine Ehrenamts-Story – Warum ich mitmache</div>
-    </div>
-    <div class="story-box">
-      <div class="story-label">🌟 Warum ich mitmachen will:</div>
-      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-    </div>
-    <div class="story-box">
-      <div class="story-label">💡 Was ich davon zu gewinnen hoffe:</div>
-      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-    </div>
-    <div class="story-box">
-      <div class="story-label">🎁 Was ich einbringen kann:</div>
-      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-    </div>
-  </div>
-
-  <div class="reflexion">
-    <div class="reflexion-titel">💬 Mein nächster Schritt</div>
-    <p>Welche Organisation kontaktiere ich als Erstes – und wie? (Besuche, E-Mail, Anruf, Website?)</p>
-    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-  </div>
-
-  <div class="fachhinweis">
-    <div class="fachhinweis-titel">🎓 Hinweis für Bezugspersonen</div>
-    Ehrenamtliches Engagement ist mit höherem Selbstwert, besserer sozialer Integration und stärkerem Gemeinschaftsgefühl verbunden (UNV-Forschung). Für Jugendliche aus schwierigen Verhältnissen gibt Engagement Sinn und Identität – besonders wenn Schule und Familie wenig positive Rückmeldung geben. <strong>Luxembourg spezifisch:</strong> SNJ (Service National de la Jeunesse, snj.lu) koordiniert Jugendfreiwilligenprogramme; Service Volontaire des Jeunes (SVJ) ab 16 Jahren – ein freiwilliges soziales Jahr mit echter Anerkennung im Lebenslauf. Volunteer.lu ist die zentrale Plattform. Ehrenamtszertifikate (Certificat de Bénévolat) können in Bewerbungsunterlagen verwendet werden. UNICEF Luxembourg, Naturschutzverwaltung, Gemeindevereine sind niedrigschwellig.
-  </div>
-
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Ehrenamt &amp; Engagement · Seite 2</span>
   </div>
 </div>
 

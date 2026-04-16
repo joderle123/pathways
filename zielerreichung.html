@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Evaluationsbogen – Zielerreichungsskala (GAS)</title>
+  <link rel="stylesheet" href="../css/evaluationsbogen.css">
+  <style>
+    :root { --farbe: #059669; --farbe-hell: #ECFDF5; }
+    .gas-ziel {
+      background: #FAFBFC;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-box);
+    }
+    .gas-ziel-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .gas-ziel-nr {
+      width: 28px;
+      height: 28px;
+      background: var(--farbe);
+      color: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .gas-ziel-name {
+      flex: 1;
+      border-bottom: 1.5px solid var(--border-mid);
+      font-size: 12px;
+      font-weight: 600;
+      padding-bottom: 3px;
+      min-height: 20px;
+    }
+    .gas-stufen {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .gas-stufe {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 8px;
+      border-radius: var(--radius-sm);
+      font-size: 10.5px;
+      border: 1px solid var(--border);
+    }
+    .gas-stufe-wert {
+      width: 26px;
+      font-weight: 800;
+      color: var(--farbe);
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .gas-stufe-label { flex: 1; color: var(--text); }
+    .gas-stufe .eval-checkbox {
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--farbe);
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- SEITE 1 -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Evaluation</div>
+      <div class="ab-titel">Zielerreichungsskala (GAS)</div>
+      <div class="ab-untertitel">Goal Attainment Scaling · Fortschrittsbewertung</div>
+    </div>
+    <div class="kopfzeile-icon">🎯</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Bewertungszeitraum</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">🎯 Was ist die Zielerreichungsskala?</div>
+    <p>Die <strong>Goal Attainment Scale (GAS)</strong> misst, wie weit du deine persönlichen Ziele erreicht hast. Für jedes Ziel gibt es 5 Stufen: von „Viel schlechter als erwartet" (−2) bis „Viel besser als erwartet" (+2). Das „erwartete Ergebnis" (0) entspricht dem, was realistisch vereinbart wurde. Kreuze für jedes Ziel an, wo du aktuell stehst.</p>
+  </div>
+
+  <!-- Ziel 1 -->
+  <div class="gas-ziel">
+    <div class="gas-ziel-header">
+      <div class="gas-ziel-nr">1</div>
+      <div class="gas-ziel-name" style="color:var(--grau);font-weight:500;font-style:italic;">Zielname hier eintragen</div>
+    </div>
+    <div class="gas-stufen">
+      <div class="gas-stufe">
+        <span class="gas-stufe-wert">+2</span>
+        <span class="gas-stufe-label">Viel besser als erwartet</span>
+        <div class="eval-checkbox"></div>
+      </div>
+      <div class="gas-stufe">
+        <span class="gas-stufe-wert">+1</span>
+        <span class="gas-stufe-label">Etwas besser als erwartet</span>
+        <div class="eval-checkbox"></div>
+      </div>
+      <div class="gas-stufe" style="background:var(--farbe-hell);border-color:var(--farbe);">
+        <span class="gas-stufe-wert">0</span>
+        <span class="gas-stufe-label"><strong>Erwartetes Ergebnis erreicht</strong></span>
+        <div class="eval-checkbox"></div>
+      </div>
+      <div class="gas-stufe">
+        <span class="gas-stufe-wert">−1</span>
+        <span class="gas-stufe-label">Etwas schlechter als erwartet</span>
+        <div class="eval-checkbox"></div>
+      </div>
+      <div class="gas-stufe">
+        <span class="gas-stufe-wert">−2</span>
+        <span class="gas-stufe-label">Viel schlechter als erwartet</span>
+        <div class="eval-checkbox"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ziel 2 -->
+  <div class="gas-ziel">
+    <div class="gas-ziel-header">
+      <div class="gas-ziel-nr">2</div>
+      <div class="gas-ziel-name" style="color:var(--grau);font-weight:500;font-style:italic;">Zielname hier eintragen</div>
+    </div>
+    <div class="gas-stufen">
+      <div class="gas-stufe">
+        <span class="gas-stufe-wert">+2</span>
+        <span class="gas-stufe-label">Viel besser als erwartet</span>
+        <div class="eval-checkbox"></div>
+      </div>
+      <div class="gas-stufe">
+        <span class="gas-stufe-wert">+1</span>
+        <span class="gas-stufe-label">Etwas besser als erwartet</span>
+        <div class="eval-checkbox"></div>
+      </div>
+      <div class="gas-stufe" style="background:var(--farbe-hell);border-color:var(--farbe);">
+        <span class="gas-stufe-wert">0</span>
+        <span class="gas-stufe-label"><strong>Erwartetes Ergebnis erreicht</strong></span>
+        <div class="eval-checkbox"></div>
+      </div>
+      <div class="gas-stufe">
+        <span class="gas-stufe-wert">−1</span>
+        <span class="gas-stufe-label">Etwas schlechter als erwartet</span>
+        <div class="eval-checkbox"></div>
+      </div>
+      <div class="gas-stufe">
+        <span class="gas-stufe-wert">−2</span>
+        <span class="gas-stufe-label">Viel schlechter als erwartet</span>
+        <div class="eval-checkbox"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ziel 3 -->
+  <div class="gas-ziel">
+    <div class="gas-ziel-header">
+      <div class="gas-ziel-nr">3</div>
+      <div class="gas-ziel-name" style="color:var(--grau);font-weight:500;font-style:italic;">Zielname hier eintragen</div>
+    </div>
+    <div class="gas-stufen">
+      <div class="gas-stufe">
+        <span class="gas-stufe-wert">+2</span>
+        <span class="gas-stufe-label">Viel besser als erwartet</span>
+        <div class="eval-checkbox"></div>
+      </div>
+      <div class="gas-stufe">
+        <span class="gas-stufe-wert">+1</span>
+        <span class="gas-stufe-label">Etwas besser als erwartet</span>
+        <div class="eval-checkbox"></div>
+      </div>
+      <div class="gas-stufe" style="background:var(--farbe-hell);border-color:var(--farbe);">
+        <span class="gas-stufe-wert">0</span>
+        <span class="gas-stufe-label"><strong>Erwartetes Ergebnis erreicht</strong></span>
+        <div class="eval-checkbox"></div>
+      </div>
+      <div class="gas-stufe">
+        <span class="gas-stufe-wert">−1</span>
+        <span class="gas-stufe-label">Etwas schlechter als erwartet</span>
+        <div class="eval-checkbox"></div>
+      </div>
+      <div class="gas-stufe">
+        <span class="gas-stufe-wert">−2</span>
+        <span class="gas-stufe-label">Viel schlechter als erwartet</span>
+        <div class="eval-checkbox"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Zielerreichungsskala (GAS)</span>
+    <span>Vertraulich · Seite 1 von 2</span>
+  </div>
+</div>
+
+<!-- SEITE 2 -->
+<div class="seite">
+  <div class="auswertung">
+    <div class="auswertung-titel">📊 Auswertung</div>
+    <div class="score-zeile">
+      <span class="score-label">Ziel 1 — Erreichungswert</span>
+      <span class="score-linie"></span>
+      <span class="score-wert">(−2 bis +2)</span>
+    </div>
+    <div class="score-zeile">
+      <span class="score-label">Ziel 2 — Erreichungswert</span>
+      <span class="score-linie"></span>
+      <span class="score-wert">(−2 bis +2)</span>
+    </div>
+    <div class="score-zeile">
+      <span class="score-label">Ziel 3 — Erreichungswert</span>
+      <span class="score-linie"></span>
+      <span class="score-wert">(−2 bis +2)</span>
+    </div>
+    <div class="score-zeile">
+      <span class="score-label">GAS-Gesamtscore (Durchschnitt)</span>
+      <span class="score-linie"></span>
+      <span class="score-wert">Ø</span>
+    </div>
+
+    <div class="interpretation">
+      <div style="font-size:10px;font-weight:700;color:var(--farbe);margin-bottom:6px;">Interpretationshilfe</div>
+      <div class="interpretation-zeile">
+        <div class="interpretation-balken" style="background:#EF4444;"></div>
+        <span class="interpretation-range">−2.0 bis −1.0</span>
+        <span class="interpretation-label">Deutlich unter den Erwartungen — Ziele überprüfen und anpassen</span>
+      </div>
+      <div class="interpretation-zeile">
+        <div class="interpretation-balken" style="background:#F97316;"></div>
+        <span class="interpretation-range">−0.9 bis −0.1</span>
+        <span class="interpretation-label">Leicht unter den Erwartungen — Strategien verstärken</span>
+      </div>
+      <div class="interpretation-zeile">
+        <div class="interpretation-balken" style="background:#22C55E;"></div>
+        <span class="interpretation-range">0.0</span>
+        <span class="interpretation-label">Erwartetes Ergebnis erreicht — Ziele bestätigt</span>
+      </div>
+      <div class="interpretation-zeile">
+        <div class="interpretation-balken" style="background:#0EA5E9;"></div>
+        <span class="interpretation-range">+0.1 bis +2.0</span>
+        <span class="interpretation-label">Über den Erwartungen — Ressourcen und Stärken hervorheben</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="reflexion">
+    <div class="reflexion-titel">💭 Reflexion: Was hat zur Zielerreichung beigetragen?</div>
+    <div class="schreiblinien">
+      <div class="schreiblinie"></div>
+      <div class="schreiblinie"></div>
+      <div class="schreiblinie"></div>
+    </div>
+  </div>
+
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">?</div>
+      <div class="uebung-titel">Was hat die Zielerreichung erschwert?</div>
+    </div>
+    <div class="schreiblinien">
+      <div class="schreiblinie"></div>
+      <div class="schreiblinie"></div>
+    </div>
+  </div>
+
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">→</div>
+      <div class="uebung-titel">Welche nächsten Schritte ergeben sich?</div>
+    </div>
+    <div class="schreiblinien">
+      <div class="schreiblinie"></div>
+      <div class="schreiblinie"></div>
+    </div>
+  </div>
+
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🧑‍⚕️ Hinweis für die Bezugsperson — GAS-Methodik</div>
+    <p><strong>Goal Attainment Scaling (GAS)</strong> wurde 1968 von Kiresuk &amp; Sherman entwickelt und ist eine der am besten validierten Methoden zur individualisierten Fortschrittsmessung in der psychosozialen Arbeit. Anders als standardisierte Tests misst GAS den Fortschritt an individuell definierten Zielen.</p>
+    <p><strong>Durchführung:</strong> Zu Beginn der Begleitung werden gemeinsam mit dem Jugendlichen 2–3 konkrete, messbare Ziele definiert. Für jedes Ziel wird das „erwartete Ergebnis" (0) operationalisiert. Die Bewertung erfolgt alle 4–6 Wochen.</p>
+    <p><strong>GAS-T-Score-Formel:</strong> T = 50 + (10 × Σwᵢxᵢ) / √(0.7 × Σwᵢ² + 0.3 × (Σwᵢ)²), wobei wᵢ = Gewichtung und xᵢ = Erreichungswert. Bei gleicher Gewichtung vereinfacht sich dies zum Durchschnitt der Werte. Ein T-Score von 50 = erwartetes Ergebnis.</p>
+    <p><strong>Evidenz:</strong> Meta-Analysen zeigen hohe Sensitivität für Veränderungen (Effect Size d = 0.82; Hurn et al., 2006). GAS wird von der WHO und dem European Monitoring Centre for Drugs and Drug Addiction (EMCDDA) empfohlen.</p>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Zielerreichungsskala (GAS)</span>
+    <span>Vertraulich · Seite 2 von 2</span>
+  </div>
+</div>
+
+</body>
+</html>

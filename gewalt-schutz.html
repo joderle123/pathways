@@ -1,243 +1,316 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Arbeitsblatt – Schutz vor Gewalt</title>
-  <link rel="stylesheet" href="../css/arbeitsblatt.css">
-  <style>
-    :root { --farbe: #DC2626; --farbe-hell: #FEF2F2; }
-    .emergency-banner { background:#FEF2F2; border:2.5px solid #DC2626; border-radius:8px; padding:10px 14px; margin-bottom:12px; display:flex; align-items:center; gap:12px; }
-    .emergency-numbers { font-size:11px; color:#374151; }
-    .violence-card { border-radius:8px; padding:10px; border:2px solid; margin-bottom:6px; }
-    .vc-title { font-size:12px; font-weight:700; margin-bottom:5px; }
-    .vc-items { font-size:10px; color:#374151; line-height:1.9; }
-    .safety-q { background:#FEF2F2; border:1.5px solid #FECACA; border-radius:8px; padding:8px 12px; margin-bottom:6px; display:flex; align-items:center; gap:10px; }
-    .safety-q-text { font-size:11px; font-weight:600; color:#991B1B; flex:1; }
-    .safety-options { display:flex; gap:10px; font-size:11px; flex-shrink:0; }
-    .safety-plan-col { border-radius:8px; padding:10px; }
-    .never-box { background:#FEF2F2; border:2px solid #DC2626; border-radius:8px; padding:12px; margin-bottom:8px; }
-    .never-title { font-size:12px; font-weight:700; color:#DC2626; margin-bottom:8px; text-align:center; }
-    .never-item { font-size:12px; font-weight:600; color:#374151; padding:6px 0; border-bottom:1px solid #FECACA; line-height:1.5; }
-    .never-item:last-child { border-bottom:none; }
-    .resource-row { display:flex; align-items:center; gap:10px; background:#FEF2F2; border:1.5px solid #FECACA; border-radius:8px; padding:8px 12px; margin-bottom:5px; }
-    .resource-number { font-size:16px; font-weight:800; color:#DC2626; flex-shrink:0; width:100px; }
-    .resource-info { font-size:10px; color:#374151; }
-    .resource-name { font-size:11px; font-weight:700; color:#991B1B; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachkraft-Modul: Gewalt & Schutz</title>
+<link rel="stylesheet" href="../fachkraft-modul.css">
 </head>
 <body>
+<style>:root { --farbe: #DC2626; }</style>
 
-<div class="druck-leiste">
-  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
-  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
-</div>
-
-<!-- ===== SEITE 1 ===== -->
-<div class="seite">
-  <div class="kopfzeile">
-    <div class="kopfzeile-links">
-      <div class="schule-label">Pathways · Joey Guedes</div>
-      <div class="ab-titel">Gewalt erkennen – Grenzen schützen – Hilfe holen</div>
-      <div class="ab-untertitel">Schutz vor Gewalt · Kategorie: Sicherheit &amp; Rechte</div>
+<!-- SEITE 1: ÜBERBLICK & ENTSTEHUNG -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">🛡️</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Gewalt & Schutz</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
     </div>
-    <div class="kopfzeile-icon">🛡️</div>
+    <div class="fm-seitenzahl">1 / 5</div>
   </div>
 
-  <div class="schuelerinfo">
-    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  <div class="fm-quickinfo">
+    <div class="fm-qi-item"><span class="fm-qi-label">ICD-10</span><span class="fm-qi-wert">F43.1 (PTBS) · T74 (Misshandlung) · Z69 · F94</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Formen</span><span class="fm-qi-wert">Körperliche, emotionale, sexuelle Gewalt, Vernachlässigung, Zeuge häuslicher Gewalt</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Prävalenz</span><span class="fm-qi-wert">~1/5 Mädchen, ~1/13 Jungen erfahren sexuellen Missbrauch (WHO 2017)</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Meldepflicht</span><span class="fm-qi-wert">Bei konkretem Verdacht auf Misshandlung/Vernachlässigung: SCAS 247-86000 (Luxemburg)</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">ACEs</span><span class="fm-qi-wert">Adverse Childhood Experiences: jeweils +1 ACE = +35 % Risiko für psychische Erkrankung</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Traumafolgen</span><span class="fm-qi-wert">PTBS, Bindungsstörung, Dissoziation, Substanzkonsum, Suizidrisiko ↑</span></div>
   </div>
 
-  <div class="emergency-banner">
-    <div style="font-size:24px;">🆘</div>
-    <div class="emergency-numbers">
-      <strong>In akuter Gefahr:</strong> Polizei <strong style="color:#DC2626;">113</strong> · Notruf <strong style="color:#DC2626;">112</strong><br>
-      Kanner-Jugendtelefon: <strong style="color:#DC2626;">116 111</strong> (kostenlos, anonym, 24/7) · Femmes en Détresse: <strong style="color:#DC2626;">46 46 46</strong>
-    </div>
-  </div>
+  <h2 class="fm-abschnitt-titel">Theoretische Grundlage</h2>
+  <p class="fm-text">Gewaltexposition im Kindes- und Jugendalter hinterlässt biologische, psychologische und soziale Spuren. Das ACE-Studie (Felitti et al. 1998, n=17.000) zeigte eine klare Dosis-Wirkungs-Beziehung: Mehr adverse Kindheitserfahrungen → schlechtere Gesundheitsoutcomes über die gesamte Lebensspanne.</p>
 
-  <div class="infobox">
-    <div class="infobox-titel">💡 Es ist NIEMALS deine Schuld, wenn dir Gewalt angetan wird.</div>
-    <p>Gewalt passiert nicht nur bei Fremden. Die meisten Täter kommen aus dem nahen Umfeld – Familie, Schule, Beziehung. Das macht es schwieriger zu benennen und noch wichtiger, darüber zu reden. Du trägst keine Schuld daran.</p>
-    <p>🧠 <em>Wusstest du? Unser Körper reagiert auf Gefahr automatisch mit Kampf, Flucht oder Erstarren. Wenn jemand "nichts getan hat" – das ist kein Versagen, das ist Schutzreaktion. Du hast überlebt.</em></p>
-  </div>
-
-  <!-- Übung 1: Gewaltformen erkennen -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">1</div>
-      <div class="uebung-titel">5 Formen von Gewalt – Was erkennst du?</div>
+  <h3 class="fm-unter-titel">Gewalt-Formen und Definitionen</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>Körperliche Gewalt:</strong><br>
+      Schlagen, Beißen, Verbrennen, Schütteln, andere physische Verletzungen<br><br>
+      <strong>Emotionale/Psychische Gewalt:</strong><br>
+      Systematische Erniedrigung, Ablehnung, Bedrohung, Isolation, Terror
     </div>
-    <div class="uebung-beschreibung">Kreuze an was du kennst. "Kenne ich" bedeutet: habe davon gehört oder es miterlebt. Eigene Erfahrungen nur wenn du möchtest.</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px;">
-      <div class="violence-card" style="background:#FEF2F2;border-color:#FECACA;">
-        <div class="vc-title" style="color:#DC2626;">🤜 Körperliche Gewalt</div>
-        <div class="vc-items">
-          ☐ Schlagen, Treten, Stoßen<br>
-          ☐ Festhalten, Ziehen<br>
-          ☐ Sachen werfen oder zerstören<br>
-          ☐ Mit etwas bedrohen
-        </div>
-      </div>
-      <div class="violence-card" style="background:#F5F3FF;border-color:#C4B5FD;">
-        <div class="vc-title" style="color:#7C3AED;">🧠 Emotionale / Psychische Gewalt</div>
-        <div class="vc-items">
-          ☐ Beleidigen, Erniedrigen<br>
-          ☐ Drohen, Einschüchtern<br>
-          ☐ Kontrollieren (Handy, Kontakte)<br>
-          ☐ Isolieren von Freunden / Familie<br>
-          ☐ "Das hast du dir eingebildet" (Gaslighting)
-        </div>
-      </div>
-      <div class="violence-card" style="background:#FFF7ED;border-color:#FDE68A;">
-        <div class="vc-title" style="color:#D97706;">💻 Digitale Gewalt / Cybermobbing</div>
-        <div class="vc-items">
-          ☐ Drohungen per Nachricht<br>
-          ☐ Fotos/Videos ohne Erlaubnis geteilt<br>
-          ☐ Fake-Profile, Identitätsdiebstahl<br>
-          ☐ Sextortion (Erpressung mit Bildern)
-        </div>
-      </div>
-      <div class="violence-card" style="background:#FEF2F2;border-color:#FECACA;">
-        <div class="vc-title" style="color:#DC2626;">🚫 Sexualisierte Gewalt</div>
-        <div class="vc-items">
-          ☐ Unerwünschte Berührungen<br>
-          ☐ Sexuelle Kommentare / Anzüglichkeiten<br>
-          ☐ Druck zu sexuellen Handlungen<br>
-          ☐ Missbrauch
-        </div>
-      </div>
-    </div>
-    <div class="violence-card" style="background:#F0FDF4;border-color:#86EFAC;border:1.5px solid #86EFAC;">
-      <div class="vc-title" style="color:#16A34A;">💶 Ökonomische Gewalt</div>
-      <div class="vc-items">
-        ☐ Geld wegnehmen oder kontrollieren · ☐ Von Geld abhängig gemacht werden · ☐ Für Sachen bezahlen müssen unter Druck
-      </div>
+    <div class="fm-spalte">
+      <strong>Sexueller Missbrauch:</strong><br>
+      Alle sexuellen Handlungen an/mit Minderjährigen unter 15 J. (Schutzalter Luxemburg)<br><br>
+      <strong>Vernachlässigung:</strong><br>
+      Unterlassen der Grundversorgung (Ernährung, Aufsicht, Schutz, Bildung)
     </div>
   </div>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Schutz vor Gewalt · Seite 1</span>
+  <h3 class="fm-unter-titel">Häusliche Gewalt als Kindesmisshandlung</h3>
+  <p class="fm-text">Kinder, die Gewalt zwischen Elternteilen beobachten (Zeuge häuslicher Gewalt), erleiden ebenfalls Traumatisierung — ohne direkte Gewalt. ICD-10: Z62.8. Prävalenz: ~25 % Kinder erleben häusliche Gewalt mindestens einmal. Neurobiologische Folgen ähnlich wie direkte Misshandlung.</p>
+
+  <h3 class="fm-unter-titel">Trauma-Neurobiologie</h3>
+  <p class="fm-text">Chronisches Trauma dysreguliert die HPA-Achse (Stress-Hormone), verändert Hippocampus (Gedächtnis), Amygdala (Angst) und präfrontalen Kortex (Impulskontrolle). Van der Kolk: „The Body Keeps the Score." → Trauma sitzt im Körper, nicht nur im Kopf.</p>
+
+  <div class="fm-cave">
+    <strong>⚠ Meldepflicht Luxemburg:</strong> Bei konkretem Verdacht auf Kindesmisshandlung oder Vernachlässigung: Pflicht zur Meldung bei SCAS (247-86000), auch ohne Einwilligung der Eltern. Vorher: Dokumentieren. Jugendlichen informieren wenn möglich ohne Gefährdungserhöhung.
   </div>
 </div>
 
-<!-- ===== SEITE 2 ===== -->
-<div class="seite">
+<!-- SEITE 2: ERKENNEN & EINSCHÄTZEN -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">🛡️</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Gewalt & Schutz</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-seitenzahl">2 / 5</div>
+  </div>
 
-  <!-- Übung 2: Safety Assessment -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">2</div>
-      <div class="uebung-titel">Wie sicher bin ich gerade? – 5 ehrliche Fragen</div>
+  <h2 class="fm-abschnitt-titel">Erkennen & Einschätzen</h2>
+
+  <div class="fm-ampel">
+    <div class="fm-ampel-item fm-gruen">
+      <div class="fm-ampel-farbe">🟢</div>
+      <div class="fm-ampel-titel">Sicher — kein Hinweis auf Gewalt</div>
+      <ul>
+        <li>Keine körperlichen Verletzungszeichen</li>
+        <li>Entwicklung altersgemäß</li>
+        <li>Kann über Familie neutral sprechen</li>
+        <li>Wechsel zwischen positiven und negativen Erlebnissen</li>
+        <li>Keine sexualisiertes Verhalten unangemessen</li>
+        <li>Mindestens eine sichere Bindungsperson</li>
+      </ul>
+      <div class="fm-ampel-handlung">Schutzfaktoren stärken, Prävention</div>
     </div>
-    <div class="safety-q">
-      <div class="safety-q-text">1. Fühle ich mich an dem Ort, wo ich lebe, sicher?</div>
-      <div class="safety-options"><span>☐ Ja</span><span>☐ Meistens</span><span>☐ Nein</span></div>
+    <div class="fm-ampel-item fm-gelb">
+      <div class="fm-ampel-farbe">🟡</div>
+      <div class="fm-ampel-titel">Warnsignale — Abklärung nötig</div>
+      <ul>
+        <li>Unerklärliche körperliche Verletzungen</li>
+        <li>Starker Rückzug, Angst vor bestimmten Personen</li>
+        <li>Aggressives oder regressives Verhalten</li>
+        <li>Schlaf-/Konzentrationsstörungen plötzlich</li>
+        <li>Sexuell unangemessenes Wissen/Verhalten</li>
+        <li>Aussagen die auf Gewalt hindeuten</li>
+      </ul>
+      <div class="fm-ampel-handlung">Sorgfältige Abklärung, Supervision, ggf. SCAS-Anfrage</div>
     </div>
-    <div class="safety-q">
-      <div class="safety-q-text">2. Gibt es jemanden in meinem Leben, der mir Angst macht?</div>
-      <div class="safety-options"><span>☐ Ja</span><span>☐ Nein</span></div>
-    </div>
-    <div class="safety-q">
-      <div class="safety-q-text">3. Hat mir jemand in letzter Zeit wehgetan – körperlich oder seelisch?</div>
-      <div class="safety-options"><span>☐ Ja</span><span>☐ Nein</span></div>
-    </div>
-    <div class="safety-q">
-      <div class="safety-q-text">4. Gibt es jemanden, dem ich mich anvertrauen könnte?</div>
-      <div class="safety-options"><span>☐ Ja</span><span>☐ Nein</span></div>
-    </div>
-    <div class="safety-q">
-      <div class="safety-q-text">5. Weiß ich, wo ich Hilfe bekomme, wenn ich sie brauche?</div>
-      <div class="safety-options"><span>☐ Ja</span><span>☐ Nein</span></div>
-    </div>
-    <div style="background:#FFFBEB;border:1.5px solid #FDE68A;border-radius:8px;padding:8px 12px;font-size:11px;margin-top:6px;">
-      Wenn du bei Frage 1, 2 oder 3 "Ja" oder "Nein" angekreuzt hast, wo du unsicher bist: Bitte sprich mit deiner Bezugsperson. Du musst das nicht alleine tragen.
+    <div class="fm-ampel-item fm-rot">
+      <div class="fm-ampel-farbe">🔴</div>
+      <div class="fm-ampel-titel">Konkreter Verdacht — Handlungspflicht</div>
+      <ul>
+        <li>Direkte Aussage über Gewalt/Missbrauch</li>
+        <li>Verletzungen die Misshandlung belegen</li>
+        <li>Aussage von Zeuge über Misshandlung</li>
+        <li>Jugendlicher bittet um Schutz</li>
+        <li>Akute Gefährdungssituation</li>
+      </ul>
+      <div class="fm-ampel-handlung">SOFORT: SCAS 247-86000, Polizei 113 (bei akuter Gefahr), Dokumentation</div>
     </div>
   </div>
 
-  <!-- Übung 3: Sicherheitsplan -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">3</div>
-      <div class="uebung-titel">Mein Sicherheitsplan – Für den Notfall vorbereitet sein</div>
+  <h3 class="fm-unter-titel">Körperliche Warnsignale erkennen</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>Besorgniserregende Zeichen:</strong><br>
+      • Blutergüsse in Nicht-Sturz-Zonen (Rücken, Oberschenkel, Gesäß)<br>
+      • Verschiedene Heilungsstadien gleichzeitig<br>
+      • Verletzungen die Erklärung nicht passen<br>
+      • Verbrennungs-/Bissspuren
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:8px;">
-      <div class="safety-plan-col" style="background:#F0FDF4;border:1.5px solid #86EFAC;">
-        <div style="font-size:11px;font-weight:700;color:#16A34A;margin-bottom:4px;">🏠 Sichere Orte</div>
-        <div style="font-size:10px;color:#6B7280;margin-bottom:4px;">Wohin kann ich gehen?</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+    <div class="fm-spalte">
+      <strong>Sexueller Missbrauch — Warnsignale:</strong><br>
+      • Unerklärliche Verletzungen im Genitalbereich<br>
+      • Altersungemessenes sexuelles Wissen<br>
+      • Sexuell übergriffiges Verhalten gegenüber anderen<br>
+      • Angst vor bestimmten Erwachsenen/Orten
+    </div>
+  </div>
+</div>
+
+<!-- SEITE 3: IM GESPRÄCH -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">🛡️</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Gewalt & Schutz</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-seitenzahl">3 / 5</div>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Im Gespräch mit Jugendlichen</h2>
+
+  <div class="fm-gespraech-grid">
+    <div class="fm-gespraech-gut">
+      <div class="fm-gespraech-label">✓ Hilfreiche Formulierungen</div>
+      <div class="fm-gespraech-beispiel">„Ich glaube dir. Was du erlebt hast, war nicht okay und du hast es nicht verdient."</div>
+      <div class="fm-gespraech-beispiel">„Du hast das Richtige getan, indem du mir das erzählt hast."</div>
+      <div class="fm-gespraech-beispiel">„Ich mache mir Sorgen um deine Sicherheit — darf ich dir erklären, was ich jetzt tun möchte?"</div>
+      <div class="fm-gespraech-beispiel">„Das ist nicht deine Schuld — auch wenn jemand anderes das gesagt hat."</div>
+      <div class="fm-gespraech-beispiel">„Bist du heute Abend in Sicherheit? Wo gehst du jetzt hin?"</div>
+      <div class="fm-gespraech-beispiel">„Ich werde dich durch diesen Prozess begleiten — du bist nicht allein damit."</div>
+    </div>
+    <div class="fm-gespraech-schlecht">
+      <div class="fm-gespraech-label">✗ UNBEDINGT vermeiden</div>
+      <div class="fm-gespraech-beispiel">„Bist du sicher dass das passiert ist?" → Zweifel an Aussage, re-traumatisierend</div>
+      <div class="fm-gespraech-beispiel">„Warum hast du das nicht früher gesagt?" → Schuldzuweisung</div>
+      <div class="fm-gespraech-beispiel">Detaillierte Befragung über Missbrauch → das ist Aufgabe der Polizei/SCAS</div>
+      <div class="fm-gespraech-beispiel">„Das war bestimmt ein Missverständnis." → Täter schützen</div>
+      <div class="fm-gespraech-beispiel">Versprechen: „Ich sage niemandem etwas." → Kann nicht gehalten werden</div>
+      <div class="fm-gespraech-beispiel">Alleingelassen lassen nach Offenbarung</div>
+    </div>
+  </div>
+
+  <h3 class="fm-unter-titel">Erstgespräch nach Offenbarung (Disclosure)</h3>
+  <ol class="fm-liste">
+    <li><strong>Ruhig bleiben:</strong> Keine Schockreaktion zeigen (schreckt Jugendliche ab)</li>
+    <li><strong>Glauben und validieren:</strong> „Ich glaube dir. Du hast das Richtige getan."</li>
+    <li><strong>KEINE Detailbefragung:</strong> Nur: Was passiert ist / Wer / Wie lange — für Sicherheitseinschätzung. Forensische Befragung ist Polizeiaufgabe.</li>
+    <li><strong>Transparenz über nächste Schritte:</strong> „Ich muss das weitergeben — an [SCAS]. Ich erkläre dir warum."</li>
+    <li><strong>Sicherheit klären:</strong> Wo schläft Jugendlicher heute? Ist er/sie sicher?</li>
+    <li><strong>Nicht allein lassen:</strong> Begleitung bis nächste Schritte eingeleitet</li>
+  </ol>
+</div>
+
+<!-- SEITE 4: INTERVENTIONEN -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">🛡️</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Gewalt & Schutz</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-seitenzahl">4 / 5</div>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Evidenzbasierte Interventionen</h2>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Trauma-Focused CBT (TF-KVT)</span>
+      <span class="fm-sterne">★★★</span>
+    </div>
+    <p class="fm-text">Goldstandard für traumatisierte Kinder/Jugendliche nach Misshandlung. 12–25 Sitzungen. Komponenten: PRACTICE (Psychoeducation, Relaxation, Affective Modulation, Cognitive Coping, Trauma Narrative, In vivo Exposure, Conjoint Sessions, Enhancing Safety). Elterneinbezug essentiell. Cohen et al. (2004) — stärkste Evidenzgrundlage.</p>
+  </div>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">EMDR (Eye Movement Desensitization and Reprocessing)</span>
+      <span class="fm-sterne">★★★</span>
+    </div>
+    <p class="fm-text">WHO-empfohlen für PTBS. Bilaterale Stimulation (Augenbewegungen oder taktil) während traumatischer Erinnerungen. Für Kinder/Jugendliche adaptiert (EMDR-Early Trauma Protocol). Besonders geeignet wenn Verbalisierung schwierig. Schnellere Wirkung als KVT in einigen Studien.</p>
+  </div>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Child Advocacy Centers (Kinderschutzzentren)</span>
+      <span class="fm-sterne">★★★</span>
+    </div>
+    <p class="fm-text">Koordiniertes, opferfreundliches Vorgehen: Forensische Befragung (einmalig), medizinische Untersuchung, psychologische Unterstützung — alles an einem Ort. Reduziert Re-Traumatisierung durch wiederholte Befragungen. In Luxemburg: SCAS koordiniert vergleichbare Strukturen.</p>
+  </div>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Sicherheitsplanung (Safety Planning)</span>
+      <span class="fm-sterne">★★★</span>
+    </div>
+    <p class="fm-text">Konkreter Plan für den Jugendlichen: Wer kann ich anrufen, wenn ich mich unsicher fühle? Wohin kann ich gehen? Was nehme ich mit wenn ich flüchten muss? Sicherheitsplan schriftlich, in Handy gespeichert. Notfallkontakte einprogrammiert.</p>
+  </div>
+
+  <h3 class="fm-unter-titel">Prävention sexueller Gewalt — Schulprogramme</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>Evidenzbasierte Programme:</strong><br>
+      • Body Safety Rules (Früherkennung ab Kindergarten)<br>
+      • Trau dich! (deutschsprachig, Primarstufe)<br>
+      • Kidscape (UK, international verfügbar)<br>
+      Inhalte: Körperautonomie, Nein sagen, vertraute Erwachsene
+    </div>
+    <div class="fm-spalte">
+      <strong>Für Jugendliche:</strong><br>
+      • Consent-Aufklärung (Zustimmung)<br>
+      • Healthy Relationships Programme<br>
+      • Bystander Intervention Training<br>
+      • Online-Sicherheit (BEE SECURE)
+    </div>
+  </div>
+</div>
+
+<!-- SEITE 5: NETZWERK & RESSOURCEN -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">🛡️</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Gewalt & Schutz</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-seitenzahl">5 / 5</div>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Luxemburger Versorgungsnetzwerk</h2>
+
+  <div class="fm-ressourcen-grid">
+    <div class="fm-ressource-karte fm-ressource-krise">
+      <div class="fm-ressource-name">SCAS — Kinderschutz / Meldestelle</div>
+      <div class="fm-ressource-tel">247-86000</div>
+      <div class="fm-ressource-info">Zentrale Kinderschutz-Stelle. Meldung bei Misshandlung, sexuellem Missbrauch, Vernachlässigung. 24/7-Notdienst. Koordiniert Fallmanagement.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Polizei — Straftat melden</div>
+      <div class="fm-ressource-tel">113</div>
+      <div class="fm-ressource-info">Bei akuter Gewalt, Straftat, dringender Schutz notwendig. Auch: Anzeige bei Misshandlung/Missbrauch. Opferschutz-Einheit.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Kanner-Jugendtelefon</div>
+      <div class="fm-ressource-tel">116 111</div>
+      <div class="fm-ressource-info">Für Jugendliche die Gewalt erlebt haben und erstmals Hilfe suchen. Anonym, kostenlos, 24/7. Kann SCAS-Kontakt herstellen.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Kannerklinik / CHL</div>
+      <div class="fm-ressource-tel">4411-4411</div>
+      <div class="fm-ressource-info">Medizinische Notfallversorgung bei körperlicher Gewalt. Dokumentation von Verletzungen für Strafverfolgung. Kinderrechts-Arzt auf Abruf.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">CHL Kinder- und Jugendpsychiatrie</div>
+      <div class="fm-ressource-tel">4411-6100</div>
+      <div class="fm-ressource-info">Trauma-Therapie (TF-KVT, EMDR). PTBS-Behandlung. Krisenintervention nach Gewalt. Liaison mit SCAS.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">VISAVI — Opferberatung</div>
+      <div class="fm-ressource-tel">26 19 92 92</div>
+      <div class="fm-ressource-info">Opferberatung bei Gewalt (häuslich, sexuell, anderweitig). Begleitung durch Strafverfahren. Psychologische Unterstützung.</div>
+    </div>
+  </div>
+
+  <div class="fm-krisen-box">
+    <div class="fm-krisen-titel">🚨 Akutprotokoll: Offenbarung von Misshandlung/Missbrauch</div>
+    <div class="fm-krisen-schritte">
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">1</span>
+        <span class="fm-schritt-text"><strong>Glauben + Stabilisieren:</strong> „Ich glaube dir. Du bist jetzt sicher." — Keine Detailbefragung! Nur: Ist Gefahr akut?</span>
       </div>
-      <div class="safety-plan-col" style="background:#EFF6FF;border:1.5px solid #BFDBFE;">
-        <div style="font-size:11px;font-weight:700;color:#1D4ED8;margin-bottom:4px;">👥 Sichere Menschen</div>
-        <div style="font-size:10px;color:#6B7280;margin-bottom:4px;">Wen kann ich anrufen?</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">2</span>
+        <span class="fm-schritt-text"><strong>Dokumentieren:</strong> Datum, Zeit, was Jugendlicher gesagt hat (wörtlich), körperliche Zeichen. Sofort notieren.</span>
       </div>
-      <div class="safety-plan-col" style="background:#FEF2F2;border:1.5px solid #FECACA;">
-        <div style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:4px;">📱 Sichere Kommunikation</div>
-        <div style="font-size:10px;color:#6B7280;margin-bottom:4px;">Wie kann ich Hilfe rufen?</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">3</span>
+        <span class="fm-schritt-text"><strong>SCAS informieren:</strong> 247-86000 — Meldepflicht. Anonyme Beratung zur Meldung vorab möglich. Jugendlichen vorher informieren.</span>
+      </div>
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">4</span>
+        <span class="fm-schritt-text"><strong>Sicherheit sichern:</strong> Wo schläft der Jugendliche heute? Kann er/sie sicher nach Hause? Notfalls SCAS Notunterbringung.</span>
+      </div>
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">5</span>
+        <span class="fm-schritt-text"><strong>Direktion + Supervision:</strong> Schulleitung informieren. Supervision/Fallbesprechung für Fachkraft — dieses Thema belastet.</span>
       </div>
     </div>
-  </div>
-
-  <!-- Übung 4: Das ist NIEMALS deine Schuld -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">4</div>
-      <div class="uebung-titel">Das ist NIEMALS deine Schuld – 3 Aussagen, die immer gelten</div>
-    </div>
-    <div class="never-box">
-      <div class="never-title">🛡️ Diese 3 Wahrheiten gelten für dich</div>
-      <div class="never-item">✊ Du hast das Recht, in Sicherheit zu leben – immer und überall, egal was vorher passiert ist.</div>
-      <div class="never-item">💜 Wenn jemand dir Gewalt antut, ist das 100 % die Verantwortung dieser Person – nicht deine.</div>
-      <div class="never-item">📞 Hilfe zu holen ist keine Niederlage. Es ist das Mutigste, was du tun kannst.</div>
-    </div>
-  </div>
-
-  <!-- Ressourcen -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">5</div>
-      <div class="uebung-titel">Hilfe ist da – Luxemburger Kontakte</div>
-    </div>
-    <div class="resource-row">
-      <div class="resource-number">116 111</div>
-      <div><div class="resource-name">Kanner-Jugendtelefon</div><div class="resource-info">Kostenlos · anonym · 24/7 · für Kinder und Jugendliche</div></div>
-    </div>
-    <div class="resource-row">
-      <div class="resource-number">113</div>
-      <div><div class="resource-name">Polizei Luxembourg</div><div class="resource-info">Bei akuter Gefahr – sie sind da um zu schützen</div></div>
-    </div>
-    <div class="resource-row">
-      <div class="resource-number">46 46 46</div>
-      <div><div class="resource-name">Femmes en Détresse</div><div class="resource-info">Hilfe bei häuslicher Gewalt · auch für Jugendliche</div></div>
-    </div>
-    <div class="resource-row">
-      <div class="resource-number">247 86 060</div>
-      <div><div class="resource-name">SCAS (Service Central d'Assistance Sociale)</div><div class="resource-info">Sozialdienst bei Gefährdung</div></div>
-    </div>
-    <div class="resource-row">
-      <div class="resource-number">112</div>
-      <div><div class="resource-name">Notruf</div><div class="resource-info">Lebensbedrohliche Notfälle · sofort</div></div>
-    </div>
-  </div>
-
-  <div class="reflexion">
-    <div class="reflexion-titel">💬 Mein nächster Schritt</div>
-    <p>Gibt es etwas aus diesem Blatt, worüber ich mit meiner Bezugsperson reden möchte? Ich muss das nicht alleine tragen.</p>
-    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-  </div>
-
-  <div class="fachhinweis">
-    <div class="fachhinweis-titel">🎓 Hinweis für Bezugspersonen</div>
-    Dieses Arbeitsblatt mit besonderer Sorgfalt und trauma-sensibel einsetzen. Kein Druck, eigene Gewalterfahrungen zu benennen. Explorationsöffnung: "Es gibt Menschen, die so etwas selbst erlebt haben – wenn das auch für dich gilt, können wir darüber reden, wenn du möchtest." <strong>Bei konkreten Hinweisen auf aktuelle Gewalt:</strong> Kinderschutzprotokoll anwenden, Meldepflicht beachten (Art. 26 Code de la Jeunesse). <strong>Luxemburger Meldestellen:</strong> SCAS 247 86 060, SAVT (sexualisierte Gewalt, Femmes en Détresse) 46 46 46, Kanner-Jugendtelefon 116 111. <strong>Wichtig:</strong> Sicherheitsplan immer gemeinsam erarbeiten – nie als Hausaufgabe. Das Erstarren-Phänomen (freeze response) aktiv psychoedukativ ansprechen, um Schamgefühle zu reduzieren.
-  </div>
-
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Schutz vor Gewalt · Seite 2</span>
   </div>
 </div>
 

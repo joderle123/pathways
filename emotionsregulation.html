@@ -1,225 +1,529 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Arbeitsblatt – Emotionsregulation</title>
-  <link rel="stylesheet" href="../css/arbeitsblatt.css">
-  <style>
-    :root { --farbe: #F59E0B; --farbe-hell: #FFFBEB; }
-    .bubble-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px; }
-    .bubble { background:var(--farbe-hell); border:1.5px solid #FDE68A; border-radius:8px; padding:8px 10px; font-size:11px; }
-    .emotion-card { border:1.5px solid #FDE68A; border-radius:8px; padding:9px; text-align:center; background:var(--farbe-hell); }
-    .stopp-card { border-radius:10px; padding:12px; text-align:center; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachkraft-Modul: Emotionsregulation</title>
+<link rel="stylesheet" href="../css/fachkraft-modul.css">
+<style>:root { --farbe: #F59E0B; }</style>
 </head>
 <body>
 
-<div class="druck-leiste">
-  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
-  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+<!-- SEITE 1: Überblick & Entstehung -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">🌊</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Emotionsregulation</div>
+      <div class="fm-kopf-untertitel">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-kopf-icd">F60.31 · Emotion Dysregulation</div>
+  </div>
+
+  <div class="fm-quickinfo">
+    <div class="fm-quick-zelle">
+      <div class="fm-quick-zahl">40–60%</div>
+      <div class="fm-quick-label">Jugl. mit psych. Stör. zeigen ER-Defizite</div>
+    </div>
+    <div class="fm-quick-zelle">
+      <div class="fm-quick-zahl">DBT</div>
+      <div class="fm-quick-label">Evidenzbasierte Erstbehandlung</div>
+    </div>
+    <div class="fm-quick-zelle">
+      <div class="fm-quick-zahl">4 Bereiche</div>
+      <div class="fm-quick-label">Erleben, Ausdruck, Kognition, Verhalten</div>
+    </div>
+    <div class="fm-quick-zelle">
+      <div class="fm-quick-zahl">Früh</div>
+      <div class="fm-quick-label">Intervention wirksamer je früher</div>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Was ist Emotionsregulation?</div>
+    <div class="fm-sektion-inhalt">
+      <p>Emotionsregulation (ER) bezeichnet die Fähigkeit, emotionale Reaktionen wahrzunehmen, zu verstehen und so zu beeinflussen, dass ein adaptives Funktionieren möglich ist. Bei Jugendlichen ist diese Fähigkeit noch in Entwicklung — das Gehirn (Präfrontalkortex) reift erst ca. mit 25 Jahren vollständig aus.</p>
+
+      <div class="fm-zweispalten">
+        <div>
+          <strong>Adaptive Strategien (förderlich)</strong>
+          <ul class="fm-liste">
+            <li>Kognitive Neubewertung (Reappraisal)</li>
+            <li>Achtsamkeit / Akzeptanz</li>
+            <li>Problemlösung</li>
+            <li>Emotionsausdruck (sozial angemessen)</li>
+            <li>Soziale Unterstützung suchen</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Maladaptive Strategien (schädlich)</strong>
+          <ul class="fm-liste">
+            <li>Unterdrückung / Rumination</li>
+            <li>Selbstverletzung / Substanzen</li>
+            <li>Vermeidung / Rückzug</li>
+            <li>Impulsives Verhalten</li>
+            <li>Emotionale Taubheit</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Entstehung & Risikofaktoren</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-zweispalten">
+        <div>
+          <strong>Biologische Faktoren</strong>
+          <ul class="fm-liste">
+            <li>Erhöhte Amygdala-Reaktivität</li>
+            <li>Schwächere Präfrontalkortex-Hemmung</li>
+            <li>Temperament (hohe emotionale Sensitivität)</li>
+            <li>Genetische Vulnerabilität</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Umweltfaktoren</strong>
+          <ul class="fm-liste">
+            <li>Invalidierendes Umfeld (Emotionen werden abgetan)</li>
+            <li>Trauma / Vernachlässigung</li>
+            <li>Unsicheres Bindungsmuster</li>
+            <li>Wenig emotionale Vorbilder</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fm-tipp">
+        <strong>Marsha Linehan's Biosoziales Modell (DBT):</strong> Emotionale Dysregulation entsteht aus dem Zusammenspiel von biologisch hoher Sensitivität und einem invalidierenden Umfeld. Beide Seiten müssen therapeutisch adressiert werden.
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Begleiterkrankungen & Abgrenzung</div>
+    <div class="fm-sektion-inhalt">
+      <p>ER-Defizite sind kein eigenständiges Störungsbild, sondern treten bei vielen psychischen Erkrankungen auf:</p>
+      <div class="fm-dreispalten">
+        <div><strong>Häufig bei:</strong>
+          <ul class="fm-liste">
+            <li>BPS (F60.31)</li>
+            <li>ADHS (F90)</li>
+            <li>Depression (F32/33)</li>
+            <li>PTBS (F43.1)</li>
+          </ul>
+        </div>
+        <div><strong>Auch bei:</strong>
+          <ul class="fm-liste">
+            <li>Angststörungen (F40/41)</li>
+            <li>Essstörungen (F50)</li>
+            <li>Substanzmissbrauch (F10-19)</li>
+            <li>Autismus-Spektrum</li>
+          </ul>
+        </div>
+        <div><strong>Abgrenzung:</strong>
+          <ul class="fm-liste">
+            <li>Entwicklungsangemessene Emotionalität</li>
+            <li>Pubertäre Stimmungsschwankungen</li>
+            <li>Kulturelle Ausdrucksformen</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-fusszeile">Emotionsregulation · Seite 1/5 · Pathways · Joey Guedes</div>
 </div>
 
-<!-- SEITE 1 -->
-<div class="seite">
-  <div class="kopfzeile">
-    <div class="kopfzeile-links">
-      <div class="schule-label">Pathways · Joey Guedes</div>
-      <div class="ab-titel">Reite die Welle – Gefühle regulieren statt schlucken</div>
-      <div class="ab-untertitel">Emotionsregulation · Kategorie: Emotionen &amp; Wohlbefinden</div>
+<!-- SEITE 2: Erkennen & Einschätzen -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">🌊</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Emotionsregulation</div>
+      <div class="fm-kopf-untertitel">Erkennen & Einschätzen</div>
     </div>
-    <div class="kopfzeile-icon">🌊</div>
+    <div class="fm-kopf-icd">Seite 2/5</div>
   </div>
 
-  <div class="schuelerinfo">
-    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
-  </div>
-
-  <div class="infobox">
-    <div class="infobox-titel">🌊 Gefühle sind wie Wellen – sie kommen, steigen, und gehen wieder.</div>
-    <p>Emotionsregulation bedeutet nicht, keine Gefühle zu haben. Es bedeutet, trotz starker Gefühle <strong>handlungsfähig zu bleiben</strong>. Gefühle zu schlucken macht sie stärker. Sie zu surfen macht dich stärker.</p>
-    <p>🧠 <em>Wusstest du? Gefühle dauern im Schnitt nur 90 Sekunden – wenn man sie nicht durch Gedanken verlängert. Was danach kommt, ist das Festhalten. Loslassen ist eine Fertigkeit die man lernen kann.</em></p>
-  </div>
-
-  <!-- Übung 1 -->
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">1</div><div class="uebung-titel">Das Emotions-Rad – Was fühlst du und wie stark?</div></div>
-    <div class="uebung-beschreibung">Kreise die Grundgefühle ein, die du diese Woche gespürt hast. Schreibe daneben wie intensiv (1–10):</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;margin-bottom:10px;">
-      <div class="emotion-card">
-        <div style="font-size:22px;">😔</div>
-        <div style="font-size:11px;font-weight:700;color:var(--farbe);">Trauer</div>
-        <div style="font-size:10px;color:var(--grau);">Intensität: __/10</div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Klinische Zeichen — Ampelsystem</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-ampel-zeile gruen">
+        <div class="fm-ampel-label">BEOBACHTEN</div>
+        <div class="fm-ampel-inhalt">Gelegentliche intensive Emotionen; schnelle Stimmungswechsel; manchmal Schwierigkeiten mit Frustration; Entwicklungsangemessen bei Jugendlichen</div>
       </div>
-      <div class="emotion-card">
-        <div style="font-size:22px;">😡</div>
-        <div style="font-size:11px;font-weight:700;color:var(--farbe);">Wut</div>
-        <div style="font-size:10px;color:var(--grau);">Intensität: __/10</div>
+      <div class="fm-ampel-zeile gelb">
+        <div class="fm-ampel-label">UNTERSTÜTZEN</div>
+        <div class="fm-ampel-inhalt">Häufige Wutausbrüche; chronische Reizbarkeit; emotionale Taubheit; Vermeidung sozialer Situationen aus Angst vor emotionaler Überwältigung; impulsives Verhalten</div>
       </div>
-      <div class="emotion-card">
-        <div style="font-size:22px;">😰</div>
-        <div style="font-size:11px;font-weight:700;color:var(--farbe);">Angst</div>
-        <div style="font-size:10px;color:var(--grau);">Intensität: __/10</div>
-      </div>
-      <div class="emotion-card">
-        <div style="font-size:22px;">😊</div>
-        <div style="font-size:11px;font-weight:700;color:var(--farbe);">Freude</div>
-        <div style="font-size:10px;color:var(--grau);">Intensität: __/10</div>
-      </div>
-      <div class="emotion-card">
-        <div style="font-size:22px;">🤢</div>
-        <div style="font-size:11px;font-weight:700;color:var(--farbe);">Ekel</div>
-        <div style="font-size:10px;color:var(--grau);">Intensität: __/10</div>
-      </div>
-      <div class="emotion-card">
-        <div style="font-size:22px;">😳</div>
-        <div style="font-size:11px;font-weight:700;color:var(--farbe);">Scham</div>
-        <div style="font-size:10px;color:var(--grau);">Intensität: __/10</div>
-      </div>
-      <div class="emotion-card">
-        <div style="font-size:22px;">😲</div>
-        <div style="font-size:11px;font-weight:700;color:var(--farbe);">Überraschung</div>
-        <div style="font-size:10px;color:var(--grau);">Intensität: __/10</div>
-      </div>
-      <div class="emotion-card">
-        <div style="font-size:22px;">🥰</div>
-        <div style="font-size:11px;font-weight:700;color:var(--farbe);">Zuneigung</div>
-        <div style="font-size:10px;color:var(--grau);">Intensität: __/10</div>
+      <div class="fm-ampel-zeile rot">
+        <div class="fm-ampel-label">HANDELN</div>
+        <div class="fm-ampel-inhalt">Selbstverletzung als Regulationsstrategie; Suizidgedanken bei emotionaler Überwältigung; vollständige emotionale Dissoziation; schwere Beziehungsabbrüche; Substanzmissbrauch</div>
       </div>
     </div>
   </div>
 
-  <!-- Übung 2 -->
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">2</div><div class="uebung-titel">Emotions-Körperkarte – Wo spürst du deine Gefühle?</div></div>
-    <div class="uebung-beschreibung">Verbinde (oder schreibe auf), wo du jedes Gefühl im Körper spürst. Jeder Körper ist anders – es gibt keine falsche Antwort.</div>
-    <div style="display:grid;grid-template-columns:100px 1fr;gap:12px;align-items:start;margin-bottom:8px;">
-      <div style="text-align:center;border:1.5px solid #FDE68A;border-radius:10px;padding:8px;background:var(--farbe-hell);min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-        <div style="font-size:38px;line-height:1;">🧍</div>
-        <div style="font-size:8px;color:var(--grau);margin-top:4px;">← hier zeichnen</div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Screening-Instrumente</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-zweispalten">
+        <div>
+          <strong>DERS-16 (Difficulties in Emotion Regulation Scale)</strong>
+          <ul class="fm-liste">
+            <li>16 Items, Selbstauskunft</li>
+            <li>Skalen: Klarheit, Ziele, Impulse, Strategien, Nicht-Akzeptanz, Bewusstsein</li>
+            <li>Gesamtwert 16–80; höher = mehr Schwierigkeiten</li>
+            <li>Klinisch auffällig: ≥ 36</li>
+          </ul>
+        </div>
+        <div>
+          <strong>FEEL-KJ (Fragebogen zur Erhebung der Emotionsregulation)</strong>
+          <ul class="fm-liste">
+            <li>90 Items für Kinder/Jugendliche</li>
+            <li>Erfasst adaptive UND maladaptive Strategien</li>
+            <li>Separate Werte für Angst, Trauer, Wut</li>
+            <li>Altersbereich 10–18 Jahre</li>
+          </ul>
+        </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:5px;">
-        <div style="display:grid;grid-template-columns:22px 70px 1fr;gap:6px;align-items:center;font-size:11px;background:var(--farbe-hell);border-radius:6px;padding:6px;">
-          <span>😡</span><span style="font-weight:700;">Wut:</span><span style="border-bottom:1px dashed var(--border);height:14px;"></span>
-        </div>
-        <div style="display:grid;grid-template-columns:22px 70px 1fr;gap:6px;align-items:center;font-size:11px;background:var(--farbe-hell);border-radius:6px;padding:6px;">
-          <span>😰</span><span style="font-weight:700;">Angst:</span><span style="border-bottom:1px dashed var(--border);height:14px;"></span>
-        </div>
-        <div style="display:grid;grid-template-columns:22px 70px 1fr;gap:6px;align-items:center;font-size:11px;background:var(--farbe-hell);border-radius:6px;padding:6px;">
-          <span>😔</span><span style="font-weight:700;">Trauer:</span><span style="border-bottom:1px dashed var(--border);height:14px;"></span>
-        </div>
-        <div style="display:grid;grid-template-columns:22px 70px 1fr;gap:6px;align-items:center;font-size:11px;background:var(--farbe-hell);border-radius:6px;padding:6px;">
-          <span>😊</span><span style="font-weight:700;">Freude:</span><span style="border-bottom:1px dashed var(--border);height:14px;"></span>
-        </div>
-        <div style="display:grid;grid-template-columns:22px 70px 1fr;gap:6px;align-items:center;font-size:11px;background:var(--farbe-hell);border-radius:6px;padding:6px;">
-          <span>😳</span><span style="font-weight:700;">Scham:</span><span style="border-bottom:1px dashed var(--border);height:14px;"></span>
-        </div>
+
+      <div class="fm-tipp">
+        <strong>Einfache Einschätzung im Gespräch:</strong> "Wenn du sehr aufgewühlt bist — was machst du dann normalerweise?" Maladaptive Strategien (Schreien, Schlagen, Schäden, Substanzen) vs. adaptive (Musik, Sport, Reden) direkt erfragen.
       </div>
     </div>
   </div>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Emotionsregulation · Seite 1</span>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Das Fenster der Toleranz</div>
+    <div class="fm-sektion-inhalt">
+      <p>Das Konzept des "Toleranzfensters" (Siegel 1999) hilft, den Aktivierungszustand einzuschätzen:</p>
+
+      <table class="fm-tabelle">
+        <tr>
+          <th>Zone</th>
+          <th>Zustand</th>
+          <th>Zeichen</th>
+          <th>Intervention</th>
+        </tr>
+        <tr>
+          <td><strong>Hyperarousal</strong></td>
+          <td>Überwältigt, Chaos</td>
+          <td>Rasende Gedanken, Panik, Aggression, Dissoziation</td>
+          <td>Grounding, Atemübungen, Sicherheit</td>
+        </tr>
+        <tr>
+          <td><strong>Toleranzfenster ✓</strong></td>
+          <td>Reguliert, lernfähig</td>
+          <td>Präsent, reflektionsfähig, flexibel</td>
+          <td>Arbeit, Gespräch, Lernen möglich</td>
+        </tr>
+        <tr>
+          <td><strong>Hypoarousal</strong></td>
+          <td>Abgestumpft, Leere</td>
+          <td>Taubheit, Erschöpfung, Dissoziation, Depression</td>
+          <td>Aktivierung, Bewegung, sanfte Stimulation</td>
+        </tr>
+      </table>
+    </div>
   </div>
+
+  <div class="fm-cave">
+    <strong>Wichtig:</strong> Maladaptive Emotionsregulation (besonders Selbstverletzung) immer auf Suizidalität abklären — aber getrennt voneinander einschätzen. NSSV ≠ Suizidversuch (aber Risikofaktor).
+  </div>
+
+  <div class="fm-fusszeile">Emotionsregulation · Seite 2/5 · Pathways · Joey Guedes</div>
 </div>
 
-<!-- SEITE 2 -->
-<div class="seite">
-
-  <!-- Übung 3 -->
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">3</div><div class="uebung-titel">STOPP-Technik – 5 Schritte bevor du reagierst</div></div>
-    <div class="uebung-beschreibung">DBT/ACT-Skill: Wenn du überwältigt bist – STOPP! Folge den 5 Karten:</div>
-    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:10px;">
-      <div class="stopp-card" style="background:#FEF2F2;border:2px solid #FCA5A5;">
-        <div style="font-size:20px;font-weight:900;color:#DC2626;">S</div>
-        <div style="font-size:11px;font-weight:700;color:#DC2626;margin:3px 0;">STOP</div>
-        <div style="font-size:9px;color:var(--grau);">Pause. Tue nichts. Beweg dich nicht.</div>
-      </div>
-      <div class="stopp-card" style="background:#FFF7ED;border:2px solid #FCD34D;">
-        <div style="font-size:20px;font-weight:900;color:#D97706;">T</div>
-        <div style="font-size:11px;font-weight:700;color:#D97706;margin:3px 0;">TIEF ATMEN</div>
-        <div style="font-size:9px;color:var(--grau);">3 Atemzüge. Bauch rein, Bauch raus.</div>
-      </div>
-      <div class="stopp-card" style="background:#F0FDF4;border:2px solid #6EE7B7;">
-        <div style="font-size:20px;font-weight:900;color:#059669;">O</div>
-        <div style="font-size:11px;font-weight:700;color:#059669;margin:3px 0;">OBSERVE</div>
-        <div style="font-size:9px;color:var(--grau);">Was denke ich? Was fühle ich? Was will ich?</div>
-      </div>
-      <div class="stopp-card" style="background:#EFF6FF;border:2px solid #93C5FD;">
-        <div style="font-size:20px;font-weight:900;color:#2563EB;">P</div>
-        <div style="font-size:11px;font-weight:700;color:#2563EB;margin:3px 0;">PERSPEKTIVE</div>
-        <div style="font-size:9px;color:var(--grau);">Was würde ein Freund sagen? Wie groß ist das wirklich?</div>
-      </div>
-      <div class="stopp-card" style="background:#F5F3FF;border:2px solid #C4B5FD;">
-        <div style="font-size:20px;font-weight:900;color:#7C3AED;">P</div>
-        <div style="font-size:11px;font-weight:700;color:#7C3AED;margin:3px 0;">PROCEED</div>
-        <div style="font-size:9px;color:var(--grau);">Handle achtsam. Was wäre jetzt sinnvoll?</div>
-      </div>
+<!-- SEITE 3: Im Gespräch -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">🌊</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Emotionsregulation</div>
+      <div class="fm-kopf-untertitel">Im Gespräch</div>
     </div>
-    <p style="font-size:11px;color:var(--grau);">In welcher Situation wäre STOPP für dich am hilfreichsten? <span style="border-bottom:1px dashed var(--border);display:inline-block;width:200px;"></span></p>
+    <div class="fm-kopf-icd">Seite 3/5</div>
   </div>
 
-  <!-- Übung 4 -->
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">4</div><div class="uebung-titel">Surf die Welle – Zeichne deine Gefühlswelle</div></div>
-    <div class="uebung-beschreibung">Gefühle kommen in Wellen. Zeichne eine Welle und beschrifte die 3 Phasen:</div>
-    <div style="border:1.5px solid #FDE68A;border-radius:8px;padding:12px;background:var(--farbe-hell);margin-bottom:8px;">
-      <!-- Wave diagram -->
-      <div style="position:relative;height:80px;margin:0 20px;">
-        <!-- Simple SVG wave -->
-        <svg width="100%" height="80" viewBox="0 0 400 80" preserveAspectRatio="none" style="position:absolute;top:0;left:0;">
-          <path d="M0,70 Q50,70 100,35 Q150,0 200,35 Q250,70 300,35 Q350,0 400,25" stroke="#F59E0B" stroke-width="3" fill="none"/>
-        </svg>
-        <!-- Labels -->
-        <div style="position:absolute;left:5%;top:55px;font-size:9px;color:var(--grau);text-align:center;">⬆️ Es baut sich auf<br><span style="border-bottom:1px dashed var(--border);display:inline-block;width:60px;"></span></div>
-        <div style="position:absolute;left:42%;top:2px;font-size:9px;color:var(--grau);text-align:center;">🏔️ Höhepunkt<br><span style="border-bottom:1px dashed var(--border);display:inline-block;width:60px;"></span></div>
-        <div style="position:absolute;left:72%;top:25px;font-size:9px;color:var(--grau);text-align:center;">⬇️ Es zieht vorbei<br><span style="border-bottom:1px dashed var(--border);display:inline-block;width:60px;"></span></div>
-      </div>
-    </div>
-    <p style="font-size:11px;color:var(--grau);">💡 Wenn du eine Welle reiten willst: Beobachte sie ohne wegzulaufen. Sage dir: "Das ist ein Gefühl. Es geht vorbei."</p>
-  </div>
-
-  <!-- Übung 5 -->
-  <div class="uebung">
-    <div class="uebung-header"><div class="uebung-nr">5</div><div class="uebung-titel">Entgegengesetzt handeln – Opposite Action (DBT)</div></div>
-    <div class="uebung-beschreibung">Manchmal hilft es, entgegen dem Gefühl zu handeln – nicht gegen den Schmerz, aber gegen den Impuls. Fülle die Reihen aus:</div>
-    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px;">
-      <div style="display:grid;grid-template-columns:24px 100px 1fr 1fr;gap:6px;align-items:center;font-size:10px;color:var(--grau);padding:0 6px;">
-        <div></div><div>Gefühl</div><div>Typischer Impuls</div><div>Entgegengesetzte Aktion</div>
-      </div>
-      <div style="display:grid;grid-template-columns:24px 100px 1fr 1fr;gap:6px;align-items:center;background:var(--farbe-hell);border-radius:8px;padding:8px;font-size:11px;">
-        <span>😔</span><span style="font-weight:700;">Trauer</span><span style="color:var(--grau);">Einschließen, Rückzug</span><span style="border-bottom:1px dashed var(--border);height:16px;"></span>
-      </div>
-      <div style="display:grid;grid-template-columns:24px 100px 1fr 1fr;gap:6px;align-items:center;background:var(--farbe-hell);border-radius:8px;padding:8px;font-size:11px;">
-        <span>😡</span><span style="font-weight:700;">Wut</span><span style="color:var(--grau);">Angreifen, schreien</span><span style="border-bottom:1px dashed var(--border);height:16px;"></span>
-      </div>
-      <div style="display:grid;grid-template-columns:24px 100px 1fr 1fr;gap:6px;align-items:center;background:var(--farbe-hell);border-radius:8px;padding:8px;font-size:11px;">
-        <span>😰</span><span style="font-weight:700;">Angst</span><span style="color:var(--grau);">Vermeiden, flüchten</span><span style="border-bottom:1px dashed var(--border);height:16px;"></span>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Gesprächsführung</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-gespraech-grid">
+        <div class="fm-gespraech-item gut">
+          <div class="fm-gespraech-label">Gut ✓</div>
+          <div>"Deine Gefühle sind okay — es geht darum, wie du mit ihnen umgehst."</div>
+        </div>
+        <div class="fm-gespraech-item schlecht">
+          <div class="fm-gespraech-label">Vermeiden ✗</div>
+          <div>"Du überreagierst, so schlimm ist das nicht."</div>
+        </div>
+        <div class="fm-gespraech-item gut">
+          <div class="fm-gespraech-label">Gut ✓</div>
+          <div>"Ich sehe, dass du gerade sehr aufgewühlt bist. Können wir erst zur Ruhe kommen, bevor wir reden?"</div>
+        </div>
+        <div class="fm-gespraech-item schlecht">
+          <div class="fm-gespraech-label">Vermeiden ✗</div>
+          <div>"Reiß dich zusammen, du bist doch schon groß."</div>
+        </div>
+        <div class="fm-gespraech-item gut">
+          <div class="fm-gespraech-label">Gut ✓</div>
+          <div>"Was hilft dir, wenn Gefühle zu groß werden? Lass uns gemeinsam schauen, was du schon gut kannst."</div>
+        </div>
+        <div class="fm-gespraech-item schlecht">
+          <div class="fm-gespraech-label">Vermeiden ✗</div>
+          <div>"Du musst das einfach in den Griff bekommen." (ohne Hilfsangebot)</div>
+        </div>
+        <div class="fm-gespraech-item gut">
+          <div class="fm-gespraech-label">Gut ✓</div>
+          <div>"Es ist total verständlich, dass diese Situation dich so aufgewühlt hat — das würde vielen so gehen."</div>
+        </div>
+        <div class="fm-gespraech-item schlecht">
+          <div class="fm-gespraech-label">Vermeiden ✗</div>
+          <div>"Das hat dich so aufgeregt? Das ist doch nichts Besonderes." (Invalidierung)</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="reflexion">
-    <div class="reflexion-titel">💬 Reflexion</div>
-    <p>Welche dieser Übungen passt am besten zu dir? Was möchtest du diese Woche bei einem starken Gefühl ausprobieren?</p>
-    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Emotionen benennen — Psychoedukation</div>
+    <div class="fm-sektion-inhalt">
+      <p><strong>Affektlabel (Affective Labeling)</strong> — Neurowissenschaftlicher Befund: Das Benennen von Emotionen reduziert Amygdala-Aktivierung messbar (Lieberman et al. 2007). Phrase: <em>"Name it to tame it"</em></p>
+
+      <div class="fm-tipp">
+        <strong>Übung mit Jugendlichen:</strong> Frage: "Wo spürst du das Gefühl im Körper? Gibt es ein Wort dafür? Wie stark ist es (0-10)?" Diese drei Schritte trainieren Awareness und öffnen Regulationsmöglichkeiten.
+      </div>
+
+      <p><strong>Emotionsvokabular erweitern:</strong> Viele Jugendliche kennen nur "gut", "schlecht", "okay". Das Rad der Emotionen (Plutchik) oder Gefühlskarten können helfen, das Vokabular zu erweitern.</p>
+    </div>
   </div>
 
-  <div class="fachhinweis">
-    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
-    <strong>ICD-10:</strong> Emotionsregulationsstörungen relevant bei F32/33 (Depression), F40/41 (Angst), F60.3 (Borderline), F43 (Trauma), F90 (ADHS).<br>
-    <strong>Methoden:</strong> DBT-Emotionsregulationsmodul (Linehan): Emotions-Wheel-Arbeit, STOPP-Skill, Opposite Action. ACT (Hayes): Akzeptanz + Defusion von Gefühlen als Alternative zur Unterdrückung. "90-Sekunden-Regel" nach Jill Bolte Taylor (neurowissenschaftlich belegt).<br>
-    <strong>Wellen-Metapher:</strong> Urge-Surfing-Technik (Marlatt, ursprünglich aus Suchttherapie) – bewährt auch für Emotionsregulation bei Jugendlichen. Kein Widerstand, keine Fusion – nur Beobachten.<br>
-    <strong>Weiterführend:</strong> DBT-A Jugendgruppe (CHNP), KVT bei spezifischen Störungsbildern.
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Wenn ein Jugendlicher gerade eskaliert</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-schritte">
+        <div class="fm-schritt">
+          <div class="fm-schritt-nr">1</div>
+          <div class="fm-schritt-text"><strong>Eigene Ruhe halten</strong> — Ruhige, langsame Stimme; Körpersprache offen; Augenkontakt halten oder reduzieren je nach Person</div>
+        </div>
+        <div class="fm-schritt">
+          <div class="fm-schritt-nr">2</div>
+          <div class="fm-schritt-text"><strong>Validieren, nicht argumentieren</strong> — "Ich sehe, dass du gerade sehr aufgebracht bist" — keine Logik-Debatte im Hyperarousal</div>
+        </div>
+        <div class="fm-schritt">
+          <div class="fm-schritt-nr">3</div>
+          <div class="fm-schritt-text"><strong>Raum geben</strong> — Kurze Pause anbieten; physischen Raum lassen; kein Bedrängen</div>
+        </div>
+        <div class="fm-schritt">
+          <div class="fm-schritt-nr">4</div>
+          <div class="fm-schritt-text"><strong>Körper regulieren</strong> — Gemeinsam tief atmen; Boden spüren; Glas Wasser; kurzer Spaziergang</div>
+        </div>
+        <div class="fm-schritt">
+          <div class="fm-schritt-nr">5</div>
+          <div class="fm-schritt-text"><strong>Erst dann Gespräch</strong> — Erst wenn Toleranzfenster wieder erreicht, inhaltliches Gespräch führen</div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Emotionsregulation · Seite 2</span>
+  <div class="fm-fusszeile">Emotionsregulation · Seite 3/5 · Pathways · Joey Guedes</div>
+</div>
+
+<!-- SEITE 4: Interventionen -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">🌊</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Emotionsregulation</div>
+      <div class="fm-kopf-untertitel">Interventionen & Methoden</div>
+    </div>
+    <div class="fm-kopf-icd">Seite 4/5</div>
   </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Evidenzbasierte Methoden</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-methode">
+        <div class="fm-methode-kopf">
+          <span class="fm-methode-name">DBT (Dialektisch-Behaviorale Therapie)</span>
+          <span class="fm-methode-sterne">★★★</span>
+        </div>
+        <p>Goldstandard für Emotionsregulationsstörungen. Module: Achtsamkeit, Stresstoleranz, Emotionsregulation, Interpersonelle Effektivität. DBT-A (Adoleszenten-Version) schließt Familie ein.</p>
+        <p><strong>Im Rahmen der Bezugsarbeit nutzbar:</strong> TIPP-Skills (Temperature, Intense exercise, Paced breathing, Progressive relaxation); PLEASE-Skills (Gesundheitsverhalten); ABC-Aufbau positiver Emotionen</p>
+      </div>
+
+      <div class="fm-methode">
+        <div class="fm-methode-kopf">
+          <span class="fm-methode-name">KVT — Kognitive Umstrukturierung</span>
+          <span class="fm-methode-sterne">★★★</span>
+        </div>
+        <p>Automatische Gedanken identifizieren und hinterfragen. "Alle hassen mich" → "Was sind die Beweise? Was spricht dagegen?" Kognitive Neubewertung reduziert emotionale Intensität nachweisbar.</p>
+      </div>
+
+      <div class="fm-methode">
+        <div class="fm-methode-kopf">
+          <span class="fm-methode-name">ACT — Akzeptanz- und Commitmenttherapie</span>
+          <span class="fm-methode-sterne">★★☆</span>
+        </div>
+        <p>Emotionen akzeptieren statt kämpfen; psychologische Flexibilität fördern. Metapher: "Gefühle wie Wellen — du musst nicht darauf surfen, aber du kannst lernen, sie durchzureiten."</p>
+      </div>
+
+      <div class="fm-methode">
+        <div class="fm-methode-kopf">
+          <span class="fm-methode-name">Achtsamkeitsbasierte Ansätze (MBSR/MBCT)</span>
+          <span class="fm-methode-sterne">★★☆</span>
+        </div>
+        <p>Beobachtendes Bewusstsein für Emotionen ohne Bewertung. Body-Scan, Atemmeditation, 5-4-3-2-1-Grounding. Kurze Übungen (5 Min.) bereits wirksam.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Konkrete Skills für Jugendliche</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-zweispalten">
+        <div>
+          <strong>Akutregulation (Sofort-Skills)</strong>
+          <ul class="fm-liste">
+            <li><strong>TIPP:</strong> Kalt Wasser (Tauchreflex), intensive Bewegung, Atemverlangsamung, progressive Muskelentspannung</li>
+            <li><strong>5-4-3-2-1:</strong> 5 Dinge sehen, 4 hören, 3 spüren, 2 riechen, 1 schmecken</li>
+            <li><strong>Box Breathing:</strong> 4s ein, 4s halten, 4s aus, 4s halten</li>
+            <li><strong>Physiologischer Seufzer:</strong> Doppelter Einatem durch Nase, langer Ausatem</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Langfristige Regulation (PLEASE-Skills)</strong>
+          <ul class="fm-liste">
+            <li><strong>PhysicaL illness:</strong> Körperliche Erkrankungen behandeln</li>
+            <li><strong>Eating:</strong> Regelmäßige Mahlzeiten, Blutzucker stabil</li>
+            <li><strong>Avoid mood-altering drugs:</strong> Substanzen meiden</li>
+            <li><strong>Sleep:</strong> Schlafhygiene (7-9h)</li>
+            <li><strong>Exercise:</strong> Regelmäßige Bewegung</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-tipp">
+    <strong>Praxistipp für Bezugspersonen:</strong> Einen persönlichen "Notfallplan" mit dem Jugendlichen erarbeiten: Was hilft bei Stärke 3/10? Bei 7/10? Bei 9/10? Wann rufe ich wen an? Diesen Plan schriftlich festhalten und griffbereit haben.
+  </div>
+
+  <div class="fm-fusszeile">Emotionsregulation · Seite 4/5 · Pathways · Joey Guedes</div>
+</div>
+
+<!-- SEITE 5: Netzwerk & Ressourcen -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">🌊</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Emotionsregulation</div>
+      <div class="fm-kopf-untertitel">Netzwerk & Ressourcen</div>
+    </div>
+    <div class="fm-kopf-icd">Seite 5/5</div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Indikation für externe Unterstützung</div>
+    <div class="fm-sektion-inhalt">
+      <table class="fm-tabelle">
+        <tr>
+          <th>Situation</th>
+          <th>Empfehlung</th>
+          <th>Ressource</th>
+        </tr>
+        <tr>
+          <td>Maladaptive Strategien (NSSV, Substanzen)</td>
+          <td>Psychologische Abklärung dringend</td>
+          <td>CHL KJP / Niedergelassene Psych.</td>
+        </tr>
+        <tr>
+          <td>Anhaltende Dysregulation (&gt;2 Monate)</td>
+          <td>Diagnostische Abklärung</td>
+          <td>SCAS / Kinder- und Jugendpsychiatrie</td>
+        </tr>
+        <tr>
+          <td>Krisen mit Suizidrisiko</td>
+          <td>Sofortige Krisenintervention</td>
+          <td>SPL 45 45 45 / KJP Notaufnahme</td>
+        </tr>
+        <tr>
+          <td>Familiäre Eskalation</td>
+          <td>Familientherapeutische Unterstützung</td>
+          <td>OPE / Familienberatung</td>
+        </tr>
+        <tr>
+          <td>Schulmeidung durch Überwältigung</td>
+          <td>Schulpsychologischer Dienst</td>
+          <td>SPOS / Psychologischer Dienst</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Luxemburger Netzwerk</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">Kanner-Jugendtelefon</div>
+        <div class="fm-ressource-info">📞 116 111 · kostenlos, 24/7 · anonym · für Jugendliche UND Fachkräfte</div>
+      </div>
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">Suicide Prevention Luxembourg (SPL)</div>
+        <div class="fm-ressource-info">📞 45 45 45 · 24/7 · Krisenbegleitung und Fachberatung</div>
+      </div>
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">CHL Kanner-Jugendpsychiatrie (KJP)</div>
+        <div class="fm-ressource-info">📞 4411-6100 · Ambulante und stationäre Abklärung · Überweisung möglich</div>
+      </div>
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">SCAS (Service de Consultations et d'Actions dans les Structures)</div>
+        <div class="fm-ressource-info">📞 247-86000 · Psychosoziale Beratung · Krisenintervention</div>
+      </div>
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">Jugend- und Beratungsdienste (JBD)</div>
+        <div class="fm-ressource-info">Niedrigschwellige Beratung für Jugendliche und Familien</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Literatur & weiterführende Ressourcen</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-literatur-item">
+        <span class="fm-lit-autor">Linehan, M.M. (1993)</span>
+        <span class="fm-lit-titel">Cognitive-Behavioral Treatment of Borderline Personality Disorder.</span>
+        <span class="fm-lit-info">Guilford Press — Grundlagenwerk DBT</span>
+      </div>
+      <div class="fm-literatur-item">
+        <span class="fm-lit-autor">Gratz, K.L. & Roemer, L. (2004)</span>
+        <span class="fm-lit-titel">Multidimensional Assessment of Emotion Regulation and Dysregulation.</span>
+        <span class="fm-lit-info">Journal of Psychopathology and Behavioral Assessment — DERS Originalarbeit</span>
+      </div>
+      <div class="fm-literatur-item">
+        <span class="fm-lit-autor">Gross, J.J. (2015)</span>
+        <span class="fm-lit-titel">Emotion Regulation: Current Status and Future Prospects.</span>
+        <span class="fm-lit-info">Psychological Inquiry — Überblick Regulationsstrategien</span>
+      </div>
+      <div class="fm-literatur-item">
+        <span class="fm-lit-autor">Rathus, J.H. & Miller, A.L. (2015)</span>
+        <span class="fm-lit-titel">DBT Skills Manual for Adolescents.</span>
+        <span class="fm-lit-info">Guilford Press — Praktisches Manual DBT-A</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-krisen-box">
+    <div class="fm-krisen-titel">Krisenressourcen Luxembourg</div>
+    <div class="fm-krisen-nummern">
+      <div class="fm-krisen-nr"><span class="fm-kr-name">SPL Krisentelefon</span><span class="fm-kr-num">45 45 45</span></div>
+      <div class="fm-krisen-nr"><span class="fm-kr-name">Kanner-Jugendtelefon</span><span class="fm-kr-num">116 111</span></div>
+      <div class="fm-krisen-nr"><span class="fm-kr-name">KJP Notaufnahme</span><span class="fm-kr-num">4411-4411</span></div>
+      <div class="fm-krisen-nr"><span class="fm-kr-name">SCAS</span><span class="fm-kr-num">247-86000</span></div>
+    </div>
+  </div>
+
+  <div class="fm-fusszeile">Emotionsregulation · Seite 5/5 · Pathways · Joey Guedes · 2025</div>
 </div>
 
 </body>

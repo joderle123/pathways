@@ -1,220 +1,350 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Arbeitsblatt – Identität &amp; Selbstbild</title>
-  <link rel="stylesheet" href="../css/arbeitsblatt.css">
-  <style>
-    :root { --farbe: #7C3AED; --farbe-hell: #F5F3FF; }
-    .rad-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-bottom:10px; }
-    .rad-segment { border-radius:10px; padding:9px; border:1.5px solid; }
-    .venn-container { display:grid; grid-template-columns:1fr auto 1fr; gap:0; align-items:center; margin-bottom:10px; }
-    .venn-kreis { border-radius:12px; padding:10px; min-height:100px; font-size:10px; }
-    .venn-mitte { width:40px; text-align:center; font-size:10px; color:#6B7280; }
-    .wert-bubble-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:5px; margin-bottom:10px; }
-    .wert-item { background:var(--farbe-hell); border:1.5px solid #C4B5FD; border-radius:10px; padding:5px 7px; font-size:10px; text-align:center; cursor:default; }
-    .wert-item:hover { background:#EDE9FE; }
-    .timeline-box { display:flex; align-items:flex-start; gap:8px; margin-bottom:8px; }
-    .timeline-dot { background:var(--farbe); color:white; border-radius:50%; width:22px; height:22px; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex-shrink:0; margin-top:2px; }
-    .timeline-content { flex:1; border-bottom:1px dashed #C4B5FD; padding-bottom:6px; }
-    .brief-box { background:var(--farbe-hell); border:2px solid var(--farbe); border-radius:10px; padding:12px; margin-bottom:10px; }
-    .brief-prompt { font-size:11px; color:var(--farbe); font-weight:700; margin-bottom:4px; }
-    .top3-box { border:1.5px solid #C4B5FD; border-radius:8px; padding:8px; display:grid; grid-template-columns:25px 1fr auto; gap:6px; align-items:center; margin-bottom:5px; font-size:11px; }
-    .rang-nr { background:var(--farbe); color:white; border-radius:50%; width:20px; height:20px; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachkraft-Modul: Identitätsentwicklung</title>
+<link rel="stylesheet" href="../css/fachkraft-modul.css">
+<style>:root { --farbe: #8B5CF6; }</style>
 </head>
 <body>
 
-<div class="druck-leiste">
-  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
-  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+<!-- SEITE 1: Überblick -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">🦋</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Identitätsentwicklung im Jugendalter</div>
+      <div class="fm-kopf-untertitel">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-kopf-icd">F93 / Z60 · ICD-10</div>
+  </div>
+
+  <div class="fm-quickinfo">
+    <div class="fm-quick-zelle">
+      <div class="fm-quick-zahl">Zentral</div>
+      <div class="fm-quick-label">Identitätsfindung = Hauptaufgabe Jugendalter</div>
+    </div>
+    <div class="fm-quick-zelle">
+      <div class="fm-quick-zahl">Erikson</div>
+      <div class="fm-quick-label">Stufe 5: Identität vs. Rollenkonfusion</div>
+    </div>
+    <div class="fm-quick-zelle">
+      <div class="fm-quick-zahl">Vielfalt</div>
+      <div class="fm-quick-label">Geschlecht, Sexualität, Kultur, Werte = Teil der Identität</div>
+    </div>
+    <div class="fm-quick-zelle">
+      <div class="fm-quick-zahl">Akzeptanz</div>
+      <div class="fm-quick-label">Bezugsperson als sicherer Ankerpunkt ist entscheidend</div>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Identitätsentwicklung: Theoretischer Rahmen</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-zweispalten">
+        <div>
+          <strong>Eriksons psychosoziale Entwicklung (Stufe 5)</strong>
+          <p>Jugendalter = Krise zwischen Identität und Rollenkonfusion. Aufgabe: Ein kohärentes Selbstbild entwickeln — wer bin ich? Was sind meine Werte? Wohin gehe ich?</p>
+          <p>Erfolgreiche Lösung: Gefühl der Kontinuität und Kohärenz. Misserfolg: Verwirrung, Orientierungslosigkeit, extreme Identifikation mit Gruppen.</p>
+        </div>
+        <div>
+          <strong>Marcias Identitätsstatus-Modell</strong>
+          <ul class="fm-liste">
+            <li><strong>Diffusion:</strong> Kein Engament; keine Exploration</li>
+            <li><strong>Übernahme:</strong> Werte von Eltern übernommen ohne Exploration</li>
+            <li><strong>Moratorium:</strong> Aktive Exploration; noch keine Entscheidung</li>
+            <li><strong>Errungenschaft:</strong> Exploration + eigene Entscheidung = gesund</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Identitätsbereiche im Jugendalter</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-dreispalten">
+        <div>
+          <strong>Werte & Weltbild</strong>
+          <ul class="fm-liste">
+            <li>Religiöse/spirituelle Überzeugungen</li>
+            <li>Politische Weltanschauung</li>
+            <li>Ethische Grundsätze</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Soziale Identität</strong>
+          <ul class="fm-liste">
+            <li>Kulturelle Zugehörigkeit</li>
+            <li>Peer-Gruppenidentifikation</li>
+            <li>Familiäre Identität</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Persönliche Identität</strong>
+          <ul class="fm-liste">
+            <li>Berufliche/Zukunftspläne</li>
+            <li>Geschlechtliche Identität</li>
+            <li>Sexuelle Orientierung</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-fusszeile">Identitätsentwicklung · Seite 1/5 · Pathways · Joey Guedes</div>
 </div>
 
-<!-- ===== SEITE 1 ===== -->
-<div class="seite">
-  <div class="kopfzeile">
-    <div class="kopfzeile-links">
-      <div class="schule-label">Pathways · Joey Guedes</div>
-      <div class="ab-titel">Wer bin ich – wirklich?</div>
-      <div class="ab-untertitel">Identität &amp; Selbstbild · Kategorie: Identität &amp; Werte</div>
+<!-- SEITE 2: Erkennen & Einschätzen -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">🦋</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Identitätsentwicklung</div>
+      <div class="fm-kopf-untertitel">Erkennen & Einschätzen</div>
     </div>
-    <div class="kopfzeile-icon">🪞</div>
+    <div class="fm-kopf-icd">Seite 2/5</div>
   </div>
 
-  <div class="schuelerinfo">
-    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
-  </div>
-
-  <div class="infobox">
-    <div class="infobox-titel">🪞 "Wer bin ich?" – eine der wichtigsten Fragen deines Lebens.</div>
-    <p>Identität entsteht nicht auf einmal. Sie wächst durch Erfahrungen, Beziehungen, Fehler und Entscheidungen. Du bist im Prozess – das ist kein Problem, das ist Entwicklung. <strong>Du darfst dich erforschen, ohne schon alles wissen zu müssen.</strong></p>
-    <p>🧠 <em>Wusstest du? Das Gehirn verarbeitet in der Adoleszenz den präfrontalen Kortex neu – den Teil der für Identität, Selbstbild und Zukunftsplanung zuständig ist. "Ich weiß nicht wer ich bin" ist buchstäblich eine Gehirnumbauphase, keine Schwäche.</em></p>
-  </div>
-
-  <!-- Übung 1 – Identitätsrad -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">1</div>
-      <div class="uebung-titel">Das Identitätsrad – 8 Teile von mir ausfüllen 🎡</div>
-    </div>
-    <div class="uebung-beschreibung">Fülle jeden Bereich so aus wie es gerade stimmt. Es gibt keine richtigen oder falschen Antworten. Das hier gehört dir.</div>
-    <div class="rad-grid">
-      <div class="rad-segment" style="background:#FFF7ED;border-color:#FED7AA;">
-        <div style="font-size:12px;margin-bottom:3px;">👨‍👩‍👧 <strong>Familie &amp; Herkunft</strong></div>
-        <div style="font-size:9px;color:#6B7280;margin-bottom:4px;">Woher komme ich? Sprachen, Wurzeln</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Warnsignale vs. Entwicklungsnormales</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-ampel-zeile gruen">
+        <div class="fm-ampel-label">NORMAL</div>
+        <div class="fm-ampel-inhalt">Wechselnde Stile/Interessen; Identifikation mit verschiedenen Gruppen; Infragestellung von Elternwerten; Rebellion gegen Normen; Suche nach eigenem Stil — alle normale Exploration</div>
       </div>
-      <div class="rad-segment" style="background:#F0FDF4;border-color:#86EFAC;">
-        <div style="font-size:12px;margin-bottom:3px;">👫 <strong>Freunde &amp; Zugehörigkeit</strong></div>
-        <div style="font-size:9px;color:#6B7280;margin-bottom:4px;">Wer sind meine Menschen?</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      <div class="fm-ampel-zeile gelb">
+        <div class="fm-ampel-label">BEGLEITEN</div>
+        <div class="fm-ampel-inhalt">Starke Identitätsverwirrung und Orientierungslosigkeit; Extremgruppen-Identifikation; deutlicher Widerspruch zwischen äußerem Verhalten und privater Person; anhaltende Fragen zu Geschlecht/Sexualität mit Leidensdruck</div>
       </div>
-      <div class="rad-segment" style="background:var(--farbe-hell);border-color:#C4B5FD;">
-        <div style="font-size:12px;margin-bottom:3px;">⭐ <strong>Werte</strong></div>
-        <div style="font-size:9px;color:#6B7280;margin-bottom:4px;">Was mir wirklich wichtig ist</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-      </div>
-      <div class="rad-segment" style="background:#EFF6FF;border-color:#BFDBFE;">
-        <div style="font-size:12px;margin-bottom:3px;">🎨 <strong>Hobbys &amp; Leidenschaften</strong></div>
-        <div style="font-size:9px;color:#6B7280;margin-bottom:4px;">Was ich gerne mache / was mich lebendig macht</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-      </div>
-      <div class="rad-segment" style="background:#FEF2F2;border-color:#FCA5A5;">
-        <div style="font-size:12px;margin-bottom:3px;">🪞 <strong>Aussehen &amp; Körper</strong></div>
-        <div style="font-size:9px;color:#6B7280;margin-bottom:4px;">Was mir gefällt / was ich schwierig finde</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-      </div>
-      <div class="rad-segment" style="background:#FFFBEB;border-color:#FDE68A;">
-        <div style="font-size:12px;margin-bottom:3px;">🌍 <strong>Kultur &amp; Sprachen</strong></div>
-        <div style="font-size:9px;color:#6B7280;margin-bottom:4px;">Welchen Kulturen fühle ich mich zugehörig?</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-      </div>
-      <div class="rad-segment" style="background:#F0FDF4;border-color:#86EFAC;">
-        <div style="font-size:12px;margin-bottom:3px;">🚀 <strong>Zukunft &amp; Träume</strong></div>
-        <div style="font-size:9px;color:#6B7280;margin-bottom:4px;">Wo will ich hin? Was erhoffe ich mir?</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-      </div>
-      <div class="rad-segment" style="background:#F9FAFB;border-color:#E5E7EB;">
-        <div style="font-size:12px;margin-bottom:3px;">✨ <strong>Anderes / Eigenes</strong></div>
-        <div style="font-size:9px;color:#6B7280;margin-bottom:4px;">Was passt in keine Kategorie aber ist trotzdem du</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      <div class="fm-ampel-zeile rot">
+        <div class="fm-ampel-label">UNTERSTÜTZEN</div>
+        <div class="fm-ampel-inhalt">Suizidgedanken im Kontext Identitätskrise; radikale Gruppen mit schädigenden Normen; Coming-Out mit erwartetem familiärem Ausschluss; Transgender-Dysphorie mit schwerer psychischer Belastung</div>
       </div>
     </div>
   </div>
 
-  <!-- Übung 2 – Ich vs. was andere wollen -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">2</div>
-      <div class="uebung-titel">Ich vs. Was andere wollen – zwei Kreise 🔵⚪</div>
-    </div>
-    <div class="uebung-beschreibung">Fülle links ein: Was bin/will ICH wirklich? Rechts: Was wollen andere von mir (Familie, Schule, Gesellschaft)? In der Mitte: was überschneidet sich?</div>
-    <div class="venn-container">
-      <div class="venn-kreis" style="background:#F5F3FF;border:1.5px solid #C4B5FD;">
-        <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:5px;">🙋 Das bin / will ICH</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">LGBTIQ+ spezifische Aspekte</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-tipp">
+        <strong>LGBTIQ+ Jugendliche haben erhöhtes Risiko:</strong>
+        <ul class="fm-liste">
+          <li>Suizidalität: 3-4× höher als heterosexuelle Peers (hauptsächlich durch Stigma, nicht Orientierung selbst)</li>
+          <li>Depression/Angst: Deutlich erhöht</li>
+          <li>Obdachlosigkeit: 40% der wohnungslosen Jugendlichen in westlichen Ländern LGBTIQ+</li>
+        </ul>
+        <strong>Schutzfaktoren:</strong> Akzeptanz durch mindestens eine Bezugsperson reduziert Suizidrisiko um 40%. Familie nicht immer änderbar → Bezugsperson als sichere Person.
       </div>
-      <div class="venn-mitte">←<br>gemeinsam<br>→</div>
-      <div class="venn-kreis" style="background:#EFF6FF;border:1.5px solid #BFDBFE;">
-        <div style="font-size:11px;font-weight:700;color:#1D4ED8;margin-bottom:5px;">👥 Was andere von mir erwarten</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      <div class="fm-cave">
+        <strong>Absolut vermeiden: Konversionstherapie</strong> (der Versuch, sexuelle Orientierung oder Geschlechtsidentität zu "ändern") ist in Luxemburg verboten (Loi 2023) und wissenschaftlich nachgewiesen schädlich. Immer affirmierende Haltung.
       </div>
     </div>
-    <div style="font-size:11px;">Wo gibt es Spannungen? Was macht dir das schwer? <span style="border-bottom:1px dashed #C4B5FD;display:inline-block;width:280px;">&nbsp;</span></div>
   </div>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Identität &amp; Selbstbild · Seite 1</span>
-  </div>
+  <div class="fm-fusszeile">Identitätsentwicklung · Seite 2/5 · Pathways · Joey Guedes</div>
 </div>
 
-<!-- ===== SEITE 2 ===== -->
-<div class="seite">
-
-  <!-- Übung 3 – Werte-Klärung -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">3</div>
-      <div class="uebung-titel">Meine Werte – 20 zur Auswahl, 5 einkreisen, Top 3 ranken 🏆</div>
+<!-- SEITE 3: Im Gespräch -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">🦋</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Identitätsentwicklung</div>
+      <div class="fm-kopf-untertitel">Im Gespräch</div>
     </div>
-    <div class="uebung-beschreibung">Kreise zuerst 5 Werte ein die dir am wichtigsten sind. Dann ranke deine Top 3 unten.</div>
-    <div class="wert-bubble-grid">
-      <div class="wert-item">🕊️ Freiheit</div>
-      <div class="wert-item">⚖️ Fairness</div>
-      <div class="wert-item">👨‍👩‍👧 Familie</div>
-      <div class="wert-item">🤝 Loyalität</div>
-      <div class="wert-item">🙏 Respekt</div>
-      <div class="wert-item">✅ Ehrlichkeit</div>
-      <div class="wert-item">😂 Humor</div>
-      <div class="wert-item">💪 Mut</div>
-      <div class="wert-item">🌍 Abenteuer</div>
-      <div class="wert-item">🛡️ Sicherheit</div>
-      <div class="wert-item">🎨 Kreativität</div>
-      <div class="wert-item">💚 Fürsorge</div>
-      <div class="wert-item">🦅 Unabhängigkeit</div>
-      <div class="wert-item">⚖️ Gerechtigkeit</div>
-      <div class="wert-item">🔮 Spiritualität</div>
-      <div class="wert-item">🏆 Erfolg</div>
-      <div class="wert-item">👫 Freundschaft</div>
-      <div class="wert-item">🌱 Wachstum</div>
-      <div class="wert-item">❤️ Liebe</div>
-      <div class="wert-item" style="border-style:dashed;color:#6B7280;">+ Eigener: ____</div>
-    </div>
-    <div style="font-size:11px;font-weight:700;margin-bottom:5px;">Meine Top 3 – und warum genau diese?</div>
-    <div class="top3-box"><div class="rang-nr">1</div><div style="border-bottom:1px dashed #C4B5FD;height:16px;flex:1;"></div><div style="font-size:10px;color:#6B7280;width:130px;">weil: <span style="border-bottom:1px dashed #C4B5FD;display:inline-block;width:90px;">&nbsp;</span></div></div>
-    <div class="top3-box"><div class="rang-nr">2</div><div style="border-bottom:1px dashed #C4B5FD;height:16px;flex:1;"></div><div style="font-size:10px;color:#6B7280;width:130px;">weil: <span style="border-bottom:1px dashed #C4B5FD;display:inline-block;width:90px;">&nbsp;</span></div></div>
-    <div class="top3-box"><div class="rang-nr">3</div><div style="border-bottom:1px dashed #C4B5FD;height:16px;flex:1;"></div><div style="font-size:10px;color:#6B7280;width:130px;">weil: <span style="border-bottom:1px dashed #C4B5FD;display:inline-block;width:90px;">&nbsp;</span></div></div>
+    <div class="fm-kopf-icd">Seite 3/5</div>
   </div>
 
-  <!-- Übung 4 – Identitäts-Timeline -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">4</div>
-      <div class="uebung-titel">Meine Identitäts-Timeline – 5 Momente die mich geprägt haben ⏳</div>
-    </div>
-    <div class="uebung-beschreibung">Zeichne oder beschreibe 5 Schlüsselerlebnisse die dich zu dem gemacht haben wer du heute bist – positiv oder schwierig.</div>
-    <div class="timeline-box"><div class="timeline-dot">1</div><div class="timeline-content"><div style="font-size:10px;color:#6B7280;margin-bottom:3px;">Was ist passiert? Was hat das in dir verändert?</div><div class="schreiblinien"><div class="schreiblinie"></div></div></div></div>
-    <div class="timeline-box"><div class="timeline-dot">2</div><div class="timeline-content"><div class="schreiblinien"><div class="schreiblinie"></div></div></div></div>
-    <div class="timeline-box"><div class="timeline-dot">3</div><div class="timeline-content"><div class="schreiblinien"><div class="schreiblinie"></div></div></div></div>
-    <div class="timeline-box"><div class="timeline-dot">4</div><div class="timeline-content"><div class="schreiblinien"><div class="schreiblinie"></div></div></div></div>
-    <div class="timeline-box"><div class="timeline-dot">5</div><div class="timeline-content"><div class="schreiblinien"><div class="schreiblinie"></div></div></div></div>
-  </div>
-
-  <!-- Übung 5 – Brief an zukünftiges Ich -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">5</div>
-      <div class="uebung-titel">Brief an mein zukünftiges Ich ✉️</div>
-    </div>
-    <div class="brief-box">
-      <div style="font-size:12px;font-weight:700;color:var(--farbe);margin-bottom:8px;">Liebes zukünftiges Ich in 5 Jahren,</div>
-      <div class="brief-prompt">💡 Was ich mir für dich wünsche:</div>
-      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-      <div class="brief-prompt" style="margin-top:7px;">💡 Was du über diese Zeit wissen solltest:</div>
-      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-      <div class="brief-prompt" style="margin-top:7px;">💡 Was ich dir gerne jetzt schon sagen würde:</div>
-      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Gesprächsführung bei Identitätsfragen</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-gespraech-grid">
+        <div class="fm-gespraech-item gut">
+          <div class="fm-gespraech-label">Gut ✓</div>
+          <div>"Danke, dass du mir das erzählst. Das erfordert Mut. Ich bin froh, dass du das mit mir geteilt hast."</div>
+        </div>
+        <div class="fm-gespraech-item schlecht">
+          <div class="fm-gespraech-label">Vermeiden ✗</div>
+          <div>"Das ist doch nur eine Phase, das geht vorbei." (Identität invalidieren)</div>
+        </div>
+        <div class="fm-gespraech-item gut">
+          <div class="fm-gespraech-label">Gut ✓</div>
+          <div>"Welche Pronomen verwendest du? Wie möchtest du genannt werden?" (Bei Trans-Jugendlichen)</div>
+        </div>
+        <div class="fm-gespraech-item schlecht">
+          <div class="fm-gespraech-label">Vermeiden ✗</div>
+          <div>"Aber biologisch bist du doch..." (Geschlechtsidentität in Frage stellen)</div>
+        </div>
+        <div class="fm-gespraech-item gut">
+          <div class="fm-gespraech-label">Gut ✓</div>
+          <div>"Wie ist das für dich, so anders zu sein als andere in deiner Familie?" (Ambivalenz explorieren)</div>
+        </div>
+        <div class="fm-gespraech-item schlecht">
+          <div class="fm-gespraech-label">Vermeiden ✗</div>
+          <div>"Hast du das wirklich genug durchdacht?" (Zweifel säen ohne Grundlage)</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="reflexion">
-    <div class="reflexion-titel">💬 Reflexion</div>
-    <p>Gibt es Teile von dir die du versteckst? Bei wem kannst du wirklich du selbst sein – und was macht das möglich?</p>
-    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Coming-Out begleiten</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-schritte">
+        <div class="fm-schritt">
+          <div class="fm-schritt-nr">1</div>
+          <div class="fm-schritt-text"><strong>Empfangen:</strong> Ruhig bleiben; zuhören; nicht sofort bewerten oder Ratschläge geben</div>
+        </div>
+        <div class="fm-schritt">
+          <div class="fm-schritt-nr">2</div>
+          <div class="fm-schritt-text"><strong>Validieren:</strong> Danke sagen; Mut anerkennen; eigene Reaktion ehrlich aber behutsam zeigen</div>
+        </div>
+        <div class="fm-schritt">
+          <div class="fm-schritt-nr">3</div>
+          <div class="fm-schritt-text"><strong>Sicherheit prüfen:</strong> "Ist es für dich sicher zu Hause? Weißt du, wie deine Familie reagieren wird?" — Schutz organisieren wenn nötig</div>
+        </div>
+        <div class="fm-schritt">
+          <div class="fm-schritt-nr">4</div>
+          <div class="fm-schritt-text"><strong>Ressourcen anbieten:</strong> Fachstellen für LGBTIQ+ Jugendliche; Vertraulichkeit klären</div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="fachhinweis">
-    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
-    <strong>ICD-10:</strong> Identitätsdiffusion als Merkmal von F60.3 (Borderline-Persönlichkeitsstörung), F64 (Geschlechtsidentitätsstörungen), F92-F94 (Emotionale Störungen des Kindesalters). Normative Identitätskrise vs. klinisch relevante Diffusion: Erikson Stufe 5 (Identität vs. Rollenkonfusion, 12–18 J.), Marcia Identitätsstatus-Modell (Diffusion / Moratorium / Übernommen / Erworben). <strong>ACT (Acceptance and Commitment Therapy):</strong> Werteklärung als zentraler Wirkmechanismus. Brief an zukünftiges Ich = narrative Therapieintervention (Michael White). <strong>Besondere Themen:</strong> Bikulturelle Identität (Herkunftsland vs. Aufnahmeland, Akkulturationsstress), LGBTQIA+-Identität (Coming-Out-Prozesse sensibel und undrückungsfreifrei begleiten), religiöse / spirituelle Konflikte. <strong>Wichtig:</strong> Identitätsarbeit ist keine Pathologie – sie ist Entwicklung. Stabilität und Kontinuität stärken ohne Anpassungsdruck auszuüben. Traumaanamnese beachten: dissoziativer Identitätsstatus bei schwerer Traumatisierung (F44.81).
+  <div class="fm-fusszeile">Identitätsentwicklung · Seite 3/5 · Pathways · Joey Guedes</div>
+</div>
+
+<!-- SEITE 4: Interventionen -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">🦋</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Identitätsentwicklung</div>
+      <div class="fm-kopf-untertitel">Interventionen & Methoden</div>
+    </div>
+    <div class="fm-kopf-icd">Seite 4/5</div>
   </div>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Identität &amp; Selbstbild · Seite 2</span>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Evidenzbasierte Methoden</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-methode">
+        <div class="fm-methode-kopf">
+          <span class="fm-methode-name">Affirmative Therapie (LGBTIQ+)</span>
+          <span class="fm-methode-sterne">★★★</span>
+        </div>
+        <p>Spezifisch für LGBTIQ+ Jugendliche: Identität affirmieren (nicht hinterfragen); internalisierte Homophobie/Transphobie adressieren; Coming-Out-Prozess begleiten; Familienkonflikte navigieren. Dramatischer Unterschied zu nicht-affirmativer Behandlung.</p>
+      </div>
+
+      <div class="fm-methode">
+        <div class="fm-methode-kopf">
+          <span class="fm-methode-name">Narrative Therapie</span>
+          <span class="fm-methode-sterne">★★☆</span>
+        </div>
+        <p>Eigene Lebensgeschichte neu erzählen; dominante Narrative (von Familie, Gesellschaft) hinterfragen; alternative Erzählungen entwickeln. Besonders bei kulturellen Identitätskonflikten und Migrationshintergrund hilfreich.</p>
+      </div>
+
+      <div class="fm-methode">
+        <div class="fm-methode-kopf">
+          <span class="fm-methode-name">ACT — Werteklärung</span>
+          <span class="fm-methode-sterne">★★☆</span>
+        </div>
+        <p>Eigene Werte unabhängig von Erwartungen anderer klären; psychologische Flexibilität bei Identitätskonflikten. "Wer möchte ich sein — nicht was sollen andere sagen wer ich bin?"</p>
+      </div>
+
+      <div class="fm-methode">
+        <div class="fm-methode-kopf">
+          <span class="fm-methode-name">Psychoedukation Identitätsentwicklung</span>
+          <span class="fm-methode-sterne">★★☆</span>
+        </div>
+        <p>Normalisieren, dass Identitätsfindung Zeit braucht und verwirrend ist. Entwicklungspsychologischen Rahmen geben ("Das ist normal in deinem Alter"). Moratorium als gesunder Schritt, nicht als Problem.</p>
+      </div>
+    </div>
   </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Kulturelle Identität und Migrationshintergrund</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-tipp">
+        <strong>Besondere Komplexität bei:</strong> Jugendlichen mit Migrationshintergrund, die zwischen Herkunftskultur (Elternhaus) und Aufnahmekultur (Luxemburg, Schule) vermitteln müssen. "Dritte-Kultur-Kinder" (TCK) haben besonders komplexe Identitäten. Beide Identitäten können gleichzeitig gültig sein.
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-fusszeile">Identitätsentwicklung · Seite 4/5 · Pathways · Joey Guedes</div>
+</div>
+
+<!-- SEITE 5: Netzwerk & Ressourcen -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">🦋</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Identitätsentwicklung</div>
+      <div class="fm-kopf-untertitel">Netzwerk & Ressourcen</div>
+    </div>
+    <div class="fm-kopf-icd">Seite 5/5</div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Luxemburger Netzwerk</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">Rosa Lëtzebuerg (LGBTIQ+ Beratung)</div>
+        <div class="fm-ressource-info">Beratung und Unterstützung für LGBTIQ+ Jugendliche und Erwachsene · Fachlich kompetent</div>
+      </div>
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">Kanner-Jugendtelefon</div>
+        <div class="fm-ressource-info">📞 116 111 · Auch bei Identitätsfragen · Anonym · keine Bewertung</div>
+      </div>
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">SCAS</div>
+        <div class="fm-ressource-info">📞 247-86000 · Beratung bei Identitätskonflikten und familiären Spannungen</div>
+      </div>
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">CHL KJP (Gender-Dysphorie)</div>
+        <div class="fm-ressource-info">📞 4411-6100 · Spezialisierte Unterstützung bei Geschlechtsdysphorie · Multidisziplinäres Team</div>
+      </div>
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">SPL (Krisentelefon)</div>
+        <div class="fm-ressource-info">📞 45 45 45 · Bei Suizidrisiko im Kontext Identitätskrise</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Literatur & weiterführende Ressourcen</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-literatur-item">
+        <span class="fm-lit-autor">Erikson, E.H. (1968)</span>
+        <span class="fm-lit-titel">Identity: Youth and Crisis.</span>
+        <span class="fm-lit-info">Norton — Grundlagenwerk Identitätstheorie</span>
+      </div>
+      <div class="fm-literatur-item">
+        <span class="fm-lit-autor">Marcia, J.E. (1966)</span>
+        <span class="fm-lit-titel">Development and Validation of Ego-Identity Status.</span>
+        <span class="fm-lit-info">Journal of Personality and Social Psychology — Identitätsstatusmodell</span>
+      </div>
+      <div class="fm-literatur-item">
+        <span class="fm-lit-autor">Trevor Project (2023)</span>
+        <span class="fm-lit-titel">2023 National Survey on LGBTQ Youth Mental Health.</span>
+        <span class="fm-lit-info">thetrevorproject.org — Aktuelle Daten LGBTIQ+ Jugendliche</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-krisen-box">
+    <div class="fm-krisen-titel">Krisenressourcen Luxembourg</div>
+    <div class="fm-krisen-nummern">
+      <div class="fm-krisen-nr"><span class="fm-kr-name">SPL</span><span class="fm-kr-num">45 45 45</span></div>
+      <div class="fm-krisen-nr"><span class="fm-kr-name">Kanner-Jugendtelefon</span><span class="fm-kr-num">116 111</span></div>
+      <div class="fm-krisen-nr"><span class="fm-kr-name">Rosa Lëtzebuerg</span><span class="fm-kr-num">Beratung</span></div>
+      <div class="fm-krisen-nr"><span class="fm-kr-name">KJP</span><span class="fm-kr-num">4411-6100</span></div>
+    </div>
+  </div>
+
+  <div class="fm-fusszeile">Identitätsentwicklung · Seite 5/5 · Pathways · Joey Guedes · 2025</div>
 </div>
 
 </body>

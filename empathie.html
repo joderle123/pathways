@@ -1,257 +1,321 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Arbeitsblatt – Empathie & Perspektivenwechsel</title>
-  <link rel="stylesheet" href="../css/arbeitsblatt.css">
-  <style>
-    :root { --farbe: #059669; --farbe-hell: #ECFDF5; }
-    .bubble-grid { display:flex; flex-wrap:wrap; gap:7px; margin:8px 0; }
-    .bubble { background:var(--farbe-hell); border:2px solid var(--farbe); border-radius:20px; padding:5px 11px; font-size:11px; font-weight:600; cursor:pointer; user-select:none; }
-    .emoji-scale { display:flex; justify-content:space-between; align-items:flex-end; gap:4px; margin:8px 0; }
-    .emoji-scale-item { text-align:center; flex:1; }
-    .emoji-scale-item .e { font-size:20px; line-height:1; display:block; }
-    .emoji-scale-item .lbl { font-size:9px; color:#6B7280; display:block; margin-top:2px; }
-    .emoji-scale-item .box { width:100%; height:18px; border:2px solid var(--farbe); border-radius:4px; margin-top:3px; background:white; }
-    .scenario-card { border:2px solid var(--farbe); border-radius:10px; padding:10px; margin-bottom:8px; background:var(--farbe-hell); }
-    .scenario-card .sc-label { font-size:10px; font-weight:700; color:var(--farbe); text-transform:uppercase; letter-spacing:.5px; margin-bottom:3px; }
-    .scenario-card .sc-situation { font-size:11px; font-style:italic; color:#374151; margin-bottom:6px; background:white; border-radius:6px; padding:6px 8px; border-left:3px solid var(--farbe); }
-    .two-col-answer { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:4px; }
-    .answer-box { border:1.5px solid var(--border); border-radius:6px; padding:6px 8px; }
-    .answer-box .ab-lbl { font-size:10px; font-weight:700; color:#6B7280; margin-bottom:3px; }
-    .vs-diagram { display:grid; grid-template-columns:1fr 40px 1fr; gap:8px; align-items:start; margin:8px 0; }
-    .vs-box { border-radius:10px; padding:10px; }
-    .vs-empathy { background:#ECFDF5; border:2px solid #059669; }
-    .vs-sympathy { background:#FEF3C7; border:2px solid #D97706; }
-    .vs-middle { display:flex; align-items:center; justify-content:center; font-size:16px; padding-top:20px; }
-    .vs-title { font-size:11px; font-weight:800; margin-bottom:6px; }
-    .vs-quote { font-size:10px; font-style:italic; background:white; border-radius:6px; padding:5px 7px; margin-bottom:4px; }
-    .vs-body { font-size:10px; color:#374151; }
-    .blocker-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; margin:8px 0; }
-    .blocker-card { border:2px solid #D1D5DB; border-radius:10px; padding:8px; text-align:center; background:#F9FAFB; }
-    .blocker-card .bc-emoji { font-size:18px; margin-bottom:3px; }
-    .blocker-card .bc-text { font-size:10px; font-weight:600; color:#374151; }
-    .blocker-card .bc-example { font-size:9px; color:#6B7280; font-style:italic; margin-top:2px; }
-    .listen-row { display:grid; grid-template-columns:28px 1fr; gap:8px; align-items:start; padding:6px 0; border-bottom:1px solid var(--farbe-hell); }
-    .listen-nr { background:var(--farbe); color:white; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex-shrink:0; }
-    .listen-text { font-size:11px; }
-    .listen-name { font-weight:700; color:var(--farbe); }
-    .self-comp { background:linear-gradient(135deg,#ECFDF5,#D1FAE5); border:2px solid #059669; border-radius:12px; padding:12px; margin:8px 0; }
-    .wusstest { background:#F0FFF4; border-left:4px solid #059669; border-radius:0 8px 8px 0; padding:8px 10px; margin:8px 0; font-size:10.5px; }
-    .wusstest strong { color:#065F46; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachkraft-Modul: Empathie & Perspektivenübernahme</title>
+<link rel="stylesheet" href="../fachkraft-modul.css">
 </head>
 <body>
+<style>:root { --farbe: #EC4899; }</style>
 
-<div class="druck-leiste">
-  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
-  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
-</div>
-
-<!-- ===== SEITE 1 ===== -->
-<div class="seite">
-  <div class="kopfzeile">
-    <div class="kopfzeile-links">
-      <div class="schule-label">Pathways · Joey Guedes</div>
-      <div class="ab-titel">In den Schuhen anderer gehen</div>
-      <div class="ab-untertitel">Empathie & Perspektivenwechsel · Kategorie: Soziale Kompetenzen</div>
+<!-- SEITE 1: ÜBERBLICK & ENTSTEHUNG -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">💗</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Empathie & Perspektivenübernahme</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
     </div>
-    <div class="kopfzeile-icon">🤗</div>
+    <div class="fm-seitenzahl">1 / 5</div>
   </div>
 
-  <div class="schuelerinfo">
-    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  <div class="fm-quickinfo">
+    <div class="fm-qi-item"><span class="fm-qi-label">ICD-10</span><span class="fm-qi-wert">F91 · F60.2 (antisozial) · F84 (Autismus-Spektrum)</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Relevanz</span><span class="fm-qi-wert">Empathie-Defizite: Mobbingrisiko ↑, Beziehungsprobleme ↑, Aggression ↑</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Entwicklung</span><br><span class="fm-qi-wert">Kognitive Empathie vollständig entwickelt ~15 Jahre; emotionale früher</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Erlernbar?</span><span class="fm-qi-wert">Ja — Empathie kann durch Training signifikant verbessert werden</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Überforderung</span><span class="fm-qi-wert">Zu viel Empathie → Empathie-Fatigue, emotionale Erschöpfung (→ Unterschied: Mitgefühl)</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Screening</span><span class="fm-qi-wert">IRI (Interpersonal Reactivity Index), EQ-i Youth Version</span></div>
   </div>
 
-  <div class="infobox">
-    <div class="infobox-titel">💡 Empathie vs. Sympathie – nicht dasselbe!</div>
-    <p>Empathie bedeutet: <em>"Ich steige in dein Gefühl hinein."</em> Sympathie bedeutet: <em>"Ich schaue von oben runter und tröste dich."</em> Das klingt ähnlich – aber es fühlt sich komplett anders an.</p>
-    <p>🧠 <em><strong>Wusstest du?</strong> Dein Gehirn hat sogenannte Spiegelneuronen – die "feuern" automatisch mit, wenn du jemanden leiden siehst. Empathie ist buchstäblich in deinen Nervenzellen eingebaut!</em></p>
-  </div>
+  <h2 class="fm-abschnitt-titel">Theoretische Grundlage</h2>
+  <p class="fm-text">Empathie ist die Fähigkeit, die Erfahrungen anderer zu verstehen und mit ihnen mitzufühlen. Sie ist multidimensional und hat mehrere Komponenten, die unterschiedlich entwicklungsreifen.</p>
 
-  <!-- Übung 1: Empathie vs. Sympathie Diagramm -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">1</div>
-      <div class="uebung-titel">Empathie vs. Sympathie – Erkenne den Unterschied</div>
+  <h3 class="fm-unter-titel">Komponenten der Empathie (Davis 1983 / Decety & Jackson 2004)</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>Kognitive Empathie (Perspektivenübernahme):</strong><br>
+      „Ich verstehe, wie du die Situation siehst."<br>
+      → Theory of Mind, Metakognition<br>
+      → Entwickelt sich bis ca. 15 Jahre<br>
+      → Trainierbar durch Rollenspiele, Literatur, Perspektivenwechsel
     </div>
-    <div class="uebung-beschreibung">Schau dir die zwei Seiten an. Welche Reaktion fühlt sich für dich besser an, wenn du selbst in Not bist?</div>
-
-    <div class="vs-diagram">
-      <div class="vs-box vs-empathy">
-        <div class="vs-title" style="color:#065F46;">🤗 Empathie</div>
-        <div class="vs-quote">"Das klingt wirklich schwer. Ich bin bei dir."</div>
-        <div class="vs-quote">"Ich verstehe, warum du dich so fühlst."</div>
-        <div class="vs-quote">"Was brauchst du gerade?"</div>
-        <div class="vs-body" style="margin-top:6px;">→ Ich gehe <strong>runter</strong> zu dir. Auf Augenhöhe.</div>
-      </div>
-      <div class="vs-middle">VS</div>
-      <div class="vs-box vs-sympathy">
-        <div class="vs-title" style="color:#92400E;">😬 Sympathie-Falle</div>
-        <div class="vs-quote">"Wenigstens hast du noch deine Gesundheit!"</div>
-        <div class="vs-quote">"Das wird schon wieder, mach dir keine Sorgen."</div>
-        <div class="vs-quote">"Bei mir war das damals auch so, und ich hab's überlebt."</div>
-        <div class="vs-body" style="margin-top:6px;">→ Ich bleibe <strong>oben</strong> und schaue runter.</div>
-      </div>
-    </div>
-
-    <div style="font-size:11px; margin-top:6px;">Welche dieser Sympathie-Fallen kennst du aus deinem Alltag? Schreibe ein eigenes Beispiel:</div>
-    <div class="schreiblinien"><div class="schreiblinie"></div></div>
-  </div>
-
-  <!-- Übung 2: Walk in their shoes -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">2</div>
-      <div class="uebung-titel">Walk in their Shoes – 3 Szenarien</div>
-    </div>
-    <div class="uebung-beschreibung">Lies die Situation. Stell dir vor, du bist diese Person. Was fühlt sie? Was würde ihr helfen?</div>
-
-    <div class="scenario-card">
-      <div class="sc-label">Szenario A</div>
-      <div class="sc-situation">Lena bekommt als Einzige in der Gruppe keine Einladung zum Geburtstag. Sie erfährt es, weil alle anderen am nächsten Tag davon reden.</div>
-      <div class="two-col-answer">
-        <div class="answer-box"><div class="ab-lbl">😔 Wie fühlt sie sich wohl?</div><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
-        <div class="answer-box"><div class="ab-lbl">💚 Was würde helfen?</div><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
-      </div>
-    </div>
-
-    <div class="scenario-card">
-      <div class="sc-label">Szenario B</div>
-      <div class="sc-situation">Karim hat in der Klasse einen Fehler gemacht und alle haben gelacht. Seitdem meldet er sich nie mehr.</div>
-      <div class="two-col-answer">
-        <div class="answer-box"><div class="ab-lbl">😔 Wie fühlt er sich wohl?</div><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
-        <div class="answer-box"><div class="ab-lbl">💚 Was würde helfen?</div><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
-      </div>
-    </div>
-
-    <div class="scenario-card">
-      <div class="sc-label">Szenario C</div>
-      <div class="sc-situation">Yasmin ist neu in der Schule und spricht die Sprache noch nicht gut. Sie sitzt immer alleine zu Mittag.</div>
-      <div class="two-col-answer">
-        <div class="answer-box"><div class="ab-lbl">😔 Wie fühlt sie sich wohl?</div><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
-        <div class="answer-box"><div class="ab-lbl">💚 Was würde helfen?</div><div class="schreiblinien"><div class="schreiblinie"></div></div></div>
-      </div>
+    <div class="fm-spalte">
+      <strong>Emotionale Empathie (Gefühlsansteckung):</strong><br>
+      „Ich fühle mit dir."<br>
+      → Spiegelneuronen (Rizzolatti), affektive Resonanz<br>
+      → Früh entwickelt (bereits Säuglings-Empathie)<br>
+      → Kann zu Überlastung führen
     </div>
   </div>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Empathie & Perspektivenwechsel · Seite 1</span>
+  <h3 class="fm-unter-titel">Wichtige Unterscheidung: Empathie vs. Mitgefühl (Compassion)</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>Empathie:</strong><br>
+      Mitleiden — ich fühle deinen Schmerz<br>
+      Risiko: emotionale Erschöpfung, Burnout<br>
+      Kann zu Handlungslähmung führen
+    </div>
+    <div class="fm-spalte">
+      <strong>Mitgefühl (Compassion):</strong><br>
+      Ich sehe deinen Schmerz + will helfen<br>
+      Weniger Erschöpfungsrisiko (Klimecki 2014)<br>
+      Aktiviert motivationale Systeme
+    </div>
+  </div>
+
+  <h3 class="fm-unter-titel">Empathieentwicklung in der Adoleszenz</h3>
+  <p class="fm-text">Adoleszenz bringt paradoxe Empathiedynamiken: Einerseits stark entwickelte emotionale Empathie für die eigene Peergruppe (Ingroup), andererseits reduzierte Empathie für Outgroup-Mitglieder (Reductions in cross-group empathy). Egozentrische Phasen (12–14 Jahre) sind entwicklungsnormal und bedeuten nicht dauerhaftes Empathiedefizit.</p>
+
+  <div class="fm-cave">
+    <strong>⚠ Wichtig — Autismus-Spektrum:</strong> Menschen im Autismus-Spektrum haben oft keine Empathie-Defizite im emotionalen Bereich — aber erhebliche Unterschiede in sozialen Kommunikationsmustern. „Doppelte Empathie-Problem" (Milton 2012): Verständnisschwierigkeiten sind gegenseitig, nicht einseitig.
   </div>
 </div>
 
-<!-- ===== SEITE 2 ===== -->
-<div class="seite">
-
-  <!-- Übung 3: Empathie-Blocker -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">3</div>
-      <div class="uebung-titel">Empathie-Blocker – Kreise ein, was dir manchmal passiert</div>
+<!-- SEITE 2: ERKENNEN & EINSCHÄTZEN -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">💗</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Empathie & Perspektivenübernahme</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
     </div>
-    <div class="uebung-beschreibung">Diese 6 Reaktionen meinen es oft gut – aber sie blockieren echte Empathie. Kreis ein, was dir manchmal rausrutscht. <em>Das ist total normal!</em></div>
+    <div class="fm-seitenzahl">2 / 5</div>
+  </div>
 
-    <div class="blocker-grid">
-      <div class="blocker-card">
-        <div class="bc-emoji">🏆</div>
-        <div class="bc-text">Vergleichen</div>
-        <div class="bc-example">"Bei mir war das noch schlimmer..."</div>
-      </div>
-      <div class="blocker-card">
-        <div class="bc-emoji">💡</div>
-        <div class="bc-text">Direkt Lösung anbieten</div>
-        <div class="bc-example">"Du solltest einfach..."</div>
-      </div>
-      <div class="blocker-card">
-        <div class="bc-emoji">🎭</div>
-        <div class="bc-text">Kleinreden</div>
-        <div class="bc-example">"Ach, das ist doch nicht so schlimm."</div>
-      </div>
-      <div class="blocker-card">
-        <div class="bc-emoji">🔮</div>
-        <div class="bc-text">Positiv reden (zu schnell)</div>
-        <div class="bc-example">"Schau mal das Positive!"</div>
-      </div>
-      <div class="blocker-card">
-        <div class="bc-emoji">📖</div>
-        <div class="bc-text">Geschichte erzählen</div>
-        <div class="bc-example">"Ich kenn das, mir ist mal..."</div>
-      </div>
-      <div class="blocker-card">
-        <div class="bc-emoji">🤔</div>
-        <div class="bc-text">Verhören</div>
-        <div class="bc-example">"Warum hast du das nicht früher gesagt?"</div>
-      </div>
+  <h2 class="fm-abschnitt-titel">Erkennen & Einschätzen</h2>
+
+  <div class="fm-ampel">
+    <div class="fm-ampel-item fm-gruen">
+      <div class="fm-ampel-farbe">🟢</div>
+      <div class="fm-ampel-titel">Altersgemäße Empathie</div>
+      <ul>
+        <li>Kann eigene und andere Gefühle benennen</li>
+        <li>Zeigt Mitgefühl wenn jemand traurig ist</li>
+        <li>Kann sich vorstellen, wie sich andere fühlen</li>
+        <li>Bittet um Entschuldigung nach Verletzungen</li>
+        <li>Versteht, dass andere anders sehen können</li>
+        <li>Hilft spontan ohne externe Aufforderung</li>
+      </ul>
+      <div class="fm-ampel-handlung">Fördern, vertiefen, Empathie-Fatigue vermeiden</div>
     </div>
-
-    <div class="wusstest">
-      <strong>🧠 Wusstest du?</strong> Empathie-Blocker entstehen oft, weil wir selbst das Gefühl der anderen Person nicht aushalten können. Es ist also kein Zeichen, dass du nicht nett bist – sondern dass du auch Grenzen hast. <em>Das macht Sinn.</em>
+    <div class="fm-ampel-item fm-gelb">
+      <div class="fm-ampel-farbe">🟡</div>
+      <div class="fm-ampel-titel">Eingeschränkte Empathie</div>
+      <ul>
+        <li>Schwierigkeiten Gefühle anderer zu erkennen</li>
+        <li>Reagiert gleichgültig auf Schmerz anderer</li>
+        <li>Schuldschiebt bei Konflikten immer nach außen</li>
+        <li>Schwierigkeiten mit Perspektivenwechsel</li>
+        <li>Wenig Interesse an Gefühlen anderer</li>
+        <li>Mobbing-Täterverhalten ohne Reue</li>
+      </ul>
+      <div class="fm-ampel-handlung">Empathie-Training, Rollenspiele, Literatur, Sozialtraining</div>
+    </div>
+    <div class="fm-ampel-item fm-rot">
+      <div class="fm-ampel-farbe">🔴</div>
+      <div class="fm-ampel-titel">Deutlich reduzierte Empathie / Empathie-Fatigue</div>
+      <ul>
+        <li>Genuines Desinteresse an Leiden anderer</li>
+        <li>Aktive Freude an Schmerz anderer (Callousness)</li>
+        <li>Keine Reue nach schweren Verletzungen</li>
+        <li>ODER: Emotionale Erschöpfung, alles fühlen als belastend</li>
+        <li>Sucht für alle zuständig zu sein, selbst vernachlässigt</li>
+      </ul>
+      <div class="fm-ampel-handlung">Psychiatrische Diagnostik (F60) oder Burnout-Intervention; Grenzen</div>
     </div>
   </div>
 
-  <!-- Übung 4: Aktives Zuhören -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">4</div>
-      <div class="uebung-titel">5 Techniken für aktives Zuhören</div>
-    </div>
-    <div class="uebung-beschreibung">Diese 5 Moves machen den Unterschied – markiere, welche du schon beherrschst 💪 und welche du üben willst ⭐</div>
+  <h3 class="fm-unter-titel">Empathie-Fatigue erkennen (bei hoch empathischen Jugendlichen)</h3>
+  <p class="fm-text">Besonders häufig bei Mädchen, Caregivers in der Familie, Hochsensiblen. Zeichen:</p>
+  <ul class="fm-liste">
+    <li>„Ich kann nicht mehr — ich trage immer alle Probleme meiner Freunde."</li>
+    <li>Erschöpfung nach sozialen Begegnungen</li>
+    <li>Gefühl, für das Wohlbefinden aller verantwortlich zu sein</li>
+    <li>Eigene Bedürfnisse werden chronisch zurückgestellt</li>
+    <li>Ärger wenn Hilfe nicht anerkannt wird</li>
+  </ul>
+</div>
 
-    <div class="listen-row">
-      <div class="listen-nr">1</div>
-      <div class="listen-text"><span class="listen-name">Body language:</span> Augenkontakt halten, nicken, dich zur Person wenden. Dein Körper sagt "Ich bin da." &nbsp;&nbsp; □ kann ich &nbsp; □ übe ich</div>
+<!-- SEITE 3: IM GESPRÄCH -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">💗</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Empathie & Perspektivenübernahme</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
     </div>
-    <div class="listen-row">
-      <div class="listen-nr">2</div>
-      <div class="listen-text"><span class="listen-name">Spiegeln:</span> Das Letzte, was jemand sagte, kurz wiederholen: "Du sagst also, dass..." &nbsp;&nbsp; □ kann ich &nbsp; □ übe ich</div>
+    <div class="fm-seitenzahl">3 / 5</div>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Im Gespräch mit Jugendlichen</h2>
+
+  <div class="fm-gespraech-grid">
+    <div class="fm-gespraech-gut">
+      <div class="fm-gespraech-label">✓ Hilfreiche Formulierungen</div>
+      <div class="fm-gespraech-beispiel">„Wenn du in dieser Situation der andere wärst — was würdest du wohl fühlen und denken?"</div>
+      <div class="fm-gespraech-beispiel">„Ich höre, dass du das aus deiner Sicht so siehst. Und was glaubst du, hat die andere Person erlebt?"</div>
+      <div class="fm-gespraech-beispiel">„Du trägst sehr viel für andere. Wer kümmert sich eigentlich um dich?"</div>
+      <div class="fm-gespraech-beispiel">„Es ist okay, manchmal nicht alles zu fühlen. Unser System schützt sich manchmal selbst."</div>
+      <div class="fm-gespraech-beispiel">„Was macht es schwer, dir vorzustellen wie es anderen geht?"</div>
+      <div class="fm-gespraech-beispiel">„Mitgefühl bedeutet nicht, den Schmerz von anderen auf sich zu nehmen — sondern da zu sein, ohne sich selbst zu verlieren."</div>
     </div>
-    <div class="listen-row">
-      <div class="listen-nr">3</div>
-      <div class="listen-text"><span class="listen-name">Stille aushalten:</span> Nicht sofort reden. 3 Sekunden Stille sind okay – manchmal kommt dann das Wichtige. &nbsp;&nbsp; □ kann ich &nbsp; □ übe ich</div>
-    </div>
-    <div class="listen-row">
-      <div class="listen-nr">4</div>
-      <div class="listen-text"><span class="listen-name">Gefühl benennen:</span> "Ich höre, dass dich das verletzt hat." – Gefühle aussprechen fühlt sich gesehen an. &nbsp;&nbsp; □ kann ich &nbsp; □ übe ich</div>
-    </div>
-    <div class="listen-row">
-      <div class="listen-nr">5</div>
-      <div class="listen-text"><span class="listen-name">Fragen statt urteilen:</span> "Was hat dich dabei am meisten getroffen?" – statt: "Das verstehe ich nicht." &nbsp;&nbsp; □ kann ich &nbsp; □ übe ich</div>
+    <div class="fm-gespraech-schlecht">
+      <div class="fm-gespraech-label">✗ Vermeiden</div>
+      <div class="fm-gespraech-beispiel">„Du bist so egoistisch." → Beschämung, keine Einsicht</div>
+      <div class="fm-gespraech-beispiel">„Denk mal daran, wie der andere sich fühlt." → Ohne Unterstützung wirkt das als Vorwurf</div>
+      <div class="fm-gespraech-beispiel">„Du bist so sensibel." → Als Makel formuliert</div>
+      <div class="fm-gespraech-beispiel">„Du musst nicht für alle da sein." → Ohne Anerkennung der Stärke</div>
+      <div class="fm-gespraech-beispiel">Bei antisozialem Verhalten: Konfrontation ohne Beziehung → erzeugt Widerstand</div>
     </div>
   </div>
 
-  <!-- Übung 5: Mitgefühl für mich selbst -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">5</div>
-      <div class="uebung-titel">Mitgefühl für mich selbst</div>
+  <h3 class="fm-unter-titel">Rollenspiel-Technik für Perspektivenübernahme</h3>
+  <p class="fm-text">Struktur (Empty Chair oder mit Fachkraft als Gegenpart):</p>
+  <ol class="fm-liste">
+    <li>Jugendlicher erzählt Konflikt aus seiner Sicht</li>
+    <li>Rollen tauschen: Jugendlicher spielt die andere Person, Fachkraft stellt Fragen</li>
+    <li>Debrief: Was hast du erlebt, als du die andere Rolle warst? Was war überraschend?</li>
+    <li>Integration: Was nimmst du für dich mit? Verändert das etwas?</li>
+  </ol>
+
+  <div class="fm-tipp">
+    <strong>💡 Literatur als Empathie-Tool:</strong> Bücher, Filme und Serien aus der Perspektive anderer Characters gelesen/gesehen → nachweislich Empathie-Verbesserung (Mar et al. 2009). Im Gespräch: „Gibt es einen Charakter in einem Buch oder Film, mit dem du dich identifizierst? Und einen, mit dem du es schwer hast?"
+  </div>
+</div>
+
+<!-- SEITE 4: INTERVENTIONEN -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">💗</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Empathie & Perspektivenübernahme</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
     </div>
-    <div class="self-comp">
-      <div style="font-size:11px; font-weight:700; color:#065F46; margin-bottom:6px;">Stell dir vor: Deine beste Freundin / dein bester Freund erlebt gerade genau das, womit du dich selbst kritisierst.</div>
-      <div style="font-size:11px; margin-bottom:6px;">Was würdest du ihr/ihm sagen? Schreib es hier auf:</div>
-      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-      <div style="font-size:11px; margin-top:8px; margin-bottom:4px; font-weight:600;">Jetzt sag dasselbe zu <em>dir selbst</em>. Was ändert sich, wenn du so mit dir redest?</div>
-      <div class="schreiblinien"><div class="schreiblinie"></div></div>
+    <div class="fm-seitenzahl">4 / 5</div>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Evidenzbasierte Interventionen</h2>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Roots of Empathy (Gordon 2005)</span>
+      <span class="fm-sterne">★★★</span>
+    </div>
+    <p class="fm-text">Schulprogramm: Säugling besucht regelmäßig die Klasse, Schüler beobachten Eltern-Kind-Bindung. Entwickelt Empathie, Emotionsbenennung, soziale Kompetenz. RCT-Evidenz aus Kanada, Schottland: Reduktion aggressives Verhalten -39 %, Bullying ↓. Für Luxemburg: Programm internationalisierbar.</p>
+  </div>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Soziales Kompetenztraining (PATHS, Second Step)</span>
+      <span class="fm-sterne">★★★</span>
+    </div>
+    <p class="fm-text">Strukturierte Curricula mit Empathie-Modul: Gefühle erkennen/benennen, Perspektivenübernahme üben, prosoziales Verhalten. PATHS (Promoting Alternative Thinking Strategies): Meta-Analyse Greenberg 2004 — signifikante Empathie-Verbesserung, Aggressions-Reduktion.</p>
+  </div>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Compassion-Focused Therapy (CFT) bei Empathie-Fatigue</span>
+      <span class="fm-sterne">★★☆</span>
+    </div>
+    <p class="fm-text">Gilbert (2009): Drei-Kreise-Modell (Bedrohung, Antrieb, Fürsorge). Für hochempathische Jugendliche: Selbstmitgefühl stärken — das eigene Fürsorgesystem aufladen. „Mitgefühl beginnt bei dir selbst." Unterscheidung zwischen Empathie-Erschöpfung und compassion (nachhaltig).</p>
+  </div>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Aggression Replacement Training (ART) bei Callousness</span>
+      <span class="fm-sterne">★★★</span>
+    </div>
+    <p class="fm-text">3 Komponenten: Skillstreaming (soziale Fertigkeiten), Anger Control Training, Moral Reasoning (Empathie-Entwicklung). Für Jugendliche mit reduzierten Empathie-Werten und aggressivem Verhalten. Goldstein et al. (1998) — signifikante Evidenz. → Ausführlich in Modul: Wut/Aggression.</p>
+  </div>
+
+  <h3 class="fm-unter-titel">Grenzen setzen bei Empathie-Fatigue — Intervention</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>Diagnose des Problems:</strong><br>
+      Warum fühlt sich der Jugendliche für alle verantwortlich?<br>
+      • Familienrolle (Parentifizierung)?<br>
+      • Selbstwert über Helfen definiert?<br>
+      • Angst vor Ablehnung wenn Grenzen gesetzt?
+    </div>
+    <div class="fm-spalte">
+      <strong>Konkrete Interventionen:</strong><br>
+      • Unterschied Empathie/Mitgefühl erklären<br>
+      • Grenzsetzen üben (Assertiveness Training)<br>
+      • Eigene Bedürfnisse identifizieren + formulieren<br>
+      • Selbstfürsorge-Plan entwickeln
+    </div>
+  </div>
+</div>
+
+<!-- SEITE 5: NETZWERK & RESSOURCEN -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">💗</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Empathie & Perspektivenübernahme</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-seitenzahl">5 / 5</div>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Luxemburger Versorgungsnetzwerk</h2>
+
+  <div class="fm-ressourcen-grid">
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Kanner-Jugendtelefon</div>
+      <div class="fm-ressource-tel">116 111</div>
+      <div class="fm-ressource-info">Für Jugendliche mit Empathie-Fatigue oder in sozialen Konflikten. Kostenlos, anonym, 24/7.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">CHL Kinder- und Jugendpsychiatrie</div>
+      <div class="fm-ressource-tel">4411-6100</div>
+      <div class="fm-ressource-info">Bei Verdacht auf Callous-Unemotional Traits, F60 oder Autismus-Spektrum. Diagnostik und Therapie. Gruppentherapieangebote.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">SPL — Beratung für Eltern</div>
+      <div class="fm-ressource-tel">26 20 46 46</div>
+      <div class="fm-ressource-info">Elterncoaching: Wie Empathie-Entwicklung zu Hause fördern? Wie mit Kindern über Gefühle sprechen?</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">SPOS — Schulpsychologischer Dienst</div>
+      <div class="fm-ressource-tel">Über Schule</div>
+      <div class="fm-ressource-info">Soziale Kompetenz-Programme in der Schule. Unterstützung bei Mobbing-Tätern. Diagnostik bei Verhaltensauffälligkeiten.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">OMEGA 90 — Krisenintervention</div>
+      <div class="fm-ressource-tel">44 40 40</div>
+      <div class="fm-ressource-info">Bei emotionaler Erschöpfung (Empathie-Fatigue) die in Suizidgedanken mündet. Krisenintervention für Jugendliche.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">BEE SECURE</div>
+      <div class="fm-ressource-tel">8002 1234</div>
+      <div class="fm-ressource-info">Online-Empathie und Cybermobbing. Wie Empathie im digitalen Raum trainieren? Workshops für Schulen.</div>
     </div>
   </div>
 
-  <!-- Reflexion -->
-  <div class="reflexion">
-    <div class="reflexion-titel">💬 Reflexion</div>
-    <p>Denk an eine Person in deinem Leben, die gerade etwas Schwieriges durchmacht. Was ist <em>eine konkrete Sache</em>, die du diese Woche tun könntest, um echte Empathie zu zeigen – nicht nur Mitleid?</p>
-    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-  </div>
-
-  <div class="fachhinweis">
-    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
-    <strong>ICD-10 Bezug:</strong> Empathiestörungen können auf F84 (Autismus-Spektrum), F60.2 (dissoziale Persönlichkeit) oder Traumafolgestörungen (F43.1) hinweisen. Kognitive Empathie (Theory of Mind) und affektive Empathie sind neuroanatomisch unterschiedlich verortet. Das Übungsformat "Walk in their Shoes" folgt der Mentalisierungstheorie (Fonagy et al.) und fördert gezielt die Reflective Functioning-Kapazität. Empathieblocker-Bewusstsein entstammt der gewaltfreien Kommunikation (Rosenberg). Bei Jugendlichen mit Trauma­hintergrund: Überaktivierung des Mitfühlens (sekundäre Traumatisierung) beachten – Selbstfürsorge-Element Übung 5 ist klinisch relevant.
-  </div>
-
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Empathie & Perspektivenwechsel · Seite 2</span>
+  <div class="fm-krisen-box">
+    <div class="fm-krisen-titel">📋 Empathie-Übungen für den Schulalltag (5–10 Min.)</div>
+    <div class="fm-krisen-schritte">
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">1</span>
+        <span class="fm-schritt-text"><strong>Gefühls-Bingo:</strong> 16 Emotionen auf Bingo-Karte. Schüler kreuzen an, welche sie heute gespürt haben — dann Austausch zu zweit</span>
+      </div>
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">2</span>
+        <span class="fm-schritt-text"><strong>Perspektiven-Blitz:</strong> Konfliktszenario zeigen. Jeder schreibt 2 Sätze aus Sicht von Person A, dann Person B. Vorlesen.</span>
+      </div>
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">3</span>
+        <span class="fm-schritt-text"><strong>3 Good Things (Mitgefühl):</strong> Jeder nennt eine Handlung, die er/sie heute für jemanden getan hat — egal wie klein</span>
+      </div>
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">4</span>
+        <span class="fm-schritt-text"><strong>Emotion Mapping:</strong> Nachrichtenartikel oder Filmauszug — welche Gefühle zeigen die Personen? Sind alle einig?</span>
+      </div>
+    </div>
   </div>
 </div>
 

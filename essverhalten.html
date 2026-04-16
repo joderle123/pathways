@@ -1,205 +1,478 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Arbeitsblatt – Mein Verhältnis zum Essen</title>
-  <link rel="stylesheet" href="../css/arbeitsblatt.css">
-  <style>
-    :root { --farbe: #7C3AED; --farbe-hell: #F5F3FF; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachkraft-Modul: Essverhalten & Essstörungen</title>
+<link rel="stylesheet" href="../css/fachkraft-modul.css">
+<style>:root { --farbe: #EC4899; }</style>
 </head>
 <body>
 
-<div class="druck-leiste">
-  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
-  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
-</div>
-
-<!-- ===== SEITE 1 ===== -->
-<div class="seite">
-  <div class="kopfzeile">
-    <div class="kopfzeile-links">
-      <div class="schule-label">Pathways · Joey Guedes</div>
-      <div class="ab-titel">Mein Verhältnis zum Essen</div>
-      <div class="ab-untertitel">Essverhalten &amp; Körperbeziehung · Kategorie: Gesundheit &amp; Körper</div>
+<!-- SEITE 1: Überblick & Entstehung -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">🍽️</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Essverhalten & Essstörungen</div>
+      <div class="fm-kopf-untertitel">Fachkraft-Modul · Bezugsarbeit Pathways</div>
     </div>
-    <div class="kopfzeile-icon">🍎</div>
+    <div class="fm-kopf-icd">F50 · ICD-10</div>
   </div>
 
-  <div class="schuelerinfo">
-    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
-  </div>
-
-  <div class="infobox">
-    <div class="infobox-titel">💡 Essen ist mehr als Kraftstoff</div>
-    <p>Essen ist Kraftstoff, Genuss, Trost, Belohnung, Strafe, Kontrollgefühl... manchmal alles davon an einem Tag. <strong>Das ist total normal.</strong></p>
-    <p>🧠 <strong>Wusstest du?</strong> Essstörungen beginnen oft im Jugendalter und werden häufig erst spät erkannt. Ein gestörtes Verhältnis zum Essen ist nicht gleich eine Essstörung – aber es lohnt sich, genauer hinzuschauen.</p>
-  </div>
-
-  <!-- Übung 1 -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">1</div>
-      <div class="uebung-titel">Warum esse ich? – Kreise an, was zutrifft</div>
+  <div class="fm-quickinfo">
+    <div class="fm-quick-zelle">
+      <div class="fm-quick-zahl">5–10%</div>
+      <div class="fm-quick-label">Jugendliche betroffen (v.a. weiblich)</div>
     </div>
-    <div class="uebung-beschreibung">
-      Kein Grund ist falsch oder peinlich. Kreise alles an, das du kennst – auch mehreres gleichzeitig.
+    <div class="fm-quick-zelle">
+      <div class="fm-quick-zahl">5,1%</div>
+      <div class="fm-quick-label">Mortalität Anorexie (höchste psych. Erkr.)</div>
     </div>
-
-    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
-      <div style="background:var(--farbe-hell);border:2px solid #DDD6FE;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;">😋 Hunger</div>
-      <div style="background:#FEF3C7;border:2px solid #FDE68A;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;">😴 Langeweile</div>
-      <div style="background:#FEE2E2;border:2px solid #FECACA;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;">😰 Stress</div>
-      <div style="background:#EDE9FE;border:2px solid #DDD6FE;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;">😢 Traurigkeit</div>
-      <div style="background:#FFE4E6;border:2px solid #FECDD3;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;">😡 Wut</div>
-      <div style="background:#DCFCE7;border:2px solid #BBF7D0;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;">🎉 Freude / Belohnung</div>
-      <div style="background:#E0F2FE;border:2px solid #BAE6FD;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;">⚡ Zwang / muss ich</div>
-      <div style="background:#F3E8FF;border:2px solid #E9D5FF;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;">🎮 Kontrolle</div>
-      <div style="background:#FFF7ED;border:2px solid #FED7AA;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;">👥 Soziales (mit anderen)</div>
-      <div style="background:#F9FAFB;border:2px solid #E5E7EB;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;">⏰ Gewohnheit</div>
+    <div class="fm-quick-zelle">
+      <div class="fm-quick-zahl">13–18</div>
+      <div class="fm-quick-label">Häufigster Erkrankungsbeginn</div>
     </div>
-    <div style="font-size:12px;margin-bottom:4px;">Was fällt dir noch auf?</div>
-    <div class="schreiblinien"><div class="schreiblinie"></div></div>
-  </div>
-
-  <!-- Übung 2 -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">2</div>
-      <div class="uebung-titel">Die Hunger-Skala – Wo esse ich meistens?</div>
-    </div>
-    <div class="uebung-beschreibung">
-      Markiere mit einem <strong>S</strong> (Start), wo du normalerweise anfängst zu essen, und mit einem <strong>E</strong> (Ende), wann du aufhörst.
-    </div>
-
-    <div style="margin:10px 0 6px 0;">
-      <div style="display:grid;grid-template-columns:repeat(10,1fr);gap:3px;margin-bottom:4px;">
-        <div style="background:#EF4444;border-radius:6px;padding:8px 4px;text-align:center;color:white;font-weight:700;font-size:13px;">1</div>
-        <div style="background:#F97316;border-radius:6px;padding:8px 4px;text-align:center;color:white;font-weight:700;font-size:13px;">2</div>
-        <div style="background:#F59E0B;border-radius:6px;padding:8px 4px;text-align:center;color:white;font-weight:700;font-size:13px;">3</div>
-        <div style="background:#EAB308;border-radius:6px;padding:8px 4px;text-align:center;color:white;font-weight:700;font-size:13px;">4</div>
-        <div style="background:#84CC16;border-radius:6px;padding:8px 4px;text-align:center;color:white;font-weight:700;font-size:13px;">5</div>
-        <div style="background:#22C55E;border-radius:6px;padding:8px 4px;text-align:center;color:white;font-weight:700;font-size:13px;">6</div>
-        <div style="background:#10B981;border-radius:6px;padding:8px 4px;text-align:center;color:white;font-weight:700;font-size:13px;">7</div>
-        <div style="background:#06B6D4;border-radius:6px;padding:8px 4px;text-align:center;color:white;font-weight:700;font-size:13px;">8</div>
-        <div style="background:#3B82F6;border-radius:6px;padding:8px 4px;text-align:center;color:white;font-weight:700;font-size:13px;">9</div>
-        <div style="background:#6366F1;border-radius:6px;padding:8px 4px;text-align:center;color:white;font-weight:700;font-size:13px;">10</div>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(10,1fr);gap:3px;font-size:9px;color:#6B7280;text-align:center;">
-        <span>Extremer Hunger</span><span></span><span></span><span></span><span>Angenehm satt</span><span></span><span>Gut satt</span><span></span><span></span><span>Übervoll</span>
-      </div>
-    </div>
-    <div style="background:#F0FDF4;border-radius:8px;padding:8px 12px;font-size:11px;margin-top:6px;">
-      💚 <strong>Komfortzone 3–7:</strong> Essen wenn leicht hungrig, aufhören wenn angenehm satt. Klingt einfach – ist es oft nicht!
+    <div class="fm-quick-zelle">
+      <div class="fm-quick-zahl">⚡ Früh</div>
+      <div class="fm-quick-label">Frühintervention entscheidend für Prognose</div>
     </div>
   </div>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Mein Verhältnis zum Essen · Seite 1</span>
-  </div>
-</div>
-
-<!-- ===== SEITE 2 ===== -->
-<div class="seite">
-
-  <!-- Übung 3 -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">3</div>
-      <div class="uebung-titel">Körper-Karte – Wo spüre ich was beim Essen?</div>
-    </div>
-    <div class="uebung-beschreibung">
-      Schreibe oder zeichne in die Körpersilhouette, wo du diese Empfindungen spürst.
-    </div>
-
-    <div style="display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:start;">
-      <div style="text-align:center;">
-        <div style="width:80px;height:130px;margin:0 auto;border:2px solid #DDD6FE;border-radius:40px 40px 20px 20px;background:var(--farbe-hell);position:relative;">
-          <div style="position:absolute;top:5px;left:50%;transform:translateX(-50%);width:35px;height:35px;border:2px solid #DDD6FE;border-radius:50%;background:#EDE9FE;"></div>
-          <div style="position:absolute;top:48px;left:50%;transform:translateX(-50%);width:50px;height:50px;border-radius:8px;background:#EDE9FE;border:1.5px dashed #A78BFA;display:flex;align-items:center;justify-content:center;font-size:10px;">✏️</div>
-        </div>
-        <div style="font-size:10px;color:#6B7280;margin-top:4px;">Hier einzeichnen</div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:5px;">
-        <div style="background:#FEF2F2;border-radius:6px;padding:6px 10px;font-size:11px;"><span style="font-weight:700;color:#EF4444;">🔴 Hunger</span> → Magen</div>
-        <div style="background:#FFF7ED;border-radius:6px;padding:6px 10px;font-size:11px;"><span style="font-weight:700;color:#F97316;">🟠 Stress-Essen</span> → Herz / Brust</div>
-        <div style="background:#F0FDF4;border-radius:6px;padding:6px 10px;font-size:11px;"><span style="font-weight:700;color:#22C55E;">🟢 Genuss</span> → Mund / Bauch</div>
-        <div style="background:#FDF4FF;border-radius:6px;padding:6px 10px;font-size:11px;"><span style="font-weight:700;color:#A855F7;">🟣 Schuldgefühle</span> → Brust / Bauch</div>
-        <div style="background:#EFF6FF;border-radius:6px;padding:6px 10px;font-size:11px;"><span style="font-weight:700;color:#3B82F6;">🔵 Ekel / Unwohl</span> → Hals / Magen</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Übung 4 -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">4</div>
-      <div class="uebung-titel">Medien-Check – Wer profitiert davon, dass du dich schlecht fühlst?</div>
-    </div>
-    <div class="uebung-beschreibung">
-      Schau dir deinen Instagram/TikTok-Feed an. Welche Körperbilder siehst du? Wer <em>verdient Geld</em> damit, dass du dich mit diesen Bildern vergleichst?
-    </div>
-
-    <div class="zwei-spalten" style="margin-bottom:10px;">
-      <div style="border:1.5px solid #DDD6FE;border-radius:8px;padding:10px;">
-        <div style="font-size:11px;font-weight:700;margin-bottom:5px;color:var(--farbe);">📱 Was sehe ich oft in Medien?</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-      </div>
-      <div style="border:1.5px solid #DDD6FE;border-radius:8px;padding:10px;">
-        <div style="font-size:11px;font-weight:700;margin-bottom:5px;color:var(--farbe);">💸 Wer profitiert davon?</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-      </div>
-    </div>
-    <div style="background:var(--farbe-hell);border-radius:8px;padding:8px 12px;font-size:11px;">
-      <strong>Body Neutrality:</strong> Mein Körper muss nicht perfekt aussehen. Er muss funktionieren. Er trägt mich durch den Tag.
-    </div>
-  </div>
-
-  <!-- Übung 5 -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">5</div>
-      <div class="uebung-titel">Meine Ess-Woche – Gefühle, nicht Kalorien</div>
-    </div>
-
-    <table style="width:100%;border-collapse:collapse;font-size:11px;">
-      <thead>
-        <tr style="background:var(--farbe-hell);">
-          <th style="padding:5px;text-align:left;border:1px solid #DDD6FE;width:35px;">Tag</th>
-          <th style="padding:5px;text-align:left;border:1px solid #DDD6FE;">Hab ich genug gegessen? (Ja/Nein)</th>
-          <th style="padding:5px;text-align:left;border:1px solid #DDD6FE;">Hat mir etwas geschmeckt?</th>
-          <th style="padding:5px;text-align:left;border:1px solid #DDD6FE;">Wie hab ich mich nach dem Essen gefühlt?</th>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Überblick: Essstörungsformen</div>
+    <div class="fm-sektion-inhalt">
+      <table class="fm-tabelle">
+        <tr>
+          <th>Störung</th>
+          <th>ICD-10</th>
+          <th>Kernmerkmal</th>
+          <th>Häufigkeit</th>
         </tr>
-      </thead>
-      <tbody>
-        <tr><td style="padding:5px;border:1px solid #DDD6FE;font-weight:700;">Mo</td><td style="padding:5px;border:1px solid #DDD6FE;height:24px;"></td><td style="padding:5px;border:1px solid #DDD6FE;"></td><td style="padding:5px;border:1px solid #DDD6FE;"></td></tr>
-        <tr><td style="padding:5px;border:1px solid #DDD6FE;font-weight:700;">Di</td><td style="padding:5px;border:1px solid #DDD6FE;height:24px;"></td><td style="padding:5px;border:1px solid #DDD6FE;"></td><td style="padding:5px;border:1px solid #DDD6FE;"></td></tr>
-        <tr><td style="padding:5px;border:1px solid #DDD6FE;font-weight:700;">Mi</td><td style="padding:5px;border:1px solid #DDD6FE;height:24px;"></td><td style="padding:5px;border:1px solid #DDD6FE;"></td><td style="padding:5px;border:1px solid #DDD6FE;"></td></tr>
-        <tr><td style="padding:5px;border:1px solid #DDD6FE;font-weight:700;">Do</td><td style="padding:5px;border:1px solid #DDD6FE;height:24px;"></td><td style="padding:5px;border:1px solid #DDD6FE;"></td><td style="padding:5px;border:1px solid #DDD6FE;"></td></tr>
-        <tr><td style="padding:5px;border:1px solid #DDD6FE;font-weight:700;">Fr</td><td style="padding:5px;border:1px solid #DDD6FE;height:24px;"></td><td style="padding:5px;border:1px solid #DDD6FE;"></td><td style="padding:5px;border:1px solid #DDD6FE;"></td></tr>
-      </tbody>
-    </table>
+        <tr>
+          <td><strong>Anorexia nervosa</strong></td>
+          <td>F50.0/1</td>
+          <td>Gewichtsreduktion durch Nahrungsrestriktion, intensiver Körperbildstörung</td>
+          <td>0,5–1% Mädchen</td>
+        </tr>
+        <tr>
+          <td><strong>Bulimia nervosa</strong></td>
+          <td>F50.2/3</td>
+          <td>Essanfälle + Gegenmaßnahmen (Erbrechen, Laxantien)</td>
+          <td>1–3% Jugendliche</td>
+        </tr>
+        <tr>
+          <td><strong>Binge-Eating</strong></td>
+          <td>F50.9</td>
+          <td>Essanfälle ohne Gegenmaßnahmen, starker Kontrollverlust</td>
+          <td>2–3% Jugendliche</td>
+        </tr>
+        <tr>
+          <td><strong>ARFID</strong></td>
+          <td>F50.8</td>
+          <td>Vermeidung aus Angst/Ekel, nicht aus Körperbildstörung</td>
+          <td>Häufig bei ADHS/Autismus</td>
+        </tr>
+      </table>
+    </div>
   </div>
 
-  <div class="reflexion">
-    <div class="reflexion-titel">💬 Reflexion</div>
-    <p style="font-size:12px;">Wenn mein Körper sprechen könnte – was würde er mir heute sagen?</p>
-    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-    <p style="font-size:12px;margin-top:8px;">⚡ <strong>Mein kleiner nächster Schritt:</strong> Eine Mahlzeit diese Woche, die ich bewusst und ohne Handy genieße.</p>
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Entstehung: Biopsychosoziales Modell</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-dreispalten">
+        <div>
+          <strong>Biologisch</strong>
+          <ul class="fm-liste">
+            <li>Genetische Prädisposition (Heritabilität 50–80%)</li>
+            <li>Serotonerge/dopaminerge Dysregulation</li>
+            <li>Puberätsbeginn als Trigger</li>
+            <li>Hungerstoffwechsel (Teufelskreis)</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Psychologisch</strong>
+          <ul class="fm-liste">
+            <li>Perfektionismus, geringe Selbstwirksamkeit</li>
+            <li>Körperbildstörung</li>
+            <li>Emotionsregulationsdefizite</li>
+            <li>Komorbide Depression/Angst</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Sozial</strong>
+          <ul class="fm-liste">
+            <li>Schönheitsideale (Social Media)</li>
+            <li>Kommentare zu Körper/Gewicht</li>
+            <li>Leistungsdruck</li>
+            <li>Familiäre Essdynamik</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="fachhinweis">
-    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
-    <strong>ICD-10 F50</strong> Essstörungen (Anorexia nervosa, Bulimia nervosa, Binge-Eating-Störung). Screening-Tool: <strong>EDE-Q</strong> (Eating Disorder Examination Questionnaire). Ansatz: Body Neutrality vs. Body Positivity – je nach Ressourcen. <strong>Sofortverweis bei:</strong> Gewichtsverlust &gt;10 %, Purging-Verhalten, Ohnmacht, Elektrolyt-Auffälligkeiten. Bei Bedarf Ernährungsberater einbeziehen. <strong>Hinweis:</strong> Jungen sind unterdiagnostiziert – Essstörungen sind kein "Mädchenthema". Nie Gewicht kommentieren oder Diätgespräche normalisieren.
+  <div class="fm-cave">
+    <strong>Anorexie ist medizinischer Notfall:</strong> Mortalität von 5,1% (höchste aller psychiatrischen Erkrankungen). Bei Verdacht auf Unterernährung (BMI &lt;15, Bradykardie, Schwindel) → sofortiger medizinischer Check-up bei Kinderarzt/KJP.
   </div>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Mein Verhältnis zum Essen · Seite 2</span>
+  <div class="fm-fusszeile">Essverhalten & Essstörungen · Seite 1/5 · Pathways · Joey Guedes</div>
+</div>
+
+<!-- SEITE 2: Erkennen & Einschätzen -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">🍽️</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Essverhalten & Essstörungen</div>
+      <div class="fm-kopf-untertitel">Erkennen & Einschätzen</div>
+    </div>
+    <div class="fm-kopf-icd">Seite 2/5</div>
   </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Warnsignale — Ampelsystem</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-ampel-zeile gruen">
+        <div class="fm-ampel-label">BEOBACHTEN</div>
+        <div class="fm-ampel-inhalt">Diätverhalten, Unzufriedenheit mit Körper (häufig in Pubertät), erhöhtes Interesse an "gesunder Ernährung", selektives Essen</div>
+      </div>
+      <div class="fm-ampel-zeile gelb">
+        <div class="fm-ampel-label">ANSPRECHEN</div>
+        <div class="fm-ampel-inhalt">Sichtbarer Gewichtsverlust oder -zunahme; Mahlzeiten auslassen; Rückzug beim Essen; Kommentare über "zu dick sein" trotz Normalgewicht; Verschwinden nach Mahlzeiten; übertriebener Sport</div>
+      </div>
+      <div class="fm-ampel-zeile rot">
+        <div class="fm-ampel-label">SOFORT HANDELN</div>
+        <div class="fm-ampel-inhalt">Erkennbarer Unterernährungszustand; Schwindel/Ohnmacht; Herzrhythmusstörungen; BMI &lt;15; vollständige Nahrungsverweigerung; schwere Elektrolytstörungen (Anzeichen: Muskelkrämpfe)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Körperliche Warnsignale im Überblick</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-zweispalten">
+        <div>
+          <strong>Anorexie-Zeichen</strong>
+          <ul class="fm-liste">
+            <li>Lanugo-Behaarung (Flaum auf Haut)</li>
+            <li>Kälteempfindlichkeit (periphere Durchblutungsstörung)</li>
+            <li>Amenorrhoe (Ausbleiben Menstruation)</li>
+            <li>Haarverlust, brüchige Nägel</li>
+            <li>Bradykardie (&lt;60/min), niedriger Blutdruck</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Bulimie-Zeichen</strong>
+          <ul class="fm-liste">
+            <li>Parotis-Schwellung (Speicheldrüsen)</li>
+            <li>Zahnschmelzabbau (Magensäure)</li>
+            <li>Russell-Zeichen (Schwielen Handrücken)</li>
+            <li>Heiserkeit nach dem Essen</li>
+            <li>Häufige Zahnhygiene nach Mahlzeiten</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Screening-Instrumente</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-zweispalten">
+        <div>
+          <strong>SCOFF-Fragebogen (5 Fragen)</strong>
+          <ul class="fm-liste">
+            <li>S: Sick (Erbrechen)?</li>
+            <li>C: Kontrollverlust beim Essen?</li>
+            <li>O: One stone Gewichtsverlust?</li>
+            <li>F: Fat — fühle mich fett?</li>
+            <li>F: Food — dominiert Essen mein Leben?</li>
+            <li>≥ 2 Ja: Verdacht auf Essstörung</li>
+          </ul>
+        </div>
+        <div>
+          <strong>EDE-Q (Eating Disorder Examination)</strong>
+          <ul class="fm-liste">
+            <li>28 Items, 4 Subskalen</li>
+            <li>Zurückhaltung, Gewichtsbeschäftigung, Figurenbeschäftigung, Essensorgen</li>
+            <li>Gesamtwert &gt; 2,3 klinisch auffällig</li>
+            <li>Jugendfassung verfügbar (EDE-Q für Jugendliche)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-tipp">
+    <strong>Achte auch auf:</strong> Heimliches Essen, riesige Nahrungsmengen im Müll, viele leere Verpackungen, häufige "Bauchschmerzen" nach Mahlzeiten, Rückzug aus gemeinsamen Essen — diese Verhaltensweisen können auf Binge-Eating oder Bulimie hindeuten.
+  </div>
+
+  <div class="fm-fusszeile">Essverhalten & Essstörungen · Seite 2/5 · Pathways · Joey Guedes</div>
+</div>
+
+<!-- SEITE 3: Im Gespräch -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">🍽️</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Essverhalten & Essstörungen</div>
+      <div class="fm-kopf-untertitel">Im Gespräch</div>
+    </div>
+    <div class="fm-kopf-icd">Seite 3/5</div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Gesprächsführung</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-gespraech-grid">
+        <div class="fm-gespraech-item gut">
+          <div class="fm-gespraech-label">Gut ✓</div>
+          <div>"Ich mache mir Sorgen um dich — ich sehe, dass du in letzter Zeit weniger isst. Wie geht es dir?"</div>
+        </div>
+        <div class="fm-gespraech-item schlecht">
+          <div class="fm-gespraech-label">Vermeiden ✗</div>
+          <div>"Du musst mehr essen, du bist viel zu dünn!" (Druck, Fokus auf Gewicht)</div>
+        </div>
+        <div class="fm-gespraech-item gut">
+          <div class="fm-gespraech-label">Gut ✓</div>
+          <div>"Ich weiß, dass du das nicht hören willst — aber ich muss mir Sorgen machen, weil dein Körper Zeichen sendet, die mich besorgen."</div>
+        </div>
+        <div class="fm-gespraech-item schlecht">
+          <div class="fm-gespraech-label">Vermeiden ✗</div>
+          <div>"Du siehst doch super aus! Was ist das Problem?" (Körperbezogene Kommentare)</div>
+        </div>
+        <div class="fm-gespraech-item gut">
+          <div class="fm-gespraech-label">Gut ✓</div>
+          <div>"Was passiert in dir, wenn du ans Essen denkst? Wie fühlt sich das an?" (Emotionen explorieren)</div>
+        </div>
+        <div class="fm-gespraech-item schlecht">
+          <div class="fm-gespraech-label">Vermeiden ✗</div>
+          <div>"Das ist doch nur eine Phase, das geht vorbei." (Minimieren)</div>
+        </div>
+        <div class="fm-gespraech-item gut">
+          <div class="fm-gespraech-label">Gut ✓</div>
+          <div>"Du bist nicht das Problem — der Hunger/die Gedanken über Essen, das ist das Problem. Ich bin auf deiner Seite."</div>
+        </div>
+        <div class="fm-gespraech-item schlecht">
+          <div class="fm-gespraech-label">Vermeiden ✗</div>
+          <div>"Du machst dir das selbst" (Schuld, fehlende Empathie)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Motivationale Gesprächsführung (MI) bei Essstörungen</div>
+    <div class="fm-sektion-inhalt">
+      <p>Jugendliche mit Anorexie erleben ihre Störung oft als Lösung, nicht als Problem (Ich-Syntonie). Direkte Konfrontation verstärkt Widerstand:</p>
+
+      <div class="fm-schritte">
+        <div class="fm-schritt">
+          <div class="fm-schritt-nr">1</div>
+          <div class="fm-schritt-text"><strong>Ambivalenz explorieren:</strong> "Was gefällt dir an deinem jetzigen Essen? Was stört dich daran?" — Beidseiten hören</div>
+        </div>
+        <div class="fm-schritt">
+          <div class="fm-schritt-nr">2</div>
+          <div class="fm-schritt-text"><strong>Zukunftsvision:</strong> "Wie stellst du dir dein Leben in 5 Jahren vor? Welche Rolle spielt Essen dabei?"</div>
+        </div>
+        <div class="fm-schritt">
+          <div class="fm-schritt-nr">3</div>
+          <div class="fm-schritt-text"><strong>Diskrepanzen sanft aufzeigen:</strong> "Du sagst, du willst Energie haben — wie verträgt sich das mit dem Weglassen von Mahlzeiten?"</div>
+        </div>
+        <div class="fm-schritt">
+          <div class="fm-schritt-nr">4</div>
+          <div class="fm-schritt-text"><strong>Autonomie stärken:</strong> "Ich werde dich nicht zwingen — aber ich möchte, dass du weißt: Hilfe ist möglich."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-cave">
+    <strong>Körperbezogene Kommentare vermeiden:</strong> Weder positiv ("Du siehst gesünder aus!") noch negativ ("Du bist so dünn!"). Beides verstärkt den Fokus auf den Körper. Stattdessen: Energie, Stimmung, Aktivitäten ansprechen.
+  </div>
+
+  <div class="fm-fusszeile">Essverhalten & Essstörungen · Seite 3/5 · Pathways · Joey Guedes</div>
+</div>
+
+<!-- SEITE 4: Interventionen -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">🍽️</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Essverhalten & Essstörungen</div>
+      <div class="fm-kopf-untertitel">Interventionen & Methoden</div>
+    </div>
+    <div class="fm-kopf-icd">Seite 4/5</div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Evidenzbasierte Behandlung</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-methode">
+        <div class="fm-methode-kopf">
+          <span class="fm-methode-name">FBT — Family-Based Treatment (Maudsley-Ansatz)</span>
+          <span class="fm-methode-sterne">★★★</span>
+        </div>
+        <p>Erstbehandlung für Anorexie bei Jugendlichen. Eltern übernehmen die Kontrolle über Mahlzeiten (Phase 1), dann schrittweise Autonomieerweiterung (Phase 2), dann Identitätsentwicklung (Phase 3). Beste Evidenz für Gewichtsrehabilitation.</p>
+      </div>
+
+      <div class="fm-methode">
+        <div class="fm-methode-kopf">
+          <span class="fm-methode-name">KVT für Bulimie und Binge-Eating</span>
+          <span class="fm-methode-sterne">★★★</span>
+        </div>
+        <p>Dysfunktionale Gedanken über Körper und Essen identifizieren; Essprotokoll; Expositionsübungen; Rückfallprävention. CBT-E (Enhanced CBT) transdiagnostisch für alle Essstörungsformen.</p>
+      </div>
+
+      <div class="fm-methode">
+        <div class="fm-methode-kopf">
+          <span class="fm-methode-name">DBT bei Bulimie/Binge-Eating</span>
+          <span class="fm-methode-sterne">★★☆</span>
+        </div>
+        <p>Emotionsregulationstraining; Alternativverhalten zu Essanfällen; Kettenanalyse von Essanfallauslösern. Besonders bei komorbider Emotionsdysregulation.</p>
+      </div>
+
+      <div class="fm-methode">
+        <div class="fm-methode-kopf">
+          <span class="fm-methode-name">Pharmakotherapie (SSRI)</span>
+          <span class="fm-methode-sterne">★★☆</span>
+        </div>
+        <p>Fluoxetin (Prozac) bei Bulimie evidenzbasiert (FDA-zugelassen). Kein Medikament bei Anorexie vor Gewichtsrehabilitation wirksam. Immer in Kombination mit Therapie.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Rolle der Bezugsperson im Schulkontext</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-tipp">
+        <strong>Was Bezugspersonen tun können:</strong>
+        <ul class="fm-liste">
+          <li>Regelmäßige, niedrigschwellige Gespräche führen (nicht nur über Essen)</li>
+          <li>Eltern informieren und einbeziehen (Meldung über internes Protokoll)</li>
+          <li>Medizinische Abklärung vermitteln (Kinderarzt als erstem Schritt)</li>
+          <li>Schule als essfreien Raum für Druck anbieten</li>
+          <li>Keine Kommentare über Essen/Körper im Schulalltag</li>
+        </ul>
+      </div>
+
+      <div class="fm-cave">
+        <strong>Bei Anorexie: Elterneinbezug ist Pflicht, nicht Option.</strong> Jugendliche können aufgrund von Mangelernährung (Kalorienrestriktion beeinflusst kognitive Funktion) nicht vollständig selbstständig entscheiden. Bei ernstem Verdacht → sofortige Kommunikation mit Eltern und Kinderarzt.
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-fusszeile">Essverhalten & Essstörungen · Seite 4/5 · Pathways · Joey Guedes</div>
+</div>
+
+<!-- SEITE 5: Netzwerk & Ressourcen -->
+<div class="fm-seite">
+  <div class="fm-kopfzeile">
+    <div class="fm-kopf-icon">🍽️</div>
+    <div class="fm-kopf-text">
+      <div class="fm-kopf-titel">Essverhalten & Essstörungen</div>
+      <div class="fm-kopf-untertitel">Netzwerk & Ressourcen</div>
+    </div>
+    <div class="fm-kopf-icd">Seite 5/5</div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Ambulante und stationäre Behandlungspfade</div>
+    <div class="fm-sektion-inhalt">
+      <table class="fm-tabelle">
+        <tr>
+          <th>Schweregrad</th>
+          <th>Setting</th>
+          <th>Ressource</th>
+        </tr>
+        <tr>
+          <td>Leicht (früh, BMI normal)</td>
+          <td>Ambulante Psychotherapie + Ernährungsberatung</td>
+          <td>Niedergelassene KJP, Pro-Klinik</td>
+        </tr>
+        <tr>
+          <td>Mittel (Essanfälle, leichter Gewichtsverlust)</td>
+          <td>Ambulante KJP + Medizinische Überwachung</td>
+          <td>CHL KJP Ambulanz (4411-6100)</td>
+        </tr>
+        <tr>
+          <td>Schwer (BMI &lt;15, medizinische Komplikationen)</td>
+          <td>Stationäre Behandlung (Kinderklinik + KJP)</td>
+          <td>Kannerklinik (4411-4411) + KJP</td>
+        </tr>
+        <tr>
+          <td>Lebensbedrohlich (Bradykardie, Kollaps)</td>
+          <td>Notaufnahme, sofort</td>
+          <td>112 / Kannerklinik Notaufnahme</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Luxemburger Netzwerk</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">CHL Kanner-Jugendpsychiatrie (KJP)</div>
+        <div class="fm-ressource-info">📞 4411-6100 · Spezialisierte Essstörungsambulanz · Überweisung durch Kinderarzt empfohlen</div>
+      </div>
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">Kannerklinik (Kinderkrankenhaus)</div>
+        <div class="fm-ressource-info">📞 4411-4411 · Pädiatrische Überwachung bei Unterernährung · Notaufnahme 24/7</div>
+      </div>
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">SCAS</div>
+        <div class="fm-ressource-info">📞 247-86000 · Psychosoziale Beratung für Jugendliche und Familien</div>
+      </div>
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">Kanner-Jugendtelefon</div>
+        <div class="fm-ressource-info">📞 116 111 · Für Jugendliche in Not · anonym, kostenlos</div>
+      </div>
+      <div class="fm-ressource-karte">
+        <div class="fm-ressource-name">Pro-Klinik / Niedergelassene Psychologen</div>
+        <div class="fm-ressource-info">Ambulante psychotherapeutische Behandlung · Liste bei Pathways verfügbar</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-sektion">
+    <div class="fm-sektion-titel">Literatur & weiterführende Ressourcen</div>
+    <div class="fm-sektion-inhalt">
+      <div class="fm-literatur-item">
+        <span class="fm-lit-autor">Lock, J. & Le Grange, D. (2015)</span>
+        <span class="fm-lit-titel">Treatment Manual for Anorexia Nervosa (Family-Based Treatment).</span>
+        <span class="fm-lit-info">Guilford Press — Standardwerk FBT</span>
+      </div>
+      <div class="fm-literatur-item">
+        <span class="fm-lit-autor">Fairburn, C.G. (2008)</span>
+        <span class="fm-lit-titel">Cognitive Behavior Therapy and Eating Disorders.</span>
+        <span class="fm-lit-info">Guilford Press — CBT-E Entwickler</span>
+      </div>
+      <div class="fm-literatur-item">
+        <span class="fm-lit-autor">AWMF Leitlinie (2019)</span>
+        <span class="fm-lit-titel">Anorexia nervosa S3-Leitlinie.</span>
+        <span class="fm-lit-info">AWMF-Register 051/003 — Deutsche Behandlungsleitlinie</span>
+      </div>
+      <div class="fm-literatur-item">
+        <span class="fm-lit-autor">National Eating Disorders Association (NEDA)</span>
+        <span class="fm-lit-titel">Educator Toolkit for Eating Disorders.</span>
+        <span class="fm-lit-info">nationaleatingdisorders.org — Schulressourcen</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="fm-krisen-box">
+    <div class="fm-krisen-titel">Krisenressourcen Luxembourg</div>
+    <div class="fm-krisen-nummern">
+      <div class="fm-krisen-nr"><span class="fm-kr-name">Kannerklinik Notaufnahme</span><span class="fm-kr-num">4411-4411</span></div>
+      <div class="fm-krisen-nr"><span class="fm-kr-name">KJP Ambulanz</span><span class="fm-kr-num">4411-6100</span></div>
+      <div class="fm-krisen-nr"><span class="fm-kr-name">Kanner-Jugendtelefon</span><span class="fm-kr-num">116 111</span></div>
+      <div class="fm-krisen-nr"><span class="fm-kr-name">Notruf</span><span class="fm-kr-num">112</span></div>
+    </div>
+  </div>
+
+  <div class="fm-fusszeile">Essverhalten & Essstörungen · Seite 5/5 · Pathways · Joey Guedes · 2025</div>
 </div>
 
 </body>

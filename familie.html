@@ -1,267 +1,397 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Arbeitsblatt – Familie & Beziehungen zuhause</title>
-  <link rel="stylesheet" href="../css/arbeitsblatt.css">
-  <style>
-    :root { --farbe: #D97706; --farbe-hell: #FFFBEB; }
-    .family-map { position:relative; width:240px; height:240px; margin:0 auto 8px; }
-    .family-ring { position:absolute; border-radius:50%; border:2.5px solid; display:flex; align-items:center; justify-content:center; }
-    .family-me { position:absolute; inset:100px; background:#D97706; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:800; font-size:11px; }
-    .ring-label { position:absolute; font-size:8.5px; font-weight:600; text-align:center; width:100%; }
-    .role-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; margin:8px 0; }
-    .role-card { border:2px solid #D1D5DB; border-radius:10px; padding:7px 5px; text-align:center; background:#FFFBEB; cursor:pointer; }
-    .role-emoji { font-size:17px; display:block; }
-    .role-name { font-size:9px; font-weight:700; color:#374151; display:block; margin-top:2px; }
-    .role-desc { font-size:8.5px; color:#6B7280; margin-top:2px; display:block; }
-    .comm-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:8px 0; }
-    .comm-card { border:2.5px solid; border-radius:10px; padding:10px; }
-    .comm-title { font-size:11px; font-weight:800; margin-bottom:4px; }
-    .comm-example { font-size:10px; font-style:italic; background:white; border-radius:6px; padding:4px 7px; margin-bottom:4px; border-left:3px solid; }
-    .comm-check { font-size:10px; display:flex; gap:6px; align-items:center; margin-top:5px; }
-    .needs-box { border:2px dashed #D97706; border-radius:12px; padding:12px; background:linear-gradient(135deg,#FFFBEB,#FEF3C7); margin:8px 0; }
-    .rights-row { display:grid; grid-template-columns:28px 1fr; gap:8px; align-items:start; margin-bottom:7px; }
-    .rights-nr { background:#D97706; color:white; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex-shrink:0; }
-    .wusstest { background:#FFFBEB; border-left:4px solid #D97706; border-radius:0 8px 8px 0; padding:8px 10px; margin:8px 0; font-size:10.5px; }
-    .wusstest strong { color:#92400E; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachkraft-Modul: Familienkonflikte & Familiendynamiken</title>
+<link rel="stylesheet" href="../fachkraft-modul.css">
 </head>
 <body>
+<style>:root { --farbe: #0891B2; }</style>
 
-<div class="druck-leiste">
-  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
-  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
-</div>
-
-<!-- ===== SEITE 1 ===== -->
-<div class="seite">
-  <div class="kopfzeile">
-    <div class="kopfzeile-links">
-      <div class="schule-label">Pathways · Joey Guedes</div>
-      <div class="ab-titel">Zuhause – meine Welt, meine Beziehungen</div>
-      <div class="ab-untertitel">Familie & Beziehungen zuhause · Kategorie: Familie & Soziales Umfeld</div>
+<!-- SEITE 1: ÜBERBLICK & ENTSTEHUNG -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">👨‍👩‍👧‍👦</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Familienkonflikte & Familiendynamiken</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
     </div>
-    <div class="kopfzeile-icon">🏠</div>
+    <div class="fm-seitenzahl">1 / 5</div>
   </div>
 
-  <div class="schuelerinfo">
-    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  <div class="fm-quickinfo">
+    <div class="fm-qi-item"><span class="fm-qi-label">ICD-10</span><span class="fm-qi-wert">Z63 · F93.3 · F60.3x</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Prävalenz</span><span class="fm-qi-wert">~60–80 % Jugendliche erleben signifikante Familienkonflikte</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Altersgruppe</span><span class="fm-qi-wert">12–18 Jahre, Höhepunkt: 14–16 Jahre</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Geschlecht</span><span class="fm-qi-wert">Mädchen berichten mehr emotionale Konflikte, Jungen mehr offene Konflikte</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Relevanz</span><span class="fm-qi-wert">Häufigster Vorstellungsgrund in Jugendberatung (Beratungspraxis 2023)</span></div>
+    <div class="fm-qi-item"><span class="fm-qi-label">Screening</span><span class="fm-qi-wert">FACES-IV, McMaster FAD, Familien-APGAR</span></div>
   </div>
 
-  <div class="infobox">
-    <div class="infobox-titel">🏠 Familie ist mehr als Blutsverwandtschaft</div>
-    <p>Familie bedeutet nicht immer dieselbe biologische Familie. Familie sind die Menschen, mit denen du aufgewachsen bist, die sich um dich gekümmert haben – oder die du dir ausgesucht hast. Patchwork, Pflegefamilie, Großeltern, Wahlfamilie: Alles gilt.</p>
-    <p>🧠 <em><strong>Wusstest du?</strong> Die ersten Beziehungen in unserer Familie "programmieren" buchstäblich, wie unser Gehirn mit späteren Beziehungen umgeht. Das Gute daran: Das Gehirn bleibt bis ins Erwachsenenalter formbar – neue positive Erfahrungen können das verändern.</em></p>
-  </div>
+  <h2 class="fm-abschnitt-titel">Theoretische Grundlage</h2>
+  <p class="fm-text">Familienkonflikte im Jugendalter sind entwicklungsnormativ — Adoleszenz erfordert Individuation (Blos 1967), die zwangsläufig Spannungen erzeugt. Pathologisch werden sie, wenn sie chronisch, eskalierend oder von strukturellen Problemen begleitet sind.</p>
 
-  <!-- Übung 1: Familienkarte mit konzentrischen Kreisen -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">1</div>
-      <div class="uebung-titel">Meine Familienkarte – wer gehört zu mir?</div>
+  <h3 class="fm-unter-titel">Systemisches Familienmodell (Minuchin 1974)</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>Grenzen (Boundaries)</strong><br>
+      <em>Rigide:</em> Zu wenig Kontakt, emotionale Isolation<br>
+      <em>Diffus:</em> Verstrickung, kein Privatsphäre<br>
+      <em>Klar:</em> Optimal — Kontakt + Autonomie
     </div>
-    <div class="uebung-beschreibung">Schreibe Namen in die Ringe. Innen = die Menschen mit denen du wohnst oder sehr eng bist. Außen = weitere Verwandte und Wahlfamilie.</div>
-
-    <div style="display:grid; grid-template-columns:240px 1fr; gap:12px; align-items:start;">
-      <div>
-        <div class="family-map">
-          <div class="family-ring" style="inset:0; border-color:#FDE68A; background:#FFFDE7;">
-            <div class="ring-label" style="top:6px; color:#B45309;">Wahlfamilie / Weitere</div>
-          </div>
-          <div class="family-ring" style="inset:50px; border-color:#FCD34D; background:#FFFBEB;">
-            <div class="ring-label" style="top:4px; color:#92400E;">Erweiterte Familie</div>
-          </div>
-          <div class="family-ring" style="inset:100px; border-color:#D97706; background:#FEF3C7;"></div>
-          <div class="family-me">ICH</div>
-        </div>
-        <div style="font-size:9px; color:#6B7280; text-align:center;">Innerster Kreis = Haushalt / engste Personen</div>
-      </div>
-      <div>
-        <div style="font-size:11px; font-weight:700; color:#92400E; margin-bottom:6px;">Dazu schreibe ich:</div>
-        <div style="font-size:10.5px; margin-bottom:3px;">Wer wohnt bei mir?</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div></div>
-        <div style="font-size:10.5px; margin-bottom:3px; margin-top:5px;">Zu wem habe ich regelmäßig Kontakt?</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div></div>
-        <div style="font-size:10.5px; margin-bottom:3px; margin-top:5px;">Wen betrachte ich als Familie, auch wenn wir nicht verwandt sind?</div>
-        <div class="schreiblinien"><div class="schreiblinie"></div></div>
-      </div>
+    <div class="fm-spalte">
+      <strong>Subsysteme</strong><br>
+      Eltern-Subsystem / Kind-Subsystem<br>
+      Triangulierung: Kind in Elternkonflikt hineingezogen<br>
+      Parentifizierung: Kind übernimmt Elternrolle
     </div>
   </div>
 
-  <!-- Übung 2: Familienrollen -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">2</div>
-      <div class="uebung-titel">Familienrollen – wer spielt welche Rolle? (kreise ein)</div>
+  <h3 class="fm-unter-titel">Entwicklungsaufgaben nach Havighurst — Elterliche Rolle</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>Jugendliche brauchen:</strong><br>
+      • Zunehmende Autonomie<br>
+      • Peers als Primärbindung<br>
+      • Recht auf Privatheit<br>
+      • Neue Beziehung auf Augenhöhe
     </div>
-    <div class="uebung-beschreibung">In vielen Familien übernehmen Menschen unbewusst bestimmte Rollen. Kreise ein, welche du kennst – auch bei dir selbst.</div>
-
-    <div class="role-grid">
-      <div class="role-card">
-        <span class="role-emoji">🕊️</span>
-        <span class="role-name">Peacemaker</span>
-        <span class="role-desc">Versucht Streit zu vermeiden</span>
-      </div>
-      <div class="role-card">
-        <span class="role-emoji">🦅</span>
-        <span class="role-name">Rebel</span>
-        <span class="role-desc">Bricht gegen die Regeln</span>
-      </div>
-      <div class="role-card">
-        <span class="role-emoji">🤲</span>
-        <span class="role-name">Caretaker</span>
-        <span class="role-desc">Kümmert sich um alle</span>
-      </div>
-      <div class="role-card">
-        <span class="role-emoji">🌟</span>
-        <span class="role-name">Hero</span>
-        <span class="role-desc">Muss perfekt sein</span>
-      </div>
-      <div class="role-card">
-        <span class="role-emoji">🎭</span>
-        <span class="role-name">Scapegoat</span>
-        <span class="role-desc">Bekommt die Schuld</span>
-      </div>
-      <div class="role-card">
-        <span class="role-emoji">👻</span>
-        <span class="role-name">Lost Child</span>
-        <span class="role-desc">Zieht sich zurück</span>
-      </div>
-      <div class="role-card">
-        <span class="role-emoji">😄</span>
-        <span class="role-name">Clown</span>
-        <span class="role-desc">Macht Witze, lenkt ab</span>
-      </div>
-      <div class="role-card">
-        <span class="role-emoji">🤝</span>
-        <span class="role-name">Helper</span>
-        <span class="role-desc">Löst alle Probleme</span>
-      </div>
-      <div class="role-card">
-        <span class="role-emoji">⚖️</span>
-        <span class="role-name">Mediator</span>
-        <span class="role-desc">Vermittelt zwischen anderen</span>
-      </div>
-      <div class="role-card">
-        <span class="role-emoji">✏️</span>
-        <span class="role-name">Andere</span>
-        <span class="role-desc">_______________</span>
-      </div>
+    <div class="fm-spalte">
+      <strong>Eltern reagieren oft mit:</strong><br>
+      • Kontrollverstärkung (Angst vor Verlust)<br>
+      • Übertragung eigener Traumata<br>
+      • Kulturellen Konflikten (Migrationshintergrund)<br>
+      • Eigene Krisen (Trennung, Arbeit)
     </div>
-
-    <div style="font-size:11px; margin-top:5px;">Welche Rolle spielst du in deiner Familie? Fühlt sie sich richtig an oder wurde sie dir aufgezwungen?</div>
-    <div class="schreiblinien"><div class="schreiblinie"></div></div>
   </div>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Familie & Beziehungen zuhause · Seite 1</span>
+  <h3 class="fm-unter-titel">Typische Konflikttopographien in Luxemburg</h3>
+  <ul class="fm-liste">
+    <li><strong>Interkulturelle Konflikte:</strong> Ca. 47 % der Schüler in Luxemburg haben Migrationshintergrund — Wertekonflikte zwischen Herkunftskultur und luxemburgischer/europäischer Norm</li>
+    <li><strong>Patchwork-Familien:</strong> Konflikte mit Stiefeltern/-geschwistern, Loyalitätskonflikte bei Scheidung</li>
+    <li><strong>Elterliche psychische Erkrankung/Sucht:</strong> "Parentifizierung", parentale Vernachlässigung, emotionale Verfügbarkeit</li>
+    <li><strong>Sozioökonomischer Stress:</strong> Wohnungsprobleme, Armut → erhöhte Familienkonflikte</li>
+  </ul>
+
+  <div class="fm-cave">
+    <strong>⚠ Abgrenzung beachten:</strong> Normaler Adoleszenzkonflikt vs. emotionale Misshandlung vs. körperliche Misshandlung/Vernachlässigung — unterschiedliche Handlungspflichten!
   </div>
 </div>
 
-<!-- ===== SEITE 2 ===== -->
-<div class="seite">
-
-  <!-- Übung 3: Kommunikationsstile -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">3</div>
-      <div class="uebung-titel">Wie redet meine Familie? – 4 Kommunikationsstile</div>
+<!-- SEITE 2: ERKENNEN & EINSCHÄTZEN -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">👨‍👩‍👧‍👦</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Familienkonflikte & Familiendynamiken</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
     </div>
-    <div class="uebung-beschreibung">Kreise den Stil ein, der bei euch am häufigsten vorkommt. Familien können mehrere Stile mischen.</div>
+    <div class="fm-seitenzahl">2 / 5</div>
+  </div>
 
-    <div class="comm-grid">
-      <div class="comm-card" style="border-color:#059669; background:#ECFDF5;">
-        <div class="comm-title" style="color:#065F46;">✅ Direkt & offen</div>
-        <div class="comm-example" style="border-color:#059669;">"Ich fühle mich verletzt, wenn..."</div>
-        <div style="font-size:10px; color:#065F46;">Konflikte werden angesprochen und gelöst. Gefühle dürfen sein.</div>
-        <div class="comm-check">□ Das kennen wir</div>
+  <h2 class="fm-abschnitt-titel">Erkennen & Einschätzen</h2>
+
+  <div class="fm-ampel">
+    <div class="fm-ampel-item fm-gruen">
+      <div class="fm-ampel-farbe">🟢</div>
+      <div class="fm-ampel-titel">Normaler Adoleszenzkonflikt</div>
+      <ul>
+        <li>Streite um Ausgehzeiten, Handy, Hausarbeit</li>
+        <li>Gelegentliche laute Auseinandersetzungen</li>
+        <li>Grundlegende Wärme + Bindung erhalten</li>
+        <li>Jugendlicher kann über Konflikte sprechen</li>
+        <li>Beide Seiten kompromissfähig</li>
+        <li>Keine Auswirkung auf Schule/Freunde</li>
+      </ul>
+      <div class="fm-ampel-handlung">Normalisieren, Perspektivenvielfalt fördern, Kommunikationsstrategien</div>
+    </div>
+    <div class="fm-ampel-item fm-gelb">
+      <div class="fm-ampel-farbe">🟡</div>
+      <div class="fm-ampel-titel">Erhöhter Unterstützungsbedarf</div>
+      <ul>
+        <li>Chronische Konflikte (täglich, wochenlang)</li>
+        <li>Eskalation zu Schreien, Türen schlagen, Weinen</li>
+        <li>Jugendlicher vermeidet zu Hause zu sein</li>
+        <li>Schulleistungen sinken, Rückzug von Peers</li>
+        <li>Gefühl: „Ich bin das schwarze Schaf"</li>
+        <li>Einer/r der Elternteile psychisch belastet</li>
+        <li>Triangulierung: Kind zwischen Eltern</li>
+      </ul>
+      <div class="fm-ampel-handlung">Aktive Begleitung, evtl. Familiengespräch, SCAS-Vermittlung</div>
+    </div>
+    <div class="fm-ampel-item fm-rot">
+      <div class="fm-ampel-farbe">🔴</div>
+      <div class="fm-ampel-titel">Ernsthafte Gefährdung — Handlungspflicht</div>
+      <ul>
+        <li>Körperliche Gewalt (Schlagen, Verbrennungen)</li>
+        <li>Emotionale Misshandlung (systematische Erniedrigung)</li>
+        <li>Vernachlässigung (Hunger, mangelnde Aufsicht)</li>
+        <li>Jugendlicher hat keinen sicheren Rückzugsort</li>
+        <li>Suizidgedanken im Zusammenhang mit Familie</li>
+        <li>Hausrauswurf oder angedroht</li>
+        <li>Elterlicher Substanzmissbrauch + Gewalt</li>
+      </ul>
+      <div class="fm-ampel-handlung">SOFORTIG: SCAS (247-86000), Meldepflicht prüfen, Notfallunterbringung</div>
+    </div>
+  </div>
+
+  <h3 class="fm-unter-titel">Screening: Familien-APGAR (Smilkstein 1978)</h3>
+  <p class="fm-text">5 Fragen, je 0–2 Punkte (0=nie, 1=manchmal, 2=immer). Maximal 10 Punkte.</p>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>A</strong>daptation — Familie hilft bei Problemen<br>
+      <strong>P</strong>artnership — Entscheidungen gemeinsam<br>
+      <strong>G</strong>rowth — Persönliche Entwicklung unterstützt<br>
+      <strong>A</strong>ffection — Gefühle werden ausgedrückt<br>
+      <strong>R</strong>esolve — Zeit füreinander
+    </div>
+    <div class="fm-spalte">
+      <strong>Auswertung:</strong><br>
+      7–10: Gute Familienfunktion<br>
+      4–6: Moderate Dysfunktion → Unterstützung<br>
+      0–3: Schwere Dysfunktion → Intervention
+    </div>
+  </div>
+
+  <h3 class="fm-unter-titel">Risikofaktoren für ernsthafte Familienkonflikte</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>Elternfaktoren:</strong><br>
+      • Eigene Misshandlungsgeschichte<br>
+      • Psychische Erkrankung (Depression, Persönlichkeitsstörung)<br>
+      • Sucht (Alkohol, Substanzen)<br>
+      • Soziale Isolation<br>
+      • Armut/Wohnungsstress
+    </div>
+    <div class="fm-spalte">
+      <strong>Jugendlichenfaktoren:</strong><br>
+      • ADHS, Verhaltensstörung<br>
+      • Frühere Traumatisierung<br>
+      • Substanzkonsum<br>
+      • LGBTIQ+-Identität in nicht-akzeptierendem Umfeld<br>
+      • Leistungsversagen
+    </div>
+  </div>
+</div>
+
+<!-- SEITE 3: IM GESPRÄCH -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">👨‍👩‍👧‍👦</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Familienkonflikte & Familiendynamiken</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-seitenzahl">3 / 5</div>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Im Gespräch mit Jugendlichen</h2>
+
+  <div class="fm-gespraech-grid">
+    <div class="fm-gespraech-gut">
+      <div class="fm-gespraech-label">✓ Hilfreiche Formulierungen</div>
+      <div class="fm-gespraech-beispiel">„Beschreib mir einen typischen Abend bei euch zu Hause — was passiert da meistens?"</div>
+      <div class="fm-gespraech-beispiel">„Wenn du dir dein Zuhause als Haus vorstellst — welche Räume fühlen sich sicher an, welche nicht?"</div>
+      <div class="fm-gespraech-beispiel">„Was glaubst du, warum deine Eltern so reagieren? Ich frage nicht, um sie zu entschuldigen — ich bin neugierig auf deine Sicht."</div>
+      <div class="fm-gespraech-beispiel">„Gab es früher Zeiten, wo es besser lief? Was war da anders?"</div>
+      <div class="fm-gespraech-beispiel">„Was bräuchtest du von deinen Eltern, damit es sich besser anfühlt?"</div>
+      <div class="fm-gespraech-beispiel">„Weißt du, was ich mir frage: Wer in deiner Familie versteht dich am besten?"</div>
+    </div>
+    <div class="fm-gespraech-schlecht">
+      <div class="fm-gespraech-label">✗ Vermeiden</div>
+      <div class="fm-gespraech-beispiel">„Deine Eltern meinen es sicher nur gut." → Invalidiert Erfahrung des Jugendlichen</div>
+      <div class="fm-gespraech-beispiel">„Du musst ja auch deinen Teil beitragen." → Schuldzuweisung, kein Vertrauen</div>
+      <div class="fm-gespraech-beispiel">„Hast du mal versucht, mit ihnen zu reden?" → Impliziert, das Kind sei das Problem</div>
+      <div class="fm-gespraech-beispiel">„In anderen Familien ist es schlimmer." → Relativierung, invalidierend</div>
+      <div class="fm-gespraech-beispiel">„Ich werde mit deinen Eltern sprechen müssen." → (ohne Vorankündigung) Vertrauensbruch</div>
+      <div class="fm-gespraech-beispiel">Eltern im Gespräch sofort verteidigen oder kritisieren</div>
+    </div>
+  </div>
+
+  <h3 class="fm-unter-titel">Genogramm-Technik im Gespräch</h3>
+  <p class="fm-text">Einfaches Familiendiagramm (Quadrat = Mann, Kreis = Frau, Doppellinie = starke Bindung, Zickzack = Konflikt) gemeinsam zeichnen. Öffnet Gespräch über Dynamiken ohne direkte Konfrontation. Fragen:</p>
+  <ul class="fm-liste">
+    <li>„Wer in diesem Bild gehört zu dir — auch wenn sie nicht im Haus wohnen?"</li>
+    <li>„Zeichne mit einem Strich, wie nah du dich jedem fühlst."</li>
+    <li>„Gibt es jemanden in der Familie, zu dem du früher anders stehst als heute?"</li>
+  </ul>
+
+  <h3 class="fm-unter-titel">Besondere Gesprächssituationen</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>Bei Triangulierung (Kind zwischen Eltern):</strong><br>
+      „Du wirst manchmal in die Mitte gezogen zwischen ihnen — das ist eine unfaire Position für dich. Wir können schauen, wie du da rauskommst."
+    </div>
+    <div class="fm-spalte">
+      <strong>Bei Parentifizierung:</strong><br>
+      „Es klingt als trägst du sehr viel Verantwortung für das Wohlbefinden anderer. Wie ist das für dich selbst — wer kümmert sich um dich?"
+    </div>
+  </div>
+
+  <div class="fm-tipp">
+    <strong>💡 Kulturelle Sensitivität:</strong> Bei Migrationsfamilien: Keine Wertung „westlich vs. traditionell". Fragen: „Wie wird das in eurer Familie/Kultur normalerweise gehandhabt? Was ist dir dabei wichtig?" Eigene kulturelle Prägung reflektieren.
+  </div>
+</div>
+
+<!-- SEITE 4: INTERVENTIONEN -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">👨‍👩‍👧‍👦</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Familienkonflikte & Familiendynamiken</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-seitenzahl">4 / 5</div>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Evidenzbasierte Interventionen</h2>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Funktionale Familientherapie (FFT)</span>
+      <span class="fm-sterne">★★★</span>
+    </div>
+    <p class="fm-text">Strukturiertes 3-Phasen-Modell: (1) Engagement & Motivation — Schuldzuweisungen reduzieren, Bindung stärken; (2) Verhaltensänderung — konkrete Kommunikations- und Problemlösungsstrategien; (3) Generalisierung — Nachhaltigkeit sichern. Besonders wirksam bei Verhaltensstörungen (Alexander & Parsons 1973, RCT-Evidenz).</p>
+  </div>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Strukturelle Familientherapie (Minuchin)</span>
+      <span class="fm-sterne">★★★</span>
+    </div>
+    <p class="fm-text">Grenzen klären, Subsysteme stärken, Hierarchien normalisieren. Ziel: Jugendlicher bekommt altersangemessene Autonomie bei gleichzeitiger elterlicher Führungsstärke. Im Schulkontext: Fachkraft kann Eltern-Gespräch moderieren mit systemischem Rahmen.</p>
+  </div>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Attachment-Based Family Therapy (ABFT)</span>
+      <span class="fm-sterne">★★★</span>
+    </div>
+    <p class="fm-text">Speziell für Jugendliche mit Suizidgedanken/Depression im Familienkontext entwickelt (Diamond et al. 2010). 5 Tasks: Beziehungsreframing, Adoleszenten-Bindungsaufgabe, Elternbindungsaufgabe, Anheftungsaufgabe, Kompetenzaufgabe. Evidenz aus 3 RCTs.</p>
+  </div>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Kommunikationstraining für Eltern-Jugendliche</span>
+      <span class="fm-sterne">★★☆</span>
+    </div>
+    <p class="fm-text">Aktives Zuhören, Ich-Botschaften, Deeskalation im Streit. Im Schulkontext durchführbar: kurze Psychoedukation für Eltern (15 Min.) + Rollenspiel. Robin & Foster (1989) — Problemlösetraining für Familien mit ADHS-Jugendlichen zeigt auch bei allgemeinen Konflikten Wirkung.</p>
+  </div>
+
+  <div class="fm-methode">
+    <div class="fm-methode-header">
+      <span class="fm-methode-name">Mediation / Familienmediation</span>
+      <span class="fm-sterne">★★☆</span>
+    </div>
+    <p class="fm-text">Strukturiertes 3-Parteien-Gespräch mit neutralem Mediator. Für Scheidungskonflikte besonders wirksam. Im Schulkontext: Berater kann leichte Moderationsrolle übernehmen; für komplexe Fälle an spezialisierte Mediatoren (SCAS) weiterleiten.</p>
+  </div>
+
+  <h3 class="fm-unter-titel">Was die Fachkraft im Schulkontext tun kann</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      <strong>Direkt mit Jugendlichem:</strong><br>
+      • Sicherer Ort und regelmäßige Gespräche<br>
+      • Stärken und Ressourcen in der Familie identifizieren<br>
+      • Kommunikationsstrategien üben (Rollenspiel)<br>
+      • Autonomie-Kompetenzen stärken<br>
+      • Krisenplan für eskalierte Situationen
+    </div>
+    <div class="fm-spalte">
+      <strong>Mit Eltern / System:</strong><br>
+      • Elterngespräch anbieten (mit Einwilligung)<br>
+      • Psychoedukation: Adoleszenzentwicklung<br>
+      • Brücke bauen: „Ihr Kind sagt..." neutral formulieren<br>
+      • Weiterleitung an SCAS Familienberatung<br>
+      • Bei Gefährdung: Meldepflicht (SCAS 247-86000)
+    </div>
+  </div>
+
+  <div class="fm-cave">
+    <strong>⚠ Meldepflicht in Luxemburg:</strong> Bei begründetem Verdacht auf körperliche/emotionale Misshandlung oder Vernachlässigung: Meldepflicht gegenüber SCAS (Service Central d'Assistance Sociale, 247-86000). Dokumentation + Meldung OHNE Einwilligung der Eltern möglich und nötig.
+  </div>
+</div>
+
+<!-- SEITE 5: NETZWERK & RESSOURCEN -->
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-icon">👨‍👩‍👧‍👦</div>
+    <div class="fm-header-text">
+      <div class="fm-header-titel">Familienkonflikte & Familiendynamiken</div>
+      <div class="fm-header-sub">Fachkraft-Modul · Bezugsarbeit Pathways</div>
+    </div>
+    <div class="fm-seitenzahl">5 / 5</div>
+  </div>
+
+  <h2 class="fm-abschnitt-titel">Luxemburger Versorgungsnetzwerk</h2>
+
+  <div class="fm-ressourcen-grid">
+    <div class="fm-ressource-karte fm-ressource-krise">
+      <div class="fm-ressource-name">SCAS — Service Central d'Assistance Sociale</div>
+      <div class="fm-ressource-tel">247-86000</div>
+      <div class="fm-ressource-info">Familienberatung, Kinderschutz, Meldestelle bei Misshandlung/Vernachlässigung. Zuständig für alle sozialen Notfälle inkl. Unterbringung.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Kanner-Jugendtelefon</div>
+      <div class="fm-ressource-tel">116 111</div>
+      <div class="fm-ressource-info">Kostenlos, anonym, 24/7. Für Jugendliche in Familienkonflikten oder die sich zu Hause unsicher fühlen.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">CHL Kinder- und Jugendpsychiatrie</div>
+      <div class="fm-ressource-tel">4411-6100</div>
+      <div class="fm-ressource-info">Ambulante + stationäre Behandlung. Familientherapeutische Angebote. Krisenintervention bei psychischer Dekompensation im Familienkontext.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">SPL — Sorgtelefon fir Elteren</div>
+      <div class="fm-ressource-tel">26 20 46 46</div>
+      <div class="fm-ressource-info">Beratungstelefon speziell für Eltern in Erziehungskonflikten. Fachberatung, Elternkurse. Auch bei Scheidung/Trennungskonflikt.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">VISAVI — Beratungsstelle</div>
+      <div class="fm-ressource-tel">26 19 92 92</div>
+      <div class="fm-ressource-info">Familienberatung, Mediation, Paartherapie. Ambulante psychosoziale Unterstützung für Familien in Krise.</div>
+    </div>
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Kannerklinik / Notaufnahme</div>
+      <div class="fm-ressource-tel">4411-4411</div>
+      <div class="fm-ressource-info">Bei körperlichen Verletzungen durch Gewalt. Auch psychiatrische Notfallversorgung für Kinder und Jugendliche.</div>
+    </div>
+  </div>
+
+  <div class="fm-krisen-box">
+    <div class="fm-krisen-titel">🚨 Eskalationsprotokoll: Familiäre Gefährdung</div>
+    <div class="fm-krisen-schritte">
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">1</span>
+        <span class="fm-schritt-text"><strong>Sicherheit einschätzen:</strong> Ist der Jugendliche heute Abend in Gefahr? Gibt es einen sicheren Ort (Großeltern, Freunde)?</span>
       </div>
-      <div class="comm-card" style="border-color:#94A3B8; background:#F8FAFC;">
-        <div class="comm-title" style="color:#475569;">🌀 Indirekt / passiv</div>
-        <div class="comm-example" style="border-color:#94A3B8;">"Mir geht's gut." (meint eigentlich: nicht gut)</div>
-        <div style="font-size:10px; color:#475569;">Dinge werden nicht ausgesprochen. Man muss zwischen den Zeilen lesen.</div>
-        <div class="comm-check">□ Das kennen wir</div>
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">2</span>
+        <span class="fm-schritt-text"><strong>Informieren:</strong> Jugendlichen über Meldepflicht informieren — transparent, nicht als Strafe</span>
       </div>
-      <div class="comm-card" style="border-color:#DC2626; background:#FEF2F2;">
-        <div class="comm-title" style="color:#991B1B;">💥 Explosiv</div>
-        <div class="comm-example" style="border-color:#DC2626;">"Du immer wieder! Das ist unglaublich!"</div>
-        <div style="font-size:10px; color:#991B1B;">Konflikte eskalieren schnell. Schreien, Türknallen. Dann wieder "normal".</div>
-        <div class="comm-check">□ Das kennen wir</div>
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">3</span>
+        <span class="fm-schritt-text"><strong>SCAS kontaktieren:</strong> 247-86000 — Beratung + ggf. Meldung. Dokumentation erstellen.</span>
       </div>
-      <div class="comm-card" style="border-color:#6B7280; background:#F9FAFB;">
-        <div class="comm-title" style="color:#374151;">🧊 Vermeidend</div>
-        <div class="comm-example" style="border-color:#6B7280;">"Darüber reden wir nicht."</div>
-        <div style="font-size:10px; color:#374151;">Schwierige Themen werden totgeschwiegen. Dinge bleiben ungelöst.</div>
-        <div class="comm-check">□ Das kennen wir</div>
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">4</span>
+        <span class="fm-schritt-text"><strong>Schulleitung informieren:</strong> Direktion einbeziehen, Protokoll für Schule sichern</span>
+      </div>
+      <div class="fm-krisen-schritt">
+        <span class="fm-schritt-nr">5</span>
+        <span class="fm-schritt-text"><strong>Follow-up:</strong> Nächsten Tag Kontakt aufnehmen, Sicherheit prüfen, Unterstützung anbieten</span>
       </div>
     </div>
-
-    <div class="wusstest">
-      <strong>🧠 Wusstest du?</strong> Der Kommunikationsstil, den wir als Kind gelernt haben, beeinflusst automatisch, wie wir auch später mit Freunden und Partnern kommunizieren. <em>Das Gute: Jeder Stil kann verändert werden.</em>
-    </div>
   </div>
 
-  <!-- Übung 4: Was ich brauche -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">4</div>
-      <div class="uebung-titel">Was ich zuhause brauche, das ich nicht immer bekomme</div>
+  <h3 class="fm-unter-titel">Selbstfürsorge der Fachkraft</h3>
+  <div class="fm-zwei-spalten">
+    <div class="fm-spalte">
+      Familienkonflikte aktivieren eigene Familienerfahrungen. Regelmäßige Supervision wichtig. Grenze zwischen Parteinahme (hilft nicht) und Empathie (hilft) bewahren.
     </div>
-    <div class="uebung-beschreibung">Das hier ist ein sicherer Raum. Du kannst ehrlich sein – es gibt keine falschen Antworten.</div>
-
-    <div class="needs-box">
-      <div style="font-size:11px; font-weight:700; color:#92400E; margin-bottom:8px;">Was ich mir von meiner Familie wünsche:</div>
-      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-      <div style="font-size:11px; font-weight:700; color:#92400E; margin-top:8px; margin-bottom:4px;">Was ich stattdessen wo anders finde (Freunde, Schule, Sport, Erzieher):</div>
-      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+    <div class="fm-spalte">
+      Systemischer Blick: Niemand ist allein „schuld" — Muster und Dynamiken sind das Problem. Dieser Rahmen schützt vor Burnout und ermöglicht wirksame Arbeit.
     </div>
-  </div>
-
-  <!-- Übung 5: Meine Rechte zuhause -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">5</div>
-      <div class="uebung-titel">Meine Grundrechte in meiner Familie</div>
-    </div>
-    <div class="uebung-beschreibung">Diese Rechte gelten immer – egal wie schwierig die Situation zuhause ist.</div>
-
-    <div class="rights-row">
-      <div class="rights-nr">1</div>
-      <div style="font-size:11px;"><strong style="color:#D97706;">🔒 Das Recht auf Sicherheit:</strong> Niemand darf dir körperlich oder seelisch schaden. Gewalt ist keine Form von Liebe. <em>Du hast das Recht, in Sicherheit zu leben.</em></div>
-    </div>
-    <div class="rights-row">
-      <div class="rights-nr">2</div>
-      <div style="font-size:11px;"><strong style="color:#D97706;">🌟 Das Recht auf Respekt:</strong> Deine Gefühle und Meinungen sind gültig. Du darfst anderer Meinung sein als deine Familie. <em>Respekt ist keine Einbahnstraße.</em></div>
-    </div>
-    <div class="rights-row">
-      <div class="rights-nr">3</div>
-      <div style="font-size:11px;"><strong style="color:#D97706;">💭 Das Recht auf eigene Gedanken:</strong> Du darfst deine eigene Meinung haben und eigene Entscheidungen treffen (immer mehr, je älter du wirst). <em>Deine Identität gehört dir.</em></div>
-    </div>
-
-    <div style="background:#FEF3C7; border:1.5px solid #FCD34D; border-radius:8px; padding:8px; font-size:10.5px; margin-top:6px;">
-      <strong>Wenn eines dieser Rechte verletzt wird:</strong> Du kannst mit deiner Bezugsperson sprechen, dem Kanner-Jugendtelefon (116 111) oder dem OPJ (okaju.lu). Du bist nicht allein.
-    </div>
-  </div>
-
-  <!-- Reflexion -->
-  <div class="reflexion">
-    <div class="reflexion-titel">💬 Reflexion</div>
-    <p>Was ist die stärkste Sache, die du von deiner Familie mitgenommen hast – eine Fähigkeit, ein Wert, eine Stärke?</p>
-    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-  </div>
-
-  <div class="fachhinweis">
-    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
-    <strong>ICD-10 Bezug:</strong> Z62 (Probleme in Bezug auf die Erziehung), Z63 (andere Probleme mit dem primären Bezugsrahmen). Familiäre Dysfunktion erhöht Risiko für F32-F33 (Depression), F40-F42 (Angst), F43 (Anpassungs-/Traumafolgestörungen). Die <strong>Familienrollen</strong> (Übung 2) stammen aus der systemischen Familientherapie (Sharon Wegscheider-Cruse, Satir). Das Genogramm (Murray Bowen) sollte parallel erarbeitet werden – Übung 1 kann als Einstieg dienen. <strong>Kommunikationsstile</strong> basieren auf Gottman's Forschung und der Gewaltfreien Kommunikation. <strong>Bei familiärer Gewalt/Vernachlässigung:</strong> Meldepflicht prüfen (Art. 26 Code de la famille, Luxembourg). Einbindung OPJ (Office National de l'Enfance) und SCAS.
-  </div>
-
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Familie & Beziehungen zuhause · Seite 2</span>
   </div>
 </div>
 

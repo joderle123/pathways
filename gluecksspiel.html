@@ -1,211 +1,294 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Arbeitsblatt – Glücksspiel &amp; Zocken</title>
-  <link rel="stylesheet" href="../css/arbeitsblatt.css">
-  <style>
-    :root { --farbe: #DC2626; --farbe-hell: #FEF2F2; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachkraft-Modul: Glücksspiel</title>
+<link rel="stylesheet" href="../fachkraft-modul.css">
+<style>:root { --farbe: #7C3AED; }</style>
 </head>
 <body>
+<div class="fm-dokument">
 
-<div class="druck-leiste">
-  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
-  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
-</div>
-
-<!-- ===== SEITE 1 ===== -->
-<div class="seite">
-  <div class="kopfzeile">
-    <div class="kopfzeile-links">
-      <div class="schule-label">Pathways · Joey Guedes</div>
-      <div class="ab-titel">Glücksspiel & Zocken – Das System durchschauen</div>
-      <div class="ab-untertitel">Konsum & Risikoverhalten · Kategorie: Konsum</div>
+<div class="fm-seite">
+  <div class="fm-header">
+    <div class="fm-header-left">
+      <span class="fm-kategorie">Verhaltensabhängigkeit</span>
+      <h1 class="fm-titel">Glücksspiel</h1>
+      <p class="fm-untertitel">Gambling Disorder · Sportwetten · Online-Casino · Spielsucht · Schulden</p>
     </div>
-    <div class="kopfzeile-icon">🎰</div>
-  </div>
-
-  <div class="schuelerinfo">
-    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
-    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
-  </div>
-
-  <div class="infobox">
-    <div class="infobox-titel">💡 Das Casino gewinnt immer – so funktioniert das System</div>
-    <p>Glücksspiel ist mathematisch so gebaut, dass du langfristig verlierst. Das ist kein Zufall – es ist Kalkül. Die Anbieter verdienen Milliarden, weil das Gehirn von Gewinnen viel stärker aktiviert wird als von Verlusten.</p>
-    <p>🧠 <em>Wusstest du? Das Gehirn schüttet beim „Fast-Gewinn" (z.B. einarmiger Bandit stoppt bei 2 von 3 Symbolen) fast genauso viel Dopamin aus wie bei echtem Gewinn. Du wirst mit Verlusten belohnt – das ist der Trick.</em></p>
-  </div>
-
-  <!-- Übung 1: Was zählt als Glücksspiel? -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">1</div>
-      <div class="uebung-titel">Was zählt als Glücksspiel? – Kreise ein, was du kennst</div>
-    </div>
-    <div class="uebung-beschreibung">Glücksspiel ist mehr als Casino. Kreise alles ein, womit du schon in Kontakt warst (auch bei anderen):</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px;">
-      <div style="background:var(--farbe-hell);border:2px solid #FCA5A5;border-radius:10px;padding:8px;font-size:11px;text-align:center;">⚽ <strong>Sportwetten</strong><br><span style="font-size:9px;color:#4B5563;">Online oder beim Wettbüro</span></div>
-      <div style="background:#FEF2F2;border:2px solid #FCA5A5;border-radius:10px;padding:8px;font-size:11px;text-align:center;">🎮 <strong>Loot Boxes</strong><br><span style="font-size:9px;color:#4B5563;">In Games kaufen (FIFA-Packs!)</span></div>
-      <div style="background:var(--farbe-hell);border:2px solid #FCA5A5;border-radius:10px;padding:8px;font-size:11px;text-align:center;">🃏 <strong>Online-Poker</strong><br><span style="font-size:9px;color:#4B5563;">Mit echtem Geld</span></div>
-      <div style="background:#FEF2F2;border:2px solid #FCA5A5;border-radius:10px;padding:8px;font-size:11px;text-align:center;">🎰 <strong>Spielautomaten</strong><br><span style="font-size:9px;color:#4B5563;">Klassisch oder online</span></div>
-      <div style="background:var(--farbe-hell);border:2px solid #FCA5A5;border-radius:10px;padding:8px;font-size:11px;text-align:center;">🎟️ <strong>Rubbellose / Lotto</strong><br><span style="font-size:9px;color:#4B5563;">Auch gelegentlich</span></div>
-      <div style="background:#FEF2F2;border:2px solid #FCA5A5;border-radius:10px;padding:8px;font-size:11px;text-align:center;">🏆 <strong>Fantasy-Ligen</strong><br><span style="font-size:9px;color:#4B5563;">Mit Geld-Einsatz</span></div>
-      <div style="background:var(--farbe-hell);border:2px solid #FCA5A5;border-radius:10px;padding:8px;font-size:11px;text-align:center;">🎲 <strong>Würfelspiele / Poker</strong><br><span style="font-size:9px;color:#4B5563;">Mit Freunden um Geld</span></div>
-      <div style="background:#FEF2F2;border:2px solid #FCA5A5;border-radius:10px;padding:8px;font-size:11px;text-align:center;">🎁 <strong>Wundertüten / Gacha</strong><br><span style="font-size:9px;color:#4B5563;">In Mobile Games</span></div>
-    </div>
-    <div style="background:#FFFBEB;border:1.5px solid #FCD34D;border-radius:8px;padding:7px;font-size:10px;">
-      💡 <strong>Loot Boxes sind Glücksspiel</strong> – Belgien und die Niederlande haben sie bereits verboten. In Luxemburg ist Glücksspiel unter 18 illegal (Loi du 20 juillet 2018), aber Loot Boxes fallen in eine rechtliche Grauzone.
-    </div>
-  </div>
-
-  <!-- Übung 2: Near-Miss Illusion -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">2</div>
-      <div class="uebung-titel">Die „Fast-Gewinn"-Illusion – Warum dein Gehirn dich austrickst</div>
-    </div>
-    <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:8px;">
-      <div style="flex:1;">
-        <div style="display:flex;justify-content:space-around;margin-bottom:6px;font-size:20px;">🍒 🍒 🍋</div>
-        <div style="background:#FEF2F2;border:1.5px solid #FCA5A5;border-radius:8px;padding:7px;font-size:10px;text-align:center;">
-          <strong style="color:#DC2626;">Fast gewonnen!</strong><br>Das Gehirn feuert fast wie bei echtem Gewinn → Du spielst weiter.
-        </div>
+    <div class="fm-header-right">
+      <div class="fm-icd">
+        <span class="fm-icd-code">F63.0</span>
+        <span class="fm-icd-label">Pathologisches Spielen</span>
       </div>
-      <div style="width:2px;background:#E5E7EB;align-self:stretch;"></div>
-      <div style="flex:1;">
-        <div style="font-size:10px;color:#374151;margin-bottom:6px;">So funktioniert <strong>variable Verstärkung:</strong></div>
-        <div style="display:flex;flex-direction:column;gap:4px;">
-          <div style="background:#F0FDF4;border-radius:6px;padding:5px 8px;font-size:10px;">❌ Verlust → kurze Enttäuschung</div>
-          <div style="background:#ECFDF5;border-radius:6px;padding:5px 8px;font-size:10px;">❌ Fast-Gewinn → Dopamin! Weitermachen!</div>
-          <div style="background:#FEF9C3;border-radius:6px;padding:5px 8px;font-size:10px;">✅ Echter Gewinn → EUPHORIE → Noch mal!</div>
-          <div style="background:#FEF2F2;border-radius:6px;padding:5px 8px;font-size:10px;font-weight:700;">→ Das Gehirn kann nicht aufhören</div>
-        </div>
+      <div class="fm-icd">
+        <span class="fm-icd-code">6C50</span>
+        <span class="fm-icd-label">Gambling Disorder (ICD-11)</span>
       </div>
-    </div>
-    <div style="font-size:11px;margin-bottom:3px;">Erkennst du dieses Muster bei dir oder jemandem den du kennst? Was passiert dann?</div>
-    <div style="border-bottom:1px dashed #D1D5DB;height:16px;margin-bottom:3px;"></div>
-  </div>
-
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Glücksspiel & Zocken · Seite 1</span>
-  </div>
-</div>
-
-<!-- ===== SEITE 2 ===== -->
-<div class="seite">
-
-  <!-- Übung 3: Gambling-Tagebuch -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">3</div>
-      <div class="uebung-titel">Mein Glücksspiel-Tagebuch – 5 Sessions ehrlich anschauen</div>
-    </div>
-    <div class="uebung-beschreibung">Falls du (oder jemand dem du nahestehst) schon gespielt hat – trage ein was du weißt. Falls nicht, lass die Felder frei.</div>
-    <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:8px;">
-      <div style="display:grid;grid-template-columns:80px 1fr 55px 55px 1fr;gap:5px;background:var(--farbe-hell);border-radius:6px;padding:5px 8px;font-size:10px;font-weight:700;color:#DC2626;">
-        <div>Session</div><div>Was / Wo</div><div>Wie lang</div><div>+/- (€)</div><div>Stimmung danach</div>
-      </div>
-      <div style="display:grid;grid-template-columns:80px 1fr 55px 55px 1fr;gap:5px;border:1px solid #FCA5A5;border-radius:6px;padding:5px 8px;font-size:10px;">
-        <div style="color:#DC2626;font-weight:700;">Session 1</div>
-        <div style="border-bottom:1px dashed #D1D5DB;height:16px;"></div>
-        <div style="border-bottom:1px dashed #D1D5DB;height:16px;"></div>
-        <div style="border-bottom:1px dashed #D1D5DB;height:16px;"></div>
-        <div style="border-bottom:1px dashed #D1D5DB;height:16px;"></div>
-      </div>
-      <div style="display:grid;grid-template-columns:80px 1fr 55px 55px 1fr;gap:5px;border:1px solid #FCA5A5;border-radius:6px;padding:5px 8px;font-size:10px;">
-        <div style="color:#DC2626;font-weight:700;">Session 2</div>
-        <div style="border-bottom:1px dashed #D1D5DB;height:16px;"></div>
-        <div style="border-bottom:1px dashed #D1D5DB;height:16px;"></div>
-        <div style="border-bottom:1px dashed #D1D5DB;height:16px;"></div>
-        <div style="border-bottom:1px dashed #D1D5DB;height:16px;"></div>
-      </div>
-      <div style="display:grid;grid-template-columns:80px 1fr 55px 55px 1fr;gap:5px;border:1px solid #FCA5A5;border-radius:6px;padding:5px 8px;font-size:10px;">
-        <div style="color:#DC2626;font-weight:700;">Session 3</div>
-        <div style="border-bottom:1px dashed #D1D5DB;height:16px;"></div>
-        <div style="border-bottom:1px dashed #D1D5DB;height:16px;"></div>
-        <div style="border-bottom:1px dashed #D1D5DB;height:16px;"></div>
-        <div style="border-bottom:1px dashed #D1D5DB;height:16px;"></div>
-      </div>
-      <div style="display:grid;grid-template-columns:80px 1fr 55px 55px 1fr;gap:5px;border:1px solid #FCA5A5;border-radius:6px;padding:5px 8px;font-size:10px;">
-        <div style="color:#DC2626;font-weight:700;">Session 4</div>
-        <div style="border-bottom:1px dashed #D1D5DB;height:16px;"></div>
-        <div style="border-bottom:1px dashed #D1D5DB;height:16px;"></div>
-        <div style="border-bottom:1px dashed #D1D5DB;height:16px;"></div>
-        <div style="border-bottom:1px dashed #D1D5DB;height:16px;"></div>
-      </div>
-      <div style="display:grid;grid-template-columns:80px 1fr 55px 55px 1fr;gap:5px;border:1px solid #FCA5A5;border-radius:6px;padding:5px 8px;font-size:10px;">
-        <div style="color:#DC2626;font-weight:700;">Session 5</div>
-        <div style="border-bottom:1px dashed #D1D5DB;height:16px;"></div>
-        <div style="border-bottom:1px dashed #D1D5DB;height:16px;"></div>
-        <div style="border-bottom:1px dashed #D1D5DB;height:16px;"></div>
-        <div style="border-bottom:1px dashed #D1D5DB;height:16px;"></div>
-      </div>
-    </div>
-    <div style="font-size:10px;color:#374151;">Was fällt dir auf, wenn du diese Sessions nebeneinander siehst?</div>
-    <div style="border-bottom:1px dashed #D1D5DB;height:16px;margin-top:4px;"></div>
-  </div>
-
-  <!-- Übung 4: Chasing Losses Spirale -->
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">4</div>
-      <div class="uebung-titel">Die Verlust-Spirale – Zeichne sie nach</div>
-    </div>
-    <div style="display:flex;gap:12px;align-items:flex-start;">
-      <div style="flex:1;">
-        <div style="display:flex;flex-direction:column;gap:3px;font-size:10px;">
-          <div style="background:#FEF9C3;border-left:3px solid #F59E0B;padding:4px 8px;border-radius:0 6px 6px 0;">💸 Verlust – „Das hole ich zurück!"</div>
-          <div style="padding-left:12px;font-size:14px;color:#DC2626;">↓</div>
-          <div style="background:#FEF2F2;border-left:3px solid #F87171;padding:4px 8px;border-radius:0 6px 6px 0;">🔄 Höherer Einsatz – mehr Risiko</div>
-          <div style="padding-left:12px;font-size:14px;color:#DC2626;">↓</div>
-          <div style="background:#FEE2E2;border-left:3px solid #EF4444;padding:4px 8px;border-radius:0 6px 6px 0;">💸 Noch mehr verloren – Panik</div>
-          <div style="padding-left:12px;font-size:14px;color:#DC2626;">↓</div>
-          <div style="background:#FEE2E2;border-left:3px solid #DC2626;padding:4px 8px;border-radius:0 6px 6px 0;">🌀 Noch höherer Einsatz, Lügen, Schulden…</div>
-        </div>
-      </div>
-      <div style="flex:1;">
-        <div style="font-size:10px;color:#374151;margin-bottom:6px;font-weight:700;">Mein Ausstiegsplan – wenn der Drang kommt:</div>
-        <div style="display:flex;flex-direction:column;gap:5px;">
-          <div style="background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:8px;padding:7px;font-size:10px;">
-            🚫 <strong>Alternative 1:</strong><br>
-            <span style="border-bottom:1px dashed #D1D5DB;display:inline-block;width:140px;margin-top:3px;"></span>
-          </div>
-          <div style="background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:8px;padding:7px;font-size:10px;">
-            🎯 <strong>Alternative 2:</strong><br>
-            <span style="border-bottom:1px dashed #D1D5DB;display:inline-block;width:140px;margin-top:3px;"></span>
-          </div>
-          <div style="background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:8px;padding:7px;font-size:10px;">
-            🤝 <strong>Person die ich anrufe:</strong><br>
-            <span style="border-bottom:1px dashed #D1D5DB;display:inline-block;width:140px;margin-top:3px;"></span>
-          </div>
-        </div>
+      <div class="fm-icd">
+        <span class="fm-icd-code">Z59.7</span>
+        <span class="fm-icd-label">Unzureichende Sozialversicherung und Sozialfürsorge</span>
       </div>
     </div>
   </div>
 
-  <!-- Reflexion -->
-  <div class="reflexion">
-    <div class="reflexion-titel">💬 Reflexion</div>
-    <p style="font-size:11px;margin-bottom:5px;">Was erhofft du dir vom Spielen – und bekommst du das wirklich? Was wäre eine ehrlichere Antwort auf dieses Bedürfnis?</p>
-    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
-    <div style="margin-top:8px;font-size:10px;color:var(--grau);">
-      <strong>Hilfe:</strong> Jugendtelefon: <strong>116 111</strong> (kostenlos, anonym) · Croix-Rouge Beratung · Spielsucht-Beratung Luxemburg
+  <div class="fm-quickinfo">
+    <div class="fm-qi-item">
+      <span class="fm-qi-zahl">3–5%</span>
+      <span class="fm-qi-label">Jugendliche mit problematischem Glücksspielverhalten (höher als Erwachsene)</span>
+    </div>
+    <div class="fm-qi-item">
+      <span class="fm-qi-zahl">18 J.</span>
+      <span class="fm-qi-label">Gesetzliches Mindestalter für Glücksspiel in Luxemburg — aber Online-Angebote kaum kontrollierbar</span>
+    </div>
+    <div class="fm-qi-item">
+      <span class="fm-qi-zahl">Loot Boxes</span>
+      <span class="fm-qi-label">Mikrotransaktionen in Videospielen als Einstieg ins Glücksspielverhalten (strukturell identisch)</span>
+    </div>
+    <div class="fm-qi-item">
+      <span class="fm-qi-zahl">3:1</span>
+      <span class="fm-qi-label">Jungen : Mädchen bei Gambling Disorder; Mädchen oft verdeckter (Lotto, Rubbellose)</span>
     </div>
   </div>
 
-  <div class="fachhinweis">
-    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
-    <strong>ICD-10:</strong> F63.0 (pathologisches Glücksspielen). <strong>ICD-11:</strong> 6C50 (Gambling Disorder). Glücksspiel unter 18 J. ist in Luxemburg verboten (Loi du 20 juillet 2018) – Loot Boxes befinden sich in einer rechtlichen Grauzone. <strong>Kognitive Verzerrungen</strong> ansprechen: Spielerfehlschluss („nach 5 Verlusten kommt sicher ein Gewinn"), Kontrollillusion, Near-Miss-Phänomen. <strong>Screening:</strong> SOGS-RA (South Oaks Gambling Screen – Revised for Adolescents). <strong>Komorbidität:</strong> häufig ADHS, Angststörungen, Depression, Substanzkonsum. Motivational Interviewing; kognitive Umstrukturierung von Glücksüberzeugungen. <strong>Variable Verstärkung</strong> psychoedukativ erklären. Online-Sperren / Selbstsperre-Tools. Bei Schulden: Sozialberatung einbeziehen.
-  </div>
+  <h2 class="fm-abschnitt-titel">Theoretischer Hintergrund</h2>
+  <div class="fm-zwei-spalten">
+    <div>
+      <h3 class="fm-unter-titel">Neurobiologie des Glücksspiels</h3>
+      <p>Glücksspiel aktiviert dasselbe dopaminerge Belohnungssystem wie Substanzen. Besonderheit: <strong>Variable Ratio Schedule</strong> (Skinner) — unvorhersehbare Belohnungen erzeugen stärkste Konditionierung. "Near miss"-Effekt: Fast-Gewinne aktivieren Belohnungssystem wie echte Gewinne → motivieren zur Fortsetzung trotz Verlust.</p>
+      <p>Adoleszentes Gehirn: Belohnungssystem überaktiv, Inhibitionssystem (PFC) noch unreif → höhere Vulnerabilität für Abhängigkeit.</p>
 
-  <div class="fusszeile">
-    <span>Pathways · Therapeutic Case Management</span>
-    <span>Glücksspiel & Zocken · Seite 2</span>
+      <h3 class="fm-unter-titel">Gambling Disorder (ICD-11: 6C50)</h3>
+      <p>Diagnostische Kriterien (mind. 12 Monate):</p>
+      <ol class="fm-liste">
+        <li>Kontrollverlust über Beginn, Häufigkeit, Intensität, Dauer, Ende des Spielens</li>
+        <li>Priorisierung von Glücksspiel über andere Aktivitäten</li>
+        <li>Fortsetzen trotz negativer Konsequenzen (Schulden, Beziehungen, Schule)</li>
+      </ol>
+    </div>
+    <div>
+      <h3 class="fm-unter-titel">Moderne Risikofaktoren bei Jugendlichen</h3>
+      <ul class="fm-liste">
+        <li><strong>Sportwetten online:</strong> Leicht zugänglich, Werbung auf Social Media und YouTube normalisiert</li>
+        <li><strong>Loot Boxes / Skin-Betting:</strong> In Videospielen strukturell identisch mit Glücksspiel — aber nicht als solches reguliert</li>
+        <li><strong>Freie Wette"-Angebote:</strong> Marketing-Strategien senken Einstiegshemmschwelle</li>
+        <li><strong>Peer-Einfluss:</strong> Gruppe wettet gemeinsam auf Fußball etc.</li>
+        <li><strong>Komorbidität:</strong> ADHS, Depression, Angst als Risikofaktoren</li>
+      </ul>
+
+      <h3 class="fm-unter-titel">Verhaltensökonomie — Kognitive Verzerrungen</h3>
+      <ul class="fm-liste">
+        <li><strong>Gambler's Fallacy:</strong> "Nach 10 Verlusten muss ein Gewinn kommen"</li>
+        <li><strong>Illusion of Control:</strong> Eigener Einfluss auf Zufallsergebnisse überschätzt</li>
+        <li><strong>Chasing Losses:</strong> Verluste durch weiterspielen "zurückholen" wollen</li>
+      </ul>
+
+      <div class="fm-cave">
+        <strong>CAVE Schulden:</strong> Glücksspielschulden bei Jugendlichen führen zu Beschaffungskriminalität, Beziehungsabbrüchen, Suizidgedanken. Schulden-Situation immer erfassen und Service Médiation Dettes (247-86700) einschalten.
+      </div>
+    </div>
   </div>
 </div>
 
+<div class="fm-seite">
+  <h2 class="fm-seite-titel">Erkennen & Einschätzen</h2>
+  <div class="fm-ampel-system">
+    <div class="fm-ampel-box gruen">
+      <div class="fm-ampel-titel">GRÜN — Gelegentliches Spielen</div>
+      <ul class="fm-ampel-liste">
+        <li>Gelegentliche Wetten im Freundeskreis (Fußball-Tipp etc.)</li>
+        <li>Klares Budget-Bewusstsein, keine Schulden</li>
+        <li>Kein Craving, kann ohne Problem aufhören</li>
+        <li>SOGS-RA: 0–1 Punkte</li>
+        <li>→ Psychoedukation zu kognitiven Verzerrungen, Risiken benennen</li>
+      </ul>
+    </div>
+    <div class="fm-ampel-box gelb">
+      <div class="fm-ampel-titel">GELB — Problematisches Spielen</div>
+      <ul class="fm-ampel-liste">
+        <li>Regelmäßiges Spielen trotz Verlusten</li>
+        <li>Schulden bei Freunden/Familie</li>
+        <li>Lügen über Ausmaß des Spielens</li>
+        <li>Schulleistung beeinträchtigt</li>
+        <li>SOGS-RA: 2–3 Punkte</li>
+        <li>→ MI-Intervention, Schulden-Beratung, Elterngespräch</li>
+      </ul>
+    </div>
+    <div class="fm-ampel-box rot">
+      <div class="fm-ampel-titel">ROT — Gambling Disorder / Notfall</div>
+      <ul class="fm-ampel-liste">
+        <li>ICD-11 6C50-Kriterien erfüllt</li>
+        <li>Erhebliche Schulden, ggf. kriminelle Beschaffung</li>
+        <li>Suizidgedanken im Zusammenhang mit Spielschulden</li>
+        <li>SOGS-RA ≥5 (wahrscheinliche Gambling Disorder)</li>
+        <li>→ Suchtberatung Croix-Rouge, Joueurs Anonymes, Schulden-Mediation</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="fm-unter-titel">Screening</h3>
+  <div class="fm-zwei-spalten">
+    <div>
+      <p><strong>SOGS-RA (South Oaks Gambling Screen — Revised for Adolescents):</strong></p>
+      <ul class="fm-liste">
+        <li>12 Items, speziell für Jugendliche validiert</li>
+        <li>0–1: kein Problem; 2–3: problematisch; ≥4: wahrscheinliche Störung</li>
+        <li>Goldstandard in Jugend-Gambling-Forschung</li>
+      </ul>
+    </div>
+    <div>
+      <p><strong>PGSI (Problem Gambling Severity Index):</strong></p>
+      <ul class="fm-liste">
+        <li>9 Items, 4-Punkt-Skala</li>
+        <li>0: kein Problem; 1–2: niedrig; 3–7: mittel; ≥8: schwer</li>
+        <li>Auch für Jugendliche einsetzbar</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="fm-seite">
+  <h2 class="fm-seite-titel">Im Gespräch</h2>
+  <div class="fm-gespraech-grid">
+    <div class="fm-gespraech-gut">
+      <div class="fm-gespraech-label gut">Hilfreiche Gesprächsführung (MI-basiert)</div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Kognitive Verzerrungen erkunden (nicht belehren)</p>
+        <p class="fm-zitat">"Du sagst, du wettest weil du beim nächsten Mal gewinnst — wie kommst du auf diese Einschätzung? Was sagt dir das Spiel, wenn du verlierst?"</p>
+      </div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Funktion des Spielens verstehen</p>
+        <p class="fm-zitat">"Was gibt dir das Spielen — was bekommst du dadurch, was du sonst nicht hast?"</p>
+      </div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Kosten-Nutzen-Bilanz</p>
+        <p class="fm-zitat">"Wenn du zusammenrechnest, was du im letzten Monat eingesetzt und gewonnen hast — wie sieht die Bilanz aus? Wer gewinnt wirklich?"</p>
+      </div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Autonomie stärken</p>
+        <p class="fm-zitat">"Das Spiel ist so designed, dass du weiterspielst — das ist Absicht, kein Zufall. Wie fühlst du dich dabei, wenn du das weißt?"</p>
+      </div>
+    </div>
+    <div class="fm-gespraech-schlecht">
+      <div class="fm-gespraech-label schlecht">Kontraproduktiv — vermeiden</div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Fakten-Bombardement</p>
+        <p class="fm-zitat">"Die Wahrscheinlichkeit zu gewinnen ist 1:10.000, das ist mathematisch Unsinn."</p>
+        <p class="fm-erklaerung">Logische Argumente wirken nicht bei Glücksspiel-Sucht — das Belohnungssystem ist stärker als rationales Denken.</p>
+      </div>
+      <div class="fm-gespraech-beispiel">
+        <p class="fm-gespraech-titel">Schulden bagatellisieren</p>
+        <p class="fm-zitat">"So viel ist das ja nicht — das bekommst du hin."</p>
+        <p class="fm-erklaerung">Schulden bei Jugendlichen sind relativ groß und psychisch sehr belastend. Ernst nehmen und Hilfe mobilisieren.</p>
+      </div>
+    </div>
+  </div>
+  <div class="fm-tipp">
+    <strong>Loot Boxes als Einstiegsthema:</strong> Viele Jugendliche spielen Videospiele mit Loot Boxes, ohne dies als Glücksspiel zu erkennen. "Hast du schon mal für Skins oder Loot Boxes Geld ausgegeben? Wie viel? Wie fühlst du dich, wenn du nichts Gutes bekommst?" — Bewusstsein schaffen, ohne das Hobby zu entwerten.
+  </div>
+</div>
+
+<div class="fm-seite">
+  <h2 class="fm-seite-titel">Interventionen & Methoden</h2>
+  <div class="fm-methoden-grid">
+
+    <div class="fm-methode">
+      <div class="fm-methode-header">
+        <span class="fm-methode-name">Motivational Interviewing (MI)</span>
+        <span class="fm-evidence-stars">★★★</span>
+      </div>
+      <p>Goldstandard für Suchtambivalenz. Ambivalenz normalisieren, Diskrepanz erzeugen (Werte vs. Spielverhalten), Change Talk elicitieren. Besonders wirksam bei Jugendlichen da nicht konfrontativ. Kombination mit Brief Intervention: 1–3 Sitzungen MI senkt problematisches Glücksspielen signifikant (Hodgins 2011).</p>
+    </div>
+
+    <div class="fm-methode">
+      <div class="fm-methode-header">
+        <span class="fm-methode-name">KVT für Gambling Disorder</span>
+        <span class="fm-evidence-stars">★★★</span>
+      </div>
+      <p>Kognitive Restrukturierung (Gambler's Fallacy, Near Miss), Exposition mit Reaktionsverhinderung, Verhaltensaktivierung für alternatives Rewarding, Rückfallprävention. 10–16 Sitzungen. Meta-Analyse: signifikante Reduktion Spielverhalten und Schulden. Für Jugendliche adaptierte Protokolle empfohlen.</p>
+    </div>
+
+    <div class="fm-methode">
+      <div class="fm-methode-header">
+        <span class="fm-methode-name">Schulden-Mediation (parallele Maßnahme)</span>
+        <span class="fm-evidence-stars">★★☆</span>
+      </div>
+      <p>Schulden ohne Mediation perpetuieren Spielen ("muss zurückgewinnen"). Service Médiation Dettes SCAS (247-86700): kostenlose Schuldenberatung und -umstrukturierung. Budgetplan erstellen. Gläubiger-Kommunikation. Bei Minderjährigen: Eltern einbeziehen für Schuldenübernahme/Absicherung.</p>
+    </div>
+
+    <div class="fm-methode">
+      <div class="fm-methode-header">
+        <span class="fm-methode-name">Selbsthilfe & Anonyme Gruppen</span>
+        <span class="fm-evidence-stars">★★☆</span>
+      </div>
+      <p>Joueurs Anonymes (JA): 12-Schritte-Programm analog AA. Peer-Unterstützung, Normalisierung, Verantwortlichkeit. Für Jugendliche weniger gut zugänglich (Erwachsenengruppen dominieren) — aber Eltern/Familien profitieren von Gam-Anon. Ergänzung zu KVT, kein Ersatz.</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="fm-seite">
+  <h2 class="fm-seite-titel">Netzwerk & Ressourcen Luxemburg</h2>
+  <div class="fm-ressourcen-grid">
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Joueurs Anonymes Luxemburg</div>
+      <div class="fm-ressource-tel">24 48 11 52</div>
+      <div class="fm-ressource-info">12-Schritte Selbsthilfegruppe für Glücksspieler. Wöchentliche Treffen. Auch Gam-Anon für Angehörige. Kostenlos, anonym.</div>
+    </div>
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Croix-Rouge — Suchtberatung</div>
+      <div class="fm-ressource-tel">2755-300</div>
+      <div class="fm-ressource-info">Spezialisierte Beratung und Therapie bei Gambling Disorder. Einzel- und Gruppenangebote. Auch für Jugendliche.</div>
+    </div>
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">SCAS — Service Médiation Dettes</div>
+      <div class="fm-ressource-tel">247-86700</div>
+      <div class="fm-ressource-info">Kostenlose Schuldenberatung und -mediation. Budgetplan, Gläubigerkommunikation. Bei spielbedingten Schulden essenziell.</div>
+    </div>
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">JDH – Jugend- und Drogenberatung</div>
+      <div class="fm-ressource-tel">49 76 76-1</div>
+      <div class="fm-ressource-info">Beratung zu Verhaltensabhängigkeiten inkl. Gambling. Anonym, niedrigschwellig, für Jugendliche.</div>
+    </div>
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Kanner-Jugendtelefon</div>
+      <div class="fm-ressource-tel">116 111</div>
+      <div class="fm-ressource-info">Bei Schulden-Krise oder Suizidgedanken im Zusammenhang mit Glücksspiel. 24/7, anonym, kostenlos.</div>
+    </div>
+
+    <div class="fm-ressource-karte">
+      <div class="fm-ressource-name">Commission de Surveillance du Secteur Financier (CSSF)</div>
+      <div class="fm-ressource-tel">cssflu.lu</div>
+      <div class="fm-ressource-info">Regulierung und Beschwerde bei illegalem Online-Glücksspiel. Informationen zu legalen vs. illegalen Angeboten.</div>
+    </div>
+
+  </div>
+
+  <div class="fm-krisen-box">
+    <h3 class="fm-krisen-titel">Notfall-Protokoll bei Spielschulden-Krise</h3>
+    <ol class="fm-krisen-liste">
+      <li><strong>Suizidalität einschätzen:</strong> Schulden + Schamesempfinden = erhöhtes Risiko. Direkt fragen.</li>
+      <li><strong>Schulden-Situation erheben:</strong> Wie viel? Bei wem? Drohungen?</li>
+      <li><strong>Schulden-Mediation aktivieren:</strong> SCAS 247-86700 — sofort anmelden</li>
+      <li><strong>Zugang zu Geld sperren:</strong> Gemeinsam mit Eltern: Karte sperren, Limits setzen</li>
+      <li><strong>Spieler-Sperre beantragen:</strong> Casinos Luxembourg bietet freiwillige Selbstsperre an</li>
+      <li><strong>Croix-Rouge Suchtberatung:</strong> Überweisung sofort — nicht warten</li>
+    </ol>
+  </div>
+
+  <div class="fm-footer">
+    <span>Pathways — Fachkraft-Modul</span>
+    <span>Glücksspiel</span>
+    <span>Stand: 2025 | ICD-10: F63.0 | ICD-11: 6C50</span>
+  </div>
+</div>
+
+</div>
 </body>
 </html>
