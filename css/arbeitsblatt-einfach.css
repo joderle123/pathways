@@ -1,0 +1,958 @@
+/* ============================================================
+   Pathways — Vereinfachte Arbeitsblätter
+   Für jüngere Schüler, kognitiv/sozio-emotional schwächere Schüler
+   Größere Schrift, mehr Visuelles, einfachere Sprache
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+:root {
+  --farbe: #7C3AED;
+  --farbe-hell: #F5F3FF;
+  --farbe-mid: color-mix(in srgb, var(--farbe) 15%, white);
+  --farbe-weich: color-mix(in srgb, var(--farbe) 8%, white);
+  --text: #1E293B;
+  --text-hell: #334155;
+  --grau: #64748B;
+  --grau-hell: #94A3B8;
+  --border: #E2E8F0;
+  --border-mid: #CBD5E1;
+  --bg-page: #F1F5F9;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-lg: 18px;
+  --shadow-page: 0 4px 32px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-box:  0 2px 6px rgba(0,0,0,0.07);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 15px;
+  color: var(--text);
+  background: var(--bg-page);
+  padding: 24px 20px;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   SEITE
+   ============================================================ */
+.seite {
+  width: 210mm;
+  min-height: 297mm;
+  background: white;
+  margin: 0 auto 32px;
+  padding: 16mm 18mm 28mm;
+  box-shadow: var(--shadow-page);
+  border-radius: 14px;
+  page-break-after: always;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================================
+   KOPFZEILE
+   ============================================================ */
+.kopfzeile {
+  background: linear-gradient(135deg, var(--farbe) 0%, color-mix(in srgb, var(--farbe) 72%, #0F172A) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -16mm;
+  margin-left: -18mm;
+  margin-right: -18mm;
+  padding: 22px 18mm 20px;
+  margin-bottom: 20px;
+  gap: 16px;
+}
+
+.kopfzeile-links { flex: 1; }
+
+.schule-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.ab-titel {
+  font-size: 24px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 5px;
+  letter-spacing: -0.3px;
+}
+
+.ab-untertitel {
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  font-weight: 600;
+}
+
+.kopfzeile-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(255,255,255,0.20);
+  border: 2px solid rgba(255,255,255,0.35);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   SCHÜLERINFO
+   ============================================================ */
+.schuelerinfo {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+  background: var(--farbe-hell);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  border: 2px solid var(--farbe-mid);
+}
+
+.info-feld-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--farbe);
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.info-feld-linie {
+  height: 26px;
+  border-bottom: 2px solid var(--border-mid);
+}
+
+/* ============================================================
+   INFOBOX / ERKLÄRUNG
+   ============================================================ */
+.infobox {
+  background: var(--farbe-hell);
+  border: 2px solid var(--farbe-mid);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px 16px 48px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 1.6;
+  position: relative;
+}
+
+.infobox::before {
+  content: '💡';
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  font-size: 22px;
+}
+
+.infobox-titel {
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--farbe);
+  margin-bottom: 8px;
+}
+
+.infobox p { margin-bottom: 6px; }
+.infobox p:last-child { margin-bottom: 0; }
+
+/* Große einfache Box mit individuellem Emoji */
+.einfach-box {
+  background: var(--farbe-hell);
+  border: 2px solid var(--farbe-mid);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px 18px 70px;
+  margin-bottom: 20px;
+  position: relative;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.einfach-box-icon {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  width: 42px;
+  height: 42px;
+  background: white;
+  border: 2px solid var(--farbe);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+.einfach-box-titel {
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--farbe);
+  margin-bottom: 6px;
+}
+
+/* ============================================================
+   ÜBUNGSBLOCK
+   ============================================================ */
+.uebung {
+  margin-bottom: 22px;
+  background: #FAFBFC;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-box);
+}
+
+.uebung-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.uebung-nr {
+  width: 36px;
+  height: 36px;
+  background: var(--farbe);
+  color: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: 900;
+  flex-shrink: 0;
+  box-shadow: 0 3px 8px color-mix(in srgb, var(--farbe) 45%, transparent);
+}
+
+.uebung-titel {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.1px;
+}
+
+.uebung-beschreibung {
+  font-size: 14px;
+  color: var(--text-hell);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.uebung-beschreibung strong { color: var(--farbe); font-weight: 800; }
+
+/* ============================================================
+   SCHREIBLINIEN + SCHREIBFELDER
+   ============================================================ */
+.schreiblinien {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.schreiblinie {
+  border-bottom: 2px solid #CBD5E1;
+  height: 34px;
+  width: 100%;
+}
+
+.schreibfeld-gross {
+  border: 2px dashed var(--border-mid);
+  border-radius: var(--radius);
+  min-height: 90px;
+  padding: 12px;
+  background: white;
+  margin-bottom: 8px;
+}
+
+.schreibfeld-mittel {
+  border: 2px dashed var(--border-mid);
+  border-radius: var(--radius);
+  min-height: 60px;
+  padding: 10px;
+  background: white;
+}
+
+.mal-feld {
+  border: 2.5px dashed var(--farbe-mid);
+  border-radius: var(--radius-lg);
+  min-height: 140px;
+  padding: 14px;
+  background: repeating-linear-gradient(
+    -45deg,
+    white,
+    white 10px,
+    #FAFBFC 10px,
+    #FAFBFC 20px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--grau-hell);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ============================================================
+   SMILEY-SKALA (GROSS)
+   ============================================================ */
+.smiley-skala-gross {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 14px 0;
+  margin-bottom: 10px;
+  gap: 8px;
+}
+
+.smiley-punkt-gross {
+  text-align: center;
+  flex: 1;
+}
+
+.smiley-emoji-gross {
+  font-size: 42px;
+  margin-bottom: 6px;
+  line-height: 1;
+}
+
+.smiley-label-gross {
+  font-size: 12px;
+  color: var(--text-hell);
+  font-weight: 700;
+}
+
+.smiley-kreis-gross {
+  width: 30px;
+  height: 30px;
+  border: 2.5px solid var(--border-mid);
+  border-radius: 50%;
+  margin: 8px auto 0;
+  background: white;
+}
+
+/* ============================================================
+   ANKREUZ-LISTE (gross)
+   ============================================================ */
+.ankreuz-liste {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ankreuz-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  line-height: 1.4;
+  transition: border-color 0.1s;
+}
+
+.ankreuz-item:hover { border-color: var(--farbe); }
+
+.ankreuz-box {
+  width: 26px;
+  height: 26px;
+  border: 2.5px solid var(--farbe);
+  border-radius: 7px;
+  flex-shrink: 0;
+  background: white;
+}
+
+.ankreuz-emoji {
+  font-size: 22px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.ankreuz-text { flex: 1; }
+
+/* ============================================================
+   AMPEL-AUSWAHL
+   ============================================================ */
+.ampel-auswahl {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.ampel-punkt {
+  text-align: center;
+}
+
+.ampel-kreis {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid;
+  margin: 0 auto 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  background: white;
+}
+
+.ampel-rot    { border-color: #DC2626; color: #DC2626; background: #FEE2E2; }
+.ampel-gelb   { border-color: #D97706; color: #D97706; background: #FEF3C7; }
+.ampel-gruen  { border-color: #16A34A; color: #16A34A; background: #DCFCE7; }
+
+.ampel-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* ============================================================
+   GEFÜHLS-EMOJI-AUSWAHL
+   ============================================================ */
+.gefuehls-auswahl {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.gefuehl-option {
+  text-align: center;
+  padding: 10px 6px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: white;
+  cursor: pointer;
+}
+
+.gefuehl-option:hover { border-color: var(--farbe); }
+
+.gefuehl-emoji {
+  font-size: 32px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.gefuehl-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-hell);
+}
+
+/* ============================================================
+   BILDKARTEN-GRID (3 Spalten)
+   ============================================================ */
+.karten-grid-gross {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.karten-grid-vier {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.karte-gross {
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 8px;
+  text-align: center;
+  min-height: 92px;
+  background: white;
+  box-shadow: var(--shadow-box);
+}
+
+.karte-gross-emoji {
+  font-size: 30px;
+  margin-bottom: 6px;
+  line-height: 1;
+}
+
+.karte-gross-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.karte-gross-linie {
+  border-bottom: 1.5px solid var(--border);
+  margin: 4px 2px;
+  height: 16px;
+}
+
+/* ============================================================
+   BOXEN / SPALTEN
+   ============================================================ */
+.zwei-spalten {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.drei-spalten {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.box {
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+  min-height: 80px;
+  background: white;
+  box-shadow: var(--shadow-box);
+}
+
+.box-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--farbe);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.box-label-emoji { font-size: 16px; }
+
+/* ============================================================
+   SPRECHBLASE
+   ============================================================ */
+.sprechblase {
+  background: var(--farbe-hell);
+  border: 2px solid var(--farbe-mid);
+  border-radius: 18px;
+  padding: 12px 14px;
+  margin: 10px 0;
+  position: relative;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--text);
+  box-shadow: var(--shadow-box);
+}
+
+.sprechblase::after {
+  content: '';
+  position: absolute;
+  left: 22px;
+  bottom: -10px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid var(--farbe-mid);
+}
+
+/* ============================================================
+   REFLEXION (gelb)
+   ============================================================ */
+.reflexion {
+  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+  border: 2px solid #FCD34D;
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(252, 211, 77, 0.25);
+}
+
+.reflexion-titel {
+  font-size: 16px;
+  font-weight: 800;
+  color: #92400E;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ============================================================
+   FACHHINWEIS (grün, für Pädagogen)
+   ============================================================ */
+.fachhinweis {
+  background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+  border: 2px solid #86EFAC;
+  border-radius: var(--radius-lg);
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  line-height: 1.55;
+  box-shadow: 0 2px 8px rgba(134, 239, 172, 0.20);
+}
+
+.fachhinweis-titel {
+  font-size: 13px;
+  font-weight: 800;
+  color: #166534;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ============================================================
+   ÜBUNGS-ANLEITUNG (z.B. Atemübung, Körperübung)
+   ============================================================ */
+.anleitung {
+  background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+  border: 2px solid #93C5FD;
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  margin: 12px 0;
+  box-shadow: 0 2px 8px rgba(147, 197, 253, 0.25);
+}
+
+.anleitung-titel {
+  font-size: 16px;
+  font-weight: 800;
+  color: #1E40AF;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.anleitung-schritte {
+  list-style: none;
+  padding: 0;
+  counter-reset: schritt;
+}
+
+.anleitung-schritte li {
+  counter-increment: schritt;
+  padding: 8px 8px 8px 44px;
+  position: relative;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+.anleitung-schritte li::before {
+  content: counter(schritt);
+  position: absolute;
+  left: 4px;
+  top: 6px;
+  width: 30px;
+  height: 30px;
+  background: #1E40AF;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+/* ============================================================
+   WICHTIG / WARNUNG
+   ============================================================ */
+.wichtig {
+  background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%);
+  border: 2px solid #FCA5A5;
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  margin: 12px 0;
+  font-size: 14px;
+}
+
+.wichtig-titel {
+  font-size: 15px;
+  font-weight: 800;
+  color: #991B1B;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ============================================================
+   NOTFALL-KONTAKTE
+   ============================================================ */
+.notfall-box {
+  background: #FEF2F2;
+  border: 2.5px solid #DC2626;
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  margin: 12px 0;
+}
+
+.notfall-titel {
+  font-size: 16px;
+  font-weight: 900;
+  color: #991B1B;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.notfall-nummer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+.notfall-nummer strong {
+  color: #DC2626;
+  font-weight: 900;
+  font-size: 17px;
+  font-family: monospace;
+}
+
+/* ============================================================
+   FRAGE-ANTWORT-PAARE (Zuordnung)
+   ============================================================ */
+.zuordnung {
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr;
+  gap: 10px;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.zuordnung-pfeil {
+  text-align: center;
+  font-size: 22px;
+  color: var(--farbe);
+}
+
+.zuordnung-karte {
+  padding: 10px 12px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   TRENNLINIE
+   ============================================================ */
+hr.trennlinie {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--border) 20%, var(--border) 80%, transparent 100%);
+  margin: 18px 0;
+}
+
+/* ============================================================
+   FUSSZEILE
+   ============================================================ */
+.fusszeile {
+  position: absolute;
+  bottom: 10mm;
+  left: 18mm;
+  right: 18mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  color: var(--grau-hell);
+  border-top: 1.5px solid var(--border);
+  padding-top: 6px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   DRUCKLEISTE
+   ============================================================ */
+.druck-leiste {
+  width: 210mm;
+  margin: 0 auto 16px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.btn-drucken {
+  background: var(--farbe);
+  color: white;
+  border: none;
+  padding: 11px 22px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 3px 10px color-mix(in srgb, var(--farbe) 40%, transparent);
+}
+
+.btn-drucken:hover { opacity: 0.9; }
+
+.btn-zurueck {
+  background: white;
+  color: var(--text);
+  border: 2px solid var(--border);
+  padding: 11px 20px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-zurueck:hover { background: #F8FAFC; }
+
+/* ============================================================
+   KÖRPER-SILHOUETTE (für Gefühle im Körper)
+   ============================================================ */
+.koerper-bereich {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.koerper-silhouette {
+  flex-shrink: 0;
+  width: 120px;
+  text-align: center;
+}
+
+.koerper-legende {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ============================================================
+   DRUCK-MODUS
+   ============================================================ */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  body {
+    background: white;
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+  }
+
+  .druck-leiste { display: none !important; }
+
+  .seite {
+    width: 210mm;
+    height: 297mm;
+    min-height: unset;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 16mm 18mm 22mm;
+    overflow: hidden;
+    page-break-after: always;
+    break-after: page;
+    position: relative;
+  }
+
+  .seite:last-of-type {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .kopfzeile {
+    margin-top: -16mm;
+    margin-left: -18mm;
+    margin-right: -18mm;
+    padding-left: 18mm;
+    padding-right: 18mm;
+    background: linear-gradient(135deg, var(--farbe) 0%, color-mix(in srgb, var(--farbe) 72%, #0F172A) 100%) !important;
+  }
+
+  .uebung {
+    box-shadow: none;
+    background: #FAFBFC !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .infobox, .einfach-box {
+    background: var(--farbe-hell) !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .reflexion {
+    background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%) !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .fachhinweis {
+    background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%) !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .anleitung {
+    background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%) !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .wichtig {
+    background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%) !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .notfall-box {
+    background: #FEF2F2 !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .schuelerinfo {
+    background: var(--farbe-hell) !important;
+  }
+
+  .fusszeile {
+    position: absolute;
+    bottom: 8mm;
+    left: 18mm;
+    right: 18mm;
+  }
+
+  a { text-decoration: none; color: inherit; }
+}
