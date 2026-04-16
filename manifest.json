@@ -1,0 +1,24 @@
+{
+  "name": "Pathways — Therapeutic Case Management",
+  "short_name": "Pathways",
+  "description": "Professionelles Case-Management-Tool für therapeutische Bezugsarbeit",
+  "start_url": "/bezugsarbeit-tool/index.html",
+  "display": "standalone",
+  "background_color": "#FAFAFA",
+  "theme_color": "#2563EB",
+  "orientation": "any",
+  "categories": ["medical", "productivity"],
+  "lang": "de",
+  "icons": [
+    {
+      "src": "icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -1,0 +1,1065 @@
+/* ============================================================
+   Pathways Bezugsarbeit – Fachkraft-Modul Styles (v1)
+   Professionelle Referenzdokumente für Bezugspersonen
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --farbe: #2563EB;
+  --farbe-hell: #EFF6FF;
+  --farbe-mid: color-mix(in srgb, var(--farbe) 15%, white);
+  --text: #1E293B;
+  --grau: #64748B;
+  --grau-hell: #94A3B8;
+  --border: #E2E8F0;
+  --border-mid: #CBD5E1;
+  --bg-page: #F1F5F9;
+  --radius: 8px;
+  --radius-sm: 5px;
+  --radius-lg: 12px;
+  --shadow-page: 0 4px 32px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-box: 0 1px 3px rgba(0,0,0,0.06);
+
+  /* Ampel-Farben */
+  --ampel-gruen: #16A34A;
+  --ampel-gruen-hell: #F0FDF4;
+  --ampel-gelb: #D97706;
+  --ampel-gelb-hell: #FFFBEB;
+  --ampel-rot: #DC2626;
+  --ampel-rot-hell: #FEF2F2;
+
+  /* Evidenz-Farben */
+  --evidenz-gold: #F59E0B;
+  --cave-bg: #FEF2F2;
+  --cave-border: #FECACA;
+  --tip-bg: #EFF6FF;
+  --tip-border: #BFDBFE;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 11.5px;
+  color: var(--text);
+  background: var(--bg-page);
+  padding: 24px 20px;
+  line-height: 1.55;
+}
+
+/* ============================================================
+   SEITE (A4)
+   ============================================================ */
+.fm-seite {
+  width: 210mm;
+  min-height: 297mm;
+  background: white;
+  margin: 0 auto 28px;
+  padding: 14mm 16mm 22mm;
+  box-shadow: var(--shadow-page);
+  border-radius: 10px;
+  page-break-after: always;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================================
+   KOPFZEILE
+   ============================================================ */
+.fm-kopfzeile {
+  background: linear-gradient(135deg, var(--farbe) 0%, color-mix(in srgb, var(--farbe) 72%, #0F172A) 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: -14mm;
+  margin-left: -16mm;
+  margin-right: -16mm;
+  padding: 16px 16mm 14px;
+  margin-bottom: 14px;
+  gap: 12px;
+}
+
+.fm-kopfzeile-links { flex: 1; }
+
+.fm-schule-label {
+  font-size: 7.5px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 3px;
+  font-weight: 600;
+}
+
+.fm-titel {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 5px;
+  letter-spacing: -0.4px;
+}
+
+.fm-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.fm-badge {
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 20px;
+  padding: 2px 9px;
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.90);
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.fm-kopfzeile-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(255,255,255,0.16);
+  border: 1.5px solid rgba(255,255,255,0.28);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   SCHNELL-INFO LEISTE (ersetzt Schülerinfo)
+   ============================================================ */
+.fm-quickinfo {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.fm-qi-box {
+  background: var(--farbe-hell);
+  border: 1px solid color-mix(in srgb, var(--farbe) 25%, white);
+  border-radius: var(--radius);
+  padding: 7px 10px;
+  text-align: center;
+}
+
+.fm-qi-label {
+  font-size: 7.5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--farbe);
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.fm-qi-wert {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+/* ============================================================
+   SEITEN-NAVIGATION (Seitentitel auf Seite 2+)
+   ============================================================ */
+.fm-seiten-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
+  font-size: 10px;
+  color: var(--grau);
+}
+
+.fm-seiten-nr {
+  background: var(--farbe);
+  color: white;
+  border-radius: 5px;
+  padding: 2px 8px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   SEKTION (Hauptinhaltsblock)
+   ============================================================ */
+.fm-sektion {
+  margin-bottom: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-box);
+}
+
+.fm-sektion-titel {
+  background: color-mix(in srgb, var(--farbe) 10%, white);
+  border-bottom: 1px solid color-mix(in srgb, var(--farbe) 20%, white);
+  padding: 7px 12px;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--farbe);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.fm-sektion-inhalt {
+  padding: 10px 12px;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   ZWEISPALTEN LAYOUT
+   ============================================================ */
+.fm-zweispalten {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.fm-dreispalten {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+/* ============================================================
+   AMPEL-SYSTEM (Schweregrad)
+   ============================================================ */
+.fm-ampel-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.fm-ampel-zeile {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.fm-ampel-zeile.gruen {
+  background: var(--ampel-gruen-hell);
+  border: 1px solid #BBF7D0;
+}
+
+.fm-ampel-zeile.gelb {
+  background: var(--ampel-gelb-hell);
+  border: 1px solid #FDE68A;
+}
+
+.fm-ampel-zeile.rot {
+  background: var(--ampel-rot-hell);
+  border: 1px solid #FECACA;
+}
+
+.fm-ampel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.gruen .fm-ampel-dot { background: var(--ampel-gruen); }
+.gelb .fm-ampel-dot { background: var(--ampel-gelb); }
+.rot .fm-ampel-dot { background: var(--ampel-rot); }
+
+.fm-ampel-text strong {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  display: block;
+  margin-bottom: 1px;
+}
+
+.gruen .fm-ampel-text strong { color: var(--ampel-gruen); }
+.gelb .fm-ampel-text strong { color: var(--ampel-gelb); }
+.rot .fm-ampel-text strong { color: var(--ampel-rot); }
+
+/* ============================================================
+   EVIDENZ-RATING
+   ============================================================ */
+.fm-methode {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 10px;
+  background: #FAFBFC;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 6px;
+}
+
+.fm-methode-sterne {
+  font-size: 13px;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 1px;
+  color: var(--evidenz-gold);
+  letter-spacing: -2px;
+}
+
+.fm-methode-text {}
+
+.fm-methode-name {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.fm-methode-beschreibung {
+  font-size: 10px;
+  color: var(--grau);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   CAVE BOX (Warnung)
+   ============================================================ */
+.fm-cave {
+  background: var(--cave-bg);
+  border: 1.5px solid var(--cave-border);
+  border-left: 4px solid var(--ampel-rot);
+  border-radius: var(--radius);
+  padding: 8px 11px;
+  margin-bottom: 10px;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.fm-cave-titel {
+  font-weight: 800;
+  color: var(--ampel-rot);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ============================================================
+   PRAXIS-TIPP BOX
+   ============================================================ */
+.fm-tipp {
+  background: var(--tip-bg);
+  border: 1px solid var(--tip-border);
+  border-left: 4px solid #3B82F6;
+  border-radius: var(--radius);
+  padding: 8px 11px;
+  margin-bottom: 10px;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.fm-tipp-titel {
+  font-weight: 700;
+  color: #1D4ED8;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 3px;
+}
+
+/* ============================================================
+   GESPRÄCHSBEISPIELE (hilfreich vs. kontraproduktiv)
+   ============================================================ */
+.fm-gespraech-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.fm-gespraech-spalte {}
+
+.fm-gespraech-kopf {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  padding: 5px 8px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  margin-bottom: 0;
+}
+
+.fm-gespraech-kopf.gut {
+  background: #DCFCE7;
+  color: #166534;
+}
+
+.fm-gespraech-kopf.schlecht {
+  background: #FEE2E2;
+  color: #991B1B;
+}
+
+.fm-gespraech-item {
+  padding: 5px 8px;
+  font-size: 10.5px;
+  border-left: 3px solid transparent;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--border);
+}
+
+.fm-gespraech-item.gut {
+  border-left-color: var(--ampel-gruen);
+  background: #F0FDF4;
+}
+
+.fm-gespraech-item.schlecht {
+  border-left-color: var(--ampel-rot);
+  background: #FEF2F2;
+}
+
+/* ============================================================
+   RESSOURCEN-KARTEN (Luxemburg)
+   ============================================================ */
+.fm-ressourcen-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+.fm-ressource-karte {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  background: #FAFBFC;
+}
+
+.fm-ressource-name {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+.fm-ressource-detail {
+  font-size: 10px;
+  color: var(--grau);
+  line-height: 1.5;
+}
+
+.fm-ressource-kontakt {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--farbe);
+  margin-top: 3px;
+}
+
+/* ============================================================
+   LITERATUR-LISTE
+   ============================================================ */
+.fm-literatur-item {
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 10px;
+  color: var(--grau);
+  line-height: 1.5;
+}
+
+.fm-literatur-item:last-child { border-bottom: none; }
+
+.fm-literatur-item strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ============================================================
+   AUFZÄHLUNGSLISTEN
+   ============================================================ */
+.fm-liste {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0;
+}
+
+.fm-liste li {
+  padding: 3px 0 3px 16px;
+  position: relative;
+  font-size: 11px;
+  line-height: 1.55;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+.fm-liste li:last-child { border-bottom: none; }
+
+.fm-liste li::before {
+  content: '▸';
+  position: absolute;
+  left: 3px;
+  color: var(--farbe);
+  font-size: 9px;
+  top: 5px;
+}
+
+/* Subliste */
+.fm-liste .fm-subliste {
+  list-style: none;
+  padding: 3px 0 0 12px;
+  margin: 0;
+}
+
+.fm-liste .fm-subliste li::before { content: '–'; color: var(--grau); }
+
+/* ============================================================
+   SCHRITT-FÜR-SCHRITT
+   ============================================================ */
+.fm-schritte {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fm-schritt {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 7px 10px;
+  background: #FAFBFC;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.fm-schritt-nr {
+  width: 22px;
+  height: 22px;
+  background: var(--farbe);
+  color: white;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.fm-schritt-inhalt {}
+
+.fm-schritt-titel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.fm-schritt-text {
+  font-size: 10.5px;
+  color: var(--grau);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   TABELLEN
+   ============================================================ */
+.fm-tabelle {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  font-size: 10.5px;
+  margin-bottom: 10px;
+}
+
+.fm-tabelle th {
+  background: color-mix(in srgb, var(--farbe) 12%, white);
+  color: var(--text);
+  font-weight: 700;
+  padding: 6px 8px;
+  text-align: left;
+  border-bottom: 1.5px solid var(--border);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.fm-tabelle td {
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.fm-tabelle tr:last-child td { border-bottom: none; }
+.fm-tabelle tr:nth-child(even) td { background: #F8FAFC; }
+
+/* ============================================================
+   KRISENNUMMERN BOX
+   ============================================================ */
+.fm-krisen-box {
+  background: #FEF2F2;
+  border: 2px solid #FECACA;
+  border-radius: var(--radius-lg);
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+
+.fm-krisen-titel {
+  font-size: 11px;
+  font-weight: 800;
+  color: #991B1B;
+  margin-bottom: 7px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.fm-krisen-nummern {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.fm-krisen-nr {
+  text-align: center;
+  background: white;
+  border: 1px solid #FECACA;
+  border-radius: var(--radius);
+  padding: 5px 8px;
+}
+
+.fm-krisen-nr-name { font-size: 9px; color: #666; font-weight: 600; margin-bottom: 2px; }
+.fm-krisen-nr-tel { font-size: 13px; font-weight: 800; color: #DC2626; }
+
+/* ============================================================
+   FUßZEILE
+   ============================================================ */
+.fm-fusszeile {
+  position: absolute;
+  bottom: 8mm;
+  left: 16mm;
+  right: 16mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 7.5px;
+  color: var(--grau-hell);
+  border-top: 1px solid var(--border);
+  padding-top: 5px;
+}
+
+/* ============================================================
+   DRUCK-LEISTE
+   ============================================================ */
+.druck-leiste {
+  width: 210mm;
+  margin: 0 auto 14px;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.btn-drucken {
+  background: var(--farbe);
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--farbe) 40%, transparent);
+}
+
+.btn-zurueck {
+  background: white;
+  color: var(--text);
+  border: 1.5px solid var(--border);
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ============================================================
+   DRUCK-MODUS
+   ============================================================ */
+@media print {
+  @page { size: A4; margin: 0; }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  body { background: white; padding: 0; margin: 0; font-size: 10.5px; }
+
+  .druck-leiste { display: none !important; }
+
+  .fm-seite {
+    width: 210mm;
+    height: 297mm;
+    min-height: unset;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 14mm 16mm 18mm;
+    overflow: hidden;
+    page-break-after: always;
+    break-after: page;
+    position: relative;
+  }
+
+  .fm-seite:last-of-type {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .fm-kopfzeile {
+    margin-top: -14mm;
+    margin-left: -16mm;
+    margin-right: -16mm;
+    background: linear-gradient(135deg, var(--farbe) 0%, color-mix(in srgb, var(--farbe) 72%, #0F172A) 100%) !important;
+  }
+
+  .fm-sektion, .fm-cave, .fm-tipp, .fm-methode, .fm-schritt {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .fm-quickinfo { background: var(--farbe-hell) !important; }
+
+  a { text-decoration: none; color: inherit; }
+}
+
+/* ============================================================
+   HTML-ALIAS KLASSEN
+   Die HTML-Dateien verwenden diese Klassennamen.
+   ============================================================ */
+
+/* --- Header (alias für fm-kopfzeile) --- */
+.fm-header {
+  background: linear-gradient(135deg, var(--farbe) 0%, color-mix(in srgb, var(--farbe) 72%, #0F172A) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -14mm;
+  margin-left: -16mm;
+  margin-right: -16mm;
+  padding: 16px 16mm 14px;
+  margin-bottom: 14px;
+  gap: 12px;
+}
+
+.fm-header-icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(255,255,255,0.16);
+  border: 1.5px solid rgba(255,255,255,0.28);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+.fm-header-text {
+  flex: 1;
+}
+
+.fm-header-titel {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 3px;
+  letter-spacing: -0.4px;
+}
+
+.fm-header-sub {
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 600;
+}
+
+.fm-seitenzahl {
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.90);
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* --- Quickinfo Item (alias für fm-qi-box) --- */
+.fm-qi-item {
+  background: var(--farbe-hell);
+  border: 1px solid color-mix(in srgb, var(--farbe) 25%, white);
+  border-radius: var(--radius);
+  padding: 7px 10px;
+  text-align: center;
+}
+
+/* --- Überschriften --- */
+.fm-abschnitt-titel {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--farbe);
+  margin: 16px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid color-mix(in srgb, var(--farbe) 20%, white);
+  letter-spacing: -0.2px;
+}
+
+.fm-unter-titel {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 12px 0 6px;
+}
+
+.fm-text {
+  font-size: 11px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+/* --- Zwei-Spalten (mit Bindestrich) --- */
+.fm-zwei-spalten {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.fm-spalte {
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* --- Ampel-System (alias) --- */
+.fm-ampel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.fm-ampel-item {
+  padding: 10px 12px;
+  border-radius: var(--radius-lg);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.fm-ampel-item ul {
+  list-style: none;
+  padding: 4px 0 4px 18px;
+  margin: 0;
+}
+
+.fm-ampel-item ul li {
+  padding: 2px 0;
+  position: relative;
+  font-size: 10.5px;
+}
+
+.fm-ampel-item ul li::before {
+  content: '▸';
+  position: absolute;
+  left: -14px;
+  font-size: 9px;
+  top: 2px;
+}
+
+.fm-ampel-item.fm-gruen {
+  background: var(--ampel-gruen-hell);
+  border: 1px solid #BBF7D0;
+}
+
+.fm-ampel-item.fm-gruen ul li::before { color: var(--ampel-gruen); }
+
+.fm-ampel-item.fm-gelb {
+  background: var(--ampel-gelb-hell);
+  border: 1px solid #FDE68A;
+}
+
+.fm-ampel-item.fm-gelb ul li::before { color: var(--ampel-gelb); }
+
+.fm-ampel-item.fm-rot {
+  background: var(--ampel-rot-hell);
+  border: 1px solid #FECACA;
+}
+
+.fm-ampel-item.fm-rot ul li::before { color: var(--ampel-rot); }
+
+.fm-ampel-farbe {
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-bottom: 2px;
+}
+
+.fm-ampel-titel {
+  font-size: 11.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 4px;
+}
+
+.fm-ampel-item.fm-gruen .fm-ampel-titel { color: var(--ampel-gruen); }
+.fm-ampel-item.fm-gelb .fm-ampel-titel { color: var(--ampel-gelb); }
+.fm-ampel-item.fm-rot .fm-ampel-titel { color: var(--ampel-rot); }
+
+.fm-ampel-handlung {
+  margin-top: 6px;
+  padding: 5px 9px;
+  border-radius: var(--radius-sm);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.fm-ampel-item.fm-gruen .fm-ampel-handlung { background: #DCFCE7; color: #166534; }
+.fm-ampel-item.fm-gelb .fm-ampel-handlung { background: #FEF3C7; color: #92400E; }
+.fm-ampel-item.fm-rot .fm-ampel-handlung { background: #FEE2E2; color: #991B1B; }
+
+/* --- Gesprächsbeispiele (alias) --- */
+.fm-gespraech-gut,
+.fm-gespraech-schlecht {
+  margin-bottom: 8px;
+}
+
+.fm-gespraech-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  padding: 5px 10px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  margin-bottom: 0;
+}
+
+.fm-gespraech-gut .fm-gespraech-label { background: #DCFCE7; color: #166534; }
+.fm-gespraech-schlecht .fm-gespraech-label { background: #FEE2E2; color: #991B1B; }
+
+.fm-gespraech-beispiel {
+  padding: 5px 10px;
+  font-size: 10.5px;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--border);
+}
+
+.fm-gespraech-gut .fm-gespraech-beispiel {
+  border-left: 3px solid var(--ampel-gruen);
+  background: #F0FDF4;
+}
+
+.fm-gespraech-schlecht .fm-gespraech-beispiel {
+  border-left: 3px solid var(--ampel-rot);
+  background: #FEF2F2;
+}
+
+/* --- Methode Header (alias) --- */
+.fm-methode-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.fm-sterne {
+  font-size: 13px;
+  flex-shrink: 0;
+  color: var(--evidenz-gold);
+  letter-spacing: -2px;
+}
+
+/* --- Ressource (alias) --- */
+.fm-ressource-tel {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--farbe);
+  margin: 3px 0;
+}
+
+.fm-ressource-info {
+  font-size: 10px;
+  color: var(--grau);
+  line-height: 1.5;
+}
+
+.fm-ressource-krise {
+  border-color: var(--cave-border);
+  background: #FFFBFB;
+}
+
+/* --- Krisen-Schritte (alias) --- */
+.fm-krisen-schritte {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fm-krisen-schritt {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 6px 8px;
+  background: white;
+  border: 1px solid #FECACA;
+  border-radius: var(--radius);
+}
+
+/* --- Print overrides for aliases --- */
+@media print {
+  .fm-header {
+    margin-top: -14mm;
+    margin-left: -16mm;
+    margin-right: -16mm;
+    background: linear-gradient(135deg, var(--farbe) 0%, color-mix(in srgb, var(--farbe) 72%, #0F172A) 100%) !important;
+  }
+
+  .fm-ampel-item.fm-gruen { background: var(--ampel-gruen-hell) !important; }
+  .fm-ampel-item.fm-gelb { background: var(--ampel-gelb-hell) !important; }
+  .fm-ampel-item.fm-rot { background: var(--ampel-rot-hell) !important; }
+
+  .fm-gespraech-gut .fm-gespraech-beispiel { background: #F0FDF4 !important; }
+  .fm-gespraech-schlecht .fm-gespraech-beispiel { background: #FEF2F2 !important; }
+}

@@ -1,0 +1,832 @@
+/* ============================================================
+   Pathways Bezugsarbeit – Therapiemodul Styles (v1)
+   Schrittweise geführte Sitzungsanleitungen für Fachkräfte
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --farbe: #2563EB;
+  --farbe-hell: #EFF6FF;
+  --text: #1E293B;
+  --grau: #64748B;
+  --border: #E2E8F0;
+  --bg-page: #F1F5F9;
+  --radius: 8px;
+
+  /* Sitzungs-Farben */
+  --sitzung-1: #2563EB;
+  --sitzung-2: #7C3AED;
+  --sitzung-3: #059669;
+  --sitzung-4: #D97706;
+  --sitzung-5: #DC2626;
+  --sitzung-6: #0891B2;
+
+  /* Schritt-Typen */
+  --skript-bg: #EFF6FF;
+  --skript-border: #3B82F6;
+  --uebung-bg: #F0FDF4;
+  --uebung-border: #16A34A;
+  --material-bg: #FFFBEB;
+  --material-border: #F59E0B;
+  --check-bg: #FEF3C7;
+  --check-border: #D97706;
+  --cave-bg: #FEF2F2;
+  --cave-border: #DC2626;
+  --tipp-bg: #EFF6FF;
+  --tipp-border: #BFDBFE;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 11.5px;
+  color: var(--text);
+  background: var(--bg-page);
+  padding: 24px 20px;
+  line-height: 1.6;
+}
+
+/* ── Seiten-Layout ── */
+.tm-dokument { max-width: 800px; margin: 0 auto; }
+
+.tm-seite {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
+  padding: 32px 36px;
+  margin-bottom: 24px;
+  page-break-after: always;
+  break-after: page;
+}
+
+/* ── Titelseite / Header ── */
+.tm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid var(--farbe);
+}
+
+.tm-titel-block {}
+.tm-kategorie {
+  display: inline-block;
+  background: var(--farbe);
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.tm-titel {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.tm-untertitel {
+  font-size: 11px;
+  color: var(--grau);
+  line-height: 1.4;
+}
+
+.tm-meta-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 150px;
+}
+
+.tm-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-page);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+.tm-meta-icon { font-size: 14px; }
+.tm-meta-label { font-size: 9px; color: var(--grau); text-transform: uppercase; letter-spacing: 0.5px; }
+.tm-meta-wert { font-size: 12px; font-weight: 700; color: var(--text); }
+
+/* ── Überblick-Kacheln ── */
+.tm-uebersicht {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tm-ue-kachel {
+  background: var(--bg-page);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  border-top: 3px solid var(--farbe);
+}
+
+.tm-ue-zahl { font-size: 20px; font-weight: 800; color: var(--farbe); display: block; }
+.tm-ue-label { font-size: 9px; color: var(--grau); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+
+/* ── Sitzungs-Kacheln ── */
+.tm-sitzungsplan {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.tm-sitzung-zeile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-page);
+  border-radius: 8px;
+  padding: 10px 14px;
+  border-left: 4px solid var(--farbe);
+}
+
+.tm-sitzung-zeile[data-nr="1"] { border-left-color: var(--sitzung-1); }
+.tm-sitzung-zeile[data-nr="2"] { border-left-color: var(--sitzung-2); }
+.tm-sitzung-zeile[data-nr="3"] { border-left-color: var(--sitzung-3); }
+.tm-sitzung-zeile[data-nr="4"] { border-left-color: var(--sitzung-4); }
+.tm-sitzung-zeile[data-nr="5"] { border-left-color: var(--sitzung-5); }
+.tm-sitzung-zeile[data-nr="6"] { border-left-color: var(--sitzung-6); }
+
+.tm-sz-nr {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--farbe);
+  color: white;
+  font-weight: 800;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tm-sitzung-zeile[data-nr="1"] .tm-sz-nr { background: var(--sitzung-1); }
+.tm-sitzung-zeile[data-nr="2"] .tm-sz-nr { background: var(--sitzung-2); }
+.tm-sitzung-zeile[data-nr="3"] .tm-sz-nr { background: var(--sitzung-3); }
+.tm-sitzung-zeile[data-nr="4"] .tm-sz-nr { background: var(--sitzung-4); }
+.tm-sitzung-zeile[data-nr="5"] .tm-sz-nr { background: var(--sitzung-5); }
+.tm-sitzung-zeile[data-nr="6"] .tm-sz-nr { background: var(--sitzung-6); }
+
+.tm-sz-info { flex: 1; }
+.tm-sz-titel { font-weight: 700; font-size: 12px; color: var(--text); }
+.tm-sz-beschreibung { font-size: 10px; color: var(--grau); margin-top: 2px; }
+.tm-sz-dauer {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--grau);
+  background: white;
+  border-radius: 6px;
+  padding: 3px 8px;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+/* ── Sitzungs-Header ── */
+.tm-sitzung-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: var(--bg-page);
+  border-left: 5px solid var(--farbe);
+}
+
+.tm-sitzung-header[data-nr="1"] { border-left-color: var(--sitzung-1); }
+.tm-sitzung-header[data-nr="2"] { border-left-color: var(--sitzung-2); }
+.tm-sitzung-header[data-nr="3"] { border-left-color: var(--sitzung-3); }
+.tm-sitzung-header[data-nr="4"] { border-left-color: var(--sitzung-4); }
+.tm-sitzung-header[data-nr="5"] { border-left-color: var(--sitzung-5); }
+.tm-sitzung-header[data-nr="6"] { border-left-color: var(--sitzung-6); }
+
+.tm-sh-badge {
+  background: var(--farbe);
+  color: white;
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.tm-sitzung-header[data-nr="1"] .tm-sh-badge { background: var(--sitzung-1); }
+.tm-sitzung-header[data-nr="2"] .tm-sh-badge { background: var(--sitzung-2); }
+.tm-sitzung-header[data-nr="3"] .tm-sh-badge { background: var(--sitzung-3); }
+.tm-sitzung-header[data-nr="4"] .tm-sh-badge { background: var(--sitzung-4); }
+.tm-sitzung-header[data-nr="5"] .tm-sh-badge { background: var(--sitzung-5); }
+.tm-sitzung-header[data-nr="6"] .tm-sh-badge { background: var(--sitzung-6); }
+
+.tm-sh-info { flex: 1; }
+.tm-sh-titel { font-size: 16px; font-weight: 800; color: var(--text); }
+.tm-sh-ziele { font-size: 10px; color: var(--grau); margin-top: 3px; }
+.tm-sh-dauer { font-size: 13px; font-weight: 800; color: var(--farbe); }
+
+/* ── Ablauf-Schritte ── */
+.tm-ablauf { display: flex; flex-direction: column; gap: 10px; margin: 12px 0; }
+
+.tm-schritt {
+  display: flex;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: white;
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+.tm-schritt-zeit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 48px;
+  flex-shrink: 0;
+}
+
+.tm-zeit-block {
+  background: var(--farbe);
+  color: white;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.tm-zeit-dauer {
+  font-size: 9px;
+  color: var(--grau);
+  margin-top: 3px;
+  text-align: center;
+}
+
+.tm-schritt-inhalt { flex: 1; }
+
+.tm-schritt-titel {
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--text);
+  margin-bottom: 5px;
+}
+
+.tm-schritt-text {
+  font-size: 11px;
+  color: #374151;
+  line-height: 1.55;
+}
+
+/* Schritt-Typen */
+.tm-schritt.skript { border-left: 3px solid var(--skript-border); background: var(--skript-bg); }
+.tm-schritt.uebung { border-left: 3px solid var(--uebung-border); background: var(--uebung-bg); }
+.tm-schritt.check { border-left: 3px solid var(--check-border); background: var(--check-bg); }
+.tm-schritt.material { border-left: 3px solid var(--material-border); background: var(--material-bg); }
+.tm-schritt.cave { border-left: 3px solid var(--cave-border); background: var(--cave-bg); }
+
+.tm-schritt.skript .tm-zeit-block { background: var(--skript-border); }
+.tm-schritt.uebung .tm-zeit-block { background: var(--uebung-border); }
+.tm-schritt.check .tm-zeit-block { background: var(--check-border); }
+.tm-schritt.material .tm-zeit-block { background: var(--material-border); }
+.tm-schritt.cave .tm-zeit-block { background: var(--cave-border); }
+
+/* ── Skript-Box ── */
+.tm-skript {
+  background: var(--skript-bg);
+  border-left: 3px solid var(--skript-border);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  margin: 8px 0;
+}
+
+.tm-skript-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--skript-border);
+  margin-bottom: 6px;
+}
+
+.tm-skript-text {
+  font-size: 11.5px;
+  font-style: italic;
+  color: #1e3a5f;
+  line-height: 1.6;
+}
+
+.tm-skript-text em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--skript-border);
+}
+
+/* ── Übungs-Box ── */
+.tm-uebung-box {
+  background: var(--uebung-bg);
+  border: 1px solid var(--uebung-border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 10px 0;
+}
+
+.tm-uebung-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.tm-uebung-badge {
+  background: var(--uebung-border);
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.tm-uebung-titel { font-weight: 700; font-size: 12px; color: var(--text); }
+.tm-uebung-dauer { font-size: 10px; color: var(--grau); margin-left: auto; }
+
+.tm-uebung-schritte {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tm-uebung-schritte li {
+  display: flex;
+  gap: 10px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.tm-uebung-schritte li::before {
+  content: counter(step);
+  counter-increment: step;
+  background: var(--uebung-border);
+  color: white;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.tm-uebung-schritte { counter-reset: step; }
+
+/* ── Material-Liste ── */
+.tm-material-liste {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.tm-material-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--material-bg);
+  border: 1px solid var(--material-border);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 10px;
+  font-weight: 500;
+  color: #92400E;
+}
+
+/* ── Hausaufgaben-Box ── */
+.tm-hausaufgabe {
+  background: #F0FDF4;
+  border: 1px solid #86EFAC;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 12px 0;
+}
+
+.tm-ha-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.tm-ha-badge {
+  background: #16A34A;
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.tm-ha-titel { font-weight: 700; font-size: 12px; }
+
+.tm-ha-liste {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tm-ha-liste li {
+  display: flex;
+  gap: 8px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.tm-ha-liste li::before {
+  content: "☐";
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: -1px;
+}
+
+/* ── Check-In Box ── */
+.tm-checkin {
+  background: var(--check-bg);
+  border: 1px solid var(--check-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 12px 0;
+}
+
+.tm-checkin-titel {
+  font-weight: 700;
+  font-size: 11px;
+  color: #92400E;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.tm-checkin-fragen {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  list-style: none;
+}
+
+.tm-checkin-fragen li {
+  font-size: 11px;
+  color: #78350F;
+  padding-left: 14px;
+  position: relative;
+}
+
+.tm-checkin-fragen li::before { content: "→"; position: absolute; left: 0; color: var(--check-border); }
+
+/* ── Worksheets eingebettet ── */
+.tm-worksheet {
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px 0;
+  background: #FAFAFA;
+}
+
+.tm-ws-titel {
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--grau);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.tm-ws-feld {
+  border-bottom: 1px solid #D1D5DB;
+  min-height: 28px;
+  margin-bottom: 8px;
+  font-size: 10px;
+  color: var(--grau);
+  padding-bottom: 4px;
+}
+
+.tm-ws-label {
+  font-size: 9px;
+  color: var(--grau);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.tm-ws-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.tm-ws-zwei { grid-template-columns: 1fr 1fr; }
+.tm-ws-drei { grid-template-columns: 1fr 1fr 1fr; }
+
+/* ── Fortschritts-Leiste ── */
+.tm-fortschritt {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.tm-ft-block {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border);
+}
+
+.tm-ft-block.aktiv { background: var(--farbe); }
+.tm-ft-block.done { background: var(--uebung-border); }
+
+/* ── Evidenz-Stars ── */
+.tm-evidence { color: #F59E0B; font-size: 13px; }
+
+/* ── Cave / Tipp ── */
+.tm-cave {
+  background: var(--cave-bg);
+  border-left: 3px solid var(--cave-border);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  margin: 10px 0;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.tm-tipp {
+  background: var(--tipp-bg);
+  border-left: 3px solid var(--tipp-border);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  margin: 10px 0;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* ── Abschluss-Box ── */
+.tm-abschluss {
+  background: linear-gradient(135deg, var(--farbe) 0%, color-mix(in srgb, var(--farbe) 70%, #000) 100%);
+  color: white;
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-top: 16px;
+}
+
+.tm-abschluss-titel { font-size: 14px; font-weight: 800; margin-bottom: 12px; }
+
+.tm-abschluss-kriterien {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  list-style: none;
+}
+
+.tm-abschluss-kriterien li {
+  display: flex;
+  gap: 8px;
+  font-size: 10.5px;
+  opacity: 0.95;
+  line-height: 1.4;
+}
+
+.tm-abschluss-kriterien li::before {
+  content: "✓";
+  font-weight: 800;
+  flex-shrink: 0;
+  color: #86EFAC;
+}
+
+/* ── Zwei-Spalten ── */
+.tm-zwei-spalten {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 12px 0;
+}
+
+/* ── Seiten-Titel ── */
+.tm-seite-titel {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tm-seite-titel::before {
+  content: "";
+  width: 4px;
+  height: 18px;
+  background: var(--farbe);
+  border-radius: 2px;
+  display: inline-block;
+}
+
+/* ── Listen ── */
+.tm-liste {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tm-liste li {
+  padding-left: 16px;
+  position: relative;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.tm-liste li::before { content: "•"; position: absolute; left: 4px; color: var(--farbe); font-weight: 700; }
+
+/* ── Footer ── */
+.tm-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-size: 9px;
+  color: var(--grau);
+}
+
+/* ============================================================
+   HTML-ALIAS KLASSEN
+   Klassen die in den HTML-Dateien verwendet werden.
+   ============================================================ */
+
+/* --- Titelseite --- */
+.tm-titelseite {
+  padding: 8px 0;
+}
+
+.tm-modul-badge {
+  display: inline-block;
+  background: var(--farbe);
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.tm-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin: 14px 0;
+}
+
+.tm-indikation {
+  background: var(--cave-bg);
+  border-left: 3px solid var(--cave-border);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  margin: 12px 0;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.tm-indikation strong { color: #991B1B; }
+
+.tm-lernziele {
+  background: var(--uebung-bg);
+  border: 1px solid var(--uebung-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 10px 0;
+}
+
+.tm-lernziele h3 {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #166534;
+  margin-bottom: 6px;
+}
+
+.tm-lernziele ul { padding-left: 16px; font-size: 10.5px; line-height: 1.6; }
+.tm-lernziele li { margin-bottom: 3px; }
+
+/* --- Sitzung-Header Elemente --- */
+.tm-sitzung-nr {
+  background: var(--farbe);
+  color: white;
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.tm-sitzung-header[data-nr="1"] .tm-sitzung-nr { background: var(--sitzung-1); }
+.tm-sitzung-header[data-nr="2"] .tm-sitzung-nr { background: var(--sitzung-2); }
+.tm-sitzung-header[data-nr="3"] .tm-sitzung-nr { background: var(--sitzung-3); }
+.tm-sitzung-header[data-nr="4"] .tm-sitzung-nr { background: var(--sitzung-4); }
+
+.tm-sitzung-titel {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text);
+  flex: 1;
+}
+
+.tm-sitzung-dauer {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--grau);
+  background: white;
+  border-radius: 6px;
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+/* --- Schritt-Header (Zeit + Typ) --- */
+.tm-schritt-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.tm-zeit {
+  background: var(--farbe);
+  color: white;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.tm-schritt.skript .tm-zeit { background: var(--skript-border); }
+.tm-schritt.uebung .tm-zeit { background: var(--uebung-border); }
+.tm-schritt.check .tm-zeit { background: var(--check-border); }
+.tm-schritt.material .tm-zeit { background: var(--material-border); }
+.tm-schritt.cave .tm-zeit { background: var(--cave-border); }
+
+.tm-schritt-typ {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text);
+}
+
+/* --- Ressource-Box --- */
+.tm-ressource-box {
+  background: #F8FAFC;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin: 10px 0;
+}
+
+/* ── Print ── */
+@media print {
+  body { background: white; padding: 0; }
+  .tm-seite { box-shadow: none; margin: 0; border-radius: 0; padding: 20mm 20mm; }
+}

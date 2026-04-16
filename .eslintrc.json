@@ -1,0 +1,28 @@
+{
+  "env": {
+    "browser": true,
+    "es2022": true
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "script"
+  },
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-undef": "off",
+    "semi": ["warn", "always"],
+    "no-eval": "error",
+    "no-implied-eval": "error"
+  },
+  "globals": {
+    "APP": "readonly",
+    "DB": "readonly",
+    "Chart": "readonly",
+    "DOMPurify": "readonly",
+    "ARBEITSBLÄTTER": "readonly",
+    "THEMEN_BAUM": "readonly",
+    "SCREENING_ITEMS": "readonly",
+    "ICONS": "readonly",
+    "PHASE_RESSOURCEN": "readonly"
+  }
+}
