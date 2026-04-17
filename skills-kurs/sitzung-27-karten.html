@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Sitzung 27 — Red Flag / Green Flag Karten</title>
+<link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
+<style>
+:root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
+.karten-seite { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; padding: 10px; }
+.flag-karte { border: 2.5px solid #CBD5E1; border-radius: 16px; padding: 16px 10px; text-align: center; min-height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: white; }
+.flag-karte-emoji { font-size: 36px; margin-bottom: 6px; }
+.flag-karte-name { font-size: 13px; font-weight: 800; margin-bottom: 4px; }
+.flag-karte-hint { font-size: 11px; margin-top: 4px; font-weight: 700; }
+.karte-green { border-color: #22C55E; }
+.karte-green .flag-karte-name { color: #22C55E; }
+.karte-green .flag-karte-hint { color: #22C55E; }
+.karte-red { border-color: #EF4444; }
+.karte-red .flag-karte-name { color: #EF4444; }
+.karte-red .flag-karte-hint { color: #EF4444; }
+</style>
+</head>
+<body>
+<div class="druck-leiste"><button class="btn-drucken" onclick="window.print()">🖨️ Drucken + Ausschneiden</button></div>
+
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
+      <div class="ab-titel">Red Flag 🚩 oder Green Flag 🟢? ✂️</div>
+      <div class="ab-untertitel">Ausschneiden und sortieren: Vertrauens-Zeichen erkennen!</div>
+    </div>
+    <div class="kopfzeile-icon">🤝</div>
+  </div>
+  <div class="karten-seite">
+
+    <div class="flag-karte karte-green"><div class="flag-karte-emoji">🤫</div><div class="flag-karte-name">Hält deine Geheimnisse</div><div class="flag-karte-hint">🟢 Green Flag</div></div>
+
+    <div class="flag-karte karte-red"><div class="flag-karte-emoji">🗣️</div><div class="flag-karte-name">Lästert über andere bei dir</div><div class="flag-karte-hint">🚩 Red Flag</div></div>
+
+    <div class="flag-karte karte-green"><div class="flag-karte-emoji">🤝</div><div class="flag-karte-name">Hält Versprechen ein</div><div class="flag-karte-hint">🟢 Green Flag</div></div>
+
+    <div class="flag-karte karte-red"><div class="flag-karte-emoji">😈</div><div class="flag-karte-name">Macht dich vor anderen klein</div><div class="flag-karte-hint">🚩 Red Flag</div></div>
+
+    <div class="flag-karte karte-green"><div class="flag-karte-emoji">😊</div><div class="flag-karte-name">Freut sich ehrlich für dich</div><div class="flag-karte-hint">🟢 Green Flag</div></div>
+
+    <div class="flag-karte karte-red"><div class="flag-karte-emoji">🎭</div><div class="flag-karte-name">Ist nur nett wenn er/sie was will</div><div class="flag-karte-hint">🚩 Red Flag</div></div>
+
+    <div class="flag-karte karte-green"><div class="flag-karte-emoji">💬</div><div class="flag-karte-name">Entschuldigt sich ehrlich</div><div class="flag-karte-hint">🟢 Green Flag</div></div>
+
+    <div class="flag-karte karte-red"><div class="flag-karte-emoji">⚠️</div><div class="flag-karte-name">Droht: „Sonst bin ich nicht mehr dein Freund!"</div><div class="flag-karte-hint">🚩 Red Flag</div></div>
+
+    <div class="flag-karte karte-green"><div class="flag-karte-emoji">🫂</div><div class="flag-karte-name">Ist auch in schwierigen Zeiten da</div><div class="flag-karte-hint">🟢 Green Flag</div></div>
+
+    <div class="flag-karte karte-red"><div class="flag-karte-emoji">📱</div><div class="flag-karte-name">Zeigt deine Nachrichten anderen</div><div class="flag-karte-hint">🚩 Red Flag</div></div>
+
+    <div class="flag-karte karte-green"><div class="flag-karte-emoji">👂</div><div class="flag-karte-name">Hört dir wirklich zu</div><div class="flag-karte-hint">🟢 Green Flag</div></div>
+
+    <div class="flag-karte karte-red"><div class="flag-karte-emoji">🤥</div><div class="flag-karte-name">Lügt dich regelmäßig an</div><div class="flag-karte-hint">🚩 Red Flag</div></div>
+
+  </div>
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 27</span>
+    <span>Seite 1 / 1</span>
+  </div>
+</div>
+</body>
+</html>
