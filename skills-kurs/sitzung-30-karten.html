@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Sitzung 30 — Zertifikat & Skills-Zusammenfassung</title>
+<link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
+<style>
+:root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
+.zertifikat { border: 3px solid var(--farbe); border-radius: 20px; padding: 30px 24px; text-align: center; background: white; margin-bottom: 16px; position: relative; }
+.zertifikat::before { content: ""; position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px; border: 1.5px solid var(--farbe); border-radius: 16px; pointer-events: none; }
+.zertifikat-kopf { font-size: 11px; color: var(--farbe); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; }
+.zertifikat-emoji { font-size: 48px; margin: 10px 0; }
+.zertifikat-titel { font-size: 26px; font-weight: 800; color: var(--farbe); margin-bottom: 6px; }
+.zertifikat-untertitel { font-size: 14px; color: #64748B; margin-bottom: 14px; }
+.zertifikat-name { border-bottom: 2.5px solid var(--farbe); width: 60%; margin: 12px auto; height: 30px; }
+.zertifikat-text { font-size: 13px; color: #334155; margin: 12px 0; line-height: 1.6; }
+.zertifikat-skills { font-size: 11px; color: #64748B; margin: 14px 0; line-height: 1.8; }
+.zertifikat-unterschriften { display: flex; justify-content: space-around; margin-top: 24px; }
+.zertifikat-unterschrift { text-align: center; }
+.zertifikat-unterschrift-linie { border-bottom: 1.5px solid #CBD5E1; width: 130px; height: 28px; margin: 0 auto; }
+.zertifikat-unterschrift-label { font-size: 10px; color: #94A3B8; margin-top: 4px; }
+.schneide-linie { border-top: 2px dashed #94A3B8; margin: 20px 0; position: relative; }
+.schneide-linie::before { content: "✂️ hier ausschneiden"; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: white; padding: 0 10px; font-size: 11px; color: #94A3B8; }
+.zusammenfassung { border: 2px solid var(--farbe); border-radius: 16px; padding: 16px; background: var(--farbe-hell); }
+.zusammenfassung-titel { font-size: 16px; font-weight: 800; color: var(--farbe); text-align: center; margin-bottom: 10px; }
+.zusammenfassung-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 11px; }
+.zusammenfassung-block { background: white; border-radius: 10px; padding: 8px; border: 1px solid var(--farbe); }
+.zusammenfassung-block-titel { font-weight: 800; color: var(--farbe); font-size: 12px; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="druck-leiste"><button class="btn-drucken" onclick="window.print()">🖨️ Drucken + Ausschneiden</button></div>
+
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
+      <div class="ab-titel">Zertifikat & Skills-Zusammenfassung ✂️🎓</div>
+      <div class="ab-untertitel">Ausdrucken, ausfüllen und stolz aufhängen!</div>
+    </div>
+    <div class="kopfzeile-icon">🎉</div>
+  </div>
+
+  <div class="zertifikat">
+    <div class="zertifikat-kopf">CDSE · Pathways · Skills-Kurs</div>
+    <div class="zertifikat-emoji">🎓</div>
+    <div class="zertifikat-titel">ZERTIFIKAT</div>
+    <div class="zertifikat-untertitel">Skills-Kurs erfolgreich abgeschlossen!</div>
+    <div style="font-size:13px; color:#64748B;">Hiermit wird bestätigt, dass</div>
+    <div class="zertifikat-name"></div>
+    <div class="zertifikat-text">den Skills-Kurs mit <strong>30 Sitzungen</strong> erfolgreich abgeschlossen hat und dabei wichtige Fähigkeiten für das Leben gelernt hat.</div>
+    <div class="zertifikat-skills">
+      ❤️ Gefühle verstehen · 🔥 Wut & Stress meistern · ⭐ Selbstwert stärken<br>
+      🫂 Empathie & Miteinander · 💬 Kommunikation · 💪 Hilfe holen
+    </div>
+    <div class="zertifikat-unterschriften">
+      <div class="zertifikat-unterschrift">
+        <div class="zertifikat-unterschrift-linie"></div>
+        <div class="zertifikat-unterschrift-label">Datum</div>
+      </div>
+      <div class="zertifikat-unterschrift">
+        <div class="zertifikat-unterschrift-linie"></div>
+        <div class="zertifikat-unterschrift-label">Lehrkraft</div>
+      </div>
+      <div class="zertifikat-unterschrift">
+        <div class="zertifikat-unterschrift-linie"></div>
+        <div class="zertifikat-unterschrift-label">Schüler/in</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="schneide-linie"></div>
+
+  <div class="zusammenfassung">
+    <div class="zusammenfassung-titel">🏆 Meine Skills auf einen Blick</div>
+    <div class="zusammenfassung-grid">
+      <div class="zusammenfassung-block">
+        <div class="zusammenfassung-block-titel">❤️ Gefühle</div>
+        Erkennen · Benennen · Körpersignale · Gefühls-Tagebuch
+      </div>
+      <div class="zusammenfassung-block">
+        <div class="zusammenfassung-block-titel">🔥 Wut & Stress</div>
+        STOPP-Technik · 5-4-3-2-1 · Atmen · Bewegung · Entspannung
+      </div>
+      <div class="zusammenfassung-block">
+        <div class="zusammenfassung-block-titel">⭐ Selbstwert</div>
+        Stärken · Gedanken-Check · Innerer Coach · Mut
+      </div>
+      <div class="zusammenfassung-block">
+        <div class="zusammenfassung-block-titel">🫂 Empathie</div>
+        Perspektivwechsel · Freundschaft · Vielfalt
+      </div>
+      <div class="zusammenfassung-block">
+        <div class="zusammenfassung-block-titel">💬 Kommunikation</div>
+        Ich-Botschaften · Zuhören · Konflikte fair lösen · Grenzen
+      </div>
+      <div class="zusammenfassung-block">
+        <div class="zusammenfassung-block-titel">💪 Hilfe holen</div>
+        Netzwerk · Hilfe-Sätze · 📞 116 111 · 📞 0800 111 0 111
+      </div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 30</span>
+    <span>Seite 1 / 1</span>
+  </div>
+</div>
+</body>
+</html>
