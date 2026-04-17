@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Sitzung 1 — Kennenlern-Karten</title>
+<link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
+<style>
+:root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
+.karten-seite { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 10px; }
+.spiel-karte {
+  border: 2.5px solid var(--farbe);
+  border-radius: 16px;
+  padding: 20px 16px;
+  text-align: center;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.spiel-karte-emoji { font-size: 40px; margin-bottom: 10px; }
+.spiel-karte-text { font-size: 16px; font-weight: 700; color: var(--text); line-height: 1.4; }
+.schneide-linie { border-top: 2px dashed #CBD5E1; margin: 0; }
+</style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken + Ausschneiden</button>
+</div>
+
+<!-- ===================== SEITE 1: Kennenlern-Karten ===================== -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
+      <div class="ab-titel">Kennenlern-Karten ✂️</div>
+      <div class="ab-untertitel">Ausschneiden und im Kreis ziehen!</div>
+    </div>
+    <div class="kopfzeile-icon">🃏</div>
+  </div>
+
+  <div class="karten-seite">
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">🎵</div>
+      <div class="spiel-karte-text">Welches Lied hörst du gerade am liebsten?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">🍕</div>
+      <div class="spiel-karte-text">Was ist dein absolutes Lieblingsessen?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">🦸</div>
+      <div class="spiel-karte-text">Wenn du eine Superkraft hättest — welche?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">🏝️</div>
+      <div class="spiel-karte-text">Wo würdest du am liebsten Urlaub machen?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">🐕</div>
+      <div class="spiel-karte-text">Hast du ein Haustier? Oder welches wünschst du dir?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">😂</div>
+      <div class="spiel-karte-text">Worüber musst du am meisten lachen?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">🎮</div>
+      <div class="spiel-karte-text">Was machst du am liebsten in deiner Freizeit?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">🌟</div>
+      <div class="spiel-karte-text">Wofür bist du bekannt bei deinen Freunden?</div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 1</span>
+    <span>Seite 1 / 2</span>
+  </div>
+</div>
+
+<!-- ===================== SEITE 2: Weitere Karten ===================== -->
+<div class="seite">
+
+  <div class="karten-seite">
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">📺</div>
+      <div class="spiel-karte-text">Welche Serie oder welchen Film magst du am meisten?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">🌍</div>
+      <div class="spiel-karte-text">In wie vielen Ländern warst du schon?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">💪</div>
+      <div class="spiel-karte-text">Was ist etwas, das du richtig gut kannst?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">😨</div>
+      <div class="spiel-karte-text">Wovor hast du ein bisschen Angst?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">🎂</div>
+      <div class="spiel-karte-text">Was war dein schönstes Geburtstags-Geschenk?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">🗣️</div>
+      <div class="spiel-karte-text">Wie viele Sprachen sprichst du? Welche?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">🌙</div>
+      <div class="spiel-karte-text">Bist du eher ein Morgenmensch oder Nachtmensch?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">🔮</div>
+      <div class="spiel-karte-text">Was willst du in 10 Jahren machen?</div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 1</span>
+    <span>Seite 2 / 2</span>
+  </div>
+</div>
+
+</body>
+</html>
