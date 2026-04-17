@@ -2,71 +2,84 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Sitzung 30 — Zertifikat & Skills-Zusammenfassung</title>
+<title>Sitzung 30 — Zertifikat & Skills-Karte</title>
 <link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
 <style>
 :root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
-.zertifikat { border: 3px solid var(--farbe); border-radius: 20px; padding: 30px 24px; text-align: center; background: white; margin-bottom: 16px; position: relative; }
-.zertifikat::before { content: ""; position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px; border: 1.5px solid var(--farbe); border-radius: 16px; pointer-events: none; }
-.zertifikat-kopf { font-size: 11px; color: var(--farbe); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; }
-.zertifikat-emoji { font-size: 48px; margin: 10px 0; }
-.zertifikat-titel { font-size: 26px; font-weight: 800; color: var(--farbe); margin-bottom: 6px; }
-.zertifikat-untertitel { font-size: 14px; color: #64748B; margin-bottom: 14px; }
-.zertifikat-name { border-bottom: 2.5px solid var(--farbe); width: 60%; margin: 12px auto; height: 30px; }
-.zertifikat-text { font-size: 13px; color: #334155; margin: 12px 0; line-height: 1.6; }
-.zertifikat-skills { font-size: 11px; color: #64748B; margin: 14px 0; line-height: 1.8; }
-.zertifikat-unterschriften { display: flex; justify-content: space-around; margin-top: 24px; }
-.zertifikat-unterschrift { text-align: center; }
-.zertifikat-unterschrift-linie { border-bottom: 1.5px solid #CBD5E1; width: 130px; height: 28px; margin: 0 auto; }
-.zertifikat-unterschrift-label { font-size: 10px; color: #94A3B8; margin-top: 4px; }
+.zertifikat-a4 { border: 4px solid var(--farbe); border-radius: 20px; padding: 40px 36px; text-align: center; background: white; position: relative; min-height: 600px; display: flex; flex-direction: column; justify-content: center; }
+.zertifikat-a4::before { content: ""; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px; border: 2px solid var(--farbe); border-radius: 16px; pointer-events: none; }
+.zertifikat-a4::after { content: ""; position: absolute; top: 16px; left: 16px; right: 16px; bottom: 16px; border: 0.5px solid var(--farbe); border-radius: 12px; pointer-events: none; opacity: 0.4; }
 .schneide-linie { border-top: 2px dashed #94A3B8; margin: 20px 0; position: relative; }
 .schneide-linie::before { content: "✂️ hier ausschneiden"; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: white; padding: 0 10px; font-size: 11px; color: #94A3B8; }
-.zusammenfassung { border: 2px solid var(--farbe); border-radius: 16px; padding: 16px; background: var(--farbe-hell); }
-.zusammenfassung-titel { font-size: 16px; font-weight: 800; color: var(--farbe); text-align: center; margin-bottom: 10px; }
-.zusammenfassung-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 11px; }
+.zusammenfassung { border: 2.5px solid var(--farbe); border-radius: 16px; padding: 16px; background: linear-gradient(135deg, var(--farbe-hell) 0%, white 100%); }
+.zusammenfassung-titel { font-size: 15px; font-weight: 800; color: var(--farbe); text-align: center; margin-bottom: 10px; }
+.zusammenfassung-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; font-size: 10px; }
 .zusammenfassung-block { background: white; border-radius: 10px; padding: 8px; border: 1px solid var(--farbe); }
-.zusammenfassung-block-titel { font-weight: 800; color: var(--farbe); font-size: 12px; margin-bottom: 4px; }
+.zusammenfassung-block-titel { font-weight: 800; color: var(--farbe); font-size: 11px; margin-bottom: 3px; }
+.zk-notfall { background: #FEF2F2; border: 2px solid #EF4444; border-radius: 10px; padding: 8px 12px; text-align: center; margin-top: 10px; }
+.zk-notfall-titel { font-size: 11px; font-weight: 800; color: #EF4444; }
+.zk-notfall-nr { font-size: 13px; font-weight: 700; }
 </style>
 </head>
 <body>
 <div class="druck-leiste"><button class="btn-drucken" onclick="window.print()">🖨️ Drucken + Ausschneiden</button></div>
 
+<!-- ===================== SEITE 1: Zertifikat A4 ===================== -->
 <div class="seite">
   <div class="kopfzeile">
     <div class="kopfzeile-links">
       <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
-      <div class="ab-titel">Zertifikat & Skills-Zusammenfassung ✂️🎓</div>
-      <div class="ab-untertitel">Ausdrucken, ausfüllen und stolz aufhängen!</div>
+      <div class="ab-titel">Zertifikat + Skills-Karte ✂️🎓</div>
+      <div class="ab-untertitel">Seite 1: Zertifikat (A4, druckbar) · Seite 2: Skills-Zusammenfassung</div>
     </div>
     <div class="kopfzeile-icon">🎉</div>
   </div>
 
-  <div class="zertifikat">
-    <div class="zertifikat-kopf">CDSE · Pathways · Skills-Kurs</div>
-    <div class="zertifikat-emoji">🎓</div>
-    <div class="zertifikat-titel">ZERTIFIKAT</div>
-    <div class="zertifikat-untertitel">Skills-Kurs erfolgreich abgeschlossen!</div>
-    <div style="font-size:13px; color:#64748B;">Hiermit wird bestätigt, dass</div>
-    <div class="zertifikat-name"></div>
-    <div class="zertifikat-text">den Skills-Kurs mit <strong>30 Sitzungen</strong> erfolgreich abgeschlossen hat und dabei wichtige Fähigkeiten für das Leben gelernt hat.</div>
-    <div class="zertifikat-skills">
-      ❤️ Gefühle verstehen · 🔥 Wut & Stress meistern · ⭐ Selbstwert stärken<br>
-      🫂 Empathie & Miteinander · 💬 Kommunikation · 💪 Hilfe holen
+  <div class="zertifikat-a4">
+    <div style="font-size:12px; color:var(--farbe); font-weight:700; letter-spacing:4px; text-transform:uppercase;">CDSE · Pathways · Skills-Kurs</div>
+    <div style="font-size:56px; margin:14px 0;">🎓</div>
+    <div style="font-size:32px; font-weight:800; color:var(--farbe); letter-spacing:2px;">ZERTIFIKAT</div>
+    <div style="font-size:15px; color:#64748B; margin:14px 0 8px 0;">Hiermit wird bestätigt, dass</div>
+    <div style="border-bottom:3px solid var(--farbe); width:55%; margin:10px auto; height:36px;"></div>
+    <div style="font-size:16px; color:#334155; margin:16px 0; line-height:1.7;">
+      den <strong>Skills-Kurs</strong> mit <strong>30 Sitzungen</strong> erfolgreich abgeschlossen hat<br>
+      und dabei wichtige Fähigkeiten für das Leben erworben hat.
     </div>
-    <div class="zertifikat-unterschriften">
-      <div class="zertifikat-unterschrift">
-        <div class="zertifikat-unterschrift-linie"></div>
-        <div class="zertifikat-unterschrift-label">Datum</div>
+    <div style="font-size:12px; color:#64748B; margin:14px 0; line-height:2;">
+      🧘 Achtsamkeit & Wahrnehmen · 🎭 Gefühle erkennen & verstehen · 🧊 Stress- & Krisen-Skills<br>
+      🌋 Schwierige Gefühle meistern · 💬 Kommunikation & Beziehungen · 💪 Hilfe holen & Netzwerk
+    </div>
+    <div style="display:flex; justify-content:space-around; margin-top:30px;">
+      <div style="text-align:center;">
+        <div style="border-bottom:2px solid #CBD5E1; width:140px; height:30px; margin:0 auto;"></div>
+        <div style="font-size:11px; color:#94A3B8; margin-top:6px;">Datum</div>
       </div>
-      <div class="zertifikat-unterschrift">
-        <div class="zertifikat-unterschrift-linie"></div>
-        <div class="zertifikat-unterschrift-label">Lehrkraft</div>
+      <div style="text-align:center;">
+        <div style="border-bottom:2px solid #CBD5E1; width:140px; height:30px; margin:0 auto;"></div>
+        <div style="font-size:11px; color:#94A3B8; margin-top:6px;">Unterschrift Schüler/in</div>
       </div>
-      <div class="zertifikat-unterschrift">
-        <div class="zertifikat-unterschrift-linie"></div>
-        <div class="zertifikat-unterschrift-label">Schüler/in</div>
+      <div style="text-align:center;">
+        <div style="border-bottom:2px solid #CBD5E1; width:140px; height:30px; margin:0 auto;"></div>
+        <div style="font-size:11px; color:#94A3B8; margin-top:6px;">Unterschrift Lehrkraft</div>
       </div>
     </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 30</span>
+    <span>Seite 1 / 2</span>
+  </div>
+</div>
+
+<!-- ===================== SEITE 2: Kompakte Skills-Zusammenfassung ===================== -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
+      <div class="ab-titel">Meine Skills-Karte 🧰</div>
+      <div class="ab-untertitel">Alle Module + Top-Skill + Notfall-Plan + Nummern</div>
+    </div>
+    <div class="kopfzeile-icon">🎉</div>
   </div>
 
   <div class="schneide-linie"></div>
@@ -75,35 +88,58 @@
     <div class="zusammenfassung-titel">🏆 Meine Skills auf einen Blick</div>
     <div class="zusammenfassung-grid">
       <div class="zusammenfassung-block">
-        <div class="zusammenfassung-block-titel">❤️ Gefühle</div>
-        Erkennen · Benennen · Körpersignale · Gefühls-Tagebuch
+        <div class="zusammenfassung-block-titel">🧘 Achtsamkeit</div>
+        Achtsam atmen · Wahrnehmen · Gedanken beobachten · Im Moment sein
       </div>
       <div class="zusammenfassung-block">
-        <div class="zusammenfassung-block-titel">🔥 Wut & Stress</div>
-        STOPP-Technik · 5-4-3-2-1 · Atmen · Bewegung · Entspannung
+        <div class="zusammenfassung-block-titel">🎭 Gefühle</div>
+        Erkennen · Benennen · Körper-Signale · Thermometer · Alle Gefühle ok
       </div>
       <div class="zusammenfassung-block">
-        <div class="zusammenfassung-block-titel">⭐ Selbstwert</div>
-        Stärken · Gedanken-Check · Innerer Coach · Mut
+        <div class="zusammenfassung-block-titel">🧊 Krisen-Skills</div>
+        TIPP-Skills · 5-4-3-2-1 · Notfallkoffer · Rad. Akzeptanz · Survivalkit
       </div>
       <div class="zusammenfassung-block">
-        <div class="zusammenfassung-block-titel">🫂 Empathie</div>
-        Perspektivwechsel · Freundschaft · Vielfalt
+        <div class="zusammenfassung-block-titel">🌋 Schwierige Gefühle</div>
+        Wut managen · Trauer · Angst + Mut · Selbstmitgefühl · Gegenteiliges Handeln · ABC
       </div>
       <div class="zusammenfassung-block">
         <div class="zusammenfassung-block-titel">💬 Kommunikation</div>
-        Ich-Botschaften · Zuhören · Konflikte fair lösen · Grenzen
+        Grenzen setzen · Ich-Botschaften · Aktives Zuhören · Konflikte fair lösen · Vertrauen
       </div>
       <div class="zusammenfassung-block">
         <div class="zusammenfassung-block-titel">💪 Hilfe holen</div>
-        Netzwerk · Hilfe-Sätze · 📞 116 111 · 📞 0800 111 0 111
+        Netzwerk aufbauen · Hilfe-Sätze · Vertrauenspersonen · Mut zur Hilfe
       </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px;">
+      <div style="border:1.5px solid var(--farbe); border-radius:10px; padding:10px; background:white;">
+        <div style="font-weight:800; color:var(--farbe); font-size:12px; margin-bottom:4px;">⭐ Mein Top-Skill</div>
+        <div style="border-bottom:1.5px solid #CBD5E1; height:18px;"></div>
+      </div>
+      <div style="border:1.5px solid var(--farbe); border-radius:10px; padding:10px; background:white;">
+        <div style="font-weight:800; color:var(--farbe); font-size:12px; margin-bottom:4px;">🚨 Mein Notfall-Plan</div>
+        <div style="font-size:10px; line-height:1.6;">
+          1. STOPP + Atmen<br>
+          2. Gefühl benennen<br>
+          3. Skill benutzen: <span style="border-bottom:1px solid #CBD5E1; display:inline-block; min-width:60px;">&nbsp;</span><br>
+          4. Hilfe holen: <span style="border-bottom:1px solid #CBD5E1; display:inline-block; min-width:60px;">&nbsp;</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="zk-notfall">
+      <div class="zk-notfall-titel">🚨 NOTFALL-NUMMERN — immer anrufen, wenn es dir schlecht geht!</div>
+      <div class="zk-notfall-nr">📞 116 111 <span style="font-size:10px; font-weight:400;">Nummer gegen Kummer</span> &nbsp;·&nbsp; 📞 0800 45 45 45 <span style="font-size:10px; font-weight:400;">Kinder- & Jugendtelefon</span> &nbsp;·&nbsp; 🚑 112 <span style="font-size:10px; font-weight:400;">Notfall</span></div>
     </div>
   </div>
 
+  <div class="schneide-linie"></div>
+
   <div class="fusszeile">
     <span>Skills-Kurs · Karten · Sitzung 30</span>
-    <span>Seite 1 / 1</span>
+    <span>Seite 2 / 2</span>
   </div>
 </div>
 </body>

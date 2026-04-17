@@ -4,7 +4,18 @@
 <meta charset="UTF-8">
 <title>Sitzung 29 — Skills-Olympiade</title>
 <link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
-<style>:root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }</style>
+<style>
+:root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
+.karten-grid-vier { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.skill-mini { border: 1.5px solid var(--farbe); border-radius: 8px; padding: 5px 3px; text-align: center; background: var(--farbe-hell); }
+.skill-mini-nr { font-size: 9px; font-weight: 800; color: var(--farbe); }
+.skill-mini-icon { font-size: 16px; line-height: 1.2; }
+.skill-mini-name { font-weight: 700; font-size: 9px; line-height: 1.2; }
+.ranking-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.ranking-nr { background: var(--farbe); color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0; }
+.quiz-frage { margin-bottom: 8px; padding: 8px; background: var(--farbe-hell); border-radius: 8px; font-size: 12px; }
+.quiz-nr { font-weight: 800; color: var(--farbe); }
+</style>
 </head>
 <body>
 <div class="druck-leiste">
@@ -29,44 +40,51 @@
 
   <div class="einfach-box">
     <div class="einfach-box-icon">🧘</div>
-    <div class="einfach-box-titel">Check-in</div>
-    <p>Fast geschafft! 29 von 30 Sitzungen! 🎉 Welcher Skill fällt dir als Erstes ein, wenn du an den ganzen Kurs denkst? Atme 3× tief ein und aus.</p>
+    <div class="einfach-box-titel">Check-in: Mein Lieblings-Achtsamkeits-Moment</div>
+    <p>Denke an alle Achtsamkeits-Momente der letzten 28 Sitzungen. Schließe die Augen, atme 3x tief ein und aus und erinnere dich an deinen schönsten Moment.</p>
+  </div>
+
+  <div class="box">
+    <div class="box-label"><span class="box-label-emoji">🧘</span>Mein Lieblings-Achtsamkeits-Moment war:</div>
+    <div class="schreiblinie"></div>
+    <div class="schreiblinie"></div>
   </div>
 
   <div class="uebung">
     <div class="uebung-header">
       <div class="uebung-nr">1</div>
-      <div class="uebung-titel">Alle Skills im Überblick 📋</div>
+      <div class="uebung-titel">Alle 28 Skills auf einen Blick 🧰</div>
     </div>
-    <div class="sprechblase">In 30 Sitzungen hast du MEGA viel gelernt! Lass uns alles nochmal durchgehen. Du wirst überrascht sein, wie viel du schon kannst!</div>
-    <div class="uebung-beschreibung">Welche Skills kennst du noch? Verbinde die Themen mit dem passenden Block:</div>
-    <div class="box">
-      <div style="font-size:12px;">
-        <div style="display:grid; grid-template-columns:auto 1fr; gap:6px 12px; align-items:center;">
-          <span style="font-weight:800; color:var(--farbe);">Block 1:</span><span>Gefühle erkennen, Körpersignale, Gefühls-Tagebuch</span>
-          <span style="font-weight:800; color:var(--farbe);">Block 2:</span><span>Wut-Management, Stress-Abbau, Entspannung</span>
-          <span style="font-weight:800; color:var(--farbe);">Block 3:</span><span>Selbstwert, Stärken, Gedanken-Check</span>
-          <span style="font-weight:800; color:var(--farbe);">Block 4:</span><span>Empathie, Perspektivwechsel, Freundschaft</span>
-          <span style="font-weight:800; color:var(--farbe);">Block 5:</span><span>Kommunikation, Konflikte, Vertrauen, Hilfe holen</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">2</div>
-      <div class="uebung-titel">Meine Top-5 Werkzeuge 🛠️</div>
-    </div>
-    <div class="uebung-beschreibung">Von ALLEN Skills, die du gelernt hast — welche 5 sind DEINE Favoriten? Die, die dir am meisten geholfen haben?</div>
-    <div class="box">
-      <div style="font-size:13px; padding:4px 0;">
-        <div style="display:flex; align-items:center; margin-bottom:6px;"><span style="font-weight:800; color:var(--farbe); width:20px;">1.</span><div class="schreiblinie" style="flex:1; margin-left:8px;"></div></div>
-        <div style="display:flex; align-items:center; margin-bottom:6px;"><span style="font-weight:800; color:var(--farbe); width:20px;">2.</span><div class="schreiblinie" style="flex:1; margin-left:8px;"></div></div>
-        <div style="display:flex; align-items:center; margin-bottom:6px;"><span style="font-weight:800; color:var(--farbe); width:20px;">3.</span><div class="schreiblinie" style="flex:1; margin-left:8px;"></div></div>
-        <div style="display:flex; align-items:center; margin-bottom:6px;"><span style="font-weight:800; color:var(--farbe); width:20px;">4.</span><div class="schreiblinie" style="flex:1; margin-left:8px;"></div></div>
-        <div style="display:flex; align-items:center;"><span style="font-weight:800; color:var(--farbe); width:20px;">5.</span><div class="schreiblinie" style="flex:1; margin-left:8px;"></div></div>
-      </div>
+    <div class="uebung-beschreibung">Hier siehst du ALLES, was du gelernt hast. Du bist ein Skills-Profi!</div>
+    <div class="karten-grid-vier">
+      <div class="skill-mini"><div class="skill-mini-nr">1</div><div class="skill-mini-icon">🌟</div><div class="skill-mini-name">Willkommen</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">2</div><div class="skill-mini-icon">🧘</div><div class="skill-mini-name">Achtsamkeit</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">3</div><div class="skill-mini-icon">🌬️</div><div class="skill-mini-name">Atmen</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">4</div><div class="skill-mini-icon">🌿</div><div class="skill-mini-name">Wahrnehmen</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">5</div><div class="skill-mini-icon">💭</div><div class="skill-mini-name">Gedanken</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">6</div><div class="skill-mini-icon">🎭</div><div class="skill-mini-name">Gefühle erkennen</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">7</div><div class="skill-mini-icon">🫀</div><div class="skill-mini-name">Körper-Signale</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">8</div><div class="skill-mini-icon">🤫</div><div class="skill-mini-name">Nonverbal</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">9</div><div class="skill-mini-icon">🌡️</div><div class="skill-mini-name">Thermometer</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">10</div><div class="skill-mini-icon">✅</div><div class="skill-mini-name">Alle Gefühle ok</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">11</div><div class="skill-mini-icon">😤</div><div class="skill-mini-name">Stress</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">12</div><div class="skill-mini-icon">🧊</div><div class="skill-mini-name">TIPP-Skills</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">13</div><div class="skill-mini-icon">🌍</div><div class="skill-mini-name">5-4-3-2-1</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">14</div><div class="skill-mini-icon">🧳</div><div class="skill-mini-name">Notfallkoffer</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">15</div><div class="skill-mini-icon">🪨</div><div class="skill-mini-name">Rad. Akzeptanz</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">16</div><div class="skill-mini-icon">🛡️</div><div class="skill-mini-name">Survivalkit</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">17</div><div class="skill-mini-icon">🌋</div><div class="skill-mini-name">Wut</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">18</div><div class="skill-mini-icon">🌧️</div><div class="skill-mini-name">Trauer</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">19</div><div class="skill-mini-icon">🦁</div><div class="skill-mini-name">Angst + Mut</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">20</div><div class="skill-mini-icon">💝</div><div class="skill-mini-name">Selbstmitgefühl</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">21</div><div class="skill-mini-icon">🔄</div><div class="skill-mini-name">Gegenteil</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">22</div><div class="skill-mini-icon">🧩</div><div class="skill-mini-name">ABC Gefühle</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">23</div><div class="skill-mini-icon">🛑</div><div class="skill-mini-name">Grenzen</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">24</div><div class="skill-mini-icon">💬</div><div class="skill-mini-name">Ich-Botschaften</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">25</div><div class="skill-mini-icon">👂</div><div class="skill-mini-name">Zuhören</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">26</div><div class="skill-mini-icon">🤝</div><div class="skill-mini-name">Konflikte lösen</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">27</div><div class="skill-mini-icon">🤝</div><div class="skill-mini-name">Vertrauen</div></div>
+      <div class="skill-mini"><div class="skill-mini-nr">28</div><div class="skill-mini-icon">💪</div><div class="skill-mini-name">Hilfe holen</div></div>
     </div>
   </div>
 
@@ -81,18 +99,50 @@
 
   <div class="uebung">
     <div class="uebung-header">
-      <div class="uebung-nr">3</div>
-      <div class="uebung-titel">Wann benutze ich was? 🧰</div>
+      <div class="uebung-nr">2</div>
+      <div class="uebung-titel">Meine Top-5 Werkzeuge 🥇</div>
     </div>
-    <div class="uebung-beschreibung">Verschiedene Situationen brauchen verschiedene Skills. Ordne zu — welchen Skill benutzt du wann?</div>
+    <div class="uebung-beschreibung">Welche 5 Skills haben dir AM MEISTEN geholfen? Erstelle dein persönliches Ranking!</div>
+    <div class="box">
+      <div class="ranking-row">
+        <div class="ranking-nr" style="background:#FFD700; color:#333;">1</div>
+        <div style="flex:1;"><div class="box-label"><span class="box-label-emoji">🥇</span>Mein wichtigster Skill:</div><div class="schreiblinie"></div></div>
+      </div>
+      <div class="ranking-row">
+        <div class="ranking-nr" style="background:#C0C0C0; color:#333;">2</div>
+        <div style="flex:1;"><div class="schreiblinie"></div></div>
+      </div>
+      <div class="ranking-row">
+        <div class="ranking-nr" style="background:#CD7F32; color:#fff;">3</div>
+        <div style="flex:1;"><div class="schreiblinie"></div></div>
+      </div>
+      <div class="ranking-row">
+        <div class="ranking-nr">4</div>
+        <div style="flex:1;"><div class="schreiblinie"></div></div>
+      </div>
+      <div class="ranking-row">
+        <div class="ranking-nr">5</div>
+        <div style="flex:1;"><div class="schreiblinie"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">3</div>
+      <div class="uebung-titel">Wann benutze ich was? 🗺️</div>
+    </div>
+    <div class="uebung-beschreibung">Ordne zu: Welcher Skill passt zu welcher Situation?</div>
     <div class="box">
       <div style="font-size:13px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;"><span>😡 Ich bin richtig wütend →</span><div class="schreiblinie" style="flex:1; margin-left:10px;"></div></div>
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;"><span>😰 Ich habe mega Stress →</span><div class="schreiblinie" style="flex:1; margin-left:10px;"></div></div>
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;"><span>😢 Ich fühle mich schlecht →</span><div class="schreiblinie" style="flex:1; margin-left:10px;"></div></div>
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;"><span>💬 Ich habe Streit mit jemandem →</span><div class="schreiblinie" style="flex:1; margin-left:10px;"></div></div>
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;"><span>🤔 Ich denke schlecht über mich →</span><div class="schreiblinie" style="flex:1; margin-left:10px;"></div></div>
-        <div style="display:flex; justify-content:space-between; align-items:center;"><span>🆘 Ich brauche dringend Hilfe →</span><div class="schreiblinie" style="flex:1; margin-left:10px;"></div></div>
+        <div style="display:flex; align-items:center; margin-bottom:6px;"><span style="min-width:200px;">😡 Ich bin mega wütend →</span><div class="schreiblinie" style="flex:1;"></div></div>
+        <div style="display:flex; align-items:center; margin-bottom:6px;"><span style="min-width:200px;">😰 Alles ist zu viel →</span><div class="schreiblinie" style="flex:1;"></div></div>
+        <div style="display:flex; align-items:center; margin-bottom:6px;"><span style="min-width:200px;">😢 Ich bin traurig →</span><div class="schreiblinie" style="flex:1;"></div></div>
+        <div style="display:flex; align-items:center; margin-bottom:6px;"><span style="min-width:200px;">😨 Ich habe Angst →</span><div class="schreiblinie" style="flex:1;"></div></div>
+        <div style="display:flex; align-items:center; margin-bottom:6px;"><span style="min-width:200px;">🤯 Ich kann nicht klar denken →</span><div class="schreiblinie" style="flex:1;"></div></div>
+        <div style="display:flex; align-items:center; margin-bottom:6px;"><span style="min-width:200px;">😤 Jemand verletzt meine Grenze →</span><div class="schreiblinie" style="flex:1;"></div></div>
+        <div style="display:flex; align-items:center; margin-bottom:6px;"><span style="min-width:200px;">💔 Ich bin gemein zu mir selbst →</span><div class="schreiblinie" style="flex:1;"></div></div>
+        <div style="display:flex; align-items:center;"><span style="min-width:200px;">🆘 Ich brauche dringend Hilfe →</span><div class="schreiblinie" style="flex:1;"></div></div>
       </div>
     </div>
   </div>
@@ -100,21 +150,32 @@
   <div class="uebung">
     <div class="uebung-header">
       <div class="uebung-nr">4</div>
-      <div class="uebung-titel">🏃 Sportpause: Skills-Parcours</div>
+      <div class="uebung-titel">Mein kompakter Notfall-Plan 🚨</div>
     </div>
-    <div class="sprechblase">Skills-Olympiade! An jeder Station wartet eine Aufgabe, die einen bestimmten Skill braucht. Wer schafft alle Stationen? 🏅</div>
+    <div class="sprechblase">Wenn es mir RICHTIG schlecht geht, mache ich diese 4 Schritte:</div>
     <div class="box">
-      <div style="font-size:12px;">
-        <div style="margin-bottom:4px;">🏅 <strong>Station 1 — Atmen:</strong> 5-4-3-2-1-Technik vormachen</div>
-        <div style="margin-bottom:4px;">🏅 <strong>Station 2 — Gefühle:</strong> 5 Gefühle in 30 Sek pantomimisch darstellen</div>
-        <div style="margin-bottom:4px;">🏅 <strong>Station 3 — Ich-Botschaft:</strong> Zu einer Situation eine Ich-Botschaft formulieren</div>
-        <div style="margin-bottom:4px;">🏅 <strong>Station 4 — Zuhören:</strong> Partner 30 Sek zuhören + zusammenfassen</div>
-        <div>🏅 <strong>Station 5 — Hilfe holen:</strong> Einen Hilfe-Starter-Satz sagen</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:13px;">
+        <div style="border:1.5px solid var(--farbe); border-radius:10px; padding:10px;">
+          <div style="font-weight:800; color:var(--farbe);">Schritt 1: STOPP 🛑</div>
+          <div class="schreiblinie"></div>
+          <div class="schreiblinie"></div>
+        </div>
+        <div style="border:1.5px solid var(--farbe); border-radius:10px; padding:10px;">
+          <div style="font-weight:800; color:var(--farbe);">Schritt 2: KÖRPER 🧊</div>
+          <div class="schreiblinie"></div>
+          <div class="schreiblinie"></div>
+        </div>
+        <div style="border:1.5px solid var(--farbe); border-radius:10px; padding:10px;">
+          <div style="font-weight:800; color:var(--farbe);">Schritt 3: ERDEN 🌍</div>
+          <div class="schreiblinie"></div>
+          <div class="schreiblinie"></div>
+        </div>
+        <div style="border:1.5px solid var(--farbe); border-radius:10px; padding:10px;">
+          <div style="font-weight:800; color:var(--farbe);">Schritt 4: HILFE 💪</div>
+          <div class="schreiblinie"></div>
+          <div class="schreiblinie"></div>
+        </div>
       </div>
-    </div>
-    <div class="box">
-      <div class="box-label"><span class="box-label-emoji">🏆</span>Wie viele Stationen habe ich geschafft?</div>
-      <div class="schreiblinie"></div>
     </div>
   </div>
 
@@ -130,48 +191,39 @@
   <div class="uebung">
     <div class="uebung-header">
       <div class="uebung-nr">5</div>
-      <div class="uebung-titel">Mein Notfall-Plan kompakt 🆘</div>
+      <div class="uebung-titel">Skills-Quiz 🧠</div>
     </div>
-    <div class="uebung-beschreibung">Schreibe deinen persönlichen Notfall-Plan auf — was machst du, wenn es dir RICHTIG schlecht geht?</div>
-    <div class="einfach-box">
-      <div class="einfach-box-icon">🆘</div>
-      <div class="einfach-box-titel">Wenn es mir schlecht geht...</div>
-      <p><strong>Schritt 1:</strong> STOPP — Pause machen, tief atmen.<br>
-      <strong>Schritt 2:</strong> Gefühl benennen — Was fühle ich gerade?<br>
-      <strong>Schritt 3:</strong> Skill benutzen — Was hilft mir JETZT?<br>
-      <strong>Schritt 4:</strong> Hilfe holen — Wen kann ich anrufen?</p>
-    </div>
-    <div class="box" style="margin-bottom:6px;">
-      <div class="box-label"><span class="box-label-emoji">🧘</span>Mein Lieblings-Skill wenn es mir schlecht geht:</div>
-      <div class="schreiblinie"></div>
-    </div>
-    <div class="box" style="margin-bottom:6px;">
-      <div class="box-label"><span class="box-label-emoji">📞</span>Wen rufe ich an?</div>
-      <div class="schreiblinie"></div>
-    </div>
+    <div class="sprechblase">Teste dein Wissen! Welcher Skill passt zur Situation? Schreibe den passenden Skill-Namen dazu.</div>
     <div class="box">
-      <div class="box-label"><span class="box-label-emoji">📍</span>Wo fühle ich mich sicher?</div>
-      <div class="schreiblinie"></div>
+      <div class="quiz-frage"><span class="quiz-nr">1.</span> Dein Herz rast, deine Hände zittern. Du brauchst SOFORT Ruhe. → <div class="schreiblinie" style="margin-top:4px;"></div></div>
+      <div class="quiz-frage"><span class="quiz-nr">2.</span> Dein Freund sagt etwas Gemeines. Du willst zurückschreien. → <div class="schreiblinie" style="margin-top:4px;"></div></div>
+      <div class="quiz-frage"><span class="quiz-nr">3.</span> Du hast eine Klassenarbeit verhauen und denkst: „Ich bin dumm." → <div class="schreiblinie" style="margin-top:4px;"></div></div>
+      <div class="quiz-frage"><span class="quiz-nr">4.</span> Deine Eltern streiten. Du kannst nichts daran ändern. → <div class="schreiblinie" style="margin-top:4px;"></div></div>
+      <div class="quiz-frage"><span class="quiz-nr">5.</span> Jemand kopiert ständig deine Hausaufgaben und du fühlst dich ausgenutzt. → <div class="schreiblinie" style="margin-top:4px;"></div></div>
+      <div class="quiz-frage"><span class="quiz-nr">6.</span> Du hast Angst vor dem Vortrag morgen. → <div class="schreiblinie" style="margin-top:4px;"></div></div>
+      <div class="quiz-frage"><span class="quiz-nr">7.</span> Dein Opa ist gestorben und du bist sehr traurig. → <div class="schreiblinie" style="margin-top:4px;"></div></div>
+      <div class="quiz-frage"><span class="quiz-nr">8.</span> Du fühlst dich total überfordert und weißt nicht mehr weiter. → <div class="schreiblinie" style="margin-top:4px;"></div></div>
     </div>
   </div>
 
   <div class="uebung">
     <div class="uebung-header">
       <div class="uebung-nr">6</div>
-      <div class="uebung-titel">Meine Lieblingstechnik demonstrieren 🌟</div>
+      <div class="uebung-titel">Mein Lieblings-Skill + Warum ❤️</div>
     </div>
-    <div class="uebung-beschreibung">Wähle EINEN Skill, der für dich am wichtigsten ist. Erkläre ihn der Klasse in 1 Minute — wie ein Experte!</div>
+    <div class="uebung-beschreibung">Welcher Skill ist DEIN absoluter Favorit? Warum genau DER?</div>
     <div class="box" style="margin-bottom:6px;">
-      <div class="box-label"><span class="box-label-emoji">⭐</span>Mein Lieblings-Skill:</div>
+      <div class="box-label"><span class="box-label-emoji">⭐</span>Mein Lieblings-Skill heißt:</div>
       <div class="schreiblinie"></div>
     </div>
     <div class="box" style="margin-bottom:6px;">
-      <div class="box-label"><span class="box-label-emoji">📝</span>So erkläre ich ihn:</div>
+      <div class="box-label"><span class="box-label-emoji">💡</span>Er hat mir geholfen, als:</div>
       <div class="schreiblinie"></div>
       <div class="schreiblinie"></div>
     </div>
     <div class="box">
-      <div class="box-label"><span class="box-label-emoji">🤔</span>Warum ist er für MICH so wichtig?</div>
+      <div class="box-label"><span class="box-label-emoji">🎯</span>Ich würde ihn einem Freund empfehlen, weil:</div>
+      <div class="schreiblinie"></div>
       <div class="schreiblinie"></div>
     </div>
   </div>
@@ -185,54 +237,15 @@
 <!-- ===================== SEITE 4 ===================== -->
 <div class="seite">
 
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">7</div>
-      <div class="uebung-titel">Skills-Quiz: Teste dich! 🧠</div>
-    </div>
-    <div class="uebung-beschreibung">Wie gut kennst du deine Skills? Beantworte die Fragen:</div>
-    <div class="box">
-      <div style="font-size:13px;">
-        <div style="margin-bottom:6px;"><strong>Was ist die 5-4-3-2-1-Technik?</strong></div>
-        <div class="schreiblinie"></div>
-        <div style="margin-bottom:6px; margin-top:8px;"><strong>Was ist eine Ich-Botschaft?</strong></div>
-        <div class="schreiblinie"></div>
-        <div style="margin-bottom:6px; margin-top:8px;"><strong>Nenne 2 Green Flags bei Freundschaften:</strong></div>
-        <div class="schreiblinie"></div>
-        <div style="margin-bottom:6px; margin-top:8px;"><strong>Welche Notfall-Nummer kannst du anrufen?</strong></div>
-        <div class="schreiblinie"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="uebung">
-    <div class="uebung-header">
-      <div class="uebung-nr">8</div>
-      <div class="uebung-titel">Wochenaufgabe: Skills im Alltag</div>
-    </div>
-    <div class="einfach-box">
-      <div class="einfach-box-icon">🎯</div>
-      <div class="einfach-box-titel">Letzte Mission vor dem Finale!</div>
-      <p>Benutze diese Woche BEWUSST mindestens 3 verschiedene Skills aus dem Kurs. Schreibe auf, welche und wann.</p>
-    </div>
-    <div class="box">
-      <div style="font-size:13px; padding:4px 0;">
-        <div style="display:flex; align-items:center; margin-bottom:6px;"><span style="font-weight:800; color:var(--farbe); width:60px;">Skill 1:</span><div class="schreiblinie" style="flex:1; margin-left:8px;"></div></div>
-        <div style="display:flex; align-items:center; margin-bottom:6px;"><span style="font-weight:800; color:var(--farbe); width:60px;">Skill 2:</span><div class="schreiblinie" style="flex:1; margin-left:8px;"></div></div>
-        <div style="display:flex; align-items:center;"><span style="font-weight:800; color:var(--farbe); width:60px;">Skill 3:</span><div class="schreiblinie" style="flex:1; margin-left:8px;"></div></div>
-      </div>
-    </div>
-  </div>
-
   <div class="reflexion">
-    <div class="reflexion-titel">🌟 Blitzlicht</div>
-    <div class="uebung-beschreibung">Nach 29 Sitzungen fühle ich mich...</div>
+    <div class="reflexion-titel">🌟 Reflexion: Wie gut bin ich vorbereitet?</div>
+    <div class="uebung-beschreibung">Nach 28 Skills-Sitzungen — wie sicher fühlst du dich, mit schwierigen Situationen umzugehen?</div>
     <div class="schreibfeld-mittel"></div>
     <div class="smiley-skala-gross">
-      <div class="smiley-punkt-gross"><div class="smiley-emoji-gross">🤷</div><div class="smiley-label-gross">Weiß nicht</div><div class="smiley-kreis-gross"></div></div>
-      <div class="smiley-punkt-gross"><div class="smiley-emoji-gross">🌱</div><div class="smiley-label-gross">Gewachsen</div><div class="smiley-kreis-gross"></div></div>
-      <div class="smiley-punkt-gross"><div class="smiley-emoji-gross">💪</div><div class="smiley-label-gross">Stärker</div><div class="smiley-kreis-gross"></div></div>
-      <div class="smiley-punkt-gross"><div class="smiley-emoji-gross">🌟</div><div class="smiley-label-gross">Stolz!</div><div class="smiley-kreis-gross"></div></div>
+      <div class="smiley-punkt-gross"><div class="smiley-emoji-gross">😰</div><div class="smiley-label-gross">Unsicher</div><div class="smiley-kreis-gross"></div></div>
+      <div class="smiley-punkt-gross"><div class="smiley-emoji-gross">🤔</div><div class="smiley-label-gross">Geht so</div><div class="smiley-kreis-gross"></div></div>
+      <div class="smiley-punkt-gross"><div class="smiley-emoji-gross">🙂</div><div class="smiley-label-gross">Ganz okay</div><div class="smiley-kreis-gross"></div></div>
+      <div class="smiley-punkt-gross"><div class="smiley-emoji-gross">😊</div><div class="smiley-label-gross">Gut gerüstet</div><div class="smiley-kreis-gross"></div></div>
       <div class="smiley-punkt-gross"><div class="smiley-emoji-gross">🏆</div><div class="smiley-label-gross">Skills-Champion!</div><div class="smiley-kreis-gross"></div></div>
     </div>
   </div>

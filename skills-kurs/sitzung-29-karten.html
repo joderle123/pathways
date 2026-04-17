@@ -2,18 +2,18 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Sitzung 29 — Skills-Übersichts-Karten</title>
+<title>Sitzung 29 — Skills-Übersicht</title>
 <link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
 <style>
 :root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
-.karten-seite { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 10px; }
-.skill-karte { border: 2.5px solid var(--farbe); border-radius: 16px; padding: 14px 12px; background: white; }
-.skill-karte-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-.skill-karte-emoji { font-size: 28px; }
-.skill-karte-block { font-size: 11px; font-weight: 800; color: white; background: var(--farbe); padding: 2px 8px; border-radius: 6px; }
-.skill-karte-titel { font-size: 13px; font-weight: 800; color: var(--farbe); margin-bottom: 6px; }
-.skill-karte-liste { font-size: 11px; color: #475569; line-height: 1.6; padding-left: 0; list-style: none; }
-.skill-karte-liste li::before { content: "✦ "; color: var(--farbe); font-weight: 800; }
+.skills-kompakt { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.sk-karte { border: 1.5px solid var(--farbe); border-radius: 10px; padding: 6px 4px; text-align: center; background: white; }
+.sk-karte-nr { font-size: 10px; font-weight: 800; color: white; background: var(--farbe); border-radius: 50%; width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 2px; }
+.sk-karte-icon { font-size: 20px; line-height: 1.2; }
+.sk-karte-titel { font-size: 9px; font-weight: 800; color: #334155; line-height: 1.2; margin-top: 2px; }
+.sk-karte-stich { font-size: 8px; color: #94A3B8; line-height: 1.2; margin-top: 1px; }
+.block-header { grid-column: 1 / -1; background: var(--farbe); color: white; border-radius: 8px; padding: 4px 10px; font-size: 11px; font-weight: 800; text-align: center; margin-top: 4px; }
+.block-header:first-child { margin-top: 0; }
 </style>
 </head>
 <body>
@@ -23,108 +23,64 @@
   <div class="kopfzeile">
     <div class="kopfzeile-links">
       <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
-      <div class="ab-titel">Alle 30 Sitzungen auf einen Blick ✂️🏆</div>
-      <div class="ab-untertitel">Skills-Übersicht — Ausschneiden und aufheben!</div>
+      <div class="ab-titel">Skills-Übersicht ✂️🧰</div>
+      <div class="ab-untertitel">Alle 30 Sitzungen kompakt — ausschneiden und aufheben!</div>
     </div>
     <div class="kopfzeile-icon">🏆</div>
   </div>
-  <div class="karten-seite">
 
-    <div class="skill-karte">
-      <div class="skill-karte-header">
-        <div class="skill-karte-emoji">❤️</div>
-        <div class="skill-karte-block">BLOCK 1</div>
-      </div>
-      <div class="skill-karte-titel">Gefühle verstehen (Sitzung 1-6)</div>
-      <ul class="skill-karte-liste">
-        <li>Gefühle erkennen & benennen</li>
-        <li>Körpersignale wahrnehmen</li>
-        <li>Gefühls-Tagebuch führen</li>
-        <li>Alle Gefühle sind okay</li>
-        <li>Gefühlsrad & Gefühlsbarometer</li>
-        <li>Auslöser erkennen</li>
-      </ul>
-    </div>
+  <div class="skills-kompakt">
 
-    <div class="skill-karte">
-      <div class="skill-karte-header">
-        <div class="skill-karte-emoji">🔥</div>
-        <div class="skill-karte-block">BLOCK 2</div>
-      </div>
-      <div class="skill-karte-titel">Wut & Stress meistern (Sitzung 7-12)</div>
-      <ul class="skill-karte-liste">
-        <li>Wut-Vulkan verstehen</li>
-        <li>STOPP-Technik</li>
-        <li>5-4-3-2-1-Grounding</li>
-        <li>Atemtechniken</li>
-        <li>Stress-Abbau durch Bewegung</li>
-        <li>Entspannung & Achtsamkeit</li>
-      </ul>
-    </div>
+    <!-- Block 1: Achtsamkeit -->
+    <div class="block-header">Block 1 — Achtsamkeit & Wahrnehmen (Sitzung 1-5)</div>
+    <div class="sk-karte"><div class="sk-karte-nr">1</div><div class="sk-karte-icon">🌟</div><div class="sk-karte-titel">Willkommen</div><div class="sk-karte-stich">Kennenlernen</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">2</div><div class="sk-karte-icon">🧘</div><div class="sk-karte-titel">Achtsamkeit</div><div class="sk-karte-stich">Im Moment sein</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">3</div><div class="sk-karte-icon">🌬️</div><div class="sk-karte-titel">Atmen</div><div class="sk-karte-stich">4-7-8 Technik</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">4</div><div class="sk-karte-icon">🌿</div><div class="sk-karte-titel">Wahrnehmen</div><div class="sk-karte-stich">5 Sinne nutzen</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">5</div><div class="sk-karte-icon">💭</div><div class="sk-karte-titel">Gedanken</div><div class="sk-karte-stich">Nicht alles glauben</div></div>
 
-    <div class="skill-karte">
-      <div class="skill-karte-header">
-        <div class="skill-karte-emoji">⭐</div>
-        <div class="skill-karte-block">BLOCK 3</div>
-      </div>
-      <div class="skill-karte-titel">Selbstwert & Stärken (Sitzung 13-18)</div>
-      <ul class="skill-karte-liste">
-        <li>Stärken entdecken</li>
-        <li>Positives Selbstbild aufbauen</li>
-        <li>Gedanken-Check: Stimmt das wirklich?</li>
-        <li>Innerer Kritiker vs. innerer Coach</li>
-        <li>Mut-Übungen</li>
-        <li>Komplimente geben & annehmen</li>
-      </ul>
-    </div>
+    <!-- Block 2: Gefühle -->
+    <div class="block-header">Block 2 — Gefühle erkennen & verstehen (Sitzung 6-10)</div>
+    <div class="sk-karte"><div class="sk-karte-nr">6</div><div class="sk-karte-icon">🎭</div><div class="sk-karte-titel">Gefühle erkennen</div><div class="sk-karte-stich">Benennen</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">7</div><div class="sk-karte-icon">🫀</div><div class="sk-karte-titel">Körper-Signale</div><div class="sk-karte-stich">Wo spürst du das?</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">8</div><div class="sk-karte-icon">🤫</div><div class="sk-karte-titel">Nonverbal</div><div class="sk-karte-stich">Ohne Worte reden</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">9</div><div class="sk-karte-icon">🌡️</div><div class="sk-karte-titel">Thermometer</div><div class="sk-karte-stich">Intensität messen</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">10</div><div class="sk-karte-icon">✅</div><div class="sk-karte-titel">Alle Gefühle ok</div><div class="sk-karte-stich">Kein Gefühl ist falsch</div></div>
 
-    <div class="skill-karte">
-      <div class="skill-karte-header">
-        <div class="skill-karte-emoji">🫂</div>
-        <div class="skill-karte-block">BLOCK 4</div>
-      </div>
-      <div class="skill-karte-titel">Empathie & Miteinander (Sitzung 19-22)</div>
-      <ul class="skill-karte-liste">
-        <li>Empathie: In andere hineinversetzen</li>
-        <li>Perspektivwechsel üben</li>
-        <li>Freundschaft pflegen</li>
-        <li>Vielfalt wertschätzen</li>
-      </ul>
-    </div>
+    <!-- Block 3: Stress & Krisen -->
+    <div class="block-header">Block 3 — Stress & Krisen-Skills (Sitzung 11-16)</div>
+    <div class="sk-karte"><div class="sk-karte-nr">11</div><div class="sk-karte-icon">😤</div><div class="sk-karte-titel">Stress</div><div class="sk-karte-stich">Erkennen & regulieren</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">12</div><div class="sk-karte-icon">🧊</div><div class="sk-karte-titel">TIPP-Skills</div><div class="sk-karte-stich">Temperatur, Intensiv</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">13</div><div class="sk-karte-icon">🌍</div><div class="sk-karte-titel">5-4-3-2-1</div><div class="sk-karte-stich">Erdung, Grounding</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">14</div><div class="sk-karte-icon">🧳</div><div class="sk-karte-titel">Notfallkoffer</div><div class="sk-karte-stich">Ablenkung, Beruhigung</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">15</div><div class="sk-karte-icon">🪨</div><div class="sk-karte-titel">Rad. Akzeptanz</div><div class="sk-karte-stich">Annehmen was ist</div></div>
+    <div class="sk-karte" style="grid-column: span 1;"><div class="sk-karte-nr">16</div><div class="sk-karte-icon">🛡️</div><div class="sk-karte-titel">Survivalkit</div><div class="sk-karte-stich">Mein Krisen-Plan</div></div>
 
-    <div class="skill-karte">
-      <div class="skill-karte-header">
-        <div class="skill-karte-emoji">💬</div>
-        <div class="skill-karte-block">BLOCK 5</div>
-      </div>
-      <div class="skill-karte-titel">Kommunikation & Hilfe (Sitzung 23-28)</div>
-      <ul class="skill-karte-liste">
-        <li>Ich-Botschaften & Grenzen setzen</li>
-        <li>Aktives Zuhören</li>
-        <li>Konflikte fair lösen (Win-Win)</li>
-        <li>Vertrauen aufbauen</li>
-        <li>Hilfe holen = Stärke</li>
-        <li>Netzwerk-Karte & Notfall-Nummern</li>
-      </ul>
-    </div>
+    <!-- Block 4: Schwierige Gefühle -->
+    <div class="block-header">Block 4 — Schwierige Gefühle meistern (Sitzung 17-22)</div>
+    <div class="sk-karte"><div class="sk-karte-nr">17</div><div class="sk-karte-icon">🌋</div><div class="sk-karte-titel">Wut</div><div class="sk-karte-stich">Verstehen + managen</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">18</div><div class="sk-karte-icon">🌧️</div><div class="sk-karte-titel">Trauer</div><div class="sk-karte-stich">Verlust aushalten</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">19</div><div class="sk-karte-icon">🦁</div><div class="sk-karte-titel">Angst + Mut</div><div class="sk-karte-stich">Mut-Leiter</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">20</div><div class="sk-karte-icon">💝</div><div class="sk-karte-titel">Selbstmitgefühl</div><div class="sk-karte-stich">Nett zu mir sein</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">21</div><div class="sk-karte-icon">🔄</div><div class="sk-karte-titel">Gegenteil</div><div class="sk-karte-stich">Gegenteiliges Handeln</div></div>
+    <div class="sk-karte" style="grid-column: span 1;"><div class="sk-karte-nr">22</div><div class="sk-karte-icon">🧩</div><div class="sk-karte-titel">ABC Gefühle</div><div class="sk-karte-stich">Auslöser-Bewertung</div></div>
 
-    <div class="skill-karte">
-      <div class="skill-karte-header">
-        <div class="skill-karte-emoji">🏆</div>
-        <div class="skill-karte-block">FINALE</div>
-      </div>
-      <div class="skill-karte-titel">Abschluss (Sitzung 29-30)</div>
-      <ul class="skill-karte-liste">
-        <li>Skills-Olympiade: Alles wiederholen</li>
-        <li>Persönlicher Notfall-Plan</li>
-        <li>Top-5 Werkzeuge</li>
-        <li>Brief an Zukunfts-Ich</li>
-        <li>Zertifikat 🎓</li>
-        <li>Abschluss-Feier 🎉</li>
-      </ul>
-    </div>
+    <!-- Block 5: Kommunikation & Hilfe -->
+    <div class="block-header">Block 5 — Kommunikation & Hilfe (Sitzung 23-28)</div>
+    <div class="sk-karte"><div class="sk-karte-nr">23</div><div class="sk-karte-icon">🛑</div><div class="sk-karte-titel">Grenzen</div><div class="sk-karte-stich">Nein sagen</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">24</div><div class="sk-karte-icon">💬</div><div class="sk-karte-titel">Ich-Botschaften</div><div class="sk-karte-stich">Sag's richtig</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">25</div><div class="sk-karte-icon">👂</div><div class="sk-karte-titel">Zuhören</div><div class="sk-karte-stich">Aktives Zuhören</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">26</div><div class="sk-karte-icon">🤝</div><div class="sk-karte-titel">Konflikte lösen</div><div class="sk-karte-stich">Win-Win finden</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">27</div><div class="sk-karte-icon">🤝</div><div class="sk-karte-titel">Vertrauen</div><div class="sk-karte-stich">Green & Red Flags</div></div>
+    <div class="sk-karte" style="grid-column: span 1;"><div class="sk-karte-nr">28</div><div class="sk-karte-icon">💪</div><div class="sk-karte-titel">Hilfe holen</div><div class="sk-karte-stich">Netzwerk + Nummern</div></div>
+
+    <!-- Block 6: Abschluss -->
+    <div class="block-header">Block 6 — Abschluss (Sitzung 29-30)</div>
+    <div class="sk-karte"><div class="sk-karte-nr">29</div><div class="sk-karte-icon">🏆</div><div class="sk-karte-titel">Skills-Olympiade</div><div class="sk-karte-stich">Alle Skills testen</div></div>
+    <div class="sk-karte"><div class="sk-karte-nr">30</div><div class="sk-karte-icon">🎉</div><div class="sk-karte-titel">Abschluss & Feier</div><div class="sk-karte-stich">Zertifikat!</div></div>
 
   </div>
+
   <div class="fusszeile">
     <span>Skills-Kurs · Karten · Sitzung 29</span>
     <span>Seite 1 / 1</span>
