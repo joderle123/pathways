@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Sitzung 29 — Skills-Übersichts-Karten</title>
+<link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
+<style>
+:root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
+.karten-seite { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 10px; }
+.skill-karte { border: 2.5px solid var(--farbe); border-radius: 16px; padding: 14px 12px; background: white; }
+.skill-karte-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.skill-karte-emoji { font-size: 28px; }
+.skill-karte-block { font-size: 11px; font-weight: 800; color: white; background: var(--farbe); padding: 2px 8px; border-radius: 6px; }
+.skill-karte-titel { font-size: 13px; font-weight: 800; color: var(--farbe); margin-bottom: 6px; }
+.skill-karte-liste { font-size: 11px; color: #475569; line-height: 1.6; padding-left: 0; list-style: none; }
+.skill-karte-liste li::before { content: "✦ "; color: var(--farbe); font-weight: 800; }
+</style>
+</head>
+<body>
+<div class="druck-leiste"><button class="btn-drucken" onclick="window.print()">🖨️ Drucken + Ausschneiden</button></div>
+
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
+      <div class="ab-titel">Alle 30 Sitzungen auf einen Blick ✂️🏆</div>
+      <div class="ab-untertitel">Skills-Übersicht — Ausschneiden und aufheben!</div>
+    </div>
+    <div class="kopfzeile-icon">🏆</div>
+  </div>
+  <div class="karten-seite">
+
+    <div class="skill-karte">
+      <div class="skill-karte-header">
+        <div class="skill-karte-emoji">❤️</div>
+        <div class="skill-karte-block">BLOCK 1</div>
+      </div>
+      <div class="skill-karte-titel">Gefühle verstehen (Sitzung 1-6)</div>
+      <ul class="skill-karte-liste">
+        <li>Gefühle erkennen & benennen</li>
+        <li>Körpersignale wahrnehmen</li>
+        <li>Gefühls-Tagebuch führen</li>
+        <li>Alle Gefühle sind okay</li>
+        <li>Gefühlsrad & Gefühlsbarometer</li>
+        <li>Auslöser erkennen</li>
+      </ul>
+    </div>
+
+    <div class="skill-karte">
+      <div class="skill-karte-header">
+        <div class="skill-karte-emoji">🔥</div>
+        <div class="skill-karte-block">BLOCK 2</div>
+      </div>
+      <div class="skill-karte-titel">Wut & Stress meistern (Sitzung 7-12)</div>
+      <ul class="skill-karte-liste">
+        <li>Wut-Vulkan verstehen</li>
+        <li>STOPP-Technik</li>
+        <li>5-4-3-2-1-Grounding</li>
+        <li>Atemtechniken</li>
+        <li>Stress-Abbau durch Bewegung</li>
+        <li>Entspannung & Achtsamkeit</li>
+      </ul>
+    </div>
+
+    <div class="skill-karte">
+      <div class="skill-karte-header">
+        <div class="skill-karte-emoji">⭐</div>
+        <div class="skill-karte-block">BLOCK 3</div>
+      </div>
+      <div class="skill-karte-titel">Selbstwert & Stärken (Sitzung 13-18)</div>
+      <ul class="skill-karte-liste">
+        <li>Stärken entdecken</li>
+        <li>Positives Selbstbild aufbauen</li>
+        <li>Gedanken-Check: Stimmt das wirklich?</li>
+        <li>Innerer Kritiker vs. innerer Coach</li>
+        <li>Mut-Übungen</li>
+        <li>Komplimente geben & annehmen</li>
+      </ul>
+    </div>
+
+    <div class="skill-karte">
+      <div class="skill-karte-header">
+        <div class="skill-karte-emoji">🫂</div>
+        <div class="skill-karte-block">BLOCK 4</div>
+      </div>
+      <div class="skill-karte-titel">Empathie & Miteinander (Sitzung 19-22)</div>
+      <ul class="skill-karte-liste">
+        <li>Empathie: In andere hineinversetzen</li>
+        <li>Perspektivwechsel üben</li>
+        <li>Freundschaft pflegen</li>
+        <li>Vielfalt wertschätzen</li>
+      </ul>
+    </div>
+
+    <div class="skill-karte">
+      <div class="skill-karte-header">
+        <div class="skill-karte-emoji">💬</div>
+        <div class="skill-karte-block">BLOCK 5</div>
+      </div>
+      <div class="skill-karte-titel">Kommunikation & Hilfe (Sitzung 23-28)</div>
+      <ul class="skill-karte-liste">
+        <li>Ich-Botschaften & Grenzen setzen</li>
+        <li>Aktives Zuhören</li>
+        <li>Konflikte fair lösen (Win-Win)</li>
+        <li>Vertrauen aufbauen</li>
+        <li>Hilfe holen = Stärke</li>
+        <li>Netzwerk-Karte & Notfall-Nummern</li>
+      </ul>
+    </div>
+
+    <div class="skill-karte">
+      <div class="skill-karte-header">
+        <div class="skill-karte-emoji">🏆</div>
+        <div class="skill-karte-block">FINALE</div>
+      </div>
+      <div class="skill-karte-titel">Abschluss (Sitzung 29-30)</div>
+      <ul class="skill-karte-liste">
+        <li>Skills-Olympiade: Alles wiederholen</li>
+        <li>Persönlicher Notfall-Plan</li>
+        <li>Top-5 Werkzeuge</li>
+        <li>Brief an Zukunfts-Ich</li>
+        <li>Zertifikat 🎓</li>
+        <li>Abschluss-Feier 🎉</li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 29</span>
+    <span>Seite 1 / 1</span>
+  </div>
+</div>
+</body>
+</html>
