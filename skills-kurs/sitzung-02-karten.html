@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Sitzung 2 — Sinne-Detektiv-Karten</title>
+<link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
+<style>
+:root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
+.karten-seite { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 10px; }
+.spiel-karte { border: 2.5px solid var(--farbe); border-radius: 16px; padding: 20px 16px; text-align: center; min-height: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.spiel-karte-emoji { font-size: 40px; margin-bottom: 10px; }
+.spiel-karte-text { font-size: 16px; font-weight: 700; color: var(--text); line-height: 1.4; }
+.spiel-karte-sub { font-size: 12px; color: var(--grau); margin-top: 6px; }
+.mission-karte { border: 2.5px solid #D97706; background: #FFFBEB; border-radius: 16px; padding: 18px; text-align: center; min-height: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.mission-karte-titel { font-size: 14px; font-weight: 900; color: #92400E; margin-bottom: 8px; }
+.mission-karte-text { font-size: 15px; font-weight: 600; color: #92400E; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken + Ausschneiden</button>
+</div>
+
+<!-- ===================== SEITE 1: Sinne-Detektiv Aufträge ===================== -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
+      <div class="ab-titel">Sinne-Detektiv Aufträge ✂️🔍</div>
+      <div class="ab-untertitel">Jeder zieht 1 Karte — Mission draußen!</div>
+    </div>
+    <div class="kopfzeile-icon">🔍</div>
+  </div>
+
+  <div class="karten-seite">
+    <div class="mission-karte">
+      <div class="mission-karte-titel">👀 SEHEN-Mission</div>
+      <div class="mission-karte-text">Finde etwas das eine Farbe hat, die du heute noch nicht gesehen hast.</div>
+    </div>
+    <div class="mission-karte">
+      <div class="mission-karte-titel">👀 SEHEN-Mission</div>
+      <div class="mission-karte-text">Finde das kleinste lebende Ding das du sehen kannst.</div>
+    </div>
+    <div class="mission-karte">
+      <div class="mission-karte-titel">👂 HÖREN-Mission</div>
+      <div class="mission-karte-text">Steh still und zähle ALLE Geräusche die du in 30 Sekunden hörst.</div>
+    </div>
+    <div class="mission-karte">
+      <div class="mission-karte-titel">👂 HÖREN-Mission</div>
+      <div class="mission-karte-text">Finde das leiseste Geräusch das du hören kannst.</div>
+    </div>
+    <div class="mission-karte">
+      <div class="mission-karte-titel">🤲 FÜHLEN-Mission</div>
+      <div class="mission-karte-text">Finde 3 Dinge die sich alle ANDERS anfühlen. Beschreibe den Unterschied.</div>
+    </div>
+    <div class="mission-karte">
+      <div class="mission-karte-titel">🤲 FÜHLEN-Mission</div>
+      <div class="mission-karte-text">Berühre einen Baum oder eine Mauer. Beschreibe GENAU wie es sich anfühlt.</div>
+    </div>
+    <div class="mission-karte">
+      <div class="mission-karte-titel">👃 RIECHEN-Mission</div>
+      <div class="mission-karte-text">Finde 2 verschiedene Gerüche draußen. Was riechst du?</div>
+    </div>
+    <div class="mission-karte">
+      <div class="mission-karte-titel">🌡️ SPÜREN-Mission</div>
+      <div class="mission-karte-text">Schließe die Augen für 10 Sekunden. Spüre den Wind, die Sonne oder den Regen auf deiner Haut.</div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 2</span>
+    <span>Seite 1 / 2</span>
+  </div>
+</div>
+
+<!-- ===================== SEITE 2: Autopilot vs. Achtsam Quiz-Karten ===================== -->
+<div class="seite">
+  <div style="text-align:center; font-size:18px; font-weight:900; color:var(--farbe); margin: 16px 0;">🤖 vs. 🧘 — Autopilot oder Achtsam? (Quiz-Karten)</div>
+  <p style="text-align:center; font-size:13px; color:#64748B; margin-bottom:16px;">Karten mischen. Vorlesen. Gruppe entscheidet: Autopilot 🤖 oder Achtsam 🧘?</p>
+
+  <div class="karten-seite">
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">📱</div>
+      <div class="spiel-karte-text">Du scrollst durch TikTok und merkst plötzlich: 2 Stunden sind vorbei.</div>
+      <div class="spiel-karte-sub">🤖 oder 🧘?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">🌅</div>
+      <div class="spiel-karte-text">Du bleibst stehen und schaust dir den Sonnenuntergang an.</div>
+      <div class="spiel-karte-sub">🤖 oder 🧘?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">🍔</div>
+      <div class="spiel-karte-text">Du isst dein Mittagessen in 3 Minuten und weißt nicht mal was es war.</div>
+      <div class="spiel-karte-sub">🤖 oder 🧘?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">🌬️</div>
+      <div class="spiel-karte-text">Du atmest tief ein und merkst: Die Luft riecht nach Regen.</div>
+      <div class="spiel-karte-sub">🤖 oder 🧘?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">😤</div>
+      <div class="spiel-karte-text">Du schreist jemanden an, bevor du überhaupt nachdenkst.</div>
+      <div class="spiel-karte-sub">🤖 oder 🧘?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">🎵</div>
+      <div class="spiel-karte-text">Du hörst ein Lied und achtest auf jedes einzelne Instrument.</div>
+      <div class="spiel-karte-sub">🤖 oder 🧘?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">🚶</div>
+      <div class="spiel-karte-text">Du läufst zur Schule und weißt nachher nicht mehr, wie du dahin gekommen bist.</div>
+      <div class="spiel-karte-sub">🤖 oder 🧘?</div>
+    </div>
+    <div class="spiel-karte">
+      <div class="spiel-karte-emoji">🤲</div>
+      <div class="spiel-karte-text">Du wäschst dir die Hände und spürst bewusst das warme Wasser.</div>
+      <div class="spiel-karte-sub">🤖 oder 🧘?</div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 2</span>
+    <span>Seite 2 / 2</span>
+  </div>
+</div>
+
+</body>
+</html>
