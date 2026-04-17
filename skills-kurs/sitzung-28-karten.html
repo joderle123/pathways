@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Sitzung 28 — Netzwerk-Karte</title>
+<link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
+<style>
+:root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
+.netzwerk-karte { border: 2.5px solid var(--farbe); border-radius: 16px; padding: 20px; background: white; margin-bottom: 16px; }
+.netzwerk-titel { font-size: 16px; font-weight: 800; color: var(--farbe); text-align: center; margin-bottom: 12px; }
+.netzwerk-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.netzwerk-feld { border: 1.5px dashed var(--farbe); border-radius: 10px; padding: 10px; text-align: center; min-height: 70px; }
+.netzwerk-feld-emoji { font-size: 24px; margin-bottom: 4px; }
+.netzwerk-feld-label { font-size: 11px; font-weight: 800; color: var(--farbe); margin-bottom: 4px; }
+.netzwerk-feld-linie { border-bottom: 1.5px solid #CBD5E1; margin: 6px 0; height: 18px; }
+.notfall-box { border: 3px solid #EF4444; border-radius: 12px; padding: 14px; text-align: center; background: #FEF2F2; }
+.notfall-titel { font-size: 14px; font-weight: 800; color: #EF4444; margin-bottom: 8px; }
+.notfall-nummer { font-size: 18px; font-weight: 800; margin: 4px 0; }
+.schneide-linie { border-top: 2px dashed #94A3B8; margin: 20px 0; position: relative; }
+.schneide-linie::before { content: "✂️ hier ausschneiden"; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: white; padding: 0 10px; font-size: 11px; color: #94A3B8; }
+</style>
+</head>
+<body>
+<div class="druck-leiste"><button class="btn-drucken" onclick="window.print()">🖨️ Drucken + Ausschneiden</button></div>
+
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
+      <div class="ab-titel">Meine Netzwerk-Karte ✂️🗺️</div>
+      <div class="ab-untertitel">Ausschneiden, ausfüllen und IMMER dabei haben!</div>
+    </div>
+    <div class="kopfzeile-icon">💪</div>
+  </div>
+
+  <!-- Karte 1 -->
+  <div class="netzwerk-karte">
+    <div class="netzwerk-titel">🗺️ Meine Hilfe-Netzwerk-Karte — immer in der Tasche!</div>
+    <div style="text-align:center; font-size:12px; color:#64748B; margin-bottom:10px;">Name: _________________________ Klasse: _________</div>
+    <div class="netzwerk-grid">
+      <div class="netzwerk-feld">
+        <div class="netzwerk-feld-emoji">👨‍👩‍👧</div>
+        <div class="netzwerk-feld-label">Familie</div>
+        <div class="netzwerk-feld-linie"></div>
+        <div style="font-size:10px; color:#94A3B8;">📞</div>
+        <div class="netzwerk-feld-linie"></div>
+      </div>
+      <div class="netzwerk-feld">
+        <div class="netzwerk-feld-emoji">👫</div>
+        <div class="netzwerk-feld-label">Freund/in</div>
+        <div class="netzwerk-feld-linie"></div>
+        <div style="font-size:10px; color:#94A3B8;">📞</div>
+        <div class="netzwerk-feld-linie"></div>
+      </div>
+      <div class="netzwerk-feld">
+        <div class="netzwerk-feld-emoji">🏫</div>
+        <div class="netzwerk-feld-label">Lehrer/in</div>
+        <div class="netzwerk-feld-linie"></div>
+        <div style="font-size:10px; color:#94A3B8;">Wo?</div>
+        <div class="netzwerk-feld-linie"></div>
+      </div>
+      <div class="netzwerk-feld">
+        <div class="netzwerk-feld-emoji">🧑‍⚕️</div>
+        <div class="netzwerk-feld-label">Vertrauensperson</div>
+        <div class="netzwerk-feld-linie"></div>
+        <div style="font-size:10px; color:#94A3B8;">📞</div>
+        <div class="netzwerk-feld-linie"></div>
+      </div>
+      <div class="netzwerk-feld">
+        <div class="netzwerk-feld-emoji">🏥</div>
+        <div class="netzwerk-feld-label">Beratungsstelle</div>
+        <div class="netzwerk-feld-linie"></div>
+        <div style="font-size:10px; color:#94A3B8;">📞</div>
+        <div class="netzwerk-feld-linie"></div>
+      </div>
+      <div class="netzwerk-feld">
+        <div class="netzwerk-feld-emoji">🆘</div>
+        <div class="netzwerk-feld-label">Noch jemand</div>
+        <div class="netzwerk-feld-linie"></div>
+        <div style="font-size:10px; color:#94A3B8;">📞</div>
+        <div class="netzwerk-feld-linie"></div>
+      </div>
+    </div>
+    <div class="notfall-box" style="margin-top:12px;">
+      <div class="notfall-titel">🚨 NOTFALL-NUMMERN</div>
+      <div class="notfall-nummer">📞 116 111 <span style="font-size:12px; font-weight:400;">— Nummer gegen Kummer</span></div>
+      <div class="notfall-nummer">📞 0800 111 0 111 <span style="font-size:12px; font-weight:400;">— Telefonseelsorge</span></div>
+      <div class="notfall-nummer">🚑 112 <span style="font-size:12px; font-weight:400;">— Notfall / Rettungsdienst</span></div>
+    </div>
+  </div>
+
+  <div class="schneide-linie"></div>
+
+  <!-- Karte 2 (Kopie) -->
+  <div class="netzwerk-karte">
+    <div class="netzwerk-titel">🗺️ Meine Hilfe-Netzwerk-Karte — immer in der Tasche!</div>
+    <div style="text-align:center; font-size:12px; color:#64748B; margin-bottom:10px;">Name: _________________________ Klasse: _________</div>
+    <div class="netzwerk-grid">
+      <div class="netzwerk-feld">
+        <div class="netzwerk-feld-emoji">👨‍👩‍👧</div>
+        <div class="netzwerk-feld-label">Familie</div>
+        <div class="netzwerk-feld-linie"></div>
+        <div style="font-size:10px; color:#94A3B8;">📞</div>
+        <div class="netzwerk-feld-linie"></div>
+      </div>
+      <div class="netzwerk-feld">
+        <div class="netzwerk-feld-emoji">👫</div>
+        <div class="netzwerk-feld-label">Freund/in</div>
+        <div class="netzwerk-feld-linie"></div>
+        <div style="font-size:10px; color:#94A3B8;">📞</div>
+        <div class="netzwerk-feld-linie"></div>
+      </div>
+      <div class="netzwerk-feld">
+        <div class="netzwerk-feld-emoji">🏫</div>
+        <div class="netzwerk-feld-label">Lehrer/in</div>
+        <div class="netzwerk-feld-linie"></div>
+        <div style="font-size:10px; color:#94A3B8;">Wo?</div>
+        <div class="netzwerk-feld-linie"></div>
+      </div>
+      <div class="netzwerk-feld">
+        <div class="netzwerk-feld-emoji">🧑‍⚕️</div>
+        <div class="netzwerk-feld-label">Vertrauensperson</div>
+        <div class="netzwerk-feld-linie"></div>
+        <div style="font-size:10px; color:#94A3B8;">📞</div>
+        <div class="netzwerk-feld-linie"></div>
+      </div>
+      <div class="netzwerk-feld">
+        <div class="netzwerk-feld-emoji">🏥</div>
+        <div class="netzwerk-feld-label">Beratungsstelle</div>
+        <div class="netzwerk-feld-linie"></div>
+        <div style="font-size:10px; color:#94A3B8;">📞</div>
+        <div class="netzwerk-feld-linie"></div>
+      </div>
+      <div class="netzwerk-feld">
+        <div class="netzwerk-feld-emoji">🆘</div>
+        <div class="netzwerk-feld-label">Noch jemand</div>
+        <div class="netzwerk-feld-linie"></div>
+        <div style="font-size:10px; color:#94A3B8;">📞</div>
+        <div class="netzwerk-feld-linie"></div>
+      </div>
+    </div>
+    <div class="notfall-box" style="margin-top:12px;">
+      <div class="notfall-titel">🚨 NOTFALL-NUMMERN</div>
+      <div class="notfall-nummer">📞 116 111 <span style="font-size:12px; font-weight:400;">— Nummer gegen Kummer</span></div>
+      <div class="notfall-nummer">📞 0800 111 0 111 <span style="font-size:12px; font-weight:400;">— Telefonseelsorge</span></div>
+      <div class="notfall-nummer">🚑 112 <span style="font-size:12px; font-weight:400;">— Notfall / Rettungsdienst</span></div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 28</span>
+    <span>Seite 1 / 1</span>
+  </div>
+</div>
+</body>
+</html>
