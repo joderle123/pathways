@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Sitzung 3 — Atem-Technik-Karten</title>
+<link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
+<style>
+:root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
+.karten-seite { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 10px; }
+.atem-karte { border: 2.5px solid var(--farbe); border-radius: 16px; padding: 18px 14px; text-align: center; min-height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.atem-karte-emoji { font-size: 48px; margin-bottom: 8px; }
+.atem-karte-name { font-size: 18px; font-weight: 900; color: var(--farbe); margin-bottom: 8px; }
+.atem-karte-steps { font-size: 14px; text-align: left; line-height: 1.6; color: var(--text); }
+</style>
+</head>
+<body>
+<div class="druck-leiste">
+  <button class="btn-drucken" onclick="window.print()">🖨��� Drucken + Ausschneiden</button>
+</div>
+
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
+      <div class="ab-titel">Atem-Technik-Karten ✂️🌬️</div>
+      <div class="ab-untertitel">Ausschneiden — Mitnehmen — Immer dabei haben!</div>
+    </div>
+    <div class="kopfzeile-icon">🌬️</div>
+  </div>
+
+  <div class="karten-seite">
+    <div class="atem-karte">
+      <div class="atem-karte-emoji">🎈</div>
+      <div class="atem-karte-name">Ballon-Atmung</div>
+      <div class="atem-karte-steps">
+        1. Hand auf Bauch<br>
+        2. Nase ein (4 Sek) — Bauch rund<br>
+        3. Mund aus (6 Sek) — Bauch flach<br>
+        4. 4× wiederholen
+      </div>
+    </div>
+
+    <div class="atem-karte">
+      <div class="atem-karte-emoji">⬛</div>
+      <div class="atem-karte-name">Viereck-Atmung</div>
+      <div class="atem-karte-steps">
+        1. Ein — 4 Sek<br>
+        2. Halten — 4 Sek<br>
+        3. Aus — 4 Sek<br>
+        4. Halten — 4 Sek<br>
+        Finger malt Viereck in die Luft!
+      </div>
+    </div>
+
+    <div class="atem-karte">
+      <div class="atem-karte-emoji">🌊</div>
+      <div class="atem-karte-name">Wellen-Atmung</div>
+      <div class="atem-karte-steps">
+        1. Einatmen — Arme hoch<br>
+        2. Ausatmen — Arme runter<br>
+        3. Wie eine Welle!<br>
+        4. Am besten zusammen in der Gruppe
+      </div>
+    </div>
+
+    <div class="atem-karte">
+      <div class="atem-karte-emoji">🦁</div>
+      <div class="atem-karte-name">Löwen-Atmung</div>
+      <div class="atem-karte-steps">
+        1. Tief einatmen (Nase)<br>
+        2. Mund AUF — Zunge RAUS<br>
+        3. Laut ausatmen: „HAAAA!"<br>
+        4. 3× — sieht bescheuert aus, wirkt mega
+      </div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 3</span>
+    <span>Seite 1 / 2</span>
+  </div>
+</div>
+
+<div class="seite">
+  <div class="karten-seite" style="grid-template-columns: 1fr;">
+    <div class="atem-karte" style="max-width:50%; margin:0 auto;">
+      <div class="atem-karte-emoji">✋</div>
+      <div class="atem-karte-name">Finger-Atmung</div>
+      <div class="atem-karte-steps">
+        1. Hand hoch, Finger gespreizt<br>
+        2. Finger hochfahren = Einatmen<br>
+        3. Finger runterfahren = Ausatmen<br>
+        4. Alle 5 Finger = 5 Atemzüge<br>
+        Geht überall — keiner merkt's!
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;">
+    <div class="einfach-box">
+      <div class="einfach-box-icon">⚡</div>
+      <div class="einfach-box-titel">Quick-Guide: Welche Technik wann?</div>
+      <p style="margin-bottom:4px;">😤 <strong>Wut:</strong> Löwen-Atmung (Energie raus!)</p>
+      <p style="margin-bottom:4px;">😰 <strong>Panik:</strong> Viereck-Atmung (Kontrolle zurück)</p>
+      <p style="margin-bottom:4px;">😴 <strong>Einschlafen:</strong> Ballon-Atmung (Entspannung)</p>
+      <p style="margin-bottom:4px;">📝 <strong>Vor Prüfung:</strong> Finger-Atmung (unauffällig!)</p>
+      <p>🤝 <strong>In der Gruppe:</strong> Wellen-Atmung (Gemeinschaft)</p>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Skills-Kurs �� Karten · Sitzung 3</span>
+    <span>Seite 2 / 2</span>
+  </div>
+</div>
+</body>
+</html>
