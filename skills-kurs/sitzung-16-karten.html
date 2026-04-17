@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Sitzung 16 — Krisen-Plan Karte</title>
+<link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
+<style>
+:root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
+.karten-seite { display: flex; justify-content: center; align-items: center; padding: 30px 10px; }
+.krisenplan-karte { border: 3px solid var(--farbe); border-radius: 14px; width: 86mm; min-height: 54mm; padding: 10px 12px; background: linear-gradient(135deg, var(--farbe-hell), white); display: flex; flex-direction: column; gap: 5px; }
+.krisenplan-kopf { display: flex; align-items: center; gap: 6px; border-bottom: 2px solid var(--farbe); padding-bottom: 5px; }
+.krisenplan-kopf-emoji { font-size: 22px; }
+.krisenplan-kopf-titel { font-size: 13px; font-weight: 900; color: var(--farbe); text-transform: uppercase; }
+.krisenplan-feld { font-size: 10px; color: #0F172A; line-height: 1.4; }
+.krisenplan-feld strong { color: var(--farbe); font-size: 10px; }
+.krisenplan-linie { border-bottom: 1px dotted #94A3B8; padding-bottom: 3px; margin-bottom: 2px; min-height: 14px; }
+.krisenplan-telefone { border-top: 1.5px solid var(--farbe); padding-top: 4px; margin-top: 3px; font-size: 9px; font-weight: 700; color: var(--farbe); }
+</style>
+</head>
+<body>
+<div class="druck-leiste"><button class="btn-drucken" onclick="window.print()">🖨️ Drucken + Ausschneiden</button></div>
+
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
+      <div class="ab-titel">Krisen-Plan Karte ✂️🛡️</div>
+      <div class="ab-untertitel">Ausfüllen, ausschneiden, laminieren — immer dabei!</div>
+    </div>
+    <div class="kopfzeile-icon">🛡️</div>
+  </div>
+  <div class="karten-seite">
+    <div class="krisenplan-karte">
+      <div class="krisenplan-kopf">
+        <div class="krisenplan-kopf-emoji">🛡️</div>
+        <div class="krisenplan-kopf-titel">Mein Krisen-Plan</div>
+      </div>
+      <div class="krisenplan-feld">
+        <strong>⚠️ Warnsignale:</strong>
+        <div class="krisenplan-linie"></div>
+      </div>
+      <div class="krisenplan-feld">
+        <strong>🧊 Mein Notfall-Skill:</strong>
+        <div class="krisenplan-linie"></div>
+      </div>
+      <div class="krisenplan-feld">
+        <strong>🏠 Mein sicherer Ort:</strong>
+        <div class="krisenplan-linie"></div>
+      </div>
+      <div class="krisenplan-feld">
+        <strong>📞 Meine Person (Name + Nr.):</strong>
+        <div class="krisenplan-linie"></div>
+      </div>
+      <div class="krisenplan-feld">
+        <strong>💬 Mein Satz für Hilfe:</strong>
+        <div class="krisenplan-linie"></div>
+      </div>
+      <div class="krisenplan-telefone">
+        📞 116 111 (Kummer) · 0800 111 0 111 (Seelsorge 24h)
+      </div>
+    </div>
+  </div>
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 16</span>
+    <span>Seite 1 / 1</span>
+  </div>
+</div>
+</body>
+</html>

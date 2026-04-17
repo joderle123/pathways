@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Sitzung 17 — Wut-Tricks-Karten</title>
+<link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
+<style>
+:root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
+.karten-seite { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; padding: 10px; }
+.spiel-karte { border: 2.5px solid var(--farbe); border-radius: 16px; padding: 14px 10px; text-align: center; min-height: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: white; }
+.spiel-karte-emoji { font-size: 36px; margin-bottom: 6px; }
+.spiel-karte-name { font-size: 14px; font-weight: 800; color: var(--farbe); margin-bottom: 4px; line-height: 1.3; }
+.spiel-karte-text { font-size: 11px; color: #0F172A; line-height: 1.4; }
+.stopp-karte { border: 3px solid #DC2626; background: #FEF2F2; grid-column: span 3; min-height: 80px; }
+.stopp-karte .spiel-karte-name { color: #DC2626; font-size: 28px; letter-spacing: 6px; }
+.stopp-karte .spiel-karte-text { font-size: 13px; font-weight: 700; color: #DC2626; }
+</style>
+</head>
+<body>
+<div class="druck-leiste"><button class="btn-drucken" onclick="window.print()">🖨️ Drucken + Ausschneiden</button></div>
+
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
+      <div class="ab-titel">Wut-Tricks-Karten ✂️🌋</div>
+      <div class="ab-untertitel">12 Strategien gegen Wut + 1 STOPP-Karte — ausschneiden!</div>
+    </div>
+    <div class="kopfzeile-icon">🌋</div>
+  </div>
+  <div class="karten-seite">
+    <div class="spiel-karte stopp-karte">
+      <div class="spiel-karte-emoji">✋</div>
+      <div class="spiel-karte-name">STOPP</div>
+      <div class="spiel-karte-text">Halte sofort an. Tu NICHTS. Atme. Erst denken, dann handeln.</div>
+    </div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">🧊</div><div class="spiel-karte-name">Eiswürfel-Trick</div><div class="spiel-karte-text">Halte einen Eiswürfel fest in der Hand. Spüre die Kälte statt die Wut.</div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">🏃</div><div class="spiel-karte-name">Renn es raus!</div><div class="spiel-karte-text">Lauf los — so schnell du kannst. Treppe hoch, joggen, Hampelmänner.</div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">🔢</div><div class="spiel-karte-name">Rückwärts zählen</div><div class="spiel-karte-text">Zähle von 10 runter auf 0. Langsam. Bei jedem Zahl ausatmen.</div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">🗞️</div><div class="spiel-karte-name">Papier zerreißen</div><div class="spiel-karte-text">Nimm Zeitungspapier und zerreiß es in kleine Stücke. Laut und wild!</div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">🎵</div><div class="spiel-karte-name">Laut Musik hören</div><div class="spiel-karte-text">Setz Kopfhörer auf, dreh dein Lieblingslied auf — sing oder tanz mit!</div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">✍️</div><div class="spiel-karte-name">Wut-Brief schreiben</div><div class="spiel-karte-text">Schreib alles auf, was dich wütend macht. Danach: zerknüllen und wegwerfen.</div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">🧸</div><div class="spiel-karte-name">Kissen boxen</div><div class="spiel-karte-text">Schnapp dir ein Kissen und box drauf los. Kein Mensch, kein Ding — nur Kissen!</div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">🚿</div><div class="spiel-karte-name">Kaltes Wasser</div><div class="spiel-karte-text">Halte deine Hände unter kaltes Wasser oder spritz dir welches ins Gesicht.</div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">🌬️</div><div class="spiel-karte-name">Drachen-Atem</div><div class="spiel-karte-text">Atme tief ein durch die Nase. Puste langsam aus dem Mund — wie ein Drache! 5× wiederholen.</div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">🚶</div><div class="spiel-karte-name">Raum verlassen</div><div class="spiel-karte-text">Sag: „Ich brauche eine Pause." Geh raus, bevor du etwas sagst, das du bereust.</div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">💪</div><div class="spiel-karte-name">Anspannen & Loslassen</div><div class="spiel-karte-text">Balle die Fäuste 5 Sek. fest — dann loslassen. Spüre, wie die Spannung geht.</div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">🖍️</div><div class="spiel-karte-name">Kritzel-Wut</div><div class="spiel-karte-text">Nimm einen Stift und kritzel wild auf Papier. Kein Bild — einfach nur Energie rauslassen!</div></div>
+  </div>
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 17</span>
+    <span>Seite 1 / 1</span>
+  </div>
+</div>
+</body>
+</html>
