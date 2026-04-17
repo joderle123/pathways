@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Sitzung 4 — Natur-Bingo-Karten</title>
+<link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
+<style>
+:root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
+.bingo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 10px; }
+.bingo-feld { border: 2.5px solid var(--farbe); border-radius: 12px; padding: 14px 8px; text-align: center; min-height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: white; }
+.bingo-emoji { font-size: 36px; margin-bottom: 6px; }
+.bingo-text { font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.3; }
+.bingo-check { width: 24px; height: 24px; border: 2.5px solid var(--farbe); border-radius: 6px; margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="druck-leiste">
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken + Ausschneiden</button>
+</div>
+
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
+      <div class="ab-titel">Natur-Bingo! 🌿✂️</div>
+      <div class="ab-untertitel">Finde alle Dinge und kreuze sie an!</div>
+    </div>
+    <div class="kopfzeile-icon">🌿</div>
+  </div>
+
+  <div class="bingo-grid">
+    <div class="bingo-feld">
+      <div class="bingo-emoji">🍂</div>
+      <div class="bingo-text">Ein trockenes Blatt</div>
+      <div class="bingo-check"></div>
+    </div>
+    <div class="bingo-feld">
+      <div class="bingo-emoji">🪨</div>
+      <div class="bingo-text">Ein glatter Stein</div>
+      <div class="bingo-check"></div>
+    </div>
+    <div class="bingo-feld">
+      <div class="bingo-emoji">🐜</div>
+      <div class="bingo-text">Ein Insekt</div>
+      <div class="bingo-check"></div>
+    </div>
+    <div class="bingo-feld">
+      <div class="bingo-emoji">🌸</div>
+      <div class="bingo-text">Etwas das blüht</div>
+      <div class="bingo-check"></div>
+    </div>
+    <div class="bingo-feld">
+      <div class="bingo-emoji">☁️</div>
+      <div class="bingo-text">Eine Wolke die wie etwas aussieht</div>
+      <div class="bingo-check"></div>
+    </div>
+    <div class="bingo-feld">
+      <div class="bingo-emoji">🪶</div>
+      <div class="bingo-text">Etwas ganz Weiches</div>
+      <div class="bingo-check"></div>
+    </div>
+    <div class="bingo-feld">
+      <div class="bingo-emoji">🎵</div>
+      <div class="bingo-text">Ein Vogel-gesang</div>
+      <div class="bingo-check"></div>
+    </div>
+    <div class="bingo-feld">
+      <div class="bingo-emoji">🌬️</div>
+      <div class="bingo-text">Wind im Gesicht spüren</div>
+      <div class="bingo-check"></div>
+    </div>
+    <div class="bingo-feld">
+      <div class="bingo-emoji">🌈</div>
+      <div class="bingo-text">3 verschiedene Farben nebenein-ander</div>
+      <div class="bingo-check"></div>
+    </div>
+    <div class="bingo-feld">
+      <div class="bingo-emoji">👃</div>
+      <div class="bingo-text">Etwas das gut riecht</div>
+      <div class="bingo-check"></div>
+    </div>
+    <div class="bingo-feld">
+      <div class="bingo-emoji">🤏</div>
+      <div class="bingo-text">Das kleinste Ding das du findest</div>
+      <div class="bingo-check"></div>
+    </div>
+    <div class="bingo-feld">
+      <div class="bingo-emoji">🔇</div>
+      <div class="bingo-text">3 Sekunden totale Stille</div>
+      <div class="bingo-check"></div>
+    </div>
+    <div class="bingo-feld">
+      <div class="bingo-emoji">🌡️</div>
+      <div class="bingo-text">Etwas Warmes + etwas Kaltes</div>
+      <div class="bingo-check"></div>
+    </div>
+    <div class="bingo-feld">
+      <div class="bingo-emoji">🕸️</div>
+      <div class="bingo-text">Ein Spinnennetz</div>
+      <div class="bingo-check"></div>
+    </div>
+    <div class="bingo-feld">
+      <div class="bingo-emoji">💧</div>
+      <div class="bingo-text">Etwas Nasses</div>
+      <div class="bingo-check"></div>
+    </div>
+    <div class="bingo-feld">
+      <div class="bingo-emoji">😲</div>
+      <div class="bingo-text">Etwas das dich überrascht</div>
+      <div class="bingo-check"></div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:10px; font-size:16px; font-weight:800; color:var(--farbe);">
+    🏆 BINGO = 4 in einer Reihe! Wer hat als Erstes BINGO?
+  </div>
+
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 4</span>
+    <span>Seite 1 / 1</span>
+  </div>
+</div>
+</body>
+</html>
