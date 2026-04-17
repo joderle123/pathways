@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Sitzung 23 — Szenarien-Karten</title>
+<link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
+<style>
+:root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
+.karten-seite { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 10px; }
+.szenario-karte { border: 2.5px solid var(--farbe); border-radius: 16px; padding: 18px 14px; text-align: center; min-height: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: white; }
+.szenario-karte-emoji { font-size: 36px; margin-bottom: 8px; }
+.szenario-karte-titel { font-size: 14px; font-weight: 800; color: var(--farbe); margin-bottom: 6px; }
+.szenario-karte-text { font-size: 13px; color: #334155; line-height: 1.4; }
+</style>
+</head>
+<body>
+<div class="druck-leiste"><button class="btn-drucken" onclick="window.print()">🖨️ Drucken + Ausschneiden</button></div>
+
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
+      <div class="ab-titel">Szenarien-Karten: NEIN sagen ✂️🛑</div>
+      <div class="ab-untertitel">Ziehe 1 Karte — spiele die Situation — sage NEIN!</div>
+    </div>
+    <div class="kopfzeile-icon">🛑</div>
+  </div>
+  <div class="karten-seite">
+    <div class="szenario-karte"><div class="szenario-karte-emoji">📱</div><div class="szenario-karte-titel">HANDY-DRUCK</div><div class="szenario-karte-text">Dein Freund will dein Handy-Passwort wissen. „Wenn du mein Freund bist, gibst du es mir!"</div></div>
+    <div class="szenario-karte"><div class="szenario-karte-emoji">🚬</div><div class="szenario-karte-titel">GRUPPEN-DRUCK</div><div class="szenario-karte-text">Die Clique will, dass du etwas Verbotenes mitmachst. „Stell dich nicht so an!"</div></div>
+    <div class="szenario-karte"><div class="szenario-karte-emoji">📝</div><div class="szenario-karte-titel">ABSCHREIBEN</div><div class="szenario-karte-text">Jemand will deine Hausaufgaben kopieren. „Bitte, nur dieses eine Mal!"</div></div>
+    <div class="szenario-karte"><div class="szenario-karte-emoji">📸</div><div class="szenario-karte-titel">FOTO-STRESS</div><div class="szenario-karte-text">Jemand macht ein peinliches Foto von dir und will es posten. „Ist doch lustig!"</div></div>
+    <div class="szenario-karte"><div class="szenario-karte-emoji">💰</div><div class="szenario-karte-titel">GELD-DRUCK</div><div class="szenario-karte-text">Ein Mitschüler will Geld von dir leihen — schon zum 3. Mal. „Ich geb's dir zurück, versprochen!"</div></div>
+    <div class="szenario-karte"><div class="szenario-karte-emoji">🤫</div><div class="szenario-karte-titel">GEHEIMNIS</div><div class="szenario-karte-text">Jemand will, dass du ein Geheimnis über einen Freund verrätst. „Sag schon, wir sind doch Freunde!"</div></div>
+    <div class="szenario-karte"><div class="szenario-karte-emoji">🎮</div><div class="szenario-karte-titel">ZEIT-DRUCK</div><div class="szenario-karte-text">Dein Kumpel will, dass du noch stundenlang zockst. Aber du musst morgen früh raus.</div></div>
+    <div class="szenario-karte"><div class="szenario-karte-emoji">👕</div><div class="szenario-karte-titel">KLAMOTTEN</div><div class="szenario-karte-text">Jemand will deine Lieblingsjacke leihen. Du weißt: Die kommt nie zurück.</div></div>
+  </div>
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 23</span>
+    <span>Seite 1 / 1</span>
+  </div>
+</div>
+</body>
+</html>

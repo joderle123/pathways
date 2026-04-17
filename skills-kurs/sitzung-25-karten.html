@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Sitzung 25 — Zuhör-Karten</title>
+<link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
+<style>
+:root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
+.karten-seite { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; padding: 10px; }
+.zuhoer-karte { border: 2.5px solid var(--farbe); border-radius: 16px; padding: 16px 10px; text-align: center; min-height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: white; }
+.zuhoer-karte-emoji { font-size: 36px; margin-bottom: 6px; }
+.zuhoer-karte-name { font-size: 14px; font-weight: 800; margin-bottom: 4px; }
+.zuhoer-karte-hint { font-size: 11px; color: var(--grau); margin-top: 4px; }
+.karte-profi { border-color: #22C55E; }
+.karte-profi .zuhoer-karte-name { color: #22C55E; }
+.karte-fehler { border-color: #EF4444; }
+.karte-fehler .zuhoer-karte-name { color: #EF4444; }
+</style>
+</head>
+<body>
+<div class="druck-leiste"><button class="btn-drucken" onclick="window.print()">🖨️ Drucken + Ausschneiden</button></div>
+
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
+      <div class="ab-titel">Zuhör-Profi vs. Zuhör-Fehler ✂️👂</div>
+      <div class="ab-untertitel">Sortiere: Was macht ein Profi? Was ist ein Fehler?</div>
+    </div>
+    <div class="kopfzeile-icon">👂</div>
+  </div>
+  <div class="karten-seite">
+    <div class="zuhoer-karte karte-profi"><div class="zuhoer-karte-emoji">👀</div><div class="zuhoer-karte-name">AUGENKONTAKT</div><div class="zuhoer-karte-hint">Zuhör-Profi ✅</div></div>
+    <div class="zuhoer-karte karte-fehler"><div class="zuhoer-karte-emoji">📱</div><div class="zuhoer-karte-name">HANDY CHECKEN</div><div class="zuhoer-karte-hint">Zuhör-Fehler ❌</div></div>
+    <div class="zuhoer-karte karte-profi"><div class="zuhoer-karte-emoji">😊</div><div class="zuhoer-karte-name">NICKEN</div><div class="zuhoer-karte-hint">Zuhör-Profi ✅</div></div>
+    <div class="zuhoer-karte karte-fehler"><div class="zuhoer-karte-emoji">🗣️</div><div class="zuhoer-karte-name">UNTERBRECHEN</div><div class="zuhoer-karte-hint">Zuhör-Fehler ❌</div></div>
+    <div class="zuhoer-karte karte-profi"><div class="zuhoer-karte-emoji">❓</div><div class="zuhoer-karte-name">NACHFRAGEN</div><div class="zuhoer-karte-hint">Zuhör-Profi ✅</div></div>
+    <div class="zuhoer-karte karte-fehler"><div class="zuhoer-karte-emoji">🙄</div><div class="zuhoer-karte-name">AUGEN VERDREHEN</div><div class="zuhoer-karte-hint">Zuhör-Fehler ❌</div></div>
+    <div class="zuhoer-karte karte-profi"><div class="zuhoer-karte-emoji">🔄</div><div class="zuhoer-karte-name">ZUSAMMENFASSEN</div><div class="zuhoer-karte-hint">Zuhör-Profi ✅</div></div>
+    <div class="zuhoer-karte karte-fehler"><div class="zuhoer-karte-emoji">💭</div><div class="zuhoer-karte-name">AN ANDERES DENKEN</div><div class="zuhoer-karte-hint">Zuhör-Fehler ❌</div></div>
+    <div class="zuhoer-karte karte-profi"><div class="zuhoer-karte-emoji">🤗</div><div class="zuhoer-karte-name">VERSTÄNDNIS ZEIGEN</div><div class="zuhoer-karte-hint">Zuhör-Profi ✅</div></div>
+    <div class="zuhoer-karte karte-fehler"><div class="zuhoer-karte-emoji">☝️</div><div class="zuhoer-karte-name">RATSCHLAG GEBEN</div><div class="zuhoer-karte-hint">Zuhör-Fehler ❌</div></div>
+    <div class="zuhoer-karte karte-profi"><div class="zuhoer-karte-emoji">🫶</div><div class="zuhoer-karte-name">GEDULDIG SEIN</div><div class="zuhoer-karte-hint">Zuhör-Profi ✅</div></div>
+    <div class="zuhoer-karte karte-fehler"><div class="zuhoer-karte-emoji">🔀</div><div class="zuhoer-karte-name">THEMA WECHSELN</div><div class="zuhoer-karte-hint">Zuhör-Fehler ❌</div></div>
+  </div>
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 25</span>
+    <span>Seite 1 / 1</span>
+  </div>
+</div>
+</body>
+</html>
