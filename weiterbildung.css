@@ -1,0 +1,921 @@
+/* ============================================================
+   Pathways Weiterbildung – Praxis-Lernpfade
+   --farbe: #D97706 (Amber – Professional Development)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --farbe: #D97706;
+  --farbe-hell: #FFFBEB;
+  --farbe-mid: color-mix(in srgb, var(--farbe) 15%, white);
+  --farbe-dark: #B45309;
+  --text: #1E293B;
+  --grau: #64748B;
+  --grau-hell: #94A3B8;
+  --border: #E2E8F0;
+  --border-mid: #CBD5E1;
+  --bg-page: #F1F5F9;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --radius-lg: 14px;
+  --shadow-page: 0 4px 32px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-box:  0 1px 4px rgba(0,0,0,0.07);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg-page);
+  padding: 24px 20px;
+  line-height: 1.55;
+}
+
+/* ============================================================
+   DRUCK-LEISTE
+   ============================================================ */
+.druck-leiste {
+  width: 210mm;
+  margin: 0 auto 16px;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.btn-drucken {
+  background: var(--farbe);
+  color: white;
+  border: none;
+  padding: 9px 20px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: opacity 0.15s, transform 0.1s;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--farbe) 40%, transparent);
+}
+
+.btn-drucken:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-drucken:active { transform: translateY(0); }
+
+.btn-zurueck {
+  background: white;
+  color: var(--text);
+  border: 1.5px solid var(--border);
+  padding: 9px 18px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.btn-zurueck:hover { background: #F8FAFC; border-color: var(--border-mid); transform: translateY(-1px); }
+
+/* ============================================================
+   SEITE (A4)
+   ============================================================ */
+.wb-seite {
+  width: 210mm;
+  min-height: 297mm;
+  background: white;
+  margin: 0 auto 32px;
+  padding: 14mm 17mm 24mm;
+  box-shadow: var(--shadow-page);
+  border-radius: 12px;
+  page-break-after: always;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================================
+   KOPFZEILE
+   ============================================================ */
+.wb-kopfzeile {
+  background: linear-gradient(135deg, var(--farbe) 0%, color-mix(in srgb, var(--farbe) 72%, #0F172A) 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: -14mm;
+  margin-left: -17mm;
+  margin-right: -17mm;
+  padding: 18px 17mm 16px;
+  margin-bottom: 18px;
+  gap: 14px;
+}
+
+.wb-kopfzeile-links { flex: 1; }
+
+.wb-serie-label {
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  color: rgba(255,255,255,0.70);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.wb-titel {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  letter-spacing: -0.3px;
+}
+
+.wb-untertitel {
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.75);
+  font-weight: 500;
+}
+
+.wb-kopfzeile-icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(255,255,255,0.18);
+  border: 1.5px solid rgba(255,255,255,0.30);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+  backdrop-filter: blur(4px);
+}
+
+/* ============================================================
+   LERNZIELE-BOX (oben auf Seite 1)
+   ============================================================ */
+.wb-lernziele {
+  background: var(--farbe-hell);
+  border: 1.5px solid color-mix(in srgb, var(--farbe) 30%, white);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  margin-bottom: 18px;
+}
+
+.wb-lernziele-titel {
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--farbe);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wb-lernziele ul {
+  padding-left: 18px;
+  font-size: 11.5px;
+  line-height: 1.7;
+}
+
+.wb-lernziele li {
+  margin-bottom: 3px;
+}
+
+/* ============================================================
+   QUICKFACTS (Statistik-Leiste)
+   ============================================================ */
+.wb-quickfacts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.wb-quickfact {
+  background: #F8FAFC;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.wb-quickfact-wert {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--farbe);
+  line-height: 1.2;
+}
+
+.wb-quickfact-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--grau);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* ============================================================
+   KAPITEL-ÜBERSCHRIFTEN
+   ============================================================ */
+.wb-kapitel {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2.5px solid var(--farbe);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.2px;
+}
+
+.wb-kapitel-nr {
+  width: 28px;
+  height: 28px;
+  background: var(--farbe);
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.wb-unterkapitel {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--farbe-dark);
+  margin: 16px 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ============================================================
+   INFOBOX (allgemein)
+   ============================================================ */
+.wb-infobox {
+  background: var(--farbe-hell);
+  border: 1.5px solid color-mix(in srgb, var(--farbe) 30%, white);
+  border-radius: var(--radius-lg);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  font-size: 11.5px;
+  line-height: 1.65;
+  position: relative;
+}
+
+.wb-infobox::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 12px; bottom: 12px;
+  width: 3.5px;
+  background: var(--farbe);
+  border-radius: 0 3px 3px 0;
+}
+
+.wb-infobox-titel {
+  font-weight: 700;
+  font-size: 11.5px;
+  color: var(--farbe);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.wb-infobox p { margin-bottom: 5px; }
+.wb-infobox p:last-child { margin-bottom: 0; }
+.wb-infobox ul { padding-left: 15px; margin-top: 4px; }
+.wb-infobox li { margin-bottom: 2px; }
+
+/* Varianten */
+.wb-infobox.warnung {
+  background: #FEF2F2;
+  border-color: #FECACA;
+}
+.wb-infobox.warnung::before { background: #DC2626; }
+.wb-infobox.warnung .wb-infobox-titel { color: #DC2626; }
+
+.wb-infobox.tipp {
+  background: #F0FDF4;
+  border-color: #BBF7D0;
+}
+.wb-infobox.tipp::before { background: #16A34A; }
+.wb-infobox.tipp .wb-infobox-titel { color: #16A34A; }
+
+/* ============================================================
+   FALLBEISPIEL (Vignette + Dialog)
+   ============================================================ */
+.wb-fallbeispiel {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px 12px;
+  margin-bottom: 18px;
+  background: #FAFBFC;
+  box-shadow: var(--shadow-box);
+  page-break-inside: avoid;
+}
+
+.wb-fallbeispiel-titel {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--farbe);
+  margin-bottom: 10px;
+  padding-bottom: 7px;
+  border-bottom: 2px solid color-mix(in srgb, var(--farbe) 25%, white);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wb-fallbeispiel-intro {
+  font-size: 12px;
+  line-height: 1.65;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+/* ============================================================
+   DIALOG (Gesprächsskripte)
+   ============================================================ */
+.wb-dialog {
+  margin: 12px 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wb-dialog-zeile {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.wb-dialog-sprecher {
+  font-weight: 700;
+  color: var(--farbe);
+  min-width: 80px;
+  flex-shrink: 0;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-top: 1px;
+}
+
+.wb-dialog-text {
+  flex: 1;
+  font-style: italic;
+  color: var(--text);
+  background: var(--farbe-hell);
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  border-left: 3px solid var(--farbe);
+}
+
+.wb-dialog-zeile.schueler .wb-dialog-sprecher {
+  color: var(--grau);
+}
+.wb-dialog-zeile.schueler .wb-dialog-text {
+  background: #F1F5F9;
+  border-left-color: var(--grau);
+}
+
+.wb-dialog-kommentar {
+  font-size: 10.5px;
+  color: var(--grau);
+  font-style: italic;
+  padding-left: 90px;
+  margin-top: -4px;
+}
+
+/* ============================================================
+   AMPEL (Warnsignale grün/gelb/rot)
+   ============================================================ */
+.wb-ampel {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.wb-ampel-box {
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.wb-ampel-box.gruen {
+  background: #F0FDF4;
+  border: 1.5px solid #BBF7D0;
+}
+.wb-ampel-box.gruen .wb-ampel-label { color: #16A34A; }
+
+.wb-ampel-box.gelb {
+  background: #FFFBEB;
+  border: 1.5px solid #FDE68A;
+}
+.wb-ampel-box.gelb .wb-ampel-label { color: #D97706; }
+
+.wb-ampel-box.rot {
+  background: #FEF2F2;
+  border: 1.5px solid #FECACA;
+}
+.wb-ampel-box.rot .wb-ampel-label { color: #DC2626; }
+
+.wb-ampel-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.wb-ampel-box ul {
+  padding-left: 14px;
+  margin-top: 4px;
+}
+.wb-ampel-box li { margin-bottom: 2px; }
+
+/* ============================================================
+   DO's & DON'Ts
+   ============================================================ */
+.wb-dos-donts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.wb-dos, .wb-donts {
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  font-size: 11.5px;
+  line-height: 1.6;
+}
+
+.wb-dos {
+  background: #F0FDF4;
+  border: 1.5px solid #BBF7D0;
+}
+.wb-donts {
+  background: #FEF2F2;
+  border: 1.5px solid #FECACA;
+}
+
+.wb-dos-titel {
+  font-weight: 700;
+  font-size: 11.5px;
+  color: #16A34A;
+  margin-bottom: 6px;
+}
+
+.wb-donts-titel {
+  font-weight: 700;
+  font-size: 11.5px;
+  color: #DC2626;
+  margin-bottom: 6px;
+}
+
+.wb-dos ul, .wb-donts ul {
+  padding-left: 15px;
+}
+.wb-dos li, .wb-donts li { margin-bottom: 3px; }
+
+/* ============================================================
+   REFLEXION
+   ============================================================ */
+.wb-reflexion {
+  background: linear-gradient(135deg, #EDE9FE 0%, #F5F3FF 100%);
+  border: 1.5px solid #DDD6FE;
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  margin-bottom: 18px;
+}
+
+.wb-reflexion-titel {
+  font-weight: 700;
+  font-size: 12px;
+  color: #7C3AED;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wb-reflexion-frage {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  align-items: flex-start;
+}
+
+.wb-reflexion-nr {
+  width: 22px;
+  height: 22px;
+  background: #7C3AED;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.wb-reflexion-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.wb-reflexion-linien {
+  margin-top: 6px;
+}
+
+.wb-reflexion-linie {
+  border-bottom: 1.5px dotted #C4B5FD;
+  height: 22px;
+  width: 100%;
+}
+
+/* ============================================================
+   QUIZ (Wissenstest am Ende)
+   ============================================================ */
+.wb-quiz {
+  border: 2px solid var(--farbe);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+  margin-bottom: 18px;
+  background: white;
+}
+
+.wb-quiz-titel {
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--farbe);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wb-quiz-frage {
+  margin-bottom: 16px;
+  page-break-inside: avoid;
+}
+
+.wb-quiz-frage-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.wb-quiz-frage-nr {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  background: var(--farbe);
+  color: white;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 800;
+  margin-right: 6px;
+}
+
+.wb-quiz-antworten {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 26px;
+}
+
+.wb-quiz-antwort {
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 7px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.15s;
+  background: white;
+}
+
+.wb-quiz-antwort:hover {
+  background: var(--farbe-hell);
+  border-color: var(--farbe);
+}
+
+.wb-quiz-antwort.korrekt {
+  background: #F0FDF4;
+  border-color: #16A34A;
+  color: #16A34A;
+  font-weight: 600;
+}
+
+.wb-quiz-antwort.falsch {
+  background: #FEF2F2;
+  border-color: #DC2626;
+  color: #DC2626;
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.wb-quiz-antwort.ausgewaehlt {
+  border-color: var(--farbe);
+  background: var(--farbe-hell);
+}
+
+.wb-quiz-erklaerung {
+  font-size: 11px;
+  color: var(--grau);
+  margin-top: 6px;
+  padding: 8px 12px;
+  background: #F8FAFC;
+  border-radius: var(--radius-sm);
+  display: none;
+  line-height: 1.6;
+}
+
+.wb-quiz-ergebnis {
+  text-align: center;
+  padding: 16px;
+  background: var(--farbe-hell);
+  border-radius: var(--radius);
+  margin-top: 12px;
+  display: none;
+}
+
+.wb-quiz-ergebnis-score {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--farbe);
+}
+
+.wb-quiz-ergebnis-text {
+  font-size: 12px;
+  color: var(--grau);
+  margin-top: 4px;
+}
+
+.wb-quiz-btn {
+  background: var(--farbe);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  margin-top: 12px;
+  transition: opacity 0.15s;
+}
+
+.wb-quiz-btn:hover { opacity: 0.88; }
+
+/* ============================================================
+   REFERENZEN
+   ============================================================ */
+.wb-referenzen {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1.5px solid var(--border);
+}
+
+.wb-referenzen-titel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--farbe);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.wb-referenzen ol {
+  padding-left: 18px;
+  font-size: 10px;
+  color: var(--grau);
+  line-height: 1.7;
+}
+
+.wb-referenzen li {
+  margin-bottom: 3px;
+}
+
+/* ============================================================
+   TABELLE
+   ============================================================ */
+.wb-tabelle {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11.5px;
+  margin-bottom: 16px;
+}
+
+.wb-tabelle th {
+  background: var(--farbe);
+  color: white;
+  font-weight: 700;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.wb-tabelle th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+.wb-tabelle th:last-child  { border-radius: 0 var(--radius-sm) 0 0; }
+
+.wb-tabelle td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.55;
+}
+
+.wb-tabelle tr:nth-child(even) td {
+  background: #FAFBFC;
+}
+
+.wb-tabelle tr:last-child td {
+  border-bottom: none;
+}
+
+/* ============================================================
+   FUßZEILE
+   ============================================================ */
+.wb-fusszeile {
+  position: absolute;
+  bottom: 10mm;
+  left: 17mm;
+  right: 17mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 8px;
+  color: var(--grau-hell);
+  border-top: 1px solid var(--border);
+  padding-top: 5px;
+}
+
+/* ============================================================
+   FORTSCHRITTSLEISTE (Progress-Bar am Seitenkopf)
+   ============================================================ */
+.wb-fortschritt {
+  width: 100%;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.wb-fortschritt-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--farbe), var(--farbe-dark));
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+
+/* ============================================================
+   TRENNLINIE
+   ============================================================ */
+hr.wb-trennlinie {
+  border: none;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent 0%, var(--border) 20%, var(--border) 80%, transparent 100%);
+  margin: 16px 0;
+}
+
+/* ============================================================
+   PRAXIS-ABSATZ (normaler Text)
+   ============================================================ */
+.wb-text {
+  font-size: 12px;
+  line-height: 1.7;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.wb-text strong { font-weight: 700; }
+
+/* ============================================================
+   DRUCK-MODUS
+   ============================================================ */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  body {
+    background: white;
+    padding: 0;
+    margin: 0;
+    font-size: 11px;
+  }
+
+  .druck-leiste { display: none !important; }
+
+  .wb-seite {
+    width: 210mm;
+    height: 297mm;
+    min-height: unset;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 14mm 17mm 20mm;
+    overflow: hidden;
+    page-break-after: always;
+    break-after: page;
+    position: relative;
+  }
+
+  .wb-seite:last-of-type {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .wb-kopfzeile {
+    margin-top: -14mm;
+    margin-left: -17mm;
+    margin-right: -17mm;
+    padding-left: 17mm;
+    padding-right: 17mm;
+    background: linear-gradient(135deg, var(--farbe) 0%, color-mix(in srgb, var(--farbe) 72%, #0F172A) 100%) !important;
+  }
+
+  .wb-infobox, .wb-lernziele {
+    background: var(--farbe-hell) !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .wb-fallbeispiel {
+    box-shadow: none;
+    background: #FAFBFC !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .wb-reflexion {
+    background: linear-gradient(135deg, #EDE9FE 0%, #F5F3FF 100%) !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .wb-quiz {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .wb-quiz-antwort { cursor: default; }
+  .wb-quiz-antwort:hover { background: white; border-color: var(--border); }
+
+  .wb-ampel-box { break-inside: avoid; }
+  .wb-dos-donts { break-inside: avoid; }
+
+  .wb-dialog-zeile {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .wb-fusszeile {
+    position: absolute;
+    bottom: 8mm;
+    left: 17mm;
+    right: 17mm;
+  }
+
+  a { text-decoration: none; color: inherit; }
+}

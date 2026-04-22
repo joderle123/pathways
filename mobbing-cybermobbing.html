@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Mobbing &amp; Cybermobbing</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #DC2626; --farbe-hell: #FEF2F2; }
+    .mobbing-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px; }
+    .mobbing-item { background:var(--farbe-hell); border:1.5px solid #FECACA; border-radius:10px; padding:7px 9px; font-size:11px; cursor:default; }
+    .mobbing-item:hover { background:#FEE2E2; }
+    .quadrant-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px; }
+    .quadrant-box { border-radius:10px; padding:10px; }
+    .evidence-row { display:grid; grid-template-columns:90px 100px 1fr; gap:6px; align-items:center; margin-bottom:5px; font-size:11px; }
+    .evidence-linie { border-bottom:1px dashed #FECACA; height:16px; }
+    .kreis-system { position:relative; width:240px; height:240px; margin:0 auto 10px; }
+    .hilfe-box { background:#FEF2F2; border:1.5px solid #FECACA; border-radius:8px; padding:8px; font-size:11px; margin-bottom:6px; }
+    .reflect-option { display:inline-block; background:#FEF2F2; border:1.5px solid #FECACA; border-radius:16px; padding:4px 12px; font-size:11px; margin:3px; cursor:default; }
+    .reflect-option:hover { background:#FEE2E2; }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- ===== SEITE 1 ===== -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">Du bist nicht allein – Mobbing benennen &amp; stoppen</div>
+      <div class="ab-untertitel">Mobbing &amp; Cybermobbing · Kategorie: Sicherheit &amp; Schutz</div>
+    </div>
+    <div class="kopfzeile-icon">🛡️</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">🛡️ Was ist Mobbing – und was nicht?</div>
+    <p>Mobbing = <strong>wiederholt + absichtlich + Ungleichgewicht der Kräfte</strong>. Ein Streit ist noch kein Mobbing. Mobbing hört nicht auf und der Betroffene kann sich nicht alleine gut wehren. <strong>Das ist nicht deine Schuld.</strong></p>
+    <p>🧠 <em>Wusstest du? Soziale Ablehnung aktiviert im Gehirn dieselben Areale wie körperlicher Schmerz. Was du fühlst, ist real – und ernst zu nehmen. Du bist nicht zu sensibel.</em></p>
+  </div>
+
+  <!-- Übung 1 – Was zählt als Mobbing -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">1</div>
+      <div class="uebung-titel">Was zählt als Mobbing? Kreise ein, was du kennst! 🔍</div>
+    </div>
+    <div class="uebung-beschreibung">Kreise alle Verhaltensweisen ein die du schon erlebt oder beobachtet hast – egal ob als Betroffene/r oder Zeuge/in.</div>
+    <div class="mobbing-grid">
+      <div class="mobbing-item">😂 Beleidigen, Lachen, Verspotten</div>
+      <div class="mobbing-item">🚫 Ausschließen &amp; Ignorieren</div>
+      <div class="mobbing-item">📣 Gerüchte verbreiten</div>
+      <div class="mobbing-item">👊 Körperliche Übergriffe</div>
+      <div class="mobbing-item">💸 Erpressung / Drohen</div>
+      <div class="mobbing-item">🎒 Sachen klauen / beschädigen</div>
+      <div class="mobbing-item">📱 Beleidigen per Chat / Kommentar</div>
+      <div class="mobbing-item">📸 Peinliche Fotos verbreiten</div>
+      <div class="mobbing-item">👤 Fake-Profile erstellen</div>
+      <div class="mobbing-item">🔇 Aus Gruppen ausschließen</div>
+      <div class="mobbing-item">🔥 Flaming – Provozieren &amp; Angreifen</div>
+      <div class="mobbing-item">🕵️ Identitätsdiebstahl online</div>
+    </div>
+    <div style="font-size:11px;margin-top:4px;color:#6B7280;">Was ich hier eingekreist habe, passiert mir / passiert mir nicht / habe ich bei anderen gesehen (unterstreiche was passt)</div>
+  </div>
+
+  <!-- Übung 2 – Meine Situation -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">2</div>
+      <div class="uebung-titel">Meine Situation – sicher &amp; anonym reflektieren 🔒</div>
+    </div>
+    <div class="uebung-beschreibung">Du musst keine Namen nennen. Das hier bleibt zwischen dir und deiner Bezugsperson. Ehrlichkeit hilft dir selbst am meisten.</div>
+    <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:8px;padding:10px;margin-bottom:8px;">
+      <div style="font-size:11px;font-weight:700;margin-bottom:6px;">Was ist passiert? (kurz, ohne Namen)</div>
+      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;margin-bottom:5px;">Wie oft passiert das?</div>
+        <div>
+          <span class="reflect-option">einmalig</span>
+          <span class="reflect-option">manchmal</span>
+          <span class="reflect-option">oft</span>
+          <span class="reflect-option">fast täglich</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;margin-bottom:5px;">Wer weiß davon?</div>
+        <div>
+          <span class="reflect-option">niemand</span>
+          <span class="reflect-option">Freunde</span>
+          <span class="reflect-option">Familie</span>
+          <span class="reflect-option">Lehrer/in</span>
+          <span class="reflect-option">Beratung</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Mobbing &amp; Cybermobbing · Seite 1</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 2 ===== -->
+<div class="seite">
+
+  <!-- Übung 3 – 4 Quadranten Handlungsoptionen -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">3</div>
+      <div class="uebung-titel">Meine Rechte &amp; Optionen – 4 Wege zum Handeln 🗺️</div>
+    </div>
+    <div class="uebung-beschreibung">Du hast mehr Möglichkeiten als du denkst. Schreibe in jeden Bereich konkrete Schritte die du tun könntest.</div>
+    <div class="quadrant-grid">
+      <div class="quadrant-box" style="background:#EFF6FF;border:1.5px solid #BFDBFE;">
+        <div style="font-size:11px;font-weight:700;color:#1D4ED8;margin-bottom:5px;">💪 Was ich alleine tun kann</div>
+        <div style="font-size:10px;color:#6B7280;margin-bottom:5px;">z.B. Abstand halten, Notizen machen, blockieren</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+      <div class="quadrant-box" style="background:#F0FDF4;border:1.5px solid #86EFAC;">
+        <div style="font-size:11px;font-weight:700;color:#059669;margin-bottom:5px;">🤝 Mit Unterstützung (Person)</div>
+        <div style="font-size:10px;color:#6B7280;margin-bottom:5px;">z.B. Freund mitnehmen, Bezugsperson einweihen</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+      <div class="quadrant-box" style="background:#FFFBEB;border:1.5px solid #FDE68A;">
+        <div style="font-size:11px;font-weight:700;color:#D97706;margin-bottom:5px;">🏫 Offizieller Weg (Schule/Behörden)</div>
+        <div style="font-size:10px;color:#6B7280;margin-bottom:5px;">z.B. Schulleitung, Polizei bei Straftaten</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+      <div class="quadrant-box" style="background:var(--farbe-hell);border:1.5px solid #FECACA;">
+        <div style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:5px;">📱 Online-Mobbing stoppen</div>
+        <div style="font-size:10px;color:#6B7280;margin-bottom:5px;">z.B. Screenshot, blockieren, melden, privat stellen</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Übung 4 – Evidence Log -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">4</div>
+      <div class="uebung-titel">Beweise sichern – mein Protokoll (für Cybermobbing) 📋</div>
+    </div>
+    <div class="uebung-beschreibung">Screenshots sind wichtig. Dokumentiere was passiert ist – das schützt dich und ist wichtig für Meldungen.</div>
+    <div style="margin-bottom:6px;">
+      <div class="evidence-row"><strong>Datum</strong><strong>Plattform</strong><strong>Was ist passiert?</strong></div>
+      <div class="evidence-row"><div class="evidence-linie"></div><div class="evidence-linie"></div><div class="evidence-linie"></div></div>
+      <div class="evidence-row"><div class="evidence-linie"></div><div class="evidence-linie"></div><div class="evidence-linie"></div></div>
+      <div class="evidence-row"><div class="evidence-linie"></div><div class="evidence-linie"></div><div class="evidence-linie"></div></div>
+      <div class="evidence-row"><div class="evidence-linie"></div><div class="evidence-linie"></div><div class="evidence-linie"></div></div>
+    </div>
+    <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:7px;font-size:10px;">
+      💡 Screenshots: Datum + Uhrzeit sichtbar, nicht antworten (keine Eskalation), Person blockieren UND melden (auf der Plattform), Profil auf privat stellen.
+    </div>
+  </div>
+
+  <!-- Übung 5 – Support Network -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">5</div>
+      <div class="uebung-titel">Mein Unterstützungsnetz – wer kann mir helfen? 🕸️</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+      <div style="background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:10px;padding:9px;text-align:center;">
+        <div style="font-size:14px;margin-bottom:4px;">👥</div>
+        <div style="font-size:11px;font-weight:700;color:#059669;margin-bottom:4px;">Personen die ich kenne</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+      <div style="background:#EFF6FF;border:1.5px solid #BFDBFE;border-radius:10px;padding:9px;text-align:center;">
+        <div style="font-size:14px;margin-bottom:4px;">🏫</div>
+        <div style="font-size:11px;font-weight:700;color:#1D4ED8;margin-bottom:4px;">Profis &amp; Schule</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+      <div style="background:var(--farbe-hell);border:1.5px solid #FECACA;border-radius:10px;padding:9px;text-align:center;">
+        <div style="font-size:14px;margin-bottom:4px;">📞</div>
+        <div style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:4px;">Notfall-Kontakte</div>
+        <div style="font-size:10px;color:#6B7280;line-height:1.6;">116 111 · 8002 1234<br>454545 · 113</div>
+      </div>
+    </div>
+    <div style="background:#FEF2F2;border:1.5px solid #FECACA;border-radius:8px;padding:7px;font-size:11px;margin-top:7px;text-align:center;">
+      <strong>🇱🇺 Hilfe in Luxemburg:</strong> Kanner-Jugendtelefon <strong>116 111</strong> (kostenlos, 24/7) · BEE SECURE Helpline <strong>8002 1234</strong> (Cybermobbing) · SOS Détresse <strong>454545</strong> · Police <strong>113</strong>
+    </div>
+  </div>
+
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Reflexion</div>
+    <p>Was wäre dein erster konkreter Schritt diese Woche? Und was macht es dir schwer, diesen Schritt zu machen?</p>
+    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
+    <strong>ICD-10:</strong> F43.1 (PTBS), F43.2 (Anpassungsstörung), F32 (Depression), F40/F41 (Angststörungen) als häufige Komorbiditäten bei Mobbingbetroffenen. <strong>Olweus-Modell:</strong> Täter / Opfer / Zeuge / aktive Zuschauer als stärkster Schutzfaktor. Klare Exploration der Rolle ohne Schuldzuweisung. <strong>Rechtsrelevanz:</strong> Cybermobbing kann strafbar sein (Verleumdung, Datenschutzverletzung, Nötigung). Bei Hinweisen auf Suizidalität oder Selbstverletzung: sofortige Schutzplanung und ggf. kinder-/jugendpsychiatrische Notfallzuweisung. <strong>Trauma-sensible Gesprächsführung:</strong> kein Druck zur Offenbarung, Kontrolle beim Jugendlichen lassen, Sicherheit vor Verarbeitung. Schulisches Anti-Mobbing-Protokoll aktivieren. BEE SECURE Luxemburg für digitale Medienaspekte einbeziehen.
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Mobbing &amp; Cybermobbing · Seite 2</span>
+  </div>
+</div>
+
+</body>
+</html>

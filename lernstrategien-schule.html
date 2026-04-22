@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Lernstrategien &amp; Schule</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #0891B2; --farbe-hell: #ECFEFF; }
+    .lerntyp-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px; }
+    .lerntyp-karte { border-radius:10px; padding:10px; border:2px solid transparent; cursor:default; }
+    .lerntyp-karte:hover { opacity:0.85; }
+    .woche-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:5px; margin-bottom:10px; }
+    .tag-box { background:var(--farbe-hell); border:1.5px solid #A5F3FC; border-radius:8px; padding:6px; text-align:center; }
+    .tag-box .tag-name { font-weight:700; color:var(--farbe); font-size:11px; margin-bottom:4px; }
+    .strat-karte { display:flex; gap:10px; align-items:flex-start; background:var(--farbe-hell); border:1.5px solid #A5F3FC; border-radius:10px; padding:9px; margin-bottom:7px; }
+    .strat-icon { font-size:20px; flex-shrink:0; }
+    .vergleich-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px; }
+    .vergleich-box { border-radius:10px; padding:10px; }
+    .feynman-box { border:2px dashed var(--farbe); border-radius:10px; padding:12px; background:var(--farbe-hell); margin-bottom:10px; }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- ===== SEITE 1 ===== -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">Wie lerne ich eigentlich – und warum klappt's manchmal nicht?</div>
+      <div class="ab-untertitel">Lernstrategien &amp; Schule · Kategorie: Schule &amp; Zukunft</div>
+    </div>
+    <div class="kopfzeile-icon">📚</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">💡 Du lernst nicht falsch – du lernst vielleicht auf die falsche Art.</div>
+    <p>Jeder Mensch lernt anders. Wenn etwas nicht klappt, heißt das nicht, dass du "nicht intelligent genug" bist. Es heißt oft nur: die Methode passt nicht zu dir. <strong>Das ist lösbar.</strong></p>
+    <p>🧠 <em>Wusstest du? Nochmal lesen ist eine der schlechtesten Lernmethoden – dein Gehirn täuscht sich, weil der Text vertraut wirkt. Selbst abfragen (Active Recall) ist bis zu 3x effektiver, auch wenn es sich anstrengender anfühlt.</em></p>
+  </div>
+
+  <!-- Übung 1 – Lerntyp-Quiz -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">1</div>
+      <div class="uebung-titel">Welcher Lerntyp bin ich? Kreise alles ein, was stimmt! 🔍</div>
+    </div>
+    <div class="uebung-beschreibung">Jede Karte hat 3 typische Merkmale. Kreise ein, was auf dich zutrifft – du kannst in mehreren Karten Dinge einkreisen!</div>
+    <div class="lerntyp-grid">
+      <div class="lerntyp-karte" style="background:#FFF7ED;border-color:#FED7AA;">
+        <div style="font-size:16px;margin-bottom:4px;">👁️ <strong>Visuell</strong> – Sehen &amp; Bilder</div>
+        <div style="font-size:11px;line-height:1.7;color:#374151;">
+          ○ Ich lerne mit Mindmaps, Farben &amp; Diagrammen<br>
+          ○ Ich muss Dinge aufschreiben um sie zu behalten<br>
+          ○ Ich erinnere mich wo im Buch etwas stand
+        </div>
+      </div>
+      <div class="lerntyp-karte" style="background:#F0FDF4;border-color:#86EFAC;">
+        <div style="font-size:16px;margin-bottom:4px;">👂 <strong>Auditiv</strong> – Hören &amp; Reden</div>
+        <div style="font-size:11px;line-height:1.7;color:#374151;">
+          ○ Ich lerne besser wenn ich mir Sachen laut erkläre<br>
+          ○ Erklärungen von anderen helfen mir mehr als Texte<br>
+          ○ Ich höre gerne Podcasts oder YouTube-Erklärungen
+        </div>
+      </div>
+      <div class="lerntyp-karte" style="background:#EFF6FF;border-color:#BFDBFE;">
+        <div style="font-size:16px;margin-bottom:4px;">✋ <strong>Kinästhetisch</strong> – Tun &amp; Bewegen</div>
+        <div style="font-size:11px;line-height:1.7;color:#374151;">
+          ○ Ich lerne durch Ausprobieren &amp; praktische Beispiele<br>
+          ○ Beim Lernen muss ich mich bewegen dürfen<br>
+          ○ Ich brauche Übungsaufgaben, nicht nur Theorie
+        </div>
+      </div>
+      <div class="lerntyp-karte" style="background:#F5F3FF;border-color:#C4B5FD;">
+        <div style="font-size:16px;margin-bottom:4px;">📖 <strong>Lesen / Schreiben</strong></div>
+        <div style="font-size:11px;line-height:1.7;color:#374151;">
+          ○ Ich lese Texte durch und notiere Wichtiges<br>
+          ○ Eigene Zusammenfassungen schreiben hilft mir am meisten<br>
+          ○ Ich lerne gerne mit Karteikarten &amp; Listen
+        </div>
+      </div>
+    </div>
+    <div style="font-size:11px;">Mein Lerntyp-Fazit: <span style="border-bottom:1px dashed #A5F3FC;display:inline-block;width:280px;">&nbsp;</span></div>
+  </div>
+
+  <!-- Übung 2 – Wochenplan -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">2</div>
+      <div class="uebung-titel">Mein Lern-Wochenplan – was lerne ich wann? 📅</div>
+    </div>
+    <div class="uebung-beschreibung">Trage die Fächer ein die du diese Woche brauchst. Plane Pausen ein! Ein voller Plan ist kein guter Plan.</div>
+    <div class="woche-grid">
+      <div class="tag-box"><div class="tag-name">Montag</div><div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div></div>
+      <div class="tag-box"><div class="tag-name">Dienstag</div><div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div></div>
+      <div class="tag-box"><div class="tag-name">Mittwoch</div><div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div></div>
+      <div class="tag-box"><div class="tag-name">Donnerstag</div><div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div></div>
+      <div class="tag-box"><div class="tag-name">Freitag</div><div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;">
+      <div style="background:#F9FAFB;border-radius:6px;padding:7px;">📍 Mein bester Lernort: <div style="border-bottom:1px dashed #A5F3FC;height:16px;margin-top:4px;"></div></div>
+      <div style="background:#F9FAFB;border-radius:6px;padding:7px;">⏰ Meine beste Lernzeit: <div style="border-bottom:1px dashed #A5F3FC;height:16px;margin-top:4px;"></div></div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Lernstrategien &amp; Schule · Seite 1</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 2 ===== -->
+<div class="seite">
+
+  <!-- Übung 3 – Active Recall vs Passives Lesen -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">3</div>
+      <div class="uebung-titel">Active Recall vs. Passives Lesen – der Unterschied ist riesig! 🧠</div>
+    </div>
+    <div class="vergleich-grid">
+      <div class="vergleich-box" style="background:#FEF2F2;border:1.5px solid #FCA5A5;">
+        <div style="font-size:12px;font-weight:700;color:#DC2626;margin-bottom:6px;">😴 Passives Lesen (schwach)</div>
+        <div style="font-size:11px;line-height:1.7;color:#374151;">
+          ○ Nochmals lesen &amp; highlighten<br>
+          ○ Zusammenfassung abschreiben<br>
+          ○ Passiv Lernvideos anschauen<br>
+          ○ Text nur "überfliegen"<br>
+          <em style="color:#6B7280;font-size:10px;">→ Fühlt sich produktiv an, ist es oft nicht</em>
+        </div>
+      </div>
+      <div class="vergleich-box" style="background:#F0FDF4;border:1.5px solid #86EFAC;">
+        <div style="font-size:12px;font-weight:700;color:#059669;margin-bottom:6px;">🚀 Active Recall (stark)</div>
+        <div style="font-size:11px;line-height:1.7;color:#374151;">
+          ○ Buch zu → aus Gedächtnis aufschreiben<br>
+          ○ Jemanden erklären ohne zu spicken<br>
+          ○ Karteikarten selbst abfragen<br>
+          ○ Testfragen schreiben &amp; beantworten<br>
+          <em style="color:#059669;font-size:10px;">→ Anstrengend aber 3× effektiver ✓</em>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--farbe-hell);border:1.5px solid #A5F3FC;border-radius:8px;padding:8px;font-size:11px;">
+      <strong>Welche Methode nutze ich bisher am meisten?</strong> <span style="border-bottom:1px dashed #A5F3FC;display:inline-block;width:200px;">&nbsp;</span> <strong>Was probiere ich diese Woche neu?</strong> <span style="border-bottom:1px dashed #A5F3FC;display:inline-block;width:160px;">&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- Übung 4 – Feynman-Technik -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">4</div>
+      <div class="uebung-titel">Feynman-Technik: Erkläre es wie ich 10 bin! 🧒</div>
+    </div>
+    <div class="uebung-beschreibung">Richard Feynman (Nobelpreisträger Physik) hatte die Regel: Wenn du etwas nicht einfach erklären kannst, hast du es nicht wirklich verstanden. Wähle ein Thema aus der Schule und erkläre es hier so, dass ein 10-jähriges Kind es verstehen würde.</div>
+    <div class="feynman-box">
+      <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:4px;">Mein Thema: <span style="border-bottom:1.5px solid var(--farbe);display:inline-block;width:220px;">&nbsp;</span></div>
+      <div style="font-size:11px;margin-bottom:6px;">Meine Erklärung in einfachen Worten:</div>
+      <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      <div style="font-size:11px;margin-top:6px;">Was ich dabei gemerkt habe, dass ich noch nicht richtig verstehe: <span style="border-bottom:1px dashed #A5F3FC;display:inline-block;width:200px;">&nbsp;</span></div>
+    </div>
+  </div>
+
+  <!-- Übung 5 – Prüfungswoche Survival Kit -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">5</div>
+      <div class="uebung-titel">Mein Prüfungswoche-Survival-Kit – 5 Strategien 🛟</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+      <div class="strat-karte"><div class="strat-icon">🍅</div><div><strong style="font-size:11px;">Pomodoro 25/5</strong><div style="font-size:10px;color:#6B7280;">25 Min lernen, 5 Min Pause – dann wiederholen. Strukturiert Chaos.</div></div></div>
+      <div class="strat-karte"><div class="strat-icon">😴</div><div><strong style="font-size:11px;">Schlaf schlägt Nachtlernen</strong><div style="font-size:10px;color:#6B7280;">Im Schlaf festigt sich das Gelernte. Vor Prüfungen gut schlafen &gt; stundenlang pauken.</div></div></div>
+      <div class="strat-karte"><div class="strat-icon">🃏</div><div><strong style="font-size:11px;">Karteikarten + Abfragen</strong><div style="font-size:10px;color:#6B7280;">Selbst abfragen ist 3x effektiver als nochmal lesen (Spaced Repetition).</div></div></div>
+      <div class="strat-karte"><div class="strat-icon">🚶</div><div><strong style="font-size:11px;">Bewegung = Konzentration</strong><div style="font-size:10px;color:#6B7280;">15 Min spazieren gehen verbessert Fokus und Stimmung nachweislich.</div></div></div>
+      <div class="strat-karte" style="grid-column:span 2;"><div class="strat-icon">🗣️</div><div><strong style="font-size:11px;">Anderen erklären (Feynman)</strong><div style="font-size:10px;color:#6B7280;">Stoff erklären ist die stärkste Lerntechnik. Partner, Spiegel, Kuscheltier – egal wem.</div></div></div>
+    </div>
+  </div>
+
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Reflexion</div>
+    <p>Was wäre ein kleiner, realistischer Schritt den du diese Woche in der Schule anders machen kannst? Was brauchst du dafür?</p>
+    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
+    <strong>ICD-10:</strong> F81 (umschriebene Lernstörungen inkl. LRS F81.0, Rechenstörung F81.2), F90 (ADHS als häufige Ursache von Lernproblemen). Lernschwierigkeiten bei Jugendlichen im Sonderschulsetting sind häufig emotional bedingt (Trauma, Angst, F43) und nicht primär kognitiv. <strong>Erst emotionale Barrieren explorieren</strong>, dann Lerntechniken einführen. Active Recall / Spaced Repetition: wissenschaftlich bestätigt durch Kognitionswissenschaft (Roediger &amp; Karpicke, 2006). Feynman-Technik entspricht Elaborationsstrategien (elaborative interrogation). VARK-Modell (Fleming) als Orientierungsrahmen – Lerntyp-Theorie ist vereinfacht, aber klinisch nützlich für Zugang und Selbstwirksamkeit. <strong>CBT:</strong> Selbstwirksamkeitsaufbau durch kleine, erreichbare Ziele (Bandura). LRS-/ADHS-Verdacht dokumentieren und schulpsychologischen Dienst einbeziehen.
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Lernstrategien &amp; Schule · Seite 2</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Digital &amp; Real – Mein Online-Leben</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #6366F1; --farbe-hell: #EEF2FF; }
+    .app-grid { display:grid; grid-template-columns:1fr 90px 90px; gap:5px; margin-bottom:4px; }
+    .app-grid-header { background:var(--farbe-hell); border-radius:6px; padding:5px 10px; font-size:10px; font-weight:700; color:var(--farbe); }
+    .app-grid-header-center { background:var(--farbe-hell); border-radius:6px; padding:5px; font-size:10px; font-weight:700; color:var(--farbe); text-align:center; }
+    .app-grid-cell { border:1px solid #C7D2FE; border-radius:6px; padding:5px 10px; font-size:10px; min-height:22px; display:flex; align-items:center; }
+    .app-grid-cell-center { border:1px solid #C7D2FE; border-radius:6px; padding:5px; font-size:10px; text-align:center; min-height:22px; }
+    .platform-row { display:grid; grid-template-columns:110px 1fr; gap:8px; align-items:center; margin-bottom:5px; }
+    .platform-label { background:var(--farbe-hell); border:1.5px solid #C7D2FE; border-radius:8px; padding:5px 8px; font-size:11px; font-weight:700; color:var(--farbe); text-align:center; }
+    .emoji-vote { display:flex; gap:6px; align-items:center; background:#F8F9FF; border-radius:8px; padding:6px 10px; font-size:11px; }
+    .emoji-vote .vote-sep { color:#D1D5DB; margin:0 4px; }
+    .emoji-vote .vote-label { font-size:10px; color:#6B7280; }
+    .stopper-card { background:var(--farbe-hell); border:2px solid #C7D2FE; border-radius:10px; padding:10px; text-align:center; font-size:11px; }
+    .stopper-card .s-icon { font-size:22px; margin-bottom:4px; }
+    .stopper-card .s-title { font-weight:700; color:var(--farbe); margin-bottom:3px; }
+    .stopper-card .s-desc { font-size:10px; color:#6B7280; }
+    .cyber-item { display:flex; align-items:center; gap:8px; background:var(--farbe-hell); border:1.5px solid #C7D2FE; border-radius:8px; padding:6px 10px; font-size:11px; margin-bottom:4px; }
+    .action-step { display:flex; align-items:center; gap:10px; background:#F0FDF4; border:1.5px solid #86EFAC; border-radius:8px; padding:7px 10px; margin-bottom:4px; }
+    .action-nr { background:#10B981; color:white; border-radius:50%; width:22px; height:22px; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0; }
+    .detox-row { display:flex; align-items:center; gap:10px; background:#F8F9FF; border:1px solid #C7D2FE; border-radius:8px; padding:7px 10px; margin-bottom:5px; }
+    .detox-check { width:16px; height:16px; border:2px solid #C7D2FE; border-radius:3px; flex-shrink:0; }
+    .online-vs { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:8px; }
+    .online-col { border:2px solid #C7D2FE; border-radius:10px; padding:10px; }
+    .online-col-header { font-size:11px; font-weight:700; margin-bottom:6px; padding-bottom:4px; border-bottom:1.5px solid #C7D2FE; }
+    .grenzen-row { display:flex; align-items:flex-start; gap:8px; margin-bottom:7px; }
+    .grenzen-label { font-size:11px; color:#374151; min-width:190px; flex-shrink:0; padding-top:2px; }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- ===== SEITE 1 ===== -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">Digital &amp; Real — Mein Online-Leben</div>
+      <div class="ab-untertitel">Digitales Wohlbefinden · Kategorie: Gesundheit &amp; Körper</div>
+    </div>
+    <div class="kopfzeile-icon">📱</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">💡 Dein Handy ist nicht böse — aber es ist auch nicht neutral.</div>
+    <p>Apps sind so gebaut, dass du länger draufbleibst — das ist Absicht, kein Zufall. Jedes Benachrichtigungs-Ping, jeder Like, jede neue Story aktiviert dasselbe Belohnungssystem im Gehirn wie Glücksspiele: Dopamin auf Abruf. <strong>Wer das weiß, kann bewusster entscheiden.</strong></p>
+    <p>🧠 <em>Wusstest du? Jugendliche verbringen im Durchschnitt 6–9 Stunden täglich vor Bildschirmen — mehr als sie in der Schule verbringen. Die Frage ist nicht ob du online bist, sondern wie es dir dabei geht.</em></p>
+  </div>
+
+  <!-- Übung 1 – Bildschirmzeit-Check -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">1</div>
+      <div class="uebung-titel">Mein Bildschirmzeit-Check 📊</div>
+    </div>
+    <div class="uebung-beschreibung">Schätze zuerst — dann schau in den Einstellungen nach (Bildschirmzeit / Digital Wellbeing). Ehrlich sein!</div>
+    <div style="margin-bottom:8px;">
+      <div class="app-grid">
+        <div class="app-grid-header">App / Aktivität</div>
+        <div class="app-grid-header-center">Ich schätze<br>(Std/Tag)</div>
+        <div class="app-grid-header-center">Echt<br>(Handy)</div>
+      </div>
+      <div class="app-grid">
+        <div class="app-grid-cell">📲 Social Media (TikTok, Instagram, Snap…)</div>
+        <div class="app-grid-cell-center"></div>
+        <div class="app-grid-cell-center"></div>
+      </div>
+      <div class="app-grid">
+        <div class="app-grid-cell" style="background:#FAFBFF;">🎮 Gaming</div>
+        <div class="app-grid-cell-center" style="background:#FAFBFF;"></div>
+        <div class="app-grid-cell-center" style="background:#FAFBFF;"></div>
+      </div>
+      <div class="app-grid">
+        <div class="app-grid-cell">▶️ YouTube / Streaming (Netflix…)</div>
+        <div class="app-grid-cell-center"></div>
+        <div class="app-grid-cell-center"></div>
+      </div>
+      <div class="app-grid">
+        <div class="app-grid-cell" style="background:#FAFBFF;">💬 Chat / Messenger (WhatsApp, Snap…)</div>
+        <div class="app-grid-cell-center" style="background:#FAFBFF;"></div>
+        <div class="app-grid-cell-center" style="background:#FAFBFF;"></div>
+      </div>
+      <div class="app-grid">
+        <div class="app-grid-cell">📚 Lernen / Schulisches</div>
+        <div class="app-grid-cell-center"></div>
+        <div class="app-grid-cell-center"></div>
+      </div>
+      <div class="app-grid">
+        <div class="app-grid-cell" style="background:#FAFBFF;">🔀 Sonstiges</div>
+        <div class="app-grid-cell-center" style="background:#FAFBFF;"></div>
+        <div class="app-grid-cell-center" style="background:#FAFBFF;"></div>
+      </div>
+      <div class="app-grid">
+        <div class="app-grid-cell" style="background:var(--farbe-hell);font-weight:700;color:var(--farbe);">Gesamt pro Tag</div>
+        <div class="app-grid-cell-center" style="background:var(--farbe-hell);font-weight:700;color:var(--farbe);"></div>
+        <div class="app-grid-cell-center" style="background:var(--farbe-hell);font-weight:700;color:var(--farbe);"></div>
+      </div>
+    </div>
+    <div style="background:#FFFBEB;border:1.5px solid #FCD34D;border-radius:8px;padding:8px;font-size:11px;">
+      😮 Überrascht dich das Ergebnis? <span style="border-bottom:1px dashed #D1D5DB;display:inline-block;width:270px;">&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- Übung 2 – Wie fühle ich mich nach Social Media? -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">2</div>
+      <div class="uebung-titel">Wie fühle ich mich nach Social Media? 😊😐😔</div>
+    </div>
+    <div class="uebung-beschreibung">Kreise an, wie du dich <strong>nach</strong> dem Nutzen der jeweiligen App meistens fühlst:</div>
+    <div style="margin-bottom:8px;">
+      <div class="platform-row">
+        <div class="platform-label">📱 TikTok</div>
+        <div class="emoji-vote">
+          <span>😊</span><span class="vote-label">besser</span>
+          <span class="vote-sep">|</span>
+          <span>😐</span><span class="vote-label">gleich</span>
+          <span class="vote-sep">|</span>
+          <span>😔</span><span class="vote-label">schlechter</span>
+          <span style="flex:1;border-bottom:1px dashed #C7D2FE;margin-left:8px;height:14px;"></span>
+        </div>
+      </div>
+      <div class="platform-row">
+        <div class="platform-label">📸 Instagram</div>
+        <div class="emoji-vote">
+          <span>😊</span><span class="vote-label">besser</span>
+          <span class="vote-sep">|</span>
+          <span>😐</span><span class="vote-label">gleich</span>
+          <span class="vote-sep">|</span>
+          <span>😔</span><span class="vote-label">schlechter</span>
+          <span style="flex:1;border-bottom:1px dashed #C7D2FE;margin-left:8px;height:14px;"></span>
+        </div>
+      </div>
+      <div class="platform-row">
+        <div class="platform-label">👻 Snapchat</div>
+        <div class="emoji-vote">
+          <span>😊</span><span class="vote-label">besser</span>
+          <span class="vote-sep">|</span>
+          <span>😐</span><span class="vote-label">gleich</span>
+          <span class="vote-sep">|</span>
+          <span>😔</span><span class="vote-label">schlechter</span>
+          <span style="flex:1;border-bottom:1px dashed #C7D2FE;margin-left:8px;height:14px;"></span>
+        </div>
+      </div>
+      <div class="platform-row">
+        <div class="platform-label">▶️ YouTube</div>
+        <div class="emoji-vote">
+          <span>😊</span><span class="vote-label">besser</span>
+          <span class="vote-sep">|</span>
+          <span>😐</span><span class="vote-label">gleich</span>
+          <span class="vote-sep">|</span>
+          <span>😔</span><span class="vote-label">schlechter</span>
+          <span style="flex:1;border-bottom:1px dashed #C7D2FE;margin-left:8px;height:14px;"></span>
+        </div>
+      </div>
+      <div class="platform-row">
+        <div class="platform-label">🎮 Gaming</div>
+        <div class="emoji-vote">
+          <span>😊</span><span class="vote-label">besser</span>
+          <span class="vote-sep">|</span>
+          <span>😐</span><span class="vote-label">gleich</span>
+          <span class="vote-sep">|</span>
+          <span>😔</span><span class="vote-label">schlechter</span>
+          <span style="flex:1;border-bottom:1px dashed #C7D2FE;margin-left:8px;height:14px;"></span>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--farbe-hell);border-radius:8px;padding:8px;font-size:11px;">
+      💬 Welche App tut mir gut? <span style="border-bottom:1px dashed #C7D2FE;display:inline-block;width:120px;">&nbsp;</span>&nbsp;&nbsp; Welche nicht? <span style="border-bottom:1px dashed #C7D2FE;display:inline-block;width:120px;">&nbsp;</span>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Digitales Wohlbefinden · Seite 1</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 2 ===== -->
+<div class="seite">
+
+  <!-- Übung 3 – Doom-Scrolling-Stopper -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">3</div>
+      <div class="uebung-titel">Doom-Scrolling-Stopper 🛑</div>
+    </div>
+    <div class="uebung-beschreibung">Was in deinem Gehirn passiert — und wie du die Kontrolle zurückbekommst:</div>
+    <div style="background:#FFF7ED;border:1.5px solid #FED7AA;border-radius:10px;padding:10px;margin-bottom:10px;">
+      <div style="font-size:11px;font-weight:700;color:#C2410C;margin-bottom:5px;">🧠 Die Dopamin-Falle erklärt</div>
+      <p style="font-size:11px;margin:0;color:#374151;">Dein Gehirn schüttet Dopamin aus <strong>in Erwartung</strong> von etwas Gutem — nicht beim Sehen selbst. Deshalb scrollst du weiter: Du hoffst auf den nächsten guten Post. Das ist <em>variable Verstärkung</em> — dasselbe Prinzip wie bei Spielautomaten. Die gute Nachricht: Wenn du das weißt, verliert die Falle etwas ihrer Macht.</p>
+    </div>
+    <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:6px;">Wähle deine Stopper-Strategie:</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px;">
+      <div class="stopper-card">
+        <div class="s-icon">⏱️</div>
+        <div class="s-title">Timer setzen</div>
+        <div class="s-desc">Vor dem Öffnen: Timer auf 15 Min. Wenn er klingelt — App schließen.</div>
+      </div>
+      <div class="stopper-card">
+        <div class="s-icon">🚪</div>
+        <div class="s-title">Handy in anderen Raum</div>
+        <div class="s-desc">Physische Distanz bricht Automatismus. Aus den Augen, aus dem Sinn.</div>
+      </div>
+      <div class="stopper-card">
+        <div class="s-icon">🌑</div>
+        <div class="s-title">Bildschirm grau schalten</div>
+        <div class="s-desc">Graustufen-Modus macht Apps weniger verlockend. Einstellungen → Barrierefreiheit.</div>
+      </div>
+    </div>
+    <div style="background:var(--farbe-hell);border:1.5px solid #C7D2FE;border-radius:8px;padding:9px;font-size:11px;">
+      ✅ <strong>Meine Strategie:</strong> Ich probiere <span style="border-bottom:1px dashed #C7D2FE;display:inline-block;width:200px;">&nbsp;</span> aus.
+      Wann genau? <span style="border-bottom:1px dashed #C7D2FE;display:inline-block;width:130px;">&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- Übung 4 – Cybermobbing erkennen & handeln -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">4</div>
+      <div class="uebung-titel">Cybermobbing erkennen &amp; handeln 🛡️</div>
+    </div>
+    <div class="uebung-beschreibung">Das gilt als Cybermobbing — kreise ein, was du schon erlebt oder gesehen hast:</div>
+    <div style="margin-bottom:10px;">
+      <div class="cyber-item"><span style="font-size:15px;">📸</span> Screenshots teilen oder Fotos ohne Erlaubnis verbreiten</div>
+      <div class="cyber-item"><span style="font-size:15px;">🚫</span> Ausgrenzung aus Gruppen-Chats oder gezieltes Ignorieren</div>
+      <div class="cyber-item"><span style="font-size:15px;">👤</span> Fake-Profile erstellen um jemanden bloßzustellen</div>
+      <div class="cyber-item"><span style="font-size:15px;">💥</span> Drohungen oder Erpressung via Nachrichten</div>
+      <div class="cyber-item"><span style="font-size:15px;">😳</span> Peinliche Inhalte oder Gerüchte über jemanden posten</div>
+    </div>
+    <div style="font-size:11px;font-weight:700;color:#10B981;margin-bottom:6px;">Wenn du betroffen bist — Schritt für Schritt:</div>
+    <div class="action-step"><div class="action-nr">1</div><div style="font-size:11px;">📸 <strong>Screenshot sichern</strong> — Beweise sichern, bevor etwas gelöscht wird</div></div>
+    <div class="action-step"><div class="action-nr">2</div><div style="font-size:11px;">🚫 <strong>Person blockieren</strong> — du schuldest niemandem Zugang zu dir</div></div>
+    <div class="action-step"><div class="action-nr">3</div><div style="font-size:11px;">👥 <strong>Vertrauensperson informieren</strong> — Bezugsperson, Eltern, Schule (SePAS/CePAS)</div></div>
+    <div class="action-step"><div class="action-nr">4</div><div style="font-size:11px;">📞 <strong>BEE SECURE Helpline: 8002 1234</strong> — kostenlos, anonym, Luxemburgisch</div></div>
+    <div style="background:#FEF2F2;border:1.5px solid #FCA5A5;border-radius:8px;padding:8px;font-size:11px;margin-top:6px;">
+      ❗ Cybermobbing ist keine Kleinigkeit — es ist digitale Gewalt. Du hast das Recht, Hilfe zu holen.
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Digitales Wohlbefinden · Seite 2</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 3 ===== -->
+<div class="seite">
+
+  <!-- Übung 5 – Digital Detox Plan -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">5</div>
+      <div class="uebung-titel">Mein Digital Detox Plan 🌿</div>
+    </div>
+    <div class="uebung-beschreibung">Kein komplettes Verbot — bewusste Auszeiten laden dein Gehirn auf wie einen Akku. Hake ab, was du ausprobieren möchtest:</div>
+    <div style="margin-bottom:8px;">
+      <div class="detox-row"><div class="detox-check"></div><div style="font-size:11px;">⏰ <strong>1 Stunde handyfrei</strong> am Stück täglich (z.B. beim Essen oder abends)</div></div>
+      <div class="detox-row"><div class="detox-check"></div><div style="font-size:11px;">🌙 <strong>1 Abend pro Woche ohne Bildschirm</strong> — stattdessen: <span style="border-bottom:1px dashed #C7D2FE;display:inline-block;width:150px;">&nbsp;</span></div></div>
+      <div class="detox-row"><div class="detox-check"></div><div style="font-size:11px;">🛏️ <strong>Handy nicht im Schlafzimmer</strong> — Ladekabel bleibt im Flur oder Wohnzimmer</div></div>
+      <div class="detox-row"><div class="detox-check"></div><div style="font-size:11px;">🌅 <strong>Erste 30 Minuten morgens</strong> ohne Handy — starte mit dir, nicht mit Notifications</div></div>
+    </div>
+    <div style="border:2px dashed #C7D2FE;border-radius:10px;padding:10px;margin-bottom:8px;">
+      <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:7px;">📝 Meine eigenen Regeln:</div>
+      <div style="font-size:11px;margin-bottom:5px;">Ich schalte das Handy weg wenn: <span style="border-bottom:1px dashed #C7D2FE;display:inline-block;width:240px;">&nbsp;</span></div>
+      <div style="font-size:11px;margin-bottom:5px;">Meine handyfreie Zone zu Hause: <span style="border-bottom:1px dashed #C7D2FE;display:inline-block;width:230px;">&nbsp;</span></div>
+      <div style="font-size:11px;">Stattdessen tue ich: <span style="border-bottom:1px dashed #C7D2FE;display:inline-block;width:278px;">&nbsp;</span></div>
+    </div>
+    <div style="background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:8px;padding:8px;font-size:11px;">
+      🎁 <strong>Meine Belohnung</strong> wenn ich eine Woche dabei bleibe: <span style="border-bottom:1px dashed #86EFAC;display:inline-block;width:200px;">&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- Übung 6 – Online vs. Offline Ich -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">6</div>
+      <div class="uebung-titel">Online vs. Offline Ich 🪞</div>
+    </div>
+    <div class="uebung-beschreibung">Wir alle zeigen online eine Version von uns — aber ist das wirklich wir? Fülle beide Spalten aus:</div>
+    <div class="online-vs">
+      <div class="online-col">
+        <div class="online-col-header" style="color:#6366F1;">📱 Wie ich mich online präsentiere</div>
+        <div style="font-size:10px;color:#6B7280;margin-bottom:6px;">Was poste ich? Welches Bild gebe ich nach außen?</div>
+        <div class="schreiblinien">
+          <div class="schreiblinie"></div>
+          <div class="schreiblinie"></div>
+          <div class="schreiblinie"></div>
+          <div class="schreiblinie"></div>
+        </div>
+      </div>
+      <div class="online-col">
+        <div class="online-col-header" style="color:#374151;">🌿 Wie ich mich wirklich fühle</div>
+        <div style="font-size:10px;color:#6B7280;margin-bottom:6px;">Was erlebe ich in Wirklichkeit? Was zeige ich nicht?</div>
+        <div class="schreiblinien">
+          <div class="schreiblinie"></div>
+          <div class="schreiblinie"></div>
+          <div class="schreiblinie"></div>
+          <div class="schreiblinie"></div>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--farbe-hell);border:1.5px solid #C7D2FE;border-radius:8px;padding:8px;font-size:11px;">
+      <div style="margin-bottom:5px;">💭 Gibt es einen Unterschied zwischen deinen beiden Spalten? <span style="border-bottom:1px dashed #C7D2FE;display:inline-block;width:180px;">&nbsp;</span></div>
+      <div>Warum zeigen wir online nicht immer unser echtes Ich? <span style="border-bottom:1px dashed #C7D2FE;display:inline-block;width:195px;">&nbsp;</span></div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Digitales Wohlbefinden · Seite 3</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 4 ===== -->
+<div class="seite">
+
+  <!-- Übung 7 – Meine digitalen Grenzen -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">7</div>
+      <div class="uebung-titel">Meine digitalen Grenzen 🔒</div>
+    </div>
+    <div class="uebung-beschreibung">Deine persönlichen Regeln fürs Online-Leben — was gilt für dich? Schreibe deine eigenen Grenzen auf:</div>
+    <div style="margin-bottom:8px;">
+      <div class="grenzen-row">
+        <div class="grenzen-label">🌙 Wann antworte ich nicht mehr?</div>
+        <div style="flex:1;border-bottom:1px dashed #C7D2FE;min-height:16px;"></div>
+      </div>
+      <div class="grenzen-row">
+        <div class="grenzen-label">📸 Welche Fotos von mir teile ich nie?</div>
+        <div style="flex:1;border-bottom:1px dashed #C7D2FE;min-height:16px;"></div>
+      </div>
+      <div class="grenzen-row">
+        <div class="grenzen-label">🚫 Wen blockiere ich sofort?</div>
+        <div style="flex:1;border-bottom:1px dashed #C7D2FE;min-height:16px;"></div>
+      </div>
+      <div class="grenzen-row">
+        <div class="grenzen-label">🔐 Welche Infos teile ich nie online?</div>
+        <div style="flex:1;border-bottom:1px dashed #C7D2FE;min-height:16px;"></div>
+      </div>
+    </div>
+    <div style="border:2px dashed #C7D2FE;border-radius:10px;padding:10px;margin-bottom:8px;">
+      <div style="font-size:11px;font-weight:700;color:var(--farbe);margin-bottom:7px;">🔑 Meine 3 wichtigsten Online-Sicherheitsregeln:</div>
+      <div style="font-size:11px;margin-bottom:5px;">1. <span style="border-bottom:1px dashed #C7D2FE;display:inline-block;width:340px;">&nbsp;</span></div>
+      <div style="font-size:11px;margin-bottom:5px;">2. <span style="border-bottom:1px dashed #C7D2FE;display:inline-block;width:340px;">&nbsp;</span></div>
+      <div style="font-size:11px;">3. <span style="border-bottom:1px dashed #C7D2FE;display:inline-block;width:340px;">&nbsp;</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div style="background:#EEF2FF;border:1.5px solid #C7D2FE;border-radius:8px;padding:8px;font-size:10px;">
+        <div style="font-weight:700;color:var(--farbe);margin-bottom:3px;">📞 BEE SECURE Helpline</div>
+        <div style="font-size:14px;font-weight:700;color:#1E1B4B;">8002 1234</div>
+        <div style="color:#6B7280;">kostenlos · anonym · Luxemburg</div>
+      </div>
+      <div style="background:#EEF2FF;border:1.5px solid #C7D2FE;border-radius:8px;padding:8px;font-size:10px;">
+        <div style="font-weight:700;color:var(--farbe);margin-bottom:3px;">📞 Kanner-Jugendtelefon</div>
+        <div style="font-size:14px;font-weight:700;color:#1E1B4B;">116 111</div>
+        <div style="color:#6B7280;">kostenlos · für Jugendliche</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reflexion -->
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Reflexion</div>
+    <p>Was willst du an deinem Online-Verhalten ändern? Was ist dein erster Schritt — und wann machst du ihn?</p>
+    <div class="schreiblinien">
+      <div class="schreiblinie"></div>
+      <div class="schreiblinie"></div>
+      <div class="schreiblinie"></div>
+    </div>
+  </div>
+
+  <!-- Fachhinweis -->
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
+    <strong>Klassifikation:</strong> ICD-10 F63.0 (Pathologisches Spielen / Gaming Disorder analog), F63.8 (Sonstige Impulskontrollstörung, u.a. problematische Internetnutzung); ICD-11: 6C51 Gaming Disorder (seit 2022 offiziell anerkannt). Problematische Social-Media-Nutzung noch nicht eigenständig klassifiziert — klinisch relevant als Komorbidität bei F32/F33 (Depression), F40/F41 (Angststörungen) und F90 (ADHS). <strong>Screening:</strong> Bergen Social Media Addiction Scale (BSMAS), IGDT-10 (Internet Gaming Disorder), Compulsive Internet Use Scale (CIUS). <strong>Methoden:</strong> Motivational Interviewing für Medienkonsum (Ambivalenz erkunden, autonomiestärkend — nicht konfrontativ); CBT for Internet Addiction (Young 2011) — Trigger-Protokolle, alternative Verstärker, strukturierte Zeitpläne; Media Literacy Education als Prävention und Psychoedukation — Einblick in Design-Psychologie (variable Verstärkung, Benachrichtigungsarchitektur). <strong>Cybermobbing:</strong> Bei konkreten Vorfällen Dokumentation sichern; ggf. Schuleinbezug über SePAS/CePAS; bei Straftatbeständen Polizei informieren (Art. 443 Code pénal Lux.: Beleidigung; Art. 442-2: Belästigung). Schweigepflicht vs. Kindeswohlgefährdung abwägen. <strong>Luxemburger Ressourcen:</strong> BEE SECURE Helpline 8002 1234 (Cybermobbing, Online-Sicherheit, kostenlos, anonym), Kanner-Jugendtelefon 116 111, CePAS/SePAS (schulpsychologischer Dienst), CHNP Jugendpsychiatrie (bei klinisch relevantem Medienabhängigkeitsverdacht).
+  </div>
+
+  <div class="fussnote">
+    Dieses Arbeitsblatt ist ein Gesprächsimpuls und ersetzt keine Fachdiagnose. · Pathways · Therapeutic Case Management · 2025
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Digitales Wohlbefinden · Seite 4</span>
+  </div>
+</div>
+
+</body>
+</html>

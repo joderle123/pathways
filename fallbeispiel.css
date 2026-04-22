@@ -1,0 +1,547 @@
+/* ============================================================
+   Pathways Fallbeispiel – Styles  (Fallvignetten / 5P-Modell)
+   --farbe: #059669 (Emerald Green)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --farbe: #059669;
+  --farbe-hell: #ECFDF5;
+  --farbe-mid: color-mix(in srgb, var(--farbe) 15%, white);
+  --text: #1E293B;
+  --grau: #64748B;
+  --grau-hell: #94A3B8;
+  --border: #E2E8F0;
+  --border-mid: #CBD5E1;
+  --bg-page: #F1F5F9;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --radius-lg: 14px;
+  --shadow-page: 0 4px 32px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-box:  0 1px 4px rgba(0,0,0,0.07);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg-page);
+  padding: 24px 20px;
+  line-height: 1.55;
+}
+
+/* ============================================================
+   DRUCK-LEISTE (Buttons oben)
+   ============================================================ */
+.druck-leiste {
+  width: 210mm;
+  margin: 0 auto 16px;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.btn-drucken {
+  background: var(--farbe);
+  color: white;
+  border: none;
+  padding: 9px 20px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: opacity 0.15s, transform 0.1s;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--farbe) 40%, transparent);
+}
+
+.btn-drucken:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-drucken:active { transform: translateY(0); }
+
+.btn-zurueck {
+  background: white;
+  color: var(--text);
+  border: 1.5px solid var(--border);
+  padding: 9px 18px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.btn-zurueck:hover { background: #F8FAFC; border-color: var(--border-mid); transform: translateY(-1px); }
+
+/* ============================================================
+   SEITE
+   ============================================================ */
+.seite {
+  width: 210mm;
+  min-height: 297mm;
+  background: white;
+  margin: 0 auto 32px;
+  padding: 14mm 17mm 24mm;
+  box-shadow: var(--shadow-page);
+  border-radius: 12px;
+  page-break-after: always;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================================
+   KOPFZEILE – farbige Banner-Leiste oben
+   ============================================================ */
+.kopfzeile {
+  background: linear-gradient(135deg, var(--farbe) 0%, color-mix(in srgb, var(--farbe) 72%, #0F172A) 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: -14mm;
+  margin-left: -17mm;
+  margin-right: -17mm;
+  padding: 18px 17mm 16px;
+  margin-bottom: 18px;
+  gap: 14px;
+}
+
+.kopfzeile-links { flex: 1; }
+
+.schule-label {
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  color: rgba(255,255,255,0.70);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.ab-titel {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  letter-spacing: -0.3px;
+}
+
+.ab-untertitel {
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.75);
+  font-weight: 500;
+}
+
+.kopfzeile-icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(255,255,255,0.18);
+  border: 1.5px solid rgba(255,255,255,0.30);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+  backdrop-filter: blur(4px);
+}
+
+/* ============================================================
+   SCHÜLERINFO
+   ============================================================ */
+.schuelerinfo {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 18px;
+  background: var(--farbe-hell);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+}
+
+.info-feld { }
+
+.info-feld-label {
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--farbe);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.info-feld-linie {
+  height: 20px;
+  border-bottom: 1.5px solid var(--border-mid);
+}
+
+/* ============================================================
+   INFOBOX
+   ============================================================ */
+.infobox {
+  background: var(--farbe-hell);
+  border: 1.5px solid color-mix(in srgb, var(--farbe) 30%, white);
+  border-radius: var(--radius-lg);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  font-size: 11.5px;
+  line-height: 1.65;
+  position: relative;
+}
+
+.infobox::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 12px; bottom: 12px;
+  width: 3.5px;
+  background: var(--farbe);
+  border-radius: 0 3px 3px 0;
+}
+
+.infobox-titel {
+  font-weight: 700;
+  font-size: 11.5px;
+  color: var(--farbe);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.infobox p { margin-bottom: 5px; }
+.infobox p:last-child { margin-bottom: 0; }
+.infobox ul { padding-left: 15px; margin-top: 4px; }
+.infobox li { margin-bottom: 2px; }
+
+/* ============================================================
+   FALLBEISPIEL-SEKTION
+   ============================================================ */
+.fallbeispiel-sektion {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px 12px;
+  margin-bottom: 18px;
+  background: #FAFBFC;
+  box-shadow: var(--shadow-box);
+  page-break-inside: avoid;
+}
+
+.fallbeispiel-sektion-titel {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--farbe);
+  margin-bottom: 10px;
+  padding-bottom: 7px;
+  border-bottom: 2px solid color-mix(in srgb, var(--farbe) 25%, white);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: -0.1px;
+}
+
+/* ============================================================
+   FALLBEISPIEL-ZITAT (Patientenzitat / Blockquote)
+   ============================================================ */
+.fallbeispiel-zitat {
+  font-style: italic;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--text);
+  border-left: 3.5px solid var(--farbe);
+  background: var(--farbe-hell);
+  padding: 11px 14px;
+  margin: 10px 0 14px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  position: relative;
+}
+
+.fallbeispiel-zitat::before {
+  content: '\201E';
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 800;
+  color: color-mix(in srgb, var(--farbe) 40%, white);
+  position: absolute;
+  top: 2px;
+  left: 8px;
+  line-height: 1;
+}
+
+.fallbeispiel-zitat p {
+  margin-left: 18px;
+}
+
+/* ============================================================
+   FALLBEISPIEL-HYPOTHESE (5P-Modell Karte)
+   ============================================================ */
+.fallbeispiel-hypothese {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 11px 13px;
+  margin-bottom: 10px;
+  background: white;
+  box-shadow: var(--shadow-box);
+  transition: border-color 0.15s, box-shadow 0.15s;
+  page-break-inside: avoid;
+}
+
+.fallbeispiel-hypothese:hover {
+  border-color: color-mix(in srgb, var(--farbe) 50%, white);
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--farbe) 15%, transparent);
+}
+
+.fallbeispiel-hypothese:last-child {
+  margin-bottom: 0;
+}
+
+.fallbeispiel-hypothese .hypothese-label {
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--farbe);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.fallbeispiel-hypothese .hypothese-text {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* ============================================================
+   FALLBEISPIEL-VERLAUF (Timeline)
+   ============================================================ */
+.fallbeispiel-verlauf {
+  position: relative;
+  padding-left: 22px;
+  margin: 10px 0 14px;
+}
+
+.fallbeispiel-verlauf::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: color-mix(in srgb, var(--farbe) 30%, white);
+  border-radius: 2px;
+}
+
+.fallbeispiel-verlauf-punkt {
+  position: relative;
+  padding: 6px 0 12px;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.fallbeispiel-verlauf-punkt:last-child {
+  padding-bottom: 0;
+}
+
+.fallbeispiel-verlauf-punkt::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 10px;
+  width: 10px;
+  height: 10px;
+  background: var(--farbe);
+  border: 2px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--farbe) 30%, white);
+}
+
+.fallbeispiel-verlauf-punkt .verlauf-zeit {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--farbe);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.fallbeispiel-verlauf-punkt .verlauf-text {
+  color: var(--text);
+}
+
+/* ============================================================
+   REFLEXIONSFRAGE
+   ============================================================ */
+.reflexionsfrage {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  align-items: flex-start;
+  page-break-inside: avoid;
+}
+
+.reflexionsfrage .frage-nr {
+  width: 24px;
+  height: 24px;
+  background: var(--farbe);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px color-mix(in srgb, var(--farbe) 35%, transparent);
+}
+
+.reflexionsfrage .frage-inhalt {
+  flex: 1;
+}
+
+.reflexionsfrage .frage-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.reflexionsfrage .frage-linie {
+  border-bottom: 1.5px dotted var(--border-mid);
+  height: 24px;
+  width: 100%;
+}
+
+.reflexionsfrage .frage-linie + .frage-linie {
+  margin-top: 2px;
+}
+
+/* ============================================================
+   TRENNLINIE
+   ============================================================ */
+hr.trennlinie {
+  border: none;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent 0%, var(--border) 20%, var(--border) 80%, transparent 100%);
+  margin: 16px 0;
+}
+
+/* ============================================================
+   FUßZEILE
+   ============================================================ */
+.fusszeile {
+  position: absolute;
+  bottom: 10mm;
+  left: 17mm;
+  right: 17mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 8px;
+  color: var(--grau-hell);
+  border-top: 1px solid var(--border);
+  padding-top: 5px;
+}
+
+/* ============================================================
+   DRUCK-MODUS
+   ============================================================ */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  body {
+    background: white;
+    padding: 0;
+    margin: 0;
+    font-size: 11px;
+  }
+
+  .druck-leiste { display: none !important; }
+
+  .seite {
+    width: 210mm;
+    height: 297mm;
+    min-height: unset;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 14mm 17mm 20mm;
+    overflow: hidden;
+    page-break-after: always;
+    break-after: page;
+    position: relative;
+  }
+
+  .seite:last-of-type {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .kopfzeile {
+    margin-top: -14mm;
+    margin-left: -17mm;
+    margin-right: -17mm;
+    padding-left: 17mm;
+    padding-right: 17mm;
+    background: linear-gradient(135deg, var(--farbe) 0%, color-mix(in srgb, var(--farbe) 72%, #0F172A) 100%) !important;
+  }
+
+  .schuelerinfo {
+    background: var(--farbe-hell) !important;
+  }
+
+  .infobox {
+    background: var(--farbe-hell) !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .fallbeispiel-sektion {
+    box-shadow: none;
+    background: #FAFBFC !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .fallbeispiel-hypothese {
+    box-shadow: none;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .fallbeispiel-zitat {
+    background: var(--farbe-hell) !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .reflexionsfrage {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .fusszeile {
+    position: absolute;
+    bottom: 8mm;
+    left: 17mm;
+    right: 17mm;
+  }
+
+  a { text-decoration: none; color: inherit; }
+}
