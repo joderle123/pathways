@@ -42,7 +42,22 @@ const Hypotheses = (function () {
       themen: ['trauma', 'krisenintervention', 'stabilisierung'],
       icd: 'F43.1',
       test: ctx => ctx.pcl >= 33,
-      rationale: ctx => `PCL-5 Score ${ctx.pcl} ≥ 33 erfüllt klinischen Cutoff. Trauma-Diagnostik strukturiert weiterführen.`,
+      rationale: ctx => {
+        const parts = [`PCL-5 Score ${ctx.pcl} ≥ 33 erfüllt klinischen Cutoff.`];
+        // Trauma-Spezifikation (Manifest: Typ I vs II, akut vs chronisch)
+        const multiTrauma = [ctx.anamnese_ace_sexual_abuse, ctx.anamnese_ace_physical_abuse, ctx.anamnese_ace_domestic_violence].filter(Boolean).length;
+        if (multiTrauma >= 2) {
+          parts.push('<strong>Typ II (komplex)</strong> — multiple Traumata in der Vorgeschichte. Erwäge ICD-11 KPTBS (6B41).');
+        } else if (multiTrauma === 1) {
+          parts.push('Typ I (Einzel-Trauma) wahrscheinlich. Prüfe ob einzelnes Ereignis oder wiederholte Exposition.');
+        }
+        if (ctx.ace >= 4) {
+          parts.push('Chronifizierung wahrscheinlich bei ACE ≥ 4. Stabilisierung vor Exposition (Herman Phase 1).');
+        } else {
+          parts.push('Akute Phase möglich. Prüfe Zeitrahmen seit Trauma-Exposition.');
+        }
+        return parts.join(' ');
+      },
     },
     {
       id: 'adhs',
@@ -135,10 +150,11 @@ const Hypotheses = (function () {
     const cssrsRisk = risiko.find(r => r.werte?.cssrs_severity);
     if (cssrsRisk) ctx.cssrs = cssrsRisk.werte;
 
-    // ACE aus Anamnese
+    // ACE + Einzel-Flags aus Anamnese
     const s = DB.getSchuelerById(schuelerId);
     if (s?.anamnese) {
       ctx.ace = s.anamnese.filter(id => id.startsWith('ace_')).length;
+      s.anamnese.forEach(id => ctx['anamnese_' + id] = true);
     }
 
     return ctx;
