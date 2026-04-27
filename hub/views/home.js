@@ -38,61 +38,114 @@ const HomeView = (function () {
     return { level: 'gruen', farbe: '#10B981', label: '🟢 GRÜN', erklaerung: `Stabil seit ${datum}.` };
   }
 
-  // ─── Klinische Geschichte (3 Sätze) ───────────────────────
+  // ─── Klinische Geschichte (Manifest: "3 Sätze die alles sagen") ─
   function klinischeGeschichte(s) {
-    const teile = [];
+    const name = s.vorname || 'Klient';
 
-    // Satz 1: Alter + Muster + Hintergrund
+    // ── Daten sammeln ──
     let alter = '';
     if (s.geburtsdatum) {
-      const j = Math.floor((Date.now() - new Date(s.geburtsdatum).getTime()) / (365.25 * 86400000));
-      alter = `${j} Jahre`;
+      alter = `${Math.floor((Date.now() - new Date(s.geburtsdatum).getTime()) / (365.25 * 86400000))} Jahre`;
     }
+
     const anamnese = s.anamnese || [];
     const aceCount = anamnese.filter(id => id.startsWith('ace_')).length;
     const hatTrauma = anamnese.some(id => ['ace_sexual_abuse', 'ace_physical_abuse', 'ace_domestic_violence'].includes(id));
-    const screenings = DB.getScreenings(s.id).filter(x => x.abgeschlossen);
-    const hypothesen = [];
-    screenings.forEach(sc => {
-      if (sc.ergebnis?.flagSuicide) hypothesen.push('Suizidalität');
-      if (sc.ergebnis?.score > 15 && sc.instrumentId === 'phq-a') hypothesen.push('Depression');
-      if (sc.ergebnis?.score > 10 && sc.instrumentId === 'gad-7') hypothesen.push('Angst');
-      if (sc.ergebnis?.score > 33 && sc.instrumentId === 'pcl-5') hypothesen.push('Trauma');
-    });
-    const muster = hypothesen.length ? hypothesen.slice(0, 2).join(', ') : (hatTrauma ? 'Trauma-Hintergrund' : '');
-    const hintergrund = aceCount >= 4 ? 'ACE hoch' : aceCount >= 1 ? 'ACE belastet' : '';
+    const hatVernachl = anamnese.some(id => ['ace_emotional_neglect', 'ace_physical_neglect'].includes(id));
+    const hatFamilie = anamnese.some(id => id.startsWith('fam_'));
+    const hatSchule = anamnese.some(id => id.startsWith('schul_'));
 
-    const satz1Teile = [alter, muster, hintergrund].filter(Boolean);
-    teile.push(satz1Teile.length ? satz1Teile.join(', ') + '.' : `${s.vorname || 'Klient'}, Daten unvollständig.`);
+    // Screening-basierte Hypothesen aus letztem Screening
+    const screenings = DB.getScreenings(s.id).filter(x => x.abgeschlossen).sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
+    const latest = screenings[0];
+    const scores = latest?.scores || {};
+    const phqa = scores['phq-a']?.score || 0;
+    const gad = scores['gad-7']?.score || 0;
+    const pcl = scores['pcl-5']?.score || 0;
+    const sdq = scores['sdq'];
 
-    // Satz 2: Aktive Phase + Dauer + Allianz
+    // Muster bestimmen (internalisierend vs externalisierend vs gemischt)
+    const intern = phqa >= 10 || gad >= 10 || pcl >= 33;
+    const extern = (sdq?.subscales?.conduct >= 4) || (sdq?.subscales?.hyperact >= 7);
+    let musterLabel = '';
+    if (intern && extern) musterLabel = 'gemischtes Muster (internalisierend + externalisierend)';
+    else if (intern) musterLabel = 'internalisierendes Muster';
+    else if (extern) musterLabel = 'externalisierendes Muster';
+
+    // Spezifische klinische Bilder
+    const bilder = [];
+    if (phqa >= 15) bilder.push('Depression');
+    else if (phqa >= 10) bilder.push('depressive Symptomatik');
+    if (gad >= 10) bilder.push('Angst');
+    if (pcl >= 33) bilder.push('Trauma-Symptomatik');
+    if (sdq?.subscales?.conduct >= 4) bilder.push('Conduct-Auffälligkeiten');
+
+    // Hintergrund-Facetten
+    const bg = [];
+    if (hatTrauma) bg.push('Trauma-Hintergrund');
+    else if (hatVernachl) bg.push('Vernachlässigungs-Erfahrung');
+    if (hatFamilie) bg.push('familiär belastet');
+    if (hatSchule) bg.push('schulisch belastet');
+    if (aceCount >= 4) bg.push('ACE hoch (' + aceCount + '/10)');
+
+    // ── Satz 1: Wer ist diese Person klinisch? ──
+    const satz1Teile = [alter];
+    if (musterLabel) satz1Teile.push(musterLabel);
+    else if (bilder.length) satz1Teile.push(bilder.join(' + '));
+    if (bg.length) satz1Teile.push('mit ' + bg.slice(0, 2).join(' und '));
+    const satz1 = satz1Teile.filter(Boolean).join(', ') + '.';
+
+    // ── Satz 2: Wo steht der Fall gerade? ──
     const roadmap = DB.getRoadmap(s.id);
     const aktivePhase = roadmap?.phasen?.find(p => p.status === 'aktiv');
-    if (aktivePhase) {
-      const startDatum = aktivePhase.beginn || roadmap.erstellt;
-      const wochen = startDatum ? Math.floor((Date.now() - new Date(startDatum).getTime()) / (7 * 86400000)) : '?';
-      teile.push(`Phase ${aktivePhase.nr} seit ${wochen} Wochen.`);
-    } else {
-      teile.push('Noch keine Roadmap-Phase aktiv.');
-    }
+    const sitzungen = DB.getNotizen(s.id).filter(n => n.kategorie === 'session').sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
 
-    // Satz 3: Letzte Sitzung + Trend
-    const notizen = DB.getNotizen(s.id).filter(n => n.kategorie === 'session').sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
-    if (notizen.length > 0) {
-      const letzte = notizen[0];
-      const tage = Utils.daysBetween(letzte.datum, new Date().toISOString());
-      const ors = letzte.soap?.ors_total;
-      if (ors !== undefined) {
-        const trend = notizen.length >= 2 && notizen[1].soap?.ors_total !== undefined
-          ? (ors > notizen[1].soap.ors_total ? '↑' : ors < notizen[1].soap.ors_total ? '↓' : '→')
-          : '';
-        teile.push(`Letzte Sitzung vor ${tage}d, ORS ${ors.toFixed(1)} ${trend}.`);
-      } else {
-        teile.push(`Letzte Sitzung vor ${tage}d.`);
+    // Allianz aus SRS
+    let allianzLabel = '';
+    if (sitzungen.length >= 2) {
+      const letzte3SRS = sitzungen.slice(0, 3).map(n => n.soap?.srs_total).filter(v => v !== undefined);
+      if (letzte3SRS.length >= 2) {
+        const avg = letzte3SRS.reduce((a, b) => a + b, 0) / letzte3SRS.length;
+        if (avg >= 32) allianzLabel = 'Allianz stabil';
+        else if (avg >= 25) allianzLabel = 'Allianz fragil';
+        else allianzLabel = 'Allianz kritisch';
       }
     }
 
-    return teile.join(' ');
+    let satz2 = '';
+    if (aktivePhase) {
+      const startDatum = aktivePhase.beginn || roadmap.erstellt;
+      const wochen = startDatum ? Math.floor((Date.now() - new Date(startDatum).getTime()) / (7 * 86400000)) : '?';
+      satz2 = `Phase ${aktivePhase.nr} seit ${wochen} Wochen`;
+      if (allianzLabel) satz2 += ', ' + allianzLabel;
+      satz2 += '.';
+    } else if (sitzungen.length > 0) {
+      satz2 = `${sitzungen.length} Sitzungen dokumentiert, noch keine Roadmap.`;
+    } else {
+      satz2 = 'Noch keine Begleitung begonnen.';
+    }
+
+    // ── Satz 3: Was steht heute an? ──
+    let satz3 = '';
+    const heute = new Date().toISOString().split('T')[0];
+    const termineHeute = DB.getTermine(s.id).filter(t => t.datum?.startsWith(heute));
+
+    if (termineHeute.length > 0) {
+      satz3 = `Heute: ${termineHeute[0].titel || termineHeute[0].typ || 'Termin'}.`;
+    } else if (sitzungen.length > 0) {
+      const tage = Utils.daysBetween(sitzungen[0].datum, new Date().toISOString());
+      const aktThema = aktivePhase?.themen?.[0];
+      if (tage > 14) {
+        satz3 = `${tage} Tage seit letzter Sitzung — Kontakt aufnehmen.`;
+      } else if (aktThema) {
+        satz3 = `Heute: ${aktThema} weiter vertiefen.`;
+      } else {
+        const ors = sitzungen[0].soap?.ors_total;
+        satz3 = ors !== undefined ? `Letzter ORS ${ors.toFixed(1)}.` : '';
+      }
+    }
+
+    return [satz1, satz2, satz3].filter(Boolean).join(' ');
   }
 
   // ─── Tagesbriefing ────────────────────────────────────────
