@@ -404,14 +404,16 @@ const ProfilView = (function () {
         ${konferenzen.length === 0
           ? `<div class="pw-empty"><div class="pw-empty-icon">🤝</div><p>Noch keine Konferenz dokumentiert.</p></div>`
           : `<div class="pw-list">${konferenzen.map(k => `
-              <div class="pw-list-item" style="flex-direction: column; align-items: stretch;">
-                <div style="display: flex; justify-content: space-between;">
+              <details class="pw-list-item" style="flex-direction: column; align-items: stretch;">
+                <summary style="display: flex; justify-content: space-between; cursor: pointer;">
                   <strong>${Utils.escapeHtml(k.titel || 'Hilfeplankonferenz')}</strong>
                   <span style="color: var(--text-muted); font-size: var(--text-sm);">${k.datum ? Utils.formatDate(k.datum) : ''}</span>
-                </div>
-                ${k.themen ? `<div style="font-size: var(--text-sm); color: var(--text-secondary); margin-top: 4px;">${Utils.escapeHtml(Utils.truncate(k.themen, 200))}</div>` : ''}
-                ${k.naechsterTermin ? `<div style="font-size: var(--text-xs); color: var(--text-muted); margin-top: 4px;">→ Nächster Termin: ${Utils.formatDate(k.naechsterTermin)}</div>` : ''}
-              </div>`).join('')}</div>`
+                </summary>
+                ${k.teilnehmer ? `<div style="font-size: var(--text-sm); margin-top: var(--space-2);"><strong>Teilnehmer:</strong> ${Utils.escapeHtml(k.teilnehmer)}</div>` : ''}
+                ${k.themen ? `<div style="font-size: var(--text-sm); color: var(--text-secondary); margin-top: 4px;"><strong>Themen:</strong> ${Utils.escapeHtml(k.themen)}</div>` : ''}
+                ${k.beschluesse ? `<div style="font-size: var(--text-sm); margin-top: 4px; padding: var(--space-2); background: var(--bg-subtle); border-radius: var(--radius-sm);"><strong>Beschlüsse:</strong> ${Utils.escapeHtml(k.beschluesse)}</div>` : ''}
+                ${k.naechsterTermin ? `<div style="font-size: var(--text-xs); color: var(--color-app-hub); margin-top: 4px;">📅 Nächster Termin: ${Utils.formatDate(k.naechsterTermin)}</div>` : ''}
+              </details>`).join('')}</div>`
         }
       </div>
     `;
@@ -589,17 +591,21 @@ const ProfilView = (function () {
         </div>
         ${kontakte.length === 0
           ? `<div class="pw-empty"><div class="pw-empty-icon">📞</div><p>Noch kein Kontakt protokolliert.</p></div>`
-          : `<div class="pw-list">${kontakte.map(k => `
-              <div class="pw-list-item" style="flex-direction: column; align-items: stretch;">
-                <div style="display: flex; justify-content: space-between;">
-                  <div>
-                    <strong>${Utils.escapeHtml(k.kontaktperson || '?')}</strong>
-                    <span style="margin-left: 6px; padding: 2px 8px; background: var(--bg-subtle); border-radius: var(--radius-full); font-size: var(--text-xs); color: var(--text-secondary);">${Utils.escapeHtml(k.art || 'kontakt')}</span>
+          : `<div class="pw-list">${kontakte.map(k => {
+              const artIcons = { telefon: '📞', email: '✉️', 'vor-ort': '🏠', meeting: '🤝', video: '💻' };
+              return `
+                <div class="pw-list-item" style="flex-direction: column; align-items: stretch;">
+                  <div style="display: flex; justify-content: space-between;">
+                    <div>
+                      ${artIcons[k.art] || '📋'} <strong>${Utils.escapeHtml(k.kontaktperson || '?')}</strong>
+                      <span style="margin-left: 6px; padding: 2px 8px; background: var(--bg-subtle); border-radius: var(--radius-full); font-size: var(--text-xs); color: var(--text-secondary);">${Utils.escapeHtml(k.art || 'kontakt')}</span>
+                    </div>
+                    <span style="color: var(--text-muted); font-size: var(--text-sm);">${k.datum ? Utils.formatDate(k.datum) : ''}</span>
                   </div>
-                  <span style="color: var(--text-muted); font-size: var(--text-sm);">${k.datum ? Utils.formatDate(k.datum) : ''}</span>
-                </div>
-                ${k.inhalt ? `<div style="font-size: var(--text-sm); color: var(--text-secondary); margin-top: 4px;">${Utils.escapeHtml(Utils.truncate(k.inhalt, 200))}</div>` : ''}
-              </div>`).join('')}</div>`
+                  ${k.inhalt ? `<div style="font-size: var(--text-sm); color: var(--text-secondary); margin-top: 4px;">${Utils.escapeHtml(k.inhalt)}</div>` : ''}
+                  ${k.folgeaktion ? `<div style="font-size: var(--text-sm); color: var(--color-app-hub); margin-top: 4px;">→ ${Utils.escapeHtml(k.folgeaktion)}</div>` : ''}
+                </div>`;
+            }).join('')}</div>`
         }
       </div>
     `;
