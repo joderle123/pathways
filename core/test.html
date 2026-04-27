@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pathways Core — Verifikations-Demo</title>
+  <link rel="stylesheet" href="ui-base.css">
+  <style>
+    body { padding: var(--space-6); max-width: 900px; margin: 0 auto; }
+    h1 { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2); }
+    h2 { font-size: var(--text-xl); margin: var(--space-6) 0 var(--space-2); padding-bottom: var(--space-2); border-bottom: 2px solid var(--section-color); }
+    section { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-5); margin-bottom: var(--space-4); box-shadow: var(--shadow-xs); }
+    .row { display: flex; gap: var(--space-2); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-3); }
+    .ok  { color: #059669; font-weight: var(--font-weight-semibold); }
+    .err { color: var(--danger); font-weight: var(--font-weight-semibold); }
+    .muted { color: var(--text-muted); font-size: var(--text-sm); }
+    pre  { background: var(--bg-subtle); padding: var(--space-3); border-radius: var(--radius-sm); font-size: 12px; overflow-x: auto; max-height: 200px; }
+    .log { background: var(--bg-subtle); padding: var(--space-3); border-radius: var(--radius-sm); font-family: monospace; font-size: 12px; max-height: 240px; overflow-y: auto; white-space: pre-wrap; }
+    .log .ok::before { content: '✓ '; color: #059669; }
+    .log .err::before { content: '✗ '; color: var(--danger); }
+    .log .info::before { content: 'ℹ '; color: var(--info); }
+    button.test-btn { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); cursor: pointer; }
+    button.test-btn:hover { border-color: var(--primary); }
+  </style>
+</head>
+<body data-app="core">
+
+<h1>🧪 Pathways Core — Verifikation</h1>
+<p class="muted">Diese Seite testet alle Core-Module. Öffne sie in 2 Browser-Tabs, um die Bridge zu testen.</p>
+
+<section>
+  <h2>1. Module geladen</h2>
+  <div id="modules-status" class="log"></div>
+</section>
+
+<section>
+  <h2>2. Schemas-Validierung</h2>
+  <div class="row">
+    <button class="test-btn" onclick="testSchemas()">Tests ausführen</button>
+  </div>
+  <div id="schemas-log" class="log"></div>
+</section>
+
+<section>
+  <h2>3. DB CRUD</h2>
+  <div class="row">
+    <button class="test-btn" onclick="testDB()">Schüler anlegen + abrufen + löschen</button>
+    <button class="test-btn" onclick="dumpDB()">Aktuellen DB-Inhalt anzeigen</button>
+  </div>
+  <div id="db-log" class="log"></div>
+</section>
+
+<section>
+  <h2>4. Bridge — Cross-Tab Sync</h2>
+  <div class="row">
+    <button class="test-btn" onclick="sendPing()">Ping an alle Tabs senden</button>
+    <span class="muted">Öffne diese Seite in einem 2. Tab und sende von beiden Seiten.</span>
+  </div>
+  <div id="bridge-log" class="log"></div>
+</section>
+
+<section>
+  <h2>5. Utils</h2>
+  <button class="test-btn" onclick="testUtils()">Utils-Demo</button>
+  <div id="utils-log" class="log"></div>
+</section>
+
+<section>
+  <h2>6. Constants Manifest</h2>
+  <div id="constants-status" class="log muted"></div>
+</section>
+
+<!-- Core-Module laden -->
+<script src="db.js"></script>
+<script src="secure-storage.js"></script>
+<script src="constants.js"></script>
+<script src="bridge.js"></script>
+<script src="schemas.js"></script>
+<script src="utils.js"></script>
+
+<script>
+  // ── 1. Module-Check ────────────────────────────────────────────
+  function check(name, ref, log) {
+    const ok = typeof ref !== 'undefined';
+    log.innerHTML += `<div class="${ok ? 'ok' : 'err'}">${name}: ${ok ? 'geladen' : 'FEHLT'}</div>`;
+    return ok;
+  }
+  const modulesLog = document.getElementById('modules-status');
+  check('DB', typeof DB !== 'undefined' ? DB : undefined, modulesLog);
+  check('SecureStorage', typeof SecureStorage !== 'undefined' ? SecureStorage : undefined, modulesLog);
+  check('PinLock', typeof PinLock !== 'undefined' ? PinLock : undefined, modulesLog);
+  check('Constants', typeof Constants !== 'undefined' ? Constants : undefined, modulesLog);
+  check('Bridge', typeof Bridge !== 'undefined' ? Bridge : undefined, modulesLog);
+  check('Schemas', typeof Schemas !== 'undefined' ? Schemas : undefined, modulesLog);
+  check('Utils (escapeHtml)', typeof escapeHtml !== 'undefined' ? escapeHtml : undefined, modulesLog);
+
+  // ── 2. Schemas-Tests ───────────────────────────────────────────
+  function logTo(el, msg, cls = '') {
+    el.innerHTML += `<div class="${cls}">${msg}</div>`;
+    el.scrollTop = el.scrollHeight;
+  }
+  function testSchemas() {
+    const log = document.getElementById('schemas-log');
+    log.innerHTML = '';
+    logTo(log, 'Registrierte Schemas: ' + Schemas.list().join(', '), 'info');
+    let r = Schemas.validate('schueler', { id: 'abc', vorname: 'Test', risiko: 'niedrig' });
+    logTo(log, 'Valid schueler: ' + JSON.stringify(r), r.ok ? 'ok' : 'err');
+    r = Schemas.validate('schueler', { vorname: 'NoId' });
+    logTo(log, 'Schueler ohne ID (sollte fehlschlagen): ' + JSON.stringify(r), !r.ok ? 'ok' : 'err');
+    r = Schemas.validate('notiz', { id: 'n1', schuelerId: 'abc' });
+    logTo(log, 'Notiz ok: ' + JSON.stringify(r), r.ok ? 'ok' : 'err');
+    r = Schemas.validate('screening', { id: 's1', schuelerId: 'abc', flaggedAreas: 'NotAnArray' });
+    logTo(log, 'Screening mit falschem Typ (Array erwartet): ' + JSON.stringify(r), !r.ok ? 'ok' : 'err');
+  }
+
+  // ── 3. DB-Test ─────────────────────────────────────────────────
+  let lastTestId = null;
+  function testDB() {
+    const log = document.getElementById('db-log');
+    log.innerHTML = '';
+    try {
+      const s = DB.createSchueler({ vorname: 'Test', nachname: 'Person', klasse: '10A' });
+      lastTestId = s.id;
+      logTo(log, `Schüler angelegt: ${s.vorname} ${s.nachname} (id=${s.id})`, 'ok');
+      const found = DB.getSchuelerById(s.id);
+      logTo(log, `Wieder gefunden: ${found ? 'ja' : 'NEIN'}`, found ? 'ok' : 'err');
+      DB.updateSchueler(s.id, { klasse: '11B' });
+      const upd = DB.getSchuelerById(s.id);
+      logTo(log, `Update Klasse → ${upd.klasse}`, upd.klasse === '11B' ? 'ok' : 'err');
+      DB.deleteSchueler(s.id);
+      const after = DB.getSchuelerById(s.id);
+      logTo(log, `Nach Löschen: ${after ? 'STILL THERE' : 'weg ✓'}`, !after ? 'ok' : 'err');
+      lastTestId = null;
+      const usage = DB.getStorageUsage();
+      logTo(log, `localStorage-Nutzung: ${usage.usedMB} MB`, 'info');
+    } catch (e) {
+      logTo(log, 'Fehler: ' + e.message, 'err');
+    }
+  }
+  function dumpDB() {
+    const log = document.getElementById('db-log');
+    log.innerHTML = '';
+    const data = DB.exportAll();
+    logTo(log, `Schüler: ${data.schueler.length}`, 'info');
+    logTo(log, `Notizen: ${data.notizen.length}`, 'info');
+    logTo(log, `Termine: ${data.termine.length}`, 'info');
+    logTo(log, `Screenings: ${data.screenings.length}`, 'info');
+    logTo(log, `Roadmaps: ${data.roadmaps.length}`, 'info');
+  }
+
+  // ── 4. Bridge-Test ─────────────────────────────────────────────
+  const bridgeLog = document.getElementById('bridge-log');
+  logTo(bridgeLog, `Bridge.isAvailable() = ${Bridge.isAvailable()}`, 'info');
+  logTo(bridgeLog, `Bridge.currentApp() = ${Bridge.currentApp()}`, 'info');
+  Bridge.subscribe('test_ping', e => {
+    logTo(bridgeLog, `Empfangen: ping von "${e.from}" um ${new Date(e.ts).toLocaleTimeString()} (msg: ${e.msg})`, 'ok');
+  });
+  Bridge.subscribe('*', e => {
+    if (e.typ !== 'test_ping') {
+      logTo(bridgeLog, `Wildcard-Empfang: typ=${e.typ} from=${e.from}`, 'info');
+    }
+  });
+  function sendPing() {
+    const msg = 'Hallo aus Tab ' + Math.floor(Math.random()*1000);
+    Bridge.notify('test_ping', { msg });
+    logTo(bridgeLog, `Gesendet: ${msg}`, 'info');
+  }
+
+  // ── 5. Utils-Demo ──────────────────────────────────────────────
+  function testUtils() {
+    const log = document.getElementById('utils-log');
+    log.innerHTML = '';
+    logTo(log, 'generateId() → ' + Utils.generateId(), 'ok');
+    logTo(log, 'formatDate("2026-04-27") → ' + Utils.formatDate('2026-04-27'), 'ok');
+    logTo(log, 'formatTime("2026-04-27T14:30:00") → ' + Utils.formatTime('2026-04-27T14:30:00'), 'ok');
+    logTo(log, 'escapeHtml("<b>Test</b>") → ' + Utils.escapeHtml('<b>Test</b>'), 'ok');
+    logTo(log, 'truncate("...", 10) → ' + Utils.truncate('Sehr langer Text mit vielen Wörtern', 10), 'ok');
+    logTo(log, 'daysBetween("2026-01-01","2026-04-27") → ' + Utils.daysBetween('2026-01-01','2026-04-27'), 'ok');
+  }
+
+  // ── 6. Constants-Status ────────────────────────────────────────
+  const cLog = document.getElementById('constants-status');
+  logTo(cLog, `CONSTANTS_VERSION = ${CONSTANTS_VERSION}`, 'info');
+  Constants.status().forEach(c => {
+    logTo(cLog, `${c.loaded ? '●' : '○'} ${c.name}${c.loaded ? ' (' + c.type + ')' : ' — nicht geladen (js/data.js fehlt)'}`, c.loaded ? 'ok' : '');
+  });
+</script>
+
+</body>
+</html>
