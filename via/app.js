@@ -272,6 +272,12 @@ Bridge.subscribe('roadmap_updated', e => {
     showToast('Roadmap aktualisiert', 'info');
   }
 });
+Bridge.subscribe('library_bookmark_changed', e => {
+  if (APP.currentMode === 'sitzung') showToast('Material-Bookmark aktualisiert', 'info');
+});
+Bridge.subscribe('safety_plan_saved', e => {
+  if (APP.schuelerId === e.schuelerId) showToast('Sicherheitsplan aktualisiert', 'info');
+});
 
 // ─── Bootstrap ────────────────────────────────────────────────
 window.addEventListener('DOMContentLoaded', async () => {

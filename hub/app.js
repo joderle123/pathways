@@ -388,6 +388,35 @@ Bridge.subscribe('roadmap_updated', e => {
     ProfilView.render(APP.currentSchuelerId);
   }
 });
+Bridge.subscribe('schueler_created', e => {
+  if (APP.currentView === 'home') HomeView.render();
+});
+Bridge.subscribe('schueler_deleted', e => {
+  if (APP.currentView === 'home') HomeView.render();
+  if (APP.currentView === 'profil' && APP.currentSchuelerId === e.schuelerId) showView('home');
+});
+Bridge.subscribe('formulation_saved', e => {
+  if (APP.currentView === 'profil' && APP.currentSchuelerId === e.schuelerId) {
+    ProfilView.render(APP.currentSchuelerId);
+  }
+});
+Bridge.subscribe('staerken_updated', e => {
+  if (APP.currentView === 'home') HomeView.render();
+});
+Bridge.subscribe('safety_plan_saved', e => {
+  showToast(`Sicherheitsplan gespeichert für Klient ${e.schuelerId?.slice(-4)}`, 'ok');
+  if (APP.currentView === 'home') HomeView.render();
+});
+Bridge.subscribe('session_completed', e => {
+  if (APP.currentView === 'home') HomeView.render();
+  if (APP.currentView === 'profil' && APP.currentSchuelerId === e.schuelerId) {
+    ProfilView.render(APP.currentSchuelerId);
+  }
+});
+Bridge.subscribe('academy_xp_changed', e => {
+  // XP-Badge im Briefing aktualisieren wenn sichtbar
+  if (APP.currentView === 'home') HomeView.render();
+});
 
 // ─── Bootstrap ────────────────────────────────────────────────
 window.addEventListener('DOMContentLoaded', () => {

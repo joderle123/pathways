@@ -301,6 +301,10 @@ Bridge.subscribe('screening_completed', e => {
   }
 });
 
+Bridge.subscribe('formulation_saved', e => {
+  showToast('5P aktualisiert — Material-Empfehlungen passen sich an.', 'info');
+});
+
 Bridge.subscribe('library_recommend', e => {
   // Andere App empfiehlt Material via Schlüsselwort
   if (e.suche) {
