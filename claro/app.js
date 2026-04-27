@@ -343,8 +343,42 @@ function renderScreeningWizard() {
           <div style="text-align: center; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: var(--space-2);">Auswertung</div>
           <div class="dg-score-display">${result.score} / ${result.max}</div>
           <h3 style="text-align: center;">${result.label}</h3>
-          ${result.flagSuicide ? `<div style="margin-top: var(--space-3); padding: var(--space-3); background: rgba(220,38,38,0.18); border-radius: var(--radius-sm); border: 2px solid #DC2626; font-weight: 600;">⚠️ Suizidgedanken angegeben — bitte C-SSRS in CRISIS durchführen</div>` : ''}
-          ${result.subscales ? `<div style="margin-top: var(--space-3); font-size: 13px;"><strong>Subskalen:</strong> Emotional ${result.subscales.emotional} · Conduct ${result.subscales.conduct} · Hyperaktiv ${result.subscales.hyperact} · Peer ${result.subscales.peer} · Prosozial ${result.subscales.prosocial}</div>` : ''}
+          ${result.flagSuicide ? `<div style="margin-top: var(--space-3); padding: var(--space-3); background: rgba(220,38,38,0.18); border-radius: var(--radius-sm); border: 2px solid #DC2626; font-weight: 600;">⚠️ Suizidgedanken angegeben — C-SSRS im HUB durchführen. Ansprechen erhöht Risiko NICHT (Dazzi et al. 2014).</div>` : ''}
+          ${result.dsm5 ? `
+            <div style="margin-top: var(--space-3); padding: var(--space-3); background: var(--bg-subtle); border-radius: var(--radius-sm);">
+              <strong>DSM-5 Kriterien-Prüfung (Weathers et al. 2013):</strong>
+              <div style="display: flex; gap: var(--space-3); margin-top: var(--space-2); font-size: 13px;">
+                <span>${result.dsm5.critB ? '✅' : '❌'} Kriterium B (Wiedererleben)</span>
+                <span>${result.dsm5.critC ? '✅' : '❌'} Kriterium C (Vermeidung)</span>
+                <span>${result.dsm5.critD ? '✅' : '❌'} Kriterium D (Neg. Kognition)</span>
+                <span>${result.dsm5.critE ? '✅' : '❌'} Kriterium E (Arousal)</span>
+              </div>
+              <div style="margin-top: var(--space-2); font-size: 13px; font-weight: 600; color: ${result.dsm5.met ? '#DC2626' : '#F59E0B'};">
+                ${result.dsm5.met ? 'Alle 4 DSM-5-Kriterien erfüllt → PTBS wahrscheinlich' : 'Nicht alle Kriterien erfüllt → Differentialdiagnostik empfohlen'}
+              </div>
+            </div>
+          ` : ''}
+          ${result.subscales ? `
+            <div style="margin-top: var(--space-3);">
+              <strong style="font-size: 14px;">SDQ-Subskalen (Goodman 1997, Normwerte Selbstauskunft 11-17J):</strong>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--space-2); margin-top: var(--space-2);">
+                ${[
+                  ['Emotional', result.subscales.emotional, result.subCutoffs?.emotional],
+                  ['Conduct', result.subscales.conduct, result.subCutoffs?.conduct],
+                  ['Hyperaktiv', result.subscales.hyperact, result.subCutoffs?.hyperact],
+                  ['Peer', result.subscales.peer, result.subCutoffs?.peer],
+                  ['Prosozial', result.subscales.prosocial, result.subCutoffs?.prosocial],
+                ].map(([label, val, cutoff]) => {
+                  const farbe = cutoff === 'auffällig' ? '#DC2626' : cutoff === 'grenzwertig' ? '#F59E0B' : '#10B981';
+                  return \`<div style="padding: var(--space-2); background: var(--bg-subtle); border-radius: var(--radius-sm); border-left: 3px solid \${farbe};">
+                    <div style="font-size: 12px; color: var(--text-muted);">\${label}</div>
+                    <div style="font-size: 18px; font-weight: 700; color: \${farbe};">\${val}</div>
+                    <div style="font-size: 11px; color: \${farbe};">\${cutoff || ''}</div>
+                  </div>\`;
+                }).join('')}
+              </div>
+            </div>
+          ` : ''}
           <div style="margin-top: var(--space-4); display: flex; gap: var(--space-2); justify-content: center; flex-wrap: wrap;">
             ${APP.schuelerId ? `<button class="btn btn-primary" onclick="saveScreening()">💾 Im Klient-Profil speichern</button>` : ''}
             ${result.flagSuicide ? `<a class="btn" href="../hub/?schueler=${APP.schuelerId}&view=crisis" target="_blank">→ C-SSRS im HUB</a>` : ''}
