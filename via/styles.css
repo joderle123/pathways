@@ -228,6 +228,10 @@ body { background: var(--bg); }
 @media (max-width: 768px) { .se-soap-grid { grid-template-columns: 1fr; } }
 .se-soap-field label { display: block; font-weight: var(--font-weight-semibold); margin-bottom: 4px; font-size: 14px; }
 .se-soap-field textarea { width: 100%; min-height: 80px; padding: var(--space-3); font-family: inherit; border: 1px solid var(--border); border-radius: var(--radius-sm); }
+.se-soap-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: var(--space-3); }
+.se-soap-card-title { font-weight: var(--font-weight-semibold); font-size: 14px; margin-bottom: 4px; }
+.se-soap-card textarea { width: 100%; min-height: 70px; padding: var(--space-2); font-family: inherit; font-size: 14px; border: 1px solid var(--border); border-radius: var(--radius-sm); margin-top: 4px; }
+.se-soap-hint { font-size: 12px; color: var(--text-muted); font-style: italic; margin-bottom: 4px; }
 
 .se-rating-group {
   background: var(--bg-subtle); border-radius: var(--radius); padding: var(--space-4);

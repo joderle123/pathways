@@ -14,9 +14,12 @@ const ProfilView = (function () {
   let activeTab = 'stamm';
 
   // ─── Anamnese-Items (ACE & weitere) ────────────────────────
+  // Vollständige klinische Anamnese für KJP-Standard
+  // ACE: Felitti et al. (1998). Weitere Domänen: AACAP Practice Parameters,
+  // NICE Guidelines CG28, S3-Leitlinie Diagnostik psychischer Störungen im Kindes- und Jugendalter
   const ANAMNESE_ITEMS = {
     ace: {
-      label: '⚠️ ACE (Adverse Childhood Experiences)',
+      label: '⚠️ ACE — Adverse Childhood Experiences (Felitti et al. 1998)',
       items: [
         { id: 'ace_emotional_abuse', label: 'Emotionale Misshandlung' },
         { id: 'ace_physical_abuse', label: 'Körperliche Misshandlung' },
@@ -30,30 +33,125 @@ const ProfilView = (function () {
         { id: 'ace_incarceration', label: 'Inhaftierung eines Familienmitglieds' },
       ],
     },
+    bindung: {
+      label: '🔗 Bindung & frühe Beziehungen (Bowlby 1969, Ainsworth 1978)',
+      items: [
+        { id: 'bind_fruehe_trennung', label: 'Frühe Trennung von Bezugsperson (< 3 Jahre)' },
+        { id: 'bind_bezugsperson_stabil', label: 'Stabile Hauptbezugsperson vorhanden' },
+        { id: 'bind_wechsel', label: 'Häufiger Wechsel der Bezugsperson(en)' },
+        { id: 'bind_hospitalismus', label: 'Frühe Hospitalisierung (> 2 Wochen als Kleinkind)' },
+        { id: 'bind_adoption', label: 'Adoption' },
+        { id: 'bind_ambivalent', label: 'Klammerndes / anklammernd-ambivalentes Verhalten' },
+        { id: 'bind_vermeidend', label: 'Kontaktvermeidendes / distanziertes Verhalten' },
+        { id: 'bind_desorganisiert', label: 'Widersprüchliches Bindungsverhalten (Nähe suchen + abstoßen)' },
+      ],
+    },
+    entwicklung: {
+      label: '🧒 Entwicklungsgeschichte',
+      items: [
+        { id: 'entw_fruehgeburt', label: 'Frühgeburt (< 37. SSW)' },
+        { id: 'entw_komplikationen', label: 'Perinatale Komplikationen' },
+        { id: 'entw_motorik', label: 'Verzögerte motorische Entwicklung' },
+        { id: 'entw_sprache', label: 'Verzögerte Sprachentwicklung' },
+        { id: 'entw_sauberkeit', label: 'Verzögerte Sauberkeitsentwicklung (Enuresis/Enkopresis)' },
+        { id: 'entw_regression', label: 'Entwicklungsrückschritte (Regression)' },
+        { id: 'entw_autismus_hinweise', label: 'Hinweise auf ASS (eingeschränkte Interaktion, stereotype Verhaltensweisen)' },
+      ],
+    },
     family: {
       label: '👨‍👩‍👧 Familienstruktur',
       items: [
         { id: 'fam_alleinerziehend', label: 'Alleinerziehend aufgewachsen' },
         { id: 'fam_pflege', label: 'Pflegefamilie' },
-        { id: 'fam_heim', label: 'Heim/Wohngruppe' },
+        { id: 'fam_heim', label: 'Heim / Wohngruppe' },
         { id: 'fam_geschwister', label: 'Geschwister-Konflikte' },
+        { id: 'fam_patchwork', label: 'Patchwork-Familie (Stiefeltern)' },
+        { id: 'fam_parentifizierung', label: 'Parentifizierung (Kind übernimmt Elternrolle)' },
+        { id: 'fam_migration', label: 'Migrationshintergrund' },
+        { id: 'fam_flucht', label: 'Flucht- / Asyl-Erfahrung' },
+        { id: 'fam_armut', label: 'Finanzielle Belastung / Armut' },
       ],
     },
     schule: {
       label: '🏫 Schulische Erfahrungen',
       items: [
-        { id: 'schul_absentismus', label: 'Schulabsentismus' },
-        { id: 'schul_mobbing', label: 'Mobbing erlebt' },
-        { id: 'schul_wechsel', label: 'Mehrfache Schulwechsel' },
+        { id: 'schul_absentismus', label: 'Schulabsentismus (> 5 Tage/Monat)' },
+        { id: 'schul_phobie', label: 'Schulphobie (Trennungsangst morgens)' },
+        { id: 'schul_angst', label: 'Schulangst (Leistungs-/Sozialangst)' },
+        { id: 'schul_verweigerung', label: 'Schulverweigerung (oppositionell)' },
+        { id: 'schul_mobbing', label: 'Mobbing erlebt (auch Cybermobbing)' },
+        { id: 'schul_wechsel', label: 'Mehrfache Schulwechsel (≥ 2)' },
         { id: 'schul_klassenwiederholung', label: 'Klasse wiederholt' },
+        { id: 'schul_sonderpaedagogik', label: 'Sonderpädagogischer Förderbedarf' },
+        { id: 'schul_hochbegabung', label: 'Hochbegabung (diagnostiziert)' },
+      ],
+    },
+    substanzen: {
+      label: '🌿 Substanzkonsum (CRAFFT-Screening empfohlen ab 12J)',
+      items: [
+        { id: 'subst_alkohol', label: 'Alkoholkonsum (regelmäßig)' },
+        { id: 'subst_cannabis', label: 'Cannabiskonsum' },
+        { id: 'subst_nikotin', label: 'Nikotinkonsum (auch E-Zigarette)' },
+        { id: 'subst_andere', label: 'Andere Substanzen (Amphetamine, MDMA, Opioide)' },
+        { id: 'subst_medikamente', label: 'Medikamentenmissbrauch (Benzodiazepine, Opioide)' },
+        { id: 'subst_entzug', label: 'Entzugssymptome berichtet' },
+      ],
+    },
+    selbstverletzung: {
+      label: '🩸 Selbstverletzung & Suizidalität',
+      items: [
+        { id: 'sv_nssi', label: 'Nicht-suizidale Selbstverletzung (NSSI) — aktuell' },
+        { id: 'sv_nssi_vergangenheit', label: 'NSSI in der Vergangenheit' },
+        { id: 'sv_suizidversuch', label: 'Suizidversuch in der Vorgeschichte' },
+        { id: 'sv_suizidgedanken', label: 'Aktive Suizidgedanken (aktuell)' },
+        { id: 'sv_passive_todesgedanken', label: 'Passive Todesgedanken ("wäre besser tot")' },
+        { id: 'sv_familiaer', label: 'Suizid oder Suizidversuch in der Familie' },
+      ],
+    },
+    schlaf: {
+      label: '😴 Schlaf & Zirkadianrhythmus',
+      items: [
+        { id: 'schlaf_einschlaf', label: 'Einschlafprobleme (> 30 Min.)' },
+        { id: 'schlaf_durchschlaf', label: 'Durchschlafstörung' },
+        { id: 'schlaf_alptraeume', label: 'Häufige Alpträume / Nachtangst' },
+        { id: 'schlaf_dauer', label: 'Zu wenig Schlaf (< 7h bei Jugendlichen)' },
+        { id: 'schlaf_tags', label: 'Ausgeprägte Tagesmüdigkeit' },
+        { id: 'schlaf_rhythm', label: 'Verschobener Schlaf-Wach-Rhythmus (spät ein / spät auf)' },
       ],
     },
     gesundheit: {
-      label: '💊 Gesundheit',
+      label: '💊 Somatik & Medikation',
       items: [
-        { id: 'health_chronisch', label: 'Chronische Krankheit' },
-        { id: 'health_behinderung', label: 'Behinderung' },
-        { id: 'health_medikation', label: 'Medikation' },
+        { id: 'health_chronisch', label: 'Chronische Erkrankung' },
+        { id: 'health_behinderung', label: 'Körperliche / geistige Behinderung' },
+        { id: 'health_medikation', label: 'Aktuelle Medikation (Psychopharmaka)' },
+        { id: 'health_ssri', label: 'SSRI / Antidepressiva' },
+        { id: 'health_methylphenidat', label: 'Methylphenidat / Stimulanzien (ADHS)' },
+        { id: 'health_neuroleptika', label: 'Antipsychotika / Neuroleptika' },
+        { id: 'health_kopfschmerzen', label: 'Häufige Kopfschmerzen / Migräne' },
+        { id: 'health_bauchschmerzen', label: 'Häufige Bauchschmerzen (funktionell)' },
+        { id: 'health_allergien', label: 'Allergien / Asthma' },
+      ],
+    },
+    sexualitaet: {
+      label: '🌈 Sexuelle Entwicklung & Identität',
+      items: [
+        { id: 'sex_altersgerecht', label: 'Altersgerechte sexuelle Entwicklung' },
+        { id: 'sex_precocious', label: 'Sexualisiertes Verhalten (altersuntypisch) — Missbrauchsindikator' },
+        { id: 'sex_gender', label: 'Geschlechtsinkongruenz / Gender-Dysphorie' },
+        { id: 'sex_outing', label: 'Outing-Prozess (LGBTQ+)' },
+        { id: 'sex_beziehung', label: 'Erste Liebesbeziehung / Trennungserfahrung' },
+      ],
+    },
+    legal: {
+      label: '⚖️ Rechtliches & Jugendhilfe',
+      items: [
+        { id: 'legal_jugendgericht', label: 'Jugendgericht / Bewährung' },
+        { id: 'legal_polizei', label: 'Polizeikontakt (als Täter)' },
+        { id: 'legal_opfer', label: 'Opfer einer Straftat (Anzeige erstattet)' },
+        { id: 'legal_sorgerecht', label: 'Sorgerechtsentzug / -einschränkung' },
+        { id: 'legal_one', label: 'ONE (Office National de l\'Enfance) involviert' },
+        { id: 'legal_schutzmaßnahme', label: 'Laufende Schutzmaßnahme' },
       ],
     },
   };

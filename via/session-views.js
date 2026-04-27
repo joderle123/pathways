@@ -266,23 +266,70 @@ function renderPost() {
     <div class="se-section">
       <h2>📊 Post-Session — Dokumentation &amp; Outcome</h2>
 
-      <h3>SOAP-Notiz</h3>
+      <h3>SOAP-Notiz (klinischer Standard)</h3>
       <div class="se-soap-grid">
         <div class="se-soap-card">
-          <div class="se-soap-card-title">S — Subjektiv (was Klient berichtet)</div>
-          <textarea oninput="APP.draft.soap.S=this.value">${Utils.escapeHtml(APP.draft.soap.S || '')}</textarea>
+          <div class="se-soap-card-title">S — Subjektiv</div>
+          <div class="se-soap-hint">Was berichtet der Klient? Hauptbeschwerde, Stimmung in eigenen Worten, Veränderungen seit letzter Sitzung.</div>
+          <textarea oninput="APP.draft.soap.S=this.value" placeholder="'Mir geht es diese Woche besser, aber in der Schule...'">${Utils.escapeHtml(APP.draft.soap.S || '')}</textarea>
         </div>
         <div class="se-soap-card">
-          <div class="se-soap-card-title">O — Objektiv (was ich beobachte)</div>
-          <textarea oninput="APP.draft.soap.O=this.value">${Utils.escapeHtml(APP.draft.soap.O || '')}</textarea>
+          <div class="se-soap-card-title">O — Objektiv (Beobachtung + MSE)</div>
+          <div class="se-soap-hint">Verhalten, Affekt, Blickkontakt, Sprache, Psychomotorik, Kooperationsbereitschaft.</div>
+          <textarea oninput="APP.draft.soap.O=this.value" placeholder="Kooperativ, Blickkontakt hergestellt, Affekt kongruent, Psychomotorik unauffällig...">${Utils.escapeHtml(APP.draft.soap.O || '')}</textarea>
         </div>
         <div class="se-soap-card">
-          <div class="se-soap-card-title">A — Assessment (Einschätzung)</div>
-          <textarea oninput="APP.draft.soap.A=this.value">${Utils.escapeHtml(APP.draft.soap.A || '')}</textarea>
+          <div class="se-soap-card-title">A — Assessment</div>
+          <div class="se-soap-hint">Klinische Einschätzung, Hypothesen-Update, Risikobewertung.</div>
+          <textarea oninput="APP.draft.soap.A=this.value" placeholder="Depressive Symptomatik leicht verbessert. Allianz stabil. Kein akutes Risiko...">${Utils.escapeHtml(APP.draft.soap.A || '')}</textarea>
         </div>
         <div class="se-soap-card">
-          <div class="se-soap-card-title">P — Plan (nächste Schritte)</div>
-          <textarea oninput="APP.draft.soap.P=this.value">${Utils.escapeHtml(APP.draft.soap.P || '')}</textarea>
+          <div class="se-soap-card-title">P — Plan</div>
+          <div class="se-soap-hint">Nächste Schritte, Interventionen geplant, Terminplanung, Überweisungen.</div>
+          <textarea oninput="APP.draft.soap.P=this.value" placeholder="Nächste Sitzung: Emotionsregulation vertiefen. Material: Notfallkoffer...">${Utils.escapeHtml(APP.draft.soap.P || '')}</textarea>
+        </div>
+      </div>
+
+      <h3 style="margin-top: var(--space-4);">🛡️ Risiko-Assessment</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-3);">
+        <div>
+          <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 4px;">Suizidalität</label>
+          <select onchange="APP.draft.soap.risiko_suizid=this.value" style="width: 100%; padding: var(--space-2); border: 1px solid var(--border); border-radius: var(--radius-sm);">
+            <option value="kein" ${(APP.draft.soap.risiko_suizid || 'kein') === 'kein' ? 'selected' : ''}>Kein Hinweis</option>
+            <option value="passiv" ${APP.draft.soap.risiko_suizid === 'passiv' ? 'selected' : ''}>Passive Todesgedanken</option>
+            <option value="aktiv" ${APP.draft.soap.risiko_suizid === 'aktiv' ? 'selected' : ''}>Aktive Suizidgedanken → C-SSRS!</option>
+            <option value="plan" ${APP.draft.soap.risiko_suizid === 'plan' ? 'selected' : ''}>Plan/Absicht → SOFORT ESKALIEREN</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 4px;">Selbstverletzung</label>
+          <select onchange="APP.draft.soap.risiko_sv=this.value" style="width: 100%; padding: var(--space-2); border: 1px solid var(--border); border-radius: var(--radius-sm);">
+            <option value="kein" ${(APP.draft.soap.risiko_sv || 'kein') === 'kein' ? 'selected' : ''}>Kein Hinweis</option>
+            <option value="vergangenheit" ${APP.draft.soap.risiko_sv === 'vergangenheit' ? 'selected' : ''}>In Vergangenheit, aktuell nicht</option>
+            <option value="aktuell" ${APP.draft.soap.risiko_sv === 'aktuell' ? 'selected' : ''}>Aktuell aktiv</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 4px;">Fremdgefährdung</label>
+          <select onchange="APP.draft.soap.risiko_fremd=this.value" style="width: 100%; padding: var(--space-2); border: 1px solid var(--border); border-radius: var(--radius-sm);">
+            <option value="kein" ${(APP.draft.soap.risiko_fremd || 'kein') === 'kein' ? 'selected' : ''}>Kein Hinweis</option>
+            <option value="verbal" ${APP.draft.soap.risiko_fremd === 'verbal' ? 'selected' : ''}>Verbale Drohungen</option>
+            <option value="akut" ${APP.draft.soap.risiko_fremd === 'akut' ? 'selected' : ''}>Akute Gefährdung → Meldepflicht</option>
+          </select>
+        </div>
+      </div>
+
+      <h3 style="margin-top: var(--space-4);">💊 Intervention & Medikation</h3>
+      <div class="se-soap-grid">
+        <div class="se-soap-card">
+          <div class="se-soap-card-title">Intervention heute</div>
+          <div class="se-soap-hint">Welche Methode/Technik? (z.B. DBT Skills, KVT Gedankenprotokoll, Exposition, MI)</div>
+          <textarea oninput="APP.draft.soap.intervention=this.value" placeholder="DBT Emotionsregulation: Notfallkoffer besprochen + geübt...">${Utils.escapeHtml(APP.draft.soap.intervention || '')}</textarea>
+        </div>
+        <div class="se-soap-card">
+          <div class="se-soap-card-title">Medikations-Check</div>
+          <div class="se-soap-hint">Medikamenten-Compliance? Nebenwirkungen? Dosisänderung?</div>
+          <textarea oninput="APP.draft.soap.medikation=this.value" placeholder="Fluoxetin 20mg seit 3 Wochen, keine NW berichtet...">${Utils.escapeHtml(APP.draft.soap.medikation || '')}</textarea>
         </div>
       </div>
 
