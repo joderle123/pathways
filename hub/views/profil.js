@@ -427,6 +427,148 @@ const ProfilView = (function () {
     render(schuelerId);
   }
 
+  // ─── Tab: Konferenz-Modus (Manifest: projektorfähig) ────────
+  function renderKonferenzModus(s) {
+    const fullName = `${s.vorname || ''} ${s.nachname || ''}`.trim();
+    const screenings = DB.getScreenings(s.id).filter(x => x.abgeschlossen).sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
+    const latest = screenings[0];
+    const scores = latest?.scores || {};
+    const roadmap = DB.getRoadmap(s.id);
+    const aktivePhase = roadmap?.phasen?.find(p => p.status === 'aktiv');
+    const sitzungen = DB.getNotizen(s.id).filter(n => n.kategorie === 'session').sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
+    const helfer = DB.getHelfer(s.id);
+    const risiko = DB.getRisiko(s.id).sort((a, b) => b.datum.localeCompare(a.datum));
+    const ff = DB.getFallformulierung(s.id);
+    const aceCount = (s.anamnese || []).filter(id => id.startsWith('ace_')).length;
+    const konferenzen = DB.getKonferenzen(s.id).sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
+
+    // ORS-Trend letzte 5
+    const orsTrend = sitzungen.slice(0, 5).reverse().map(n => n.soap?.ors_total).filter(v => v !== undefined);
+    const srsTrend = sitzungen.slice(0, 5).reverse().map(n => n.soap?.srs_total).filter(v => v !== undefined);
+
+    return `
+      <div class="hub-konferenz-modus">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+          <div>
+            <h2 style="font-size: 28px; margin: 0;">🖥️ Fallkonferenz: ${Utils.escapeHtml(fullName)}</h2>
+            <div style="color: var(--text-muted); font-size: 14px;">${new Date().toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</div>
+          </div>
+          <button class="btn btn-primary" onclick="window.print()">🖨️ Drucken</button>
+        </div>
+
+        <div class="hub-konf-grid">
+          <!-- Spalte 1: Stammdaten + Risiko -->
+          <div class="hub-konf-block">
+            <h3>👤 Stammdaten</h3>
+            <table class="hub-konf-table">
+              <tr><td>Name</td><td><strong>${Utils.escapeHtml(fullName)}</strong></td></tr>
+              <tr><td>Geburtsdatum</td><td>${s.geburtsdatum ? Utils.formatDate(s.geburtsdatum) : '—'}</td></tr>
+              <tr><td>Klasse</td><td>${Utils.escapeHtml(s.klasse || '—')}</td></tr>
+              <tr><td>Eintritt</td><td>${s.eintrittsdatum ? Utils.formatDate(s.eintrittsdatum) : '—'}</td></tr>
+              <tr><td>ACE-Score</td><td><strong style="color: ${aceCount >= 4 ? 'var(--danger)' : 'var(--text)'};">${aceCount}/10</strong></td></tr>
+              <tr><td>Sitzungen</td><td>${sitzungen.length}</td></tr>
+            </table>
+          </div>
+
+          <!-- Spalte 2: Aktuelle Lage -->
+          <div class="hub-konf-block">
+            <h3>📊 Aktuelle Lage</h3>
+            ${aktivePhase ? `<div class="hub-konf-highlight">Phase ${aktivePhase.nr} · ${aktivePhase.themen?.join(', ') || 'Keine Themen'}</div>` : '<div style="color: var(--text-muted);">Keine aktive Phase</div>'}
+            ${risiko.length > 0 ? `
+              <div style="margin-top: var(--space-2);">
+                Risiko: <strong style="color: ${risiko[0].werte && Object.values(risiko[0].werte).includes('rot') ? '#DC2626' : Object.values(risiko[0].werte || {}).includes('gelb') ? '#F59E0B' : '#10B981'};">
+                  ${Object.values(risiko[0].werte || {}).includes('rot') ? 'ROT' : Object.values(risiko[0].werte || {}).includes('gelb') ? 'GELB' : 'GRÜN'}
+                </strong> seit ${Utils.formatDate(risiko[0].datum, { short: true })}
+              </div>
+            ` : ''}
+
+            <h4 style="margin-top: var(--space-3);">Screening-Scores</h4>
+            <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
+              ${Object.entries(scores).map(([id, val]) => `
+                <span style="padding: 4px 10px; background: var(--bg-subtle); border-radius: var(--radius-sm); font-size: 13px;">
+                  <strong>${id.toUpperCase()}</strong>: ${val.score}/${val.max}
+                </span>
+              `).join('') || '<span style="color: var(--text-muted);">Keine Screenings</span>'}
+            </div>
+          </div>
+
+          <!-- Spalte 3: Verlauf (ORS/SRS) -->
+          <div class="hub-konf-block">
+            <h3>📈 Verlauf (letzte 5 Sitzungen)</h3>
+            ${orsTrend.length > 0 ? `
+              <div style="margin-bottom: var(--space-2);">
+                <strong>ORS:</strong> ${orsTrend.map(v => v.toFixed(1)).join(' → ')}
+                <span style="color: ${orsTrend.at(-1) > orsTrend[0] ? '#10B981' : '#DC2626'};">
+                  ${orsTrend.at(-1) > orsTrend[0] ? '↑' : orsTrend.at(-1) < orsTrend[0] ? '↓' : '→'}
+                </span>
+              </div>
+            ` : ''}
+            ${srsTrend.length > 0 ? `
+              <div>
+                <strong>SRS:</strong> ${srsTrend.map(v => v.toFixed(1)).join(' → ')}
+                <span style="color: ${srsTrend.at(-1) >= 25 ? '#10B981' : '#DC2626'};">
+                  ${srsTrend.at(-1) >= 25 ? '(Allianz stabil)' : '(Allianz fragil)'}
+                </span>
+              </div>
+            ` : '<div style="color: var(--text-muted);">Keine ORS/SRS-Daten</div>'}
+          </div>
+
+          <!-- Spalte 4: Helfer-Netzwerk -->
+          <div class="hub-konf-block">
+            <h3>🤝 Helfer-Netzwerk (${helfer.length})</h3>
+            ${helfer.length > 0 ? `
+              <table class="hub-konf-table">
+                ${helfer.map(h => `
+                  <tr>
+                    <td><strong>${Utils.escapeHtml(h.name || '?')}</strong></td>
+                    <td>${Utils.escapeHtml(h.rolle || '')}</td>
+                    <td>${h.informiert ? '✓' : '—'}</td>
+                  </tr>
+                `).join('')}
+              </table>
+            ` : '<div style="color: var(--text-muted);">Keine Helfer</div>'}
+          </div>
+        </div>
+
+        ${ff ? `
+          <div class="hub-konf-block" style="margin-top: var(--space-4);">
+            <h3>📐 5P-Fallformulierung</h3>
+            <div class="hub-konf-5p">
+              ${['predisposing', 'precipitating', 'perpetuating', 'protective', 'presenting'].map(p => `
+                <div class="hub-konf-5p-item">
+                  <div class="hub-konf-5p-label">${p.charAt(0).toUpperCase() + p.slice(1)}</div>
+                  <div>${Utils.escapeHtml(ff[p] || '—')}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <div class="hub-konf-block" style="margin-top: var(--space-4);">
+          <h3>📝 Konferenz-Notizen</h3>
+          <textarea id="konf-notizen" rows="6" placeholder="Notizen während der Konferenz eingeben..." style="width: 100%; padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: inherit; font-size: 15px;"></textarea>
+          <div style="margin-top: var(--space-2); display: flex; gap: var(--space-2);">
+            <button class="btn btn-primary" onclick="ProfilView.saveKonferenzNotizen('${s.id}')">💾 Als Konferenz speichern</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function saveKonferenzNotizen(schuelerId) {
+    const notizen = document.getElementById('konf-notizen')?.value?.trim();
+    if (!notizen) { showToast('Keine Notizen eingegeben', 'info'); return; }
+    DB.addKonferenz({
+      schuelerId,
+      datum: new Date().toISOString().split('T')[0],
+      titel: 'Fallkonferenz',
+      themen: notizen,
+    });
+    showToast('Konferenz-Protokoll gespeichert', 'ok');
+    activeTab = 'konferenzen';
+    render(schuelerId);
+  }
+
   // ─── Tab: Kontakte ─────────────────────────────────────────
   function renderKontakteTab(s) {
     const kontakte = DB.getKontakte(s.id).sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
@@ -543,6 +685,7 @@ const ProfilView = (function () {
       ['anamnese', 'Anamnese'],
       ['helfer', 'Helfer'],
       ['konferenzen', 'Konferenzen'],
+      ['konferenz-modus', '🖥️ Konferenz-Modus'],
       ['kontakte', 'Kontakte'],
       ['dsgvo', 'DSGVO'],
     ];
@@ -552,6 +695,7 @@ const ProfilView = (function () {
     else if (activeTab === 'anamnese') body = renderAnamneseTab(s);
     else if (activeTab === 'helfer') body = renderHelferTab(s);
     else if (activeTab === 'konferenzen') body = renderKonferenzenTab(s);
+    else if (activeTab === 'konferenz-modus') body = renderKonferenzModus(s);
     else if (activeTab === 'kontakte') body = renderKontakteTab(s);
     else if (activeTab === 'dsgvo') body = renderDSGVOTab(s);
 
@@ -570,6 +714,6 @@ const ProfilView = (function () {
   return {
     render, setTab,
     saveAnamnese, addHelfer, saveNewHelfer, editHelfer, saveEditHelfer, deleteHelfer,
-    addKonferenz, addKontakt, exportDsgvo, deleteSchueler,
+    addKonferenz, saveKonferenzNotizen, addKontakt, exportDsgvo, deleteSchueler,
   };
 })();
