@@ -184,6 +184,29 @@ function renderHeute() {
             <div class="via-snapshot-value">${sitzungen[0]?.soap?.srs_total?.toFixed(1) || '—'}</div>
           </div>
         </div>
+
+        ${sitzungen.length >= 2 ? `
+          <h3 style="margin-top: var(--space-4);">ORS/SRS Trend</h3>
+          <div style="display: flex; gap: var(--space-2); align-items: flex-end; height: 60px; padding: var(--space-2); background: var(--bg-subtle); border-radius: var(--radius-sm);">
+            ${sitzungen.slice(0, 5).reverse().map(n => {
+              const ors = n.soap?.ors_total;
+              const srs = n.soap?.srs_total;
+              return ors !== undefined ? `
+                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px;">
+                  <div style="width: 100%; display: flex; gap: 2px; align-items: flex-end; height: 40px;">
+                    <div style="flex: 1; background: var(--color-app-via); border-radius: 2px 2px 0 0; height: ${Math.max(4, ors * 4)}px;" title="ORS ${ors?.toFixed(1)}"></div>
+                    ${srs !== undefined ? `<div style="flex: 1; background: #8B5CF6; border-radius: 2px 2px 0 0; height: ${Math.max(4, srs * 4)}px;" title="SRS ${srs?.toFixed(1)}"></div>` : ''}
+                  </div>
+                  <div style="font-size: 10px; color: var(--text-muted);">${Utils.formatDate(n.datum, { short: true })}</div>
+                </div>
+              ` : '';
+            }).join('')}
+          </div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px; display: flex; gap: var(--space-3);">
+            <span><span style="display: inline-block; width: 10px; height: 10px; background: var(--color-app-via); border-radius: 2px;"></span> ORS</span>
+            <span><span style="display: inline-block; width: 10px; height: 10px; background: #8B5CF6; border-radius: 2px;"></span> SRS</span>
+          </div>
+        ` : ''}
       </div>
     </div>
   `;
