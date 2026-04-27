@@ -152,6 +152,27 @@ function renderLive() {
         </div>
       </div>
 
+      <div style="margin-bottom: var(--space-4);">
+        <div class="se-slider-label">🌐 PVT-Mitte (Polyvagal — Zwischencheck)</div>
+        <div class="se-pvt">
+          <div class="se-pvt-opt ${APP.draft.pvt_mid === 'safe' ? 'selected' : ''}" onclick="APP.draft.pvt_mid='safe'; renderLive();">
+            <div class="se-pvt-emoji">😌</div><div class="se-pvt-name">Safe</div>
+          </div>
+          <div class="se-pvt-opt ${APP.draft.pvt_mid === 'activated' ? 'selected' : ''}" onclick="APP.draft.pvt_mid='activated'; renderLive();">
+            <div class="se-pvt-emoji">⚡</div><div class="se-pvt-name">Activated</div>
+          </div>
+          <div class="se-pvt-opt ${APP.draft.pvt_mid === 'frozen' ? 'selected' : ''}" onclick="APP.draft.pvt_mid='frozen'; renderLive();">
+            <div class="se-pvt-emoji">🧊</div><div class="se-pvt-name">Frozen</div>
+          </div>
+        </div>
+        ${APP.draft.pvt_mid === 'frozen' ? `<div style="font-size: 13px; color: #DC2626; margin-top: 4px;">⚡ Dysregulation erkannt — Grounding-Übung oder Pause anbieten.</div>` : ''}
+        ${APP.draft.pvt_mid === 'activated' ? `<div style="font-size: 13px; color: #F59E0B; margin-top: 4px;">Sympathikus aktiviert — Atemübung oder Orientierung im Raum anbieten.</div>` : ''}
+      </div>
+
+      <div style="margin-bottom: var(--space-4); display: flex; gap: var(--space-2);">
+        <a class="btn" href="../codex/?suche=${encodeURIComponent(APP.draft.thema || '')}" target="_blank">📚 Material aus CODEX öffnen</a>
+      </div>
+
       <h3>Quick Notes (Live während der Sitzung)</h3>
       <div class="se-quicknotes">
         <textarea id="quicknotes" placeholder="Notizen tippen während der Sitzung… wird automatisch in SOAP übernommen.">${Utils.escapeHtml(APP.draft.quicknotes)}</textarea>
@@ -289,7 +310,22 @@ function renderPost() {
         </div>
       `).join('')}
 
-      <div style="margin-top: var(--space-5); display: flex; gap: var(--space-2); flex-wrap: wrap;">
+      <h3 style="margin-top: var(--space-5);">📝 Hausaufgabe / Nächster Schritt</h3>
+      <textarea id="post-hausaufgabe" rows="2" placeholder="Was soll der Klient bis zur nächsten Sitzung tun?"
+        style="width: 100%; padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: inherit;">${Utils.escapeHtml(APP.draft.hausaufgabe || '')}</textarea>
+
+      ${APP.draft.pvt_start || APP.draft.pvt_mid || APP.draft.pvt_end ? `
+        <h3 style="margin-top: var(--space-4);">🌐 PVT-Verlauf in dieser Sitzung</h3>
+        <div style="display: flex; gap: var(--space-4); font-size: 14px; padding: var(--space-3); background: var(--bg-subtle); border-radius: var(--radius-sm);">
+          <span>Anfang: <strong>${APP.draft.pvt_start || '—'}</strong></span>
+          <span>→</span>
+          <span>Mitte: <strong>${APP.draft.pvt_mid || '—'}</strong></span>
+          <span>→</span>
+          <span>Ende: <strong>${APP.draft.pvt_end || '—'}</strong></span>
+        </div>
+      ` : ''}
+
+      <div style="margin-top: var(--space-4); display: flex; gap: var(--space-2); flex-wrap: wrap;">
         <button class="btn btn-primary" onclick="saveSession()">💾 Sitzung speichern</button>
         <button class="btn" onclick="setSessionMode('live')">← Zurück zu Live</button>
       </div>
@@ -318,7 +354,9 @@ function saveSession() {
       stimmung_start: APP.draft.stimmung_start,
       stimmung_end: APP.draft.stimmung_end,
       pvt_start: APP.draft.pvt_start,
+      pvt_mid: APP.draft.pvt_mid,
       pvt_end: APP.draft.pvt_end,
+      hausaufgabe: document.getElementById('post-hausaufgabe')?.value || APP.draft.hausaufgabe || '',
       ors: APP.draft.ors,
       srs: APP.draft.srs,
       ors_total: orsTotal,

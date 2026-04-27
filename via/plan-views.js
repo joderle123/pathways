@@ -128,6 +128,54 @@ function setCurrentPhase(nr) {
 }
 
 function setPhaseStatus(nr, status) {
+  if (status === 'abgeschlossen') {
+    renderPhaseReflexion(nr);
+    return;
+  }
+  applyPhaseStatus(nr, status);
+}
+
+function renderPhaseReflexion(nr) {
+  const container = document.getElementById('via-content');
+  const phaseDef = APP.phasen?.[nr];
+  container.innerHTML = `
+    <div class="rm-section" style="max-width: 700px;">
+      <h2>🎓 Phase ${nr} abschließen — Reflexion</h2>
+      <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">
+        Bevor diese Phase endet: kurze Reflexion. Was hat funktioniert, was hat überrascht?
+        Klinisches Wachstum wird dokumentiert.
+      </p>
+      <div style="margin-bottom: var(--space-3);">
+        <label style="font-weight: var(--font-weight-semibold); display: block; margin-bottom: 4px;">Was hat in dieser Phase gut funktioniert?</label>
+        <textarea id="refl-gut" rows="3" style="width: 100%; padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: inherit;"></textarea>
+      </div>
+      <div style="margin-bottom: var(--space-3);">
+        <label style="font-weight: var(--font-weight-semibold); display: block; margin-bottom: 4px;">Was hat überrascht oder war schwierig?</label>
+        <textarea id="refl-schwierig" rows="3" style="width: 100%; padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: inherit;"></textarea>
+      </div>
+      <div style="margin-bottom: var(--space-3);">
+        <label style="font-weight: var(--font-weight-semibold); display: block; margin-bottom: 4px;">Welche Hypothese hat sich bestätigt / verändert?</label>
+        <textarea id="refl-hypothese" rows="2" style="width: 100%; padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: inherit;"></textarea>
+      </div>
+      <div style="display: flex; gap: var(--space-2);">
+        <button class="btn btn-primary" onclick="confirmPhaseAbschluss(${nr})">✓ Phase abschließen + Reflexion speichern</button>
+        <button class="btn" onclick="renderPhasen()">Abbrechen</button>
+      </div>
+    </div>
+  `;
+}
+
+function confirmPhaseAbschluss(nr) {
+  const reflexion = {
+    gut: document.getElementById('refl-gut')?.value || '',
+    schwierig: document.getElementById('refl-schwierig')?.value || '',
+    hypothese: document.getElementById('refl-hypothese')?.value || '',
+    datum: new Date().toISOString(),
+  };
+  applyPhaseStatus(nr, 'abgeschlossen', reflexion);
+}
+
+function applyPhaseStatus(nr, status, reflexion) {
   const rm = getOrCreateRoadmap();
   const p = rm.phasen.find(x => x.nr === nr);
   if (!p) return;
@@ -135,13 +183,12 @@ function setPhaseStatus(nr, status) {
   if (status === 'aktiv') p.startDatum = p.startDatum || new Date().toISOString().split('T')[0];
   if (status === 'abgeschlossen') {
     p.endDatum = new Date().toISOString().split('T')[0];
-    // Aktiviere nächste Phase
+    if (reflexion) p.reflexion = reflexion;
     const next = rm.phasen.find(x => x.nr === nr + 1);
     if (next && next.status === 'offen') {
       next.status = 'aktiv';
       next.startDatum = new Date().toISOString().split('T')[0];
     }
-    // Setze andere von 'aktiv' auf 'offen'
     rm.phasen.forEach(x => { if (x.nr !== nr && x.nr !== nr+1 && x.status === 'aktiv') x.status = 'offen'; });
   } else if (status === 'aktiv') {
     rm.phasen.forEach(x => { if (x.nr !== nr && x.status === 'aktiv') x.status = 'offen'; });
