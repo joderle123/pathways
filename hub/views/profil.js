@@ -774,7 +774,10 @@ const ProfilView = (function () {
       konferenzen: DB.getKonferenzen(schuelerId),
       fallformulierungen: DB.getFallformulierungen(schuelerId),
       exportedAt: new Date().toISOString(),
-      exportedBy: 'CASE-App',
+      sicherheitsplaene: (() => { try { const all = JSON.parse(localStorage.getItem('pw_safety_plans') || '{}'); return all[schuelerId] || null; } catch { return null; } })(),
+      staerken: (() => { try { const all = JSON.parse(localStorage.getItem('pw_staerken') || '{}'); return all[schuelerId] || null; } catch { return null; } })(),
+      exportedBy: 'Pathways HUB',
+      exportVersion: '3.1',
     };
     const blob = new Blob([JSON.stringify(daten, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
