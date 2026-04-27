@@ -105,10 +105,8 @@ async function renderPhasen() {
         ${phaseDef.fokus.map(f => `<li>${Utils.escapeHtml(f)}</li>`).join('')}
       </ul>
 
-      <h3>Übergangs-Kriterien zur nächsten Phase</h3>
-      <ul style="line-height: var(--line-height-relaxed); margin-bottom: var(--space-4); color: var(--text-secondary);">
-        ${phaseDef.kriterien_zur_naechsten.map(k => `<li>✓ ${Utils.escapeHtml(k)}</li>`).join('')}
-      </ul>
+      <h3>Übergangs-Kriterien — Bereit für nächste Phase?</h3>
+      ${renderKriterienCheck(phaseDef, APP.schuelerId)}
 
       ${phaseStatus?.reflexion ? `
         <div style="background: rgba(16,185,129,0.06); border: 1px solid var(--color-app-via); border-radius: var(--radius-sm); padding: var(--space-4); margin-bottom: var(--space-4);">
@@ -142,6 +140,54 @@ function setPhaseStatus(nr, status) {
     return;
   }
   applyPhaseStatus(nr, status);
+}
+
+function renderKriterienCheck(phaseDef, schuelerId) {
+  if (!schuelerId || !phaseDef.kriterien_zur_naechsten) {
+    return `<ul style="line-height: var(--line-height-relaxed); margin-bottom: var(--space-4); color: var(--text-secondary);">
+      ${(phaseDef.kriterien_zur_naechsten || []).map(k => `<li>⬜ ${Utils.escapeHtml(k)}</li>`).join('')}
+    </ul>`;
+  }
+
+  const sitzungen = DB.getNotizen(schuelerId).filter(n => n.kategorie === 'session').sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
+  const letzte3SRS = sitzungen.slice(0, 3).map(n => n.soap?.srs_total).filter(v => v !== undefined);
+  const avgSRS = letzte3SRS.length ? letzte3SRS.reduce((a, b) => a + b, 0) / letzte3SRS.length : 0;
+  const screenings = DB.getScreenings(schuelerId).filter(x => x.abgeschlossen);
+  const hatT2 = screenings.length >= 2;
+  const orsTrend = sitzungen.slice(0, 5).map(n => n.soap?.ors_total).filter(v => v !== undefined);
+  const orsVerbesserung = orsTrend.length >= 2 && orsTrend[0] > orsTrend[orsTrend.length - 1] + 2;
+  const staerken = DB.getStaerken ? DB.getStaerken(schuelerId) : null;
+
+  const checks = (phaseDef.kriterien_zur_naechsten || []).map(k => {
+    const kLow = k.toLowerCase();
+    let erfuellt = false;
+    if (kLow.includes('allianz') || kLow.includes('beziehung')) erfuellt = avgSRS >= 32;
+    else if (kLow.includes('screening') || kLow.includes('t2')) erfuellt = hatT2;
+    else if (kLow.includes('verbesserung') || kLow.includes('fortschritt')) erfuellt = orsVerbesserung;
+    else if (kLow.includes('sitzung')) erfuellt = sitzungen.length >= 3;
+    else if (kLow.includes('stärken') || kLow.includes('ressourcen')) erfuellt = !!staerken;
+    return { text: k, erfuellt };
+  });
+
+  const alleErfuellt = checks.every(c => c.erfuellt);
+  const erfuelltCount = checks.filter(c => c.erfuellt).length;
+
+  return `
+    <div style="margin-bottom: var(--space-4);">
+      <ul style="line-height: var(--line-height-relaxed); list-style: none; padding: 0;">
+        ${checks.map(c => `
+          <li style="padding: var(--space-2) 0; display: flex; gap: var(--space-2); align-items: center;">
+            <span style="font-size: 16px;">${c.erfuellt ? '✅' : '⬜'}</span>
+            <span style="color: ${c.erfuellt ? '#059669' : 'var(--text-secondary)'};">${Utils.escapeHtml(c.text)}</span>
+          </li>
+        `).join('')}
+      </ul>
+      <div style="font-size: 13px; color: ${alleErfuellt ? '#059669' : 'var(--text-muted)'}; margin-top: var(--space-2);">
+        ${erfuelltCount}/${checks.length} Kriterien erfüllt.
+        ${alleErfuellt ? '<strong>Phase kann abgeschlossen werden.</strong>' : 'Noch nicht alle Kriterien erreicht (Übergang trotzdem möglich).'}
+      </div>
+    </div>
+  `;
 }
 
 function renderPhaseReflexion(nr) {
