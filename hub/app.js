@@ -23,6 +23,7 @@ const VIEWS = {
   kalender: { title: '📅 Kalender', render: () => KalenderView.render() },
   aufgaben: { title: '✅ Aufgaben', render: () => AufgabenView.render() },
   notizen: { title: '📝 Notizen', render: () => NotizenView.render() },
+  settings: { title: '⚙️ Einstellungen', render: () => renderSettings() },
   muster: { title: '🔬 Muster-Erkennung', render: () => renderMusterErkennung() },
   crisis: { title: '🚨 Krise', render: () => CrisisView.render() },
 };
@@ -130,23 +131,103 @@ function applyTheme() {
 }
 
 // ─── Einstellungen ───────────────────────────────────────────
-async function showSettings() {
-  const data = await Utils.modalForm({
-    title: 'Einstellungen',
-    fields: [
-      { id: 'theme', label: 'Farbmodus', type: 'select', options: [
-        { value: 'light', label: 'Hell' },
-        { value: 'dark', label: 'Dunkel' },
-      ], value: document.body.classList.contains('theme-dark') ? 'dark' : 'light' },
-      { id: 'pin', label: 'PIN-Schutz aktivieren', type: 'checkbox', value: !!localStorage.getItem('pw_pin_hash') },
-    ],
-    submitLabel: 'Speichern',
+function showSettings() {
+  showView('settings');
+}
+
+function renderSettings() {
+  const container = document.getElementById('view-container');
+  const klienten = DB.getSchueler().length;
+  const keys = Object.keys(localStorage).filter(k => k.startsWith('pw_'));
+  const bytes = keys.reduce((s, k) => s + localStorage.getItem(k).length * 2, 0);
+  const kb = (bytes / 1024).toFixed(1);
+
+  container.innerHTML = `
+    <div class="pw-section">
+      <h2>⚙️ Einstellungen</h2>
+
+      <h3>Farbmodus</h3>
+      <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-4);">
+        <button class="btn ${!document.body.classList.contains('theme-dark') ? 'btn-primary' : ''}" onclick="document.body.classList.remove('theme-dark'); localStorage.setItem('pw_app_hub_theme','light'); renderSettings();">☀️ Hell</button>
+        <button class="btn ${document.body.classList.contains('theme-dark') ? 'btn-primary' : ''}" onclick="document.body.classList.add('theme-dark'); localStorage.setItem('pw_app_hub_theme','dark'); renderSettings();">🌙 Dunkel</button>
+      </div>
+
+      <h3>Daten-Übersicht</h3>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); margin-bottom: var(--space-4);">
+        <div style="text-align: center; padding: var(--space-3); background: var(--bg-subtle); border-radius: var(--radius-sm);">
+          <div style="font-size: 24px; font-weight: 700;">${klienten}</div>
+          <div style="font-size: 12px; color: var(--text-muted);">Klienten</div>
+        </div>
+        <div style="text-align: center; padding: var(--space-3); background: var(--bg-subtle); border-radius: var(--radius-sm);">
+          <div style="font-size: 24px; font-weight: 700;">${keys.length}</div>
+          <div style="font-size: 12px; color: var(--text-muted);">Datenschlüssel</div>
+        </div>
+        <div style="text-align: center; padding: var(--space-3); background: var(--bg-subtle); border-radius: var(--radius-sm);">
+          <div style="font-size: 24px; font-weight: 700;">${kb} KB</div>
+          <div style="font-size: 12px; color: var(--text-muted);">Speicher</div>
+        </div>
+      </div>
+
+      <h3>Backup & Restore</h3>
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: var(--space-3);">
+        Alle Pathways-Daten als JSON exportieren / importieren. Regelmäßiges Backup empfohlen.
+      </p>
+      <div style="display: flex; gap: var(--space-2); flex-wrap: wrap; margin-bottom: var(--space-4);">
+        <button class="btn btn-primary" onclick="exportBackup()">📦 Gesamt-Backup herunterladen</button>
+        <button class="btn" onclick="document.getElementById('restore-input').click()">📥 Backup wiederherstellen</button>
+        <input type="file" id="restore-input" accept=".json" style="display: none;" onchange="importBackup(event)">
+      </div>
+
+      <h3>Demo-Daten</h3>
+      <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-4);">
+        <button class="btn" onclick="if(typeof DemoSeed!=='undefined'){DemoSeed.reset(); DemoSeed.seed(); showToast('Demo-Daten neu angelegt','ok'); renderSettings();}">🔄 Demo-Klientin neu anlegen</button>
+      </div>
+
+      <h3 style="color: var(--danger);">Gefahrenzone</h3>
+      <div style="padding: var(--space-3); border: 2px solid var(--danger); border-radius: var(--radius-sm);">
+        <button class="btn" style="border-color: var(--danger); color: var(--danger);" onclick="if(confirm('ALLE Pathways-Daten unwiderruflich löschen?')){Object.keys(localStorage).filter(k=>k.startsWith('pw_')).forEach(k=>localStorage.removeItem(k)); showToast('Alle Daten gelöscht','ok'); showView('home');}">🗑️ Alle Daten löschen</button>
+      </div>
+    </div>
+  `;
+}
+
+function exportBackup() {
+  const data = {};
+  Object.keys(localStorage).filter(k => k.startsWith('pw_')).forEach(k => {
+    try { data[k] = JSON.parse(localStorage.getItem(k)); }
+    catch { data[k] = localStorage.getItem(k); }
   });
-  if (!data) return;
-  if (data.theme === 'dark') document.body.classList.add('theme-dark');
-  else document.body.classList.remove('theme-dark');
-  localStorage.setItem('pw_app_hub_theme', data.theme);
-  showToast('Einstellungen gespeichert', 'ok');
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `pathways-backup-${new Date().toISOString().split('T')[0]}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('Backup heruntergeladen', 'ok');
+}
+
+function importBackup(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      let count = 0;
+      Object.entries(data).forEach(([k, v]) => {
+        if (k.startsWith('pw_')) {
+          localStorage.setItem(k, typeof v === 'string' ? v : JSON.stringify(v));
+          count++;
+        }
+      });
+      showToast(`${count} Datenschlüssel wiederhergestellt`, 'ok');
+      showView('home');
+    } catch (err) {
+      showToast('Fehler beim Import: ' + err.message, 'error');
+    }
+  };
+  reader.readAsText(file);
 }
 
 // ─── Muster-Erkennung (Manifest: Pattern im eigenen Caseload) ─
