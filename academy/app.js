@@ -829,6 +829,26 @@ async function renderProfil() {
       </div>
     </div>
 
+    ${(() => {
+      const reflexionen = DB.getPersNotizen().filter(n => (n.tags || []).includes('academy')).sort((a, b) => (b.erstellt || '').localeCompare(a.erstellt || ''));
+      if (!reflexionen.length) return '';
+      return `
+        <div class="ac-section">
+          <h3>📝 Reflexions-Tagebuch (${reflexionen.length})</h3>
+          <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+            ${reflexionen.slice(0, 5).map(r => `
+              <div style="padding: var(--space-2) var(--space-3); background: var(--bg-subtle); border-radius: var(--radius-sm); border-left: 3px solid var(--color-app-academy);">
+                <div style="font-size: 13px; font-weight: 600;">${Utils.escapeHtml(r.titel)}</div>
+                <div style="font-size: 12px; color: var(--text-muted);">${Utils.formatDate(r.erstellt)}</div>
+                <div style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">${Utils.escapeHtml(Utils.truncate(r.inhalt || '', 120))}</div>
+              </div>
+            `).join('')}
+            ${reflexionen.length > 5 ? `<div style="font-size: 12px; color: var(--text-muted);">+ ${reflexionen.length - 5} weitere Reflexionen</div>` : ''}
+          </div>
+        </div>
+      `;
+    })()}
+
     <div class="ac-section">
       <h3>📊 Karriere-Tracker</h3>
       <p style="font-size: 13px; color: var(--text-muted); margin-bottom: var(--space-3);">
