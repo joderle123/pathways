@@ -223,12 +223,44 @@ function auswerteSelbstfuersorge() {
   else if (pct >= 50) { farbe = '#F59E0B'; label = 'Aufpassen'; text = 'Einige Bereiche brauchen Aufmerksamkeit. Überlege, was du konkret ändern kannst.'; }
   else { farbe = '#DC2626'; label = 'Handlungsbedarf'; text = 'Mehrere Warnsignale. Sprich mit deiner Supervision oder einem Kollegen. Burnout-Risiko besteht.'; }
 
+  // Ergebnis persistieren
+  const sfHistory = JSON.parse(localStorage.getItem('pw_academy_sf_history') || '[]');
+  sfHistory.push({ datum: new Date().toISOString(), total, max, pct, label });
+  if (sfHistory.length > 20) sfHistory.splice(0, sfHistory.length - 20);
+  localStorage.setItem('pw_academy_sf_history', JSON.stringify(sfHistory));
+  localStorage.setItem('pw_academy_sf_score', String(pct));
+
+  // Verlauf anzeigen
+  const verlauf = sfHistory.slice(-6);
+
   document.getElementById('sf-result').innerHTML = `
     <div class="ac-section" style="margin-top: var(--space-4); border-left: 4px solid ${farbe};">
       <div style="font-size: 28px; font-weight: var(--font-weight-bold); color: ${farbe};">${total}/${max} (${pct}%)</div>
       <div style="font-size: 18px; font-weight: var(--font-weight-semibold); margin-top: var(--space-2);">${label}</div>
       <p style="margin-top: var(--space-2); font-size: 14px; color: var(--text-secondary);">${text}</p>
     </div>
+    ${verlauf.length >= 2 ? `
+      <div class="ac-section" style="margin-top: var(--space-3);">
+        <h3>Selbstfürsorge-Verlauf</h3>
+        <div style="display: flex; align-items: flex-end; gap: 6px; height: 80px; margin-top: var(--space-2);">
+          ${verlauf.map(v => {
+            const h = Math.max(5, v.pct);
+            const c = v.pct >= 75 ? '#10B981' : v.pct >= 50 ? '#F59E0B' : '#DC2626';
+            return `<div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+              <div style="font-size: 10px; font-weight: 700; color: ${c};">${v.pct}%</div>
+              <div style="width: 100%; background: ${c}; border-radius: 3px 3px 0 0; height: ${h}%;"></div>
+              <div style="font-size: 9px; color: var(--text-muted); margin-top: 2px;">${Utils.formatDate(v.datum, { short: true })}</div>
+            </div>`;
+          }).join('')}
+        </div>
+        <div style="font-size: 12px; color: var(--text-muted); margin-top: var(--space-2);">
+          ${verlauf.length >= 3 ? (() => {
+            const delta = verlauf.at(-1).pct - verlauf[0].pct;
+            return delta > 5 ? '📈 Trend: Verbesserung' : delta < -5 ? '📉 Trend: Verschlechterung — Supervision empfohlen' : '→ Trend: stabil';
+          })() : ''}
+        </div>
+      </div>
+    ` : ''}
   `;
   addXP(20);
   showToast('+20 XP für Selbstfürsorge-Reflexion', 'ok');
