@@ -253,7 +253,14 @@ function renderOverview() {
             </div>
           </div>
         `).join('')}
-      ` : `<div class="pw-empty"><p>Noch kein Screening durchgeführt.</p></div>`}
+      ` : `<div style="padding: var(--space-5); background: var(--bg-subtle); border-radius: var(--radius); text-align: center;">
+          <div style="font-size: 32px; margin-bottom: var(--space-2);">🎯</div>
+          <h3>Noch kein Screening</h3>
+          <p style="color: var(--text-secondary); margin: var(--space-2) 0 var(--space-3);">
+            Starte mit den <strong>5 Triage-Fragen</strong> (3 Minuten) — CLARO empfiehlt dann die richtigen Instrumente.
+          </p>
+          <button class="btn btn-primary" onclick="setTab('triage')">🎯 Triage starten</button>
+        </div>`}
 
       ${(() => {
         const hyps = Hypotheses.generate(APP.schuelerId);
