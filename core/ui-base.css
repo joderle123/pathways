@@ -216,3 +216,28 @@ html, body {
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--section-color, var(--primary)) 15%, transparent);
 }
 .pw-mf-check { display: flex; align-items: center; gap: var(--space-2); font-size: 14px; cursor: pointer; }
+
+/* ── Print Styles (global) ── */
+@media print {
+  body { background: white !important; color: black !important; font-size: 11pt; }
+  .pw-sidebar, .pw-app-header, .pw-tabs, .pw-modal,
+  .via-topbar, .via-modes, .via-tabs,
+  .dg-topbar, .dg-tabs,
+  .lib-topbar, .codex-sections, .lib-filters,
+  .ac-topbar, .ac-tabs, .ac-gamification,
+  .cr-topbar, .cr-tabs,
+  #toast-container, .pw-launcher, .pw-btn-icon,
+  button, .btn, nav, aside, header { display: none !important; }
+  .pw-main, .via-main, .dg-main, .lib-main, .ac-main, .cr-main {
+    padding: 0 !important; margin: 0 !important; max-width: 100% !important;
+  }
+  .pw-card, .pw-section, .rm-section, .se-section, .dg-section, .cr-section, .ac-section {
+    box-shadow: none !important; border: 1px solid #ccc !important;
+    page-break-inside: avoid;
+  }
+  a { color: black !important; text-decoration: none !important; }
+  a[href]:after { content: none !important; }
+  h1 { font-size: 18pt; }
+  h2 { font-size: 14pt; }
+  h3 { font-size: 12pt; }
+}
