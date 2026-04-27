@@ -223,6 +223,145 @@ function auswerteSelbstfuersorge() {
   showToast('+20 XP für Selbstfürsorge-Reflexion', 'ok');
 }
 
+// ─── Skills-Trainer mit Rollenspiel (Manifest) ──────────────
+const SZENARIEN = [
+  {
+    id: 'verweigerung', titel: 'Schulverweigerung',
+    situation: 'Lena, 14, sagt: "Ich gehe nie wieder in diese Schule. Ihr könnt mich nicht zwingen."',
+    gute_reaktionen: ['Validierung der Gefühle', 'Offene Fragen', 'Nicht sofort Lösungen anbieten', 'Autonomie respektieren'],
+    schlechte_reaktionen: ['Drohen', 'Bagatellisieren', 'Moralisieren', 'Eltern sofort anrufen'],
+    feedback_gut: 'Gut! Du validierst Lenas Gefühle und gibst ihr Kontrolle zurück. Das stärkt die Allianz und öffnet den Raum für echtes Verstehen.',
+    feedback_schlecht: 'Vorsicht — Druck und Moralisieren verstärken die Verweigerung. Erst Beziehung aufbauen, dann Lösungen.',
+    optionen: [
+      { text: '"Das klingt so, als wärst du wirklich fertig mit der Schule. Was ist passiert?"', typ: 'gut', skill: 'Validierung + offene Frage' },
+      { text: '"Du musst in die Schule, das ist Pflicht."', typ: 'schlecht', skill: 'Moralischer Druck' },
+      { text: '"Ich verstehe, dass du gerade nicht willst. Was bräuchtest du, um es dir vorzustellen?"', typ: 'gut', skill: 'Autonomie-Fokus' },
+      { text: '"Andere Kinder gehen auch hin, das ist doch nicht so schlimm."', typ: 'schlecht', skill: 'Bagatellisierung' },
+    ],
+  },
+  {
+    id: 'selbstverletzung', titel: 'Selbstverletzung offenbart',
+    situation: 'Karim, 16, zeigt dir frische Schnitte am Unterarm. "Es hilft mir runterzukommen. Sag es bitte niemandem."',
+    gute_reaktionen: ['Ruhe bewahren', 'Nicht erschrecken', 'Funktion verstehen', 'C-SSRS durchführen'],
+    schlechte_reaktionen: ['Panik zeigen', 'Sofort Eltern anrufen', 'Vorwürfe machen'],
+    feedback_gut: 'Richtig. Du bleibst ruhig, fragst nach der Funktion und handelst professionell. Das schafft Vertrauen.',
+    feedback_schlecht: 'Panik oder sofortige Eskalation zerstört das Vertrauen. Erst verstehen, dann handeln.',
+    optionen: [
+      { text: '"Danke, dass du mir das zeigst. Das braucht Mut. Kannst du mir erzählen, was vorher passiert?"', typ: 'gut', skill: 'Wertschätzung + Exploration' },
+      { text: '"Oh Gott, das ist schlimm! Ich muss sofort deine Eltern anrufen."', typ: 'schlecht', skill: 'Panik-Reaktion' },
+      { text: '"Ich mache mir Sorgen um dich. Darf ich dir ein paar Fragen stellen, damit ich verstehe wie es dir geht?"', typ: 'gut', skill: 'C-SSRS einleiten' },
+      { text: '"Warum tust du dir das an? Du hast doch alles."', typ: 'schlecht', skill: 'Bagatellisierung + Vorwurf' },
+    ],
+  },
+  {
+    id: 'eltern-wut', titel: 'Wütende Eltern',
+    situation: 'Vater von Yara stürmt ins Büro: "Was erzählen Sie meiner Tochter? Sie weint jeden Abend seit sie bei Ihnen war!"',
+    gute_reaktionen: ['Ruhe bewahren', 'Gefühle validieren', 'Nicht defensiv werden', 'Gemeinsame Sorge betonen'],
+    schlechte_reaktionen: ['Gegenangriff', 'Defensiv werden', 'Fachsprache nutzen'],
+    feedback_gut: 'Perfekt. Du deeskalierst durch Ruhe und Empathie. Der Vater fühlt sich gehört statt bekämpft.',
+    feedback_schlecht: 'Defensive oder fachliche Reaktionen eskalieren die Situation. Erst regulieren, dann informieren.',
+    optionen: [
+      { text: '"Ich höre, dass Sie sich große Sorgen machen. Das nehme ich sehr ernst. Setzen wir uns?"', typ: 'gut', skill: 'Deeskalation' },
+      { text: '"Beruhigen Sie sich erstmal. Ich habe nur meine Arbeit gemacht."', typ: 'schlecht', skill: 'Defensive' },
+      { text: '"Es tut mir leid, dass Yara weint. Können Sie mir erzählen, was sie Ihnen gesagt hat?"', typ: 'gut', skill: 'Empathie + Exploration' },
+      { text: '"Das ist ein normaler Teil des therapeutischen Prozesses."', typ: 'schlecht', skill: 'Fachsprache als Mauer' },
+    ],
+  },
+];
+
+let skillsState = { szenario: null, gewaehlt: [] };
+
+function renderSkillsTrainer() {
+  const container = document.getElementById('ac-content');
+
+  if (!skillsState.szenario) {
+    container.innerHTML = `
+      <div style="max-width: 700px;">
+        <h2 style="font-size: 28px; margin-bottom: var(--space-2);">🎭 Skills-Trainer</h2>
+        <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">
+          Simulierte Gesprächssituationen. Übe deine Reaktion — die App gibt Feedback basierend auf evidenzbasierten Gesprächstechniken.
+        </p>
+        <div style="display: grid; gap: var(--space-3);">
+          ${SZENARIEN.map(sz => `
+            <div class="ac-section" style="cursor: pointer;" onclick="startSzenario('${sz.id}')">
+              <h3>${Utils.escapeHtml(sz.titel)}</h3>
+              <p style="font-size: 14px; color: var(--text-secondary); font-style: italic;">"${Utils.escapeHtml(sz.situation.slice(0, 80))}…"</p>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  const sz = skillsState.szenario;
+  const alleBeantwortet = skillsState.gewaehlt.length === sz.optionen.length;
+  const guteGewaehlt = skillsState.gewaehlt.filter(i => sz.optionen[i].typ === 'gut').length;
+  const schlechteGewaehlt = skillsState.gewaehlt.filter(i => sz.optionen[i].typ === 'schlecht').length;
+
+  container.innerHTML = `
+    <div style="max-width: 700px;">
+      <button class="btn" onclick="skillsState.szenario=null; skillsState.gewaehlt=[]; renderSkillsTrainer();" style="margin-bottom: var(--space-3);">← Zurück zur Auswahl</button>
+
+      <div class="ac-section" style="border-left: 4px solid var(--color-app-academy);">
+        <div style="font-size: 12px; text-transform: uppercase; color: var(--color-app-academy); letter-spacing: 1px;">Szenario</div>
+        <h3>${Utils.escapeHtml(sz.titel)}</h3>
+        <p style="font-size: 16px; line-height: var(--line-height-relaxed); margin-top: var(--space-2); font-style: italic;">"${Utils.escapeHtml(sz.situation)}"</p>
+      </div>
+
+      <h3 style="margin-top: var(--space-4);">Wie reagierst du?</h3>
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: var(--space-3);">Klicke auf die Antworten, die du wählen würdest.</p>
+
+      ${sz.optionen.map((opt, i) => {
+        const gewaehlt = skillsState.gewaehlt.includes(i);
+        const showFeedback = gewaehlt;
+        return `
+          <div class="ac-section" style="cursor: pointer; ${gewaehlt ? (opt.typ === 'gut' ? 'border-left: 4px solid #10B981; background: rgba(16,185,129,0.05);' : 'border-left: 4px solid #DC2626; background: rgba(220,38,38,0.05);') : ''}"
+               onclick="selectSkillOption(${i})">
+            <p style="font-size: 15px;">"${Utils.escapeHtml(opt.text)}"</p>
+            ${showFeedback ? `
+              <div style="margin-top: var(--space-2); font-size: 13px; color: ${opt.typ === 'gut' ? '#059669' : '#DC2626'};">
+                ${opt.typ === 'gut' ? '✓' : '✕'} <strong>${Utils.escapeHtml(opt.skill)}</strong>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }).join('')}
+
+      ${skillsState.gewaehlt.length >= 2 ? `
+        <div class="ac-section" style="margin-top: var(--space-4); border-left: 4px solid ${guteGewaehlt > schlechteGewaehlt ? '#10B981' : '#F59E0B'};">
+          <h3>Feedback</h3>
+          <p>${guteGewaehlt > schlechteGewaehlt ? Utils.escapeHtml(sz.feedback_gut) : Utils.escapeHtml(sz.feedback_schlecht)}</p>
+          <div style="margin-top: var(--space-3);">
+            <strong>Empfohlene Skills:</strong> ${sz.gute_reaktionen.join(' · ')}
+          </div>
+          <div style="margin-top: var(--space-2);">
+            <strong>Vermeiden:</strong> ${sz.schlechte_reaktionen.join(' · ')}
+          </div>
+        </div>
+      ` : ''}
+    </div>
+  `;
+}
+
+function startSzenario(id) {
+  skillsState.szenario = SZENARIEN.find(s => s.id === id);
+  skillsState.gewaehlt = [];
+  renderSkillsTrainer();
+}
+
+function selectSkillOption(idx) {
+  if (skillsState.gewaehlt.includes(idx)) return;
+  skillsState.gewaehlt.push(idx);
+  if (skillsState.gewaehlt.length === 2) {
+    const sz = skillsState.szenario;
+    const guteGewaehlt = skillsState.gewaehlt.filter(i => sz.optionen[i].typ === 'gut').length;
+    addXP(guteGewaehlt >= 2 ? 30 : guteGewaehlt === 1 ? 15 : 5);
+    tickStreak();
+  }
+  renderSkillsTrainer();
+}
+
 function setTab(name) {
   APP.activeTab = name;
   document.querySelectorAll('.ac-tab').forEach(el => {
@@ -232,6 +371,7 @@ function setTab(name) {
   else if (name === 'lernpfade') renderPfade();
   else if (name === 'cdss') renderCdssList();
   else if (name === 'wissenstest') renderWissenstest();
+  else if (name === 'skills') renderSkillsTrainer();
   else if (name === 'selbstfuersorge') renderSelbstfuersorge();
   else if (name === 'profil') renderProfil();
 }
