@@ -243,5 +243,54 @@
         }
       ]
     }
+    },
+    {
+      "id": "suizidpraevention",
+      "titel": "Suizidprävention bei Jugendlichen",
+      "icon": "🛡️",
+      "kategorie": "Sicherheit",
+      "dauer": "ca. 2 Stunden",
+      "xp": 300,
+      "beschreibung": "C-SSRS, Sicherheitsplanung nach Stanley-Brown, Means Restriction, Postvention. Wissen, das Leben rettet.",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Epidemiologie: Suizid bei Jugendlichen",
+          "inhalt": "Suizid ist die zweithäufigste Todesursache bei 15-24-Jährigen weltweit (WHO 2023). Risikofaktoren: vorheriger Versuch (stärkster Prädiktor), psychische Erkrankung (Depression, Substanz), ACE ≥ 4, LGBTQ+-Identität (3-4× Risiko), Zugang zu Mitteln, kürzlicher Verlust, Impulsivität. Schutzfaktoren: stabile Bezugsperson, Zugehörigkeit, Gründe zu leben, eingeschränkter Zugang zu Mitteln."
+        },
+        {
+          "id": 2, "typ": "lektuere", "titel": "C-SSRS: Das Instrument",
+          "inhalt": "Columbia Suicide Severity Rating Scale (Posner et al. 2011): 5 Stufen von Lebensüberdruss bis Plan. Stufe 1: Wunsch tot zu sein. Stufe 2: Unspezifische Gedanken. Stufe 3: Gedanken mit Methode. Stufe 4: Absicht ohne Plan. Stufe 5: Absicht mit Plan. Plus Verhaltens-Items (Versuch aktuell/lebenszeitlich). WICHTIG: Fragen nach Suizid erhöht das Risiko NICHT (Dazzi et al. 2014, Meta-Analyse)."
+        },
+        {
+          "id": 3, "typ": "quiz", "titel": "Quiz: Risikoeinschätzung",
+          "fragen": [
+            {
+              "frage": "Welcher Faktor ist der stärkste Prädiktor für einen Suizidversuch?",
+              "optionen": ["Depression", "Vorheriger Suizidversuch", "Schlechte Noten", "Eltern-Scheidung"],
+              "korrekt": 1,
+              "erklaerung": "Ein vorheriger Versuch ist der stärkste Einzelprädiktor (Odds Ratio >30, Ribeiro et al. 2016). Depression ist ein Risikofaktor, aber nicht der stärkste."
+            },
+            {
+              "frage": "C-SSRS Stufe 3: Der Jugendliche sagt 'Ich habe daran gedacht, Tabletten zu nehmen.' Was tust du?",
+              "optionen": ["Abwarten", "Sicherheitsplan erstellen + Means Restriction", "Sofort 112 anrufen", "Eltern fragen"],
+              "korrekt": 1,
+              "erklaerung": "Stufe 3 (Methode) erfordert Sicherheitsplan + Means Restriction (Tabletten mit Eltern sichern) + Folgetermin innerhalb 48h. Kein Notfall (kein Plan/Absicht), aber NICHT abwarten."
+            }
+          ]
+        },
+        {
+          "id": 4, "typ": "lektuere", "titel": "Stanley-Brown Safety Plan (2012)",
+          "inhalt": "6 Schritte, IMMER gemeinsam mit dem Jugendlichen erstellen: 1. Warnsignale erkennen. 2. Eigene Coping-Strategien (Ablenkung, Beruhigung). 3. Soziale Ablenkung (Orte, Menschen — ohne über Krise sprechen). 4. Vertrauenspersonen kontaktieren (2-3 Namen + Nummern). 5. Professionelle Hilfe (SOS 45 45 45, 116 111, Therapeut). 6. Umgebung sichern (Means Restriction — Medikamente, Klingen, Alkohol). Plan als Foto auf dem Handy speichern."
+        },
+        {
+          "id": 5, "typ": "lektuere", "titel": "Means Restriction: Die wirksamste Einzelmaßnahme",
+          "inhalt": "Zugang zu letalen Mitteln einschränken rettet Leben. Meta-Analyse (Zalsman et al. 2016): Means Restriction hat die stärkste Evidenz aller Suizidpräventions-Strategien. Praktisch: Medikamente bei Eltern, Klingen entfernen, Alkohol sichern. Brückengeländer erhöhen. Waffenzugang einschränken. Substitution: Die meisten Menschen wechseln NICHT die Methode wenn die primäre nicht verfügbar ist."
+        },
+        {
+          "id": 6, "typ": "reflexion", "titel": "Reflexion: Eigene Grenzen",
+          "frage": "Wie fühlst du dich, wenn ein Jugendlicher Suizidgedanken äußert? Welche Unterstützung brauchst DU (Supervision, Kollegiale Beratung)? Selbstfürsorge nach Suizidalitäts-Kontakt ist kein Luxus — es ist Pflicht."
+        }
+      ]
+    }
   ]
 }
