@@ -341,5 +341,44 @@
         }
       ]
     }
+    },
+    {
+      "id": "elternarbeit",
+      "titel": "Elternarbeit professionell gestalten",
+      "icon": "👨‍👩‍👧",
+      "kategorie": "Systemisch",
+      "dauer": "ca. 90 Min",
+      "xp": 200,
+      "beschreibung": "Elterngespräche führen, Widerstand verstehen, Psychoedukation vermitteln, Loyalitätskonflikte navigieren. Die vergessene Hälfte der Jugendarbeit.",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Warum Elternarbeit der Hebel ist",
+          "inhalt": "Meta-Analyse (Weisz et al. 2017): Therapien MIT Elternkomponente zeigen stärkere Effekte als solche ohne. Eltern bestimmen den Kontext: Schlafzeiten, Medienkonsum, Familienklima, Therapie-Compliance. Ohne Eltern arbeiten wir gegen das System."
+        },
+        {
+          "id": 2, "typ": "lektuere", "titel": "Widerstand verstehen (nicht bekämpfen)",
+          "inhalt": "Eltern die 'nicht kooperieren' haben meist Gründe: Scham ('Wir haben versagt'), Angst ('Man nimmt uns das Kind weg'), Kulturelle Unterschiede ('Bei uns geht man nicht zum Psychologen'), Vorerfahrung ('Der letzte Berater hat alles schlimmer gemacht'). MI-Prinzip: Widerstand ist Information, kein Hindernis. Rollenwechsel: Fachkraft als Unterstützer, nicht als Richter."
+        },
+        {
+          "id": 3, "typ": "quiz", "titel": "Quiz: Elterngespräche",
+          "fragen": [
+            {
+              "frage": "Die Mutter sagt: 'Mein Kind ist nicht krank, es ist nur faul.' Wie reagierst du am besten?",
+              "optionen": ["Erklären warum sie falsch liegt", "Ihre Perspektive validieren UND Informationen anbieten", "Schweigen", "Das Kind allein weiterbetreuen"],
+              "korrekt": 1,
+              "erklaerung": "Validieren ('Ich verstehe, dass es so aussehen kann') + Reframing ('Was wenn die Faulheit ein Zeichen von etwas ist, das wir gemeinsam verstehen können?'). Konfrontation verstärkt Widerstand."
+            }
+          ]
+        },
+        {
+          "id": 4, "typ": "lektuere", "titel": "Psychoedukation: Komplexes einfach erklären",
+          "inhalt": "Regeln: (1) Keine Fachsprache — 'Depression' durch 'eine Phase in der das Gehirn zu wenig Energie produziert' ersetzen. (2) Normalisieren — 'Das ist häufiger als Sie denken, 1 von 5 Jugendlichen.' (3) Analogien nutzen — 'Wie ein gebrochener Arm: er heilt, aber er braucht Unterstützung.' (4) Handlungsorientiert — 'Was SIE tun können: ...' (5) Infoblatt mitgeben (aus CODEX)."
+        },
+        {
+          "id": 5, "typ": "reflexion", "titel": "Reflexion",
+          "frage": "Bei welchem Klienten wäre ein Elterngespräch überfällig? Was hält dich davon ab? (Eigene Angst vor Konfrontation? Zeitdruck? Loyalität zum Jugendlichen?)"
+        }
+      ]
+    }
   ]
 }
