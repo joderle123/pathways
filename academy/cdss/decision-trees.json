@@ -1,0 +1,205 @@
+{
+  "version": 1,
+  "trees": [
+    {
+      "id": "depression-suizid",
+      "titel": "Depression mit Suizidgedanken",
+      "icon": "🌧️",
+      "intro": "Ein Klient zeigt depressive Symptome und äußert Lebensüberdruss. Was tun?",
+      "start": "q1",
+      "nodes": {
+        "q1": {
+          "frage": "Wie lange dauern die Symptome?",
+          "optionen": [
+            { "label": "< 2 Wochen, situativ", "next": "q2_kurz" },
+            { "label": "≥ 2 Wochen, anhaltend", "next": "q2_lang" }
+          ]
+        },
+        "q2_kurz": {
+          "frage": "Liegt eine konkrete Belastung vor (z.B. Trennung, Tod)?",
+          "optionen": [
+            { "label": "Ja", "next": "out_anpassung" },
+            { "label": "Nein, einfach 'so'", "next": "out_beobachten" }
+          ]
+        },
+        "q2_lang": {
+          "frage": "Sind die Suizidgedanken konkret (Plan, Methode)?",
+          "optionen": [
+            { "label": "Ja, mit Plan/Methode", "next": "out_akut" },
+            { "label": "Nein, nur Wünsche", "next": "out_depression" }
+          ]
+        },
+        "out_anpassung": {
+          "outcome": "Anpassungsstörung mit depressiver Reaktion (F43.21)",
+          "empfehlung": [
+            "Stützende Gespräche, Belastungsbewältigung",
+            "Krisenintervention bei Bedarf",
+            "C-SSRS dokumentieren",
+            "Re-Evaluation in 4-6 Wochen",
+            "Bei Verschlechterung: Therapie-Empfehlung"
+          ],
+          "module": ["trauma-informed", "krise-management"]
+        },
+        "out_beobachten": {
+          "outcome": "Subklinisch — wachsame Begleitung",
+          "empfehlung": [
+            "Schutzfaktoren stärken (Beziehungen, Bewegung, Schlaf)",
+            "Wohlbefinden tracken (WHO-5 wöchentlich)",
+            "Bei Verschlechterung: Re-Screening"
+          ]
+        },
+        "out_akut": {
+          "outcome": "🚨 AKUTE SUIZIDGEFAHR — Sofort handeln",
+          "empfehlung": [
+            "C-SSRS strukturiert durchführen",
+            "Sicherheitsplan jetzt erstellen (Stanley-Brown)",
+            "Person nicht allein lassen",
+            "Eltern/Bezugspersonen verständigen",
+            "Überweisung an CHNP Jugendpsychiatrie (26 82 28 28) oder bei Lebensgefahr 112"
+          ],
+          "module": ["krise-management"]
+        },
+        "out_depression": {
+          "outcome": "Depressive Episode (F32) — strukturierte Intervention",
+          "empfehlung": [
+            "PHQ-A durchführen (Schweregrad bestimmen)",
+            "Verhaltensaktivierung beginnen",
+            "Sicherheitsplan vorsorglich erstellen",
+            "Wöchentliche Begleitung",
+            "Bei mittelschwer-schwer: Therapie-Indikation"
+          ],
+          "module": ["screening-basics", "motiv-interview"]
+        }
+      }
+    },
+    {
+      "id": "selbstverletzung",
+      "titel": "Selbstverletzung",
+      "icon": "🩸",
+      "intro": "Ein Klient hat Selbstverletzungen. Welche Funktion hat das Verhalten und welche Intervention passt?",
+      "start": "q1",
+      "nodes": {
+        "q1": {
+          "frage": "Mit welcher Funktion verletzt sich der Klient?",
+          "optionen": [
+            { "label": "Spannungsabbau (zu viel Druck)", "next": "out_spannung" },
+            { "label": "Bestrafung (Schuld, Selbsthass)", "next": "out_schuld" },
+            { "label": "Dissoziation überwinden ('etwas spüren')", "next": "out_diss" },
+            { "label": "Hilferuf / Kommunikation", "next": "out_kommunikation" }
+          ]
+        },
+        "out_spannung": {
+          "outcome": "Funktion: Affekt-Regulation",
+          "empfehlung": [
+            "Alternative Skills: Eiswürfel, kalte Dusche, intensive Bewegung",
+            "DBT-Skills (TIPP) einführen",
+            "Trigger-Analyse: Wann steigt die Spannung?",
+            "Frühwarn-System aufbauen"
+          ],
+          "module": ["emotionsregulation"]
+        },
+        "out_schuld": {
+          "outcome": "Funktion: Selbstbestrafung — komplexer Pfad",
+          "empfehlung": [
+            "Trauma-Anamnese (häufig: Missbrauch, Vernachlässigung)",
+            "Schemata identifizieren (Schemtherapie)",
+            "Selbstmitgefühl aufbauen (Neff-Übungen)",
+            "Therapie-Empfehlung dringend"
+          ],
+          "module": ["trauma-informed"]
+        },
+        "out_diss": {
+          "outcome": "Funktion: Anti-Dissoziation — Trauma-Indikator",
+          "empfehlung": [
+            "Trauma-Screening (PCL-5)",
+            "Stabilisierung vor Exposition (Phase 1!)",
+            "Grounding-Techniken (5-4-3-2-1, Body-Scan)",
+            "Spezialisierte Trauma-Therapie"
+          ],
+          "module": ["trauma-informed"]
+        },
+        "out_kommunikation": {
+          "outcome": "Funktion: Hilferuf / Beziehungs-Signal",
+          "empfehlung": [
+            "Konflikt-Anamnese (Familie, Schule, Beziehungen)",
+            "Bezugspersonen-System aktivieren",
+            "Kommunikations-Skills aufbauen (Ich-Botschaften)",
+            "Verstärkungs-Falle vermeiden: Aufmerksamkeit für Selbstausdruck statt Verletzung"
+          ],
+          "module": ["motiv-interview"]
+        }
+      }
+    },
+    {
+      "id": "schulverweigerung",
+      "titel": "Schulverweigerung",
+      "icon": "🏫",
+      "intro": "Klient geht nicht mehr in die Schule. Welcher Typ liegt vor und welche Strategie passt?",
+      "start": "q1",
+      "nodes": {
+        "q1": {
+          "frage": "Was steht im Vordergrund?",
+          "optionen": [
+            { "label": "Angst (Panik, Bauchschmerzen morgens)", "next": "q2_angst" },
+            { "label": "Mobbing / Konflikt mit Mitschülern", "next": "out_mobbing" },
+            { "label": "Familie hält zurück (z.B. Mama braucht Klient zuhause)", "next": "out_parentif" },
+            { "label": "Demotivation, sieht keinen Sinn", "next": "out_demotiv" }
+          ]
+        },
+        "q2_angst": {
+          "frage": "Beginnt die Angst beim Verlassen des Hauses?",
+          "optionen": [
+            { "label": "Ja — Trennungsangst", "next": "out_trennung" },
+            { "label": "Nein — eher in der Schule selbst", "next": "out_schulangst" }
+          ]
+        },
+        "out_trennung": {
+          "outcome": "Trennungsangst (F93.0)",
+          "empfehlung": [
+            "Schritt-für-Schritt-Exposition",
+            "Eltern coachen (kein Helikopter, aber Sicherheit)",
+            "Kurze Schulbesuche zu Beginn",
+            "Therapie KVT-basiert"
+          ]
+        },
+        "out_schulangst": {
+          "outcome": "Schul-spezifische Angst (oft soziale Phobie)",
+          "empfehlung": [
+            "GAD-7 / Soziale-Phobie-Screening",
+            "Schulpsychologe einbeziehen",
+            "Sichere Person in der Schule finden",
+            "Expositionstherapie"
+          ]
+        },
+        "out_mobbing": {
+          "outcome": "Mobbing-Konstellation",
+          "empfehlung": [
+            "Mobbing-Screening: Häufigkeit, Methode, Täter",
+            "Schulinterne Mobbing-Stelle informieren",
+            "Stärkung des Klienten (kein 'durchhalten')",
+            "Bei massivem Mobbing: Schulwechsel erwägen"
+          ]
+        },
+        "out_parentif": {
+          "outcome": "Parentifizierung — komplexes Familiensystem",
+          "empfehlung": [
+            "Familien-Anamnese (kranke/abhängige Eltern?)",
+            "Helfersystem für die Familie aufbauen (entlastet den Klienten)",
+            "ONE / Sozialdienst einbeziehen",
+            "Kind-sein ermöglichen"
+          ]
+        },
+        "out_demotiv": {
+          "outcome": "Motivationskrise",
+          "empfehlung": [
+            "MI-Gespräch: Was ist dem Klienten wichtig?",
+            "Diskrepanz: Werte vs. aktuelles Verhalten",
+            "Realistische Ziele aushandeln",
+            "Erfolge sichtbar machen"
+          ],
+          "module": ["motiv-interview"]
+        }
+      }
+    }
+  ]
+}

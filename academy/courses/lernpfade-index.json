@@ -1,0 +1,193 @@
+{
+  "version": 1,
+  "lernpfade": [
+    {
+      "id": "trauma-informed",
+      "titel": "Trauma-informiert arbeiten",
+      "icon": "🌱",
+      "kategorie": "Klinik",
+      "dauer": "ca. 2 Stunden",
+      "xp": 200,
+      "beschreibung": "Grundlagen traumasensibler Begleitung. Polyvagaltheorie, Window of Tolerance, Stabilisierung vor Exposition.",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Was ist Trauma?",
+          "inhalt": "Trauma ist eine überwältigende Erfahrung, die das Verarbeitungssystem überfordert. Nach van der Kolk (2014) wird Trauma im Körper gespeichert — nicht als bewusste Erinnerung, sondern als Erregungsmuster. Das Nervensystem bleibt im 'Überlebensmodus' (Fight/Flight/Freeze) hängen, auch wenn die Gefahr vorbei ist."
+        },
+        {
+          "id": 2, "typ": "lektuere", "titel": "Window of Tolerance (Siegel 1999)",
+          "inhalt": "Im 'Toleranzfenster' kann ein Mensch denken, fühlen und handeln. Über dem Fenster: Hyperarousal (Panik, Wut). Unter dem Fenster: Hypoarousal (Erstarrung, Dissoziation). Ziel der Begleitung: das Fenster vergrößern."
+        },
+        {
+          "id": 3, "typ": "quiz", "titel": "Quiz: Window of Tolerance",
+          "fragen": [
+            {
+              "frage": "Eine Schülerin starrt apathisch in die Wand und reagiert nicht. Wo ist sie?",
+              "optionen": ["Im Toleranzfenster", "Hyperarousal", "Hypoarousal", "Normal entspannt"],
+              "korrekt": 2,
+              "erklaerung": "Apathie und fehlende Reaktion sind Zeichen für Hypoarousal — das Nervensystem hat 'abgeschaltet' (Freeze)."
+            },
+            {
+              "frage": "Welche Intervention passt bei Hyperarousal?",
+              "optionen": ["Konfrontation mit Trauma", "Aktivierung", "Beruhigung & Atemübung", "Wegschicken"],
+              "korrekt": 2,
+              "erklaerung": "Bei Hyperarousal hilft Beruhigung (langsame Atmung, sicherer Ort, sanfte Stimme), nicht weitere Aktivierung."
+            }
+          ]
+        },
+        {
+          "id": 4, "typ": "lektuere", "titel": "3 Phasen der Traumatherapie (Herman 1992)",
+          "inhalt": "Phase 1: Sicherheit & Stabilisierung. Phase 2: Erinnerung & Trauer. Phase 3: Reintegration. Wichtig: Phase 1 muss abgeschlossen sein, bevor Phase 2 beginnt. Sonst: Re-Traumatisierung."
+        },
+        {
+          "id": 5, "typ": "reflexion", "titel": "Reflexion",
+          "frage": "Welcher deiner Klienten könnte gerade in Phase 1 sein und braucht primär Stabilisierung statt Trauma-Bearbeitung?"
+        }
+      ]
+    },
+    {
+      "id": "motiv-interview",
+      "titel": "Motivational Interviewing",
+      "icon": "💬",
+      "kategorie": "Gesprächsführung",
+      "dauer": "ca. 90 Min",
+      "xp": 150,
+      "beschreibung": "Klientenzentrierte, direktive Methode zur Stärkung der Veränderungsmotivation (Miller & Rollnick 2013).",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Der MI-Geist",
+          "inhalt": "MI basiert auf 4 Säulen: Partnerschaft (mit, nicht an), Akzeptanz (Autonomie respektieren), Empathie (echtes Verstehen), Evokation (aus dem Klienten herausholen, nicht hineinfüllen)."
+        },
+        {
+          "id": 2, "typ": "lektuere", "titel": "OARS — Die 4 Kerntechniken",
+          "inhalt": "Open-ended questions (offene Fragen), Affirmations (Bestärkungen), Reflective listening (Spiegeln), Summaries (Zusammenfassen). Diese 4 Techniken bilden das Handwerkszeug."
+        },
+        {
+          "id": 3, "typ": "quiz", "titel": "Quiz: OARS-Techniken",
+          "fragen": [
+            {
+              "frage": "Welche Frage ist offen (open-ended)?",
+              "optionen": ["Trinkst du oft?", "Magst du Sport?", "Wie ist es für dich, wenn deine Eltern streiten?", "Hast du Freunde?"],
+              "korrekt": 2,
+              "erklaerung": "Open-ended Fragen können nicht mit Ja/Nein beantwortet werden und laden zur Erzählung ein."
+            },
+            {
+              "frage": "Was ist 'Change Talk'?",
+              "optionen": ["Wenn der Klient über Veränderung redet", "Eine MI-Technik", "Ein Therapie-Ziel", "Ein Konflikt"],
+              "korrekt": 0,
+              "erklaerung": "Change Talk ist alle Sprache des Klienten, die Veränderung in eine bestimmte Richtung andeutet — Wunsch, Fähigkeit, Gründe, Bedarf, Verpflichtung."
+            }
+          ]
+        },
+        {
+          "id": 4, "typ": "lektuere", "titel": "Ambivalenz halten",
+          "inhalt": "Klienten sind oft ambivalent ('Ich will aufhören, aber...'). Klassischer Fehler: Mit dem Klienten gegen die Sucht argumentieren. Besser: Ambivalenz reflektieren, beide Seiten sehen lassen, Diskrepanz zwischen Werten und Verhalten herausarbeiten."
+        },
+        {
+          "id": 5, "typ": "reflexion", "titel": "Praxis-Übung",
+          "frage": "Bei welchem aktuellen Klient würdest du gerne MI ausprobieren — und welche OARS-Technik beginnst du?"
+        }
+      ]
+    },
+    {
+      "id": "emotionsregulation",
+      "titel": "Emotionsregulation verstehen",
+      "icon": "🌊",
+      "kategorie": "Klinik",
+      "dauer": "ca. 75 Min",
+      "xp": 150,
+      "beschreibung": "Wie Emotionen entstehen, warum sie eskalieren und welche evidenzbasierten Strategien helfen (Gross 1998, DBT).",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Das Prozess-Modell (Gross 1998)",
+          "inhalt": "Emotion entsteht in 5 Phasen: Situation → Aufmerksamkeit → Bewertung → Reaktion. An jeder Phase kann interveniert werden. Frühe Interventionen (Situation/Aufmerksamkeit) sind effektiver als späte (Reaktions-Unterdrückung)."
+        },
+        {
+          "id": 2, "typ": "lektuere", "titel": "Die DBT-Skills",
+          "inhalt": "Linehan (1993) entwickelte 4 Skill-Module: Achtsamkeit, Distress Tolerance (TIPP), Emotion Regulation (PLEASE, Opposite Action), Interpersonal Effectiveness (DEAR MAN). Empirisch belegt für Borderline, gut adaptierbar für Adoleszente."
+        },
+        {
+          "id": 3, "typ": "quiz", "titel": "Quiz: Emotionsregulation",
+          "fragen": [
+            {
+              "frage": "Welcher Skill nutzt biologische Stressreduktion durch Kälte?",
+              "optionen": ["DEAR MAN", "TIPP", "PLEASE", "Opposite Action"],
+              "korrekt": 1,
+              "erklaerung": "TIPP = Temperatur (kalt), Intensive Bewegung, Paced Breathing, Paired Muscle Relaxation. Kältereiz aktiviert Dive-Reflex und beruhigt schnell."
+            },
+            {
+              "frage": "Was bedeutet 'Opposite Action'?",
+              "optionen": ["Gegen den Klienten", "Das Gegenteil dessen tun, was die Emotion will", "Streit beilegen", "Konflikt vermeiden"],
+              "korrekt": 1,
+              "erklaerung": "Wenn die Emotion (z.B. Angst) zur Vermeidung drängt, hilft das Gegenteil (Annäherung). Bei Wut: Sanftheit. Bei Scham: Sich zeigen."
+            }
+          ]
+        },
+        {
+          "id": 4, "typ": "lektuere", "titel": "Co-Regulation vor Selbstregulation",
+          "inhalt": "Adoleszente haben noch unreife präfrontale Cortex-Funktion. Sie regulieren Emotionen primär durch Beziehung (Co-Regulation). Eine ruhige, präsente Bezugsperson ist die wirksamste Intervention bei akutem Distress."
+        }
+      ]
+    },
+    {
+      "id": "screening-basics",
+      "titel": "Screening-Grundlagen",
+      "icon": "🔍",
+      "kategorie": "Diagnostik",
+      "dauer": "ca. 60 Min",
+      "xp": 120,
+      "beschreibung": "Validierte Screening-Instrumente verstehen, anwenden und interpretieren. PHQ-A, GAD-7, PCL-5, C-SSRS.",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Sensitivität vs. Spezifität",
+          "inhalt": "Sensitivität = wie viele tatsächlich Erkrankte werden erkannt (richtig-positiv). Spezifität = wie viele Gesunde werden korrekt ausgeschlossen (richtig-negativ). Hohe Sensitivität ist wichtiger bei lebensbedrohlichen Diagnosen (Suizid)."
+        },
+        {
+          "id": 2, "typ": "lektuere", "titel": "Cutoff-Werte verstehen",
+          "inhalt": "PHQ-A ≥ 10: leichte Depression, ≥ 15: mittelschwere, ≥ 20: schwere. GAD-7 ≥ 10: klinisch relevante Angst. PCL-5 ≥ 33: PTBS-Verdacht. Wichtig: Cutoffs sind keine Diagnose, sondern ein Anhaltspunkt für vertiefte Diagnostik."
+        },
+        {
+          "id": 3, "typ": "quiz", "titel": "Quiz: Screening-Cutoffs",
+          "fragen": [
+            {
+              "frage": "Ein Jugendlicher hat PHQ-A 18. Was bedeutet das?",
+              "optionen": ["Keine Depression", "Leichte Depression", "Mittelschwere Depression", "Schwere Depression"],
+              "korrekt": 2,
+              "erklaerung": "PHQ-A 15-19 entspricht mittelschwerer Depression. Klinische Abklärung empfohlen."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "krise-management",
+      "titel": "Krisenmanagement",
+      "icon": "🚨",
+      "kategorie": "Krisen",
+      "dauer": "ca. 45 Min",
+      "xp": 100,
+      "beschreibung": "Akut-Interventionen bei Suizidalität, Selbstverletzung, Eskalation. Stanley-Brown Safety Plan.",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Mythen über Suizid-Ansprache",
+          "inhalt": "Mythos: 'Wenn ich nach Suizid frage, bringe ich auf die Idee.' Falsch! Studien zeigen: Direktes, ruhiges Ansprechen senkt Risiko (Dazzi et al. 2014). Klienten fühlen sich gehört, nicht angetrieben."
+        },
+        {
+          "id": 2, "typ": "lektuere", "titel": "Stanley-Brown Safety Plan",
+          "inhalt": "6 Schritte: Warnsignale, eigene Coping-Strategien, soziale Ablenkung, Vertrauenspersonen, Profis kontaktieren, Means Restriction. Goldstandard der Suizidprävention. Wallet-Karte oder Smartphone-Foto immer dabei."
+        },
+        {
+          "id": 3, "typ": "quiz", "titel": "Quiz: Krise",
+          "fragen": [
+            {
+              "frage": "Ein Klient nennt eine konkrete Methode und Zeitpunkt. Wie reagieren?",
+              "optionen": ["Termin für nächste Woche", "Sofort nicht allein lassen + psychiatrische Abklärung", "Eltern fragen", "Beruhigen, abwarten"],
+              "korrekt": 1,
+              "erklaerung": "Konkrete Methode + Zeitpunkt = HÖCHSTES Risiko. Sofortige Intervention erforderlich. CHNP, CHL oder 112."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
