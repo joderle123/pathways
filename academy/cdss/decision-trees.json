@@ -283,5 +283,91 @@
         }
       }
     }
+    },
+    {
+      "id": "aggression",
+      "titel": "Aggression & Gewalt bei Jugendlichen",
+      "icon": "😡",
+      "intro": "Ein Klient zeigt aggressives Verhalten. Deeskalation oder Eskalation? Was steckt dahinter?",
+      "start": "q1",
+      "nodes": {
+        "q1": {
+          "frage": "Ist der Klient akut aggressiv?",
+          "optionen": [
+            { "label": "Ja — akute Eskalation", "next": "out_deeskalation" },
+            { "label": "Nein — berichtet über vergangene Aggression", "next": "q2" }
+          ]
+        },
+        "q2": {
+          "frage": "Welcher Kontext?",
+          "optionen": [
+            { "label": "Reaktive Aggression (Provokation → Wut → Handlung)", "next": "q3_reaktiv" },
+            { "label": "Proaktive Aggression (geplant, instrumentell, zur Zielerreichung)", "next": "out_conduct" },
+            { "label": "Unklar", "next": "q3_unklar" }
+          ]
+        },
+        "q3_reaktiv": {
+          "frage": "Gibt es Trauma-Hinweise?",
+          "optionen": [
+            { "label": "Ja — Trauma-Hintergrund bekannt", "next": "out_trauma_aggression" },
+            { "label": "Nein — eher Frustration/Impulskontrolle", "next": "out_dbt_skills" }
+          ]
+        },
+        "q3_unklar": {
+          "frage": "SDQ Conduct-Subskala oder ähnliche Daten vorhanden?",
+          "optionen": [
+            { "label": "Ja, Conduct ≥ 4", "next": "out_conduct" },
+            { "label": "Nein / unauffällig", "next": "out_dbt_skills" }
+          ]
+        },
+        "out_deeskalation": {
+          "ergebnis": "Akute Deeskalation — SAFE-Protokoll",
+          "empfehlung": [
+            "Eigene Sicherheit zuerst — Distanz, Fluchtweg sichern",
+            "Ruhig, langsam sprechen. Keine Drohungen, keine Ultimaten",
+            "Gefühle benennen: 'Ich sehe, du bist sehr wütend'",
+            "Pause anbieten: 'Magst du 5 Minuten rausgehen?'",
+            "Bei physischer Gewalt: Raum verlassen, ggf. Polizei (113)",
+            "Nach Beruhigung: Ursache klären (Trigger, Substanzen, Trauma)"
+          ]
+        },
+        "out_trauma_aggression": {
+          "ergebnis": "Trauma-bedingte Aggression → Stabilisierung",
+          "empfehlung": [
+            "Aggression als Überlebensreaktion verstehen (Fight-Response, Porges)",
+            "Nicht bestrafen — regulieren. Das Nervensystem ist aktiviert, nicht der Wille",
+            "Trigger-Analyse: Was hat die Aggression ausgelöst? (Sensorisch, relational, kontextuell)",
+            "Sicherheit ZUERST (Herman Phase 1), dann Trauma-Bearbeitung",
+            "DBT-Skills für Distress Tolerance (TIPP, Opposite Action)",
+            "PCL-5 durchführen wenn noch nicht geschehen"
+          ],
+          "module": ["trauma-informed", "emotionsregulation"]
+        },
+        "out_dbt_skills": {
+          "ergebnis": "Impulskontrolle & Emotionsregulation (DBT-Skills)",
+          "empfehlung": [
+            "Funktionsanalyse: Wann, wo, mit wem eskaliert es?",
+            "DBT TIPP-Skills für akute Situationen (Temperatur, Intensive Bewegung, Paced Breathing)",
+            "Wut-Protokoll: Trigger → Gedanke → Emotion → Handlung → Konsequenz",
+            "Opposite Action: Bei Wut → Sanftheit üben (Stimme senken, Hände öffnen)",
+            "Eltern-Coaching: Wie reagieren Eltern auf Aggression? (Eskalationszirkel durchbrechen)",
+            "Re-Assessment in 4 Wochen (SDQ)"
+          ],
+          "module": ["emotionsregulation"]
+        },
+        "out_conduct": {
+          "ergebnis": "Störung des Sozialverhaltens (F91) — strukturiertes Vorgehen",
+          "empfehlung": [
+            "Multisystemische Therapie (MST, Henggeler) erwägen — stärkste Evidenz",
+            "Funktionelle Familientherapie (FFT) als Alternative",
+            "Verhaltensvertrag mit klaren Konsequenzen (positiv + negativ)",
+            "Schule einbeziehen: Anti-Gewalt-Training, Classroom Management",
+            "Psychiatrische Abklärung: ADHS-Komorbidität? (häufig bei F91)",
+            "Risikofaktoren: Peer-Gruppe, Substanzkonsum, Waffenzugang"
+          ],
+          "module": ["emotionsregulation"]
+        }
+      }
+    }
   ]
 }
