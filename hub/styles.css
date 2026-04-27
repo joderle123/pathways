@@ -478,6 +478,18 @@ input:focus, textarea:focus, select:focus {
   margin-bottom: var(--space-3);
 }
 
+/* ── Helfer-Netzwerk Karten ────────────────────────────────── */
+.hub-helfer-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-3);
+}
+.hub-helfer-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: var(--space-3);
+  transition: var(--transition);
+}
+.hub-helfer-card:hover { box-shadow: var(--shadow-md); }
+
 /* ============================================================
    Crisis-Bereich (integriert aus ehem. CRISIS-App)
    ============================================================ */

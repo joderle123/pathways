@@ -183,42 +183,206 @@ const ProfilView = (function () {
     render(schuelerId);
   }
 
-  // ─── Tab: Helfer ────────────────────────────────────────────
+  // ─── Tab: Helfer-Netzwerk (Manifest: interaktive Karte + Beziehungsqualität) ──
+  const BEZ_QUALITAET = {
+    eng:        { icon: '💚', label: 'Eng', farbe: '#10B981' },
+    neutral:    { icon: '🔵', label: 'Neutral', farbe: '#3B82F6' },
+    distanziert:{ icon: '🟡', label: 'Distanziert', farbe: '#F59E0B' },
+    konflikt:   { icon: '🔴', label: 'Konflikt', farbe: '#DC2626' },
+  };
+
+  const HELFER_KATEGORIEN = [
+    { id: 'familie', label: '👨‍👩‍👧 Familie', rollen: ['Mutter', 'Vater', 'Stiefvater', 'Stiefmutter', 'Großeltern', 'Geschwister', 'Pflegeeltern'] },
+    { id: 'schule', label: '🏫 Schule', rollen: ['Klassenlehrer', 'Schulpsychologe', 'SePAS', 'Direktor', 'SSE-Koordinator'] },
+    { id: 'medizin', label: '🏥 Medizin/Therapie', rollen: ['Psychiater', 'Kinderarzt', 'Therapeut', 'Logopäde', 'Ergotherapeut'] },
+    { id: 'sozial', label: '🤝 Soziale Dienste', rollen: ['SCAS', 'ONE', 'SSM', 'Jugendgericht', 'Vormund'] },
+    { id: 'freizeit', label: '⚽ Freizeit/Sonstige', rollen: ['Trainer', 'Mentor', 'Nachbar', 'Freund', 'Seelsorger'] },
+  ];
+
   function renderHelferTab(s) {
     const helfer = DB.getHelfer(s.id);
+
+    // Gruppieren nach Kategorie
+    const gruppen = {};
+    HELFER_KATEGORIEN.forEach(k => gruppen[k.id] = []);
+    helfer.forEach(h => {
+      const kat = h.kategorie || 'freizeit';
+      if (!gruppen[kat]) gruppen[kat] = [];
+      gruppen[kat].push(h);
+    });
+
+    // Wer braucht ein Update? (>30 Tage seit letztem Kontakt)
+    const brauchtUpdate = helfer.filter(h => {
+      if (!h.letzterKontakt) return true;
+      const tage = Utils.daysBetween(h.letzterKontakt, new Date().toISOString());
+      return tage > 30;
+    });
+
     return `
       <div class="pw-section">
         <div class="pw-section-header">
-          <div class="pw-section-title">Helfer-Netzwerk</div>
-          <button class="btn btn-primary" onclick="ProfilView.addHelfer('${s.id}')">+ Helfer</button>
+          <div class="pw-section-title">Helfer-Netzwerk (${helfer.length})</div>
+          <button class="btn btn-primary" onclick="ProfilView.addHelfer('${s.id}')">+ Helfer hinzufügen</button>
         </div>
+
+        ${brauchtUpdate.length > 0 ? `
+          <div style="background: #FEF3C7; border: 1px solid #F59E0B; border-radius: var(--radius-sm); padding: var(--space-3); margin-bottom: var(--space-4); font-size: 14px;">
+            ⚠️ <strong>${brauchtUpdate.length} Kontakt(e)</strong> seit über 30 Tagen ohne Update:
+            ${brauchtUpdate.slice(0, 3).map(h => Utils.escapeHtml(h.name)).join(', ')}${brauchtUpdate.length > 3 ? '…' : ''}
+          </div>
+        ` : ''}
+
         ${helfer.length === 0
           ? `<div class="pw-empty"><div class="pw-empty-icon">🤝</div><p>Noch kein Helfer eingetragen.</p></div>`
-          : `<div class="pw-list">${helfer.map(h => `
-              <div class="pw-list-item">
-                <div>
-                  <strong>${Utils.escapeHtml(h.name || '?')}</strong>
-                  ${h.rolle ? `<span style="color: var(--text-muted); margin-left: 6px;">— ${Utils.escapeHtml(h.rolle)}</span>` : ''}
-                  <div style="font-size: var(--text-xs); color: var(--text-muted); margin-top: 2px;">
-                    ${h.institution ? Utils.escapeHtml(h.institution) : ''}
-                    ${h.telefon ? ' · ☎ ' + Utils.escapeHtml(h.telefon) : ''}
-                    ${h.email ? ' · ✉ ' + Utils.escapeHtml(h.email) : ''}
+          : HELFER_KATEGORIEN.map(kat => {
+              const items = gruppen[kat.id] || [];
+              if (!items.length) return '';
+              return `
+                <div style="margin-bottom: var(--space-4);">
+                  <h3 style="font-size: 15px; margin-bottom: var(--space-2);">${kat.label}</h3>
+                  <div class="hub-helfer-grid">
+                    ${items.map(h => {
+                      const bez = BEZ_QUALITAET[h.beziehung || 'neutral'];
+                      const tage = h.letzterKontakt ? Utils.daysBetween(h.letzterKontakt, new Date().toISOString()) : null;
+                      const altKontakt = tage !== null && tage > 30;
+                      return `
+                        <div class="hub-helfer-card" style="border-left: 4px solid ${bez.farbe};">
+                          <div style="display: flex; justify-content: space-between; align-items: start;">
+                            <div>
+                              <div style="font-weight: var(--font-weight-semibold);">${Utils.escapeHtml(h.name || '?')}</div>
+                              <div style="font-size: 13px; color: var(--text-muted);">${Utils.escapeHtml(h.rolle || '')}</div>
+                            </div>
+                            <div style="display: flex; gap: 4px;">
+                              <span title="Beziehungsqualität: ${bez.label}" style="font-size: 16px;">${bez.icon}</span>
+                              <button class="pw-btn-icon" onclick="ProfilView.editHelfer('${h.id}','${s.id}')" title="Bearbeiten" style="font-size: 12px;">✏️</button>
+                              <button class="pw-btn-icon" onclick="ProfilView.deleteHelfer('${h.id}','${s.id}')" title="Löschen" style="font-size: 12px;">🗑️</button>
+                            </div>
+                          </div>
+                          <div style="font-size: 12px; color: var(--text-muted); margin-top: var(--space-2);">
+                            ${h.institution ? Utils.escapeHtml(h.institution) + ' · ' : ''}
+                            ${h.telefon ? '☎ ' + Utils.escapeHtml(h.telefon) + ' · ' : ''}
+                            ${h.email ? '✉ ' + Utils.escapeHtml(h.email) : ''}
+                          </div>
+                          <div style="display: flex; justify-content: space-between; margin-top: var(--space-2); font-size: 12px;">
+                            <span style="color: ${altKontakt ? '#DC2626' : 'var(--text-muted)'};">
+                              ${tage !== null ? (altKontakt ? `⚠️ ${tage}d ohne Kontakt` : `Kontakt vor ${tage}d`) : 'Kein Kontakt notiert'}
+                            </span>
+                            <span>${h.informiert ? '✓ informiert' : ''}</span>
+                          </div>
+                          ${h.notiz ? `<div style="font-size: 12px; font-style: italic; color: var(--text-secondary); margin-top: var(--space-1); padding-top: var(--space-1); border-top: 1px solid var(--border);">${Utils.escapeHtml(Utils.truncate(h.notiz, 80))}</div>` : ''}
+                        </div>
+                      `;
+                    }).join('')}
                   </div>
                 </div>
-                <button class="pw-btn-icon" onclick="ProfilView.deleteHelfer('${h.id}','${s.id}')" title="Löschen" style="color: var(--text-muted);">🗑️</button>
-              </div>`).join('')}</div>`
+              `;
+            }).join('')
         }
       </div>
     `;
   }
 
   function addHelfer(schuelerId) {
-    const name = prompt('Name des Helfers?');
-    if (!name) return;
-    const rolle = prompt('Rolle? (z.B. Psychiater, Schulberater, Sozialarbeiter)') || '';
-    const telefon = prompt('Telefon? (optional)') || '';
-    DB.addHelfer({ schuelerId, name, rolle, telefon });
+    const container = document.getElementById('view-container');
+    const formHtml = `
+      <div class="pw-section">
+        <h2>Neuer Helfer</h2>
+        <div class="pw-form-row"><label>Name *<input id="hf-name" required></label><label>Rolle<input id="hf-rolle" placeholder="z.B. Psychiater"></label></div>
+        <div class="pw-form-row">
+          <label>Kategorie
+            <select id="hf-kategorie">
+              ${HELFER_KATEGORIEN.map(k => `<option value="${k.id}">${k.label}</option>`).join('')}
+            </select>
+          </label>
+          <label>Beziehungsqualität
+            <select id="hf-beziehung">
+              ${Object.entries(BEZ_QUALITAET).map(([k, v]) => `<option value="${k}">${v.icon} ${v.label}</option>`).join('')}
+            </select>
+          </label>
+        </div>
+        <div class="pw-form-row"><label>Institution<input id="hf-institution" placeholder="z.B. CHNP"></label><label>Telefon<input id="hf-telefon"></label></div>
+        <div class="pw-form-row"><label>E-Mail<input id="hf-email" type="email"></label><label>Letzter Kontakt<input id="hf-kontakt" type="date" value="${new Date().toISOString().split('T')[0]}"></label></div>
+        <label>Notiz<textarea id="hf-notiz" rows="2"></textarea></label>
+        <div style="margin-top: var(--space-3); display: flex; gap: var(--space-2);">
+          <button class="btn btn-primary" onclick="ProfilView.saveNewHelfer('${schuelerId}')">Speichern</button>
+          <button class="btn" onclick="ProfilView.render('${schuelerId}')">Abbrechen</button>
+        </div>
+      </div>
+    `;
+    container.innerHTML = formHtml;
+    setTimeout(() => document.getElementById('hf-name').focus(), 50);
+  }
+
+  function saveNewHelfer(schuelerId) {
+    const name = document.getElementById('hf-name').value.trim();
+    if (!name) { showToast('Name ist Pflicht', 'error'); return; }
+    DB.addHelfer({
+      schuelerId,
+      name,
+      rolle: document.getElementById('hf-rolle').value.trim(),
+      kategorie: document.getElementById('hf-kategorie').value,
+      beziehung: document.getElementById('hf-beziehung').value,
+      institution: document.getElementById('hf-institution').value.trim(),
+      telefon: document.getElementById('hf-telefon').value.trim(),
+      email: document.getElementById('hf-email').value.trim(),
+      letzterKontakt: document.getElementById('hf-kontakt').value || null,
+      notiz: document.getElementById('hf-notiz').value.trim(),
+      informiert: false,
+    });
     showToast('Helfer hinzugefügt', 'ok');
+    activeTab = 'helfer';
+    render(schuelerId);
+  }
+
+  function editHelfer(helferId, schuelerId) {
+    const h = DB.getHelfer(schuelerId).find(x => x.id === helferId);
+    if (!h) return;
+    const container = document.getElementById('view-container');
+    container.innerHTML = `
+      <div class="pw-section">
+        <h2>Helfer bearbeiten</h2>
+        <div class="pw-form-row"><label>Name *<input id="hf-name" value="${Utils.escapeHtml(h.name || '')}"></label><label>Rolle<input id="hf-rolle" value="${Utils.escapeHtml(h.rolle || '')}"></label></div>
+        <div class="pw-form-row">
+          <label>Kategorie
+            <select id="hf-kategorie">
+              ${HELFER_KATEGORIEN.map(k => `<option value="${k.id}" ${h.kategorie === k.id ? 'selected' : ''}>${k.label}</option>`).join('')}
+            </select>
+          </label>
+          <label>Beziehungsqualität
+            <select id="hf-beziehung">
+              ${Object.entries(BEZ_QUALITAET).map(([k, v]) => `<option value="${k}" ${h.beziehung === k ? 'selected' : ''}>${v.icon} ${v.label}</option>`).join('')}
+            </select>
+          </label>
+        </div>
+        <div class="pw-form-row"><label>Institution<input id="hf-institution" value="${Utils.escapeHtml(h.institution || '')}"></label><label>Telefon<input id="hf-telefon" value="${Utils.escapeHtml(h.telefon || '')}"></label></div>
+        <div class="pw-form-row"><label>E-Mail<input id="hf-email" value="${Utils.escapeHtml(h.email || '')}"></label><label>Letzter Kontakt<input id="hf-kontakt" type="date" value="${h.letzterKontakt || ''}"></label></div>
+        <label>Notiz<textarea id="hf-notiz" rows="2">${Utils.escapeHtml(h.notiz || '')}</textarea></label>
+        <label style="display: flex; gap: var(--space-2); align-items: center; margin-top: var(--space-2);"><input type="checkbox" id="hf-informiert" ${h.informiert ? 'checked' : ''}> Ist über den Fall informiert</label>
+        <div style="margin-top: var(--space-3); display: flex; gap: var(--space-2);">
+          <button class="btn btn-primary" onclick="ProfilView.saveEditHelfer('${helferId}','${schuelerId}')">Speichern</button>
+          <button class="btn" onclick="ProfilView.render('${schuelerId}')">Abbrechen</button>
+        </div>
+      </div>
+    `;
+  }
+
+  function saveEditHelfer(helferId, schuelerId) {
+    const name = document.getElementById('hf-name').value.trim();
+    if (!name) { showToast('Name ist Pflicht', 'error'); return; }
+    DB.updateHelfer(helferId, {
+      name,
+      rolle: document.getElementById('hf-rolle').value.trim(),
+      kategorie: document.getElementById('hf-kategorie').value,
+      beziehung: document.getElementById('hf-beziehung').value,
+      institution: document.getElementById('hf-institution').value.trim(),
+      telefon: document.getElementById('hf-telefon').value.trim(),
+      email: document.getElementById('hf-email').value.trim(),
+      letzterKontakt: document.getElementById('hf-kontakt').value || null,
+      notiz: document.getElementById('hf-notiz').value.trim(),
+      informiert: document.getElementById('hf-informiert').checked,
+    });
+    showToast('Helfer aktualisiert', 'ok');
+    activeTab = 'helfer';
     render(schuelerId);
   }
 
@@ -405,7 +569,7 @@ const ProfilView = (function () {
 
   return {
     render, setTab,
-    saveAnamnese, addHelfer, deleteHelfer,
+    saveAnamnese, addHelfer, saveNewHelfer, editHelfer, saveEditHelfer, deleteHelfer,
     addKonferenz, addKontakt, exportDsgvo, deleteSchueler,
   };
 })();
