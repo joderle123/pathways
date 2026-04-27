@@ -619,9 +619,17 @@ input:focus, textarea:focus, select:focus {
 .btn-danger:hover { background: var(--danger-dark); }
 
 @media print {
-  .cr-hotlines { border: 2px solid #000; padding: 12px; }
+  .cr-hotlines { border: 2px solid #000; padding: 8px; font-size: 10pt; }
+  .cr-hotlines h2 { font-size: 12pt; }
+  .cr-hotline-num { font-size: 16pt; }
   .cr-tabs, .sp-actions { display: none; }
-  .sp-step { page-break-inside: avoid; border-color: #999; }
+  .sp-step { page-break-inside: avoid; border-color: #999; padding: 8px; margin-bottom: 6px; }
+  .sp-step-title { font-size: 11pt; }
+  .sp-step textarea { border: 1px solid #999; min-height: 40px; font-size: 9pt; }
+  .sp-step-hint { display: none; }
+  .cr-section { padding: 8px; }
+  .cr-section h2 { font-size: 14pt; }
+  .cr-section-intro { font-size: 9pt; padding: 6px; }
 }
 
 @media (max-width: 720px) {
