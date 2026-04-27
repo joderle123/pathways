@@ -77,6 +77,25 @@ function renderPre() {
       </div>
     ` : ''}
 
+    ${(() => {
+      const screenings = DB.getScreenings(APP.schuelerId).filter(x => x.abgeschlossen).sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
+      if (screenings.length > 0) {
+        const tage = Utils.daysBetween(screenings[0].datum, new Date().toISOString());
+        if (tage >= 28) {
+          return `<div style="padding: var(--space-3); background: #DBEAFE; border: 1px solid #3B82F6; border-radius: var(--radius-sm); margin-bottom: var(--space-3); font-size: 14px;">
+            🔍 <strong>Re-Screening empfohlen</strong> — letztes Screening vor ${tage} Tagen (T${screenings.length + 1}).
+            <a href="../claro/?schueler=${APP.schuelerId}&action=neu_screening" target="_blank" style="margin-left: 8px;">→ CLARO öffnen</a>
+          </div>`;
+        }
+      } else {
+        return `<div style="padding: var(--space-3); background: #FEF3C7; border: 1px solid #F59E0B; border-radius: var(--radius-sm); margin-bottom: var(--space-3); font-size: 14px;">
+          🔍 <strong>Noch kein Screening</strong> — Baseline-Assessment (T1) vor der Begleitung empfohlen.
+          <a href="../claro/?schueler=${APP.schuelerId}&action=neu_screening" target="_blank" style="margin-left: 8px;">→ CLARO öffnen</a>
+        </div>`;
+      }
+      return '';
+    })()}
+
     <div class="se-section">
       <h2>📋 Vorbereitung — ${Utils.escapeHtml(`${s?.vorname || ''} ${s?.nachname || ''}`.trim())}</h2>
 
