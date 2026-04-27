@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pathways — Die Vision</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0a14;
+  --ink-warm: #1a1410;
+  --ink-deep: #050508;
+  --cream: #f5f0e8;
+  --cream-soft: #ebe5d9;
+  --paper: #faf7f0;
+  --gold: #d4a93f;
+  --gold-soft: #b8902f;
+  --gold-glow: #f0d680;
+  --coral: #c64f3d;
+  --coral-soft: #e87a5e;
+  --teal: #1e7561;
+  --teal-soft: #4ba893;
+  --sage: #889186;
+  --rust: #a3501f;
+  --plum: #5a3a4f;
+  --line: rgba(212, 169, 63, 0.15);
+  --line-warm: rgba(245, 240, 232, 0.08);
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--ink);
+  color: var(--cream);
+  line-height: 1.6;
+  font-weight: 300;
+  overflow-x: hidden;
+  font-feature-settings: "liga", "kern";
+}
+
+/* ─── COVER ─── */
+.cover {
+  min-height: 100vh;
+  background: var(--ink-deep);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 5vw 3rem;
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(212, 169, 63, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(30, 117, 97, 0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.cover-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(212,169,63,0.035) 1px, transparent 1px);
+  background-size: 100% 12rem;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.cover-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.4);
+  position: relative;
+  z-index: 2;
+}
+
+.cover-top span:first-child {
+  color: var(--gold);
+}
+
+.cover-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  padding: 4rem 0;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 3rem;
+  height: 1px;
+  background: var(--gold);
+}
+
+.cover-title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(3.5rem, 11vw, 9.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  color: var(--cream);
+  max-width: 18ch;
+  margin-bottom: 3rem;
+}
+
+.cover-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold);
+}
+
+.cover-title small {
+  display: block;
+  font-size: 0.4em;
+  letter-spacing: -0.02em;
+  color: var(--sage);
+  margin-top: 1rem;
+  font-weight: 400;
+}
+
+.cover-deck {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.125rem, 1.6vw, 1.5rem);
+  line-height: 1.5;
+  color: rgba(245, 240, 232, 0.7);
+  max-width: 52ch;
+  border-left: 1px solid var(--gold);
+  padding-left: 1.5rem;
+}
+
+.cover-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+  position: relative;
+  z-index: 2;
+}
+
+.cover-meta-label {
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.35);
+  margin-bottom: 0.5rem;
+}
+
+.cover-meta-value {
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+}
+
+/* ─── MANIFESTO ─── */
+.manifesto {
+  background: var(--cream);
+  color: var(--ink);
+  padding: 8rem 5vw;
+  position: relative;
+}
+
+.manifesto-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+}
+
+.manifesto-side {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rust);
+}
+
+.manifesto-side span {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.manifesto-side em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
+  font-weight: 300;
+  margin-top: 1.5rem;
+  display: block;
+  line-height: 1.5;
+}
+
+.manifesto-text {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  line-height: 1.55;
+  color: var(--ink);
+  letter-spacing: -0.011em;
+}
+
+.manifesto-text p {
+  margin-bottom: 1.5rem;
+}
+
+.manifesto-text p:first-child::first-letter {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 4.5rem;
+  line-height: 0.85;
+  float: left;
+  margin-right: 0.75rem;
+  margin-top: 0.5rem;
+  color: var(--gold-soft);
+}
+
+.manifesto-text strong {
+  font-weight: 500;
+  color: var(--ink);
+  font-style: normal;
+}
+
+.manifesto-text em {
+  font-style: italic;
+  color: var(--rust);
+}
+
+/* ─── CONSTELLATION ─── */
+.constellation {
+  background: var(--ink);
+  padding: 8rem 5vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.const-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.const-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.const-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+.const-title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+  max-width: 18ch;
+  margin: 0 auto;
+}
+
+.const-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.const-map {
+  position: relative;
+  background: rgba(245, 240, 232, 0.02);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 4rem 3rem;
+  min-height: 460px;
+}
+
+.const-map-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.const-node {
+  background: var(--ink-deep);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 1.75rem 1.25rem;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.const-node:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.const-node-num {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.const-node-name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+
+.const-node-role {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.875rem;
+  color: var(--sage);
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
+}
+
+.const-node-tags {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line-warm);
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.4);
+  line-height: 1.6;
+}
+
+.const-flow {
+  margin-top: 3rem;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.4);
+}
+
+.const-flow span {
+  color: var(--gold);
+  margin: 0 0.5rem;
+}
+
+/* ─── APP CHAPTER ─── */
+.chapter {
+  padding: 8rem 5vw;
+  position: relative;
+}
+
+.chapter.dark { background: var(--ink); color: var(--cream); }
+.chapter.cream { background: var(--cream); color: var(--ink); }
+.chapter.warm { background: var(--ink-warm); color: var(--cream); }
+
+.chapter-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.chapter-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  margin-bottom: 5rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.chapter.cream .chapter-header { border-bottom-color: rgba(10, 10, 20, 0.1); }
+
+.chapter-side {
+  position: sticky;
+  top: 2rem;
+  align-self: start;
+}
+
+.chapter-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 5rem;
+  line-height: 0.85;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.chapter-tag {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.chapter-name {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  margin-bottom: 1rem;
+}
+
+.chapter.dark .chapter-name,
+.chapter.warm .chapter-name { color: var(--cream); }
+
+.chapter-name em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.chapter-role {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+.chapter.dark .chapter-role,
+.chapter.warm .chapter-role { color: var(--sage); }
+
+.chapter.cream .chapter-role { color: var(--rust); }
+
+.chapter-lead {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+}
+
+.chapter.dark .chapter-lead,
+.chapter.warm .chapter-lead { color: rgba(245, 240, 232, 0.85); }
+
+.chapter-lead p { margin-bottom: 1.5rem; }
+.chapter-lead p:last-child { margin-bottom: 0; }
+
+.chapter-lead strong {
+  font-weight: 500;
+  color: var(--gold);
+}
+
+.chapter.cream .chapter-lead strong { color: var(--rust); }
+
+.chapter-lead em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.chapter.cream .chapter-lead em { color: var(--ink); font-weight: 400; }
+
+/* ─── PILLARS ─── */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--line);
+  margin-bottom: 5rem;
+}
+
+.chapter.cream .pillars { background: rgba(10, 10, 20, 0.1); }
+
+.pillar {
+  padding: 2.5rem 2rem;
+  position: relative;
+}
+
+.chapter.dark .pillar,
+.chapter.warm .pillar { background: var(--ink); }
+
+.chapter.cream .pillar { background: var(--cream); }
+
+.pillar-num {
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.pillar-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.chapter.dark .pillar-title,
+.chapter.warm .pillar-title { color: var(--cream); }
+.chapter.cream .pillar-title { color: var(--ink); }
+
+.pillar-body {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+.chapter.dark .pillar-body,
+.chapter.warm .pillar-body { color: rgba(245, 240, 232, 0.7); }
+.chapter.cream .pillar-body { color: rgba(10, 10, 20, 0.75); }
+
+.pillar-body strong {
+  font-weight: 500;
+}
+
+.chapter.dark .pillar-body strong,
+.chapter.warm .pillar-body strong { color: var(--gold); }
+.chapter.cream .pillar-body strong { color: var(--rust); }
+
+/* ─── SHOWCASE ─── */
+.showcase {
+  background: var(--ink-deep);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 3.5rem;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.chapter.cream .showcase {
+  background: var(--paper);
+  border: 1px solid rgba(10, 10, 20, 0.08);
+  box-shadow: 0 1px 0 rgba(10, 10, 20, 0.04);
+}
+
+.showcase-header {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chapter.cream .showcase-header {
+  border-bottom-color: rgba(10, 10, 20, 0.1);
+  color: var(--rust);
+}
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.showcase-item {
+  border-left: 2px solid var(--gold);
+  padding-left: 1.5rem;
+}
+
+.showcase-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.125rem;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.75rem;
+}
+
+.chapter.dark .showcase-name,
+.chapter.warm .showcase-name { color: var(--cream); }
+.chapter.cream .showcase-name { color: var(--ink); }
+
+.showcase-desc {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.chapter.dark .showcase-desc,
+.chapter.warm .showcase-desc { color: rgba(245, 240, 232, 0.65); }
+.chapter.cream .showcase-desc { color: rgba(10, 10, 20, 0.7); }
+
+/* ─── DISRUPTION CALLOUT ─── */
+.disruption {
+  margin-bottom: 4rem;
+  padding: 3rem 0;
+  border-top: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.disruption-mark {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 5rem;
+  line-height: 1;
+  color: var(--gold);
+}
+
+.disruption-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  line-height: 1.45;
+  letter-spacing: -0.011em;
+}
+
+.chapter.dark .disruption-text,
+.chapter.warm .disruption-text { color: rgba(245, 240, 232, 0.85); }
+
+.chapter.cream .disruption-text { color: var(--ink); }
+
+.disruption-text strong {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--gold);
+}
+
+/* ─── FEATURES LIST ─── */
+.features {
+  margin-bottom: 4rem;
+}
+
+.features-header {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 2rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.chapter.cream .feature { border-bottom-color: rgba(10, 10, 20, 0.08); }
+
+.feature:last-child { border-bottom: none; }
+
+.feature-num {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  color: var(--sage);
+  padding-top: 0.25rem;
+}
+
+.feature-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  letter-spacing: -0.018em;
+  margin-bottom: 0.5rem;
+}
+
+.chapter.dark .feature-title,
+.chapter.warm .feature-title { color: var(--cream); }
+.chapter.cream .feature-title { color: var(--ink); }
+
+.feature-body {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+.chapter.dark .feature-body,
+.chapter.warm .feature-body { color: rgba(245, 240, 232, 0.7); }
+.chapter.cream .feature-body { color: rgba(10, 10, 20, 0.7); }
+
+.feature-body em {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--gold);
+}
+
+.chapter.cream .feature-body em { color: var(--rust); }
+
+/* ─── INTERLUDE (between chapters) ─── */
+.interlude {
+  background: var(--ink-warm);
+  padding: 6rem 5vw;
+  text-align: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.interlude-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  max-width: 36ch;
+  margin: 0 auto 1.5rem;
+}
+
+.interlude-quote em {
+  color: var(--gold);
+}
+
+.interlude-attr {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+
+/* ─── CLOSING ─── */
+.closing {
+  background: var(--ink-deep);
+  padding: 10rem 5vw 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.closing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(212, 169, 63, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.closing-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.closing-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+}
+
+.closing-title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--cream);
+  margin-bottom: 3rem;
+}
+
+.closing-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.closing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 4rem 0;
+  text-align: left;
+}
+
+.closing-cell {
+  border-top: 1px solid var(--gold);
+  padding-top: 1.25rem;
+}
+
+.closing-cell-label {
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.closing-cell-text {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgba(245, 240, 232, 0.75);
+  letter-spacing: -0.005em;
+}
+
+.closing-final {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  line-height: 1.55;
+  color: rgba(245, 240, 232, 0.7);
+  max-width: 48ch;
+  margin: 4rem auto 0;
+}
+
+.closing-mark {
+  font-family: var(--serif);
+  font-size: 2rem;
+  color: var(--gold);
+  margin-top: 3rem;
+  letter-spacing: 0.4em;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .cover-bottom { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .manifesto-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .const-map-grid { grid-template-columns: 1fr 1fr; }
+  .chapter-header { grid-template-columns: 1fr; gap: 2rem; }
+  .chapter-side { position: static; }
+  .pillars { grid-template-columns: 1fr; }
+  .showcase-grid { grid-template-columns: 1fr; }
+  .disruption { grid-template-columns: 1fr; gap: 1rem; }
+  .closing-grid { grid-template-columns: 1fr; }
+  .feature { grid-template-columns: 1fr; gap: 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- COVER                                           -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="cover">
+  <div class="cover-grid"></div>
+
+  <div class="cover-top">
+    <span>Pathways · Ein Manifest</span>
+    <span>Vision für 2026 · Vol. I</span>
+  </div>
+
+  <div class="cover-center">
+    <div class="eyebrow">Fünf Apps · Ein Versprechen</div>
+    <h1 class="cover-title">
+      Die Fachkraft<br>
+      braucht keinen<br>
+      <em>Ratgeber.</em><br>
+      <em>Sie braucht</em><br>
+      <em>einen</em> Begleiter.
+      <small>— ein Werkzeug das mit ihr denkt, nicht für sie.</small>
+    </h1>
+
+    <p class="cover-deck">
+      Pathways ist nicht eine Sammlung von Funktionen. Es sind fünf eigenständige Werkzeuge, die zusammen das erste digitale Ökosystem für die Begleitung von Jugendlichen ergeben. Jedes auf seinem Gebiet das Beste was es gibt — und alle miteinander verbunden zu einer Tiefe, die kein einzelnes Produkt erreichen kann.
+    </p>
+  </div>
+
+  <div class="cover-bottom">
+    <div>
+      <div class="cover-meta-label">Hub</div>
+      <div class="cover-meta-value">Pathways HUB</div>
+    </div>
+    <div>
+      <div class="cover-meta-label">Diagnostik</div>
+      <div class="cover-meta-value">Pathways CLARO</div>
+    </div>
+    <div>
+      <div class="cover-meta-label">Plan & Sitzung</div>
+      <div class="cover-meta-value">Pathways VIA</div>
+    </div>
+    <div>
+      <div class="cover-meta-label">Wissen & Lernen</div>
+      <div class="cover-meta-value">CODEX & ACADEMY</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- MANIFESTO                                       -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="manifesto">
+  <div class="manifesto-inner">
+    <div class="manifesto-side">
+      <span>Manifest</span>
+      <span style="color: var(--ink); font-weight: 500;">Warum 5 Apps</span>
+      <em>Ein Tool für alles wird ein Tool für nichts. Spezialisierung schafft Tiefe — und Tiefe ist der einzige bleibende Wettbewerbsvorteil.</em>
+    </div>
+
+    <div class="manifesto-text">
+      <p>Die meisten digitalen Werkzeuge in der Jugendhilfe sind <strong>Verwaltungssoftware</strong>. Sie speichern was schon passiert ist. Sie zählen, dokumentieren, archivieren. Pathways tut etwas anderes: es <em>denkt mit</em>.</p>
+
+      <p>Die Aufteilung in fünf Apps ist nicht technisch begründet. Sie ist <strong>klinisch</strong> begründet. Eine Fachkraft hat fünf grundverschiedene Modi in ihrer Arbeit: <em>orientieren, verstehen, handeln, nachschlagen, lernen</em>. Jeder Modus hat seine eigene Konzentration, sein eigenes Tempo, seine eigene Sprache.</p>
+
+      <p>Wer in der Krise einen Sicherheitsplan ausfüllt, will nicht durch sieben Tabs scrollen. Wer eine Diagnose stellt, will nicht durch Therapiematerial blättern. Wer in einer Sitzung sitzt, will keinen Lernpfad öffnen. Jede App ist <strong>für genau einen Modus</strong> entworfen — und tut darin Dinge, die ein generisches Tool niemals könnte.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- CONSTELLATION                                   -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="constellation">
+  <div class="const-inner">
+    <div class="const-header">
+      <div class="const-eyebrow">Die Konstellation</div>
+      <h2 class="const-title">Fünf Werkzeuge. <em>Ein Bewusstsein.</em></h2>
+    </div>
+
+    <div class="const-map">
+      <div class="const-map-grid">
+        <div class="const-node">
+          <div class="const-node-num">01 — Hub</div>
+          <div class="const-node-name">HUB</div>
+          <div class="const-node-role">Das Cockpit. Wo der Tag beginnt.</div>
+          <div class="const-node-tags">Triage · Klienten · Briefing<br>Aktionen · Helfer</div>
+        </div>
+
+        <div class="const-node">
+          <div class="const-node-num">02 — Diagnostik</div>
+          <div class="const-node-name">CLARO</div>
+          <div class="const-node-role">Die Detektivin. Wo Klarheit entsteht.</div>
+          <div class="const-node-tags">Screening · Hypothesen<br>5P · Differential · Risiken</div>
+        </div>
+
+        <div class="const-node">
+          <div class="const-node-num">03 — Begleitung</div>
+          <div class="const-node-name">VIA</div>
+          <div class="const-node-role">Der Weg. Wo gehandelt wird.</div>
+          <div class="const-node-tags">Phasen · Sitzung · ORS/SRS<br>Adaptiver Plan · Live</div>
+        </div>
+
+        <div class="const-node">
+          <div class="const-node-num">04 — Wissen</div>
+          <div class="const-node-name">CODEX</div>
+          <div class="const-node-role">Die Bibliothekarin. Wo Material lebt.</div>
+          <div class="const-node-tags">441+ Materialien · Tags<br>Empfehlungen · Sammlungen</div>
+        </div>
+
+        <div class="const-node">
+          <div class="const-node-num">05 — Lernen</div>
+          <div class="const-node-name">ACADEMY</div>
+          <div class="const-node-role">Die Lehrerin. Wo Kompetenz wächst.</div>
+          <div class="const-node-tags">Pfade · CDSS · Skills<br>Zertifikate · Community</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="const-flow">
+      Hub <span>→</span> Claro <span>→</span> Via <span>↔</span> Codex <span>↔</span> Academy <span>→</span> Hub
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- CHAPTER 1 — HUB                                 -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="chapter dark">
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <div class="chapter-side">
+        <div class="chapter-num">i.</div>
+        <div class="chapter-tag">Pathways · 01</div>
+        <h2 class="chapter-name"><em>HUB</em></h2>
+        <p class="chapter-role">Das Cockpit der Fachkraft. Wo der Tag beginnt.</p>
+      </div>
+
+      <div class="chapter-lead">
+        <p>Die Fachkraft öffnet morgens den HUB und weiss in 10 Sekunden wo sie heute hin muss. <strong>Kein endloses Scrollen durch Klientenlisten.</strong> Kein Suchen nach Informationen. Kein Erinnern.</p>
+
+        <p>Der HUB ist eine <em>Triage-Ansicht</em> wie auf einer Notaufnahme — aber für die mentale Gesundheit Jugendlicher. Eine Ampel sagt was wartet. Eine Erzählung sagt warum. Ein Knopf sagt was zu tun ist.</p>
+      </div>
+    </div>
+
+    <div class="disruption">
+      <div class="disruption-mark">»</div>
+      <div class="disruption-text">
+        Der HUB ist die <strong>einzige App auf dem Markt</strong>, die einer Fachkraft jeden Morgen eine briefingreife Übersicht über alle ihre Fälle gibt — auf einen Blick, mit klinischer Tiefe, ohne kognitive Last.
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">▼ Säule 01</div>
+        <h3 class="pillar-title">Tagesbriefing</h3>
+        <div class="pillar-body">
+          Beim Öffnen automatisch generiert: <strong>"Drei Klienten brauchen heute Aufmerksamkeit."</strong> Lena's SRS fällt seit vier Sitzungen — empfohlen wäre ein Anruf. Karim's Sicherheitsplan läuft heute aus. Yara hat morgen Konferenz mit der Mutter, hier sind die drei wichtigsten Punkte. Kein generischer Algorithmus — eine ehrliche kuratierte Übersicht.
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-num">▼ Säule 02</div>
+        <h3 class="pillar-title">Klinische Geschichte</h3>
+        <div class="pillar-body">
+          Pro Klient eine <em>Erzählung</em>, keine Datentabelle. <strong>Drei Sätze die alles sagen.</strong> "13 Jahre, internalisierendes Muster mit Trauma-Hintergrund. Phase 3 seit 8 Wochen, Allianz stabil. Heute: Schulpräsenz wieder Thema." Die Geschichte schreibt sich selbst aus den Daten — die Fachkraft liest und versteht in 8 Sekunden.
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-num">▼ Säule 03</div>
+        <h3 class="pillar-title">Workload-Schutz</h3>
+        <div class="pillar-body">
+          Zählt nicht nur Klienten — zählt deren <strong>Schwere</strong>, deren Krisen-Frequenz, deren emotionale Last. Wenn die Fachkraft kritischen Workload erreicht, sieht es nur sie selbst — und auf Wunsch anonym die Schulleitung. <em>Burnout-Prävention auf Datenbasis.</em> Kein anderes Tool tut das.
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-num">▼ Säule 04</div>
+        <h3 class="pillar-title">Helfer-Netzwerk</h3>
+        <div class="pillar-body">
+          Pro Klient eine interaktive Karte: Mutter, Lehrerin, SCAS, Psychiater, Sport-Coach. Wer ist informiert, wer hat zuletzt was gesagt, wer braucht ein Update. <strong>Externe Beteiligte können optional eingeschränkten Zugang bekommen</strong> — eine Lehrerin trägt "heute auffällig in Mathe" ein, die Fachkraft sieht es sofort. Geteilte Information ohne Datenschutzbruch.
+        </div>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="features-header">━━ Was im HUB passiert was nirgendwo sonst geschieht ━━</div>
+
+      <div class="feature">
+        <div class="feature-num">→ 01</div>
+        <div>
+          <h4 class="feature-title">Konferenz-Modus</h4>
+          <p class="feature-body">Während einer Fallkonferenz alle relevanten Daten <em>auf einer projektorfähigen Seite</em>. Notizen aller Teilnehmer fliessen direkt zurück. Aus einer chaotischen Diskussion wird ein strukturiertes Protokoll mit konkreten Folge-Aktionen.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-num">→ 02</div>
+        <div>
+          <h4 class="feature-title">Caseload-Balancing</h4>
+          <p class="feature-body">Wenn ein neuer Klient zugewiesen wird zeigt der HUB <em>wer im Team Kapazität hat</em> und fachlich am besten passt. "Karim braucht Trauma-Erfahrung — Person A hat Trauma-Zertifikat und vier freie Slots."</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-num">→ 03</div>
+        <div>
+          <h4 class="feature-title">Pattern-Erkennung im eigenen Caseload</h4>
+          <p class="feature-body">Welche Schüler hatten ähnliche Profile? Welche Verläufe? Die App erkennt Muster <em>im eigenen Werk der Fachkraft</em> — sie lernt aus ihren eigenen Fällen ohne dass sie es bewusst tut.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-num">→ 04</div>
+        <div>
+          <h4 class="feature-title">Risiko-Ampel mit Erklärung</h4>
+          <p class="feature-body">Nicht nur "rot/gelb/grün". Bei jedem Status eine <em>Begründung in einem Satz</em>: "Gelb seit 12.04. — Selbstverletzung in Vorgeschichte plus aktuell sinkende Allianz." Klinisch nachvollziehbar, jederzeit überprüfbar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- INTERLUDE                                       -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="interlude">
+  <div class="interlude-quote">
+    "<em>Klarheit</em> ist nicht das Gegenteil<br>von Komplexität.<br>Klarheit ist Komplexität,<br>die zur richtigen Zeit erscheint."
+  </div>
+  <div class="interlude-attr">— Designprinzip von Pathways CLARO</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- CHAPTER 2 — CLARO                               -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="chapter cream">
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <div class="chapter-side">
+        <div class="chapter-num">ii.</div>
+        <div class="chapter-tag">Pathways · 02</div>
+        <h2 class="chapter-name"><em>CLARO</em></h2>
+        <p class="chapter-role">Die Detektivin. Diagnostik auf dem Niveau einer Universitätsklinik — in unter 30 Minuten.</p>
+      </div>
+
+      <div class="chapter-lead">
+        <p>Diagnostik ist heute entweder oberflächlich oder qualvoll lang. <strong>CLARO bricht dieses Dilemma.</strong> Sie führt die Fachkraft adaptiv durch den genau richtigen Pfad — fragt nur was wirklich nötig ist, lässt weg was nicht relevant ist, und liefert am Ende eine Einschätzung auf Niveau einer kinderpsychiatrischen Erstvorstellung.</p>
+
+        <p>Keine zwei Stunden. <em>Keine zwölf identischen Fragebögen.</em> Sondern: ein intelligenter Pfad, der mit jeder Antwort schlauer wird.</p>
+      </div>
+    </div>
+
+    <div class="disruption">
+      <div class="disruption-mark">»</div>
+      <div class="disruption-text">
+        CLARO ist <strong>der erste adaptive diagnostische Assistent</strong> für die nicht-ärztliche Jugendhilfe. Was eine Universitätsklinik in 90 Minuten leistet, schafft CLARO in 25 — ohne Kompromisse bei der klinischen Tiefe.
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">▼ Säule 01</div>
+        <h3 class="pillar-title">Adaptives Screening</h3>
+        <div class="pillar-body">
+          Die Fachkraft beantwortet zuerst <strong>5 Triage-Fragen</strong> (3 Minuten). Daraus berechnet CLARO welche der 23 Domänen wirklich vertieft werden müssen — und überspringt den Rest. Bei einer Schülerin ohne Hinweise auf Trauma werden keine 12 Trauma-Items abgefragt. Bei einem Schüler mit klarer Externalisierung wird Conduct vertieft. <em>Nur die richtigen Fragen — nie die alle.</em>
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-num">▼ Säule 02</div>
+        <h3 class="pillar-title">Hypothesen in Echtzeit</h3>
+        <div class="pillar-body">
+          Mit jeder Antwort aktualisiert sich die Hypothesen-Übersicht <strong>am Bildschirmrand</strong>. Die Fachkraft sieht: drei Hypothesen wahrscheinlich, eine sehr wahrscheinlich, zwei differentialdiagnostisch unklar. Welche Frage würde Klarheit bringen? CLARO schlägt sie vor. <em>Diagnostik wird zum Dialog statt zum Formular.</em>
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-num">▼ Säule 03</div>
+        <h3 class="pillar-title">Differentialdiagnose-Rad</h3>
+        <div class="pillar-body">
+          Wenn drei Diagnosen passen — CLARO zeigt ein <strong>visuelles Rad</strong> mit allen Kandidaten. Welche Datenpunkte fehlen um zu unterscheiden? Welche Symptome sprechen für was? Mit einer einzigen gezielten Frage kollabiert oft die ganze Unsicherheit. <em>Differentialdiagnostik wird intuitiv.</em>
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-num">▼ Säule 04</div>
+        <h3 class="pillar-title">5P automatisch generiert</h3>
+        <div class="pillar-body">
+          Während die Fachkraft Anamnese und Screening durchläuft, baut CLARO im Hintergrund die <strong>5P-Fallformulierung</strong> auf — Predisposing, Precipitating, Perpetuating, Protective, Presenting. Am Ende: kein leeres Formular, sondern eine vorausgefüllte Formulation, die nur noch geprüft und ergänzt werden muss. <em>30 Minuten Arbeit verschwinden.</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="showcase">
+      <div class="showcase-header">
+        <span>━━ Was kein anderes Diagnose-Tool kann ━━</span>
+        <span style="opacity: 0.5;">CLARO · Innovation</span>
+      </div>
+      <div class="showcase-grid">
+        <div class="showcase-item">
+          <h4 class="showcase-name">Strukturiertes klinisches Interview</h4>
+          <p class="showcase-desc">K-SADS-light für Jugendliche, geführt durch CLARO, dauert 25 Minuten, generiert eine echte diagnostische Einschätzung mit Konfidenzgrad. Was bisher der Kinderpsychiatrie vorbehalten war, demokratisiert für andere Fachkräfte — mit klaren Sicherheitsleitplanken.</p>
+        </div>
+        <div class="showcase-item">
+          <h4 class="showcase-name">Trauma-Spezifikation</h4>
+          <p class="showcase-desc">Nicht nur "Trauma" — sondern Typ I vs. Typ II vs. komplex, akute vs. chronische Phase, identifizierte Trigger. Das ist der Unterschied zwischen einem Wort und einem verstandenen klinischen Phänomen — und entscheidend für die Wahl der Intervention.</p>
+        </div>
+        <div class="showcase-item">
+          <h4 class="showcase-name">Komorbidität-Tracking</h4>
+          <p class="showcase-desc">Welche Muster treten gemeinsam auf? Bei diesem Schüler — und bei vergleichbaren Profilen anonymisiert? CLARO zeigt die wahrscheinlichsten Komorbiditäten und schlägt vor, welche zusätzlichen Items abgeklärt werden sollten.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="features-header">━━ Tiefe, die kein Pulldown-Menü ersetzt ━━</div>
+
+      <div class="feature">
+        <div class="feature-num">→ 01</div>
+        <div>
+          <h4 class="feature-title">Verlinkung mit CODEX in jedem Moment</h4>
+          <p class="feature-body">Wenn CLARO die Hypothese "Bindungsstörung wahrscheinlich" generiert, erscheint inline ein Link: <em>"Lese 4 Minuten über Bindungsstörungen im Jugendalter"</em>. Die Fachkraft kann sofort vertiefen ohne den Diagnose-Pfad zu verlassen.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-num">→ 02</div>
+        <div>
+          <h4 class="feature-title">Re-Screening mit Reliable Change Index</h4>
+          <p class="feature-body">T2 vs. T1 nicht als zwei Tabellen — sondern als <em>visualisierter Verlauf</em> mit Signifikanz-Berechnung. Welche Veränderung ist statistisch bedeutsam? Welche im Rauschen? Wissenschaftliche Auswertung in einem Klick.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-num">→ 03</div>
+        <div>
+          <h4 class="feature-title">C-SSRS bei Risiko automatisch</h4>
+          <p class="feature-body">Wenn ein Item auf Suizidalität hinweist, öffnet sich automatisch der <em>Columbia-Suizidskala-Wizard</em> — geführt, mit klinischer Auswertung, mit direkter Übergabe an den Sicherheitsplan-Generator. Niemals wird kritisches Risiko übersehen.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-num">→ 04</div>
+        <div>
+          <h4 class="feature-title">Sequenzierungs-Intelligenz</h4>
+          <p class="feature-body">CLARO weiss: Trauma-Verarbeitung gehört nicht in Phase 1. Wenn ein Trauma-Befund vorliegt aber Stabilisierung nicht gegeben ist, wird das in der Empfehlung <em>explizit</em>. "Erst stabilisieren, dann verarbeiten" — diese klinische Grundregel ist hartcodiert.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-num">→ 05</div>
+        <div>
+          <h4 class="feature-title">Konfidenz-Anzeige bei jeder Hypothese</h4>
+          <p class="feature-body">Nicht "Diagnose: Depression" — sondern <em>"Depression — Konfidenz 72%"</em> mit Erklärung welche Datenpunkte beitragen und welche fehlen. Klinische Ehrlichkeit statt falscher Sicherheit. Die Fachkraft weiss immer wie belastbar die Einschätzung ist.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- INTERLUDE                                       -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="interlude">
+  <div class="interlude-quote">
+    "Ein Plan, der sich nicht <em>verändert</em>,<br>ist kein Plan.<br>Es ist eine Liste."
+  </div>
+  <div class="interlude-attr">— Designprinzip von Pathways VIA</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- CHAPTER 3 — VIA                                 -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="chapter dark">
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <div class="chapter-side">
+        <div class="chapter-num">iii.</div>
+        <div class="chapter-tag">Pathways · 03</div>
+        <h2 class="chapter-name"><em>VIA</em></h2>
+        <p class="chapter-role">Der Weg. Plan und Sitzung in einem — der einzige Ort wo täglich gehandelt wird.</p>
+      </div>
+
+      <div class="chapter-lead">
+        <p>VIA ist die wichtigste App. Hier verbringt die Fachkraft <strong>80% ihrer Pathways-Zeit</strong>. Hier wird geplant, dokumentiert, reflektiert, angepasst. Und hier passiert das, was kein anderes Tool kann: <em>Der Plan lernt mit.</em></p>
+
+        <p>Die Fachkraft öffnet einen Klienten, sieht <strong>genau was heute zu tun ist</strong> — basierend auf Phase, Diagnose, Verlauf und letzter Sitzung. Sie führt die Sitzung durch. Sie gibt Feedback. Der Plan reagiert. Beim nächsten Mal ist der Vorschlag besser, weil VIA gelernt hat was bei diesem Schüler funktioniert.</p>
+      </div>
+    </div>
+
+    <div class="disruption">
+      <div class="disruption-mark">»</div>
+      <div class="disruption-text">
+        VIA ist <strong>die erste lernende Plan-und-Sitzung-App</strong> in der Jugendhilfe. Jeder Plan ist personalisiert. Jede Anpassung ist evidenzbasiert. Jede Sitzung verändert die Empfehlung für die nächste.
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">▼ Säule 01</div>
+        <h3 class="pillar-title">Heute-Ansicht</h3>
+        <div class="pillar-body">
+          Beim Öffnen eines Klienten nicht ein Dashboard mit zwölf Karten — sondern <strong>eine einzige Empfehlung</strong>: "Heute Sitzung 14, Phase 3 läuft seit 5 Wochen. Vorschlag: Thema 'Emotionsregulation' vertiefen mit Material X. Erwartete Dauer: 45 Minuten." Drei Klicks und die Sitzung ist vorbereitet. <em>Keine Entscheidungslast.</em>
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-num">▼ Säule 02</div>
+        <h3 class="pillar-title">Sieben Phasen, lebendig</h3>
+        <div class="pillar-body">
+          Phase 1 bis Phase 7 mit klaren <strong>Eintritts- und Austrittskriterien</strong>. Die App weiss wann eine Phase abgeschlossen ist — und wann nicht. Bei Stillstand: "Phase 3 läuft seit 12 Wochen ohne Bewegung. Mögliche Gründe: Allianz-Erosion, falsche Hypothese, äusserer Stressor. <em>Soll ich Co-Therapie vorschlagen?</em>"
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-num">▼ Säule 03</div>
+        <h3 class="pillar-title">Adaptive Themen-Steuerung</h3>
+        <div class="pillar-body">
+          Die <em>aktiven Themen</em> sind sichtbar — nicht alle 102 möglichen, sondern die 3-5, die für diesen Klienten in dieser Phase relevant sind. Mit jeder Sitzung kann die Fachkraft <strong>Themen aktivieren, pausieren, vertiefen</strong>. Die App schlägt Material vor, ordnet die Reihenfolge, dokumentiert die Bearbeitung.
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-num">▼ Säule 04</div>
+        <h3 class="pillar-title">Sitzungs-Modi</h3>
+        <div class="pillar-body">
+          Drei Modi für drei Momente: <strong>Vor</strong> — Snapshot, was zuletzt war, was geplant ist. <strong>Während</strong> — minimales UI, schnelle Notizen, Material embedded, Krisen-Knopf immer sichtbar. <strong>Nach</strong> — SOAP, ORS, SRS, PVT in 90 Sekunden strukturiert. <em>Drei Phasen einer Sitzung, nicht eine generische Maske.</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="showcase">
+      <div class="showcase-header">
+        <span>━━ Treatment-Response-Loop · Das Herzstück ━━</span>
+        <span style="opacity: 0.5;">VIA · Adaptiv</span>
+      </div>
+      <div class="showcase-grid">
+        <div class="showcase-item">
+          <h4 class="showcase-name">SRS-Trend wird Steuerung</h4>
+          <p class="showcase-desc">Wenn die Sitzungsbewertung dreimal in Folge unter 25 liegt — VIA macht keinen Vorschlag, sondern stellt eine Frage: "Die letzten drei Sitzungen waren schwierig. Möchten Sie eine Reflexion? Ich habe drei mögliche Hypothesen warum es stockt." Das ist Supervision auf Knopfdruck.</p>
+        </div>
+        <div class="showcase-item">
+          <h4 class="showcase-name">Themen-Effizienz lernen</h4>
+          <p class="showcase-desc">Welche Themen haben bei diesem Schüler funktioniert, welche nicht? VIA verfolgt das. Beim nächsten ähnlichen Klienten wird das berücksichtigt — innerhalb des Caseloads der Fachkraft. Personalisierte Erfahrung wird zu strukturierter Erkenntnis.</p>
+        </div>
+        <div class="showcase-item">
+          <h4 class="showcase-name">Stepped Care eingebaut</h4>
+          <p class="showcase-desc">Wenn nach 6 Sitzungen kein Fortschritt — automatisch konkrete Eskalations-Vorschläge. "Erwäge: Co-Therapie / Überweisung KJP / Medikation als Ergänzung / Setting-Wechsel." Mit Begründung und Pfad. Klinische Verantwortung wird operationalisiert.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="features-header">━━ Was VIA in der Sitzung möglich macht ━━</div>
+
+      <div class="feature">
+        <div class="feature-num">→ 01</div>
+        <div>
+          <h4 class="feature-title">Material aus CODEX live embedded</h4>
+          <p class="feature-body">In der Live-Sitzung zieht die Fachkraft ein Arbeitsblatt direkt in den aktiven Bildschirm. <em>Schüler füllt aus, App speichert es im Profil.</em> Druckansicht mit einem Klick. Kein Wechsel zwischen Apps — alles im Fluss.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-num">→ 02</div>
+        <div>
+          <h4 class="feature-title">Co-Regulation-Tracker</h4>
+          <p class="feature-body">PVT-Status (Polyvagaltheorie nach Porges) wird nicht einmal pro Sitzung erfasst — sondern <em>dreimal: Anfang, Mitte, Ende</em>. Bei Dysregulation erscheinen Vorschläge wie reguliert werden kann. Die Sitzung wird zur klinischen Beobachtung.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-num">→ 03</div>
+        <div>
+          <h4 class="feature-title">Hausaufgaben-Verfolgung</h4>
+          <p class="feature-body">Was wurde besprochen, was sollte der Schüler tun, hat er es gemacht. Mit <em>Foto-Upload-Option</em> ("Hier mein Stimmungstagebuch") und Sprachnachricht. Vom abstrakten "Hausaufgabe" zur konkreten Übergangsbegleitung.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-num">→ 04</div>
+        <div>
+          <h4 class="feature-title">Wohlbefindens-Verlauf als Geschichte</h4>
+          <p class="feature-body">ORS-Trend nicht als Linien-Diagramm — sondern als <em>annotierte Erzählung</em>. "Tiefpunkt am 12.04. — Konflikt mit Vater. Schwung am 23.04. — neues Hobby. Stabil seit 02.05." Daten werden zu Verstehen.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-num">→ 05</div>
+        <div>
+          <h4 class="feature-title">Live-Hinweise (optional)</h4>
+          <p class="feature-body">Wenn die Fachkraft will: bei kritischen Schlüsselwörtern erscheint ein <em>diskreter Hinweis am Bildschirmrand</em> nur für sie. "Schüler erwähnt 'kein Sinn' — möglich Hoffnungslosigkeit, prüfe Suizidalität sanft." Die Fachkraft entscheidet immer selbst — aber sie ist nie allein.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-num">→ 06</div>
+        <div>
+          <h4 class="feature-title">Phasen-Übergänge mit Ritual</h4>
+          <p class="feature-body">Wenn Phase 3 abgeschlossen ist — kein simpler Knopfdruck. <em>Eine kurze Reflexion</em>: "Was hat funktioniert? Was hat überrascht? Welche Hypothese hat sich bestätigt?" Klinisches Wachstum wird strukturiert dokumentiert.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- INTERLUDE                                       -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="interlude">
+  <div class="interlude-quote">
+    "Material wird wertvoll<br>nicht durch <em>Menge</em>,<br>sondern durch das richtige Material<br>im richtigen Moment."
+  </div>
+  <div class="interlude-attr">— Designprinzip von Pathways CODEX</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- CHAPTER 4 — CODEX                               -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="chapter cream">
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <div class="chapter-side">
+        <div class="chapter-num">iv.</div>
+        <div class="chapter-tag">Pathways · 04</div>
+        <h2 class="chapter-name"><em>CODEX</em></h2>
+        <p class="chapter-role">Die Bibliothekarin. 441 Materialien plus klinische Wissensartikel — die lebende Wissensschmiede.</p>
+      </div>
+
+      <div class="chapter-lead">
+        <p>CODEX ist mehr als eine Bibliothek. Sie ist ein <strong>Gehirn voller Material</strong>, das weiss <em>welches Stück wann zu welchem Klienten passt</em>. Die Fachkraft sucht nicht — die richtigen Materialien finden sie.</p>
+
+        <p>Verlinkt mit CLARO (Diagnose-Hypothese öffnet passende Erklärung), eingebaut in VIA (Material in der Sitzung), durchsuchbar wie eine Wikipedia für Fachkräfte. <em>Volltext, Tags, Bookmarks, Sammlungen, Empfehlungen.</em></p>
+      </div>
+    </div>
+
+    <div class="disruption">
+      <div class="disruption-mark">»</div>
+      <div class="disruption-text">
+        CODEX ist <strong>die einzige Plattform</strong>, die Therapie-Materialien mit klinischen Wissensartikeln und Eltern-Infoblättern verbindet — und alles kontextuell zur richtigen Zeit anzeigt.
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">▼ Säule 01</div>
+        <h3 class="pillar-title">Drei Material-Schichten</h3>
+        <div class="pillar-body">
+          <strong>441+ Arbeitsblätter und Therapiemodule</strong> in drei Schwierigkeitsgraden. <strong>Klinische Wissensartikel</strong> — eine Wikipedia für Fachkräfte (Bindungsstörung, Polyvagal-Theorie, ICD-10-Differenzierungen). <strong>Eltern-Infoblätter</strong> mehrsprachig (DE/FR/PT/LU). Alles vernetzt. Alles durchsuchbar.
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-num">▼ Säule 02</div>
+        <h3 class="pillar-title">Kontextuelle Empfehlung</h3>
+        <div class="pillar-body">
+          Wenn die Fachkraft in VIA das Thema "Wut-Regulation" öffnet, schlägt CODEX <em>proaktiv</em> die drei besten Materialien dafür vor — passend zu Alter, Phase und PVT-Zustand des Schülers. Wenn CLARO eine Hypothese generiert, erscheint inline der passende Wissensartikel. <em>Material kommt zur Fachkraft, nicht umgekehrt.</em>
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-num">▼ Säule 03</div>
+        <h3 class="pillar-title">Persönliche Toolbox</h3>
+        <div class="pillar-body">
+          Jede Fachkraft baut sich ihre Sammlungen: <strong>"Meine 10 besten Atemübungen", "Pakete für Erstgespräche", "Material für Schulvermeidung"</strong>. Druckbar als persönliches Handbuch mit dem CDSE-Header. Was über Jahre entsteht ist die kuratierte Praxis-Bibliothek einer Fachkraft.
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-num">▼ Säule 04</div>
+        <h3 class="pillar-title">PDF-Pakete in Sekunden</h3>
+        <div class="pillar-body">
+          Wähle 5 Materialien — ein Klick, ein <em>professionell formatiertes PDF</em> mit Cover, Inhaltsverzeichnis, einheitlicher Typografie. Für Eltern. Für Schüler. Für Lehrer. <strong>Was bisher Stunden dauerte ist in 30 Sekunden erledigt.</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="showcase">
+      <div class="showcase-header">
+        <span>━━ Was CODEX zur Schmiede macht ━━</span>
+        <span style="opacity: 0.5;">CODEX · Premium</span>
+      </div>
+      <div class="showcase-grid">
+        <div class="showcase-item">
+          <h4 class="showcase-name">Material-Effektivität als Daten</h4>
+          <p class="showcase-desc">Nach jeder Sitzung wo ein Material verwendet wurde — kurze Bewertung: hilfreich? Schüler engagiert? Spannungsabbau? Diese Daten aggregiert über alle Nutzer machen CODEX mit jedem Tag schlauer. Empfehlungen basieren auf realer Wirkung, nicht auf Theorie.</p>
+        </div>
+        <div class="showcase-item">
+          <h4 class="showcase-name">Audio-Versionen aller Übungen</h4>
+          <p class="showcase-desc">Die Fachkraft spielt eine geführte Atemübung ab statt sie selbst zu sprechen. Professionell aufgenommen, mehrsprachig. Schüler kann zuhause weiter nutzen. Übungen werden zu Begleitern über die Sitzung hinaus.</p>
+        </div>
+        <div class="showcase-item">
+          <h4 class="showcase-name">Therapie-Sequenzen</h4>
+          <p class="showcase-desc">Nicht nur "Atemübung" — sondern <em>"Stabilisierungs-Sequenz: vier Übungen über vier Sitzungen, in dieser Reihenfolge"</em>. Erprobte Wege durch das Material. Für Fachkräfte ohne Trauma-Spezialausbildung ein klinisch sicherer Pfad.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="features-header">━━ Tiefe der Bibliothek ━━</div>
+
+      <div class="feature">
+        <div class="feature-num">→ 01</div>
+        <div>
+          <h4 class="feature-title">Volltextsuche über alles</h4>
+          <p class="feature-body">"Atem" findet alle Atemübungen, alle Wissensartikel zu Atmung, alle Eltern-Infoblätter. Mit <em>Filtern für Material-Typ, Schwierigkeit, Alter, Zielgruppe</em>. Suche so präzise wie eine Datenbank, so schnell wie Google.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-num">→ 02</div>
+        <div>
+          <h4 class="feature-title">Material-Builder</h4>
+          <p class="feature-body">Fachkraft erstellt eigenes Material in 10 Minuten — strukturierte Vorlage, drag & drop, druckbar. <em>Wenn sie will: teilbar mit anderen Pathways-Nutzern.</em> CODEX wächst durch Community.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-num">→ 03</div>
+        <div>
+          <h4 class="feature-title">Adaptive Schwierigkeit</h4>
+          <p class="feature-body">Materialien gibt es in 3 Niveaus (einfach/mittel/anspruchsvoll). CODEX wählt automatisch das richtige basierend auf <em>Alter, kognitivem Niveau, Bildungsstand des Schülers</em>. Was ein 11-Jähriger braucht ist nicht was ein 16-Jähriger braucht.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-num">→ 04</div>
+        <div>
+          <h4 class="feature-title">Druckbare Schüler-Hefte</h4>
+          <p class="feature-body">30 ausgewählte Übungen aus CODEX zu einem persönlichen Heft kombiniert, mit <em>Schülername, professionell formatiert</em>. Wallet-Format, Heftformat, Mappe-Format. Aus digital wird physisch — und damit persönlich.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-num">→ 05</div>
+        <div>
+          <h4 class="feature-title">Übersetzungs-Engine</h4>
+          <p class="feature-body">Material in DE → automatisch in FR, PT, LU. <em>Mit Qualitätsprüfung durch Muttersprachler-Community.</em> Mehrsprachigkeit ohne externe Übersetzer. In Luxemburg unverzichtbar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- INTERLUDE                                       -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="interlude">
+  <div class="interlude-quote">
+    "Eine Fachkraft, die nicht <em>lernt</em>,<br>verliert ihre Schüler.<br>Eine Plattform, die nicht <em>lehrt</em>,<br>verliert ihre Fachkräfte."
+  </div>
+  <div class="interlude-attr">— Designprinzip von Pathways ACADEMY</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- CHAPTER 5 — ACADEMY                             -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="chapter warm">
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <div class="chapter-side">
+        <div class="chapter-num">v.</div>
+        <div class="chapter-tag">Pathways · 05</div>
+        <h2 class="chapter-name"><em>ACADEMY</em></h2>
+        <p class="chapter-role">Die Lehrerin. Ein eigenständiges Lern-Produkt — die professionelle Heimat der Fachkraft.</p>
+      </div>
+
+      <div class="chapter-lead">
+        <p>ACADEMY ist nicht eine Sammlung von Online-Kursen. Sie ist die <strong>Karriere-Plattform für Fachkräfte in der Jugendhilfe</strong>. Hier wachsen sie über Jahre. Hier holen sie sich Antworten im Moment des Bedarfs. Hier zertifiziert sich ihre Kompetenz.</p>
+
+        <p>Für Pathways-Nutzer als Teil des Ökosystems. Für Externe als <em>eigenständiges Produkt</em> — eine zweite Einnahmequelle, ein zweites Tor zum Markt.</p>
+      </div>
+    </div>
+
+    <div class="disruption">
+      <div class="disruption-mark">»</div>
+      <div class="disruption-text">
+        ACADEMY ist <strong>die erste Lernplattform</strong>, die direkt an die tägliche klinische Arbeit angeschlossen ist. Fortbildung im Moment des Bedarfs, nicht als Wochenend-Kurs.
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">▼ Säule 01</div>
+        <h3 class="pillar-title">Mikro-Learning täglich</h3>
+        <div class="pillar-body">
+          Jeden Tag <strong>5 Minuten</strong> — eine Fallvignette, eine Reflexionsfrage, ein wissenschaftliches Konzept. Über ein Jahr <em>30 Stunden Fortbildung</em> ohne dass die Fachkraft je einen Kurs besucht hat. Kontinuierliches Lernen statt einmaliger Events.
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-num">▼ Säule 02</div>
+        <h3 class="pillar-title">CDSS — Decision Support</h3>
+        <div class="pillar-body">
+          Die Fachkraft beschreibt eine schwierige Situation in Worten — ACADEMY findet die <strong>3 relevantesten Studien</strong>, fasst sie zusammen, formuliert konkrete Handlungsempfehlungen mit Stärke der Evidenz. <em>Evidenzbasierte Praxis im Moment des Bedarfs</em>, nicht Wochen später in einer Fortbildung.
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-num">▼ Säule 03</div>
+        <h3 class="pillar-title">Skills-Trainer mit Rollenspiel</h3>
+        <div class="pillar-body">
+          ACADEMY simuliert einen schwierigen Schüler — <em>"Ich werde nie wieder in diese Schule gehen."</em> Fachkraft übt die Reaktion. App gibt Feedback basierend auf empirisch validierten Gesprächstechniken. <strong>Endlose Übung, kein menschlicher Lehrer nötig.</strong> Das gibt es nirgends.
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-num">▼ Säule 04</div>
+        <h3 class="pillar-title">Spezialisierungs-Pfade</h3>
+        <div class="pillar-body">
+          <strong>Trauma-Spezialist. ADHS-Experte. Krisenintervention.</strong> Jeder Pfad 40-80 Stunden, mit Prüfung, mit Zertifikat. Universität Luxemburg akkreditiert. <em>Auf LinkedIn anzeigbar.</em> Aus einer App-Lizenz wird eine Karriere-Investition.
+        </div>
+      </div>
+    </div>
+
+    <div class="showcase">
+      <div class="showcase-header">
+        <span>━━ Was ACADEMY zum Karriere-Werkzeug macht ━━</span>
+        <span style="opacity: 0.5;">ACADEMY · Premium</span>
+      </div>
+      <div class="showcase-grid">
+        <div class="showcase-item">
+          <h4 class="showcase-name">Karriere-Tracker</h4>
+          <p class="showcase-desc">Was hast du gelernt, welche Fälle hast du begleitet, welche Erfolge gehabt. Über Jahre wird das zur <em>Berufsbiographie</em> der Fachkraft. Ein Lebenswerk dokumentiert. Bei jedem Job-Wechsel mitnehmbar.</p>
+        </div>
+        <div class="showcase-item">
+          <h4 class="showcase-name">Fall-der-Woche</h4>
+          <p class="showcase-desc">Anonymisierte echte Fälle aus der Pathways-Community. Diskussion. Beste Antworten ausgezeichnet. <em>Lernen aus echter Praxis</em> statt aus Lehrbüchern. Peer-Supervision skaliert über die ganze Plattform.</p>
+        </div>
+        <div class="showcase-item">
+          <h4 class="showcase-name">Live-Webinare</h4>
+          <p class="showcase-desc">Monatlich 1 Stunde mit Experten — Trauma-Forschung, Polyvagal-Updates, neue Interventionen. Aufzeichnung verfügbar. <em>Mit Q&A. Mit Praxis-Beispielen aus dem realen Pathways-Datenpool</em> (anonymisiert). Live-Connection zur Forschung.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="features-header">━━ Was ACADEMY zur professionellen Heimat macht ━━</div>
+
+      <div class="feature">
+        <div class="feature-num">→ 01</div>
+        <div>
+          <h4 class="feature-title">Lernpfade mit Zertifikat</h4>
+          <p class="feature-body">"Polyvagal-Theorie für Pädagogen" — 4 Stunden, Quiz, praktische Übungen, druckbare CPD-Bestätigung. <em>Universität Luxemburg akkreditiert das später.</em> Aus einer Lizenz wird ein anerkannter Weiterbildungsweg.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-num">→ 02</div>
+        <div>
+          <h4 class="feature-title">XP-System sichtbar im HUB</h4>
+          <p class="feature-body">Gamification für Erwachsene funktioniert wenn sie professionell ist. <em>Zertifikate, Levels, Spezialisierungen.</em> Sichtbar in der Sidebar des HUB — die eigene Entwicklung als ständiger Begleiter. Macht Lernen belohnend.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-num">→ 03</div>
+        <div>
+          <h4 class="feature-title">Supervisions-Modus</h4>
+          <p class="feature-body">Erfahrene Fachkräfte können in ACADEMY <em>anonymisierte Fallstudien einreichen</em>. Andere kommentieren, diskutieren, lernen. Peer-Supervision skaliert über die ganze Plattform. Niemand ist mehr fachlich allein.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-num">→ 04</div>
+        <div>
+          <h4 class="feature-title">Direkter Bezug zur Praxis</h4>
+          <p class="feature-body">Die Fachkraft trifft auf einen schwierigen Fall — sie öffnet ACADEMY und findet <em>genau die passenden Lerninhalte zu diesem Fall</em>. Theorie und Praxis sind nicht getrennt. Sie speisen sich gegenseitig.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- CLOSING                                         -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="closing">
+  <div class="closing-inner">
+    <div class="closing-eyebrow">Synthese · Was am Ende bleibt</div>
+
+    <h2 class="closing-title">
+      Fünf Apps.<br>
+      Eine <em>Disruption.</em>
+    </h2>
+
+    <div class="closing-grid">
+      <div class="closing-cell">
+        <div class="closing-cell-label">Was es vorher gab</div>
+        <div class="closing-cell-text">Verwaltungssoftware. Statische Vorlagen. Generische Dokumentationssysteme. Eine Trennung zwischen Wissen, Praxis und Lernen.</div>
+      </div>
+
+      <div class="closing-cell">
+        <div class="closing-cell-label">Was Pathways tut</div>
+        <div class="closing-cell-text">Verbindet Diagnose, Plan, Sitzung, Material und Lernen zu einem lebenden Ökosystem. Jede Komponente erstklassig. Alle vernetzt zur richtigen Zeit.</div>
+      </div>
+
+      <div class="closing-cell">
+        <div class="closing-cell-label">Wofür es steht</div>
+        <div class="closing-cell-text">Die Fachkraft soll nicht ersetzt werden — sie soll <em>verstärkt</em> werden. Pathways ist ihr Werkzeug, nicht ihr Vorgesetzter. Ein Begleiter, kein Algorithmus.</div>
+      </div>
+    </div>
+
+    <p class="closing-final">
+      Was hier beschrieben ist, gibt es nicht. Nicht in Luxemburg, nicht in Europa, nicht in den USA. Es kann gebaut werden — Stück für Stück, App für App. Was es braucht, ist nicht mehr Erfindung. Was es braucht, ist <em>Disziplin in der Ausführung</em>. Eine App nach der anderen. Eine Funktion nach der anderen. Eine Fachkraft nach der anderen.
+    </p>
+
+    <div class="closing-mark">· · ·</div>
+  </div>
+</section>
+
+</body>
+</html>
