@@ -80,10 +80,22 @@ const Bridge = (function () {
     return qs ? `${base}?${qs}` : base;
   }
 
+  const APP_ALIASES = {
+    case: 'hub', diagnose: 'claro', roadmap: 'via', session: 'via',
+    library: 'codex', crisis: 'hub', parents: 'codex',
+  };
+
+  function resolveApp(app) { return APP_ALIASES[app] || app; }
+
   /** Open another app in a new tab with deep-link. */
   function openApp(app, params = {}) {
     if (typeof window === 'undefined') return;
-    const url = deepLink(app, params);
+    const resolved = resolveApp(app);
+    if (resolved !== app) console.info(`[Bridge] Alias: ${app} → ${resolved}`);
+    if (app === 'session') params.mode = params.mode || 'sitzung';
+    if (app === 'crisis') params.view = params.view || 'crisis';
+    if (app === 'parents') params.section = params.section || 'infoblaetter';
+    const url = deepLink(resolved, params);
     window.open(url, '_blank');
   }
 

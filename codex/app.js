@@ -65,7 +65,7 @@ async function loadIndex() {
   const res = await fetch('data/materials-index.json');
   if (!res.ok) throw new Error('Index nicht gefunden. Run: node tools/build-search-index.cjs');
   STATE.index = await res.json();
-  console.log(`[LIBRARY] ${STATE.index.count} Materialien geladen`);
+  console.log(`[CODEX] ${STATE.index.count} Materialien geladen`);
 }
 
 // ─── Suche & Filter ──────────────────────────────────────────
