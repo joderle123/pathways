@@ -377,10 +377,14 @@ function renderScreeningWizard() {
         <div class="dg-progress-fill" style="width: ${Object.keys(APP.scores).length / inst.items.length * 100}%;"></div>
       </div>
 
-      ${inst.items.map((q, i) => `
-        <div class="dg-item">
-          <div class="dg-item-num">Item ${i + 1}</div>
+      ${inst.items.map((q, i) => {
+        const isCritical = q.includes('Critical Item') || q.includes('tot wärest');
+        const isPositiveCritical = isCritical && APP.scores[i] >= 1;
+        return `
+        <div class="dg-item" style="${isPositiveCritical ? 'border: 2px solid #DC2626; background: #FEE2E2;' : ''}${isCritical ? 'border-left: 4px solid #DC2626;' : ''}">
+          <div class="dg-item-num" style="${isCritical ? 'color: #DC2626;' : ''}">Item ${i + 1}${isCritical ? ' ⚠️' : ''}</div>
           <div class="dg-item-text">${Utils.escapeHtml(q)}</div>
+          ${isPositiveCritical ? '<div style="font-size: 12px; color: #DC2626; font-weight: 700; margin-bottom: 4px;">⚠️ KRITISCHES ITEM POSITIV — C-SSRS durchführen</div>' : ''}
           <div class="dg-item-opts">
             ${Object.entries(inst.skala).map(([val, label]) => `
               <button class="dg-item-opt ${APP.scores[i] == val ? 'selected' : ''}" onclick="setItemScore(${i}, ${val})">
@@ -390,7 +394,7 @@ function renderScreeningWizard() {
             `).join('')}
           </div>
         </div>
-      `).join('')}
+      `}).join('')}
 
       ${result ? `
         <div class="dg-result severity-${result.severity}">
