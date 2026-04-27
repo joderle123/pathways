@@ -505,6 +505,43 @@ async function renderReport() {
         <h3 style="margin-top: var(--space-5);">Hypothese (5P)</h3>
         <div style="padding: var(--space-3); background: var(--bg-subtle); border-radius: var(--radius-sm); white-space: pre-wrap;">${Utils.escapeHtml(ff.hypothese)}</div>
       ` : ''}
+
+      ${(() => {
+        const screenings = DB.getScreenings(APP.schuelerId).filter(x => x.abgeschlossen).sort((a, b) => (a.datum || '').localeCompare(b.datum || ''));
+        if (!screenings.length) return '';
+        return `<h3 style="margin-top: var(--space-5);">Screening-Verlauf (${screenings.length} Messzeitpunkte)</h3>
+          <table style="width: 100%; font-size: 13px; border-collapse: collapse;">
+            <tr style="background: var(--bg-subtle);"><th style="text-align: left; padding: 6px;">Datum</th>
+            ${Object.keys(screenings.at(-1)?.scores || {}).map(id => `<th style="padding: 6px;">${id.toUpperCase()}</th>`).join('')}</tr>
+            ${screenings.map(scr => `<tr>
+              <td style="padding: 6px; border-bottom: 1px solid var(--border);">${Utils.formatDate(scr.datum)}</td>
+              ${Object.entries(scr.scores || {}).map(([id, val]) => `<td style="padding: 6px; border-bottom: 1px solid var(--border); text-align: center;">${val.score}/${val.max}</td>`).join('')}
+            </tr>`).join('')}
+          </table>`;
+      })()}
+
+      ${(() => {
+        const sitzungen = DB.getNotizen(APP.schuelerId).filter(n => n.kategorie === 'session').sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
+        if (!sitzungen.length) return '';
+        const orsTrend = sitzungen.slice(0, 5).reverse().map(n => n.soap?.ors_total).filter(v => v !== undefined);
+        return `<h3 style="margin-top: var(--space-5);">Sitzungen (${sitzungen.length})</h3>
+          <div style="font-size: 13px; margin-bottom: var(--space-2);">
+            ${orsTrend.length >= 2 ? `ORS-Trend: ${orsTrend.map(v => v.toFixed(0)).join(' → ')} (Δ ${(orsTrend.at(-1) - orsTrend[0]).toFixed(1)})` : ''}
+          </div>`;
+      })()}
+
+      ${(() => {
+        const helfer = DB.getHelfer(APP.schuelerId);
+        if (!helfer.length) return '';
+        return `<h3 style="margin-top: var(--space-5);">Helfer-Netzwerk (${helfer.length})</h3>
+          <table style="width: 100%; font-size: 13px; border-collapse: collapse;">
+            ${helfer.map(h => `<tr><td style="padding: 4px; border-bottom: 1px solid var(--border);"><strong>${Utils.escapeHtml(h.name || '?')}</strong></td><td style="padding: 4px;">${Utils.escapeHtml(h.rolle || '')}</td><td style="padding: 4px;">${h.telefon || ''}</td></tr>`).join('')}
+          </table>`;
+      })()}
+
+      <div style="margin-top: var(--space-8); padding-top: var(--space-4); border-top: 2px solid var(--border); font-size: 12px; color: var(--text-muted);">
+        Pathways Förderplan · Generiert am ${new Date().toLocaleDateString('de-DE')} · Vertraulich
+      </div>
     </div>
   `;
 }
