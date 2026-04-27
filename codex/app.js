@@ -265,6 +265,8 @@ function render() {
         </div>
         <div class="lib-card-actions">
           <button class="btn btn-sm" onclick="openDetail('${m.pfad}')">Details</button>
+          <button class="btn btn-sm" onclick="addToSammlung('${m.pfad}','${Utils.escapeHtml(m.titel)}')" title="Zur Toolbox">🧰</button>
+          <button class="btn btn-sm" onclick="rateMaterial('${m.pfad}',1)" title="Hilfreich 👍">👍 ${getMaterialRating(m.pfad)}</button>
           <a class="btn btn-sm btn-primary" href="../${m.pfad}" target="_blank">Öffnen ↗</a>
         </div>
       </div>
@@ -343,6 +345,19 @@ async function init() {
   if (params.section) setSection(params.section);
 
   console.log('[CODEX] Ready.');
+}
+
+// ─── Material-Bewertung (Manifest: Effektivität als Daten) ──
+const RATING_KEY = 'pw_codex_ratings';
+function getRatings() { try { return JSON.parse(localStorage.getItem(RATING_KEY) || '{}'); } catch { return {}; } }
+function saveRatings(r) { localStorage.setItem(RATING_KEY, JSON.stringify(r)); }
+function getMaterialRating(pfad) { return getRatings()[pfad] || 0; }
+function rateMaterial(pfad, delta) {
+  const r = getRatings();
+  r[pfad] = (r[pfad] || 0) + delta;
+  saveRatings(r);
+  showToast('Bewertung gespeichert', 'ok');
+  render();
 }
 
 // ─── Sammlungen / Persönliche Toolbox (Manifest: "Meine 10 besten") ──
