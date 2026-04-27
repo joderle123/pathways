@@ -93,6 +93,102 @@ function uniqBy(arr, keyFn) {
 const Utils = {
   generateId, formatDate, formatTime, escapeHtml,
   debounce, deepClone, daysBetween, truncate, uniqBy,
+
+  /** Reusable modal form builder. Returns a Promise that resolves with form data or null on cancel. */
+  modalForm({ title, fields, submitLabel = 'Speichern', cancelLabel = 'Abbrechen' }) {
+    return new Promise(resolve => {
+      const backdrop = document.createElement('div');
+      backdrop.className = 'pw-modal';
+      backdrop.style.display = 'flex';
+
+      const fieldHtml = fields.map(f => {
+        const id = `mf-${f.id}`;
+        const req = f.required ? 'required' : '';
+        const val = escapeHtml(f.value || '');
+        if (f.type === 'textarea') {
+          return `<label class="pw-mf-label">${escapeHtml(f.label)}${f.required ? ' *' : ''}
+            <textarea id="${id}" rows="${f.rows || 3}" placeholder="${escapeHtml(f.placeholder || '')}" ${req}>${val}</textarea>
+          </label>`;
+        }
+        if (f.type === 'select') {
+          return `<label class="pw-mf-label">${escapeHtml(f.label)}
+            <select id="${id}">${f.options.map(o => `<option value="${o.value}" ${o.value === f.value ? 'selected' : ''}>${escapeHtml(o.label)}</option>`).join('')}</select>
+          </label>`;
+        }
+        if (f.type === 'checkbox') {
+          return `<label class="pw-mf-check"><input type="checkbox" id="${id}" ${f.value ? 'checked' : ''}> ${escapeHtml(f.label)}</label>`;
+        }
+        return `<label class="pw-mf-label">${escapeHtml(f.label)}${f.required ? ' *' : ''}
+          <input id="${id}" type="${f.type || 'text'}" value="${val}" placeholder="${escapeHtml(f.placeholder || '')}" ${req}>
+        </label>`;
+      }).join('');
+
+      backdrop.innerHTML = `
+        <div class="pw-modal-backdrop"></div>
+        <div class="pw-modal-content" style="max-width: 560px;">
+          <header class="pw-modal-header">
+            <h2>${escapeHtml(title)}</h2>
+            <button class="pw-btn-icon pw-mf-close">✕</button>
+          </header>
+          <form class="pw-mf-form">
+            ${fieldHtml}
+            <div class="pw-modal-actions">
+              <button type="button" class="btn pw-mf-cancel">${escapeHtml(cancelLabel)}</button>
+              <button type="submit" class="btn btn-primary">${escapeHtml(submitLabel)}</button>
+            </div>
+          </form>
+        </div>
+      `;
+
+      document.body.appendChild(backdrop);
+
+      const close = (result) => { backdrop.remove(); resolve(result); };
+      backdrop.querySelector('.pw-modal-backdrop').onclick = () => close(null);
+      backdrop.querySelector('.pw-mf-close').onclick = () => close(null);
+      backdrop.querySelector('.pw-mf-cancel').onclick = () => close(null);
+      backdrop.querySelector('.pw-mf-form').onsubmit = e => {
+        e.preventDefault();
+        const data = {};
+        fields.forEach(f => {
+          const el = document.getElementById(`mf-${f.id}`);
+          if (f.type === 'checkbox') data[f.id] = el.checked;
+          else data[f.id] = el.value;
+        });
+        close(data);
+      };
+
+      const firstInput = backdrop.querySelector('input, textarea, select');
+      if (firstInput) setTimeout(() => firstInput.focus(), 50);
+
+      backdrop.addEventListener('keydown', e => { if (e.key === 'Escape') close(null); });
+    });
+  },
+
+  /** Show a toast notification. Requires #toast-container in the DOM. */
+  toast(message, type = 'info') {
+    const c = document.getElementById('toast-container');
+    if (!c) return;
+    const t = document.createElement('div');
+    t.className = `pw-toast pw-toast-${type}`;
+    t.textContent = message;
+    c.appendChild(t);
+    requestAnimationFrame(() => t.classList.add('show'));
+    setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 200); }, 3500);
+  },
+
+  /** Safe fetch with error handling. Returns null on failure. */
+  async safeFetch(url) {
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return await res.json();
+    } catch (e) {
+      console.error(`[safeFetch] ${url}:`, e);
+      return null;
+    }
+  },
+
+  today() { return new Date().toISOString().split('T')[0]; },
 };
 
 // CommonJS export (für Tools/Tests). Browser nutzt globale Funktionen + `Utils`.

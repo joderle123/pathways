@@ -202,3 +202,17 @@ html, body {
 [data-app="library"]   { --section-color: var(--color-app-library); }
 [data-app="crisis"]    { --section-color: var(--color-app-crisis); }
 [data-app="parents"]   { --section-color: var(--color-app-parents); }
+
+/* ── Modal Form Component (Utils.modalForm) ── */
+.pw-mf-form { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-4); }
+.pw-mf-label { display: flex; flex-direction: column; gap: 4px; font-size: 14px; font-weight: 500; }
+.pw-mf-label input, .pw-mf-label textarea, .pw-mf-label select {
+  padding: var(--space-2) var(--space-3); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); font-family: inherit; font-size: 14px;
+  background: var(--bg); color: var(--text);
+}
+.pw-mf-label input:focus, .pw-mf-label textarea:focus, .pw-mf-label select:focus {
+  outline: none; border-color: var(--section-color, var(--primary));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--section-color, var(--primary)) 15%, transparent);
+}
+.pw-mf-check { display: flex; align-items: center; gap: var(--space-2); font-size: 14px; cursor: pointer; }
