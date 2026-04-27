@@ -112,5 +112,10 @@
     <p style="font-size: 11px; margin-top: 4px;">Alle Daten lokal im Browser (localStorage). Kein Server, kein Tracking. DSGVO-konform.</p>
   </div>
 
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').then(() => console.log('[SW] Registered'));
+  }
+</script>
 </body>
 </html>
