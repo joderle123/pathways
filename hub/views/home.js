@@ -212,10 +212,27 @@ const HomeView = (function () {
 
     const offeneAufgaben = DB.getAufgaben().filter(a => !a.erledigt).length;
 
+    // Krisenfrequenz: wie oft in 30 Tagen ein roter Risiko-Eintrag
+    const vor30 = new Date(Date.now() - 30 * 86400000).toISOString();
+    let krisenCount = 0;
+    alle.forEach(s => {
+      DB.getRisiko(s.id).forEach(r => {
+        if (r.datum >= vor30 && Object.values(r.werte || {}).includes('rot')) krisenCount++;
+      });
+    });
+
+    // Schwere-Score pro Klient (für Detail-Ansicht)
+    const schwereDetails = alle.map(s => {
+      const r = risikoInfo(s.id);
+      const gewicht = r.level === 'rot' ? 3 : r.level === 'gelb' ? 2 : r.level === 'unbekannt' ? 1 : 1;
+      const sitzungen = DB.getNotizen(s.id).filter(n => n.kategorie === 'session').length;
+      return { name: `${s.vorname || ''} ${s.nachname || ''}`.trim(), id: s.id, gewicht, risiko: r.label, sitzungen };
+    }).sort((a, b) => b.gewicht - a.gewicht);
+
     return `
       <div class="hub-workload">
         <div class="hub-workload-header">
-          <span>⚖️ Workload</span>
+          <span>⚖️ Workload-Schutz</span>
           <span style="font-size: 13px; color: ${lastFarbe}; font-weight: var(--font-weight-semibold);">${lastLabel}</span>
         </div>
         <div class="hub-workload-bar">
@@ -225,9 +242,26 @@ const HomeView = (function () {
           <span>🔴 ${rote}</span>
           <span>🟡 ${gelbe}</span>
           <span>🟢 ${gruene}</span>
+          <span>🚨 ${krisenCount} Krisen/30d</span>
           <span>📋 ${offeneAufgaben} Aufgaben</span>
           <span>👥 ${gesamt} Klienten</span>
         </div>
+        <details style="margin-top: var(--space-3);">
+          <summary style="cursor: pointer; font-size: 13px; color: var(--text-muted);">Belastung pro Klient anzeigen</summary>
+          <div style="margin-top: var(--space-2);">
+            ${schwereDetails.map(d => `
+              <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid var(--border); font-size: 13px;">
+                <span style="cursor: pointer; text-decoration: underline;" onclick="showView('profil','${d.id}')">${Utils.escapeHtml(d.name)}</span>
+                <span>${d.risiko} · ${'█'.repeat(d.gewicht)}${'░'.repeat(3 - d.gewicht)} · ${d.sitzungen} Sitzungen</span>
+              </div>
+            `).join('')}
+          </div>
+          ${lastProzent > 70 ? `
+            <div style="margin-top: var(--space-3); padding: var(--space-3); background: #FEE2E2; border-radius: var(--radius-sm); font-size: 13px; color: #7F1D1D;">
+              ⚠️ <strong>Hohe Belastung.</strong> Erwäge: Supervision ansprechen, Caseload-Review mit Leitung, Selbstfürsorge-Check in ACADEMY.
+            </div>
+          ` : ''}
+        </details>
       </div>
     `;
   }
