@@ -220,6 +220,36 @@ const HomeView = (function () {
       if (risiko.level === 'gelb') {
         items.push({ prio: 3, icon: '🟡', text: `<strong>${Utils.escapeHtml(name)}</strong> — ${risiko.erklaerung}`, sid: s.id });
       }
+
+      // Selbstverletzung in Anamnese → regelmäßige Überprüfung
+      if ((s.anamnese || []).includes('sv_nssi') || (s.anamnese || []).includes('sv_suizidgedanken')) {
+        const letzterRisiko = DB.getRisiko(s.id).sort((a, b) => b.datum.localeCompare(a.datum))[0];
+        const tage = letzterRisiko ? Utils.daysBetween(letzterRisiko.datum, new Date().toISOString()) : 999;
+        if (tage > 14) {
+          items.push({ prio: 2, icon: '🩸', text: `<strong>${Utils.escapeHtml(name)}</strong> — NSSI/Suizidalität in Anamnese, letzte Risiko-Bewertung vor ${tage}d. Re-Assessment empfohlen.`, sid: s.id });
+        }
+      }
+
+      // ORS unter klinischer Schwelle (< 25/40)
+      if (sitzungen.length > 0) {
+        const letzterORS = sitzungen[0].soap?.ors_total;
+        if (letzterORS !== undefined && letzterORS < 25) {
+          items.push({ prio: 2, icon: '📉', text: `<strong>${Utils.escapeHtml(name)}</strong> — ORS ${letzterORS.toFixed(0)}/40 unter klinischer Schwelle (25). Klient im dysfunktionalen Bereich.`, sid: s.id });
+        }
+      }
+    });
+
+    // Cross-Client: fällige Aufgaben
+    const faelligeAufgaben = DB.getAufgaben().filter(a => !a.erledigt && a.faelligkeit && a.faelligkeit <= heute);
+    if (faelligeAufgaben.length) {
+      items.push({ prio: 2, icon: '📋', text: `<strong>${faelligeAufgaben.length} Aufgabe(n)</strong> heute fällig: ${faelligeAufgaben.slice(0, 2).map(a => Utils.escapeHtml(a.titel)).join(', ')}`, sid: null });
+    }
+
+    // Cross-Client: Konferenzen heute
+    alle.forEach(s => {
+      DB.getKonferenzen(s.id).filter(k => k.datum?.startsWith(heute)).forEach(k => {
+        items.push({ prio: 1, icon: '🤝', text: `<strong>Konferenz heute:</strong> ${Utils.escapeHtml(k.titel || 'Hilfeplankonferenz')} für ${Utils.escapeHtml(s.vorname || 'Klient')}`, sid: s.id });
+      });
     });
 
     items.sort((a, b) => a.prio - b.prio);

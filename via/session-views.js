@@ -13,7 +13,13 @@ const TEMPLATES = [
   { id: 'abschluss',     icon: '🚪', name: 'Abschluss', focus: 'Bilanz, T3, Übergabe' },
 ];
 
-const EREIGNISSE = ['Streit zu Hause', 'Schulproblem', 'Positives Erlebnis', 'Krise', 'Trennung', 'Erfolg', 'Konflikt mit Freunden'];
+const EREIGNISSE = [
+  'Streit zu Hause', 'Schulproblem', 'Positives Erlebnis', 'Krise',
+  'Trennung / Verlust', 'Erfolg / Fortschritt', 'Konflikt mit Peers',
+  'Medikationsänderung', 'Hospitalisierung', 'Umzug / Schulwechsel',
+  'Sorgerechtsentscheidung', 'Trauma-Disclosure', 'Selbstverletzung',
+  'Substanzkonsum', 'Neues Hobby / Ressource',
+];
 
 // showToast, toggleTheme, applyTheme bereitgestellt von via/app.js
 
@@ -196,8 +202,30 @@ function renderLive() {
             <div class="se-pvt-emoji">🧊</div><div class="se-pvt-name">Frozen</div>
           </div>
         </div>
-        ${APP.draft.pvt_mid === 'frozen' ? `<div style="font-size: 13px; color: #DC2626; margin-top: 4px;">⚡ Dysregulation erkannt — Grounding-Übung oder Pause anbieten.</div>` : ''}
-        ${APP.draft.pvt_mid === 'activated' ? `<div style="font-size: 13px; color: #F59E0B; margin-top: 4px;">Sympathikus aktiviert — Atemübung oder Orientierung im Raum anbieten.</div>` : ''}
+        ${APP.draft.pvt_mid === 'frozen' ? `
+          <div style="font-size: 13px; color: #DC2626; margin-top: var(--space-2); padding: var(--space-3); background: #FEE2E2; border-radius: var(--radius-sm); border-left: 3px solid #DC2626;">
+            <strong>🧊 Dorsal-vagaler Shutdown (Porges 2011)</strong><br>
+            Klient ist "nicht da" — Dissoziation oder Erstarrung. Kognitive Arbeit ist jetzt sinnlos.<br><br>
+            <strong>Interventions-Leiter:</strong><br>
+            1. <strong>Orientierung:</strong> "${APP.draft.thema ? '' : ''} Du bist hier bei mir, im Raum. Heute ist [Datum]. Du bist sicher."<br>
+            2. <strong>Sensorischer Reiz:</strong> Kaltes Wasser, Eiswürfel in die Hand, starker Geruch (Pfefferminz)<br>
+            3. <strong>5-4-3-2-1 Grounding:</strong> 5 Dinge sehen, 4 hören, 3 fühlen, 2 riechen, 1 schmecken<br>
+            4. <strong>Co-Regulation:</strong> Langsame, tiefe Stimme. Eigene Ruhe ausstrahlen. Nicht anfassen ohne Erlaubnis.<br>
+            5. <strong>Wenn >15 Min:</strong> Sitzung beenden, Safe-Begleitung organisieren, ggf. psychiatrische Abklärung
+          </div>
+        ` : ''}
+        ${APP.draft.pvt_mid === 'activated' ? `
+          <div style="font-size: 13px; color: #92400E; margin-top: var(--space-2); padding: var(--space-3); background: #FEF3C7; border-radius: var(--radius-sm); border-left: 3px solid #F59E0B;">
+            <strong>⚡ Sympathikus-Aktivierung (Fight/Flight)</strong><br>
+            Klient ist aufgeregt, ängstlich, gereizt. Präfrontaler Kortex eingeschränkt.<br><br>
+            <strong>Interventions-Leiter:</strong><br>
+            1. <strong>Verlangsamung:</strong> Eigenes Sprechtempo reduzieren, Pausen machen<br>
+            2. <strong>Atemübung:</strong> 4-7-8 Atmung (4 ein, 7 halten, 8 aus) oder Box-Breathing (4-4-4-4)<br>
+            3. <strong>Bilateral:</strong> Abwechselnd links/rechts tippen (Knie, Schultern) — Butterfly-Hug<br>
+            4. <strong>Körper-Fokus:</strong> "Wo im Körper spürst du die Anspannung? Lass uns da hinschauen."<br>
+            5. <strong>Wenn stabil:</strong> Zurück zu leichtem Thema, dann graduell zum Arbeitsthema
+          </div>
+        ` : ''}
       </div>
 
       <div style="margin-bottom: var(--space-4); display: flex; gap: var(--space-2);">

@@ -353,6 +353,26 @@ function renderKontextuelleEmpfehlungen() {
   `;
 }
 
+// ─── Such-Vorschläge (Top-Keywords aus Index) ──────────────
+function buildSearchSuggestions() {
+  if (!STATE.index?.materials) return;
+  const kwCount = {};
+  STATE.index.materials.forEach(m => {
+    (m.keywords || []).forEach(k => kwCount[k] = (kwCount[k] || 0) + 1);
+  });
+  const topKw = Object.entries(kwCount).sort((a, b) => b[1] - a[1]).slice(0, 50).map(([k]) => k);
+
+  let dl = document.getElementById('search-suggestions');
+  if (!dl) {
+    dl = document.createElement('datalist');
+    dl.id = 'search-suggestions';
+    document.body.appendChild(dl);
+  }
+  dl.innerHTML = topKw.map(k => `<option value="${Utils.escapeHtml(k)}">`).join('');
+  const input = document.getElementById('lib-search');
+  if (input) input.setAttribute('list', 'search-suggestions');
+}
+
 // ─── Bootstrap ──────────────────────────────────────────────
 async function init() {
   applyTheme();
@@ -374,6 +394,7 @@ async function init() {
   }
 
   buildFilterUI();
+  buildSearchSuggestions();
   render();
 
   // Live search
