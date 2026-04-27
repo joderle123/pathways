@@ -1,0 +1,402 @@
+/* ============================================================
+   VIA — Plan-Views (aus ehem. ROADMAP)
+   ============================================================ */
+
+// APP wird von via/app.js bereitgestellt
+
+const STAERKEN = [
+  'Kreativität','Empathie','Humor','Durchhaltung','Neugier','Sport',
+  'Soziale Kompetenz','Selbstständigkeit','Mut','Akademisches','Dankbarkeit',
+  'Freundlichkeit','Teamwork','Hoffnung',
+];
+
+// showToast, toggleTheme, applyTheme bereitgestellt von via/app.js
+
+async function loadPhasen() {
+  if (APP.phasen) return APP.phasen;
+  const res = await fetch('phases/phase-templates.json');
+  const data = await res.json();
+  APP.phasen = data.phasen;
+  return APP.phasen;
+}
+
+function getOrCreateRoadmap() {
+  let rm = DB.getRoadmap(APP.schuelerId);
+  if (!rm) {
+    // Migration: alte data.js-Variante hat ROADMAP_PHASEN. Wir nutzen lokale phase-templates.json
+    rm = {
+      id: DB.generateId(),
+      schuelerId: APP.schuelerId,
+      screeningId: null,
+      phasen: APP.phasen.map(p => ({
+        nr: p.nr,
+        status: p.nr === 0 ? 'aktiv' : 'offen',
+        startDatum: p.nr === 0 ? new Date().toISOString().split('T')[0] : null,
+        endDatum: null,
+        themen: [],
+        notizen: '',
+        ziele: [],
+      })),
+      erstellt: new Date().toISOString(),
+      geaendert: new Date().toISOString(),
+    };
+    DB.saveRoadmap(rm);
+  }
+  // Sicherstellen, dass ziele-Array existiert
+  rm.phasen.forEach(p => { if (!p.ziele) p.ziele = []; });
+  return rm;
+}
+
+function setPlanTab(name) {
+  APP.activeTab = name;
+  document.querySelectorAll('.via-sub-tab').forEach(el => el.classList.toggle('active', el.dataset.tab === name));
+  if (name === 'phasen') renderPhasen();
+  else if (name === 'ziele') renderZiele();
+  else if (name === 'staerken') renderStaerken();
+  else if (name === 'report') renderReport();
+}
+
+// ─── Phasen ───────────────────────────────────────────────
+async function renderPhasen() {
+  await loadPhasen();
+  const container = document.getElementById('via-content');
+  if (!APP.schuelerId) {
+    container.innerHTML = `<div class="rm-section"><h2>🎯 7-Phasen-Roadmap</h2><p>Kein Klient gewählt.</p></div>`;
+    return;
+  }
+  const rm = getOrCreateRoadmap();
+  const aktivePhase = rm.phasen.find(p => p.status === 'aktiv');
+  const currentNr = APP.currentPhase ?? aktivePhase?.nr ?? 0;
+  const phaseDef = APP.phasen[currentNr];
+  const phaseStatus = rm.phasen.find(p => p.nr === currentNr);
+
+  // Stepper
+  const stepperHtml = APP.phasen.map(p => {
+    const status = rm.phasen.find(x => x.nr === p.nr);
+    const isActive = p.nr === currentNr;
+    const isDone = status?.status === 'abgeschlossen';
+    return `
+      <div class="rm-step ${isActive ? 'active' : ''} ${isDone ? 'done' : ''}" onclick="setCurrentPhase(${p.nr})">
+        <div class="rm-step-icon">${p.icon}</div>
+        <div class="rm-step-num">Phase ${p.nr}</div>
+        <div class="rm-step-name">${p.name}</div>
+      </div>
+    `;
+  }).join('');
+
+  container.innerHTML = `
+    <div class="rm-stepper">${stepperHtml}</div>
+
+    <div class="rm-phase-detail" style="border-top: 4px solid ${phaseDef.color};">
+      <div class="rm-phase-header">
+        <div class="rm-phase-icon-big" style="background: ${phaseDef.color}22;">${phaseDef.icon}</div>
+        <div>
+          <h2>Phase ${phaseDef.nr}: ${phaseDef.name}</h2>
+          <div class="rm-phase-meta">${phaseDef.dauer} · Status: ${phaseStatus?.status || 'offen'}</div>
+        </div>
+      </div>
+
+      <div class="rm-phase-ziel">
+        <strong>🎯 Ziel:</strong> ${Utils.escapeHtml(phaseDef.ziel)}
+      </div>
+
+      <h3>Fokus-Aktivitäten</h3>
+      <ul style="line-height: var(--line-height-relaxed); margin-bottom: var(--space-4);">
+        ${phaseDef.fokus.map(f => `<li>${Utils.escapeHtml(f)}</li>`).join('')}
+      </ul>
+
+      <h3>Übergangs-Kriterien zur nächsten Phase</h3>
+      <ul style="line-height: var(--line-height-relaxed); margin-bottom: var(--space-4); color: var(--text-secondary);">
+        ${phaseDef.kriterien_zur_naechsten.map(k => `<li>✓ ${Utils.escapeHtml(k)}</li>`).join('')}
+      </ul>
+
+      <h3>Notizen zu dieser Phase</h3>
+      <textarea id="phase-notizen" rows="4" style="width: 100%; padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: inherit;">${Utils.escapeHtml(phaseStatus?.notizen || '')}</textarea>
+
+      <div class="rm-phase-status">
+        ${phaseStatus?.status !== 'aktiv' ? `<button class="btn btn-primary" onclick="setPhaseStatus(${currentNr},'aktiv')">▶️ Als aktiv markieren</button>` : ''}
+        ${phaseStatus?.status === 'aktiv' ? `<button class="btn" onclick="setPhaseStatus(${currentNr},'abgeschlossen')">✓ Abschließen + nächste Phase aktivieren</button>` : ''}
+        <button class="btn" onclick="savePhaseNotizen(${currentNr})">💾 Notizen speichern</button>
+      </div>
+    </div>
+  `;
+}
+
+function setCurrentPhase(nr) {
+  APP.currentPhase = nr;
+  renderPhasen();
+}
+
+function setPhaseStatus(nr, status) {
+  const rm = getOrCreateRoadmap();
+  const p = rm.phasen.find(x => x.nr === nr);
+  if (!p) return;
+  p.status = status;
+  if (status === 'aktiv') p.startDatum = p.startDatum || new Date().toISOString().split('T')[0];
+  if (status === 'abgeschlossen') {
+    p.endDatum = new Date().toISOString().split('T')[0];
+    // Aktiviere nächste Phase
+    const next = rm.phasen.find(x => x.nr === nr + 1);
+    if (next && next.status === 'offen') {
+      next.status = 'aktiv';
+      next.startDatum = new Date().toISOString().split('T')[0];
+    }
+    // Setze andere von 'aktiv' auf 'offen'
+    rm.phasen.forEach(x => { if (x.nr !== nr && x.nr !== nr+1 && x.status === 'aktiv') x.status = 'offen'; });
+  } else if (status === 'aktiv') {
+    rm.phasen.forEach(x => { if (x.nr !== nr && x.status === 'aktiv') x.status = 'offen'; });
+  }
+  DB.saveRoadmap(rm);
+  showToast(`Phase ${nr}: Status → ${status}`, 'ok');
+  Bridge.notify('roadmap_updated', { schuelerId: APP.schuelerId, phaseNr: nr, status });
+  renderPhasen();
+}
+
+function savePhaseNotizen(nr) {
+  const text = document.getElementById('phase-notizen').value;
+  const rm = getOrCreateRoadmap();
+  const p = rm.phasen.find(x => x.nr === nr);
+  if (p) { p.notizen = text; DB.saveRoadmap(rm); showToast('Notizen gespeichert', 'ok'); }
+}
+
+// ─── SMART-Ziele ──────────────────────────────────────────
+async function renderZiele() {
+  await loadPhasen();
+  const container = document.getElementById('via-content');
+  if (!APP.schuelerId) {
+    container.innerHTML = `<div class="rm-section"><h2>🎲 SMART-Ziele</h2><p>Kein Klient gewählt.</p></div>`;
+    return;
+  }
+  const rm = getOrCreateRoadmap();
+  const allGoals = rm.phasen.flatMap(p => (p.ziele || []).map(g => ({ ...g, phaseNr: p.nr })));
+
+  container.innerHTML = `
+    <div class="rm-section">
+      <h2>🎲 SMART-Ziele</h2>
+      <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">
+        Spezifisch, Messbar, Attraktiv (klient-relevant), Realistisch, Terminiert.
+        Ziele werden Phasen zugeordnet.
+      </p>
+      <button class="btn btn-primary" onclick="addZiel()" style="margin-bottom: var(--space-4);">+ Neues SMART-Ziel</button>
+
+      ${allGoals.length === 0
+        ? `<div class="pw-empty"><div class="pw-empty-icon">🎯</div><p>Noch keine Ziele definiert.</p></div>`
+        : allGoals.map(g => `
+            <div class="rm-goal ${g.status === 'erreicht' ? 'done' : ''}">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div class="rm-goal-title">${g.status === 'erreicht' ? '✓ ' : ''}${Utils.escapeHtml(g.titel || g.text || '?')}</div>
+                <button class="btn" style="padding: 4px 8px; font-size: 12px;" onclick="toggleZiel('${g.id}', ${g.phaseNr})">${g.status === 'erreicht' ? '↻ Re-open' : '✓ Erreicht'}</button>
+              </div>
+              ${g.beschreibung ? `<div style="font-size: 13px; color: var(--text-secondary); margin: var(--space-2) 0;">${Utils.escapeHtml(g.beschreibung)}</div>` : ''}
+              <div class="rm-goal-meta">
+                <span>Phase ${g.phaseNr}: ${APP.phasen[g.phaseNr]?.name}</span>
+                ${g.terminiert ? `<span>📅 ${Utils.formatDate(g.terminiert)}</span>` : ''}
+                <span>${g.status || 'offen'}</span>
+              </div>
+            </div>
+          `).join('')
+      }
+    </div>
+  `;
+}
+
+function addZiel() {
+  const titel = prompt('Ziel-Titel? (Spezifisch + Messbar)\nz.B. "3× pro Woche 20 Min. Sport"');
+  if (!titel) return;
+  const beschreibung = prompt('Beschreibung / Begründung (Attraktiv + Realistisch)?', '') || '';
+  const phaseNr = parseInt(prompt('Welche Phase (0-6)?', '3'), 10);
+  const terminiert = prompt('Ziel-Datum (YYYY-MM-DD, optional)?', '') || '';
+
+  const rm = getOrCreateRoadmap();
+  const phase = rm.phasen.find(p => p.nr === phaseNr);
+  if (!phase) { showToast('Ungültige Phase', 'info'); return; }
+  if (!phase.ziele) phase.ziele = [];
+
+  phase.ziele.push({
+    id: DB.generateId(),
+    titel,
+    beschreibung,
+    terminiert,
+    status: 'offen',
+    erstellt: new Date().toISOString(),
+  });
+  DB.saveRoadmap(rm);
+  showToast('Ziel angelegt', 'ok');
+  renderZiele();
+}
+
+function toggleZiel(id, phaseNr) {
+  const rm = getOrCreateRoadmap();
+  const phase = rm.phasen.find(p => p.nr === phaseNr);
+  if (!phase) return;
+  const z = (phase.ziele || []).find(x => x.id === id);
+  if (!z) return;
+  z.status = z.status === 'erreicht' ? 'offen' : 'erreicht';
+  if (z.status === 'erreicht') z.erreichtAm = new Date().toISOString();
+  DB.saveRoadmap(rm);
+  renderZiele();
+}
+
+// ─── Stärken-Profil ───────────────────────────────────────
+const STORAGE_STAERKEN = 'pw_staerken';
+function getStaerken() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_STAERKEN) || '{}'); } catch { return {}; }
+}
+function saveStaerkenAll(map) { localStorage.setItem(STORAGE_STAERKEN, JSON.stringify(map)); }
+
+function renderStaerken() {
+  const container = document.getElementById('via-content');
+  if (!APP.schuelerId) {
+    container.innerHTML = `<div class="rm-section"><h2>💪 Stärken-Profil</h2><p>Kein Klient gewählt.</p></div>`;
+    return;
+  }
+  const all = getStaerken();
+  const data = all[APP.schuelerId] || {};
+
+  container.innerHTML = `
+    <div class="rm-section">
+      <h2>💪 Stärken-Profil</h2>
+      <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">
+        14 Stärken-Dimensionen. Jede Bewertung 1-10. Stärken sind Ressourcen — fokussiere darauf, nicht nur auf Defizite.
+      </p>
+
+      <div class="rm-radar">
+        ${STAERKEN.map((name, i) => {
+          const val = data[i] || 5;
+          return `
+            <div class="rm-strength">
+              <div class="rm-strength-name">
+                <span>${name}</span>
+                <span style="color: var(--color-app-roadmap); font-weight: var(--font-weight-bold);">${val}/10</span>
+              </div>
+              <div class="rm-strength-bar">
+                <div class="rm-strength-fill" style="width: ${val * 10}%;"></div>
+              </div>
+              <input type="range" min="1" max="10" value="${val}" oninput="updateStaerke(${i}, this.value)">
+            </div>
+          `;
+        }).join('')}
+      </div>
+
+      <div style="margin-top: var(--space-5);">
+        <button class="btn btn-primary" onclick="saveStaerkenForKlient()">💾 Speichern</button>
+      </div>
+    </div>
+  `;
+}
+
+function updateStaerke(idx, val) {
+  const all = getStaerken();
+  if (!all[APP.schuelerId]) all[APP.schuelerId] = {};
+  all[APP.schuelerId][idx] = parseInt(val, 10);
+  saveStaerkenAll(all);
+  renderStaerken();
+}
+
+function saveStaerkenForKlient() {
+  showToast('Stärken-Profil aktualisiert', 'ok');
+  Bridge.notify('staerken_updated', { schuelerId: APP.schuelerId });
+}
+
+// ─── Förderplan-Report (druckbar) ─────────────────────────
+async function renderReport() {
+  await loadPhasen();
+  const container = document.getElementById('via-content');
+  if (!APP.schuelerId) {
+    container.innerHTML = `<div class="rm-section"><h2>📄 Förderplan</h2><p>Kein Klient gewählt.</p></div>`;
+    return;
+  }
+  const s = DB.getSchuelerById(APP.schuelerId);
+  const rm = getOrCreateRoadmap();
+  const allGoals = rm.phasen.flatMap(p => (p.ziele || []).map(g => ({ ...g, phaseNr: p.nr })));
+  const ff = DB.getFallformulierung(APP.schuelerId);
+
+  container.innerHTML = `
+    <div style="margin-bottom: var(--space-3); display: flex; gap: var(--space-2);">
+      <button class="btn btn-primary" onclick="window.print()">🖨️ Drucken / PDF</button>
+      <button class="btn" onclick="exportReportText()">📄 Als Text exportieren</button>
+    </div>
+
+    <div class="rm-section">
+      <h1 style="margin-bottom: var(--space-3);">Förderplan</h1>
+      <h2>${Utils.escapeHtml(`${s?.vorname || ''} ${s?.nachname || ''}`.trim() || 'Klient')}</h2>
+      <div style="color: var(--text-muted); margin-bottom: var(--space-4);">
+        Erstellt: ${Utils.formatDate(rm.erstellt)} · Geändert: ${Utils.formatDate(rm.geaendert)}
+      </div>
+
+      <h3>Phasen-Übersicht</h3>
+      ${rm.phasen.map((p, i) => {
+        const def = APP.phasen[p.nr];
+        return `
+          <div style="display: flex; gap: var(--space-2); padding: var(--space-2); border-left: 4px solid ${def.color}; margin-bottom: var(--space-2);">
+            <div style="font-size: 24px;">${def.icon}</div>
+            <div style="flex: 1;">
+              <strong>Phase ${p.nr}: ${def.name}</strong>
+              <span style="margin-left: var(--space-2); padding: 2px 8px; border-radius: var(--radius-full); background: var(--bg-subtle); font-size: 11px;">${p.status}</span>
+              ${p.startDatum ? `<div style="font-size: 12px; color: var(--text-muted);">${Utils.formatDate(p.startDatum)} ${p.endDatum ? '→ ' + Utils.formatDate(p.endDatum) : ''}</div>` : ''}
+              ${p.notizen ? `<div style="font-size: 13px; margin-top: 4px;">${Utils.escapeHtml(p.notizen)}</div>` : ''}
+            </div>
+          </div>
+        `;
+      }).join('')}
+
+      ${allGoals.length ? `
+        <h3 style="margin-top: var(--space-5);">SMART-Ziele (${allGoals.length})</h3>
+        ${allGoals.map(g => `
+          <div style="padding: var(--space-2); border-bottom: 1px solid var(--border);">
+            ${g.status === 'erreicht' ? '✓' : '○'} <strong>${Utils.escapeHtml(g.titel || g.text)}</strong>
+            <div style="font-size: 12px; color: var(--text-muted);">Phase ${g.phaseNr}${g.terminiert ? ' · ' + Utils.formatDate(g.terminiert) : ''}</div>
+          </div>
+        `).join('')}
+      ` : ''}
+
+      ${ff?.hypothese ? `
+        <h3 style="margin-top: var(--space-5);">Hypothese (5P)</h3>
+        <div style="padding: var(--space-3); background: var(--bg-subtle); border-radius: var(--radius-sm); white-space: pre-wrap;">${Utils.escapeHtml(ff.hypothese)}</div>
+      ` : ''}
+    </div>
+  `;
+}
+
+function exportReportText() {
+  const s = DB.getSchuelerById(APP.schuelerId);
+  const rm = getOrCreateRoadmap();
+  const allGoals = rm.phasen.flatMap(p => (p.ziele || []).map(g => ({ ...g, phaseNr: p.nr })));
+  const lines = [
+    'PATHWAYS — FÖRDERPLAN',
+    '═══════════════════════════════════',
+    `Klient: ${s?.vorname || ''} ${s?.nachname || ''}`,
+    `Erstellt: ${Utils.formatDate(rm.erstellt)}`,
+    '',
+    'PHASEN',
+    '═══════════════════════════════════',
+  ];
+  rm.phasen.forEach(p => {
+    const def = APP.phasen[p.nr];
+    lines.push(`Phase ${p.nr}: ${def.name} [${p.status}]`);
+    if (p.startDatum) lines.push(`  Start: ${Utils.formatDate(p.startDatum)}`);
+    if (p.notizen) lines.push(`  Notiz: ${p.notizen}`);
+    lines.push('');
+  });
+  if (allGoals.length) {
+    lines.push('SMART-ZIELE');
+    lines.push('═══════════════════════════════════');
+    allGoals.forEach(g => {
+      lines.push(`${g.status === 'erreicht' ? '✓' : '○'} ${g.titel || g.text} (Phase ${g.phaseNr})`);
+    });
+  }
+  const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `foerderplan-${s?.nachname || 'klient'}-${new Date().toISOString().split('T')[0]}.txt`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ─── Bridge ───────────────────────────────────────────────
+Bridge.subscribe('screening_completed', e => {
+  if (e.schuelerId === APP.schuelerId) showToast('Screening abgeschlossen — Hypothesen-Empfehlungen prüfen', 'info');
+});
+
+// updateContext und Bootstrap werden von via/app.js bereitgestellt

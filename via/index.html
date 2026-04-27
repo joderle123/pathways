@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pathways VIA — Plan & Sitzung</title>
+  <meta name="theme-color" content="#10B981">
+  <link rel="stylesheet" href="../core/ui-base.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-app="via">
+
+<header class="via-topbar">
+  <div class="via-brand">
+    <span class="via-logo">🛤️</span>
+    <div>
+      <div class="via-app-name">VIA</div>
+      <div class="via-app-tag">Plan & Sitzung</div>
+    </div>
+  </div>
+  <div class="via-context" id="via-context">— ohne Klient —</div>
+  <div class="via-timer" id="via-timer" style="display: none;">⏱️ <span id="via-timer-text">00:00</span></div>
+  <div class="via-actions">
+    <button class="btn btn-danger" onclick="openCrisis()" title="Krise">🚨</button>
+    <button class="btn" onclick="toggleTheme()">🌓</button>
+    <a class="btn" href="../hub/">← HUB</a>
+  </div>
+</header>
+
+<!-- ─── Mode-Wechsler (Plan ↔ Sitzung) ───────────────────── -->
+<nav class="via-modes">
+  <button class="via-mode active" data-mode="plan" onclick="setMode('plan')">🗺️ Plan</button>
+  <button class="via-mode" data-mode="sitzung" onclick="setMode('sitzung')">🎯 Sitzung</button>
+</nav>
+
+<!-- ─── Sub-Tabs (kontextabhängig) ────────────────────────── -->
+<nav class="via-tabs" id="via-tabs"></nav>
+
+<main class="via-main">
+  <div id="via-content"></div>
+</main>
+
+<div id="toast-container"></div>
+
+<script src="../core/db.js"></script>
+<script src="../core/bridge.js"></script>
+<script src="../core/utils.js"></script>
+<script src="plan-views.js"></script>
+<script src="session-views.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

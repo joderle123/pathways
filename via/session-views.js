@@ -1,29 +1,8 @@
 /* ============================================================
-   Pathways SESSION — Sitzungs-Tool
-   ============================================================
-   Pre/Live/Post-Modi, ORS/SRS/PVT-Tracking, SOAP-Doku.
+   VIA — Session-Views (aus ehem. SESSION)
    ============================================================ */
 
-const APP = {
-  schuelerId: null,
-  mode: 'pre',
-  sessionStart: null,
-  timerInterval: null,
-  draft: {
-    quicknotes: '',
-    soap: { S: '', O: '', A: '', P: '' },
-    ors: { individual: 8, interpersonal: 8, social: 8, overall: 8 },
-    srs: { relationship: 8, goals: 8, approach: 8, overall: 8 },
-    pvt_start: null,
-    pvt_end: null,
-    stimmung_start: 5,
-    stimmung_end: 5,
-    thema: '',
-    materialien: [],
-    ereignisse: [],
-    typ: 'regulaer',
-  },
-};
+// APP wird von via/app.js bereitgestellt (inkl. session-spezifische Felder)
 
 const TEMPLATES = [
   { id: 'erstgespraech', icon: '👋', name: 'Erstgespräch', focus: 'Beziehungsaufbau, Anamnese, Ziele explorieren' },
@@ -36,34 +15,18 @@ const TEMPLATES = [
 
 const EREIGNISSE = ['Streit zu Hause', 'Schulproblem', 'Positives Erlebnis', 'Krise', 'Trennung', 'Erfolg', 'Konflikt mit Freunden'];
 
-// ─── Toast / Theme ────────────────────────────────────────────
-function showToast(m, t = 'info') {
-  const c = document.getElementById('toast-container');
-  const e = document.createElement('div');
-  e.className = `pw-toast pw-toast-${t}`;
-  e.textContent = m;
-  c.appendChild(e);
-  requestAnimationFrame(() => e.classList.add('show'));
-  setTimeout(() => { e.classList.remove('show'); setTimeout(() => e.remove(), 200); }, 3000);
-}
-function toggleTheme() {
-  document.body.classList.toggle('theme-dark');
-  localStorage.setItem('pw_app_session_theme', document.body.classList.contains('theme-dark') ? 'dark' : 'light');
-}
-function applyTheme() {
-  if (localStorage.getItem('pw_app_session_theme') === 'dark') document.body.classList.add('theme-dark');
-}
+// showToast, toggleTheme, applyTheme bereitgestellt von via/app.js
 
 // ─── Timer ────────────────────────────────────────────────────
 function startTimer() {
   APP.sessionStart = Date.now();
-  document.getElementById('se-timer').style.display = 'block';
+  document.getElementById('via-timer').style.display = 'block';
   if (APP.timerInterval) clearInterval(APP.timerInterval);
   APP.timerInterval = setInterval(() => {
     const elapsed = Math.floor((Date.now() - APP.sessionStart) / 1000);
     const min = Math.floor(elapsed / 60);
     const sec = elapsed % 60;
-    document.getElementById('se-timer-text').textContent = `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+    document.getElementById('via-timer-text').textContent = `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
     // Warnung bei 10 Min vor Ende (40 Min)
     if (min === 40 && sec === 0) showToast('⏰ Noch 10 Minuten — Konsolidierung beginnen', 'info');
     if (min === 50 && sec === 0) showToast('⏰ Sitzungsende erreicht', 'info');
@@ -75,7 +38,7 @@ function stopTimer() {
 }
 
 // ─── Mode Routing ─────────────────────────────────────────────
-function setMode(name) {
+function setSessionMode(name) {
   APP.mode = name;
   document.querySelectorAll('.se-mode').forEach(el => el.classList.toggle('active', el.dataset.mode === name));
   if (name === 'pre') renderPre();
@@ -86,7 +49,7 @@ function setMode(name) {
 
 // ─── PRE-SESSION ─────────────────────────────────────────────
 function renderPre() {
-  const container = document.getElementById('se-content');
+  const container = document.getElementById('via-content');
   if (!APP.schuelerId) {
     container.innerHTML = `<div class="se-section"><h2>📋 Pre-Session</h2><p>Kein Klient gewählt.</p></div>`;
     return;
@@ -141,7 +104,7 @@ function renderPre() {
       <div style="margin-top: var(--space-4); display: flex; gap: var(--space-2); flex-wrap: wrap;">
         <a class="btn" href="../claro/?schueler=${APP.schuelerId}" target="_blank">🔍 CLARO</a>
         <a class="btn" href="../codex/?suche=${encodeURIComponent(aktivePhase?.themen?.[0] || '')}" target="_blank">📚 Material</a>
-        <a class="btn" href="../via/?schueler=${APP.schuelerId}" target="_blank">🗺️ Plan</a>
+        <a class="btn" href="../roadmap/?schueler=${APP.schuelerId}" target="_blank">🗺️ Roadmap</a>
       </div>
     </div>
   `;
@@ -150,12 +113,12 @@ function renderPre() {
 function startSession(typ) {
   APP.draft.typ = typ;
   startTimer();
-  setMode('live');
+  setSessionMode('live');
 }
 
 // ─── LIVE-SESSION ─────────────────────────────────────────────
 function renderLive() {
-  const container = document.getElementById('se-content');
+  const container = document.getElementById('via-content');
   if (!APP.schuelerId) {
     container.innerHTML = `<div class="se-section"><p>Kein Klient gewählt.</p></div>`;
     return;
@@ -204,7 +167,7 @@ function renderLive() {
       </div>
 
       <div style="margin-top: var(--space-4); display: flex; gap: var(--space-2);">
-        <button class="btn btn-primary" onclick="setMode('post')">→ Sitzung beenden, zu Post-Session</button>
+        <button class="btn btn-primary" onclick="setSessionMode('post')">→ Sitzung beenden, zu Post-Session</button>
         <a class="btn" href="../codex/" target="_blank">📚 Material öffnen</a>
         <a class="btn" href="../hub/?schueler=${APP.schuelerId}&view=crisis" target="_blank">🚨 Crisis-Tools</a>
       </div>
@@ -235,7 +198,7 @@ function toggleEreignis(ev) {
 
 // ─── POST-SESSION ─────────────────────────────────────────────
 function renderPost() {
-  const container = document.getElementById('se-content');
+  const container = document.getElementById('via-content');
   if (!APP.schuelerId) {
     container.innerHTML = `<div class="se-section"><p>Kein Klient gewählt.</p></div>`;
     return;
@@ -328,7 +291,7 @@ function renderPost() {
 
       <div style="margin-top: var(--space-5); display: flex; gap: var(--space-2); flex-wrap: wrap;">
         <button class="btn btn-primary" onclick="saveSession()">💾 Sitzung speichern</button>
-        <button class="btn" onclick="setMode('live')">← Zurück zu Live</button>
+        <button class="btn" onclick="setSessionMode('live')">← Zurück zu Live</button>
       </div>
     </div>
   `;
@@ -386,12 +349,12 @@ function saveSession() {
     stimmung_start: 5, stimmung_end: 5,
     thema: '', materialien: [], ereignisse: [], typ: 'regulaer',
   };
-  setMode('history');
+  setSessionMode('history');
 }
 
 // ─── HISTORY ─────────────────────────────────────────────────
 function renderHistory() {
-  const container = document.getElementById('se-content');
+  const container = document.getElementById('via-content');
   if (!APP.schuelerId) {
     container.innerHTML = `<div class="se-section"><p>Kein Klient gewählt.</p></div>`;
     return;
@@ -444,25 +407,4 @@ function renderHistory() {
   `;
 }
 
-// ─── Bridge ──────────────────────────────────────────────────
-function openCrisis() {
-  if (APP.schuelerId) Bridge.openApp('hub', { schueler: APP.schuelerId, view: 'crisis' });
-  else Bridge.openApp('hub', { view: 'crisis' });
-}
-
-function updateContext() {
-  const el = document.getElementById('se-context');
-  if (!APP.schuelerId) { el.textContent = '— ohne Klient —'; return; }
-  const s = DB.getSchuelerById(APP.schuelerId);
-  el.textContent = s ? `👤 ${(s.vorname || '') + ' ' + (s.nachname || '')}`.trim() : '👤 ?';
-}
-
-// ─── Bootstrap ────────────────────────────────────────────────
-window.addEventListener('DOMContentLoaded', () => {
-  applyTheme();
-  const params = Bridge.parseQuery();
-  if (params.schueler) APP.schuelerId = params.schueler;
-  if (params.thema) APP.draft.thema = params.thema;
-  updateContext();
-  setMode('pre');
-});
+// openCrisis, updateContext, Bootstrap werden von via/app.js bereitgestellt
