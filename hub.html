@@ -54,6 +54,7 @@
     }
     .hub-app-name { font-size: 18px; font-weight: var(--font-weight-bold); margin-top: var(--space-2); }
     .hub-app-desc { font-size: 13px; color: var(--text-secondary); line-height: var(--line-height-relaxed); }
+    .hub-app-tag { margin-top: var(--space-2); padding: 2px 12px; background: var(--app-color, var(--primary)); color: white; border-radius: var(--radius-full); font-size: 11px; font-weight: 700; letter-spacing: 0.5px; }
     .hub-footer {
       margin-top: var(--space-8);
       font-size: var(--text-sm);
@@ -66,38 +67,49 @@
 
   <div class="hub-logo">🧭</div>
   <h1 class="hub-title">Pathways</h1>
-  <p class="hub-subtitle">Therapeutisches Case-Management für die Bezugsarbeit mit Jugendlichen. Wähle eine App.</p>
+  <p class="hub-subtitle">Therapeutisches Case-Management für die Bezugsarbeit mit Jugendlichen.<br>5 spezialisierte Apps — ein Ökosystem. Beginne im HUB.</p>
+
+  <div class="hub-workflow" style="max-width: 700px; margin: 0 auto var(--space-6); text-align: left; font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
+    <strong style="color: var(--text);">Typischer Workflow:</strong>
+    <span style="color: #6366F1;">HUB</span> (Klient anlegen) →
+    <span style="color: #EF4444;">CLARO</span> (Screening + Hypothesen) →
+    <span style="color: #10B981;">VIA</span> (Plan erstellen + Sitzungen) →
+    <span style="color: #0EA5E9;">CODEX</span> (Material für Sitzung) →
+    <span style="color: #14B8A6;">ACADEMY</span> (Weiterbildung)
+  </div>
 
   <div class="hub-grid">
     <a class="hub-app" href="hub/" style="--app-color: #6366F1;">
       <div class="hub-app-icon">🏠</div>
       <div class="hub-app-name">HUB</div>
-      <div class="hub-app-desc">Cockpit, Klienten-Verwaltung, Krisen-Werkzeuge, Helfer-Netzwerk</div>
+      <div class="hub-app-desc">Dein Cockpit. Tagesbriefing, Klienten-Verwaltung, Risiko-Ampel, Krisen-Werkzeuge, Helfer-Netzwerk, Konferenz-Modus.</div>
+      <div class="hub-app-tag">Hier starten</div>
     </a>
     <a class="hub-app" href="claro/" style="--app-color: #EF4444;">
       <div class="hub-app-icon">🔍</div>
       <div class="hub-app-name">CLARO</div>
-      <div class="hub-app-desc">Adaptive Diagnostik, Screening, Hypothesen, 5P, ICD</div>
+      <div class="hub-app-desc">Adaptive Diagnostik. 5 Triage-Fragen, 6 validierte Instrumente (PHQ-A, GAD-7, PCL-5, SDQ, SCOFF, ASRS), Live-Hypothesen, 5P-Fallformulierung.</div>
     </a>
     <a class="hub-app" href="via/" style="--app-color: #10B981;">
       <div class="hub-app-icon">🛤️</div>
       <div class="hub-app-name">VIA</div>
-      <div class="hub-app-desc">Plan & Sitzung — der Weg. 7 Phasen, Live-Begleitung, ORS/SRS</div>
+      <div class="hub-app-desc">Plan & Sitzung. 7-Phasen-Roadmap, Heute-Ansicht, Live-Timer, ORS/SRS (Miller & Duncan), PVT-Tracking, SOAP-Dokumentation, Stepped Care.</div>
     </a>
     <a class="hub-app" href="codex/" style="--app-color: #0EA5E9;">
       <div class="hub-app-icon">📚</div>
       <div class="hub-app-name">CODEX</div>
-      <div class="hub-app-desc">Materialien, Wissensartikel, Eltern-Infoblätter — alles vernetzt</div>
+      <div class="hub-app-desc">441 Materialien + Eltern-Infoblätter + Therapie-Sequenzen. Kontextuelle Empfehlungen basierend auf Klient-Profil. Persönliche Toolbox.</div>
     </a>
     <a class="hub-app" href="academy/" style="--app-color: #14B8A6;">
       <div class="hub-app-icon">🎓</div>
       <div class="hub-app-name">ACADEMY</div>
-      <div class="hub-app-desc">Weiterbildung, Lernpfade, CDSS-Wizard, Gamification</div>
+      <div class="hub-app-desc">9 Lernpfade, Skills-Trainer mit Rollenspielen, CDSS-Wizard, Tages-Impulse, Selbstfürsorge-Check, Karriere-Tracker. XP & Zertifikate.</div>
     </a>
   </div>
 
   <div class="hub-footer">
-    <p>Pathways v3.1 — 5 Apps, eine Disruption. Designed by Joey Guedes · <a href="core/test.html">Core-Test</a></p>
+    <p>Pathways v3.1 — Designed by Joey Guedes · <a href="core/test.html">Core-Test</a></p>
+    <p style="font-size: 11px; margin-top: 4px;">Alle Daten lokal im Browser (localStorage). Kein Server, kein Tracking. DSGVO-konform.</p>
   </div>
 
 </body>
