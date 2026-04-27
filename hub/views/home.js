@@ -125,10 +125,38 @@ const HomeView = (function () {
       satz2 = 'Noch keine Begleitung begonnen.';
     }
 
-    // ── Satz 3: Was steht heute an? ──
+    // ── Treatment Response (ORS erste 3 vs letzte 3) ──
+    let responseLabel = '';
+    if (sitzungen.length >= 6) {
+      const erste3 = sitzungen.slice(-3).map(n => n.soap?.ors_total).filter(v => v !== undefined);
+      const letzte3 = sitzungen.slice(0, 3).map(n => n.soap?.ors_total).filter(v => v !== undefined);
+      if (erste3.length && letzte3.length) {
+        const diff = (letzte3.reduce((a, b) => a + b, 0) / letzte3.length) - (erste3.reduce((a, b) => a + b, 0) / erste3.length);
+        if (diff > 3) responseLabel = 'ORS deutlich verbessert ↑';
+        else if (diff > 0) responseLabel = 'ORS leicht verbessert';
+        else if (diff > -3) responseLabel = 'ORS stagniert →';
+        else responseLabel = 'ORS verschlechtert ↓';
+      }
+    }
+    if (responseLabel) satz2 += ` ${responseLabel}.`;
+
+    // ── 5P-Hypothese wenn vorhanden ──
+    const ff = DB.getFallformulierung?.(s.id);
+    if (ff?.hypothese) {
+      satz2 += ` Hypothese: ${ff.hypothese.slice(0, 60)}${ff.hypothese.length > 60 ? '…' : ''}.`;
+    }
+
+    // ── Satz 3: Was steht heute an? (kontext-sensitiv) ──
     let satz3 = '';
     const heute = new Date().toISOString().split('T')[0];
     const termineHeute = DB.getTermine(s.id).filter(t => t.datum?.startsWith(heute));
+
+    // Helfer-Update nötig?
+    const helfer = DB.getHelfer(s.id);
+    const helferOhneUpdate = helfer.filter(h => {
+      if (!h.letzterKontakt) return true;
+      return Utils.daysBetween(h.letzterKontakt, new Date().toISOString()) > 30;
+    });
 
     if (termineHeute.length > 0) {
       satz3 = `Heute: ${termineHeute[0].titel || termineHeute[0].typ || 'Termin'}.`;
@@ -143,6 +171,9 @@ const HomeView = (function () {
         const ors = sitzungen[0].soap?.ors_total;
         satz3 = ors !== undefined ? `Letzter ORS ${ors.toFixed(1)}.` : '';
       }
+    }
+    if (helferOhneUpdate.length > 0 && !satz3.includes('Kontakt')) {
+      satz3 += ` ${helferOhneUpdate[0].name} braucht Update.`;
     }
 
     return [satz1, satz2, satz3].filter(Boolean).join(' ');
