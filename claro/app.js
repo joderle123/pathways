@@ -404,6 +404,54 @@ function saveScreening() {
   setTab('overview');
 }
 
+// ─── Differentialdiagnose-Rad (Manifest: visuell) ────────────
+function renderDiffRad(hyps) {
+  const top = hyps.slice(0, 6);
+  const n = top.length;
+  const cx = 140, cy = 140, r = 110;
+  const farben = ['#DC2626', '#F59E0B', '#10B981', '#3B82F6', '#8B5CF6', '#EC4899'];
+
+  const segments = top.map((h, i) => {
+    const startAngle = (i / n) * 2 * Math.PI - Math.PI / 2;
+    const endAngle = ((i + 1) / n) * 2 * Math.PI - Math.PI / 2;
+    const konfR = r * (h.konfidenz || 50) / 100;
+    const x1 = cx + konfR * Math.cos(startAngle);
+    const y1 = cy + konfR * Math.sin(startAngle);
+    const x2 = cx + konfR * Math.cos(endAngle);
+    const y2 = cy + konfR * Math.sin(endAngle);
+    const largeArc = (endAngle - startAngle) > Math.PI ? 1 : 0;
+    const midAngle = (startAngle + endAngle) / 2;
+    const labelR = r + 20;
+    const lx = cx + labelR * Math.cos(midAngle);
+    const ly = cy + labelR * Math.sin(midAngle);
+    const anchor = lx > cx ? 'start' : 'end';
+
+    return `
+      <path d="M${cx},${cy} L${x1},${y1} A${konfR},${konfR} 0 ${largeArc},1 ${x2},${y2} Z"
+            fill="${farben[i]}30" stroke="${farben[i]}" stroke-width="2"/>
+      <text x="${lx}" y="${ly}" text-anchor="${anchor}" fill="${farben[i]}" font-size="11" font-weight="600"
+            dominant-baseline="middle">${Utils.escapeHtml(h.titel.split('(')[0].trim().slice(0, 20))} ${h.konfidenz || 50}%</text>
+    `;
+  }).join('');
+
+  return `
+    <div class="dg-diff-rad">
+      <h3>🔄 Differentialdiagnose-Rad</h3>
+      <div style="text-align: center; margin: var(--space-3) 0;">
+        <svg width="340" height="340" viewBox="0 0 340 340">
+          <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="var(--border)" stroke-width="1" stroke-dasharray="4,4"/>
+          <circle cx="${cx}" cy="${cy}" r="${r * 0.5}" fill="none" stroke="var(--border)" stroke-width="1" stroke-dasharray="2,4"/>
+          ${segments}
+          <circle cx="${cx}" cy="${cy}" r="4" fill="var(--text)"/>
+        </svg>
+      </div>
+      <div style="font-size: 12px; color: var(--text-muted); text-align: center;">
+        Radius = Konfidenz. Größere Segmente = wahrscheinlichere Hypothesen.
+      </div>
+    </div>
+  `;
+}
+
 // ─── Tab: Hypothesen ─────────────────────────────────────────
 function renderHypothesen() {
   const container = document.getElementById('dg-content');
@@ -418,6 +466,8 @@ function renderHypothesen() {
       <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">
         Auto-generiert aus Screenings, Anamnese und ACE-Score. Regelbasierte Engine mit Begründung.
       </p>
+      ${hyps.length >= 2 ? renderDiffRad(hyps) : ''}
+
       ${hyps.length === 0
         ? `<div class="pw-empty"><div class="pw-empty-icon">🤷</div><p>Keine Hypothesen — führe Screenings durch und ergänze die Anamnese.</p></div>`
         : hyps.map(h => {
