@@ -256,7 +256,14 @@ function renderSubTabs() {
 // ─── Bridge ──────────────────────────────────────────────────
 Bridge.subscribe('screening_completed', e => {
   if (APP.schuelerId === e.schuelerId) {
-    showToast('Screening abgeschlossen — Plan prüfen', 'info');
+    showToast(`Screening abgeschlossen (${e.instrumentId || ''}: ${e.score || ''}). Hypothesen und Heute-Ansicht aktualisiert.`, 'info');
+    if (APP.currentMode === 'heute') renderHeute();
+  }
+});
+
+Bridge.subscribe('session_completed', e => {
+  if (APP.schuelerId === e.schuelerId && APP.currentMode === 'heute') {
+    renderHeute();
   }
 });
 

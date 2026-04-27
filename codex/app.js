@@ -287,6 +287,16 @@ function render() {
 }
 
 // ─── Bridge Integration ─────────────────────────────────────
+Bridge.subscribe('screening_completed', e => {
+  if (e.schuelerId && STATE.index) {
+    const themenMap = { 'phq-a': 'depression', 'gad-7': 'angst', 'pcl-5': 'trauma', 'sdq': 'verhalten', 'asrs': 'konzentration' };
+    const thema = themenMap[e.instrumentId];
+    if (thema && e.score > 10) {
+      showToast(`Screening ${e.instrumentId}: Score ${e.score}. Materialien zu "${thema}" verfügbar.`, 'info');
+    }
+  }
+});
+
 Bridge.subscribe('library_recommend', e => {
   // Andere App empfiehlt Material via Schlüsselwort
   if (e.suche) {
