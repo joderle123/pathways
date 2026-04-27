@@ -614,7 +614,7 @@ function renderCdssNode() {
           <div style="display: flex; flex-wrap: wrap; gap: var(--space-2);">
             ${node.module.map(mid => {
               const p = APP.pfade?.find(x => x.id === mid);
-              return p ? `<button class="btn" onclick="setTab('lernpfade').then(()=>openPfad('${mid}'))">${p.icon} ${p.titel}</button>` : '';
+              return p ? `<button class="btn" onclick="setTab('lernpfade'); setTimeout(()=>openPfad('${mid}'), 100)">${p.icon} ${p.titel}</button>` : '';
             }).join('')}
           </div>
         ` : ''}
