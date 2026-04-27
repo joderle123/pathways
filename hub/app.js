@@ -312,6 +312,10 @@ Bridge.subscribe('roadmap_updated', e => {
 window.addEventListener('DOMContentLoaded', () => {
   applyTheme();
 
+  if (typeof DemoSeed !== 'undefined' && DemoSeed.seed()) {
+    showToast('Demo-Klientin "Lena" angelegt. Erkunde die App!', 'ok');
+  }
+
   // Deep-Link via URL: ?schueler=xyz&view=crisis
   const params = Bridge.parseQuery();
   if (params.schueler) APP.currentSchuelerId = params.schueler;
