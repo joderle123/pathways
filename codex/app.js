@@ -247,6 +247,10 @@ function render() {
   }
   empty.style.display = 'none';
 
+  const empfHtml = renderKontextuelleEmpfehlungen();
+  const empfContainer = document.getElementById('codex-empf-container');
+  if (empfContainer) empfContainer.innerHTML = empfHtml;
+
   grid.innerHTML = filtered.map(m => {
     const bm = STATE.bookmarks.has(m.pfad);
     const hasNote = STATE.notes[m.pfad];
@@ -292,6 +296,62 @@ Bridge.subscribe('library_recommend', e => {
     showToast(`Empfehlung von ${e.from}: "${e.suche}"`, 'info');
   }
 });
+
+// ─── Kontextuelle Empfehlungen (Manifest: "Material kommt zur Fachkraft") ──
+function renderKontextuelleEmpfehlungen() {
+  const params = Bridge.parseQuery();
+  if (!params.schueler || !STATE.index) return '';
+
+  const s = DB.getSchuelerById(params.schueler);
+  if (!s) return '';
+
+  const name = `${s.vorname || ''} ${s.nachname || ''}`.trim();
+  const screenings = DB.getScreenings(params.schueler).filter(x => x.abgeschlossen).sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
+  const latest = screenings[0];
+  const scores = latest?.scores || {};
+  const roadmap = DB.getRoadmap(params.schueler);
+  const aktivePhase = roadmap?.phasen?.find(p => p.status === 'aktiv');
+
+  const suchbegriffe = new Set();
+  if ((scores['phq-a']?.score || 0) >= 10) suchbegriffe.add('depression');
+  if ((scores['gad-7']?.score || 0) >= 10) suchbegriffe.add('angst');
+  if ((scores['pcl-5']?.score || 0) >= 33) suchbegriffe.add('trauma');
+  if ((scores['sdq']?.subscales?.conduct || 0) >= 4) suchbegriffe.add('aggression');
+  if ((scores['asrs']?.score || 0) >= 16) suchbegriffe.add('konzentration');
+  if (aktivePhase?.themen) aktivePhase.themen.forEach(t => suchbegriffe.add(t));
+
+  if (!suchbegriffe.size) return '';
+
+  const all = STATE.index.materials;
+  const ratings = getRatings();
+  const treffer = all.filter(m => {
+    const text = `${m.titel} ${m.beschreibung} ${(m.keywords || []).join(' ')}`.toLowerCase();
+    return [...suchbegriffe].some(s => text.includes(s));
+  }).sort((a, b) => (ratings[b.pfad] || 0) - (ratings[a.pfad] || 0)).slice(0, 6);
+
+  if (!treffer.length) return '';
+
+  return `
+    <div class="codex-empfehlung">
+      <div class="codex-empfehlung-header">
+        <span>💡 Empfohlen für ${Utils.escapeHtml(name)}</span>
+        <span style="font-size: 12px; color: var(--text-muted);">basierend auf Screening + Phase</span>
+      </div>
+      <div class="codex-empfehlung-tags">
+        ${[...suchbegriffe].map(s => `<span class="codex-empf-tag">${Utils.escapeHtml(s)}</span>`).join('')}
+      </div>
+      <div class="codex-empfehlung-grid">
+        ${treffer.map(m => `
+          <a class="codex-empf-card" href="../${m.pfad}" target="_blank">
+            <span class="codex-empf-icon">${m.icon}</span>
+            <span class="codex-empf-title">${Utils.escapeHtml(m.titel)}</span>
+            ${ratings[m.pfad] ? `<span class="codex-empf-rating">👍 ${ratings[m.pfad]}</span>` : ''}
+          </a>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
 
 // ─── Bootstrap ──────────────────────────────────────────────
 async function init() {
