@@ -332,12 +332,27 @@ function renderKontextuelleEmpfehlungen() {
 
   if (!suchbegriffe.size) return '';
 
+  // Schwierigkeitsgrad-Empfehlung nach Alter (Manifest: adaptive Schwierigkeit)
+  let empfSchwierigkeit = 'standard';
+  if (s.geburtsdatum) {
+    const alter = Math.floor((Date.now() - new Date(s.geburtsdatum).getTime()) / (365.25 * 86400000));
+    if (alter <= 12) empfSchwierigkeit = 'einfach';
+    else if (alter <= 15) empfSchwierigkeit = 'mittel';
+    else empfSchwierigkeit = 'standard';
+  }
+
   const all = STATE.index.materials;
   const ratings = getRatings();
   const treffer = all.filter(m => {
     const text = `${m.titel} ${m.beschreibung} ${(m.keywords || []).join(' ')}`.toLowerCase();
     return [...suchbegriffe].some(s => text.includes(s));
-  }).sort((a, b) => (ratings[b.pfad] || 0) - (ratings[a.pfad] || 0)).slice(0, 6);
+  }).sort((a, b) => {
+    // Passende Schwierigkeit zuerst, dann nach Rating
+    const aMatch = (a.schwierigkeit || 'standard') === empfSchwierigkeit ? 1 : 0;
+    const bMatch = (b.schwierigkeit || 'standard') === empfSchwierigkeit ? 1 : 0;
+    if (bMatch !== aMatch) return bMatch - aMatch;
+    return (ratings[b.pfad] || 0) - (ratings[a.pfad] || 0);
+  }).slice(0, 6);
 
   if (!treffer.length) return '';
 
@@ -345,7 +360,7 @@ function renderKontextuelleEmpfehlungen() {
     <div class="codex-empfehlung">
       <div class="codex-empfehlung-header">
         <span>💡 Empfohlen für ${Utils.escapeHtml(name)}</span>
-        <span style="font-size: 12px; color: var(--text-muted);">basierend auf Screening + Phase</span>
+        <span style="font-size: 12px; color: var(--text-muted);">basierend auf Screening + Phase · empfohlene Schwierigkeit: <strong>${empfSchwierigkeit}</strong></span>
       </div>
       <div class="codex-empfehlung-tags">
         ${[...suchbegriffe].map(s => `<span class="codex-empf-tag">${Utils.escapeHtml(s)}</span>`).join('')}
