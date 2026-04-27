@@ -254,6 +254,27 @@ function renderOverview() {
           </div>
         `).join('')}
       ` : `<div class="pw-empty"><p>Noch kein Screening durchgeführt.</p></div>`}
+
+      ${(() => {
+        const hyps = Hypotheses.generate(APP.schuelerId);
+        if (!hyps.length) return '';
+        return `
+          <h3 style="margin-top: var(--space-5);">🧠 Aktuelle Hypothesen (${hyps.length})</h3>
+          <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+            ${hyps.slice(0, 4).map(h => {
+              const farbe = h.konfidenz >= 70 ? '#DC2626' : h.konfidenz >= 50 ? '#F59E0B' : '#10B981';
+              return `<div style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-2) var(--space-3); background: var(--bg-subtle); border-radius: var(--radius-sm); border-left: 3px solid ${farbe}; cursor: pointer;" onclick="setTab('hypothesen')">
+                <span style="font-size: 14px;">
+                  ${h.status ? `<span style="font-size: 10px; padding: 1px 6px; border-radius: 4px; background: ${h.status === 'BESTÄTIGT' ? '#D1FAE5' : h.status === 'VORLÄUFIG' ? '#FEF3C7' : '#DBEAFE'}; margin-right: 4px;">${h.status}</span>` : ''}
+                  ${Utils.escapeHtml(h.titel)}
+                </span>
+                <span style="font-size: 13px; font-weight: 700; color: ${farbe};">${h.konfidenz}%</span>
+              </div>`;
+            }).join('')}
+          </div>
+          ${hyps.length > 4 ? `<div style="font-size: 13px; color: var(--text-muted); margin-top: var(--space-2); cursor: pointer;" onclick="setTab('hypothesen')">+ ${hyps.length - 4} weitere →</div>` : ''}
+        `;
+      })()}
     </div>
   `;
 }
