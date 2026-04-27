@@ -98,6 +98,29 @@ function renderPre() {
         </div>
       ` : ''}
 
+      ${(() => {
+        const helfer = DB.getHelfer(APP.schuelerId);
+        const mitUpdate = helfer.filter(h => h.letzterKontakt && Utils.daysBetween(h.letzterKontakt, new Date().toISOString()) <= 14 && h.notiz);
+        const brauchtUpdate = helfer.filter(h => !h.letzterKontakt || Utils.daysBetween(h.letzterKontakt, new Date().toISOString()) > 30);
+        if (!helfer.length) return '';
+        return `
+          <h3>Helfer-Netzwerk Kurzübersicht</h3>
+          <div style="display: flex; gap: var(--space-2); flex-wrap: wrap; margin-bottom: var(--space-3);">
+            ${mitUpdate.map(h => `
+              <div style="padding: var(--space-2) var(--space-3); background: var(--bg-subtle); border-radius: var(--radius-sm); font-size: 13px; border-left: 3px solid #10B981;">
+                <strong>${Utils.escapeHtml(h.name)}</strong> (${Utils.escapeHtml(h.rolle || '')})<br>
+                <span style="color: var(--text-muted);">${Utils.escapeHtml(Utils.truncate(h.notiz, 60))}</span>
+              </div>
+            `).join('')}
+            ${brauchtUpdate.length ? `
+              <div style="padding: var(--space-2) var(--space-3); background: #FEF3C7; border-radius: var(--radius-sm); font-size: 13px; border-left: 3px solid #F59E0B;">
+                ⚠️ ${brauchtUpdate.length} Kontakt(e) brauchen Update: ${brauchtUpdate.slice(0, 2).map(h => Utils.escapeHtml(h.name)).join(', ')}
+              </div>
+            ` : ''}
+          </div>
+        `;
+      })()}
+
       <h3>Sitzungs-Vorlage wählen</h3>
       <div class="se-templates">
         ${TEMPLATES.map(t => `
