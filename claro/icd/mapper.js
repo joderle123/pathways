@@ -80,10 +80,56 @@ const ICDMapper = (function () {
       description: 'Wiederholte aggressive oder dissoziale Verhaltensweisen.',
       differentials: ['F90 ADHS', 'F92 Komb. Sozialv.+Emot.', 'F60.2 Dissoziale PS'],
     },
+    'F93.0': {
+      label: 'Emotionale Störung mit Trennungsangst',
+      description: 'Übermäßige Angst vor Trennung von Bezugspersonen. Häufigste Angststörung bei Kindern.',
+      differentials: ['F40.1 Soziale Phobie', 'F41.1 GAD', 'F94.1 Bindungsstörung'],
+      criteria: ['Unrealistische Angst vor Verlust der Bezugsperson', 'Schulverweigerung', 'Somatische Beschwerden bei Trennung', 'Beginn vor 18. LJ'],
+    },
+    'F93.1': {
+      label: 'Phobische Störung des Kindesalters',
+      description: 'Alterstypische Phobien (Dunkelheit, Tiere, Schule) mit Funktionsbeeinträchtigung.',
+      differentials: ['F40 Phobien des Erwachsenenalters', 'F93.0 Trennungsangst'],
+    },
+    'F94.0': {
+      label: 'Elektiver Mutismus',
+      description: 'Selektive Sprechhemmung in bestimmten Situationen bei normaler Sprachfähigkeit.',
+      differentials: ['F84 Autismus', 'F40.1 Soziale Phobie', 'F80 Sprachstörung'],
+      criteria: ['Konsistent in bestimmten Situationen', 'Normale Sprachfähigkeit', '> 1 Monat', 'Funktionsbeeinträchtigung'],
+    },
     'F94.1': {
       label: 'Reaktive Bindungsstörung',
-      description: 'Bindungsstörung nach pathogener Fürsorge in der frühen Kindheit.',
-      differentials: ['F84 Autismus', 'F94.2 Enthemmte Bindung'],
+      description: 'Gehemmtes Bindungsverhalten nach pathogener Fürsorge. Emotionale Rückzug.',
+      differentials: ['F84 Autismus', 'F94.2 Enthemmte Bindung', 'F32 Depression'],
+      criteria: ['Beginn vor 5. LJ', 'Pathogene Fürsorge nachweisbar', 'Widersprüchliches Annäherungs-/Vermeidungsverhalten'],
+    },
+    'F94.2': {
+      label: 'Enthemmte Bindungsstörung (DSED)',
+      description: 'Unterschiedslose Kontaktaufnahme mit Fremden. Keine normale Scheu.',
+      differentials: ['F90 ADHS', 'F94.1 RAD', 'Normale kindliche Geselligkeit'],
+    },
+    'F42': {
+      label: 'Zwangsstörung',
+      description: 'Wiederkehrende Zwangsgedanken und/oder Zwangshandlungen.',
+      differentials: ['F06.3 Organische Störung', 'F84 Autismus (rituelle Verhaltensweisen)'],
+      criteria: ['Zwangsgedanken und/oder -handlungen', 'Als sinnlos erkannt', '> 2 Wochen', 'Leiden/Beeinträchtigung'],
+    },
+    'F45': {
+      label: 'Somatoforme Störung',
+      description: 'Wiederholte körperliche Beschwerden ohne organischen Befund.',
+      differentials: ['Organische Ursache ausschließen', 'F32 Depression (somatisches Syndrom)'],
+    },
+    'F84.0': {
+      label: 'Autismus-Spektrum-Störung',
+      description: 'Qualitative Beeinträchtigung sozialer Interaktion + eingeschränkte Interessen/Verhaltensweisen.',
+      differentials: ['F94.1 Bindungsstörung', 'F94.0 Mutismus', 'F90 ADHS'],
+      criteria: ['Soziale Kommunikation eingeschränkt', 'Stereotype Verhaltensweisen', 'Beginn in Kindheit', 'Funktionsbeeinträchtigung'],
+    },
+    'F1x': {
+      label: 'Substanzkonsumstörung',
+      description: 'Schädlicher Gebrauch oder Abhängigkeit von Substanzen. x = Substanzklasse.',
+      differentials: ['F32 Depression (Komorbidität)', 'F43 PTBS (Selbstmedikation)'],
+      criteria: ['Kontrollverlust', 'Toleranzentwicklung', 'Entzugssymptome', 'Pflichtvernachlässigung'],
     },
   };
 
