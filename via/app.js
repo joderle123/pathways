@@ -71,6 +71,121 @@ function updateContext() {
   el.textContent = s ? `👤 ${(s.vorname || '') + ' ' + (s.nachname || '')}`.trim() : '👤 ?';
 }
 
+// ─── Heute-Ansicht (Manifest: "eine einzige Empfehlung") ─────
+function renderHeute() {
+  const container = document.getElementById('via-content');
+  if (!APP.schuelerId) {
+    container.innerHTML = `<div class="via-section"><h2>🛤️ VIA — Heute</h2><p>Kein Klient gewählt. <a href="../hub/">→ HUB</a></p></div>`;
+    return;
+  }
+
+  const s = DB.getSchuelerById(APP.schuelerId);
+  const name = s ? `${s.vorname || ''} ${s.nachname || ''}`.trim() : 'Klient';
+  const roadmap = DB.getRoadmap(APP.schuelerId);
+  const aktivePhase = roadmap?.phasen?.find(p => p.status === 'aktiv');
+  const sitzungen = DB.getNotizen(APP.schuelerId).filter(n => n.kategorie === 'session').sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
+  const sitzungsNr = sitzungen.length + 1;
+
+  // Treatment-Response-Loop: SRS-Trend
+  const letzte3SRS = sitzungen.slice(0, 3).map(n => n.soap?.srs_total).filter(v => v !== undefined);
+  let srsWarnung = null;
+  if (letzte3SRS.length === 3 && letzte3SRS[0] < 25 && letzte3SRS[1] < 25 && letzte3SRS[2] < 25) {
+    srsWarnung = 'Die letzten 3 Sitzungen hatten SRS unter 25. Mögliche Gründe: Allianz-Erosion, falsches Tempo, äußerer Stressor.';
+  } else if (letzte3SRS.length >= 2 && letzte3SRS[0] < letzte3SRS[1]) {
+    srsWarnung = `SRS zuletzt gesunken (${letzte3SRS[0]?.toFixed(1)} ← ${letzte3SRS[1]?.toFixed(1)}). Sitzungsbewertung ansprechen?`;
+  }
+
+  // Stepped Care: kein Fortschritt nach 6 Sitzungen?
+  let steppedCare = null;
+  if (sitzungen.length >= 6) {
+    const erste3ORS = sitzungen.slice(-3).map(n => n.soap?.ors_total).filter(v => v !== undefined);
+    const letzte3ORS = sitzungen.slice(0, 3).map(n => n.soap?.ors_total).filter(v => v !== undefined);
+    if (erste3ORS.length && letzte3ORS.length) {
+      const avgFirst = erste3ORS.reduce((a, b) => a + b, 0) / erste3ORS.length;
+      const avgLast = letzte3ORS.reduce((a, b) => a + b, 0) / letzte3ORS.length;
+      if (avgLast <= avgFirst + 2) {
+        steppedCare = 'Nach 6+ Sitzungen kein signifikanter ORS-Fortschritt. Erwäge: Co-Therapie, Überweisung KJP, Medikation als Ergänzung, Setting-Wechsel.';
+      }
+    }
+  }
+
+  // Phase-Dauer-Warnung
+  let phasenWarnung = null;
+  if (aktivePhase?.beginn) {
+    const wochen = Math.floor((Date.now() - new Date(aktivePhase.beginn).getTime()) / (7 * 86400000));
+    if (wochen > 12) {
+      phasenWarnung = `Phase ${aktivePhase.nr} läuft seit ${wochen} Wochen ohne Übergang. Mögliche Gründe: Allianz-Erosion, falsche Hypothese, äußerer Stressor.`;
+    }
+  }
+
+  // Themen aus Roadmap
+  const thema = aktivePhase?.themen?.[0] || APP.draft.thema || '';
+
+  container.innerHTML = `
+    <div class="via-heute">
+      <div class="via-heute-header">
+        <h2>🛤️ Heute für ${Utils.escapeHtml(name)}</h2>
+        <div style="font-size: 13px; color: var(--text-muted);">${new Date().toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long' })}</div>
+      </div>
+
+      <div class="via-heute-empfehlung">
+        <div class="via-heute-empfehlung-title">Empfehlung</div>
+        <p>Sitzung ${sitzungsNr}${aktivePhase ? `, Phase ${aktivePhase.nr} läuft seit ${aktivePhase.beginn ? Math.floor((Date.now() - new Date(aktivePhase.beginn).getTime()) / (7 * 86400000)) : '?'} Wochen` : ''}.
+        ${thema ? `Vorschlag: Thema "<strong>${Utils.escapeHtml(thema)}</strong>" vertiefen.` : 'Kein spezifisches Thema gesetzt.'}
+        </p>
+        <div style="margin-top: var(--space-3); display: flex; gap: var(--space-2); flex-wrap: wrap;">
+          <button class="btn btn-primary" onclick="setMode('sitzung'); setSessionMode('live');">→ Sitzung starten</button>
+          <button class="btn" onclick="setMode('plan'); setPlanTab('phasen');">🗺️ Plan anschauen</button>
+          <a class="btn" href="../codex/?suche=${encodeURIComponent(thema)}" target="_blank">📚 Material suchen</a>
+        </div>
+      </div>
+
+      ${srsWarnung ? `
+        <div class="via-heute-warnung via-warnung-srs">
+          <strong>📉 SRS-Trend</strong><br>${Utils.escapeHtml(srsWarnung)}
+          <div style="margin-top: var(--space-2);">
+            <button class="btn" onclick="setMode('sitzung'); setSessionMode('history');">→ Sitzungs-Historie anschauen</button>
+          </div>
+        </div>
+      ` : ''}
+
+      ${steppedCare ? `
+        <div class="via-heute-warnung via-warnung-stepped">
+          <strong>⚡ Stepped Care</strong><br>${Utils.escapeHtml(steppedCare)}
+        </div>
+      ` : ''}
+
+      ${phasenWarnung ? `
+        <div class="via-heute-warnung via-warnung-phase">
+          <strong>⏰ Phasen-Stagnation</strong><br>${Utils.escapeHtml(phasenWarnung)}
+        </div>
+      ` : ''}
+
+      <div class="via-heute-snapshot">
+        <h3>Snapshot</h3>
+        <div class="via-snapshot-grid">
+          <div class="via-snapshot-card">
+            <div class="via-snapshot-label">Sitzungen</div>
+            <div class="via-snapshot-value">${sitzungen.length}</div>
+          </div>
+          <div class="via-snapshot-card">
+            <div class="via-snapshot-label">Phase</div>
+            <div class="via-snapshot-value">${aktivePhase ? aktivePhase.nr : '—'}</div>
+          </div>
+          <div class="via-snapshot-card">
+            <div class="via-snapshot-label">Letzter ORS</div>
+            <div class="via-snapshot-value">${sitzungen[0]?.soap?.ors_total?.toFixed(1) || '—'}</div>
+          </div>
+          <div class="via-snapshot-card">
+            <div class="via-snapshot-label">Letzter SRS</div>
+            <div class="via-snapshot-value">${sitzungen[0]?.soap?.srs_total?.toFixed(1) || '—'}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 // ─── Mode-Wechsler (Plan ↔ Sitzung) ─────────────────────────
 function setMode(name) {
   APP.currentMode = name;
@@ -78,7 +193,9 @@ function setMode(name) {
     el.classList.toggle('active', el.dataset.mode === name);
   });
   renderSubTabs();
-  if (name === 'plan') {
+  if (name === 'heute') {
+    renderHeute();
+  } else if (name === 'plan') {
     setPlanTab(APP.activeTab || 'phasen');
   } else {
     setSessionMode(APP.mode || 'pre');
@@ -87,6 +204,10 @@ function setMode(name) {
 
 function renderSubTabs() {
   const tabsEl = document.getElementById('via-tabs');
+  if (APP.currentMode === 'heute') {
+    tabsEl.innerHTML = '';
+    return;
+  }
   if (APP.currentMode === 'plan') {
     tabsEl.innerHTML = `
       <button class="via-sub-tab active" data-tab="phasen" onclick="setPlanTab('phasen')">🎯 7-Phasen-Roadmap</button>
@@ -135,7 +256,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     setMode('plan');
     setPlanTab(params.tab);
   } else {
-    setMode(params.mode || 'plan');
+    setMode(params.mode || 'heute');
   }
 
   console.log('[VIA] Ready. Mode:', APP.currentMode);

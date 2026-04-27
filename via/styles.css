@@ -79,6 +79,45 @@ body { background: var(--bg); }
 .pw-toast-ok { border-left-color: #10B981; }
 .pw-toast-error { border-left-color: var(--danger); }
 
+/* ── Heute-Ansicht (Manifest-Vision) ─────────────────────── */
+.via-heute { max-width: 800px; }
+.via-heute-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: var(--space-4);
+}
+.via-heute-empfehlung {
+  background: var(--bg-card); border-radius: var(--radius);
+  padding: var(--space-5); box-shadow: var(--shadow-xs);
+  border-left: 4px solid var(--color-app-via);
+  margin-bottom: var(--space-4);
+}
+.via-heute-empfehlung-title {
+  font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--color-app-via); font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-2);
+}
+.via-heute-warnung {
+  background: var(--bg-card); border-radius: var(--radius);
+  padding: var(--space-4); margin-bottom: var(--space-3);
+  box-shadow: var(--shadow-xs); font-size: 14px;
+  line-height: var(--line-height-relaxed);
+}
+.via-warnung-srs { border-left: 4px solid #F59E0B; }
+.via-warnung-stepped { border-left: 4px solid #DC2626; }
+.via-warnung-phase { border-left: 4px solid #8B5CF6; }
+.via-heute-snapshot {
+  background: var(--bg-card); border-radius: var(--radius);
+  padding: var(--space-4); box-shadow: var(--shadow-xs);
+}
+.via-snapshot-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3); margin-top: var(--space-3);
+}
+.via-snapshot-card { text-align: center; }
+.via-snapshot-label { font-size: 12px; color: var(--text-muted); }
+.via-snapshot-value { font-size: 24px; font-weight: var(--font-weight-bold); color: var(--color-app-via); }
+@media (max-width: 600px) { .via-snapshot-grid { grid-template-columns: repeat(2, 1fr); } }
+
 /* ============================================================
    Plan-Styles (aus ROADMAP)
    ============================================================ */
