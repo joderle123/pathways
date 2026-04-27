@@ -4,10 +4,28 @@
 
 // APP wird von via/app.js bereitgestellt
 
+// VIA Classification of Character Strengths (Peterson & Seligman 2004)
+// Validiert für Jugendliche: VIA Youth Survey (Park & Peterson 2006)
+// 6 Tugenden → 24 Stärken, hier auf 18 jugendrelevante reduziert
 const STAERKEN = [
-  'Kreativität','Empathie','Humor','Durchhaltung','Neugier','Sport',
-  'Soziale Kompetenz','Selbstständigkeit','Mut','Akademisches','Dankbarkeit',
-  'Freundlichkeit','Teamwork','Hoffnung',
+  { id: 'kreativitaet', label: 'Kreativität', tugend: 'Weisheit', desc: 'Neue Ideen finden, Probleme originell lösen' },
+  { id: 'neugier', label: 'Neugier', tugend: 'Weisheit', desc: 'Interesse an der Welt, Dinge herausfinden wollen' },
+  { id: 'urteilsvermoegen', label: 'Urteilsvermögen', tugend: 'Weisheit', desc: 'Dinge von verschiedenen Seiten betrachten' },
+  { id: 'lernfreude', label: 'Lernfreude', tugend: 'Weisheit', desc: 'Neue Dinge lernen wollen' },
+  { id: 'mut', label: 'Tapferkeit / Mut', tugend: 'Mut', desc: 'Sich trauen, auch wenn es schwierig ist' },
+  { id: 'ausdauer', label: 'Ausdauer', tugend: 'Mut', desc: 'Dranbleiben, nicht aufgeben' },
+  { id: 'ehrlichkeit', label: 'Ehrlichkeit', tugend: 'Mut', desc: 'Wahrhaftig sein, zu sich stehen' },
+  { id: 'begeisterung', label: 'Begeisterung / Vitalität', tugend: 'Mut', desc: 'Energie, Lebensfreude' },
+  { id: 'freundlichkeit', label: 'Freundlichkeit', tugend: 'Menschlichkeit', desc: 'Hilfsbereit sein, sich um andere kümmern' },
+  { id: 'bindungsfaehigkeit', label: 'Bindungsfähigkeit', tugend: 'Menschlichkeit', desc: 'Enge Beziehungen aufbauen und pflegen' },
+  { id: 'soziale_intelligenz', label: 'Soziale Intelligenz', tugend: 'Menschlichkeit', desc: 'Gefühle anderer erkennen, sich anpassen' },
+  { id: 'teamwork', label: 'Teamwork', tugend: 'Gerechtigkeit', desc: 'In Gruppen gut zusammenarbeiten' },
+  { id: 'fairness', label: 'Fairness', tugend: 'Gerechtigkeit', desc: 'Alle gleich behandeln' },
+  { id: 'selbstregulation', label: 'Selbstregulation', tugend: 'Mäßigung', desc: 'Gefühle und Impulse kontrollieren' },
+  { id: 'vergebung', label: 'Vergebung', tugend: 'Mäßigung', desc: 'Anderen eine zweite Chance geben' },
+  { id: 'humor', label: 'Humor', tugend: 'Transzendenz', desc: 'Lachen, andere zum Lachen bringen' },
+  { id: 'dankbarkeit', label: 'Dankbarkeit', tugend: 'Transzendenz', desc: 'Das Gute im Leben bemerken' },
+  { id: 'hoffnung', label: 'Hoffnung / Optimismus', tugend: 'Transzendenz', desc: 'An eine gute Zukunft glauben' },
 ];
 
 // showToast, toggleTheme, applyTheme bereitgestellt von via/app.js
@@ -364,33 +382,55 @@ function renderStaerken() {
   const all = getStaerken();
   const data = all[APP.schuelerId] || {};
 
+  // Gruppieren nach Tugend
+  const tugenden = {};
+  STAERKEN.forEach((s, i) => {
+    if (!tugenden[s.tugend]) tugenden[s.tugend] = [];
+    tugenden[s.tugend].push({ ...s, idx: i });
+  });
+
+  // Top-Stärken und Entwicklungsfelder berechnen
+  const bewertet = STAERKEN.map((s, i) => ({ ...s, val: data[i] || 5 })).sort((a, b) => b.val - a.val);
+  const top3 = bewertet.filter(s => s.val >= 7).slice(0, 3);
+  const entwicklung = bewertet.filter(s => s.val <= 4).slice(0, 3);
+
   container.innerHTML = `
     <div class="rm-section">
       <h2>💪 Stärken-Profil</h2>
-      <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">
-        14 Stärken-Dimensionen. Jede Bewertung 1-10. Stärken sind Ressourcen — fokussiere darauf, nicht nur auf Defizite.
+      <p style="color: var(--text-secondary); margin-bottom: var(--space-2);">
+        Basierend auf VIA Classification of Character Strengths (Peterson & Seligman 2004, Youth Survey: Park & Peterson 2006).
+        18 Stärken in 6 Tugenden. Bewertung 1-10 gemeinsam mit dem Klienten.
       </p>
 
-      <div class="rm-radar">
-        ${STAERKEN.map((name, i) => {
-          const val = data[i] || 5;
-          return `
-            <div class="rm-strength">
-              <div class="rm-strength-name">
-                <span>${name}</span>
-                <span style="color: var(--color-app-roadmap); font-weight: var(--font-weight-bold);">${val}/10</span>
-              </div>
-              <div class="rm-strength-bar">
-                <div class="rm-strength-fill" style="width: ${val * 10}%;"></div>
-              </div>
-              <input type="range" min="1" max="10" value="${val}" oninput="updateStaerke(${i}, this.value)">
-            </div>
-          `;
-        }).join('')}
-      </div>
+      ${top3.length ? `
+        <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-4);">
+          ${top3.map(s => `<span style="padding: var(--space-2) var(--space-3); background: #D1FAE5; color: #065F46; border-radius: var(--radius-full); font-size: 13px; font-weight: 600;">⭐ ${s.label} (${s.val})</span>`).join('')}
+          ${entwicklung.map(s => `<span style="padding: var(--space-2) var(--space-3); background: #FEF3C7; color: #92400E; border-radius: var(--radius-full); font-size: 13px;">📈 ${s.label} (${s.val})</span>`).join('')}
+        </div>
+      ` : ''}
 
-      <div style="margin-top: var(--space-5);">
+      ${Object.entries(tugenden).map(([tugend, items]) => `
+        <div style="margin-bottom: var(--space-4);">
+          <h3 style="font-size: 15px; color: var(--color-app-via); margin-bottom: var(--space-2);">${tugend}</h3>
+          ${items.map(s => {
+            const val = data[s.idx] || 5;
+            return `
+              <div class="rm-strength">
+                <div class="rm-strength-name">
+                  <span title="${Utils.escapeHtml(s.desc)}">${s.label}</span>
+                  <span style="color: var(--color-app-via); font-weight: var(--font-weight-bold);">${val}/10</span>
+                </div>
+                <div class="rm-strength-bar"><div class="rm-strength-fill" style="width: ${val * 10}%;"></div></div>
+                <input type="range" min="1" max="10" value="${val}" oninput="updateStaerke(${s.idx}, this.value)">
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `).join('')}
+
+      <div style="margin-top: var(--space-4); display: flex; gap: var(--space-2);">
         <button class="btn btn-primary" onclick="saveStaerkenForKlient()">💾 Speichern</button>
+        <button class="btn" onclick="Bridge.notify('staerken_updated', { schuelerId: APP.schuelerId })">↗ An andere Apps senden</button>
       </div>
     </div>
   `;
