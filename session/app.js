@@ -139,7 +139,7 @@ function renderPre() {
       </div>
 
       <div style="margin-top: var(--space-4); display: flex; gap: var(--space-2); flex-wrap: wrap;">
-        <a class="btn" href="../diagnose/?schueler=${APP.schuelerId}" target="_blank">🔍 Diagnose</a>
+        <a class="btn" href="../claro/?schueler=${APP.schuelerId}" target="_blank">🔍 CLARO</a>
         <a class="btn" href="../library/?suche=${encodeURIComponent(aktivePhase?.themen?.[0] || '')}" target="_blank">📚 Material</a>
         <a class="btn" href="../roadmap/?schueler=${APP.schuelerId}" target="_blank">🗺️ Roadmap</a>
       </div>

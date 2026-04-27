@@ -66,7 +66,7 @@ const Bridge = (function () {
    */
   function currentApp() {
     if (typeof location === 'undefined') return 'unknown';
-    const m = location.pathname.match(/\/(case|diagnose|roadmap|session|library|crisis|academy|parents|core)\//);
+    const m = location.pathname.match(/\/(hub|claro|via|codex|case|diagnose|roadmap|session|library|crisis|academy|parents|core)\//);
     return m ? m[1] : 'unknown';
   }
 

@@ -199,7 +199,7 @@ function renderKontakte() {
           `).join('')}</div>`
       }
       <div style="margin-top: var(--space-4);">
-        <a class="btn" href="../case/?schueler=${APP.schuelerId}" target="_blank">→ Helfer-Netzwerk in CASE bearbeiten</a>
+        <a class="btn" href="../hub/?schueler=${APP.schuelerId}" target="_blank">→ Helfer-Netzwerk in HUB bearbeiten</a>
       </div>
     </div>
   `;

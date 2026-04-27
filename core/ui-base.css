@@ -100,14 +100,19 @@
   --radius-full: 9999px;
 
   /* ── Pathways App-Identitäten (1 Farbe pro App) ── */
-  --color-app-case:        #6366F1; /* Indigo */
-  --color-app-diagnose:    #EF4444; /* Red */
-  --color-app-roadmap:     #10B981; /* Emerald */
-  --color-app-session:     #8B5CF6; /* Purple */
-  --color-app-library:     #0EA5E9; /* Sky */
-  --color-app-crisis:      #DC2626; /* Crisis Red — high contrast */
+  --color-app-hub:         #6366F1; /* Indigo — was case */
+  --color-app-claro:       #EF4444; /* Red — was diagnose */
+  --color-app-via:         #10B981; /* Emerald — was roadmap+session */
+  --color-app-codex:       #0EA5E9; /* Sky — was library+parents */
   --color-app-academy:     #14B8A6; /* Teal */
-  --color-app-parents:     #F59E0B; /* Amber */
+  /* Legacy aliases (backwards compat) */
+  --color-app-case:        #6366F1;
+  --color-app-diagnose:    #EF4444;
+  --color-app-roadmap:     #10B981;
+  --color-app-session:     #8B5CF6;
+  --color-app-library:     #0EA5E9;
+  --color-app-crisis:      #DC2626;
+  --color-app-parents:     #F59E0B;
 
   /* ── Motion ── */
   --transition: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
@@ -184,11 +189,16 @@ html, body {
 }
 
 /* ── App-spezifische Akzentlinie ── */
+[data-app="hub"]       { --section-color: var(--color-app-hub); }
+[data-app="claro"]     { --section-color: var(--color-app-claro); }
+[data-app="via"]       { --section-color: var(--color-app-via); }
+[data-app="codex"]     { --section-color: var(--color-app-codex); }
+[data-app="academy"]   { --section-color: var(--color-app-academy); }
+/* Legacy selectors */
 [data-app="case"]      { --section-color: var(--color-app-case); }
 [data-app="diagnose"]  { --section-color: var(--color-app-diagnose); }
 [data-app="roadmap"]   { --section-color: var(--color-app-roadmap); }
 [data-app="session"]   { --section-color: var(--color-app-session); }
 [data-app="library"]   { --section-color: var(--color-app-library); }
 [data-app="crisis"]    { --section-color: var(--color-app-crisis); }
-[data-app="academy"]   { --section-color: var(--color-app-academy); }
 [data-app="parents"]   { --section-color: var(--color-app-parents); }

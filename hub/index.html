@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pathways HUB — Cockpit</title>
+  <meta name="theme-color" content="#6366F1">
+  <link rel="stylesheet" href="../core/ui-base.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-app="hub">
+
+<!-- ─── Sidebar ────────────────────────────────────────────── -->
+<aside class="pw-sidebar" id="sidebar">
+  <div class="pw-sidebar-header">
+    <div class="pw-logo">🏠</div>
+    <div class="pw-sidebar-brand">
+      <div class="pw-app-name">HUB</div>
+      <div class="pw-app-tag">Cockpit</div>
+    </div>
+  </div>
+  <nav class="pw-nav">
+    <a class="pw-nav-item" data-view="home" onclick="showView('home')">
+      <span class="pw-nav-icon">🏠</span><span>Dashboard</span>
+    </a>
+    <a class="pw-nav-item" data-view="kalender" onclick="showView('kalender')">
+      <span class="pw-nav-icon">📅</span><span>Kalender</span>
+    </a>
+    <a class="pw-nav-item" data-view="aufgaben" onclick="showView('aufgaben')">
+      <span class="pw-nav-icon">✅</span><span>Aufgaben</span>
+    </a>
+    <a class="pw-nav-item" data-view="notizen" onclick="showView('notizen')">
+      <span class="pw-nav-icon">📝</span><span>Notizen</span>
+    </a>
+  </nav>
+  <div class="pw-sidebar-footer">
+    <button class="pw-btn-icon" onclick="toggleTheme()" title="Theme">🌓</button>
+    <button class="pw-btn-icon" onclick="showSettings()" title="Einstellungen">⚙️</button>
+    <button class="pw-btn-icon pw-btn-crisis" onclick="openCrisis()" title="Krise">🚨</button>
+  </div>
+</aside>
+
+<!-- ─── Main Container ────────────────────────────────────── -->
+<main class="pw-main">
+  <header class="pw-app-header">
+    <h1 id="view-title">🏠 HUB</h1>
+    <div class="pw-header-actions">
+      <button class="btn btn-primary" onclick="openSchuelerModal()">+ Neuer Klient</button>
+    </div>
+  </header>
+
+  <div id="view-container" class="pw-view"></div>
+</main>
+
+<!-- ─── Schüler-Modal ───────────────────────────────────────── -->
+<div id="schueler-modal" class="pw-modal" style="display:none;">
+  <div class="pw-modal-backdrop" onclick="closeSchuelerModal()"></div>
+  <div class="pw-modal-content">
+    <header class="pw-modal-header">
+      <h2 id="schueler-modal-title">Neuer Klient</h2>
+      <button class="pw-btn-icon" onclick="closeSchuelerModal()">✕</button>
+    </header>
+    <form id="schueler-form" onsubmit="event.preventDefault(); saveSchueler();">
+      <div class="pw-form-row">
+        <label>Vorname *<input id="sf-vorname" required></label>
+        <label>Nachname<input id="sf-nachname"></label>
+      </div>
+      <div class="pw-form-row">
+        <label>Geburtsdatum<input id="sf-geburtsdatum" type="date"></label>
+        <label>Klasse<input id="sf-klasse" placeholder="z.B. 10A"></label>
+      </div>
+      <div class="pw-form-row">
+        <label>Eintrittsdatum<input id="sf-eintrittsdatum" type="date"></label>
+        <label>Risiko-Level
+          <select id="sf-risiko">
+            <option value="niedrig">Niedrig</option>
+            <option value="mittel">Mittel</option>
+            <option value="hoch">Hoch</option>
+          </select>
+        </label>
+      </div>
+      <label>Allgemeine Notizen
+        <textarea id="sf-notizen" rows="3"></textarea>
+      </label>
+      <div class="pw-modal-actions">
+        <button type="button" class="btn" onclick="closeSchuelerModal()">Abbrechen</button>
+        <button type="submit" class="btn btn-primary">Speichern</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ─── Toast Notifications ─────────────────────────────────── -->
+<div id="toast-container"></div>
+
+<!-- ─── Core Modules ────────────────────────────────────────── -->
+<script src="../core/db.js"></script>
+<script src="../core/secure-storage.js"></script>
+<script src="../core/bridge.js"></script>
+<script src="../core/schemas.js"></script>
+<script src="../core/utils.js"></script>
+<script src="../core/constants.js"></script>
+
+<!-- ─── App Modules ─────────────────────────────────────────── -->
+<script src="views/home.js"></script>
+<script src="views/profil.js"></script>
+<script src="views/kalender.js"></script>
+<script src="views/aufgaben.js"></script>
+<script src="views/notizen.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
