@@ -95,14 +95,144 @@ function updateGamificationUI() {
 }
 
 // ─── Tab Routing ──────────────────────────────────────────────
+// ─── Mikro-Learning: Tages-Impuls (Manifest: "5 Min pro Tag") ─
+const IMPULSE = [
+  { typ: 'vignette', titel: 'Fall-Vignette: Schulverweigerung', text: 'Lena, 14, fehlt seit 3 Wochen in der Schule. Die Mutter sagt: "Sie will einfach nicht." Lehrkräfte berichten, dass Lena vorher gemobbt wurde. Frage: Was wäre dein nächster Schritt — und warum?', reflexion: 'Schulverweigerung hat oft multiple Ursachen. Hier: Mobbing als Auslöser, mögliche Angst oder Depression als Maintainer. Nächster Schritt: validierendes Einzelgespräch mit Lena, dann Screening (PHQ-A, GAD-7).', xp: 10 },
+  { typ: 'konzept', titel: 'Polyvagaltheorie in 2 Minuten', text: 'Das autonome Nervensystem hat drei Zustände: Sicherheit (ventral-vagal), Kampf/Flucht (sympathisch), Erstarrung (dorsal-vagal). In der Sitzung erkennst du den Zustand an: Blickkontakt vs. Vermeidung, Stimmqualität, Körperhaltung. Frage: Welchen PVT-Zustand zeigt ein Klient, der "abschaltet" und nicht mehr spricht?', reflexion: 'Dorsal-vagaler Shutdown (Erstarrung). Co-Regulation durch ruhige Stimme, Orientierung im Raum, Grounding-Übung. Nicht: mehr Fragen stellen.', xp: 10 },
+  { typ: 'vignette', titel: 'Fall-Vignette: Selbstverletzung', text: 'Karim, 16, zeigt dir frische Schnitte am Unterarm. Er sagt: "Es hilft mir, runterzukommen." Er bittet dich, es niemandem zu sagen. Was tust du?', reflexion: 'Schweigepflicht gilt — aber: Selbstverletzung ist nicht automatisch suizidal. Trotzdem: C-SSRS durchführen. Funktion der Selbstverletzung verstehen (Spannungsabbau). Alternative Skills anbieten (Eiswürfel, Sport). Eltern informieren nur bei akuter Gefahr.', xp: 10 },
+  { typ: 'konzept', titel: 'ACE-Score & Langzeitfolgen', text: 'Die Adverse Childhood Experiences-Studie (Felitti 1998) zeigt: ACE ≥ 4 verdoppelt das Depressionsrisiko und verdreifacht das Suizidrisiko. Aber: ACE ist kein Schicksal. Schutzfaktoren (stabile Bezugsperson, Hobbys, Bildungserfolg) können die Auswirkungen puffern.', reflexion: 'In der Praxis: ACE-Score immer erheben, aber nie als Label verwenden. "Du hast ACE 6" sagt weniger als "Welche Erfahrungen haben dich geprägt?"', xp: 10 },
+  { typ: 'vignette', titel: 'Fall-Vignette: Eltern-Widerstand', text: 'Du empfiehlst den Eltern eine psychiatrische Abklärung für ihren 12-jährigen Sohn. Die Mutter reagiert aufgebracht: "Mein Kind ist nicht verrückt!" Wie reagierst du?', reflexion: 'Entstigmatisierung: "Psychiater heißt nicht verrückt — es heißt, wir wollen verstehen, was Ihrem Sohn hilft." Vergleich mit Augenarzt anbieten. Eltern-Sorge validieren. Entscheidung bei ihnen lassen, aber Fakten klar benennen.', xp: 10 },
+];
+
+const IMPULS_KEY = 'pw_academy_impuls';
+
+function getTagesImpuls() {
+  const tag = new Date().toISOString().split('T')[0];
+  const saved = JSON.parse(localStorage.getItem(IMPULS_KEY) || '{}');
+  if (saved.tag === tag) return { impuls: IMPULSE[saved.idx], idx: saved.idx, reflektiert: saved.reflektiert };
+  const idx = Math.floor(Math.random() * IMPULSE.length);
+  localStorage.setItem(IMPULS_KEY, JSON.stringify({ tag, idx, reflektiert: false }));
+  return { impuls: IMPULSE[idx], idx, reflektiert: false };
+}
+
+function reflektierImpuls() {
+  const saved = JSON.parse(localStorage.getItem(IMPULS_KEY) || '{}');
+  saved.reflektiert = true;
+  localStorage.setItem(IMPULS_KEY, JSON.stringify(saved));
+  addXP(IMPULSE[saved.idx]?.xp || 10);
+  tickStreak();
+  showToast('+10 XP für Tages-Reflexion!', 'ok');
+  renderImpuls();
+}
+
+function renderImpuls() {
+  const { impuls, reflektiert } = getTagesImpuls();
+  const container = document.getElementById('ac-content');
+  container.innerHTML = `
+    <div style="max-width: 700px;">
+      <div style="margin-bottom: var(--space-4);">
+        <h2 style="font-size: 28px;">💡 Tages-Impuls</h2>
+        <p style="color: var(--text-muted); font-size: 14px;">5 Minuten täglich — ${new Date().toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long' })}</p>
+      </div>
+
+      <div class="ac-section" style="border-left: 4px solid var(--color-app-academy);">
+        <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--color-app-academy); margin-bottom: var(--space-2);">${impuls.typ === 'vignette' ? 'Fall-Vignette' : 'Konzept'}</div>
+        <h3>${Utils.escapeHtml(impuls.titel)}</h3>
+        <p style="font-size: 15px; line-height: var(--line-height-relaxed); margin-top: var(--space-3);">${Utils.escapeHtml(impuls.text)}</p>
+      </div>
+
+      ${reflektiert ? `
+        <div class="ac-section" style="background: rgba(20,184,166,0.05); border: 1px solid var(--color-app-academy);">
+          <h3>💭 Reflexion</h3>
+          <p style="font-size: 14px; line-height: var(--line-height-relaxed);">${Utils.escapeHtml(impuls.reflexion)}</p>
+          <div style="margin-top: var(--space-3); color: var(--color-app-academy); font-weight: var(--font-weight-semibold);">✓ Reflektiert — +${impuls.xp} XP</div>
+        </div>
+      ` : `
+        <button class="btn btn-primary" onclick="reflektierImpuls()" style="margin-top: var(--space-3);">
+          💭 Reflexion aufdecken (+${impuls.xp} XP)
+        </button>
+      `}
+    </div>
+  `;
+}
+
+// ─── Selbstfürsorge-Check (Manifest: ProQOL) ────────────────
+const SELBSTFUERSORGE_ITEMS = [
+  'Ich freue mich auf meine Arbeit.',
+  'Ich fühle mich durch meine Arbeit erfüllt.',
+  'Ich schlafe gut.',
+  'Ich habe genug Energie für Hobbys nach der Arbeit.',
+  'Ich fühle mich von meinem Team unterstützt.',
+  'Ich kann nach Feierabend abschalten.',
+  'Ich nehme mir regelmäßig Pausen.',
+  'Ich fühle mich emotional stabil.',
+  'Ich habe jemanden, mit dem ich über schwierige Fälle spreche.',
+  'Ich habe das Gefühl, etwas zu bewirken.',
+];
+
+function renderSelbstfuersorge() {
+  const container = document.getElementById('ac-content');
+  container.innerHTML = `
+    <div style="max-width: 700px;">
+      <h2 style="font-size: 28px; margin-bottom: var(--space-2);">💚 Selbstfürsorge-Check</h2>
+      <p style="color: var(--text-muted); margin-bottom: var(--space-4);">
+        Kurzer Check basierend auf ProQOL-Konzepten. Bewerte jede Aussage ehrlich (1–5).
+      </p>
+
+      <div id="sf-items">
+        ${SELBSTFUERSORGE_ITEMS.map((item, i) => `
+          <div class="ac-section" style="padding: var(--space-3) var(--space-4); margin-bottom: var(--space-2);">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: var(--space-3);">
+              <span style="font-size: 14px; flex: 1;">${Utils.escapeHtml(item)}</span>
+              <div style="display: flex; gap: 4px;">
+                ${[1,2,3,4,5].map(v => `
+                  <button class="btn sf-btn" data-item="${i}" data-val="${v}" onclick="this.parentElement.querySelectorAll('.sf-btn').forEach(b=>b.classList.remove('sf-selected'));this.classList.add('sf-selected');">${v}</button>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+
+      <button class="btn btn-primary" style="margin-top: var(--space-3);" onclick="auswerteSelbstfuersorge()">Auswerten</button>
+      <div id="sf-result"></div>
+    </div>
+  `;
+}
+
+function auswerteSelbstfuersorge() {
+  const btns = document.querySelectorAll('.sf-selected');
+  if (btns.length < SELBSTFUERSORGE_ITEMS.length) { showToast('Bitte alle Items bewerten', 'info'); return; }
+  const total = [...btns].reduce((s, b) => s + parseInt(b.dataset.val), 0);
+  const max = SELBSTFUERSORGE_ITEMS.length * 5;
+  const pct = Math.round(total / max * 100);
+
+  let farbe, label, text;
+  if (pct >= 75) { farbe = '#10B981'; label = 'Stabil'; text = 'Deine Selbstfürsorge ist gut. Weiter so!'; }
+  else if (pct >= 50) { farbe = '#F59E0B'; label = 'Aufpassen'; text = 'Einige Bereiche brauchen Aufmerksamkeit. Überlege, was du konkret ändern kannst.'; }
+  else { farbe = '#DC2626'; label = 'Handlungsbedarf'; text = 'Mehrere Warnsignale. Sprich mit deiner Supervision oder einem Kollegen. Burnout-Risiko besteht.'; }
+
+  document.getElementById('sf-result').innerHTML = `
+    <div class="ac-section" style="margin-top: var(--space-4); border-left: 4px solid ${farbe};">
+      <div style="font-size: 28px; font-weight: var(--font-weight-bold); color: ${farbe};">${total}/${max} (${pct}%)</div>
+      <div style="font-size: 18px; font-weight: var(--font-weight-semibold); margin-top: var(--space-2);">${label}</div>
+      <p style="margin-top: var(--space-2); font-size: 14px; color: var(--text-secondary);">${text}</p>
+    </div>
+  `;
+  addXP(20);
+  showToast('+20 XP für Selbstfürsorge-Reflexion', 'ok');
+}
+
 function setTab(name) {
   APP.activeTab = name;
   document.querySelectorAll('.ac-tab').forEach(el => {
     el.classList.toggle('active', el.dataset.tab === name);
   });
-  if (name === 'lernpfade') renderPfade();
+  if (name === 'impuls') renderImpuls();
+  else if (name === 'lernpfade') renderPfade();
   else if (name === 'cdss') renderCdssList();
   else if (name === 'wissenstest') renderWissenstest();
+  else if (name === 'selbstfuersorge') renderSelbstfuersorge();
   else if (name === 'profil') renderProfil();
 }
 
@@ -517,5 +647,5 @@ Bridge.subscribe('schueler_updated', () => {
 window.addEventListener('DOMContentLoaded', () => {
   applyTheme();
   updateGamificationUI();
-  setTab('lernpfade');
+  setTab('impuls');
 });

@@ -332,3 +332,14 @@ body { background: var(--bg); }
   .ac-topbar { flex-wrap: wrap; }
   .ac-stats { width: 100%; order: 99; justify-content: flex-start; }
 }
+
+/* ── Selbstfürsorge ──────────────────────────────────────── */
+.sf-btn {
+  width: 32px; height: 32px; border-radius: var(--radius-sm);
+  font-size: 14px; font-weight: var(--font-weight-bold);
+  cursor: pointer; transition: var(--transition-fast);
+}
+.sf-btn.sf-selected {
+  background: var(--color-app-academy); color: #fff;
+  border-color: var(--color-app-academy);
+}
