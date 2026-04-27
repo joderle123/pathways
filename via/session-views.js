@@ -5,12 +5,60 @@
 // APP wird von via/app.js bereitgestellt (inkl. session-spezifische Felder)
 
 const TEMPLATES = [
-  { id: 'erstgespraech', icon: '👋', name: 'Erstgespräch', focus: 'Beziehungsaufbau, Anamnese, Ziele explorieren' },
-  { id: 'regulaer',      icon: '🎯', name: 'Reguläre Sitzung', focus: 'Aktuelles Thema bearbeiten, Skills üben' },
-  { id: 'krise',         icon: '🚨', name: 'Krise', focus: 'Stabilisierung, Sicherheitsplan, C-SSRS' },
-  { id: 'eltern',        icon: '👨‍👩‍👧', name: 'Elterngespräch', focus: 'Eltern-Information, Konflikt klären' },
-  { id: 'verlauf',       icon: '📊', name: 'Verlaufs-Sitzung', focus: 'T2-Screening, Re-Assessment' },
-  { id: 'abschluss',     icon: '🚪', name: 'Abschluss', focus: 'Bilanz, T3, Übergabe' },
+  { id: 'erstgespraech', icon: '👋', name: 'Erstgespräch', focus: 'Beziehungsaufbau, Anamnese, Ziele explorieren',
+    ablauf: [
+      { zeit: '0-5', was: 'Begrüßung, Setting erklären (Dauer, Schweigepflicht, Freiwilligkeit)' },
+      { zeit: '5-15', was: 'Kennenlernen: offene Fragen, Stärken, Interessen ("Was magst du? Was kannst du gut?")' },
+      { zeit: '15-30', was: 'Anliegen explorieren: "Was hat dich hierher gebracht?" (MI: offene Fragen)' },
+      { zeit: '30-40', was: 'Erwartungen klären: "Was würde dir helfen? Was wünschst du dir von mir?"' },
+      { zeit: '40-45', was: 'Zusammenfassung + nächste Schritte vereinbaren' },
+      { zeit: '45-50', was: 'Check-out: "Wie war das heute für dich?" — SRS erheben' },
+    ]},
+  { id: 'regulaer', icon: '🎯', name: 'Reguläre Sitzung', focus: 'Aktuelles Thema bearbeiten, Skills üben',
+    ablauf: [
+      { zeit: '0-5', was: 'Check-in: Stimmung (1-10), ORS, "Was ist seit letztem Mal passiert?"' },
+      { zeit: '5-10', was: 'Hausaufgabe besprechen, Brücke zur letzten Sitzung' },
+      { zeit: '10-35', was: 'Hauptarbeit: Thema vertiefen, Material einsetzen, Skills üben' },
+      { zeit: '35-43', was: 'Konsolidierung: "Was nimmst du heute mit? Was war wichtig?"' },
+      { zeit: '43-47', was: 'Hausaufgabe vereinbaren, nächsten Termin' },
+      { zeit: '47-50', was: 'Check-out: SRS erheben, "Wie war die Sitzung für dich?"' },
+    ]},
+  { id: 'krise', icon: '🚨', name: 'Krise', focus: 'Stabilisierung, Sicherheitsplan, C-SSRS',
+    ablauf: [
+      { zeit: '0-5', was: 'Sicherheit prüfen: "Bist du in Gefahr? Hast du dich verletzt?"' },
+      { zeit: '5-15', was: 'Stabilisierung: Grounding, Atemübung, Co-Regulation, PVT-Check' },
+      { zeit: '15-25', was: 'C-SSRS durchführen wenn Suizidalität vermutet' },
+      { zeit: '25-35', was: 'Sicherheitsplan erstellen/aktualisieren (Stanley-Brown 6 Schritte)' },
+      { zeit: '35-45', was: 'Means Restriction besprechen, Helfer informieren' },
+      { zeit: '45-50', was: 'Nächster Kontakt vereinbaren (innerhalb 24-48h), Krisennummern mitgeben' },
+    ]},
+  { id: 'eltern', icon: '👨‍👩‍👧', name: 'Elterngespräch', focus: 'Eltern-Information, Kooperation stärken',
+    ablauf: [
+      { zeit: '0-5', was: 'Begrüßung, Rahmen setzen (was besprochen wird, was vertraulich bleibt)' },
+      { zeit: '5-15', was: 'Eltern-Perspektive hören: "Wie erleben SIE die Situation zu Hause?"' },
+      { zeit: '15-25', was: 'Fachliche Einordnung teilen (Stärken zuerst!), Screening-Ergebnisse erklären' },
+      { zeit: '25-35', was: 'Gemeinsame Ziele: "Was wünschen SIE sich? Was wünscht sich Ihr Kind?"' },
+      { zeit: '35-45', was: 'Konkreter Plan: wer macht was bis wann, Infomaterial mitgeben' },
+      { zeit: '45-50', was: 'Zusammenfassung, nächster Termin, Fragen klären' },
+    ]},
+  { id: 'verlauf', icon: '📊', name: 'Verlaufs-Sitzung', focus: 'T2-Screening, Re-Assessment',
+    ablauf: [
+      { zeit: '0-5', was: 'Check-in: Stimmung, "Wie geht es dir insgesamt?"' },
+      { zeit: '5-20', was: 'T2-Screening durchführen (gleiche Instrumente wie T1)' },
+      { zeit: '20-30', was: 'Ergebnisse gemeinsam anschauen: T1 vs T2 Vergleich, was hat sich verändert?' },
+      { zeit: '30-40', was: 'Roadmap-Review: Phase-Fortschritt, Ziele prüfen, Hypothesen aktualisieren' },
+      { zeit: '40-47', was: 'Plan anpassen: neue Themen? Phase-Übergang? Stepped Care?' },
+      { zeit: '47-50', was: 'Check-out: SRS, nächste Schritte' },
+    ]},
+  { id: 'abschluss', icon: '🚪', name: 'Abschluss', focus: 'Bilanz, T3, Übergabe',
+    ablauf: [
+      { zeit: '0-5', was: 'Rahmen: "Heute schauen wir zurück und nach vorne."' },
+      { zeit: '5-15', was: 'T3-Screening durchführen (finale Verlaufsmessung)' },
+      { zeit: '15-25', was: 'Bilanz: "Was hat sich verändert? Was hast du gelernt? Was war schwierig?"' },
+      { zeit: '25-35', was: 'Ressourcen-Check: "Was hilft dir in Zukunft? Wer unterstützt dich?"' },
+      { zeit: '35-45', was: 'Übergabe planen: Nachsorge, Kontaktmöglichkeit, Notfallplan' },
+      { zeit: '45-50', was: 'Abschied: Wertschätzung aussprechen, Tür offenlassen' },
+    ]},
 ];
 
 const EREIGNISSE = [
@@ -180,9 +228,25 @@ function renderLive() {
     return;
   }
 
+  const template = TEMPLATES.find(t => t.id === APP.draft.typ);
+
   container.innerHTML = `
     <div class="se-section">
-      <h2>🎯 Live-Sitzung</h2>
+      <h2>🎯 Live-Sitzung ${template ? `— ${template.name}` : ''}</h2>
+
+      ${template?.ablauf ? `
+        <details style="margin-bottom: var(--space-4);">
+          <summary style="cursor: pointer; font-size: 14px; font-weight: 600; color: var(--color-app-via);">📋 Ablauf-Empfehlung anzeigen (${template.name})</summary>
+          <div style="margin-top: var(--space-2); display: grid; gap: 2px;">
+            ${template.ablauf.map(a => `
+              <div style="display: grid; grid-template-columns: 60px 1fr; font-size: 13px; padding: var(--space-1) var(--space-2); background: var(--bg-subtle); border-radius: var(--radius-sm);">
+                <span style="font-weight: 600; color: var(--color-app-via);">${a.zeit}'</span>
+                <span>${Utils.escapeHtml(a.was)}</span>
+              </div>
+            `).join('')}
+          </div>
+        </details>
+      ` : ''}
 
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); margin-bottom: var(--space-4);">
         <div class="se-slider-block">
