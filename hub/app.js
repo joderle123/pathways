@@ -23,6 +23,7 @@ const VIEWS = {
   kalender: { title: '📅 Kalender', render: () => KalenderView.render() },
   aufgaben: { title: '✅ Aufgaben', render: () => AufgabenView.render() },
   notizen: { title: '📝 Notizen', render: () => NotizenView.render() },
+  crisis: { title: '🚨 Krise', render: () => CrisisView.render() },
 };
 
 function showView(name, schuelerId) {
@@ -132,9 +133,9 @@ function showSettings() {
   showToast('Einstellungen kommen in Phase D', 'info');
 }
 
-// ─── Krise (Direkt-Link zur CRISIS-App) ───────────────────────
+// ─── Krise (intern in HUB) ────────────────────────────────────
 function openCrisis() {
-  Bridge.openApp('crisis', APP.currentSchuelerId ? { schueler: APP.currentSchuelerId } : {});
+  showView('crisis');
 }
 
 // ─── Bridge: Cross-App Live-Updates empfangen ─────────────────
@@ -158,10 +159,13 @@ Bridge.subscribe('roadmap_updated', e => {
 window.addEventListener('DOMContentLoaded', () => {
   applyTheme();
 
-  // Deep-Link via URL: ?schueler=xyz
+  // Deep-Link via URL: ?schueler=xyz&view=crisis
   const params = Bridge.parseQuery();
-  if (params.schueler) {
-    APP.currentSchuelerId = params.schueler;
+  if (params.schueler) APP.currentSchuelerId = params.schueler;
+
+  if (params.view === 'crisis') {
+    showView('crisis');
+  } else if (params.schueler) {
     showView('profil', params.schueler);
   } else {
     showView('home');

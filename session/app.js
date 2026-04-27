@@ -103,8 +103,8 @@ function renderPre() {
   container.innerHTML = `
     ${risikoColor === 'rot' ? `
       <div class="se-risk-banner">
-        🚨 AKTUELLES RISIKO ROT — siehe CRISIS-App.
-        <a href="../crisis/?schueler=${APP.schuelerId}" target="_blank" style="color: #7F1D1D; text-decoration: underline; margin-left: 8px;">→ Sicherheitsplan öffnen</a>
+        🚨 AKTUELLES RISIKO ROT — siehe Krisen-Tools im HUB.
+        <a href="../hub/?schueler=${APP.schuelerId}&view=crisis" target="_blank" style="color: #7F1D1D; text-decoration: underline; margin-left: 8px;">→ Sicherheitsplan öffnen</a>
       </div>
     ` : ''}
 
@@ -206,7 +206,7 @@ function renderLive() {
       <div style="margin-top: var(--space-4); display: flex; gap: var(--space-2);">
         <button class="btn btn-primary" onclick="setMode('post')">→ Sitzung beenden, zu Post-Session</button>
         <a class="btn" href="../library/" target="_blank">📚 Material öffnen</a>
-        <a class="btn" href="../crisis/?schueler=${APP.schuelerId}" target="_blank">🚨 Crisis-Tools</a>
+        <a class="btn" href="../hub/?schueler=${APP.schuelerId}&view=crisis" target="_blank">🚨 Crisis-Tools</a>
       </div>
     </div>
   `;
@@ -446,8 +446,8 @@ function renderHistory() {
 
 // ─── Bridge ──────────────────────────────────────────────────
 function openCrisis() {
-  if (APP.schuelerId) Bridge.openApp('crisis', { schueler: APP.schuelerId, trigger: 'safety' });
-  else Bridge.openApp('crisis', {});
+  if (APP.schuelerId) Bridge.openApp('hub', { schueler: APP.schuelerId, view: 'crisis' });
+  else Bridge.openApp('hub', { view: 'crisis' });
 }
 
 function updateContext() {

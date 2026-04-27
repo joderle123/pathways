@@ -207,7 +207,7 @@ function renderScreeningWizard() {
           ${result.subscales ? `<div style="margin-top: var(--space-3); font-size: 13px;"><strong>Subskalen:</strong> Emotional ${result.subscales.emotional} · Conduct ${result.subscales.conduct} · Hyperaktiv ${result.subscales.hyperact} · Peer ${result.subscales.peer} · Prosozial ${result.subscales.prosocial}</div>` : ''}
           <div style="margin-top: var(--space-4); display: flex; gap: var(--space-2); justify-content: center; flex-wrap: wrap;">
             ${APP.schuelerId ? `<button class="btn btn-primary" onclick="saveScreening()">💾 Im Klient-Profil speichern</button>` : ''}
-            ${result.flagSuicide ? `<a class="btn" href="../crisis/?schueler=${APP.schuelerId}&trigger=cssrs" target="_blank">→ C-SSRS in CRISIS</a>` : ''}
+            ${result.flagSuicide ? `<a class="btn" href="../hub/?schueler=${APP.schuelerId}&view=crisis" target="_blank">→ C-SSRS im HUB</a>` : ''}
             <button class="btn" onclick="startScreening('${APP.currentInstrument.id}')">🔄 Neu</button>
           </div>
         </div>
