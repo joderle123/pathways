@@ -128,6 +128,26 @@ const FivePModel = (function () {
     state.formulation.hypothese = text;
   }
 
+  function autoPopulate(schuelerId) {
+    load(schuelerId);
+    const sugg = state.suggestions;
+    let changed = false;
+    Object.keys(sugg).forEach(cat => {
+      if (!state.formulation[cat]) state.formulation[cat] = [];
+      sugg[cat].forEach(tag => {
+        if (!state.formulation[cat].includes(tag)) {
+          state.formulation[cat].push(tag);
+          changed = true;
+        }
+      });
+    });
+    if (changed) {
+      state.formulation.autoPopulatedAt = new Date().toISOString();
+      DB.saveFallformulierung(state.formulation);
+    }
+    return changed;
+  }
+
   function save() {
     const text = document.getElementById('fp-hypothese')?.value || '';
     state.formulation.hypothese = text;
@@ -210,5 +230,5 @@ const FivePModel = (function () {
     `;
   }
 
-  return { render, load, toggleTag, save, PRESET_TAGS, COLORS };
+  return { render, load, toggleTag, save, autoPopulate, PRESET_TAGS, COLORS };
 })();

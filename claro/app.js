@@ -391,7 +391,15 @@ function saveScreening() {
   }
 
   Bridge.notify('screening_completed', { schuelerId: APP.schuelerId, instrumentId: inst.id, score: result.score });
-  showToast('Screening gespeichert', 'ok');
+
+  // Auto-5P: Fallformulierung im Hintergrund aktualisieren (Manifest-Feature)
+  if (APP.schuelerId && FivePModel.autoPopulate) {
+    const changed = FivePModel.autoPopulate(APP.schuelerId);
+    if (changed) showToast('Screening gespeichert + 5P automatisch aktualisiert', 'ok');
+    else showToast('Screening gespeichert', 'ok');
+  } else {
+    showToast('Screening gespeichert', 'ok');
+  }
   updateHypPanel();
   setTab('overview');
 }
