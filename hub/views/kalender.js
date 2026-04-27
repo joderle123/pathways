@@ -17,25 +17,29 @@ const KalenderView = (function () {
     return s ? `${s.vorname || ''} ${s.nachname || ''}`.trim() || '?' : '?';
   }
 
-  function add() {
-    const datum = prompt('Datum (YYYY-MM-DD)?', new Date().toISOString().split('T')[0]);
-    if (!datum) return;
-    const uhrzeit = prompt('Uhrzeit (HH:MM, optional)?') || '';
-    const titel = prompt('Titel?');
-    if (!titel) return;
-    const typ = prompt('Typ? (sitzung, elterngespraech, supervision, konferenz, termin)', 'sitzung') || 'sitzung';
-
+  async function add() {
     const klienten = DB.getSchueler();
-    let schuelerId = null;
-    if (klienten.length > 0) {
-      const list = klienten.map((s, i) => `${i + 1}. ${s.vorname} ${s.nachname || ''}`).join('\n');
-      const idx = prompt(`Klient (Nummer 1-${klienten.length}, leer = klientenübergreifend):\n\n${list}`);
-      if (idx && klienten[parseInt(idx, 10) - 1]) {
-        schuelerId = klienten[parseInt(idx, 10) - 1].id;
-      }
-    }
+    const klientOptions = [{ value: '', label: '— klientenübergreifend —' }];
+    klienten.forEach(s => klientOptions.push({ value: s.id, label: `${s.vorname || ''} ${s.nachname || ''}`.trim() || s.id }));
 
-    DB.createTermin({ datum, uhrzeit, titel, typ, schuelerId });
+    const data = await Utils.modalForm({
+      title: 'Neuer Termin',
+      fields: [
+        { id: 'datum', label: 'Datum', type: 'date', value: Utils.today(), required: true },
+        { id: 'uhrzeit', label: 'Uhrzeit', type: 'time' },
+        { id: 'titel', label: 'Titel', required: true, placeholder: 'z.B. Sitzung mit Lena' },
+        { id: 'typ', label: 'Typ', type: 'select', options: [
+          { value: 'sitzung', label: '📝 Sitzung' },
+          { value: 'elterngespraech', label: '👨‍👩‍👧 Elterngespräch' },
+          { value: 'supervision', label: '🎓 Supervision' },
+          { value: 'konferenz', label: '🤝 Konferenz' },
+          { value: 'termin', label: '📅 Sonstiger Termin' },
+        ], value: 'sitzung' },
+        { id: 'schuelerId', label: 'Klient', type: 'select', options: klientOptions },
+      ],
+    });
+    if (!data) return;
+    DB.createTermin(data);
     showToast('Termin angelegt', 'ok');
     render();
   }

@@ -5,12 +5,21 @@
    ============================================================ */
 
 const AufgabenView = (function () {
-  function add() {
-    const titel = prompt('Aufgabe?');
-    if (!titel) return;
-    const prioritaet = prompt('Priorität? (hoch, normal, niedrig)', 'normal') || 'normal';
-    const faelligkeit = prompt('Fällig (YYYY-MM-DD, optional)?') || '';
-    DB.addAufgabe({ titel, prioritaet, faelligkeit, erledigt: false });
+  async function add() {
+    const data = await Utils.modalForm({
+      title: 'Neue Aufgabe',
+      fields: [
+        { id: 'titel', label: 'Was ist zu tun?', required: true, placeholder: 'z.B. Bericht für Konferenz schreiben' },
+        { id: 'prioritaet', label: 'Priorität', type: 'select', options: [
+          { value: 'hoch', label: '🔴 Hoch' },
+          { value: 'normal', label: '🔵 Normal' },
+          { value: 'niedrig', label: '⚪ Niedrig' },
+        ], value: 'normal' },
+        { id: 'faelligkeit', label: 'Fällig bis', type: 'date' },
+      ],
+    });
+    if (!data) return;
+    DB.addAufgabe({ ...data, erledigt: false });
     showToast('Aufgabe hinzugefügt', 'ok');
     render();
   }

@@ -5,23 +5,37 @@
    ============================================================ */
 
 const NotizenView = (function () {
-  function add() {
-    const titel = prompt('Titel?');
-    if (!titel) return;
-    const inhalt = prompt('Inhalt?') || '';
-    const tags = (prompt('Tags? (Komma-getrennt, optional)') || '').split(',').map(t => t.trim()).filter(Boolean);
-    DB.addPersNotiz({ titel, inhalt, tags });
+  async function add() {
+    const data = await Utils.modalForm({
+      title: 'Neue Notiz',
+      fields: [
+        { id: 'titel', label: 'Titel', required: true, placeholder: 'z.B. Supervisionsidee' },
+        { id: 'inhalt', label: 'Inhalt', type: 'textarea', rows: 6, placeholder: 'Deine Gedanken...' },
+        { id: 'tags', label: 'Tags (Komma-getrennt)', placeholder: 'z.B. supervision, idee, trauma' },
+      ],
+    });
+    if (!data) return;
+    const tags = (data.tags || '').split(',').map(t => t.trim()).filter(Boolean);
+    DB.addPersNotiz({ titel: data.titel, inhalt: data.inhalt, tags });
     showToast('Notiz angelegt', 'ok');
     render();
   }
 
-  function edit(id) {
+  async function edit(id) {
     const all = DB.getPersNotizen();
     const n = all.find(x => x.id === id);
     if (!n) return;
-    const inhalt = prompt('Inhalt:', n.inhalt || '');
-    if (inhalt === null) return;
-    DB.updatePersNotiz(id, { inhalt });
+    const data = await Utils.modalForm({
+      title: 'Notiz bearbeiten',
+      fields: [
+        { id: 'titel', label: 'Titel', value: n.titel, required: true },
+        { id: 'inhalt', label: 'Inhalt', type: 'textarea', rows: 8, value: n.inhalt },
+        { id: 'tags', label: 'Tags (Komma-getrennt)', value: (n.tags || []).join(', ') },
+      ],
+    });
+    if (!data) return;
+    const tags = (data.tags || '').split(',').map(t => t.trim()).filter(Boolean);
+    DB.updatePersNotiz(id, { titel: data.titel, inhalt: data.inhalt, tags });
     render();
   }
 
