@@ -62,9 +62,9 @@ function toggleTheme() {
 
 // ─── Index laden ─────────────────────────────────────────────
 async function loadIndex() {
-  const res = await fetch('data/materials-index.json');
-  if (!res.ok) throw new Error('Index nicht gefunden. Run: node tools/build-search-index.cjs');
-  STATE.index = await res.json();
+  const data = await Utils.safeFetch('data/materials-index.json');
+  if (!data) throw new Error('Index nicht gefunden. Run: node tools/build-search-index.cjs');
+  STATE.index = data;
   console.log(`[CODEX] ${STATE.index.count} Materialien geladen`);
 }
 

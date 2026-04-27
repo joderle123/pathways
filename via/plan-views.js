@@ -14,8 +14,8 @@ const STAERKEN = [
 
 async function loadPhasen() {
   if (APP.phasen) return APP.phasen;
-  const res = await fetch('phases/phase-templates.json');
-  const data = await res.json();
+  const data = await Utils.safeFetch('phases/phase-templates.json');
+  if (!data) { showToast('Phase-Templates konnten nicht geladen werden', 'error'); return []; }
   APP.phasen = data.phasen;
   return APP.phasen;
 }

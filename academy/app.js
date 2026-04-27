@@ -379,8 +379,8 @@ function setTab(name) {
 // ─── Lernpfade ────────────────────────────────────────────────
 async function loadPfade() {
   if (APP.pfade) return APP.pfade;
-  const res = await fetch('courses/lernpfade-index.json');
-  const data = await res.json();
+  const data = await Utils.safeFetch('courses/lernpfade-index.json');
+  if (!data) { showToast('Lernpfade konnten nicht geladen werden', 'error'); return []; }
   APP.pfade = data.lernpfade;
   return APP.pfade;
 }
@@ -554,8 +554,8 @@ function markStepDone(stepId, xp) {
 // ─── CDSS ─────────────────────────────────────────────────────
 async function loadCdss() {
   if (APP.cdssTrees) return APP.cdssTrees;
-  const res = await fetch('cdss/decision-trees.json');
-  const data = await res.json();
+  const data = await Utils.safeFetch('cdss/decision-trees.json');
+  if (!data) { showToast('CDSS-Bäume konnten nicht geladen werden', 'error'); return []; }
   APP.cdssTrees = data.trees;
   return APP.cdssTrees;
 }
