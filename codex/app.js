@@ -197,7 +197,7 @@ function openDetail(pfad) {
     </div>
     <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">${Utils.escapeHtml(m.beschreibung)}</p>
     <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-4); flex-wrap: wrap;">
-      ${(m.keywords || []).map(k => `<span class="lib-tag" style="font-size: 11px;">${Utils.escapeHtml(k)}</span>`).join('')}
+      ${(m.keywords || []).map(k => `<span class="lib-tag lib-keyword-clickable" style="font-size: 11px; cursor: pointer;" onclick="closeDetail(); document.getElementById('lib-search').value='${Utils.escapeHtml(k)}'; STATE.query='${Utils.escapeHtml(k)}'; setSection('materialien'); render();">${Utils.escapeHtml(k)}</span>`).join('')}
     </div>
     <hr style="border: 0; border-top: 1px solid var(--border); margin: var(--space-4) 0;">
     <label style="display: block; font-weight: var(--font-weight-semibold); margin-bottom: var(--space-2);">📝 Meine Notiz zu diesem Material</label>
