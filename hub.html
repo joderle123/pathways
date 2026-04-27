@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pathways — App Hub</title>
+  <meta name="theme-color" content="#6366F1">
+  <link rel="stylesheet" href="core/ui-base.css">
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-6);
+      text-align: center;
+    }
+    .hub-logo { font-size: 64px; margin-bottom: var(--space-3); }
+    .hub-title { font-size: 32px; font-weight: var(--font-weight-bold); margin-bottom: var(--space-2); }
+    .hub-subtitle { font-size: 16px; color: var(--text-secondary); margin-bottom: var(--space-8); max-width: 600px; line-height: var(--line-height-relaxed); }
+    .hub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 240px));
+      gap: var(--space-4);
+      justify-content: center;
+      width: 100%;
+      max-width: 1000px;
+    }
+    .hub-app {
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      text-decoration: none;
+      color: var(--text);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .hub-app:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--app-color, var(--primary));
+    }
+    .hub-app-icon {
+      width: 64px; height: 64px;
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px;
+      background: color-mix(in srgb, var(--app-color, var(--primary)) 12%, white);
+    }
+    .hub-app-name { font-size: 18px; font-weight: var(--font-weight-bold); margin-top: var(--space-2); }
+    .hub-app-desc { font-size: 13px; color: var(--text-secondary); line-height: var(--line-height-relaxed); }
+    .hub-footer {
+      margin-top: var(--space-8);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+    .hub-footer a { color: var(--primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <div class="hub-logo">🧭</div>
+  <h1 class="hub-title">Pathways</h1>
+  <p class="hub-subtitle">Therapeutisches Case-Management für die Bezugsarbeit mit Jugendlichen. Wähle eine App.</p>
+
+  <div class="hub-grid">
+    <a class="hub-app" href="case/" style="--app-color: #6366F1;">
+      <div class="hub-app-icon">📋</div>
+      <div class="hub-app-name">CASE</div>
+      <div class="hub-app-desc">Klienten-Verwaltung, Dashboard, Anamnese, Helfer-Netzwerk</div>
+    </a>
+    <a class="hub-app" href="diagnose/" style="--app-color: #EF4444;">
+      <div class="hub-app-icon">🔍</div>
+      <div class="hub-app-name">DIAGNOSE</div>
+      <div class="hub-app-desc">Screening (PHQ-A, GAD-7, PCL-5), Hypothesen, 5P, ICD</div>
+    </a>
+    <a class="hub-app" href="roadmap/" style="--app-color: #10B981;">
+      <div class="hub-app-icon">🗺️</div>
+      <div class="hub-app-name">ROADMAP</div>
+      <div class="hub-app-desc">7-Phasen Förderplan, SMART-Ziele, Stärken-Profil</div>
+    </a>
+    <a class="hub-app" href="session/" style="--app-color: #8B5CF6;">
+      <div class="hub-app-icon">📝</div>
+      <div class="hub-app-name">SESSION</div>
+      <div class="hub-app-desc">Sitzungs-Begleitung mit ORS/SRS, SOAP, Live-Timer</div>
+    </a>
+    <a class="hub-app" href="library/" style="--app-color: #0EA5E9;">
+      <div class="hub-app-icon">📚</div>
+      <div class="hub-app-name">LIBRARY</div>
+      <div class="hub-app-desc">437 Materialien durchsuchen, filtern, bookmarken</div>
+    </a>
+    <a class="hub-app" href="crisis/" style="--app-color: #DC2626;">
+      <div class="hub-app-icon">🚨</div>
+      <div class="hub-app-name">CRISIS</div>
+      <div class="hub-app-desc">C-SSRS, Sicherheitsplan, Triage, Notfall-Hotlines</div>
+    </a>
+    <a class="hub-app" href="academy/" style="--app-color: #14B8A6;">
+      <div class="hub-app-icon">🎓</div>
+      <div class="hub-app-name">ACADEMY</div>
+      <div class="hub-app-desc">Weiterbildung, Lernpfade, CDSS-Wizard, Gamification</div>
+    </a>
+    <a class="hub-app" href="parents/" style="--app-color: #F59E0B;">
+      <div class="hub-app-icon">👨‍👩‍👧</div>
+      <div class="hub-app-name">PARENTS</div>
+      <div class="hub-app-desc">Eltern-Infoblätter, Gesprächsleitfäden, Workflows</div>
+    </a>
+  </div>
+
+  <div class="hub-footer">
+    <p>Pathways v3.0 — Designed by Joey Guedes · <a href="core/test.html">Core-Test</a></p>
+  </div>
+
+</body>
+</html>
