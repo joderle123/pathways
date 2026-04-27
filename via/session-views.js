@@ -81,9 +81,15 @@ function startTimer() {
     const min = Math.floor(elapsed / 60);
     const sec = elapsed % 60;
     document.getElementById('via-timer-text').textContent = `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
-    // Warnung bei 10 Min vor Ende (40 Min)
-    if (min === 40 && sec === 0) showToast('⏰ Noch 10 Minuten — Konsolidierung beginnen', 'info');
-    if (min === 50 && sec === 0) showToast('⏰ Sitzungsende erreicht', 'info');
+    const timerEl = document.getElementById('via-timer');
+    if (min >= 45) {
+      timerEl.style.background = 'rgba(220,38,38,0.3)';
+      if (min === 45 && sec === 0) showToast('⏰ 5 Minuten — Check-out beginnen!', 'error');
+    } else if (min >= 40) {
+      timerEl.style.background = 'rgba(245,158,11,0.3)';
+      if (min === 40 && sec === 0) showToast('⏰ 10 Minuten — Konsolidierung beginnen', 'info');
+    }
+    if (min === 50 && sec === 0) showToast('⏰ Sitzungsende (50 Min)', 'error');
   }, 1000);
 }
 function stopTimer() {
