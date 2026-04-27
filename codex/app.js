@@ -553,6 +553,40 @@ const SEQUENZEN = [
       'arbeitsblaetter-einfach/gefuehlsausdruck-einfach.html',
     ],
   },
+  {
+    id: 'trauma', titel: 'Trauma-Stabilisierung & Psychoedukation',
+    icon: '🌱', dauer: '5 Sitzungen',
+    beschreibung: 'Vor jeder Trauma-Exposition: Stabilisierung, Psychoedukation, Sicherheit (Herman 1992, Phase 1).',
+    materialien: [
+      'arbeitsblaetter-einfach/trauma-psychoedukation-einfach.html',
+      'arbeitsblaetter-einfach/stabilisierungsuebungen-einfach.html',
+      'arbeitsblaetter-einfach/sicherheitsplan-einfach.html',
+      'arbeitsblaetter-einfach/flashback-management-einfach.html',
+      'arbeitsblaetter-einfach/vertrauenspersonen-netzwerk-einfach.html',
+    ],
+  },
+  {
+    id: 'selbstwert', titel: 'Selbstwert-Aufbau',
+    icon: '💎', dauer: '4 Sitzungen',
+    beschreibung: 'Für Klienten mit negativem Selbstbild, Scham, Selbstabwertung.',
+    materialien: [
+      'arbeitsblaetter-einfach/selbstwert-einfach.html',
+      'arbeitsblaetter-einfach/koerper-und-selbstbild-einfach.html',
+      'arbeitsblaetter-einfach/ressourcenaktivierung-einfach.html',
+      'arbeitsblaetter-einfach/gedanken-umstrukturierung-einfach.html',
+    ],
+  },
+  {
+    id: 'kommunikation', titel: 'Kommunikation & Grenzen',
+    icon: '🗣️', dauer: '4 Sitzungen',
+    beschreibung: 'Assertive Kommunikation, Grenzen setzen, Konflikte lösen.',
+    materialien: [
+      'arbeitsblaetter-einfach/kommunikation-einfach.html',
+      'arbeitsblaetter-einfach/nonverbale-kommunikation-einfach.html',
+      'arbeitsblaetter-einfach/grenzen-setzen-einfach.html',
+      'arbeitsblaetter-einfach/bindung-vertrauen-einfach.html',
+    ],
+  },
 ];
 
 function renderSequenzen(container) {
