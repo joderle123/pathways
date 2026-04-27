@@ -292,5 +292,54 @@
         }
       ]
     }
+    },
+    {
+      "id": "kvt-jugendliche",
+      "titel": "KVT-Grundlagen für Jugendliche",
+      "icon": "🧠",
+      "kategorie": "Klinik",
+      "dauer": "ca. 2 Stunden",
+      "xp": 250,
+      "beschreibung": "Kognitive Verhaltenstherapie adaptiert für Adoleszente. Gedankenprotokolle, Verhaltensexperimente, Exposition. Die meistuntersuchte Therapieform f��r Depression und Angst bei Jugendlichen.",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Das KVT-Modell: Situation → Gedanke → Gefühl → Verhalten",
+          "inhalt": "Beck (1976): Nicht die Situation verursacht das Gefühl, sondern die BEWERTUNG der Situation. Ein Jugendlicher der denkt 'Alle hassen mich' wird sich anders fühlen als einer der denkt 'Heute war ein schwieriger Tag'. KVT macht automatische Gedanken sichtbar und prüft sie auf Realitätsgehalt."
+        },
+        {
+          "id": 2, "typ": "lektuere", "titel": "Kognitive Verzerrungen bei Jugendlichen",
+          "inhalt": "Häufige Denkfehler: Schwarz-Weiß-Denken ('Entweder perfekt oder wertlos'), Katastrophisieren ('Wenn ich durchfalle, ist mein Leben vorbei'), Gedankenlesen ('Sie denkt bestimmt, ich bin dumm'), Übergeneralisieren ('Immer passiert mir das'), Personalisieren ('Es ist meine Schuld'). Bei Jugendlichen: besonders Gedankenlesen und Schwarz-Weiß-Denken (entwicklungsbedingt, präfrontaler Cortex noch reifend)."
+        },
+        {
+          "id": 3, "typ": "quiz", "titel": "Quiz: Kognitive Verzerrungen",
+          "fragen": [
+            {
+              "frage": "'Wenn ich in der Prüfung eine 4 bekomme, bin ich ein totaler Versager.' Welche Verzerrung?",
+              "optionen": ["Gedankenlesen", "Schwarz-Weiß-Denken", "Katastrophisieren", "Personalisieren"],
+              "korrekt": 1,
+              "erklaerung": "Schwarz-Weiß (Alles-oder-Nichts): Kein Mittelweg zwischen 'perfekt' und 'Versager'. KVT-Intervention: Kontinuum-Technik (wo zwischen 0 und 100 liegt eine 4 wirklich?)."
+            },
+            {
+              "frage": "Welche KVT-Technik eignet sich am besten bei sozialer Angst?",
+              "optionen": ["Gedankenprotokoll allein", "Graduierte Exposition", "Nur Entspannung", "Medikation"],
+              "korrekt": 1,
+              "erklaerung": "Meta-Analyse (Hofmann & Smits 2008): Exposition ist der wirksamste Bestandteil der KVT bei Angststörungen. Graduiert = von leicht nach schwer. Kombination mit kognitiver Umstrukturierung am effektivsten."
+            }
+          ]
+        },
+        {
+          "id": 4, "typ": "lektuere", "titel": "Gedankenprotokoll: Das Werkzeug",
+          "inhalt": "5-Spalten-Protokoll: (1) Situation — was ist passiert? (2) Automatischer Gedanke — was ging mir durch den Kopf? (3) Gefühl — welches Gefühl, Stärke 0-100? (4) Evidenz �� was spricht dafür, was dagegen? (5) Alternativer Gedanke + neues Gefühl. Bei Jugendlichen: vereinfachen auf 3 Spalten (Situation-Gedanke-Gefühl) als Einstieg. Digitale Version in CODEX verfügbar."
+        },
+        {
+          "id": 5, "typ": "lektuere", "titel": "Verhaltensaktivierung bei Depression",
+          "inhalt": "Jacobson et al. (2001): Verhaltensaktivierung ist genauso wirksam wie volle KVT bei Depression. Prinzip: Depression → Rückzug → weniger positive Erlebnisse → mehr Depression. Durchbrechen: Aktivitäten planen, auch wenn keine Motivation da ist. 'Tue es zuerst, die Motivation kommt danach.' Wochenplan mit angenehmen + Pflicht-Aktivitäten. Klein anfangen (5 Min. spazieren, nicht 1 Stunde joggen)."
+        },
+        {
+          "id": 6, "typ": "reflexion", "titel": "Praxis-Übung",
+          "frage": "Führe bei deinem nächsten Klienten mit depressiver Symptomatik ein 3-Spalten-Gedankenprotokoll ein. Dokumentiere: Wie hat der Klient reagiert? Was war schwierig?"
+        }
+      ]
+    }
   ]
 }
