@@ -488,6 +488,11 @@ function saveSession() {
       ors_total: orsTotal,
       srs_total: srsTotal,
       ereignisse: APP.draft.ereignisse,
+      risiko_suizid: APP.draft.soap.risiko_suizid || 'kein',
+      risiko_sv: APP.draft.soap.risiko_sv || 'kein',
+      risiko_fremd: APP.draft.soap.risiko_fremd || 'kein',
+      intervention: APP.draft.soap.intervention || '',
+      medikation: APP.draft.soap.medikation || '',
       dauer_min: APP.sessionStart ? Math.floor((Date.now() - APP.sessionStart) / 60000) : null,
     },
   });
@@ -507,6 +512,14 @@ function saveSession() {
   // SRS-Ruptur sofort flaggen wenn < 25 (nicht erst nach 3 Sitzungen)
   if (srsTotal < 25) {
     showToast(`⚠️ SRS ${srsTotal.toFixed(0)}/40 — Allianz-Ruptur möglich. Ansprechen!`, 'error');
+  }
+
+  // Risiko-Eskalation bei Suizidalität in SOAP
+  const risikoSuizid = APP.draft.soap.risiko_suizid;
+  if (risikoSuizid === 'aktiv' || risikoSuizid === 'plan') {
+    DB.addRisiko(APP.schuelerId, { sicherheit: 'rot', source: 'soap-suizid', level: risikoSuizid });
+    Bridge.notify('crisis_alert', { schuelerId: APP.schuelerId, severity: risikoSuizid === 'plan' ? 'critical' : 'high', source: 'session-soap' });
+    showToast('⚠️ Suizidalität dokumentiert — Risiko-Eintrag erstellt, Krisen-Alert gesendet.', 'error');
   }
 
   Bridge.notify('session_completed', { schuelerId: APP.schuelerId, ors: orsTotal, srs: srsTotal });
@@ -584,6 +597,9 @@ function renderHistory() {
                   ${pvt.length ? `<div style="margin-bottom: var(--space-2);"><strong>PVT-Verlauf:</strong> ${pvt.map(p => pvtEmoji[p] || p).join(' → ')}</div>` : ''}
                   ${n.soap?.stimmung_start !== undefined ? `<div style="margin-bottom: var(--space-2);"><strong>Stimmung:</strong> ${n.soap.stimmung_start} → ${n.soap.stimmung_end || '?'}</div>` : ''}
                   ${n.soap?.hausaufgabe ? `<div style="margin-bottom: var(--space-2);"><strong>Hausaufgabe:</strong> ${Utils.escapeHtml(n.soap.hausaufgabe)}</div>` : ''}
+                  ${n.soap?.intervention ? `<div style="margin-bottom: var(--space-2);"><strong>Intervention:</strong> ${Utils.escapeHtml(n.soap.intervention)}</div>` : ''}
+                  ${n.soap?.medikation ? `<div style="margin-bottom: var(--space-2);"><strong>Medikation:</strong> ${Utils.escapeHtml(n.soap.medikation)}</div>` : ''}
+                  ${n.soap?.risiko_suizid && n.soap.risiko_suizid !== 'kein' ? `<div style="margin-bottom: var(--space-2); color: #DC2626;"><strong>Risiko:</strong> Suizid: ${n.soap.risiko_suizid}${n.soap.risiko_sv && n.soap.risiko_sv !== 'kein' ? ' · SV: ' + n.soap.risiko_sv : ''}${n.soap.risiko_fremd && n.soap.risiko_fremd !== 'kein' ? ' · Fremd: ' + n.soap.risiko_fremd : ''}</div>` : ''}
                   ${n.soap?.O ? `<div><strong>Beobachtung:</strong> ${Utils.escapeHtml(Utils.truncate(n.soap.O, 200))}</div>` : ''}
                 </div>
               </details>
