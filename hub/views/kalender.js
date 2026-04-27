@@ -57,12 +57,42 @@ const KalenderView = (function () {
     const zukunft = all.filter(t => (t.datum || '') >= heute).sort((a, b) => (a.datum || '').localeCompare(b.datum || ''));
     const vergangen = all.filter(t => (t.datum || '') < heute).sort((a, b) => (b.datum || '').localeCompare(a.datum || '')).slice(0, 20);
 
+    // Wochen-Grid: aktuelle Woche (Mo-Fr)
+    const now = new Date();
+    const dayOfWeek = now.getDay() || 7;
+    const monday = new Date(now);
+    monday.setDate(now.getDate() - dayOfWeek + 1);
+    const wochentage = ['Mo', 'Di', 'Mi', 'Do', 'Fr'];
+    const wochenDaten = wochentage.map((tag, i) => {
+      const d = new Date(monday);
+      d.setDate(monday.getDate() + i);
+      const iso = d.toISOString().split('T')[0];
+      const termine = all.filter(t => t.datum === iso);
+      const isHeute = iso === heute;
+      return { tag, datum: iso, termine, isHeute, dayNum: d.getDate() };
+    });
+
     container.innerHTML = `
       <div class="pw-section">
         <div class="pw-section-header">
-          <div class="pw-section-title">📅 Anstehende Termine (${zukunft.length})</div>
+          <div class="pw-section-title">📅 Kalender</div>
           <button class="btn btn-primary" onclick="KalenderView.add()">+ Termin</button>
         </div>
+
+        <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-2); margin-bottom: var(--space-4);">
+          ${wochenDaten.map(w => `
+            <div style="padding: var(--space-2); border-radius: var(--radius-sm); background: ${w.isHeute ? 'rgba(99,102,241,0.1)' : 'var(--bg-subtle)'}; border: ${w.isHeute ? '2px solid var(--color-app-hub)' : '1px solid var(--border)'}; min-height: 80px;">
+              <div style="font-size: 12px; font-weight: 600; color: ${w.isHeute ? 'var(--color-app-hub)' : 'var(--text-muted)'};">${w.tag} ${w.dayNum}</div>
+              ${w.termine.length ? w.termine.map(t => `
+                <div style="margin-top: 4px; padding: 2px 6px; background: var(--bg-card); border-radius: 4px; font-size: 11px; border-left: 3px solid var(--color-app-hub); cursor: default;" title="${Utils.escapeHtml(t.titel || '')}">
+                  ${t.uhrzeit ? `<strong>${t.uhrzeit}</strong> ` : ''}${Utils.escapeHtml(Utils.truncate(t.titel || '?', 15))}
+                </div>
+              `).join('') : `<div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">—</div>`}
+            </div>
+          `).join('')}
+        </div>
+
+        <h3>Anstehend (${zukunft.length})</h3>
         ${zukunft.length === 0
           ? `<div class="pw-empty"><p>Keine anstehenden Termine.</p></div>`
           : `<div class="pw-list">${zukunft.map(t => `
