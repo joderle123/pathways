@@ -199,6 +199,10 @@ function openDetail(pfad) {
     <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-4); flex-wrap: wrap;">
       ${(m.keywords || []).map(k => `<span class="lib-tag lib-keyword-clickable" style="font-size: 11px; cursor: pointer;" onclick="closeDetail(); document.getElementById('lib-search').value='${Utils.escapeHtml(k)}'; STATE.query='${Utils.escapeHtml(k)}'; setSection('materialien'); render();">${Utils.escapeHtml(k)}</span>`).join('')}
     </div>
+    <details style="margin: var(--space-4) 0;">
+      <summary style="cursor: pointer; font-weight: var(--font-weight-semibold); font-size: 14px;">👁️ Vorschau anzeigen</summary>
+      <iframe src="../${m.pfad}" style="width: 100%; height: 400px; border: 1px solid var(--border); border-radius: var(--radius-sm); margin-top: var(--space-2);" sandbox="allow-same-origin"></iframe>
+    </details>
     <hr style="border: 0; border-top: 1px solid var(--border); margin: var(--space-4) 0;">
     <label style="display: block; font-weight: var(--font-weight-semibold); margin-bottom: var(--space-2);">📝 Meine Notiz zu diesem Material</label>
     <textarea id="detail-note" rows="5" style="width: 100%;">${Utils.escapeHtml(note)}</textarea>
