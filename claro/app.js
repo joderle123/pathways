@@ -32,13 +32,153 @@ function toggleTheme() {
   localStorage.setItem(KEYS.THEME, document.body.classList.contains('theme-dark') ? 'dark' : 'light');
 }
 
+// ─── 5 Triage-Fragen (Manifest: adaptive Diagnostik) ────────
+const TRIAGE_FRAGEN = [
+  { id: 'stimmung', frage: 'Wie ist die Stimmung des Klienten aktuell?', optionen: [
+    { label: 'Unauffällig', domaenen: [] },
+    { label: 'Gedrückt / traurig', domaenen: ['phq-a'] },
+    { label: 'Ängstlich / angespannt', domaenen: ['gad-7'] },
+    { label: 'Gereizt / aggressiv', domaenen: ['sdq'] },
+  ]},
+  { id: 'trauma', frage: 'Gibt es Hinweise auf belastende Erlebnisse?', optionen: [
+    { label: 'Nein / unklar', domaenen: [] },
+    { label: 'Ja — aktive Symptome', domaenen: ['pcl-5'] },
+    { label: 'Ja — aber stabil', domaenen: [] },
+  ]},
+  { id: 'verhalten', frage: 'Fallen externalisierendes Verhalten auf?', optionen: [
+    { label: 'Nein', domaenen: [] },
+    { label: 'Konzentration / Unruhe', domaenen: ['asrs'] },
+    { label: 'Regelverstöße / Aggression', domaenen: ['sdq'] },
+  ]},
+  { id: 'essen', frage: 'Gibt es Auffälligkeiten beim Essverhalten?', optionen: [
+    { label: 'Nein', domaenen: [] },
+    { label: 'Ja — auffällig', domaenen: ['scoff'] },
+  ]},
+  { id: 'suizid', frage: 'Wurden Suizidgedanken oder Selbstverletzung geäußert?', optionen: [
+    { label: 'Nein', domaenen: [] },
+    { label: 'Ja — aktuell', domaenen: ['phq-a'], crisis: true },
+    { label: 'Ja — in der Vergangenheit', domaenen: ['phq-a'] },
+  ]},
+];
+
+let triageAntworten = {};
+
+function setTriageAntwort(frageId, optIdx) {
+  triageAntworten[frageId] = optIdx;
+  renderTriage();
+}
+
+function getTriageEmpfehlungen() {
+  const empfohlen = new Set();
+  let crisisFlag = false;
+  TRIAGE_FRAGEN.forEach(f => {
+    const idx = triageAntworten[f.id];
+    if (idx !== undefined) {
+      const opt = f.optionen[idx];
+      opt.domaenen.forEach(d => empfohlen.add(d));
+      if (opt.crisis) crisisFlag = true;
+    }
+  });
+  return { empfohlen: [...empfohlen], crisisFlag, alleBeantwortet: Object.keys(triageAntworten).length === TRIAGE_FRAGEN.length };
+}
+
+function renderTriage() {
+  const container = document.getElementById('dg-content');
+  const { empfohlen, crisisFlag, alleBeantwortet } = getTriageEmpfehlungen();
+  const beantwortet = Object.keys(triageAntworten).length;
+
+  container.innerHTML = `
+    <div class="dg-section">
+      <h2>🎯 Triage — 5 Fragen in 3 Minuten</h2>
+      <div class="dg-section-intro">
+        Beantworte 5 kurze Fragen. CLARO berechnet dann, welche Screening-Instrumente
+        wirklich nötig sind — und überspringt den Rest. <strong>Nur die richtigen Fragen, nie alle.</strong>
+      </div>
+
+      <div class="dg-triage-progress">${beantwortet}/5 beantwortet</div>
+
+      ${TRIAGE_FRAGEN.map((f, fi) => `
+        <div class="dg-triage-frage ${triageAntworten[f.id] !== undefined ? 'answered' : ''}">
+          <div class="dg-triage-num">${fi + 1}</div>
+          <div class="dg-triage-text">${Utils.escapeHtml(f.frage)}</div>
+          <div class="dg-triage-opts">
+            ${f.optionen.map((opt, oi) => `
+              <button class="dg-triage-opt ${triageAntworten[f.id] === oi ? 'selected' : ''}"
+                      onclick="setTriageAntwort('${f.id}', ${oi})">
+                ${Utils.escapeHtml(opt.label)}
+              </button>
+            `).join('')}
+          </div>
+        </div>
+      `).join('')}
+
+      ${alleBeantwortet ? `
+        <div class="dg-triage-result">
+          <h3>Empfohlene Screening-Instrumente</h3>
+          ${crisisFlag ? `<div class="dg-triage-crisis">⚠️ Suizidalität angegeben — <a href="../hub/?schueler=${APP.schuelerId}&view=crisis">C-SSRS im HUB durchführen</a></div>` : ''}
+          ${empfohlen.length > 0 ? `
+            <div class="dg-triage-empfohlen">
+              ${empfohlen.map(instId => {
+                const inst = INSTRUMENTS[instId];
+                return inst ? `<button class="btn btn-primary" onclick="startScreening('${instId}')" style="margin: 4px;">
+                  ${inst.icon} ${inst.acronym} — ${inst.titel}
+                </button>` : '';
+              }).join('')}
+            </div>
+            <div style="margin-top: var(--space-3); font-size: 13px; color: var(--text-muted);">
+              ${INSTRUMENT_LIST.length - empfohlen.length} Instrumente übersprungen — nicht indiziert.
+            </div>
+          ` : `<p style="color: var(--text-muted);">Keine spezifischen Instrumente empfohlen. Allgemeines SDQ-Screening erwägen.</p>
+              <button class="btn" onclick="startScreening('sdq')" style="margin-top: var(--space-2);">📋 SDQ starten</button>`}
+          <div style="margin-top: var(--space-4);">
+            <button class="btn" onclick="triageAntworten={}; renderTriage();">🔄 Triage zurücksetzen</button>
+          </div>
+        </div>
+      ` : ''}
+    </div>
+  `;
+}
+
+// ─── Live-Hypothesen-Panel (am Bildschirmrand) ──────────────
+function updateHypPanel() {
+  const panel = document.getElementById('dg-hyp-panel');
+  if (!panel || !APP.schuelerId) { if (panel) panel.style.display = 'none'; return; }
+
+  const hyps = Hypotheses.generate(APP.schuelerId);
+  if (hyps.length === 0) { panel.style.display = 'none'; return; }
+
+  panel.style.display = '';
+  panel.innerHTML = `
+    <div class="dg-hyp-panel-title">🧠 Live-Hypothesen</div>
+    ${hyps.map(h => {
+      const konfidenz = h.konfidenz || Math.min(95, 50 + (h.evidence?.length || 1) * 15);
+      const farbe = konfidenz >= 70 ? '#DC2626' : konfidenz >= 50 ? '#F59E0B' : '#10B981';
+      return `
+        <div class="dg-hyp-mini">
+          <div class="dg-hyp-mini-title">${Utils.escapeHtml(h.titel)}</div>
+          <div class="dg-hyp-mini-bar"><div style="width: ${konfidenz}%; background: ${farbe};"></div></div>
+          <div class="dg-hyp-mini-meta">${konfidenz}% · ${h.icd || ''}</div>
+          ${h.sequenzierung ? `<div class="dg-hyp-mini-seq">${Utils.escapeHtml(h.sequenzierung)}</div>` : ''}
+        </div>
+      `;
+    }).join('')}
+  `;
+}
+
 // ─── Tab Routing ──────────────────────────────────────────────
 function setTab(name) {
   APP.activeTab = name;
   document.querySelectorAll('.dg-tab').forEach(el => {
     el.classList.toggle('active', el.dataset.tab === name);
   });
+
+  const showPanel = (name === 'screening' || name === 'triage') && APP.schuelerId;
+  const panel = document.getElementById('dg-hyp-panel');
+  if (panel) panel.style.display = showPanel ? '' : 'none';
+  if (showPanel) updateHypPanel();
+
   if (name === 'overview') renderOverview();
+  else if (name === 'triage') renderTriage();
   else if (name === 'screening') renderScreeningList();
   else if (name === 'hypothesen') renderHypothesen();
   else if (name === '5p') {
@@ -252,6 +392,7 @@ function saveScreening() {
 
   Bridge.notify('screening_completed', { schuelerId: APP.schuelerId, instrumentId: inst.id, score: result.score });
   showToast('Screening gespeichert', 'ok');
+  updateHypPanel();
   setTab('overview');
 }
 
@@ -271,13 +412,24 @@ function renderHypothesen() {
       </p>
       ${hyps.length === 0
         ? `<div class="pw-empty"><div class="pw-empty-icon">🤷</div><p>Keine Hypothesen — führe Screenings durch und ergänze die Anamnese.</p></div>`
-        : hyps.map(h => `
-          <div class="dg-hypothesis">
-            <div class="dg-hypothesis-title">${Utils.escapeHtml(h.titel)} ${h.icd ? `<span style="font-size: 12px; color: var(--text-muted);">[${h.icd}]</span>` : ''}</div>
-            <div class="dg-hypothesis-evidence">${h.rationale}</div>
-            ${h.themen ? `<div class="dg-hypothesis-rationale"><strong>Themen-Empfehlungen:</strong> ${h.themen.join(' · ')}</div>` : ''}
-          </div>
-        `).join('')
+        : hyps.map(h => {
+            const konfidenz = h.konfidenz || 50;
+            const farbe = konfidenz >= 70 ? '#DC2626' : konfidenz >= 50 ? '#F59E0B' : '#10B981';
+            return `
+              <div class="dg-hypothesis">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <div class="dg-hypothesis-title">${Utils.escapeHtml(h.titel)} ${h.icd ? `<span style="font-size: 12px; color: var(--text-muted);">[${h.icd}]</span>` : ''}</div>
+                  <div class="dg-konfidenz" style="color: ${farbe}; font-weight: var(--font-weight-bold);">
+                    ${konfidenz}%
+                    <div class="dg-konfidenz-bar"><div style="width:${konfidenz}%;background:${farbe};height:100%;border-radius:4px;"></div></div>
+                  </div>
+                </div>
+                <div class="dg-hypothesis-evidence">${h.rationale}</div>
+                ${h.sequenzierung ? `<div class="dg-hypothesis-seq">⚡ ${Utils.escapeHtml(h.sequenzierung)}</div>` : ''}
+                ${h.themen ? `<div class="dg-hypothesis-rationale"><strong>Themen-Empfehlungen:</strong> ${h.themen.join(' · ')}</div>` : ''}
+              </div>
+            `;
+          }).join('')
       }
       ${hyps.length ? `
         <div style="margin-top: var(--space-4); display: flex; gap: var(--space-2);">

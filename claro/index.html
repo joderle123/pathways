@@ -29,6 +29,7 @@
 <!-- ─── Tabs ─────────────────────────────────────────────── -->
 <nav class="dg-tabs">
   <button class="dg-tab active" data-tab="overview" onclick="setTab('overview')">📋 Übersicht</button>
+  <button class="dg-tab" data-tab="triage" onclick="setTab('triage')">🎯 Triage (5 Fragen)</button>
   <button class="dg-tab" data-tab="screening" onclick="setTab('screening')">🔍 Screening</button>
   <button class="dg-tab" data-tab="hypothesen" onclick="setTab('hypothesen')">🧠 Hypothesen</button>
   <button class="dg-tab" data-tab="5p" onclick="setTab('5p')">📐 5P-Fallformulierung</button>
@@ -37,7 +38,10 @@
 </nav>
 
 <main class="dg-main">
-  <div id="dg-content"></div>
+  <div class="dg-layout">
+    <div id="dg-content"></div>
+    <aside class="dg-hypothesen-panel" id="dg-hyp-panel" style="display: none;"></aside>
+  </div>
 </main>
 
 <!-- ─── Toast ──────────────────────────────────────────────── -->

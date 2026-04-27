@@ -144,6 +144,30 @@ const Hypotheses = (function () {
     return ctx;
   }
 
+  const SEQUENZIERUNG = {
+    'ptsd': 'Erst stabilisieren (Phase 1 Herman), dann verarbeiten. Trauma-Exposition nicht vor stabiler Allianz.',
+    'komorbid-trauma-depression': 'Stabilisierung priorisieren. Depression oft sekundär zum Trauma.',
+    'suizidrisiko': 'Sicherheitsplan SOFORT. Keine explorative Arbeit bis Risiko abgeklärt.',
+  };
+
+  function konfidenzBerechnen(rule, ctx) {
+    let k = 50;
+    // Screening-Daten vorhanden → höhere Konfidenz
+    if (rule.id.includes('depression') && ctx.phqa > 0) k += 20;
+    if (rule.id === 'gad' && ctx.gad > 0) k += 20;
+    if (rule.id === 'ptsd' && ctx.pcl > 0) k += 20;
+    if (rule.id === 'adhs' && ctx.asrs > 0) k += 15;
+    // Anamnese unterstützt → höhere Konfidenz
+    if (rule.id.includes('trauma') && ctx.ace >= 2) k += 10;
+    if (rule.id === 'ace-hochbelastet' && ctx.ace >= 6) k += 15;
+    // Komorbidität → niedrigere Konfidenz (Differentialdiagnose schwieriger)
+    if (rule.id.startsWith('komorbid')) k -= 10;
+    // Hohes Score → höhere Konfidenz
+    if (rule.id === 'depression-major' && ctx.phqa >= 20) k += 10;
+    if (rule.id === 'suizidrisiko') k = 90;
+    return Math.max(20, Math.min(95, k));
+  }
+
   function generate(schuelerId) {
     const ctx = buildContext(schuelerId);
     const hypotheses = [];
@@ -156,12 +180,15 @@ const Hypotheses = (function () {
             icd: rule.icd,
             themen: rule.themen,
             rationale: rule.rationale(ctx),
+            konfidenz: konfidenzBerechnen(rule, ctx),
+            sequenzierung: SEQUENZIERUNG[rule.id] || null,
           });
         }
       } catch (e) {
         // Fehlende Felder → Rule überspringen
       }
     });
+    hypotheses.sort((a, b) => b.konfidenz - a.konfidenz);
     return hypotheses;
   }
 

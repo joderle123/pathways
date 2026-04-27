@@ -339,3 +339,101 @@ body { background: var(--bg); }
   color: var(--text-muted);
 }
 .pw-empty-icon { font-size: 48px; margin-bottom: var(--space-3); }
+
+/* ── Layout mit Live-Hypothesen-Panel ─────────────────────── */
+.dg-layout {
+  display: grid; grid-template-columns: 1fr 280px; gap: var(--space-4);
+}
+@media (max-width: 900px) { .dg-layout { grid-template-columns: 1fr; } }
+
+.dg-hypothesen-panel {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: var(--space-4);
+  position: sticky; top: 80px; max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+.dg-hyp-panel-title {
+  font-weight: var(--font-weight-bold); font-size: 14px;
+  margin-bottom: var(--space-3); color: var(--color-app-claro);
+}
+.dg-hyp-mini {
+  padding: var(--space-2) 0; border-bottom: 1px solid var(--border);
+}
+.dg-hyp-mini:last-child { border-bottom: none; }
+.dg-hyp-mini-title { font-size: 13px; font-weight: var(--font-weight-semibold); }
+.dg-hyp-mini-bar {
+  height: 4px; background: var(--bg-subtle); border-radius: 2px;
+  margin: 4px 0; overflow: hidden;
+}
+.dg-hyp-mini-meta { font-size: 11px; color: var(--text-muted); }
+.dg-hyp-mini-seq {
+  font-size: 11px; color: var(--accent); font-style: italic;
+  margin-top: 2px;
+}
+
+/* ── Triage ───────────────────────────────────────────────── */
+.dg-triage-progress {
+  font-size: 14px; color: var(--text-muted);
+  margin-bottom: var(--space-4);
+}
+.dg-triage-frage {
+  padding: var(--space-4); margin-bottom: var(--space-3);
+  background: var(--bg-card); border: 2px solid var(--border);
+  border-radius: var(--radius); transition: var(--transition);
+}
+.dg-triage-frage.answered { border-color: var(--color-app-claro); background: rgba(239,68,68,0.03); }
+.dg-triage-num {
+  display: inline-block; width: 28px; height: 28px;
+  background: var(--color-app-claro); color: #fff; border-radius: 50%;
+  text-align: center; line-height: 28px; font-weight: var(--font-weight-bold);
+  font-size: 14px; margin-right: var(--space-2);
+}
+.dg-triage-text {
+  display: inline; font-size: 16px; font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-relaxed);
+}
+.dg-triage-opts {
+  display: flex; gap: var(--space-2); flex-wrap: wrap;
+  margin-top: var(--space-3);
+}
+.dg-triage-opt {
+  padding: var(--space-2) var(--space-4); border: 2px solid var(--border);
+  border-radius: var(--radius-sm); background: transparent;
+  cursor: pointer; font-size: 14px; transition: var(--transition-fast);
+}
+.dg-triage-opt:hover { border-color: var(--color-app-claro); }
+.dg-triage-opt.selected {
+  background: var(--color-app-claro); color: #fff;
+  border-color: var(--color-app-claro);
+}
+.dg-triage-result {
+  margin-top: var(--space-5); padding: var(--space-5);
+  background: var(--bg-card); border: 2px solid var(--color-app-claro);
+  border-radius: var(--radius);
+}
+.dg-triage-crisis {
+  background: #FEE2E2; border: 2px solid #DC2626;
+  border-radius: var(--radius-sm); padding: var(--space-3);
+  font-weight: var(--font-weight-semibold); color: #7F1D1D;
+  margin-bottom: var(--space-3);
+}
+.dg-triage-crisis a { color: #7F1D1D; }
+.dg-triage-empfohlen {
+  display: flex; flex-wrap: wrap; gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+/* ── Konfidenz-Anzeige ────────────────────────────────────── */
+.dg-konfidenz {
+  text-align: right; min-width: 60px; font-size: 14px;
+}
+.dg-konfidenz-bar {
+  height: 4px; background: var(--bg-subtle); border-radius: 2px;
+  margin-top: 4px; overflow: hidden; width: 60px;
+}
+.dg-hypothesis-seq {
+  font-size: 13px; color: var(--accent); font-style: italic;
+  padding: var(--space-2) var(--space-3);
+  background: rgba(245,158,11,0.08); border-radius: var(--radius-sm);
+  margin-top: var(--space-2); margin-bottom: var(--space-2);
+}
