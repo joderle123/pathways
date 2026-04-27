@@ -37,25 +37,26 @@ const Hypotheses = (function () {
       rationale: ctx => `GAD-7 Score ${ctx.gad} ≥ 10. Anhaltende Sorgen mit Funktionsbeeinträchtigung wahrscheinlich.`,
     },
     {
-      id: 'ptsd',
-      titel: 'Posttraumatische Belastungsstörung (F43.1)',
-      themen: ['trauma', 'krisenintervention', 'stabilisierung'],
-      icd: 'F43.1',
+      id: 'ptbs',
+      titel: 'PTBS — Posttraumatische Belastungsstörung (ICD-11 6B40 / ICD-10 F43.1)',
+      themen: ['trauma', 'stabilisierung', 'expositionsarbeit'],
+      icd: '6B40',
       test: ctx => ctx.pcl >= 33,
       rationale: ctx => {
-        const parts = [`PCL-5 Score ${ctx.pcl} ≥ 33 erfüllt klinischen Cutoff.`];
-        // Trauma-Spezifikation (Manifest: Typ I vs II, akut vs chronisch)
-        const multiTrauma = [ctx.anamnese_ace_sexual_abuse, ctx.anamnese_ace_physical_abuse, ctx.anamnese_ace_domestic_violence].filter(Boolean).length;
-        if (multiTrauma >= 2) {
-          parts.push('<strong>Typ II (komplex)</strong> — multiple Traumata in der Vorgeschichte. Erwäge ICD-11 KPTBS (6B41).');
-        } else if (multiTrauma === 1) {
-          parts.push('Typ I (Einzel-Trauma) wahrscheinlich. Prüfe ob einzelnes Ereignis oder wiederholte Exposition.');
-        }
-        if (ctx.ace >= 4) {
-          parts.push('Chronifizierung wahrscheinlich bei ACE ≥ 4. Stabilisierung vor Exposition (Herman Phase 1).');
+        const parts = [`PCL-5 Score ${ctx.pcl} ≥ 33 (Cutoff nach Weathers et al. 2013).`];
+        // ICD-11 KPTBS vs PTBS (korrekte Terminologie statt Typ I/II)
+        const traumaTypen = [ctx.anamnese_ace_sexual_abuse, ctx.anamnese_ace_physical_abuse, ctx.anamnese_ace_domestic_violence, ctx.anamnese_ace_emotional_abuse].filter(Boolean).length;
+        const hatSelbstorgStörung = ctx.phqa >= 10 || ctx.gad >= 10;
+        if (ctx.ace >= 4 && traumaTypen >= 2 && hatSelbstorgStörung) {
+          parts.push('<strong>ICD-11 KPTBS (6B41) wahrscheinlich</strong> — wiederholte/prolongierte Traumatisierung + Störung der Selbstorganisation (Emotionsregulation, negatives Selbstbild, Beziehungsprobleme). Diagnostik nach ICD-11 Kriterien empfohlen.');
+        } else if (ctx.ace >= 4 && traumaTypen >= 2) {
+          parts.push('Komplexe Traumatisierung in der Vorgeschichte. Prüfe ICD-11 KPTBS-Kriterien (Selbstorganisationsstörung?).');
         } else {
-          parts.push('Akute Phase möglich. Prüfe Zeitrahmen seit Trauma-Exposition.');
+          parts.push('Einzelne oder begrenzte Traumatisierung. Standard-PTBS-Diagnostik (ICD-11 6B40).');
         }
+        parts.push(ctx.ace >= 4
+          ? 'Stabilisierung prioritär vor Exposition (Herman 1992, Phase 1: Sicherheit).'
+          : 'Expositionsarbeit nach Stabilisierung möglich.');
         return parts.join(' ');
       },
     },
@@ -106,6 +107,22 @@ const Hypotheses = (function () {
       icd: 'Z61',
       test: ctx => ctx.ace >= 4,
       rationale: ctx => `ACE-Score ${ctx.ace} ≥ 4 erhöht Risiko für Depression, Sucht, chronische Erkrankungen (Felitti et al. 1998).`,
+    },
+    {
+      id: 'bindungsstoerung',
+      titel: 'Bindungsstörung (ICD-11 6B44 / ICD-10 F94.1/F94.2)',
+      themen: ['bindung', 'beziehungsaufbau', 'stabilisierung'],
+      icd: '6B44',
+      test: ctx => (ctx.anamnese_ace_emotional_neglect || ctx.anamnese_ace_physical_neglect) && (ctx.anamnese_fam_heim || ctx.anamnese_fam_pflege),
+      rationale: ctx => 'Vernachlässigung + frühe Institutionalisierung/Fremdunterbringung. Reaktive Bindungsstörung (RAD) oder enthemmte Bindungsstörung (DSED) abklären. Strukturiertes Attachment-Assessment empfohlen.',
+    },
+    {
+      id: 'anpassungsstoerung',
+      titel: 'Anpassungsstörung (ICD-11 6B43 / ICD-10 F43.2)',
+      themen: ['krisenbewaeltigung', 'emotionsregulation', 'ressourcenaktivierung'],
+      icd: '6B43',
+      test: ctx => ctx.phqa >= 5 && ctx.phqa < 15 && ctx.pcl < 33 && (ctx.anamnese_schul_wechsel || ctx.anamnese_ace_parent_separation || ctx.anamnese_fam_alleinerziehend),
+      rationale: ctx => `Milde depressive Symptomatik (PHQ-A ${ctx.phqa}) unterhalb PTBS-Schwelle + identifizierter psychosozialer Stressor. Anpassungsreaktion wahrscheinlicher als Major Depression. Verlauf beobachten, Re-Screening in 4-6 Wochen.`,
     },
     {
       id: 'suizidrisiko',

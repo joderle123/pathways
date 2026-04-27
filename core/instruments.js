@@ -40,22 +40,24 @@ const INSTRUMENTS = {
     ],
     cutoffs: {
       '0-4': 'Keine bis minimale Depression',
-      '5-9': 'Leichte Depression',
-      '10-14': 'Mittelschwere Depression',
+      '5-9': 'Milde depressive Symptomatik',
+      '10-14': 'Moderate Depression — klinische Abklärung empfohlen',
       '15-19': 'Mittelschwere bis schwere Depression',
-      '20-27': 'Schwere Depression',
+      '20-26': 'Schwere Depression — dringende Abklärung',
     },
     eval(scores) {
+      // PHQ-A: 9 Items × 0-3, Max = 27. Cutoffs nach Johnson et al. (2002), Kroenke et al.
+      // Item 9 (Suizidgedanken) = Critical Item → immer C-SSRS bei ≥1
       const total = Object.values(scores).reduce((a, b) => a + (Number(b) || 0), 0);
-      const item9 = Number(scores[8] || 0); // Index 8 = Item 9 (Suizid)
+      const item9 = Number(scores[8] || 0);
       let severity, label;
       if (total <= 4) { severity = 'low'; label = 'Keine bis minimale Depression'; }
-      else if (total <= 9) { severity = 'mod'; label = 'Leichte Depression'; }
-      else if (total <= 14) { severity = 'mod'; label = 'Mittelschwere Depression'; }
+      else if (total <= 9) { severity = 'mod'; label = 'Milde depressive Symptomatik'; }
+      else if (total <= 14) { severity = 'high'; label = 'Moderate Depression — klinische Abklärung empfohlen (Sensitivität 88%, Spezifität 88% bei Cutoff 10, Kroenke et al. 2001)'; }
       else if (total <= 19) { severity = 'high'; label = 'Mittelschwere bis schwere Depression'; }
-      else { severity = 'critical'; label = 'Schwere Depression'; }
+      else { severity = 'critical'; label = 'Schwere Depression — psychiatrische Abklärung dringend'; }
       const flagSuicide = item9 >= 1;
-      return { score: total, max: 27, severity, label, flagSuicide };
+      return { score: total, max: 27, severity, label, flagSuicide, item9 };
     },
   },
 
@@ -84,12 +86,14 @@ const INSTRUMENTS = {
       '15-21': 'Schwere Angst',
     },
     eval(scores) {
+      // GAD-7: 7 Items × 0-3, Max 21. Spitzer et al. (2006). Cutoff ≥10 für GAD-Diagnose.
+      // Adoleszenten-Validierung: Ghandour et al. (2018) empfiehlt Cutoff ≥11, aber ≥10 akzeptiert.
       const total = Object.values(scores).reduce((a, b) => a + (Number(b) || 0), 0);
       let severity, label;
       if (total <= 4) { severity = 'low'; label = 'Minimale Angst'; }
       else if (total <= 9) { severity = 'mod'; label = 'Leichte Angst'; }
-      else if (total <= 14) { severity = 'mod'; label = 'Mittelschwere Angst'; }
-      else { severity = 'high'; label = 'Schwere Angst'; }
+      else if (total <= 14) { severity = 'high'; label = 'Mittelschwere Angst — klinische Abklärung empfohlen (Sens. 89%, Spez. 82% bei Cutoff 10, Spitzer et al.)'; }
+      else { severity = 'critical'; label = 'Schwere Angst — dringende Abklärung'; }
       return { score: total, max: 21, severity, label };
     },
   },
@@ -102,7 +106,7 @@ const INSTRUMENTS = {
     domain: 'trauma',
     icd: ['F43.1'],
     timeFrame: 'im letzten Monat',
-    intro: 'Vor dem Screening: Beziehe dich auf das schlimmste belastende Ereignis. Wie häufig haben dich folgende Probleme im letzten Monat belastet?',
+    intro: 'Denke an ein belastendes Ereignis in deinem Leben. Wie häufig haben dich folgende Probleme im letzten Monat belastet?',
     skala: { 0: 'Überhaupt nicht', 1: 'Ein wenig', 2: 'Mäßig', 3: 'Ziemlich', 4: 'Extrem' },
     items: [
       'Belastende Erinnerungen an das Ereignis?',
@@ -131,12 +135,21 @@ const INSTRUMENTS = {
       '33-79': 'PTBS-Verdacht — Diagnostik empfohlen',
     },
     eval(scores) {
+      // PCL-5: 20 Items × 0-4, Max 80. Cutoff 33 (Weathers et al. 2013).
+      // DSM-5-Kriterien-Prüfung: Item ≥2 = "klinisch relevant" pro Kriterium.
       const total = Object.values(scores).reduce((a, b) => a + (Number(b) || 0), 0);
+      const s = i => Number(scores[i] || 0);
+      const critB = [0,1,2,3,4].filter(i => s(i) >= 2).length >= 1;
+      const critC = [5,6].filter(i => s(i) >= 2).length >= 1;
+      const critD = [7,8,9,10,11,12,13].filter(i => s(i) >= 2).length >= 2;
+      const critE = [14,15,16,17,18,19].filter(i => s(i) >= 2).length >= 2;
+      const dsmMet = critB && critC && critD && critE;
+
       let severity, label;
-      if (total < 33) { severity = 'low'; label = 'Unter Schwelle — PTBS unwahrscheinlich'; }
-      else if (total < 50) { severity = 'mod'; label = 'PTBS-Verdacht — strukturierte Diagnostik'; }
-      else { severity = 'high'; label = 'Hohe PTBS-Wahrscheinlichkeit'; }
-      return { score: total, max: 80, severity, label };
+      if (total < 33) { severity = 'low'; label = 'Unter klinischer Schwelle (Score < 33)'; }
+      else if (dsmMet) { severity = 'high'; label = `PTBS wahrscheinlich — DSM-5-Kriterien B-E erfüllt (Score ${total}, Cutoff 33, Weathers et al. 2013)`; }
+      else { severity = 'mod'; label = `Erhöhter Score (${total}), aber DSM-5-Kriterien nicht vollständig erfüllt — Differentialdiagnostik empfohlen`; }
+      return { score: total, max: 80, severity, label, dsm5: { critB, critC, critD, critE, met: dsmMet } };
     },
   },
 
@@ -191,14 +204,26 @@ const INSTRUMENTS = {
       const prosocial = get(0) + get(3) + get(8) + get(16) + get(19);
       const total = emotional + conduct + hyperact + peer;
 
+      // SDQ Total Difficulties: Goodman (1997), sdqinfo.org Normwerte Selbstauskunft 11-17J
+      // 0-15 normal, 16-19 grenzwertig, 20-40 auffällig (Selbstauskunft-Normen)
+      // Subskalen-Cutoffs: Emotional 0-5/6/7-10, Conduct 0-3/4/5-10, Hyper 0-5/6/7-10, Peer 0-3/4-5/6-10
       let severity, label;
-      if (total <= 14) { severity = 'low'; label = 'Unauffällig'; }
-      else if (total <= 17) { severity = 'mod'; label = 'Grenzwertig'; }
+      if (total <= 15) { severity = 'low'; label = 'Unauffällig'; }
+      else if (total <= 19) { severity = 'mod'; label = 'Grenzwertig'; }
       else { severity = 'high'; label = 'Auffällig'; }
+
+      const subCutoffs = {
+        emotional: emotional <= 5 ? 'normal' : emotional <= 6 ? 'grenzwertig' : 'auffällig',
+        conduct: conduct <= 3 ? 'normal' : conduct === 4 ? 'grenzwertig' : 'auffällig',
+        hyperact: hyperact <= 5 ? 'normal' : hyperact === 6 ? 'grenzwertig' : 'auffällig',
+        peer: peer <= 3 ? 'normal' : peer <= 5 ? 'grenzwertig' : 'auffällig',
+        prosocial: prosocial >= 6 ? 'normal' : prosocial === 5 ? 'grenzwertig' : 'auffällig',
+      };
 
       return {
         score: total, max: 40, severity, label,
         subscales: { emotional, conduct, hyperact, peer, prosocial },
+        subCutoffs,
       };
     },
   },
@@ -254,13 +279,17 @@ const INSTRUMENTS = {
       '4-24': 'ADHS-Verdacht — vertiefte Diagnostik',
     },
     eval(scores) {
-      // Vereinfacht: Items mit Score ≥ 3 zählen als positiv. ASRS-Original hat item-spezifische Cutoffs.
-      const positive = Object.values(scores).filter(v => Number(v) >= 3).length;
+      // ASRS v1.1 Part A (Kessler et al. 2005): Item-spezifische Schwellen
+      // Items 1,2,4,5,6: ≥3 ("Oft") = positiv. Item 3: ≥2 ("Manchmal") = positiv.
+      const itemThresholds = [3, 3, 2, 3, 3, 3];
+      const positive = Object.keys(scores)
+        .map(idx => Number(scores[idx]) >= itemThresholds[Number(idx)])
+        .filter(Boolean).length;
       const total = Object.values(scores).reduce((a, b) => a + (Number(b) || 0), 0);
       let severity, label;
       if (positive < 4) { severity = 'low'; label = 'Unter Schwelle — ADHS unwahrscheinlich'; }
-      else if (positive < 5) { severity = 'mod'; label = 'Hinweise auf ADHS — vertiefte Diagnostik'; }
-      else { severity = 'high'; label = 'Hohe ADHS-Wahrscheinlichkeit'; }
+      else if (positive === 4) { severity = 'mod'; label = 'ADHS-Verdacht — vertiefte Diagnostik empfohlen (4/6 positiv, Kessler et al. 2005)'; }
+      else { severity = 'high'; label = 'Hohe ADHS-Wahrscheinlichkeit (5-6/6 positiv)'; }
       return { score: total, max: 24, severity, label, positive };
     },
   },

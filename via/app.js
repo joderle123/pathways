@@ -98,7 +98,8 @@ function renderHeute() {
     srsWarnung = `SRS zuletzt gesunken (${letzte3SRS[0]?.toFixed(1)} ← ${letzte3SRS[1]?.toFixed(1)}). Sitzungsbewertung ansprechen?`;
   }
 
-  // Stepped Care: kein Fortschritt nach 6 Sitzungen?
+  // Stepped Care: kein signifikanter Fortschritt nach 6 Sitzungen?
+  // RCI-Schwelle: 5 Punkte auf ORS-Summe (0-40) = reliable change (Miller & Duncan 2003)
   let steppedCare = null;
   if (sitzungen.length >= 6) {
     const erste3ORS = sitzungen.slice(-3).map(n => n.soap?.ors_total).filter(v => v !== undefined);
@@ -106,8 +107,9 @@ function renderHeute() {
     if (erste3ORS.length && letzte3ORS.length) {
       const avgFirst = erste3ORS.reduce((a, b) => a + b, 0) / erste3ORS.length;
       const avgLast = letzte3ORS.reduce((a, b) => a + b, 0) / letzte3ORS.length;
-      if (avgLast <= avgFirst + 2) {
-        steppedCare = 'Nach 6+ Sitzungen kein signifikanter ORS-Fortschritt. Erwäge: Co-Therapie, Überweisung KJP, Medikation als Ergänzung, Setting-Wechsel.';
+      const delta = avgLast - avgFirst;
+      if (delta < 5) {
+        steppedCare = `Nach ${sitzungen.length} Sitzungen ${delta > 0 ? 'leichte' : 'keine'} Verbesserung (ORS Δ ${delta > 0 ? '+' : ''}${delta.toFixed(1)}, RCI-Schwelle: 5). Erwäge: Co-Therapie, Überweisung KJP, Medikation, Setting-Wechsel (Gillaspy et al. 2015).`;
       }
     }
   }

@@ -370,8 +370,9 @@ function setPvtEnd(state) {
 }
 
 function saveSession() {
-  const orsTotal = (APP.draft.ors.individual + APP.draft.ors.interpersonal + APP.draft.ors.social + APP.draft.ors.overall) / 4;
-  const srsTotal = (APP.draft.srs.relationship + APP.draft.srs.goals + APP.draft.srs.approach + APP.draft.srs.overall) / 4;
+  // ORS/SRS: Summe der 4 VAS (0-10), Range 0-40. Cutoff 25 (Miller & Duncan 2003)
+  const orsTotal = APP.draft.ors.individual + APP.draft.ors.interpersonal + APP.draft.ors.social + APP.draft.ors.overall;
+  const srsTotal = APP.draft.srs.relationship + APP.draft.srs.goals + APP.draft.srs.approach + APP.draft.srs.overall;
 
   const notiz = DB.createNotiz({
     schuelerId: APP.schuelerId,
@@ -400,10 +401,18 @@ function saveSession() {
   // Wohlbefinden auto-tracking
   DB.addWohlbefinden(APP.schuelerId, orsTotal, '');
 
-  // Risiko, falls ORS sehr niedrig
-  if (orsTotal < 3) {
-    DB.addRisiko(APP.schuelerId, { sicherheit: 'gelb', source: 'ors-low', value: orsTotal });
-    Bridge.notify('crisis_alert', { schuelerId: APP.schuelerId, severity: 'low', source: 'ors' });
+  // Risiko-Flagging nach ORS-Cutoff (Miller & Duncan 2003: 25/40 = klinische Schwelle)
+  if (orsTotal < 25) {
+    const severity = orsTotal < 15 ? 'gelb' : 'gruen';
+    DB.addRisiko(APP.schuelerId, { sicherheit: severity, source: 'ors-low', value: orsTotal });
+    if (orsTotal < 15) {
+      Bridge.notify('crisis_alert', { schuelerId: APP.schuelerId, severity: 'low', source: 'ors' });
+    }
+  }
+
+  // SRS-Ruptur sofort flaggen wenn < 25 (nicht erst nach 3 Sitzungen)
+  if (srsTotal < 25) {
+    showToast(`⚠️ SRS ${srsTotal.toFixed(0)}/40 — Allianz-Ruptur möglich. Ansprechen!`, 'error');
   }
 
   Bridge.notify('session_completed', { schuelerId: APP.schuelerId, ors: orsTotal, srs: srsTotal });
