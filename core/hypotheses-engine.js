@@ -125,6 +125,44 @@ const Hypotheses = (function () {
       rationale: ctx => `Milde depressive Symptomatik (PHQ-A ${ctx.phqa}) unterhalb PTBS-Schwelle + identifizierter psychosozialer Stressor. Anpassungsreaktion wahrscheinlicher als Major Depression. Verlauf beobachten, Re-Screening in 4-6 Wochen.`,
     },
     {
+      id: 'schulphobie',
+      titel: 'Schulphobie / Trennungsangst im Schulkontext (ICD-10 F93.0)',
+      themen: ['trennungsangst', 'exposition', 'elternarbeit'],
+      icd: 'F93.0',
+      test: ctx => ctx.anamnese_schul_phobie && ctx.gad >= 7,
+      rationale: ctx => `Schulphobie (Trennungsangst) bei GAD-7 ${ctx.gad} + Anamnese-Hinweis. Behandlung: graduierte Exposition + Elternarbeit (Eltern-Kind-Trennung üben). Abgrenzung zu Schulangst (F93.1, leistungsbezogen) und Schulverweigerung (F91, oppositionell) prüfen.`,
+    },
+    {
+      id: 'schulverweigerung-oppositionell',
+      titel: 'Schulverweigerung mit oppositionellem Verhalten (ICD-10 F91)',
+      themen: ['wut-aggression', 'impulskontrolle', 'grenzsetzung'],
+      icd: 'F91',
+      test: ctx => ctx.anamnese_schul_verweigerung && (ctx.sdq?.subscales?.conduct >= 4 || ctx.anamnese_schul_absentismus),
+      rationale: ctx => 'Oppositionelle Schulverweigerung + Conduct-Auffälligkeiten. Behandlung: Verhaltenskontrakt, Verstärkerpläne, strukturierte Grenzsetzung. Eltern-Coaching. Cave: Abgrenzung zu angstbedingtem Absentismus.',
+    },
+    {
+      id: 'substanzkonsum',
+      titel: 'Substanzkonsumstörung — Abklärung empfohlen (ICD-10 F1x)',
+      themen: ['substanzkonsum', 'motivational-interviewing', 'harm-reduction'],
+      icd: 'F1x',
+      test: ctx => ctx.anamnese_subst_cannabis || ctx.anamnese_subst_alkohol || ctx.anamnese_subst_andere,
+      rationale: ctx => {
+        const subs = [];
+        if (ctx.anamnese_subst_cannabis) subs.push('Cannabis');
+        if (ctx.anamnese_subst_alkohol) subs.push('Alkohol');
+        if (ctx.anamnese_subst_andere) subs.push('andere Substanzen');
+        return `Substanzkonsum dokumentiert: ${subs.join(', ')}. CRAFFT-Screening empfohlen (Knight et al. 2002). Motivational Interviewing als First-Line. Bei Komorbidität (Depression + Substanz): integrierte Behandlung, nicht sequenziell.`;
+      },
+    },
+    {
+      id: 'schlafstörung',
+      titel: 'Schlafstörung als komorbider Faktor',
+      themen: ['schlafhygiene', 'entspannung', 'psychoedukation'],
+      icd: 'F51',
+      test: ctx => ctx.anamnese_schlaf_einschlaf || ctx.anamnese_schlaf_durchschlaf || ctx.anamnese_schlaf_alptraeume,
+      rationale: ctx => 'Schlafstörung in Anamnese. Schlaf ist Kern-Moderator für Depression (Lovato & Gradisar 2014), Angst und PTBS (Alpträume = PCL-5 Item 2). Schlafhygiene-Intervention als Basismaßnahme. Cave: Bei Alpträumen + Trauma → Imagery Rehearsal Therapy (IRT).',
+    },
+    {
       id: 'suizidrisiko',
       titel: '⚠️ Suizidrisiko',
       themen: ['krisenintervention', 'sicherheitsplan'],
@@ -252,6 +290,18 @@ const Hypotheses = (function () {
       test: ctx => ctx.anamnese_schul_absentismus && ctx.gad === 0,
       rationale: ctx => 'Schulabsentismus in Anamnese ohne GAD-7. Angststörung als häufige Ursache abklären.',
       basekonfidenz: 25 },
+    { id: 'soft-bindung', titel: 'Mögliche Bindungsstörung — Assessment empfohlen', icd: '6B44?', themen: ['bindung'],
+      test: ctx => (ctx.anamnese_bind_wechsel || ctx.anamnese_bind_desorganisiert || ctx.anamnese_fam_heim) && !ctx.anamnese_bind_bezugsperson_stabil,
+      rationale: ctx => 'Häufiger Bezugspersonenwechsel / Institutionalisierung ohne stabile Bezugsperson. Bindungsdiagnostik empfohlen (z.B. MCAST, Geschichtenergänzung).',
+      basekonfidenz: 30 },
+    { id: 'soft-substanz', titel: 'Substanzkonsum-Screening empfohlen', icd: 'F1x?', themen: ['substanzkonsum'],
+      test: ctx => ctx.anamnese_subst_cannabis || ctx.anamnese_subst_alkohol,
+      rationale: ctx => 'Substanzkonsum in Anamnese. CRAFFT-Screening empfohlen (Knight et al. 2002, Sensitivität 76-96%).',
+      basekonfidenz: 35 },
+    { id: 'soft-ass', titel: 'Hinweise auf Autismus-Spektrum — Abklärung empfohlen', icd: '6A02?', themen: ['autismus', 'soziale-wahrnehmung'],
+      test: ctx => ctx.anamnese_entw_autismus_hinweise,
+      rationale: ctx => 'Hinweise auf ASS in Entwicklungsanamnese. Strukturierte Diagnostik empfohlen (ADOS-2, ADI-R). Cave: ASS wird bei Mädchen häufig spät diagnostiziert.',
+      basekonfidenz: 35 },
   ];
 
   function generate(schuelerId) {
