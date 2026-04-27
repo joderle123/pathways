@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pathways PARENTS — Elternarbeit</title>
+  <meta name="theme-color" content="#F59E0B">
+  <link rel="stylesheet" href="../core/ui-base.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-app="parents">
+
+<header class="pa-topbar">
+  <div class="pa-brand">
+    <span class="pa-logo">👨‍👩‍👧</span>
+    <div>
+      <div class="pa-app-name">PARENTS</div>
+      <div class="pa-app-tag">Elternarbeit &amp; Leitfäden</div>
+    </div>
+  </div>
+  <div class="pa-context" id="pa-context">— ohne Klient —</div>
+  <div class="pa-actions">
+    <button class="btn" onclick="toggleTheme()">🌓</button>
+    <a class="btn" href="../case/">← CASE</a>
+  </div>
+</header>
+
+<nav class="pa-tabs">
+  <button class="pa-tab active" data-tab="infoblaetter" onclick="setTab('infoblaetter')">📄 Infoblätter</button>
+  <button class="pa-tab" data-tab="leitfaeden" onclick="setTab('leitfaeden')">📋 Gesprächsleitfäden</button>
+  <button class="pa-tab" data-tab="workflows" onclick="setTab('workflows')">🔄 Workflows</button>
+  <button class="pa-tab" data-tab="kontakte" onclick="setTab('kontakte')">👥 Eltern-Kontakte</button>
+</nav>
+
+<main class="pa-main">
+  <div id="pa-content"></div>
+</main>
+
+<div id="toast-container"></div>
+
+<script src="../core/db.js"></script>
+<script src="../core/bridge.js"></script>
+<script src="../core/utils.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
