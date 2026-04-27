@@ -828,6 +828,58 @@ async function renderProfil() {
         `).join('')}
       </div>
     </div>
+
+    <div class="ac-section">
+      <h3>📊 Karriere-Tracker</h3>
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: var(--space-3);">
+        Deine professionelle Entwicklung auf einen Blick.
+      </p>
+      ${(() => {
+        const klienten = DB.getSchueler();
+        const sitzungenTotal = klienten.reduce((sum, s) => sum + DB.getNotizen(s.id).filter(n => n.kategorie === 'session').length, 0);
+        const screeningsTotal = klienten.reduce((sum, s) => sum + DB.getScreenings(s.id).filter(x => x.abgeschlossen).length, 0);
+        const konferenzenTotal = klienten.reduce((sum, s) => sum + DB.getKonferenzen(s.id).length, 0);
+        const sfScore = localStorage.getItem('pw_academy_sf_score') || '—';
+
+        return `
+          <div class="ac-profile-grid">
+            <div class="ac-stat-card">
+              <div class="ac-stat-card-num">${klienten.length}</div>
+              <div class="ac-stat-card-label">Klienten begleitet</div>
+            </div>
+            <div class="ac-stat-card">
+              <div class="ac-stat-card-num">${sitzungenTotal}</div>
+              <div class="ac-stat-card-label">Sitzungen dokumentiert</div>
+            </div>
+            <div class="ac-stat-card">
+              <div class="ac-stat-card-num">${screeningsTotal}</div>
+              <div class="ac-stat-card-label">Screenings durchgeführt</div>
+            </div>
+            <div class="ac-stat-card">
+              <div class="ac-stat-card-num">${konferenzenTotal}</div>
+              <div class="ac-stat-card-label">Konferenzen dokumentiert</div>
+            </div>
+          </div>
+
+          <h4 style="margin-top: var(--space-4);">Spezialisierungs-Pfade (Manifest)</h4>
+          <div style="display: grid; gap: var(--space-2); margin-top: var(--space-2);">
+            ${[
+              { id: 'trauma', label: 'Trauma-Spezialist', stunden: 40, icon: '🌪️', req: 'Lernpfad Trauma + 10 Trauma-Klienten + C-SSRS-Kompetenz', erfuellt: completedPfade >= 1 && klienten.length >= 3 },
+              { id: 'krisenintervention', label: 'Krisenintervention', stunden: 30, icon: '🚨', req: '10 C-SSRS + 5 Sicherheitspläne + Skills-Training absolviert', erfuellt: xp >= 200 },
+              { id: 'diagnostik', label: 'Diagnostik-Experte', stunden: 50, icon: '🔍', req: 'Lernpfad Screening + 20 Screenings + 5P-Kompetenz', erfuellt: screeningsTotal >= 10 },
+            ].map(sp => `
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-3); background: var(--bg-subtle); border-radius: var(--radius-sm); border-left: 4px solid ${sp.erfuellt ? '#10B981' : 'var(--border)'};">
+                <div>
+                  <strong>${sp.icon} ${sp.label}</strong> <span style="font-size: 12px; color: var(--text-muted);">(${sp.stunden}h)</span>
+                  <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">${sp.req}</div>
+                </div>
+                <span style="font-size: 14px;">${sp.erfuellt ? '✅ Bereit' : '⬜ Offen'}</span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      })()}
+    </div>
   `;
 }
 
