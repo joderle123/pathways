@@ -282,7 +282,7 @@ function renderHypothesen() {
       ${hyps.length ? `
         <div style="margin-top: var(--space-4); display: flex; gap: var(--space-2);">
           <button class="btn btn-primary" onclick="setTab('5p')">→ In 5P-Fallformulierung übernehmen</button>
-          <a class="btn" href="../library/?suche=${hyps[0]?.themen?.[0] || ''}" target="_blank">→ Materialien in LIBRARY</a>
+          <a class="btn" href="../codex/?suche=${hyps[0]?.themen?.[0] || ''}" target="_blank">→ Materialien in CODEX</a>
           <a class="btn" href="../roadmap/?schueler=${APP.schuelerId}" target="_blank">→ Roadmap planen</a>
         </div>
       ` : ''}

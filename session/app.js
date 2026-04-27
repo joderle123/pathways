@@ -140,7 +140,7 @@ function renderPre() {
 
       <div style="margin-top: var(--space-4); display: flex; gap: var(--space-2); flex-wrap: wrap;">
         <a class="btn" href="../claro/?schueler=${APP.schuelerId}" target="_blank">🔍 CLARO</a>
-        <a class="btn" href="../library/?suche=${encodeURIComponent(aktivePhase?.themen?.[0] || '')}" target="_blank">📚 Material</a>
+        <a class="btn" href="../codex/?suche=${encodeURIComponent(aktivePhase?.themen?.[0] || '')}" target="_blank">📚 Material</a>
         <a class="btn" href="../roadmap/?schueler=${APP.schuelerId}" target="_blank">🗺️ Roadmap</a>
       </div>
     </div>
@@ -205,7 +205,7 @@ function renderLive() {
 
       <div style="margin-top: var(--space-4); display: flex; gap: var(--space-2);">
         <button class="btn btn-primary" onclick="setMode('post')">→ Sitzung beenden, zu Post-Session</button>
-        <a class="btn" href="../library/" target="_blank">📚 Material öffnen</a>
+        <a class="btn" href="../codex/" target="_blank">📚 Material öffnen</a>
         <a class="btn" href="../hub/?schueler=${APP.schuelerId}&view=crisis" target="_blank">🚨 Crisis-Tools</a>
       </div>
     </div>

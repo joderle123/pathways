@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pathways CODEX — Wissensschmiede</title>
+  <meta name="theme-color" content="#0EA5E9">
+  <link rel="stylesheet" href="../core/ui-base.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-app="codex">
+
+<!-- ─── Top Bar ────────────────────────────────────────────── -->
+<header class="lib-topbar">
+  <div class="lib-brand">
+    <span class="lib-logo">📚</span>
+    <div>
+      <div class="lib-app-name">CODEX</div>
+      <div class="lib-app-tag">Wissensschmiede</div>
+    </div>
+  </div>
+  <div class="lib-search-wrap">
+    <input id="lib-search" type="search" placeholder="Suchen … (Titel, Schlagwörter, Volltext)" autocomplete="off">
+    <span class="lib-search-icon">🔍</span>
+  </div>
+  <div class="lib-actions">
+    <button class="btn" onclick="toggleBookmarks()" id="bookmarks-toggle" title="Lesezeichen">⭐ <span id="bookmark-count">0</span></button>
+    <button class="btn" onclick="toggleTheme()" title="Theme">🌓</button>
+    <a class="btn" href="../hub/" title="Zum Hub">← HUB</a>
+  </div>
+</header>
+
+<!-- ─── Section Tabs ───────────────────────────────────────── -->
+<nav class="codex-sections">
+  <button class="codex-section-tab active" data-section="materialien" onclick="setSection('materialien')">📄 Materialien</button>
+  <button class="codex-section-tab" data-section="infoblaetter" onclick="setSection('infoblaetter')">👨‍👩‍👧 Eltern-Infoblätter</button>
+  <button class="codex-section-tab" data-section="leitfaeden" onclick="setSection('leitfaeden')">📋 Gesprächsleitfäden</button>
+  <button class="codex-section-tab" data-section="workflows" onclick="setSection('workflows')">🔄 Workflows</button>
+</nav>
+
+<!-- ─── Filter Sidebar ─────────────────────────────────────── -->
+<aside class="lib-filters" id="filters">
+  <h3>Filter</h3>
+
+  <div class="lib-filter-group">
+    <div class="lib-filter-label">Typ</div>
+    <div id="filter-typ"></div>
+  </div>
+
+  <div class="lib-filter-group">
+    <div class="lib-filter-label">Schwierigkeit</div>
+    <div id="filter-schwierigkeit"></div>
+  </div>
+
+  <div class="lib-filter-group">
+    <button class="btn" onclick="clearFilters()" style="width: 100%;">Alle Filter löschen</button>
+  </div>
+
+  <div class="lib-filter-group">
+    <div class="lib-filter-label">Sortierung</div>
+    <select id="sort-select" onchange="setSort(this.value)" style="width: 100%;">
+      <option value="title">Alphabetisch</option>
+      <option value="bookmarks">Lesezeichen zuerst</option>
+      <option value="type">Nach Typ gruppiert</option>
+    </select>
+  </div>
+
+  <div class="lib-stats" id="lib-stats"></div>
+</aside>
+
+<!-- ─── Main Grid ──────────────────────────────────────────── -->
+<main class="lib-main">
+  <div class="lib-result-bar" id="result-bar"></div>
+  <div class="lib-grid" id="lib-grid"></div>
+  <div id="lib-empty" class="pw-empty" style="display: none;">
+    <div class="pw-empty-icon">📭</div>
+    <h2>Keine Treffer</h2>
+    <p>Versuche andere Suchbegriffe oder Filter.</p>
+  </div>
+</main>
+
+<!-- ─── Parents Content Container (für Eltern-Tabs) ──────── -->
+<div id="parents-content" style="display: none; padding: var(--space-5); max-width: 1100px; margin: 0 auto;"></div>
+
+<!-- ─── Detail Modal (zeigt Notizen pro Material) ─────────── -->
+<div id="detail-modal" class="pw-modal" style="display:none;">
+  <div class="pw-modal-backdrop" onclick="closeDetail()"></div>
+  <div class="pw-modal-content" style="max-width: 640px;">
+    <header class="pw-modal-header">
+      <h2 id="detail-titel"></h2>
+      <button class="pw-btn-icon" onclick="closeDetail()">✕</button>
+    </header>
+    <div id="detail-body"></div>
+  </div>
+</div>
+
+<!-- ─── Toast ──────────────────────────────────────────────── -->
+<div id="toast-container"></div>
+
+<!-- ─── Core Modules ───────────────────────────────────────── -->
+<script src="../core/db.js"></script>
+<script src="../core/bridge.js"></script>
+<script src="../core/utils.js"></script>
+
+<!-- ─── App ────────────────────────────────────────────────── -->
+<script src="parents-views.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
