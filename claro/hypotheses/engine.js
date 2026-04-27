@@ -166,27 +166,87 @@ const Hypotheses = (function () {
     'suizidrisiko': 'Sicherheitsplan SOFORT. Keine explorative Arbeit bis Risiko abgeklärt.',
   };
 
+  // Score-Schwellen und Maxima pro Instrument
+  const CUTOFFS = {
+    'phq-a': { cutoff: 10, max: 27 },
+    'gad-7': { cutoff: 10, max: 21 },
+    'pcl-5': { cutoff: 33, max: 80 },
+    'asrs':  { cutoff: 16, max: 72 },
+    'scoff': { cutoff: 2, max: 5 },
+    'sdq-conduct': { cutoff: 4, max: 10 },
+  };
+
+  function proportionalBoost(score, instrumentId) {
+    const c = CUTOFFS[instrumentId];
+    if (!c || score <= 0) return 0;
+    return Math.min(30, ((score - c.cutoff) / (c.max - c.cutoff)) * 30);
+  }
+
   function konfidenzBerechnen(rule, ctx) {
-    let k = 50;
-    // Screening-Daten vorhanden → höhere Konfidenz
-    if (rule.id.includes('depression') && ctx.phqa > 0) k += 20;
-    if (rule.id === 'gad' && ctx.gad > 0) k += 20;
-    if (rule.id === 'ptsd' && ctx.pcl > 0) k += 20;
-    if (rule.id === 'adhs' && ctx.asrs > 0) k += 15;
-    // Anamnese unterstützt → höhere Konfidenz
-    if (rule.id.includes('trauma') && ctx.ace >= 2) k += 10;
+    let k = 40;
+
+    // Proportionaler Boost basierend auf Score-Höhe (nicht binär)
+    if (rule.id.includes('depression') && ctx.phqa > 0) {
+      k += 10 + proportionalBoost(ctx.phqa, 'phq-a');
+    }
+    if (rule.id === 'gad' && ctx.gad > 0) {
+      k += 10 + proportionalBoost(ctx.gad, 'gad-7');
+    }
+    if (rule.id === 'ptsd' && ctx.pcl > 0) {
+      k += 10 + proportionalBoost(ctx.pcl, 'pcl-5');
+    }
+    if (rule.id === 'adhs' && ctx.asrs > 0) {
+      k += 10 + proportionalBoost(ctx.asrs, 'asrs');
+    }
+
+    // Cross-Instrument-Korroboration (mehrere Quellen = höhere Konfidenz)
+    if (rule.id.includes('depression') && ctx.gad >= 5) k += 5;
+    if (rule.id === 'gad' && ctx.phqa >= 5) k += 5;
+    if (rule.id === 'ptsd' && ctx.ace >= 2) k += 8;
+    if (rule.id.includes('trauma') && ctx.pcl >= 20) k += 5;
+
+    // Anamnese-Konsistenz
+    if (rule.id.includes('trauma') && ctx.ace >= 4) k += 10;
     if (rule.id === 'ace-hochbelastet' && ctx.ace >= 6) k += 15;
-    // Komorbidität → niedrigere Konfidenz (Differentialdiagnose schwieriger)
-    if (rule.id.startsWith('komorbid')) k -= 10;
-    // Hohes Score → höhere Konfidenz
-    if (rule.id === 'depression-major' && ctx.phqa >= 20) k += 10;
+
+    // Komorbidität → leicht niedrigere Konfidenz
+    if (rule.id.startsWith('komorbid')) k -= 8;
+
+    // Suizidrisiko immer hoch wenn Daten vorhanden
     if (rule.id === 'suizidrisiko') k = 90;
+
+    // Temporale Bestätigung: Hypothese aus vorherigem Screening → Boost
+    if (ctx.previousHypotheses?.includes(rule.id)) k += 10;
+
     return Math.max(20, Math.min(95, k));
   }
 
+  // Soft-Rules: Vorschläge basierend auf Anamnese OHNE Screening
+  const SOFT_RULES = [
+    { id: 'soft-depression', titel: 'Mögliche Depression — Screening empfohlen', icd: 'F32?', themen: ['depressive-stimmungen'],
+      test: ctx => ctx.ace >= 4 && ctx.phqa === 0,
+      rationale: ctx => `ACE ≥ 4 ohne PHQ-A-Screening. Depressive Symptomatik bei ${Math.round(30 + ctx.ace * 5)}% dieser Population. PHQ-A empfohlen.`,
+      basekonfidenz: 30 },
+    { id: 'soft-trauma', titel: 'Mögliche Trauma-Symptomatik — Screening empfohlen', icd: 'F43?', themen: ['trauma', 'stabilisierung'],
+      test: ctx => (ctx.anamnese_ace_sexual_abuse || ctx.anamnese_ace_physical_abuse || ctx.anamnese_ace_domestic_violence) && ctx.pcl === 0,
+      rationale: ctx => `Trauma-Exposition in Anamnese ohne PCL-5. Abklärung dringend empfohlen.`,
+      basekonfidenz: 35 },
+    { id: 'soft-angst', titel: 'Mögliche Angststörung — Screening empfohlen', icd: 'F41?', themen: ['stress-angst'],
+      test: ctx => ctx.anamnese_schul_absentismus && ctx.gad === 0,
+      rationale: ctx => 'Schulabsentismus in Anamnese ohne GAD-7. Angststörung als häufige Ursache abklären.',
+      basekonfidenz: 25 },
+  ];
+
   function generate(schuelerId) {
     const ctx = buildContext(schuelerId);
+
+    // Vorherige Hypothesen laden für temporales Tracking
+    const s = DB.getSchuelerById(schuelerId);
+    ctx.previousHypotheses = (s?.hypothesenVerlauf || []).flatMap(h => h.ids || []);
+
     const hypotheses = [];
+
+    // Harte Regeln (Screening-basiert)
     RULES.forEach(rule => {
       try {
         if (rule.test(ctx)) {
@@ -198,13 +258,41 @@ const Hypotheses = (function () {
             rationale: rule.rationale(ctx),
             konfidenz: konfidenzBerechnen(rule, ctx),
             sequenzierung: SEQUENZIERUNG[rule.id] || null,
+            status: ctx.previousHypotheses.includes(rule.id) ? 'BESTÄTIGT' : 'NEU',
           });
         }
-      } catch (e) {
-        // Fehlende Felder → Rule überspringen
-      }
+      } catch (e) {}
     });
+
+    // Soft-Rules (Anamnese-basiert, nur wenn keine harten Treffer für gleiche Domäne)
+    const harteIds = new Set(hypotheses.map(h => h.id));
+    SOFT_RULES.forEach(rule => {
+      try {
+        if (rule.test(ctx) && !harteIds.has(rule.id.replace('soft-', ''))) {
+          hypotheses.push({
+            id: rule.id,
+            titel: rule.titel,
+            icd: rule.icd,
+            themen: rule.themen,
+            rationale: rule.rationale(ctx),
+            konfidenz: rule.basekonfidenz,
+            sequenzierung: null,
+            status: 'VORLÄUFIG',
+          });
+        }
+      } catch (e) {}
+    });
+
     hypotheses.sort((a, b) => b.konfidenz - a.konfidenz);
+
+    // Temporales Tracking speichern
+    try {
+      const verlauf = s?.hypothesenVerlauf || [];
+      verlauf.push({ datum: new Date().toISOString(), ids: hypotheses.map(h => h.id) });
+      if (verlauf.length > 20) verlauf.splice(0, verlauf.length - 20);
+      DB.updateSchueler(schuelerId, { hypothesenVerlauf: verlauf });
+    } catch (e) {}
+
     return hypotheses;
   }
 
