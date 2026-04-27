@@ -40,19 +40,38 @@ const TRIAGE_FRAGEN = [
     { label: 'Ängstlich / angespannt', domaenen: ['gad-7'] },
     { label: 'Gereizt / aggressiv', domaenen: ['sdq'] },
   ]},
-  { id: 'trauma', frage: 'Gibt es Hinweise auf belastende Erlebnisse?', optionen: [
+  { id: 'stimmung_dauer', frage: 'Seit wann?', bedingung: () => triageAntworten.stimmung >= 1,
+    optionen: [
+      { label: '< 2 Wochen (situativ)', domaenen: [], hinweis: 'Möglicherweise Anpassungsreaktion' },
+      { label: '2-4 Wochen', domaenen: [], hinweis: 'Klinisch relevant' },
+      { label: '> 1 Monat (anhaltend)', domaenen: ['phq-a', 'gad-7'], hinweis: 'Chronifizierung möglich' },
+    ]},
+  { id: 'trauma', frage: 'Gibt es Hinweise auf belastende Erlebnisse (Gewalt, Verlust, Unfall)?', optionen: [
     { label: 'Nein / unklar', domaenen: [] },
-    { label: 'Ja — aktive Symptome', domaenen: ['pcl-5'] },
-    { label: 'Ja — aber stabil', domaenen: [] },
+    { label: 'Ja — aktive Symptome (Flashbacks, Alpträume, Vermeidung)', domaenen: ['pcl-5'] },
+    { label: 'Ja — aber aktuell stabil', domaenen: [] },
   ]},
-  { id: 'verhalten', frage: 'Fallen externalisierendes Verhalten auf?', optionen: [
+  { id: 'trauma_typ', frage: 'Welche Art?', bedingung: () => triageAntworten.trauma >= 1,
+    optionen: [
+      { label: 'Einmaliges Ereignis (Unfall, Tod, Überfall)', domaenen: ['pcl-5'], hinweis: 'Typ-I Trauma → Exposition nach Stabilisierung' },
+      { label: 'Wiederholte / langfristige Belastung (Missbrauch, Gewalt zu Hause)', domaenen: ['pcl-5'], hinweis: 'Mögliche KPTBS → Stabilisierung priorisieren' },
+    ]},
+  { id: 'verhalten', frage: 'Fallen externalisierende Verhaltensweisen auf?', optionen: [
     { label: 'Nein', domaenen: [] },
-    { label: 'Konzentration / Unruhe', domaenen: ['asrs'] },
-    { label: 'Regelverstöße / Aggression', domaenen: ['sdq'] },
+    { label: 'Konzentration / Unruhe / Zappeligkeit', domaenen: ['asrs'] },
+    { label: 'Regelverstöße / Aggression / Lügen', domaenen: ['sdq'] },
+    { label: 'Beides (Konzentration + Verhalten)', domaenen: ['asrs', 'sdq'] },
+  ]},
+  { id: 'schule', frage: 'Gibt es Schulprobleme?', optionen: [
+    { label: 'Nein', domaenen: [] },
+    { label: 'Absentismus (fehlt häufig)', domaenen: ['gad-7'], hinweis: 'Schulphobie vs. Schulverweigerung abklären' },
+    { label: 'Leistungseinbruch', domaenen: ['phq-a'], hinweis: 'Depression? Konzentration? Familiärer Stress?' },
+    { label: 'Mobbing', domaenen: ['gad-7', 'sdq'], hinweis: 'Soziale Angst + Conduct prüfen' },
   ]},
   { id: 'essen', frage: 'Gibt es Auffälligkeiten beim Essverhalten?', optionen: [
     { label: 'Nein', domaenen: [] },
-    { label: 'Ja — auffällig', domaenen: ['scoff'] },
+    { label: 'Ja — Gewichtsverlust / restriktiv', domaenen: ['scoff'] },
+    { label: 'Ja — Essattacken / Erbrechen', domaenen: ['scoff'] },
   ]},
   { id: 'suizid', frage: 'Wurden Suizidgedanken oder Selbstverletzung geäußert?', optionen: [
     { label: 'Nein', domaenen: [] },
@@ -79,7 +98,9 @@ function getTriageEmpfehlungen() {
       if (opt.crisis) crisisFlag = true;
     }
   });
-  return { empfohlen: [...empfohlen], crisisFlag, alleBeantwortet: Object.keys(triageAntworten).length === TRIAGE_FRAGEN.length };
+  const sichtbare = TRIAGE_FRAGEN.filter(f => !f.bedingung || f.bedingung());
+  const alleBeantwortet = sichtbare.every(f => triageAntworten[f.id] !== undefined);
+  return { empfohlen: [...empfohlen], crisisFlag, alleBeantwortet };
 }
 
 function renderTriage() {
@@ -95,22 +116,27 @@ function renderTriage() {
         wirklich nötig sind — und überspringt den Rest. <strong>Nur die richtigen Fragen, nie alle.</strong>
       </div>
 
-      <div class="dg-triage-progress">${beantwortet}/5 beantwortet</div>
+      <div class="dg-triage-progress">${beantwortet}/${TRIAGE_FRAGEN.filter(f => !f.bedingung || f.bedingung()).length} beantwortet</div>
 
-      ${TRIAGE_FRAGEN.map((f, fi) => `
-        <div class="dg-triage-frage ${triageAntworten[f.id] !== undefined ? 'answered' : ''}">
-          <div class="dg-triage-num">${fi + 1}</div>
-          <div class="dg-triage-text">${Utils.escapeHtml(f.frage)}</div>
-          <div class="dg-triage-opts">
-            ${f.optionen.map((opt, oi) => `
-              <button class="dg-triage-opt ${triageAntworten[f.id] === oi ? 'selected' : ''}"
-                      onclick="setTriageAntwort('${f.id}', ${oi})">
-                ${Utils.escapeHtml(opt.label)}
-              </button>
-            `).join('')}
+      ${TRIAGE_FRAGEN.filter(f => !f.bedingung || f.bedingung()).map((f, fi) => {
+        const gewaehlt = triageAntworten[f.id];
+        const gewaehlteOpt = gewaehlt !== undefined ? f.optionen[gewaehlt] : null;
+        return `
+          <div class="dg-triage-frage ${gewaehlt !== undefined ? 'answered' : ''}">
+            <div class="dg-triage-num">${fi + 1}</div>
+            <div class="dg-triage-text">${Utils.escapeHtml(f.frage)}</div>
+            <div class="dg-triage-opts">
+              ${f.optionen.map((opt, oi) => `
+                <button class="dg-triage-opt ${gewaehlt === oi ? 'selected' : ''}"
+                        onclick="setTriageAntwort('${f.id}', ${oi})">
+                  ${Utils.escapeHtml(opt.label)}
+                </button>
+              `).join('')}
+            </div>
+            ${gewaehlteOpt?.hinweis ? `<div style="font-size: 12px; color: var(--color-app-claro); font-style: italic; margin-top: 4px;">💡 ${Utils.escapeHtml(gewaehlteOpt.hinweis)}</div>` : ''}
           </div>
-        </div>
-      `).join('')}
+        `;
+      }).join('')}
 
       ${alleBeantwortet ? `
         <div class="dg-triage-result">
