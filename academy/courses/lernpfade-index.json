@@ -188,6 +188,60 @@
           ]
         }
       ]
+    },
+    {
+      "id": "bindungstheorie",
+      "titel": "Bindungstheorie & Beziehungsgestaltung",
+      "icon": "🔗",
+      "kategorie": "Klinik",
+      "dauer": "ca. 2.5 Stunden",
+      "xp": 250,
+      "beschreibung": "Von Bowlby über Ainsworth zu Main: Bindungsmuster erkennen, verstehen und in der Begleitung nutzen. Die therapeutische Beziehung als korrigierendes Bindungserleben.",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Bowlby (1969): Bindung als Überlebenssystem",
+          "inhalt": "Bindung ist kein 'Verwöhnen' — sie ist ein biologisches Überlebenssystem. Kinder sind darauf programmiert, Nähe zu einer Bezugsperson zu suchen, besonders unter Stress. Wenn diese Bezugsperson verfügbar, sensitiv und responsiv reagiert, entsteht sichere Bindung. Ist sie unzuverlässig, abweisend oder bedrohlich, entwickeln sich unsichere Muster."
+        },
+        {
+          "id": 2, "typ": "lektuere", "titel": "Ainsworth (1978): Die 4 Bindungsmuster",
+          "inhalt": "Sicher (Typ B): Kind exploriert frei, sucht bei Stress Nähe, lässt sich beruhigen. Unsicher-vermeidend (Typ A): Kind zeigt wenig Stress bei Trennung, ignoriert Bezugsperson bei Rückkehr — hat gelernt, Bedürfnisse zu unterdrücken. Unsicher-ambivalent (Typ C): Kind klammert, lässt sich schwer beruhigen, wechselt zwischen Nähe und Wut. Desorganisiert (Typ D, Main & Hesse 1990): Widersprüchliches Verhalten — die Bezugsperson ist gleichzeitig Quelle von Sicherheit UND Angst. Häufig bei Misshandlung."
+        },
+        {
+          "id": 3, "typ": "quiz", "titel": "Quiz: Bindungsmuster erkennen",
+          "fragen": [
+            {
+              "frage": "Ein 14-Jähriger kommt zu jeder Sitzung pünktlich, erzählt aber nie Persönliches. Auf direkte Fragen weicht er aus. Welches Bindungsmuster könnte vorliegen?",
+              "optionen": ["Sicher", "Unsicher-vermeidend", "Unsicher-ambivalent", "Desorganisiert"],
+              "korrekt": 1,
+              "erklaerung": "Vermeidende Bindung: Das Kind hat gelernt, emotionale Bedürfnisse zu unterdrücken. Kooperiert oberflächlich, l��sst aber keine echte Nähe zu. Strategie: Geduld, keine Konfrontation, langsam Vertrauen aufbauen."
+            },
+            {
+              "frage": "Eine 12-Jährige ruft dich 5× am Tag an, weint bei jeder Trennung am Ende der Sitzung, und ist wütend wenn du einmal nicht erreichbar bist. Welches Muster?",
+              "optionen": ["Sicher", "Unsicher-vermeidend", "Unsicher-ambivalent", "Desorganisiert"],
+              "korrekt": 2,
+              "erklaerung": "Ambivalente Bindung: Hyper-Aktivierung des Bindungssystems. Das Kind hat gelernt, dass nur massive Signale Aufmerksamkeit bringen. Strategie: Klare, verlässliche Struktur (feste Zeiten, feste Regeln), NICHT reaktiv auf jede Eskalation."
+            },
+            {
+              "frage": "Welches Bindungsmuster ist am stärksten mit Misshandlung assoziiert?",
+              "optionen": ["Sicher", "Unsicher-vermeidend", "Unsicher-ambivalent", "Desorganisiert"],
+              "korrekt": 3,
+              "erklaerung": "Desorganisierte Bindung (Main & Hesse 1990): Die Bezugsperson ist gleichzeitig die einzige Quelle von Trost UND die Quelle der Bedrohung. Das Kind hat kein kohärentes Verhaltensmuster — es erstarrt, nähert sich und weicht gleichzeitig zurück."
+            }
+          ]
+        },
+        {
+          "id": 4, "typ": "lektuere", "titel": "Therapeutische Beziehung als korrigierendes Erleben",
+          "inhalt": "Die Fachkraft wird unvermeidlich zum 'Bindungsobjekt'. Das ist kein Fehler — es ist die Chance. Ein vermeidend gebundener Jugendlicher braucht eine Bezugsperson, die BLEIBT, auch wenn er sie ablehnt. Ein ambivalent gebundener braucht VERLÄSSLICHKEIT, auch wenn er eskaliert. Konsistenz über Monate — das ist die Intervention. Nicht die Technik."
+        },
+        {
+          "id": 5, "typ": "lektuere", "titel": "ICD-11: Reaktive Bindungsstörung (6B44)",
+          "inhalt": "RAD (Reactive Attachment Disorder): Kind zeigt kaum Bindungsverhalten, sucht selten Trost, wirkt emotional abgeflacht. DSED (Disinhibited Social Engagement Disorder): Kind nähert sich Fremden unterschiedslos, keine Scheu. Beide Störungen erfordern stabile, langfristige Bezugspersonenarbeit — keine kurzfristige Intervention."
+        },
+        {
+          "id": 6, "typ": "reflexion", "titel": "Praxis-Reflexion",
+          "frage": "Denke an einen Klienten: Welches Bindungsmuster zeigt er/sie in der Beziehung zu dir? Welches Muster aktiviert er/sie bei dir? (Gegenübertragung)"
+        }
+      ]
     }
   ]
 }
