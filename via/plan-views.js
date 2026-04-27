@@ -520,9 +520,10 @@ async function renderReport() {
   const ff = DB.getFallformulierung(APP.schuelerId);
 
   container.innerHTML = `
-    <div style="margin-bottom: var(--space-3); display: flex; gap: var(--space-2);">
+    <div style="margin-bottom: var(--space-3); display: flex; gap: var(--space-2); flex-wrap: wrap;">
       <button class="btn btn-primary" onclick="window.print()">🖨️ Drucken / PDF</button>
       <button class="btn" onclick="exportReportText()">📄 Als Text exportieren</button>
+      <button class="btn" onclick="generateKonferenzVorlage()">🤝 Konferenz-Vorlage</button>
     </div>
 
     <div class="rm-section">
@@ -601,6 +602,69 @@ async function renderReport() {
       </div>
     </div>
   `;
+}
+
+function generateKonferenzVorlage() {
+  const s = DB.getSchuelerById(APP.schuelerId);
+  if (!s) return;
+  const name = `${s.vorname || ''} ${s.nachname || ''}`.trim();
+  const rm = getOrCreateRoadmap();
+  const aktivePhase = rm.phasen.find(p => p.status === 'aktiv');
+  const screenings = DB.getScreenings(APP.schuelerId).filter(x => x.abgeschlossen).sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
+  const sitzungen = DB.getNotizen(APP.schuelerId).filter(n => n.kategorie === 'session');
+  const helfer = DB.getHelfer(APP.schuelerId);
+  const allGoals = rm.phasen.flatMap(p => (p.ziele || []).map(g => ({ ...g, phaseNr: p.nr })));
+  const aceCount = (s.anamnese || []).filter(id => id.startsWith('ace_')).length;
+  const ff = DB.getFallformulierung?.(APP.schuelerId);
+
+  const lines = [
+    'PATHWAYS — KONFERENZ-VORBEREITUNG',
+    '═══════════════════════════════════',
+    `Klient: ${name}`,
+    `Datum: ${new Date().toLocaleDateString('de-DE')}`,
+    `Klasse: ${s.klasse || '—'} · Geburtsdatum: ${s.geburtsdatum ? Utils.formatDate(s.geburtsdatum) : '—'}`,
+    `ACE: ${aceCount}/10 · Sitzungen: ${sitzungen.length} · Screenings: ${screenings.length}`,
+    '',
+    '1. AKTUELLE LAGE',
+    '───────────────────────────────────',
+    aktivePhase ? `Phase ${aktivePhase.nr} seit ${aktivePhase.startDatum ? Utils.formatDate(aktivePhase.startDatum) : '?'}` : 'Keine aktive Phase',
+    aktivePhase?.themen?.length ? `Themen: ${aktivePhase.themen.join(', ')}` : '',
+    screenings.length ? `Letztes Screening (${Utils.formatDate(screenings[0].datum)}): ${Object.entries(screenings[0].scores || {}).map(([id, v]) => `${id.toUpperCase()} ${v.score}/${v.max}`).join(', ')}` : '',
+    ff?.hypothese ? `Hypothese: ${ff.hypothese}` : '',
+    '',
+    '2. ZIELE (SMART)',
+    '───────────────────────────────────',
+    ...allGoals.map(g => `${g.gas !== undefined && g.gas >= 0 ? '✓' : '○'} ${g.titel} (Phase ${g.phaseNr}${g.gas !== undefined ? `, GAS: ${g.gas}` : ''})`),
+    '',
+    '3. HELFER-NETZWERK',
+    '───────────────────────────────────',
+    ...helfer.map(h => `${h.name} (${h.rolle || '—'}) — ${h.informiert ? 'informiert' : 'nicht informiert'}${h.notiz ? ' — ' + h.notiz : ''}`),
+    '',
+    '4. DISKUSSIONSPUNKTE (vorbereiten)',
+    '───────────────────────────────────',
+    '□ Fortschritt seit letzter Konferenz',
+    '□ Anpassung der Ziele nötig?',
+    '□ Phase-Übergang?',
+    '□ Eltern-Perspektive',
+    '□ Schul-Perspektive',
+    '□ Nächste Schritte + Verantwortlichkeiten',
+    '',
+    '5. BESCHLÜSSE (in Konferenz ausfüllen)',
+    '───────────────────────────────────',
+    '',
+    '',
+    '═══════════════════════════════════',
+    'Generiert von Pathways · Vertraulich',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `konferenz-${name.replace(/\s/g, '-')}-${new Date().toISOString().split('T')[0]}.txt`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('Konferenz-Vorlage heruntergeladen', 'ok');
 }
 
 function exportReportText() {
