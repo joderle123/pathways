@@ -201,5 +201,87 @@
         }
       }
     }
+    },
+    {
+      "id": "substanzkonsum",
+      "titel": "Substanzkonsum bei Jugendlichen",
+      "icon": "🌿",
+      "intro": "Ein Klient berichtet über Substanzkonsum. Wie gehst du evidenzbasiert vor?",
+      "start": "q1",
+      "nodes": {
+        "q1": {
+          "frage": "Welche Substanz?",
+          "optionen": [
+            { "label": "Cannabis", "next": "q2_cannabis" },
+            { "label": "Alkohol", "next": "q2_alkohol" },
+            { "label": "Andere (Amphetamine, MDMA, Opioide)", "next": "out_spezialist" }
+          ]
+        },
+        "q2_cannabis": {
+          "frage": "Häufigkeit?",
+          "optionen": [
+            { "label": "Gelegentlich (< 1×/Woche)", "next": "out_harm_reduction" },
+            { "label": "Regelmäßig (> 3×/Woche)", "next": "q3_abhaengig" }
+          ]
+        },
+        "q2_alkohol": {
+          "frage": "Binge-Drinking (> 5 Getränke pro Anlass)?",
+          "optionen": [
+            { "label": "Nein, moderater Konsum", "next": "out_harm_reduction" },
+            { "label": "Ja, regelmäßig", "next": "q3_abhaengig" }
+          ]
+        },
+        "q3_abhaengig": {
+          "frage": "Anzeichen für Abhängigkeit? (Kontrollverlust, Toleranz, Entzug, Vernachlässigung von Pflichten)",
+          "optionen": [
+            { "label": "Nein", "next": "out_mi" },
+            { "label": "Ja, ≥ 2 Kriterien", "next": "out_suchtberatung" }
+          ]
+        },
+        "out_harm_reduction": {
+          "ergebnis": "Harm Reduction + Psychoedukation",
+          "empfehlung": [
+            "Nicht moralisieren — Funktion des Konsums verstehen",
+            "Harm-Reduction-Strategien (nicht allein konsumieren, Notfallnummern, keine Mischsubstanzen)",
+            "Psychoedukation: Cannabis & Gehirnentwicklung (Frontallappen reift bis 25)",
+            "CRAFFT-Screening durchführen (Knight et al. 2002)",
+            "Re-Assessment in 4 Wochen"
+          ],
+          "module": ["motiv-interview"]
+        },
+        "out_mi": {
+          "ergebnis": "Motivational Interviewing + CRAFFT",
+          "empfehlung": [
+            "MI-Ansatz: Ambivalenz explorieren, nicht konfrontieren",
+            "CRAFFT-Score bestimmen (≥ 2 = klinisch relevant)",
+            "Funktionsanalyse: Warum konsumiert der Klient? (Coping, Peer-Druck, Langeweile)",
+            "Alternative Coping-Strategien aufbauen",
+            "Elterngespräch erwägen (nur wenn Kindeswohl gefährdet)"
+          ],
+          "module": ["motiv-interview"]
+        },
+        "out_suchtberatung": {
+          "ergebnis": "Überweisung an Suchtberatung",
+          "empfehlung": [
+            "Abhängigkeitskriterien erfüllt → Fachberatung nötig",
+            "In Luxemburg: CePT (Centre de Prévention des Toxicomanies)",
+            "Begleitend: Komorbidität abklären (Depression, PTBS, ADHS häufig)",
+            "Therapeutische Beziehung aufrechterhalten (nicht fallenlassen)",
+            "Eltern informieren bei Minderjährigen"
+          ],
+          "module": ["motiv-interview"]
+        },
+        "out_spezialist": {
+          "ergebnis": "Sofortige Überweisung an Suchtmedizin",
+          "empfehlung": [
+            "Andere Substanzen (Stimulanzien, Opioide) erfordern sofortige Fachberatung",
+            "CePT oder CHNP kontaktieren",
+            "Urin-Screening ggf. durch Hausarzt",
+            "Sicherheit: Überdosis-Risiko besprechen",
+            "Naloxon-Nasenspray wenn Opioide (falls verfügbar)"
+          ]
+        }
+      }
+    }
   ]
 }
