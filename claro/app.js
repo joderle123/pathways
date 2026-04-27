@@ -476,7 +476,10 @@ function renderHypothesen() {
             return `
               <div class="dg-hypothesis">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <div class="dg-hypothesis-title">${Utils.escapeHtml(h.titel)} ${h.icd ? `<span style="font-size: 12px; color: var(--text-muted);">[${h.icd}]</span>` : ''}</div>
+                  <div class="dg-hypothesis-title">
+                    ${h.status ? `<span class="dg-hyp-status dg-hyp-status-${(h.status || '').toLowerCase()}">${h.status}</span> ` : ''}
+                    ${Utils.escapeHtml(h.titel)} ${h.icd ? `<span style="font-size: 12px; color: var(--text-muted);">[${h.icd}]</span>` : ''}
+                  </div>
                   <div class="dg-konfidenz" style="color: ${farbe}; font-weight: var(--font-weight-bold);">
                     ${konfidenz}%
                     <div class="dg-konfidenz-bar"><div style="width:${konfidenz}%;background:${farbe};height:100%;border-radius:4px;"></div></div>
