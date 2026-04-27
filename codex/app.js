@@ -345,7 +345,130 @@ async function init() {
   console.log('[CODEX] Ready.');
 }
 
-// ─── Section Switcher (Material ↔ Eltern-Tabs) ──────────────
+// ─── Sammlungen / Persönliche Toolbox (Manifest: "Meine 10 besten") ──
+const SAMMLUNG_KEY = 'pw_codex_sammlungen';
+
+function getSammlungen() {
+  try { return JSON.parse(localStorage.getItem(SAMMLUNG_KEY) || '[]'); }
+  catch { return []; }
+}
+function saveSammlungen(s) { localStorage.setItem(SAMMLUNG_KEY, JSON.stringify(s)); }
+
+function addToSammlung(pfad, titel) {
+  const s = getSammlungen();
+  if (s.find(x => x.pfad === pfad)) { showToast('Bereits in Sammlung', 'info'); return; }
+  s.push({ pfad, titel, addedAt: new Date().toISOString() });
+  saveSammlungen(s);
+  showToast(`"${titel}" zur Sammlung hinzugefügt`, 'ok');
+}
+
+function removeFromSammlung(pfad) {
+  saveSammlungen(getSammlungen().filter(x => x.pfad !== pfad));
+  renderSammlungen(document.getElementById('parents-content'));
+}
+
+function renderSammlungen(container) {
+  const sammlung = getSammlungen();
+  container.innerHTML = `
+    <div class="pa-section">
+      <h2>🧰 Persönliche Toolbox (${sammlung.length})</h2>
+      <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">
+        Deine kuratierte Sammlung — die Materialien, die du am häufigsten brauchst.
+      </p>
+      ${sammlung.length === 0
+        ? `<div style="text-align: center; padding: var(--space-8); color: var(--text-muted);">
+            <div style="font-size: 48px; margin-bottom: var(--space-3);">🧰</div>
+            <p>Noch leer. Nutze ⭐ bei Materialien, um sie hier zu sammeln.</p>
+          </div>`
+        : `<div class="pa-grid">
+            ${sammlung.map(m => `
+              <div class="pa-card">
+                <div class="pa-card-title">${Utils.escapeHtml(m.titel || m.pfad)}</div>
+                <div class="pa-card-desc">Hinzugefügt ${Utils.formatDate(m.addedAt, { short: true })}</div>
+                <div style="margin-top: var(--space-2); display: flex; gap: var(--space-2);">
+                  <a class="btn" href="../${m.pfad}" target="_blank" style="flex: 1; text-align: center;">Öffnen ↗</a>
+                  <button class="btn" onclick="removeFromSammlung('${Utils.escapeHtml(m.pfad)}')" style="color: var(--danger);">✕</button>
+                </div>
+              </div>
+            `).join('')}
+          </div>`
+      }
+    </div>
+  `;
+}
+
+// ─── Therapie-Sequenzen (Manifest: erprobte Pfade durch Material) ──
+const SEQUENZEN = [
+  {
+    id: 'stabilisierung', titel: 'Stabilisierungs-Sequenz',
+    icon: '🧘', dauer: '4 Sitzungen',
+    beschreibung: 'Erprobter Pfad für Klienten in akuter Belastung. Vor jeder Trauma-Arbeit.',
+    materialien: [
+      'arbeitsblaetter/sicherer-ort.html',
+      'arbeitsblaetter/atemuebung-4-7-8.html',
+      'arbeitsblaetter/5-4-3-2-1-grounding.html',
+      'arbeitsblaetter/koerperwahrnehmung.html',
+    ],
+  },
+  {
+    id: 'emotionsreg', titel: 'Emotionsregulation (DBT-basiert)',
+    icon: '🎭', dauer: '6 Sitzungen',
+    beschreibung: 'Skills-Aufbau für Klienten mit Impulskontroll-Problemen oder Selbstverletzung.',
+    materialien: [
+      'arbeitsblaetter/gefuehle-benennen.html',
+      'arbeitsblaetter/stresstoleranz-eis.html',
+      'arbeitsblaetter/pro-contra-liste.html',
+      'arbeitsblaetter/notfallkoffer.html',
+      'arbeitsblaetter/achtsamkeit-rosine.html',
+      'arbeitsblaetter/skills-kette.html',
+    ],
+  },
+  {
+    id: 'depression', titel: 'Verhaltensaktivierung bei Depression',
+    icon: '☀️', dauer: '4 Sitzungen',
+    beschreibung: 'Aufbau positiver Aktivitäten. Für Klienten mit Antriebslosigkeit.',
+    materialien: [
+      'arbeitsblaetter/aktivitaeten-liste.html',
+      'arbeitsblaetter/wochenplan.html',
+      'arbeitsblaetter/freude-tagebuch.html',
+      'arbeitsblaetter/kleine-schritte.html',
+    ],
+  },
+];
+
+function renderSequenzen(container) {
+  container.innerHTML = `
+    <div class="pa-section">
+      <h2>🔗 Therapie-Sequenzen (${SEQUENZEN.length})</h2>
+      <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">
+        Erprobte Materialabfolgen — "nicht nur ein Arbeitsblatt, sondern ein Weg."
+      </p>
+      ${SEQUENZEN.map(seq => `
+        <div style="margin-bottom: var(--space-5); background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-4);">
+          <div style="display: flex; gap: var(--space-3); align-items: center; margin-bottom: var(--space-2);">
+            <span style="font-size: 28px;">${seq.icon}</span>
+            <div>
+              <div style="font-weight: var(--font-weight-bold); font-size: 16px;">${Utils.escapeHtml(seq.titel)}</div>
+              <div style="font-size: 13px; color: var(--text-muted);">${seq.dauer} · ${seq.materialien.length} Materialien</div>
+            </div>
+          </div>
+          <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: var(--space-3);">${Utils.escapeHtml(seq.beschreibung)}</p>
+          <ol style="padding-left: var(--space-4); font-size: 14px; line-height: var(--line-height-relaxed);">
+            ${seq.materialien.map((pfad, i) => {
+              const m = STATE.index?.materials?.find(x => x.pfad === pfad);
+              const titel = m ? m.titel : pfad.split('/').pop().replace('.html', '');
+              return `<li style="margin-bottom: var(--space-1);">
+                <a href="../${pfad}" target="_blank" style="color: var(--text); text-decoration: underline;">${Utils.escapeHtml(titel)}</a>
+              </li>`;
+            }).join('')}
+          </ol>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+// ─── Section Switcher (Material ↔ Eltern-Tabs ↔ Toolbox ↔ Sequenzen) ──
 let currentSection = 'materialien';
 
 function setSection(name) {
@@ -373,6 +496,8 @@ function setSection(name) {
     if (name === 'infoblaetter') ParentsViews.renderInfoblaetter(parentsContent);
     else if (name === 'leitfaeden') ParentsViews.renderLeitfaeden(parentsContent);
     else if (name === 'workflows') ParentsViews.renderWorkflows(parentsContent);
+    else if (name === 'sammlungen') renderSammlungen(parentsContent);
+    else if (name === 'sequenzen') renderSequenzen(parentsContent);
   }
 }
 
