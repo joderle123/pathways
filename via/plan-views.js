@@ -110,6 +110,15 @@ async function renderPhasen() {
         ${phaseDef.kriterien_zur_naechsten.map(k => `<li>✓ ${Utils.escapeHtml(k)}</li>`).join('')}
       </ul>
 
+      ${phaseStatus?.reflexion ? `
+        <div style="background: rgba(16,185,129,0.06); border: 1px solid var(--color-app-via); border-radius: var(--radius-sm); padding: var(--space-4); margin-bottom: var(--space-4);">
+          <h3 style="color: var(--color-app-via); margin-bottom: var(--space-2);">🎓 Abschluss-Reflexion (${Utils.formatDate(phaseStatus.reflexion.datum)})</h3>
+          ${phaseStatus.reflexion.gut ? `<div style="margin-bottom: var(--space-2);"><strong>Was hat funktioniert:</strong> ${Utils.escapeHtml(phaseStatus.reflexion.gut)}</div>` : ''}
+          ${phaseStatus.reflexion.schwierig ? `<div style="margin-bottom: var(--space-2);"><strong>Was war schwierig:</strong> ${Utils.escapeHtml(phaseStatus.reflexion.schwierig)}</div>` : ''}
+          ${phaseStatus.reflexion.hypothese ? `<div><strong>Hypothese:</strong> ${Utils.escapeHtml(phaseStatus.reflexion.hypothese)}</div>` : ''}
+        </div>
+      ` : ''}
+
       <h3>Notizen zu dieser Phase</h3>
       <textarea id="phase-notizen" rows="4" style="width: 100%; padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: inherit;">${Utils.escapeHtml(phaseStatus?.notizen || '')}</textarea>
 
@@ -247,28 +256,37 @@ async function renderZiele() {
   `;
 }
 
-function addZiel() {
-  const titel = prompt('Ziel-Titel? (Spezifisch + Messbar)\nz.B. "3× pro Woche 20 Min. Sport"');
-  if (!titel) return;
-  const beschreibung = prompt('Beschreibung / Begründung (Attraktiv + Realistisch)?', '') || '';
-  const phaseNr = parseInt(prompt('Welche Phase (0-6)?', '3'), 10);
-  const terminiert = prompt('Ziel-Datum (YYYY-MM-DD, optional)?', '') || '';
-
+async function addZiel() {
   const rm = getOrCreateRoadmap();
+  const phaseOptions = (APP.phasen || []).map(p => ({ value: String(p.nr), label: `Phase ${p.nr}: ${p.name}` }));
+  const aktive = rm.phasen.find(p => p.status === 'aktiv');
+
+  const data = await Utils.modalForm({
+    title: 'Neues SMART-Ziel',
+    fields: [
+      { id: 'titel', label: 'Spezifisch + Messbar — Was genau?', required: true, placeholder: 'z.B. "3× pro Woche 20 Min. Sport"' },
+      { id: 'beschreibung', label: 'Attraktiv + Realistisch — Warum?', type: 'textarea', rows: 2, placeholder: 'Begründung und Motivation' },
+      { id: 'phaseNr', label: 'Welche Phase?', type: 'select', options: phaseOptions, value: String(aktive?.nr || 0) },
+      { id: 'terminiert', label: 'Terminiert — Bis wann?', type: 'date' },
+    ],
+  });
+  if (!data) return;
+
+  const phaseNr = parseInt(data.phaseNr, 10);
   const phase = rm.phasen.find(p => p.nr === phaseNr);
   if (!phase) { showToast('Ungültige Phase', 'info'); return; }
   if (!phase.ziele) phase.ziele = [];
 
   phase.ziele.push({
     id: DB.generateId(),
-    titel,
-    beschreibung,
-    terminiert,
+    titel: data.titel,
+    beschreibung: data.beschreibung,
+    terminiert: data.terminiert,
     status: 'offen',
     erstellt: new Date().toISOString(),
   });
   DB.saveRoadmap(rm);
-  showToast('Ziel angelegt', 'ok');
+  showToast('SMART-Ziel angelegt', 'ok');
   renderZiele();
 }
 

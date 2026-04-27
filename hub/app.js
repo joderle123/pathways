@@ -129,9 +129,24 @@ function applyTheme() {
   }
 }
 
-// ─── Settings (Stub für Phase B; wird erweitert in D.4) ───────
-function showSettings() {
-  showToast('Einstellungen kommen in Phase D', 'info');
+// ─── Einstellungen ───────────────────────────────────────────
+async function showSettings() {
+  const data = await Utils.modalForm({
+    title: 'Einstellungen',
+    fields: [
+      { id: 'theme', label: 'Farbmodus', type: 'select', options: [
+        { value: 'light', label: 'Hell' },
+        { value: 'dark', label: 'Dunkel' },
+      ], value: document.body.classList.contains('theme-dark') ? 'dark' : 'light' },
+      { id: 'pin', label: 'PIN-Schutz aktivieren', type: 'checkbox', value: !!localStorage.getItem('pw_pin_hash') },
+    ],
+    submitLabel: 'Speichern',
+  });
+  if (!data) return;
+  if (data.theme === 'dark') document.body.classList.add('theme-dark');
+  else document.body.classList.remove('theme-dark');
+  localStorage.setItem('pw_app_hub_theme', data.theme);
+  showToast('Einstellungen gespeichert', 'ok');
 }
 
 // ─── Muster-Erkennung (Manifest: Pattern im eigenen Caseload) ─

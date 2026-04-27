@@ -417,12 +417,21 @@ const ProfilView = (function () {
     `;
   }
 
-  function addKonferenz(schuelerId) {
-    const datum = prompt('Datum (YYYY-MM-DD)?', new Date().toISOString().split('T')[0]);
-    if (!datum) return;
-    const titel = prompt('Titel?', 'Hilfeplankonferenz') || 'Hilfeplankonferenz';
-    const themen = prompt('Hauptthemen?') || '';
-    DB.addKonferenz({ schuelerId, datum, titel, themen });
+  async function addKonferenz(schuelerId) {
+    const helfer = DB.getHelfer(schuelerId);
+    const data = await Utils.modalForm({
+      title: 'Neue Konferenz dokumentieren',
+      fields: [
+        { id: 'datum', label: 'Datum', type: 'date', value: Utils.today(), required: true },
+        { id: 'titel', label: 'Titel', value: 'Hilfeplankonferenz', required: true },
+        { id: 'teilnehmer', label: 'Teilnehmer', placeholder: 'z.B. Mutter, Lehrerin, SCAS-Berater' },
+        { id: 'themen', label: 'Hauptthemen / Agenda', type: 'textarea', placeholder: 'Was wurde besprochen?' },
+        { id: 'beschluesse', label: 'Beschlüsse / Folge-Aktionen', type: 'textarea', placeholder: 'Wer macht was bis wann?' },
+        { id: 'naechsterTermin', label: 'Nächster Termin', type: 'date' },
+      ],
+    });
+    if (!data) return;
+    DB.addKonferenz({ schuelerId, ...data });
     showToast('Konferenz dokumentiert', 'ok');
     render(schuelerId);
   }
@@ -596,12 +605,31 @@ const ProfilView = (function () {
     `;
   }
 
-  function addKontakt(schuelerId) {
-    const kontaktperson = prompt('Mit wem? (Name)');
-    if (!kontaktperson) return;
-    const art = prompt('Art? (telefon, email, vor-ort, meeting)', 'telefon') || 'telefon';
-    const inhalt = prompt('Inhalt / Notiz?') || '';
-    DB.addKontakt({ schuelerId, kontaktperson, art, inhalt });
+  async function addKontakt(schuelerId) {
+    const helfer = DB.getHelfer(schuelerId);
+    const personOptions = helfer.map(h => ({ value: h.name, label: `${h.name} (${h.rolle || ''})` }));
+    personOptions.unshift({ value: '', label: '— Auswählen oder frei eingeben —' });
+
+    const data = await Utils.modalForm({
+      title: 'Kontakt protokollieren',
+      fields: [
+        { id: 'datum', label: 'Datum', type: 'date', value: Utils.today(), required: true },
+        helfer.length > 0
+          ? { id: 'kontaktperson', label: 'Mit wem?', type: 'select', options: personOptions }
+          : { id: 'kontaktperson', label: 'Mit wem?', placeholder: 'Name', required: true },
+        { id: 'art', label: 'Art', type: 'select', options: [
+          { value: 'telefon', label: '📞 Telefon' },
+          { value: 'email', label: '✉️ E-Mail' },
+          { value: 'vor-ort', label: '🏠 Vor Ort' },
+          { value: 'meeting', label: '🤝 Meeting' },
+          { value: 'video', label: '💻 Videocall' },
+        ], value: 'telefon' },
+        { id: 'inhalt', label: 'Inhalt / Notiz', type: 'textarea', placeholder: 'Was wurde besprochen? Wichtigste Punkte.' },
+        { id: 'folgeaktion', label: 'Folge-Aktion', placeholder: 'Was muss als nächstes passieren?' },
+      ],
+    });
+    if (!data) return;
+    DB.addKontakt({ schuelerId, ...data });
     showToast('Kontakt protokolliert', 'ok');
     render(schuelerId);
   }
