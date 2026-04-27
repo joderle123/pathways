@@ -394,6 +394,28 @@ function renderStaerken() {
   const top3 = bewertet.filter(s => s.val >= 7).slice(0, 3);
   const entwicklung = bewertet.filter(s => s.val <= 4).slice(0, 3);
 
+  // SVG Radar-Chart
+  const radarSize = 280, radarCx = radarSize / 2, radarCy = radarSize / 2, radarR = 110;
+  const n = STAERKEN.length;
+  const radarPoints = STAERKEN.map((s, i) => {
+    const angle = (i / n) * 2 * Math.PI - Math.PI / 2;
+    const val = (data[i] || 5) / 10;
+    return {
+      x: radarCx + radarR * val * Math.cos(angle),
+      y: radarCy + radarR * val * Math.sin(angle),
+      lx: radarCx + (radarR + 14) * Math.cos(angle),
+      ly: radarCy + (radarR + 14) * Math.sin(angle),
+      label: s.label.slice(0, 6),
+    };
+  });
+  const radarPath = radarPoints.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ') + ' Z';
+  const radarGrid = [0.25, 0.5, 0.75, 1].map(f =>
+    STAERKEN.map((_, i) => {
+      const angle = (i / n) * 2 * Math.PI - Math.PI / 2;
+      return `${radarCx + radarR * f * Math.cos(angle)},${radarCy + radarR * f * Math.sin(angle)}`;
+    }).join(' ')
+  );
+
   container.innerHTML = `
     <div class="rm-section">
       <h2>💪 Stärken-Profil</h2>
@@ -401,6 +423,15 @@ function renderStaerken() {
         Basierend auf VIA Classification of Character Strengths (Peterson & Seligman 2004, Youth Survey: Park & Peterson 2006).
         18 Stärken in 6 Tugenden. Bewertung 1-10 gemeinsam mit dem Klienten.
       </p>
+
+      <div style="text-align: center; margin: var(--space-3) 0;">
+        <svg width="${radarSize}" height="${radarSize}" viewBox="0 0 ${radarSize} ${radarSize}">
+          ${radarGrid.map(pts => `<polygon points="${pts}" fill="none" stroke="var(--border)" stroke-width="0.5"/>`).join('')}
+          <polygon points="${radarPoints.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ')}" fill="rgba(16,185,129,0.15)" stroke="var(--color-app-via)" stroke-width="2"/>
+          ${radarPoints.map(p => `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3" fill="var(--color-app-via)"/>`).join('')}
+          ${radarPoints.map(p => `<text x="${p.lx.toFixed(1)}" y="${p.ly.toFixed(1)}" text-anchor="middle" dominant-baseline="middle" font-size="8" fill="var(--text-muted)">${p.label}</text>`).join('')}
+        </svg>
+      </div>
 
       ${top3.length ? `
         <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-4);">
