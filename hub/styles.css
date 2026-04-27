@@ -477,6 +477,12 @@ input:focus, textarea:focus, select:focus {
   background: var(--bg-subtle); border-radius: var(--radius-sm);
   margin-bottom: var(--space-3);
 }
+.hub-mini-trend {
+  display: flex; align-items: flex-end; gap: 3px; height: 24px;
+  padding: 2px 0; margin-bottom: var(--space-2);
+}
+.hub-mini-bar { flex: 1; min-width: 6px; border-radius: 2px 2px 0 0; transition: height 0.3s; }
+.hub-mini-label { font-size: 11px; color: var(--text-muted); white-space: nowrap; margin-left: 6px; align-self: center; }
 
 /* ── Helfer-Netzwerk Karten ────────────────────────────────── */
 .hub-helfer-grid {

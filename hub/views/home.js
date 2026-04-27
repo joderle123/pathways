@@ -353,6 +353,17 @@ const HomeView = (function () {
           <span style="color: ${risiko.farbe};">●</span> ${Utils.escapeHtml(risiko.erklaerung)}
         </div>
 
+        ${(() => {
+          const sitzungen = DB.getNotizen(s.id).filter(n => n.kategorie === 'session').sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
+          const orsPunkte = sitzungen.slice(0, 5).reverse().map(n => n.soap?.ors_total).filter(v => v !== undefined);
+          if (orsPunkte.length < 2) return '';
+          const maxOrs = 40;
+          return `<div class="hub-mini-trend">
+            ${orsPunkte.map(v => `<div class="hub-mini-bar" style="height: ${Math.max(3, v / maxOrs * 100)}%; background: ${v >= 25 ? '#10B981' : v >= 15 ? '#F59E0B' : '#DC2626'};"></div>`).join('')}
+            <div class="hub-mini-label">ORS ${orsPunkte.at(-1)?.toFixed(0) || ''}${orsPunkte.length >= 2 ? (orsPunkte.at(-1) > orsPunkte[0] ? ' ↑' : orsPunkte.at(-1) < orsPunkte[0] ? ' ↓' : ' →') : ''}</div>
+          </div>`;
+        })()}
+
         <div class="pw-launcher">${APPS.map(app => `
           <a class="pw-launch-btn" href="${Bridge.deepLink(app.id, { schueler: s.id })}" target="_blank" title="${app.label}">
             <span class="icon">${app.icon}</span><span>${app.label}</span>
