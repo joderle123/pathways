@@ -6,6 +6,10 @@
 
 const AufgabenView = (function () {
   async function add() {
+    const klienten = DB.getSchueler();
+    const klientOptions = [{ value: '', label: '— Kein Klient (persönlich) —' }];
+    klienten.forEach(s => klientOptions.push({ value: s.id, label: `${s.vorname || ''} ${s.nachname || ''}`.trim() || s.id }));
+
     const data = await Utils.modalForm({
       title: 'Neue Aufgabe',
       fields: [
@@ -15,6 +19,7 @@ const AufgabenView = (function () {
           { value: 'normal', label: '🔵 Normal' },
           { value: 'niedrig', label: '⚪ Niedrig' },
         ], value: 'normal' },
+        { id: 'schuelerId', label: 'Klient', type: 'select', options: klientOptions },
         { id: 'faelligkeit', label: 'Fällig bis', type: 'date' },
       ],
     });
@@ -64,6 +69,7 @@ const AufgabenView = (function () {
                     <div style="font-size: var(--text-xs); color: var(--text-muted); margin-top: 2px; display: flex; gap: var(--space-2); align-items: center;">
                       ${badge(a.prioritaet || 'normal')}
                       ${a.faelligkeit ? '· fällig: ' + Utils.formatDate(a.faelligkeit) : ''}
+                      ${a.schuelerId ? (() => { const s = DB.getSchuelerById(a.schuelerId); return s ? `· 👤 ${Utils.escapeHtml(s.vorname || '')}` : ''; })() : ''}
                     </div>
                   </div>
                 </div>
