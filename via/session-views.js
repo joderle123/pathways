@@ -522,8 +522,26 @@ function saveSession() {
     showToast('⚠️ Suizidalität dokumentiert — Risiko-Eintrag erstellt, Krisen-Alert gesendet.', 'error');
   }
 
+  // Auto-Aufgabe aus Plan-Feld
+  const planText = APP.draft.soap.P?.trim();
+  if (planText && planText.length > 5) {
+    DB.addAufgabe({
+      titel: planText.length > 80 ? planText.slice(0, 77) + '...' : planText,
+      prioritaet: 'normal',
+      faelligkeit: '',
+      erledigt: false,
+    });
+  }
+
+  // Auto-Termin-Vorschlag wenn Hausaufgabe gesetzt
+  const ha = document.getElementById('post-hausaufgabe')?.value?.trim();
+  if (ha) {
+    const naechsteWoche = new Date(Date.now() + 7 * 86400000).toISOString().split('T')[0];
+    DB.createTermin({ datum: naechsteWoche, uhrzeit: '', titel: `Follow-up: ${ha.slice(0, 40)}`, typ: 'sitzung', schuelerId: APP.schuelerId });
+  }
+
   Bridge.notify('session_completed', { schuelerId: APP.schuelerId, ors: orsTotal, srs: srsTotal });
-  showToast('Sitzung gespeichert + Wohlbefinden aktualisiert', 'ok');
+  showToast('Sitzung gespeichert. Aufgabe + Termin aus Plan erstellt.', 'ok');
 
   // Reset draft
   APP.draft = {
