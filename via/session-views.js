@@ -80,6 +80,14 @@ function renderPre() {
           <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">Thema: ${Utils.escapeHtml(lastSession.themaId || 'kein Thema')}</div>
           <div style="font-size: 14px; line-height: var(--line-height-relaxed); white-space: pre-wrap;">${Utils.escapeHtml(Utils.truncate((lastSession.inhalt || JSON.stringify(lastSession.soap || '')), 400))}</div>
         </div>
+        ${lastSession?.soap?.hausaufgabe ? `
+          <div style="background: #FEF3C7; border-left: 4px solid #F59E0B; padding: var(--space-3); border-radius: var(--radius-sm); margin-bottom: var(--space-3);">
+            <strong>📝 Letzte Hausaufgabe:</strong> ${Utils.escapeHtml(lastSession.soap.hausaufgabe)}
+            <label style="display: flex; gap: var(--space-2); align-items: center; margin-top: var(--space-2); font-size: 13px; cursor: pointer;">
+              <input type="checkbox" ${APP.draft.hausaufgabe_erledigt ? 'checked' : ''} onchange="APP.draft.hausaufgabe_erledigt=this.checked;"> Wurde besprochen / erledigt
+            </label>
+          </div>
+        ` : ''}
       ` : `<p style="color: var(--text-muted);">Erste Sitzung — keine Vorgeschichte verfügbar.</p>`}
 
       ${aktivePhase ? `
@@ -427,19 +435,34 @@ function renderHistory() {
       <h3 style="margin-top: var(--space-4);">Alle Sitzungen (${notizen.length})</h3>
       ${notizen.length === 0
         ? `<div class="pw-empty"><div class="pw-empty-icon">📝</div><p>Noch keine Sitzung dokumentiert.</p></div>`
-        : notizen.map(n => `
-            <div class="se-history-row">
-              <div class="se-history-date">${Utils.formatDate(n.datum)}</div>
-              <div>
-                <strong>${Utils.escapeHtml(n.soap?.typ || 'Sitzung')}</strong>
-                ${n.soap?.ereignisse?.length ? `<span style="font-size: 11px; color: var(--text-muted); margin-left: 6px;">${n.soap.ereignisse.slice(0, 2).join(' · ')}</span>` : ''}
-                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">${Utils.escapeHtml(Utils.truncate(n.soap?.O || n.inhalt || '', 100))}</div>
-              </div>
-              <div style="font-size: 13px;">ORS: <strong>${n.soap?.ors_total?.toFixed(1) || '—'}</strong></div>
-              <div style="font-size: 13px;">SRS: <strong>${n.soap?.srs_total?.toFixed(1) || '—'}</strong></div>
-              <div>${n.soap?.dauer_min ? n.soap.dauer_min + ' min' : ''}</div>
-            </div>
-          `).join('')
+        : notizen.map(n => {
+            const pvt = [n.soap?.pvt_start, n.soap?.pvt_mid, n.soap?.pvt_end].filter(Boolean);
+            const pvtEmoji = { safe: '😌', activated: '⚡', frozen: '🧊' };
+            const ors = n.soap?.ors;
+            const srs = n.soap?.srs;
+            return `
+              <details class="se-history-detail">
+                <summary class="se-history-row">
+                  <div class="se-history-date">${Utils.formatDate(n.datum)}</div>
+                  <div>
+                    <strong>${Utils.escapeHtml(n.soap?.typ || 'Sitzung')}</strong>
+                    ${n.soap?.ereignisse?.length ? `<span style="font-size: 11px; color: var(--text-muted); margin-left: 6px;">${n.soap.ereignisse.slice(0, 2).join(' · ')}</span>` : ''}
+                  </div>
+                  <div style="font-size: 13px;">ORS: <strong>${n.soap?.ors_total?.toFixed(1) || '—'}</strong></div>
+                  <div style="font-size: 13px;">SRS: <strong>${n.soap?.srs_total?.toFixed(1) || '—'}</strong></div>
+                  <div>${n.soap?.dauer_min ? n.soap.dauer_min + ' min' : ''}</div>
+                </summary>
+                <div style="padding: var(--space-3); background: var(--bg-subtle); border-radius: 0 0 var(--radius-sm) var(--radius-sm); font-size: 13px;">
+                  ${ors ? `<div style="margin-bottom: var(--space-2);"><strong>ORS-Subskalen:</strong> Individuell ${ors.individual} · Beziehung ${ors.interpersonal} · Sozial ${ors.social} · Gesamt ${ors.overall}</div>` : ''}
+                  ${srs ? `<div style="margin-bottom: var(--space-2);"><strong>SRS-Subskalen:</strong> Beziehung ${srs.relationship} · Ziele ${srs.goals} · Ansatz ${srs.approach} · Gesamt ${srs.overall}</div>` : ''}
+                  ${pvt.length ? `<div style="margin-bottom: var(--space-2);"><strong>PVT-Verlauf:</strong> ${pvt.map(p => pvtEmoji[p] || p).join(' → ')}</div>` : ''}
+                  ${n.soap?.stimmung_start !== undefined ? `<div style="margin-bottom: var(--space-2);"><strong>Stimmung:</strong> ${n.soap.stimmung_start} → ${n.soap.stimmung_end || '?'}</div>` : ''}
+                  ${n.soap?.hausaufgabe ? `<div style="margin-bottom: var(--space-2);"><strong>Hausaufgabe:</strong> ${Utils.escapeHtml(n.soap.hausaufgabe)}</div>` : ''}
+                  ${n.soap?.O ? `<div><strong>Beobachtung:</strong> ${Utils.escapeHtml(Utils.truncate(n.soap.O, 200))}</div>` : ''}
+                </div>
+              </details>
+            `;
+          }).join('')
       }
     </div>
   `;
