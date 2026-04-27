@@ -370,8 +370,10 @@ const HomeView = (function () {
           </a>
         `).join('')}</div>
 
-        <div style="margin-top:var(--space-3); display:flex; gap:var(--space-2);">
+        <div style="margin-top:var(--space-3); display:flex; gap:var(--space-2); flex-wrap: wrap;">
           <button class="btn" style="flex:1" onclick="showView('profil','${s.id}')">Profil →</button>
+          <a class="btn" href="${Bridge.deepLink('via', { schueler: s.id, mode: 'sitzung' })}" target="_blank" title="Sitzung starten">🎯</a>
+          <a class="btn" href="${Bridge.deepLink('claro', { schueler: s.id, action: 'neu_screening' })}" target="_blank" title="Screening">🔍</a>
           <button class="pw-btn-icon" onclick="openSchuelerModal('${s.id}')" title="Bearbeiten" style="color:var(--text-muted)">✏️</button>
         </div>
       </div>
