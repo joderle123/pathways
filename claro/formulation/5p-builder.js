@@ -85,8 +85,31 @@ const FivePModel = (function () {
       if (s.anamnese.includes('ace_mental_illness')) sugg.predisposing.push('Familiäre psychische Erkrankung');
       if (s.anamnese.includes('schul_mobbing')) sugg.precipitating.push('Mobbing');
       if (s.anamnese.includes('schul_absentismus')) sugg.presenting.push('Schulverweigerung');
+      if (s.anamnese.includes('schul_phobie')) sugg.presenting.push('Schulphobie (Trennungsangst)');
       if (s.anamnese.includes('health_chronisch')) sugg.predisposing.push('Chronische Erkrankung');
       if (s.anamnese.includes('fam_pflege')) sugg.predisposing.push('Adoption / Pflege');
+      // Neue Domänen
+      if (s.anamnese.includes('bind_desorganisiert')) sugg.predisposing.push('Desorganisierte Bindung');
+      if (s.anamnese.includes('bind_wechsel')) sugg.predisposing.push('Häufiger Bezugspersonenwechsel');
+      if (s.anamnese.includes('bind_ambivalent')) sugg.perpetuating.push('Ambivalentes Bindungsmuster');
+      if (s.anamnese.includes('bind_vermeidend')) sugg.perpetuating.push('Vermeidendes Bindungsmuster');
+      if (s.anamnese.includes('entw_sprache')) sugg.predisposing.push('Sprachentwicklungsverzögerung');
+      if (s.anamnese.includes('entw_autismus_hinweise')) sugg.predisposing.push('ASS-Hinweise');
+      if (s.anamnese.includes('subst_cannabis')) sugg.perpetuating.push('Cannabiskonsum (selbstmedikation?)');
+      if (s.anamnese.includes('subst_alkohol')) sugg.perpetuating.push('Alkoholkonsum');
+      if (s.anamnese.includes('sv_nssi')) sugg.presenting.push('Nicht-suizidale Selbstverletzung');
+      if (s.anamnese.includes('sv_suizidgedanken')) sugg.presenting.push('Aktive Suizidgedanken');
+      if (s.anamnese.includes('schlaf_einschlaf')) sugg.perpetuating.push('Einschlafstörung');
+      if (s.anamnese.includes('schlaf_alptraeume')) sugg.perpetuating.push('Alpträume');
+      if (s.anamnese.includes('fam_migration')) sugg.predisposing.push('Migrationshintergrund');
+      if (s.anamnese.includes('fam_flucht')) sugg.predisposing.push('Flucht-/Asyl-Erfahrung');
+      if (s.anamnese.includes('fam_parentifizierung')) sugg.perpetuating.push('Parentifizierung');
+      if (s.anamnese.includes('sex_precocious')) sugg.presenting.push('Sexualisiertes Verhalten (Missbrauchsindikator)');
+      if (s.anamnese.includes('sex_gender')) sugg.presenting.push('Geschlechtsinkongruenz');
+      if (s.anamnese.includes('legal_jugendgericht')) sugg.perpetuating.push('Jugendgerichtliche Maßnahme');
+      // Schutzfaktoren
+      if (s.anamnese.includes('bind_bezugsperson_stabil')) sugg.protective.push('Stabile Hauptbezugsperson vorhanden');
+      if (s.anamnese.includes('sex_altersgerecht')) sugg.protective.push('Altersgerechte sexuelle Entwicklung');
     }
 
     // Aus Screenings
