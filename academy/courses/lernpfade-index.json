@@ -528,5 +528,81 @@
         }
       ]
     }
+    ,{
+      "id": "schulverweigerung",
+      "titel": "Schulverweigerung & Schulangst",
+      "icon": "🏫",
+      "kategorie": "Klinik",
+      "dauer": "ca. 4 Stunden",
+      "schwierigkeit": "Anfänger",
+      "xp": 400,
+      "beschreibung": "Drei Formen des Schulabsentismus unterscheiden und gezielt intervenieren: Schulphobie (Trennungsangst), Schulangst (Leistungs-/Sozialangst), Schulverweigerung (oppositionell). Evidenzbasierte Strategien für jede Form.",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Modul 1: Drei Formen — eine entscheidende Unterscheidung",
+          "inhalt": "Schulabsentismus ist NICHT eine Diagnose — es ist ein Symptom mit mindestens drei verschiedenen Ursachen, die völlig unterschiedliche Behandlungen erfordern.\n\n1. SCHULPHOBIE (ICD-10 F93.0, Trennungsangst):\nDas Kind hat Angst, die Bezugsperson zu verlassen — nicht Angst vor der Schule. Typisch: Weinen morgens, somatische Beschwerden (Bauchschmerzen, Übelkeit), am Wochenende symptomfrei, jüngere Kinder (6-12). Die Eltern wissen wo das Kind ist (meistens zu Hause). Behandlung: graduierte Exposition (schrittweise Trennung üben) + Elternarbeit (Eltern müssen loslassen lernen).\n\n2. SCHULANGST (F93.1, Soziale/Leistungsangst):\nDas Kind hat Angst VOR der Schule: Prüfungsangst, soziale Angst (Mobbing, Vorträge), Versagensangst. Typisch: Angst vor bestimmten Fächern oder Situationen, Leistungsabfall, sozialer Rückzug. Behandlung: KVT (kognitive Umstrukturierung + graduierte Exposition), ggf. Schulwechsel bei Mobbing.\n\n3. SCHULVERWEIGERUNG (F91, oppositionell):\nDas Kind WILL nicht — aus Unlust, Opposition, Alternativbeschäftigung (Gaming, Peers). Kein Leidensdruck beim Kind selbst. Die Eltern wissen oft NICHT wo das Kind ist. Typisch: ältere Jugendliche (13+), Regelverstöße, Substanzkonsum. Behandlung: Verhaltensvertrag, klare Konsequenzen (positiv + negativ), Eltern-Coaching.\n\nDie Unterscheidung ist klinisch ENTSCHEIDEND. Schulphobie mit Grenzsetzung zu behandeln macht es schlimmer. Schulverweigerung mit Empathie allein ändert nichts."
+        },
+        {
+          "id": 2, "typ": "quiz", "titel": "Quiz: Differenzierung",
+          "fragen": [
+            {
+              "frage": "Marie, 8, weint jeden Morgen und klammert sich an die Mutter. Am Wochenende ist sie fröhlich. Was liegt wahrscheinlich vor?",
+              "optionen": ["Schulverweigerung (oppositionell)", "Schulangst (Leistungsangst)", "Schulphobie (Trennungsangst)", "ADHS"],
+              "korrekt": 2,
+              "erklaerung": "Klammern an Bezugsperson + jüngeres Alter + symptomfrei am Wochenende = klassische Schulphobie (Trennungsangst). Behandlung: graduierte Trennung, NICHT Zwang."
+            },
+            {
+              "frage": "Tom, 15, schwänzt seit 3 Wochen. Eltern wissen nicht wo er ist. Er zockt nachts und hat neue Freunde. Was liegt vor?",
+              "optionen": ["Schulphobie", "Schulangst", "Schulverweigerung (oppositionell)", "Depression"],
+              "korrekt": 2,
+              "erklaerung": "Eltern wissen nicht wo er ist + keine Angst + Alternativbeschäftigung (Gaming, neue Peers) = oppositionelle Schulverweigerung. Struktur, Konsequenzen, Eltern-Coaching."
+            },
+            {
+              "frage": "Warum ist die Unterscheidung klinisch so wichtig?",
+              "optionen": ["Für die Statistik", "Für die ICD-Kodierung", "Weil die Behandlung fundamental verschieden ist", "Ist nicht so wichtig"],
+              "korrekt": 2,
+              "erklaerung": "Schulphobie mit Grenzsetzung → Verschlimmerung. Schulverweigerung mit nur Empathie → keine Veränderung. Falsche Intervention schadet."
+            }
+          ]
+        },
+        {
+          "id": 3, "typ": "lektuere", "titel": "Modul 2: Diagnostik — wie erkenne ich die Form?",
+          "inhalt": "Diagnostischer Algorithmus:\n\n1. WO ist das Kind? Zu Hause bei Eltern → eher Phobie/Angst. Unterwegs, unklar → eher Verweigerung.\n2. WANN fehlt es? Bestimmte Tage/Fächer → eher Angst. Immer → eher Phobie oder Verweigerung.\n3. WIE reagiert es auf Schulthema? Angst/Panik/Weinen → Phobie/Angst. Gleichgültigkeit/Aggression → Verweigerung.\n4. LEIDET es? Ja (Bauchschmerzen, Schlafstörung) → Phobie/Angst. Nein → Verweigerung.\n\nScreening-Instrumente:\n- GAD-7 (Angst)\n- PHQ-A (Depression — oft komorbid)\n- SDQ (Verhaltensprobleme bei Verweigerung)\n- School Refusal Assessment Scale (SRAS, Kearney & Silverman)"
+        },
+        {
+          "id": 4, "typ": "lektuere", "titel": "Modul 3: Intervention bei Schulphobie",
+          "inhalt": "Evidenzbasierter Ansatz (S3-Leitlinie):\n\n1. Psychoedukation für Eltern: 'Ihr Kind hat echte Angst. Es simuliert nicht. Aber: Vermeidung verstärkt die Angst.'\n2. Graduierte Exposition — Schritt für Schritt:\n   Woche 1: Schulweg gehen (ohne reinzugehen)\n   Woche 2: 1 Stunde im Schulgebäude (Bibliothek, mit Vertrauensperson)\n   Woche 3: 1 Unterrichtsstunde (Lieblingsfach)\n   Woche 4: Halber Tag → ganzer Tag\n3. Eltern-Coaching: Morgens kein Verhandeln. Kurzer Abschied. Nicht zurückkommen.\n4. Begleitperson in der Schule (SePAS, Vertrauenslehrer)\n5. Belohnungssystem für Anwesenheit (nicht für Leistung)\n6. Ggf. SSRI bei schwerer Angst (KJP-Überweisung)"
+        },
+        {
+          "id": 5, "typ": "lektuere", "titel": "Modul 4: Intervention bei Schulangst",
+          "inhalt": "KVT-basiert:\n\n1. Angst-Hierarchie erstellen: Was genau macht Angst? (Mathe-Prüfung? Vor der Klasse sprechen? Umkleide?)\n2. Kognitive Umstrukturierung: 'Wenn ich eine 5 schreibe, bin ich ein Versager' → 'Eine 5 ist unangenehm, aber verändert nicht wer ich bin'\n3. Graduierte Exposition: Von leichtester zu schwerster Situation\n4. Skills-Aufbau: Prüfungsstrategien, Entspannungstechniken, Selbstinstruktion\n5. Schule einbeziehen: Nachteilsausgleich? Mündliche statt schriftliche Prüfungen? Sitzplatz?\n6. Bei Mobbing: Schulisches Anti-Mobbing-Protokoll aktivieren. Ggf. Klassenwechsel. NIEMALS dem Kind die Schuld geben."
+        },
+        {
+          "id": 6, "typ": "lektuere", "titel": "Modul 5: Intervention bei Schulverweigerung",
+          "inhalt": "Strukturiert-verhaltensorientiert:\n\n1. Klare Erwartungen: 'Schule ist Pflicht. Das ist nicht verhandelbar.'\n2. Verhaltensvertrag: Konkret, mit dem Jugendlichen zusammen. Was passiert wenn er geht? Was passiert wenn nicht?\n3. Positive Konsequenzen STÄRKER als negative (Gaming-Zeit als Verstärker, nicht als Strafe)\n4. Morgenroutine strukturieren: Aufstehzeit, Frühstück, Schulweg — nicht verhandelbar\n5. Eltern-Coaching: NICHT morgens verhandeln. Nicht anschreien. Konsequent sein.\n6. Funktionsanalyse: WARUM verweigert? Langeweile → Begabungsdiagnostik. Peers → Sozialarbeit. Substanzen → Suchtberatung.\n7. Multisystemische Therapie (MST) bei schweren Fällen\n\nWICHTIG: Keine Vorwürfe ('Du bist faul'). Aber auch keine falsche Empathie ('Ich verstehe wenn du nicht willst'). Die Haltung: 'Ich sehe dass es schwer ist. Und: du gehst trotzdem. Ich helfe dir dabei.'"
+        },
+        {
+          "id": 7, "typ": "quiz", "titel": "Quiz: Interventionen",
+          "fragen": [
+            {
+              "frage": "Was ist der ERSTE Schritt bei Schulphobie?",
+              "optionen": ["Schulpflicht durchsetzen", "Psychoedukation für Eltern", "Medikation", "Schulwechsel"],
+              "korrekt": 1,
+              "erklaerung": "Eltern müssen verstehen: Das Kind hat echte Angst (kein Simulieren), ABER Vermeidung verstärkt die Angst. Erst Verstehen, dann graduierte Exposition."
+            },
+            {
+              "frage": "Bei oppositioneller Schulverweigerung: Was funktioniert NICHT?",
+              "optionen": ["Verhaltensvertrag", "Nur Empathie ohne Konsequenzen", "Morgenroutine strukturieren", "Positive Verstärker"],
+              "korrekt": 1,
+              "erklaerung": "Empathie allein ändert bei oppositioneller Verweigerung nichts — weil kein Leidensdruck beim Kind besteht. Es braucht Struktur + Konsequenzen + Empathie zusammen."
+            }
+          ]
+        },
+        {
+          "id": 8, "typ": "reflexion", "titel": "Abschluss-Reflexion",
+          "frage": "Hast du aktuell einen Klienten mit Schulabsentismus? Welche der drei Formen liegt wahrscheinlich vor? Was wäre der nächste konkrete Schritt basierend auf dem was du gelernt hast?"
+        }
+      ]
+    }
   ]
 }
