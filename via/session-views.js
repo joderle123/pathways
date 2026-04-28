@@ -135,12 +135,21 @@ function renderPre() {
       const screenings = DB.getScreenings(APP.schuelerId).filter(x => x.abgeschlossen).sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
       if (screenings.length > 0) {
         const tage = Utils.daysBetween(screenings[0].datum, new Date().toISOString());
+        const latest = screenings[0];
+        const scoresSummary = Object.entries(latest.scores || {}).map(([id, v]) => id.toUpperCase() + ' ' + v.score + '/' + v.max).join(' · ');
+        let out = '';
+        if (scoresSummary) {
+          out += `<div style="padding: var(--space-3); background: var(--bg-subtle); border-radius: var(--radius-sm); margin-bottom: var(--space-3); font-size: 13px; border-left: 3px solid var(--color-app-claro);">
+            <strong>Letztes Screening (${Utils.formatDate(latest.datum)}):</strong> ${scoresSummary}
+          </div>`;
+        }
         if (tage >= 28) {
-          return `<div style="padding: var(--space-3); background: #DBEAFE; border: 1px solid #3B82F6; border-radius: var(--radius-sm); margin-bottom: var(--space-3); font-size: 14px;">
+          out += `<div style="padding: var(--space-3); background: #DBEAFE; border: 1px solid #3B82F6; border-radius: var(--radius-sm); margin-bottom: var(--space-3); font-size: 14px;">
             🔍 <strong>Re-Screening empfohlen</strong> — letztes Screening vor ${tage} Tagen (T${screenings.length + 1}).
             <a href="../claro/?schueler=${APP.schuelerId}&action=neu_screening" target="_blank" style="margin-left: 8px;">→ CLARO öffnen</a>
           </div>`;
         }
+        return out;
       } else {
         return `<div style="padding: var(--space-3); background: #FEF3C7; border: 1px solid #F59E0B; border-radius: var(--radius-sm); margin-bottom: var(--space-3); font-size: 14px;">
           🔍 <strong>Noch kein Screening</strong> — Baseline-Assessment (T1) vor der Begleitung empfohlen.

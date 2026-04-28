@@ -126,12 +126,37 @@ function renderHeute() {
   // Themen aus Roadmap
   const thema = aktivePhase?.themen?.[0] || APP.draft.thema || '';
 
+  // Screening-Daten aus CLARO
+  const screenings = DB.getScreenings(APP.schuelerId).filter(x => x.abgeschlossen).sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
+  const latestScreening = screenings[0];
+  const scores = latestScreening?.scores || {};
+  const ff = DB.getFallformulierung?.(APP.schuelerId);
+  const risiko = DB.getRisiko(APP.schuelerId).sort((a, b) => b.datum.localeCompare(a.datum))[0];
+
   container.innerHTML = `
     <div class="via-heute">
       <div class="via-heute-header">
         <h2>🛤️ Heute für ${Utils.escapeHtml(name)}</h2>
         <div style="font-size: 13px; color: var(--text-muted);">${new Date().toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long' })}</div>
       </div>
+
+      ${Object.keys(scores).length ? `
+        <div style="padding: var(--space-3); background: var(--bg-card); border-radius: var(--radius); margin-bottom: var(--space-3); box-shadow: var(--shadow-xs);">
+          <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: var(--space-2);">🔍 Diagnostik (CLARO) — ${Utils.formatDate(latestScreening.datum)}</div>
+          <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
+            ${Object.entries(scores).map(([id, val]) => {
+              const farbe = val.severity === 'high' || val.severity === 'critical' ? '#DC2626' : val.severity === 'mod' ? '#F59E0B' : '#10B981';
+              return '<span style="padding:4px 10px;background:var(--bg-subtle);border-radius:var(--radius-sm);font-size:13px;border-left:3px solid ' + farbe + ';">' + id.toUpperCase() + ': <strong>' + val.score + '/' + val.max + '</strong></span>';
+            }).join('')}
+          </div>
+          ${ff?.hypothese ? '<div style="font-size:13px;color:var(--text-secondary);margin-top:var(--space-2);font-style:italic;">Hypothese: ' + Utils.escapeHtml(ff.hypothese.slice(0, 80)) + '</div>' : ''}
+          ${screenings.length >= 2 ? '<div style="font-size:12px;color:var(--text-muted);margin-top:4px;">' + screenings.length + ' Messzeitpunkte vorhanden</div>' : ''}
+        </div>
+      ` : `
+        <div style="padding: var(--space-3); background: #FEF3C7; border-radius: var(--radius); margin-bottom: var(--space-3); font-size: 14px; border-left: 4px solid #F59E0B;">
+          🔍 <strong>Kein Screening vorhanden.</strong> <a href="../claro/?schueler=${APP.schuelerId}&action=neu_screening" target="_blank" style="color: #92400E;">→ In CLARO starten</a>
+        </div>
+      `}
 
       <div class="via-heute-empfehlung">
         <div class="via-heute-empfehlung-title">Empfehlung</div>
