@@ -171,8 +171,9 @@
       "titel": "Motivational Interviewing",
       "icon": "💬",
       "kategorie": "Gesprächsführung",
-      "dauer": "ca. 90 Min",
-      "xp": 150,
+      "schwierigkeit": "Fortgeschritten",
+      "dauer": "ca. 5 Stunden",
+      "xp": 500,
       "beschreibung": "Klientenzentrierte, direktive Methode zur Stärkung der Veränderungsmotivation (Miller & Rollnick 2013).",
       "schritte": [
         {
@@ -205,8 +206,33 @@
           "inhalt": "Klienten sind oft ambivalent ('Ich will aufhören, aber...'). Klassischer Fehler: Mit dem Klienten gegen die Sucht argumentieren. Besser: Ambivalenz reflektieren, beide Seiten sehen lassen, Diskrepanz zwischen Werten und Verhalten herausarbeiten."
         },
         {
-          "id": 5, "typ": "reflexion", "titel": "Praxis-Übung",
-          "frage": "Bei welchem aktuellen Klient würdest du gerne MI ausprobieren — und welche OARS-Technik beginnst du?"
+          "id": 5, "typ": "lektuere", "titel": "Change Talk erkennen und verstärken",
+          "inhalt": "Change Talk = jede Aussage des Klienten die in Richtung Veränderung zeigt. DARN-CAT:\n\nD — Desire ('Ich WÜNSCHE mir...')\nA — Ability ('Ich KÖNNTE...')\nR — Reasons ('Weil...')\nN — Need ('Ich MUSS...')\nC — Commitment ('Ich WERDE...')\nA — Activation ('Ich bin BEREIT...')\nT — Taking Steps ('Ich habe schon...')\n\nWas tun wenn du Change Talk hörst? Verstärken! Reflektieren, vertiefen, nachfragen. 'Du sagst, du könntest dir vorstellen... erzähl mir mehr.' NICHT übergehen oder relativieren.\n\nSustain Talk (Gegenpart): 'Ich KANN nicht...', 'Es hat keinen SINN...'. Nicht dagegen argumentieren — das verstärkt den Widerstand. Stattdessen: doppelseitige Reflexion ('Du siehst einerseits... und andererseits...')."
+        },
+        {
+          "id": 6, "typ": "lektuere", "titel": "Der Righting Reflex — und wie du ihn vermeidest",
+          "inhalt": "Der Righting Reflex ist der natürliche Impuls der Fachkraft, das Problem sofort zu lösen: 'Du solltest...', 'Hast du schon versucht...', 'Das Beste wäre...'\n\nDas Problem: Je mehr du FOR Veränderung argumentierst, desto mehr argumentiert der Klient GEGEN Veränderung. Das ist ein psychologisches Gesetz (Reaktanz).\n\nBeispiel:\nFachkraft: 'Cannabis ist schädlich für dein Gehirn.' (Righting Reflex)\nKlient: 'Ach, das ist übertrieben. Alle machen das.' (Sustain Talk)\n\nBesser:\nFachkraft: 'Was gefällt dir am Kiffen? Und was gefällt dir nicht?' (Ambivalenz explorieren)\nKlient: 'Naja, es hilft mir einzuschlafen. Aber morgens bin ich total fertig.' (Change Talk!)\n\nRegel: Wer für Veränderung ARGUMENTIEREN sollte, ist der KLIENT — nicht du."
+        },
+        {
+          "id": 7, "typ": "quiz", "titel": "Quiz: MI in der Praxis",
+          "fragen": [
+            {
+              "frage": "Ein Jugendlicher sagt: 'Ich könnte mir vorstellen, weniger zu kiffen.' Was ist das?",
+              "optionen": ["Sustain Talk", "Change Talk (Ability)", "Widerstand", "Höflichkeit"],
+              "korrekt": 1,
+              "erklaerung": "'Ich könnte...' = Ability-Change-Talk (DARN-CAT). Verstärken: 'Du siehst die Möglichkeit. Was müsste passieren damit du es ausprobierst?'"
+            },
+            {
+              "frage": "Was passiert wenn die Fachkraft den Righting Reflex folgt?",
+              "optionen": ["Der Klient fühlt sich verstanden", "Der Klient argumentiert GEGEN Veränderung (Reaktanz)", "Der Klient verändert sich sofort", "Nichts"],
+              "korrekt": 1,
+              "erklaerung": "Psychologische Reaktanz: Je mehr jemand FÜR etwas argumentiert, desto stärker argumentiert das Gegenüber DAGEGEN. MI vermeidet das durch Neutralität und Ambivalenz-Exploration."
+            }
+          ]
+        },
+        {
+          "id": 8, "typ": "reflexion", "titel": "Abschluss-Reflexion",
+          "frage": "Denke an ein Gespräch wo du den Righting Reflex hattest. Was hat der Klient darauf gesagt? Wie könntest du dasselbe Gespräch mit MI-Techniken anders führen?"
         }
       ]
     },
