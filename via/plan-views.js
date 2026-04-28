@@ -32,9 +32,13 @@ const STAERKEN = [
 
 async function loadPhasen() {
   if (APP.phasen) return APP.phasen;
-  const data = await Utils.safeFetch('phases/phase-templates.json');
-  if (!data) { showToast('Phase-Templates konnten nicht geladen werden', 'error'); return []; }
-  APP.phasen = data.phasen;
+  if (typeof PHASE_TEMPLATES_DATA !== 'undefined') {
+    APP.phasen = PHASE_TEMPLATES_DATA.phasen;
+  } else {
+    const data = await Utils.safeFetch('phases/phase-templates.json');
+    if (!data) { showToast('Phase-Templates konnten nicht geladen werden', 'error'); return []; }
+    APP.phasen = data.phasen;
+  }
   return APP.phasen;
 }
 
