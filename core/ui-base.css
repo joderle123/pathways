@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
+
 /* ============================================================
    Pathways Core — UI Base
    ============================================================
@@ -53,9 +55,10 @@
   --border-light: #EFEFEF;
   --border-focus: var(--primary);
 
-  /* ── Typography ── */
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-                 Oxygen, Ubuntu, sans-serif;
+  /* ── Typography (Manifest: DM Sans + Fraunces) ── */
+  --font-family: 'DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', monospace;
   --text-xs: 0.75rem;
   --text-sm: 0.8125rem;
   --text-md: 0.875rem;
@@ -64,6 +67,7 @@
   --text-2xl: 1.25rem;
   --text-3xl: 1.5rem;
   --text-4xl: 2rem;
+  --font-weight-light: 300;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
@@ -151,7 +155,19 @@ html, body {
   background: var(--bg);
   line-height: var(--line-height-normal);
   -webkit-font-smoothing: antialiased;
+  font-feature-settings: "liga", "kern";
+  font-weight: var(--font-weight-normal);
 }
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: -0.02em;
+  line-height: var(--line-height-tight);
+}
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-xl); }
 
 /* ── Buttons (gemeinsame Basis) ── */
 .btn {
