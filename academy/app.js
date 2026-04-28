@@ -773,46 +773,114 @@ function cdssBack() {
 }
 
 // ─── Wissenstest (kombiniertes Quiz) ─────────────────────────
+// ─── Wissenstest-Kategorien mit eigenem Fragenpool ──────────
+const QUIZ_KATEGORIEN = [
+  {
+    id: 'bindung', titel: 'Bindungstheorie', icon: '🔗', count: 15,
+    fragen: [
+      { frage: 'Wer entwickelte die Bindungstheorie?', optionen: ['Freud', 'Bowlby', 'Piaget', 'Erikson'], korrekt: 1, erklaerung: 'John Bowlby (1969) entwickelte die Bindungstheorie. Er beschrieb Bindung als biologisches Überlebenssystem.' },
+      { frage: 'Wie viele Bindungsmuster beschrieb Mary Ainsworth?', optionen: ['2', '3', '4', '5'], korrekt: 2, erklaerung: 'Ainsworth (1978) beschrieb 3 Muster (sicher, vermeidend, ambivalent). Main & Hesse fügten später das 4. hinzu (desorganisiert).' },
+      { frage: 'Was kennzeichnet desorganisierte Bindung?', optionen: ['Klammern', 'Vermeidung', 'Widersprüchliches Verhalten (Nähe + Abstoßung)', 'Gleichgültigkeit'], korrekt: 2, erklaerung: 'Desorganisierte Bindung (Typ D): Das Kind zeigt widersprüchliches Verhalten — es sucht Nähe und stößt gleichzeitig ab. Die Bezugsperson ist Quelle von Trost UND Angst.' },
+      { frage: 'Was ist ein "inneres Arbeitsmodell"?', optionen: ['Ein Therapieplan', 'Mentale Repräsentation von Beziehungen', 'Ein diagnostisches Instrument', 'Ein Lernkonzept'], korrekt: 1, erklaerung: 'Bowlby: Innere Arbeitsmodelle sind mentale Vorstellungen davon, wie Beziehungen funktionieren — gebildet durch frühe Bindungserfahrungen.' },
+      { frage: 'Welches Bindungsmuster ist am stärksten mit Misshandlung assoziiert?', optionen: ['Sicher', 'Vermeidend', 'Ambivalent', 'Desorganisiert'], korrekt: 3, erklaerung: 'Desorganisierte Bindung tritt gehäuft bei Misshandlung auf (Main & Hesse 1990) — die Bezugsperson ist gleichzeitig Schutz und Bedrohung.' },
+      { frage: 'Was ist Mentalisierung?', optionen: ['Meditation', 'Fähigkeit, Verhalten als Ausdruck innerer Zustände zu verstehen', 'Intellektuelle Übung', 'Diagnose-Methode'], korrekt: 1, erklaerung: 'Fonagy & Target (2002): Mentalisierung = die Fähigkeit, eigenes und fremdes Verhalten als Ausdruck von Gedanken, Gefühlen, Wünschen zu verstehen.' },
+      { frage: 'Was ist die wichtigste Intervention bei einem vermeidend gebundenen Jugendlichen?', optionen: ['Konfrontation', 'Konsistenz und Geduld', 'Mehr Fragen stellen', 'Medikation'], korrekt: 1, erklaerung: 'Vermeidend gebundene Kinder haben gelernt, Bedürfnisse zu unterdrücken. Sie brauchen eine Bezugsperson die BLEIBT, auch wenn sie ablehnen.' },
+      { frage: 'Was beschreibt die "Strange Situation" (Ainsworth)?', optionen: ['Eine Therapiemethode', 'Ein experimentelles Setting zur Beobachtung von Bindungsverhalten', 'Ein Fragebogen', 'Eine Diagnose'], korrekt: 1, erklaerung: 'Die Strange Situation (Ainsworth 1978): Standardisiertes Setting mit Trennung und Wiedervereingung — beobachtet wie das Kind auf die Rückkehr der Bezugsperson reagiert.' },
+      { frage: 'Was ist RAD (ICD-11 6B44)?', optionen: ['Reaktive Angststörung', 'Reaktive Bindungsstörung', 'Reizbare Aufmerksamkeitsstörung', 'Regulationsstörung'], korrekt: 1, erklaerung: 'Reactive Attachment Disorder: Gehemmtes Bindungsverhalten nach pathogener Fürsorge. Kind zeigt kaum Bindungsverhalten, sucht selten Trost.' },
+      { frage: 'Wie fördert man Mentalisierung bei Jugendlichen?', optionen: ['Arbeitsblätter', 'Laut über innere Zustände nachdenken (Modellierung)', 'Strafen', 'Ignorieren'], korrekt: 1, erklaerung: 'Mentalisierung wird durch Modellierung gelernt. Die Fachkraft denkt laut: "Ich frage mich ob du vielleicht Angst hast, dass..."' },
+      { frage: 'Ab welchem Alter beginnt Bindungsverhalten?', optionen: ['Geburt', '6-9 Monate', '2 Jahre', '5 Jahre'], korrekt: 1, erklaerung: 'Spezifische Bindung zu einer Bezugsperson entwickelt sich ab ca. 6-9 Monaten (Bowlby). Vorher: unspezifische Nähesuche.' },
+      { frage: 'Was unterscheidet DSED von RAD?', optionen: ['DSED zeigt Klammern, RAD zeigt Vermeidung', 'DSED zeigt unterschiedslose Kontaktaufnahme mit Fremden', 'DSED ist schwerer', 'Kein Unterschied'], korrekt: 1, erklaerung: 'DSED (Disinhibited Social Engagement Disorder): Kind nähert sich Fremden unterschiedslos. RAD: Kind zeigt kaum Bindungsverhalten. Beide nach pathogener Fürsorge.' },
+      { frage: 'Was meint "korrigierendes Bindungserleben"?', optionen: ['Alte Bindungsmuster löschen', 'Neue, positive Beziehungserfahrungen die das innere Arbeitsmodell verändern', 'Medikamentöse Korrektur', 'Eltern ersetzen'], korrekt: 1, erklaerung: 'Durch konsistente, sichere Beziehungserfahrungen mit der Fachkraft kann das innere Arbeitsmodell ("Erwachsene sind unzuverlässig") langsam korrigiert werden.' },
+      { frage: 'Warum ist Konsistenz bei desorganisierter Bindung so wichtig?', optionen: ['Weil Kinder Regeln brauchen', 'Weil das innere Modell "Erwachsene sind unberechenbar" korrigiert werden muss', 'Wegen der Hausordnung', 'Aus rechtlichen Gründen'], korrekt: 1, erklaerung: 'Das Kind hat gelernt: Die Person die mich schützen soll, ist auch die die mich bedroht. Nur durch monatelange Konsistenz wird dieses Modell korrigiert.' },
+      { frage: 'Welcher Forscher prägte den Begriff "Mentalisierung"?', optionen: ['Bowlby', 'Ainsworth', 'Fonagy', 'Porges'], korrekt: 2, erklaerung: 'Peter Fonagy (und Mary Target) prägten das Konzept der Mentalisierung und verbanden es mit Bindungstheorie (Fonagy & Target 2002).' },
+    ],
+  },
+  { id: 'polyvagal', titel: 'Polyvagal-Theorie', icon: '🧠', count: 12, fragen: [] },
+  { id: 'trauma', titel: 'Trauma-Grundlagen', icon: '🌪️', count: 20, fragen: [] },
+  { id: 'icd', titel: 'ICD-10 Differenzialdiagnostik', icon: '🏥', count: 25, fragen: [] },
+  { id: 'suizid', titel: 'Suizidprävention', icon: '🛡️', count: 15, fragen: [] },
+  { id: 'adhs', titel: 'ADHS bei Jugendlichen', icon: '⚡', count: 15, fragen: [] },
+  { id: 'allianz', titel: 'Therapeutische Allianz', icon: '🤝', count: 10, fragen: [] },
+  { id: 'dbt', titel: 'DBT Skills', icon: '🎭', count: 12, fragen: [] },
+  { id: 'kvt', titel: 'KVT Grundlagen', icon: '🧠', count: 15, fragen: [] },
+  { id: 'krise', titel: 'Krisenintervention', icon: '🚨', count: 10, fragen: [] },
+];
+
 async function renderWissenstest() {
+  const container = document.getElementById('ac-content');
+
+  // Auch Fragen aus Lernpfaden sammeln
   const pfade = await loadPfade();
-  const allQuestions = [];
+  const pfadFragen = [];
   pfade.forEach(p => {
     p.schritte.filter(s => s.typ === 'quiz').forEach(s => {
-      allQuestions.push(...(s.fragen || []));
+      pfadFragen.push(...(s.fragen || []));
     });
   });
 
-  // Shuffle
-  for (let i = allQuestions.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [allQuestions[i], allQuestions[j]] = [allQuestions[j], allQuestions[i]];
-  }
-
-  const container = document.getElementById('ac-content');
-
-  if (!allQuestions.length) {
-    container.innerHTML = `<div class="pw-empty"><div class="pw-empty-icon">🎯</div><p>Noch keine Quiz-Fragen verfügbar.</p></div>`;
-    return;
-  }
-
   container.innerHTML = `
-    <div style="margin-bottom: var(--space-5);">
-      <h2 style="font-size: 28px; margin-bottom: var(--space-2);">🎯 Wissenstest</h2>
-      <p style="color: var(--text-secondary);">Random ${Math.min(allQuestions.length, 5)} Fragen aus allen Lernpfaden — gemischt.</p>
+    <div style="max-width: 800px; margin: 0 auto;">
+      <div style="margin-bottom: 2rem;">
+        <h2 style="font-family: var(--font-serif); font-weight: 400; font-size: 1.75rem; letter-spacing: -0.03em;">Wissenstest</h2>
+        <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--sage); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.25rem;">
+          ${QUIZ_KATEGORIEN.reduce((s, k) => s + k.count, 0) + pfadFragen.length} Fragen in ${QUIZ_KATEGORIEN.length + 1} Kategorien
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
+        ${QUIZ_KATEGORIEN.map(k => {
+          const hasFragen = k.fragen && k.fragen.length > 0;
+          return `
+            <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 2px; padding: 1.25rem; cursor: ${hasFragen ? 'pointer' : 'default'}; transition: all 0.15s; opacity: ${hasFragen ? '1' : '0.5'};"
+                 ${hasFragen ? `onclick="startQuizKategorie('${k.id}')" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(0,0,0,0.06)'" onmouseout="this.style.transform='';this.style.boxShadow=''"` : ''}>
+              <div style="font-size: 24px; margin-bottom: 0.5rem;">${k.icon}</div>
+              <div style="font-family: var(--font-serif); font-weight: 500; font-size: 1rem; margin-bottom: 0.25rem;">${Utils.escapeHtml(k.titel)}</div>
+              <div style="font-family: var(--font-mono); font-size: 0.625rem; color: var(--sage); letter-spacing: 0.08em;">${hasFragen ? k.fragen.length + ' Fragen' : k.count + ' Fragen · bald'}</div>
+            </div>
+          `;
+        }).join('')}
+
+        <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 2px; padding: 1.25rem; cursor: pointer; transition: all 0.15s;"
+             onclick="startQuizRandom()" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+          <div style="font-size: 24px; margin-bottom: 0.5rem;">🎲</div>
+          <div style="font-family: var(--font-serif); font-weight: 500; font-size: 1rem; margin-bottom: 0.25rem;">Zufalls-Mix</div>
+          <div style="font-family: var(--font-mono); font-size: 0.625rem; color: var(--sage); letter-spacing: 0.08em;">${pfadFragen.length} Fragen aus Lernpfaden</div>
+        </div>
+      </div>
     </div>
   `;
-  const quizContainer = document.createElement('div');
-  container.appendChild(quizContainer);
+}
 
-  QuizEngine.start(allQuestions.slice(0, 5), {
-    container: quizContainer,
-    onComplete: result => {
-      if (result.passed && !result.done) {
-        addXP(50);
-        showToast('+50 XP für Wissenstest!', 'ok');
-      }
-    },
-  });
+function startQuizKategorie(katId) {
+  const kat = QUIZ_KATEGORIEN.find(k => k.id === katId);
+  if (!kat || !kat.fragen.length) return;
+  const container = document.getElementById('ac-content');
+  const quizContainer = document.createElement('div');
+  quizContainer.style.maxWidth = '700px';
+  quizContainer.style.margin = '0 auto';
+  container.innerHTML = '';
+  const header = document.createElement('div');
+  header.innerHTML = `<button class="btn" onclick="renderWissenstest()" style="margin-bottom: 1rem;">← Zurück</button><h2 style="font-family: var(--font-serif); font-weight: 400; margin-bottom: 1.5rem;">${kat.icon} ${Utils.escapeHtml(kat.titel)}</h2>`;
+  container.appendChild(header);
+  container.appendChild(quizContainer);
+  QuizEngine.start(kat.fragen, { container: quizContainer, onComplete: result => { if (result.passed) { addXP(30); showToast('+30 XP!', 'ok'); } } });
+}
+
+async function startQuizRandom() {
+  const pfade = await loadPfade();
+  const allQ = [];
+  pfade.forEach(p => p.schritte.filter(s => s.typ === 'quiz').forEach(s => allQ.push(...(s.fragen || []))));
+  for (let i = allQ.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [allQ[i], allQ[j]] = [allQ[j], allQ[i]]; }
+  const container = document.getElementById('ac-content');
+  const quizContainer = document.createElement('div');
+  quizContainer.style.maxWidth = '700px';
+  quizContainer.style.margin = '0 auto';
+  container.innerHTML = '';
+  const header = document.createElement('div');
+  header.innerHTML = `<button class="btn" onclick="renderWissenstest()" style="margin-bottom: 1rem;">← Zurück</button><h2 style="font-family: var(--font-serif); font-weight: 400; margin-bottom: 1.5rem;">🎲 Zufalls-Quiz</h2>`;
+  container.appendChild(header);
+  container.appendChild(quizContainer);
+  QuizEngine.start(allQ.slice(0, 10), { container: quizContainer, onComplete: result => { if (result.passed) { addXP(50); showToast('+50 XP!', 'ok'); } } });
 }
 
 // ─── Profil-Tab ──────────────────────────────────────────────
