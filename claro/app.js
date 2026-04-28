@@ -428,11 +428,11 @@ function renderScreeningWizard() {
                   ['Prosozial', result.subscales.prosocial, result.subCutoffs?.prosocial],
                 ].map(([label, val, cutoff]) => {
                   const farbe = cutoff === 'auffällig' ? '#DC2626' : cutoff === 'grenzwertig' ? '#F59E0B' : '#10B981';
-                  return \`<div style="padding: var(--space-2); background: var(--bg-subtle); border-radius: var(--radius-sm); border-left: 3px solid \${farbe};">
-                    <div style="font-size: 12px; color: var(--text-muted);">\${label}</div>
-                    <div style="font-size: 18px; font-weight: 700; color: \${farbe};">\${val}</div>
-                    <div style="font-size: 11px; color: \${farbe};">\${cutoff || ''}</div>
-                  </div>\`;
+                  return '<div style="padding: var(--space-2); background: var(--bg-subtle); border-radius: var(--radius-sm); border-left: 3px solid ' + farbe + ';">' +
+                    '<div style="font-size: 12px; color: var(--text-muted);">' + label + '</div>' +
+                    '<div style="font-size: 18px; font-weight: 700; color: ' + farbe + ';">' + val + '</div>' +
+                    '<div style="font-size: 11px; color: ' + farbe + ';">' + (cutoff || '') + '</div>' +
+                  '</div>';
                 }).join('')}
               </div>
             </div>

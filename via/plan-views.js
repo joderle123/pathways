@@ -280,6 +280,36 @@ function savePhaseNotizen(nr) {
 }
 
 // ─── SMART-Ziele ──────────────────────────────────────────
+const GAS_LABELS = [
+  { val: -2, label: 'Deutlich unter Erwartung', color: '#DC2626', icon: '⬇️' },
+  { val: -1, label: 'Etwas unter Erwartung', color: '#F59E0B', icon: '↓' },
+  { val: 0, label: 'Erwartetes Ergebnis', color: '#10B981', icon: '✓' },
+  { val: 1, label: 'Über Erwartung', color: '#059669', icon: '↑' },
+  { val: 2, label: 'Deutlich über Erwartung', color: '#047857', icon: '⬆️' },
+];
+
+function renderGoalCard(g) {
+  const gas = g.gas !== undefined ? g.gas : (g.status === 'erreicht' ? 0 : null);
+  const gasInfo = GAS_LABELS.find(x => x.val === gas);
+  const buttons = GAS_LABELS.map(gl => {
+    const sel = gas === gl.val;
+    return '<button style="flex:1;padding:4px 2px;font-size:10px;border:1px solid ' + (sel ? gl.color : 'var(--border)') + ';background:' + (sel ? gl.color + '15' : 'transparent') + ';color:' + (sel ? gl.color : 'var(--text-muted)') + ';border-radius:var(--radius-sm);cursor:pointer;font-weight:' + (sel ? '700' : '400') + ';" onclick="setGAS(\'' + g.id + '\',' + g.phaseNr + ',' + gl.val + ')" title="' + gl.label + '">' + gl.icon + '</button>';
+  }).join('');
+
+  return '<div class="rm-goal ' + (gas !== null && gas >= 0 ? 'done' : '') + '">' +
+    '<div style="display:flex;justify-content:space-between;align-items:flex-start;">' +
+      '<div class="rm-goal-title">' + (gasInfo ? gasInfo.icon + ' ' : '') + Utils.escapeHtml(g.titel || g.text || '?') + '</div>' +
+    '</div>' +
+    (g.beschreibung ? '<div style="font-size:13px;color:var(--text-secondary);margin:var(--space-2) 0;">' + Utils.escapeHtml(g.beschreibung) + '</div>' : '') +
+    '<div class="rm-goal-meta">' +
+      '<span>Phase ' + g.phaseNr + ': ' + (APP.phasen?.[g.phaseNr]?.name || '') + '</span>' +
+      (g.terminiert ? '<span>📅 ' + Utils.formatDate(g.terminiert) + '</span>' : '') +
+    '</div>' +
+    '<div style="display:flex;gap:2px;margin-top:var(--space-2);">' + buttons + '</div>' +
+    (gasInfo ? '<div style="font-size:11px;color:' + gasInfo.color + ';margin-top:4px;">' + gasInfo.label + '</div>' : '<div style="font-size:11px;color:var(--text-muted);margin-top:4px;">GAS bewerten →</div>') +
+  '</div>';
+}
+
 async function renderZiele() {
   await loadPhasen();
   const container = document.getElementById('via-content');
@@ -300,43 +330,8 @@ async function renderZiele() {
       <button class="btn btn-primary" onclick="addZiel()" style="margin-bottom: var(--space-4);">+ Neues SMART-Ziel</button>
 
       ${allGoals.length === 0
-        ? `<div class="pw-empty"><div class="pw-empty-icon">🎯</div><p>Noch keine Ziele definiert.</p></div>`
-        : allGoals.map(g => `
-            ${(() => {
-              // GAS: Goal Attainment Scaling (Kiresuk & Sherman 1968)
-              // -2 = deutlich schlechter, -1 = schlechter, 0 = wie erwartet, +1 = besser, +2 = viel besser
-              const gas = g.gas !== undefined ? g.gas : (g.status === 'erreicht' ? 0 : null);
-              const gasLabels = [
-                { val: -2, label: 'Deutlich unter Erwartung', color: '#DC2626', icon: '⬇️' },
-                { val: -1, label: 'Etwas unter Erwartung', color: '#F59E0B', icon: '↓' },
-                { val: 0, label: 'Erwartetes Ergebnis', color: '#10B981', icon: '✓' },
-                { val: 1, label: 'Über Erwartung', color: '#059669', icon: '↑' },
-                { val: 2, label: 'Deutlich über Erwartung', color: '#047857', icon: '⬆️' },
-              ];
-              const gasInfo = gasLabels.find(x => x.val === gas);
-              return `
-                <div class="rm-goal ${gas !== null && gas >= 0 ? 'done' : ''}">
-                  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                    <div class="rm-goal-title">${gasInfo ? gasInfo.icon + ' ' : ''}${Utils.escapeHtml(g.titel || g.text || '?')}</div>
-                  </div>
-                  ${g.beschreibung ? `<div style="font-size: 13px; color: var(--text-secondary); margin: var(--space-2) 0;">${Utils.escapeHtml(g.beschreibung)}</div>` : ''}
-                  <div class="rm-goal-meta">
-                    <span>Phase ${g.phaseNr}: ${APP.phasen[g.phaseNr]?.name || ''}</span>
-                    ${g.terminiert ? `<span>📅 ${Utils.formatDate(g.terminiert)}</span>` : ''}
-                  </div>
-                  <div style="display: flex; gap: 2px; margin-top: var(--space-2);">
-                    ${gasLabels.map(gl => `
-                      <button style="flex: 1; padding: 4px 2px; font-size: 10px; border: 1px solid ${gas === gl.val ? gl.color : 'var(--border)'}; background: ${gas === gl.val ? gl.color + '15' : 'transparent'}; color: ${gas === gl.val ? gl.color : 'var(--text-muted)'}; border-radius: var(--radius-sm); cursor: pointer; font-weight: ${gas === gl.val ? '700' : '400'};"
-                        onclick="setGAS('${g.id}', ${g.phaseNr}, ${gl.val})" title="${gl.label}">
-                        ${gl.icon}
-                      </button>
-                    `).join('')}
-                  </div>
-                  ${gasInfo ? `<div style="font-size: 11px; color: ${gasInfo.color}; margin-top: 4px;">${gasInfo.label}</div>` : '<div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">GAS bewerten →</div>'}
-                </div>
-              `;
-            })()
-          `).join('')
+        ? '<div class="pw-empty"><div class="pw-empty-icon">🎯</div><p>Noch keine Ziele definiert.</p></div>'
+        : allGoals.map(g => renderGoalCard(g)).join('')
       }
     </div>
   `;
