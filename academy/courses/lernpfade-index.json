@@ -333,49 +333,84 @@
     },
     {
       "id": "suizidpraevention",
-      "titel": "Suizidprävention bei Jugendlichen",
+      "titel": "Suizidprävention & C-SSRS",
       "icon": "🛡️",
       "kategorie": "Sicherheit",
-      "dauer": "ca. 2 Stunden",
-      "xp": 300,
-      "beschreibung": "C-SSRS, Sicherheitsplanung nach Stanley-Brown, Means Restriction, Postvention. Wissen, das Leben rettet.",
+      "dauer": "ca. 3 Stunden",
+      "schwierigkeit": "Anfänger",
+      "pflichtfortbildung": true,
+      "xp": 350,
+      "beschreibung": "Pflichtfortbildung. C-SSRS anwenden, Sicherheitspläne erstellen, Means Restriction umsetzen, Postvention. Wissen, das Leben rettet.",
       "schritte": [
         {
-          "id": 1, "typ": "lektuere", "titel": "Epidemiologie: Suizid bei Jugendlichen",
-          "inhalt": "Suizid ist die zweithäufigste Todesursache bei 15-24-Jährigen weltweit (WHO 2023). Risikofaktoren: vorheriger Versuch (stärkster Prädiktor), psychische Erkrankung (Depression, Substanz), ACE ≥ 4, LGBTQ+-Identität (3-4× Risiko), Zugang zu Mitteln, kürzlicher Verlust, Impulsivität. Schutzfaktoren: stabile Bezugsperson, Zugehörigkeit, Gründe zu leben, eingeschränkter Zugang zu Mitteln."
+          "id": 1, "typ": "lektuere", "titel": "Modul 1: Epidemiologie — Suizid bei Jugendlichen",
+          "inhalt": "Suizid ist die zweithäufigste Todesursache bei 15-24-Jährigen weltweit (WHO 2023). In Luxemburg: ca. 70 Suizide pro Jahr (alle Altersgruppen), steigende Tendenz bei Jugendlichen.\n\nRisikofaktoren (nach Bedeutung): (1) Vorheriger Suizidversuch — stärkster Einzelprädiktor (OR >30, Ribeiro et al. 2016). (2) Psychische Erkrankung — Depression, Substanzmissbrauch, Borderline. (3) ACE ≥ 4 — verdreifacht Suizidrisiko (Felitti 1998). (4) LGBTQ+-Identität — 3-4× erhöhtes Risiko (Trevor Project 2022). (5) Zugang zu letalen Mitteln. (6) Kürzlicher Verlust oder Krise. (7) Impulsivität (besonders bei Jungen). (8) Soziale Isolation / Mobbing.\n\nSchutzfaktoren: Stabile Bezugsperson (1 reicht!), Zugehörigkeitsgefühl, Gründe zu leben (Linehan), eingeschränkter Zugang zu Mitteln, religiöse/spirituelle Praxis.\n\nWICHTIG: Fragen nach Suizid erhöht das Risiko NICHT. Meta-Analyse (Dazzi et al. 2014): Kein einziger Hinweis dass Fragen schadet. Das Gegenteil ist belegt — Ansprechen senkt das Risiko."
         },
         {
-          "id": 2, "typ": "lektuere", "titel": "C-SSRS: Das Instrument",
-          "inhalt": "Columbia Suicide Severity Rating Scale (Posner et al. 2011): 5 Stufen von Lebensüberdruss bis Plan. Stufe 1: Wunsch tot zu sein. Stufe 2: Unspezifische Gedanken. Stufe 3: Gedanken mit Methode. Stufe 4: Absicht ohne Plan. Stufe 5: Absicht mit Plan. Plus Verhaltens-Items (Versuch aktuell/lebenszeitlich). WICHTIG: Fragen nach Suizid erhöht das Risiko NICHT (Dazzi et al. 2014, Meta-Analyse)."
+          "id": 2, "typ": "lektuere", "titel": "Modul 2: C-SSRS — Das Instrument anwenden",
+          "inhalt": "Columbia Suicide Severity Rating Scale (Posner et al. 2011) — der Gold-Standard.\n\n5 Stufen der Suizidgedanken:\nStufe 1: Lebensüberdruss — 'Ich wünschte, ich wäre nicht mehr da.'\nStufe 2: Unspezifische Gedanken — 'Ich habe daran gedacht, mir etwas anzutun.'\nStufe 3: Gedanken MIT Methode — 'Ich habe daran gedacht, Tabletten zu nehmen.'\nStufe 4: Absicht OHNE Plan — 'Ich will es tun, aber weiß nicht wann.'\nStufe 5: Absicht MIT Plan — 'Am Freitag, wenn niemand da ist.'\n\nPlus Verhaltens-Items: Vorbereitende Handlungen? Abschiedsbriefe? Verschenken von Besitz? Suizidversuch aktuell oder lebenszeitlich?\n\nAuswertung:\nStufe 1-2: Beobachten, Schutzfaktoren stärken, Krisennummer geben.\nStufe 3: Sicherheitsplan JETZT + Means Restriction + Folgetermin 48h.\nStufe 4-5: SOFORT psychiatrische Abklärung. Nicht allein lassen. CHNP oder 112.\n\nWICHTIG: Jedes Mal vollständig durchführen. Keine Abkürzungen. Dokumentieren."
         },
         {
-          "id": 3, "typ": "quiz", "titel": "Quiz: Risikoeinschätzung",
+          "id": 3, "typ": "quiz", "titel": "Quiz: C-SSRS in der Praxis",
           "fragen": [
             {
-              "frage": "Welcher Faktor ist der stärkste Prädiktor für einen Suizidversuch?",
+              "frage": "Welcher Faktor ist der stärkste Einzelprädiktor für einen Suizidversuch?",
               "optionen": ["Depression", "Vorheriger Suizidversuch", "Schlechte Noten", "Eltern-Scheidung"],
               "korrekt": 1,
-              "erklaerung": "Ein vorheriger Versuch ist der stärkste Einzelprädiktor (Odds Ratio >30, Ribeiro et al. 2016). Depression ist ein Risikofaktor, aber nicht der stärkste."
+              "erklaerung": "Vorheriger Versuch: Odds Ratio >30 (Ribeiro et al. 2016). Depression ist wichtig, aber nicht der stärkste Einzelfaktor."
             },
             {
-              "frage": "C-SSRS Stufe 3: Der Jugendliche sagt 'Ich habe daran gedacht, Tabletten zu nehmen.' Was tust du?",
-              "optionen": ["Abwarten", "Sicherheitsplan erstellen + Means Restriction", "Sofort 112 anrufen", "Eltern fragen"],
+              "frage": "C-SSRS Stufe 3: 'Ich habe daran gedacht, Tabletten zu nehmen.' Was tust du ZUERST?",
+              "optionen": ["Abwarten und beobachten", "Sicherheitsplan erstellen + Means Restriction", "Sofort 112 anrufen", "Nur Eltern informieren"],
               "korrekt": 1,
-              "erklaerung": "Stufe 3 (Methode) erfordert Sicherheitsplan + Means Restriction (Tabletten mit Eltern sichern) + Folgetermin innerhalb 48h. Kein Notfall (kein Plan/Absicht), aber NICHT abwarten."
+              "erklaerung": "Stufe 3 = Gedanken MIT Methode. Sicherheitsplan jetzt + Means Restriction (Tabletten sichern mit Eltern). Folgetermin innerhalb 48h. KEIN Notfall, aber auch NICHT abwarten."
+            },
+            {
+              "frage": "Stimmt es, dass Fragen nach Suizid das Risiko erhöht?",
+              "optionen": ["Ja, deshalb vorsichtig sein", "Nein — Meta-Analyse zeigt das Gegenteil", "Nur bei Kindern unter 12", "Kommt auf die Formulierung an"],
+              "korrekt": 1,
+              "erklaerung": "Dazzi et al. 2014 (Meta-Analyse): Kein einziger Hinweis, dass Fragen nach Suizid das Risiko erhöht. Ansprechen kann es sogar senken."
+            },
+            {
+              "frage": "Ab welcher C-SSRS-Stufe ist SOFORTIGE psychiatrische Abklärung nötig?",
+              "optionen": ["Ab Stufe 1", "Ab Stufe 3", "Ab Stufe 4-5", "Nie — immer erst abwarten"],
+              "korrekt": 2,
+              "erklaerung": "Stufe 4 (Absicht ohne Plan) und Stufe 5 (Absicht mit Plan) erfordern sofortige psychiatrische Abklärung. Person NICHT allein lassen."
             }
           ]
         },
         {
-          "id": 4, "typ": "lektuere", "titel": "Stanley-Brown Safety Plan (2012)",
-          "inhalt": "6 Schritte, IMMER gemeinsam mit dem Jugendlichen erstellen: 1. Warnsignale erkennen. 2. Eigene Coping-Strategien (Ablenkung, Beruhigung). 3. Soziale Ablenkung (Orte, Menschen — ohne über Krise sprechen). 4. Vertrauenspersonen kontaktieren (2-3 Namen + Nummern). 5. Professionelle Hilfe (SOS 45 45 45, 116 111, Therapeut). 6. Umgebung sichern (Means Restriction — Medikamente, Klingen, Alkohol). Plan als Foto auf dem Handy speichern."
+          "id": 4, "typ": "lektuere", "titel": "Modul 3: Stanley-Brown Sicherheitsplan",
+          "inhalt": "6 Schritte — IMMER gemeinsam mit dem Jugendlichen erstellen, nicht FÜR ihn:\n\n1. Warnsignale: 'Woran merkst DU, dass es dir schlechter geht?' (Gedanken, Gefühle, Verhalten, Situationen)\n2. Eigene Coping-Strategien: 'Was kannst du ALLEIN tun um dich abzulenken?' (Musik, Sport, Spazieren, Tagebuch — ohne andere Menschen)\n3. Soziale Ablenkung: 'Welche Menschen oder Orte helfen dir, OHNE dass du über die Krise sprechen musst?' (Café, Sportverein, Cousin)\n4. Vertrauenspersonen: 'Wem kannst du SAGEN dass es dir schlecht geht?' (2-3 Namen + Telefonnummern)\n5. Professionelle Hilfe: SOS Détresse 45 45 45, Kanner-Jugendtelefon 116 111, Therapeut, Notaufnahme\n6. Umgebung sichern: 'Welche gefährlichen Dinge können wir aus deiner Reichweite entfernen?' (Medikamente zu Eltern, Klingen weg, Alkohol)\n\nPlan als Foto auf dem Handy speichern. Kopie an Bezugsperson. Regelmäßig aktualisieren."
         },
         {
-          "id": 5, "typ": "lektuere", "titel": "Means Restriction: Die wirksamste Einzelmaßnahme",
-          "inhalt": "Zugang zu letalen Mitteln einschränken rettet Leben. Meta-Analyse (Zalsman et al. 2016): Means Restriction hat die stärkste Evidenz aller Suizidpräventions-Strategien. Praktisch: Medikamente bei Eltern, Klingen entfernen, Alkohol sichern. Brückengeländer erhöhen. Waffenzugang einschränken. Substitution: Die meisten Menschen wechseln NICHT die Methode wenn die primäre nicht verfügbar ist."
+          "id": 5, "typ": "lektuere", "titel": "Modul 4: Means Restriction",
+          "inhalt": "Zugang zu letalen Mitteln einschränken ist die wirksamste Einzelmaßnahme der Suizidprävention. Meta-Analyse (Zalsman et al. 2016): Stärkste Evidenz aller Strategien.\n\nWarum es funktioniert: Die meisten suizidalen Krisen sind zeitlich begrenzt (Minuten bis Stunden). Wenn die primäre Methode nicht verfügbar ist, wechseln die meisten Menschen NICHT zu einer anderen. Die Krise geht vorbei.\n\nPraktisch umsetzen:\n- Medikamente: Vorrat reduzieren, bei Eltern verschließen, Blister statt Flaschen\n- Klingen/Messer: Aus dem Zimmer, in verschlossener Schublade\n- Alkohol: Nicht im Zimmer des Jugendlichen\n- Online: Keine Suizid-Foren, ggf. Filter\n- Eltern einbeziehen: 'Es geht nicht darum, Ihrem Kind zu misstrauen — es geht darum, die Impulsdurchbrechung zu erschweren.'\n\nLegale Situation LU: Schweigepflicht kann bei akuter Selbstgefährdung gebrochen werden (Art. 458 Code pénal)."
         },
         {
-          "id": 6, "typ": "reflexion", "titel": "Reflexion: Eigene Grenzen",
-          "frage": "Wie fühlst du dich, wenn ein Jugendlicher Suizidgedanken äußert? Welche Unterstützung brauchst DU (Supervision, Kollegiale Beratung)? Selbstfürsorge nach Suizidalitäts-Kontakt ist kein Luxus — es ist Pflicht."
+          "id": 6, "typ": "lektuere", "titel": "Modul 5: Postvention — nach einem Suizid(versuch)",
+          "inhalt": "Postvention = Intervention NACH einem Suizid oder schweren Versuch im Umfeld.\n\nWenn ein Klient einen Versuch überlebt:\n- Kontakt innerhalb 24h nach Entlassung (höchstes Rückfall-Risiko)\n- Sicherheitsplan aktualisieren\n- Means Restriction verstärken\n- Engmaschige Begleitung (2-3×/Woche) für 4 Wochen\n\nWenn ein Klient stirbt:\n- Eigene Trauer: Du darfst trauern. Das ist keine Schwäche.\n- Supervision SOFORT — nicht in 2 Wochen\n- Kollegiale Beratung, nicht allein verarbeiten\n- Systematische Fallanalyse (was hätte anders sein können? — nicht als Schuldfrage, sondern als Lernprozess)\n- Andere Klienten informieren wenn nötig (Contagion-Risiko bei Jugendlichen!)\n- Papageno-Effekt nutzen: Geschichten von Menschen die Krisen überwunden haben (statt Details des Suizids)\n\nSelbstfürsorge: Suizidalitäts-Kontakt ist emotional die schwerste Arbeit. Plane nach solchen Sitzungen bewusst Erholung ein."
+        },
+        {
+          "id": 7, "typ": "quiz", "titel": "Quiz: Sicherheitsplan & Postvention",
+          "fragen": [
+            {
+              "frage": "Was ist der Hauptgrund warum Means Restriction funktioniert?",
+              "optionen": ["Jugendliche vergessen ihren Plan", "Suizidale Krisen sind oft zeitlich begrenzt", "Eltern passen besser auf", "Medikamente werden teurer"],
+              "korrekt": 1,
+              "erklaerung": "Die meisten suizidalen Krisen dauern Minuten bis Stunden. Wenn die primäre Methode nicht verfügbar ist, geht die Krise oft vorbei — ohne Methodenwechsel."
+            },
+            {
+              "frage": "Wann ist das Rückfall-Risiko nach einem Suizidversuch am höchsten?",
+              "optionen": ["Nach 6 Monaten", "Innerhalb der ersten 24-48h nach Entlassung", "Nach 1 Jahr", "Sofort im Krankenhaus"],
+              "korrekt": 1,
+              "erklaerung": "Die ersten 24-48 Stunden nach Entlassung aus dem Krankenhaus sind die gefährlichste Zeit. Kontakt in diesem Zeitfenster ist lebensrettend."
+            }
+          ]
+        },
+        {
+          "id": 8, "typ": "reflexion", "titel": "Abschluss-Reflexion",
+          "frage": "Wie fühlst du dich nach diesem Modul? Welche Unterstützung brauchst DU um mit Suizidalität bei Jugendlichen umzugehen? Hast du einen Supervision-Termin geplant? Selbstfürsorge nach diesem Thema ist Pflicht, nicht optional."
         }
       ]
     },
