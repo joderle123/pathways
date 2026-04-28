@@ -217,11 +217,13 @@ const SELBSTFUERSORGE_ITEMS = [
 function renderSelbstfuersorge() {
   const container = document.getElementById('ac-content');
   container.innerHTML = `
-    <div style="max-width: 700px;">
-      <h2 style="font-size: 28px; margin-bottom: var(--space-2);">💚 Selbstfürsorge-Check</h2>
-      <p style="color: var(--text-muted); margin-bottom: var(--space-4);">
-        Kurzer Check basierend auf ProQOL-Konzepten. Bewerte jede Aussage ehrlich (1–5).
-      </p>
+    <div style="max-width: 640px; margin: 0 auto;">
+      <div style="margin-bottom: 2rem;">
+        <h2 style="font-family: var(--font-serif); font-weight: 400; font-size: 1.75rem; letter-spacing: -0.03em;">Selbstfürsorge</h2>
+        <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--sage); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.25rem;">
+          ProQOL-basiert · 10 Items · Wöchentlich empfohlen
+        </div>
+      </div>
 
       <div id="sf-items">
         ${SELBSTFUERSORGE_ITEMS.map((item, i) => `
@@ -394,16 +396,19 @@ function renderSkillsTrainer() {
 
   if (!skillsState.szenario) {
     container.innerHTML = `
-      <div style="max-width: 700px;">
-        <h2 style="font-size: 28px; margin-bottom: var(--space-2);">🎭 Skills-Trainer</h2>
-        <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">
-          Simulierte Gesprächssituationen. Übe deine Reaktion — die App gibt Feedback basierend auf evidenzbasierten Gesprächstechniken.
-        </p>
-        <div style="display: grid; gap: var(--space-3);">
+      <div style="max-width: 700px; margin: 0 auto;">
+        <div style="margin-bottom: 2rem;">
+          <h2 style="font-family: var(--font-serif); font-weight: 400; font-size: 1.75rem; letter-spacing: -0.03em;">Skills-Trainer</h2>
+          <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--sage); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.25rem;">
+            ${SZENARIEN.length} Rollenspiel-Szenarien
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;">
           ${SZENARIEN.map(sz => `
-            <div class="ac-section" style="cursor: pointer;" onclick="startSzenario('${sz.id}')">
-              <h3>${Utils.escapeHtml(sz.titel)}</h3>
-              <p style="font-size: 14px; color: var(--text-secondary); font-style: italic;">"${Utils.escapeHtml(sz.situation.slice(0, 80))}…"</p>
+            <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 2px; padding: 1.5rem; cursor: pointer; transition: all 0.15s;"
+                 onclick="startSzenario('${sz.id}')" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(0,0,0,0.06)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+              <div style="font-family: var(--font-serif); font-weight: 500; font-size: 1rem; margin-bottom: 0.5rem;">${Utils.escapeHtml(sz.titel)}</div>
+              <p style="font-size: 0.8125rem; color: rgba(10,10,20,0.5); font-style: italic; line-height: 1.6;">"${Utils.escapeHtml(sz.situation.slice(0, 100))}…"</p>
             </div>
           `).join('')}
         </div>
@@ -984,8 +989,10 @@ async function renderProfil() {
 
   const container = document.getElementById('ac-content');
   container.innerHTML = `
-    <div style="margin-bottom: var(--space-5);">
-      <h2 style="font-size: 28px; margin-bottom: var(--space-2);">👤 Mein Lern-Profil</h2>
+    <div style="max-width: 800px; margin: 0 auto;">
+    <div style="margin-bottom: 2rem;">
+      <h2 style="font-family: var(--font-serif); font-weight: 400; font-size: 1.75rem; letter-spacing: -0.03em;">Karriere-Profil</h2>
+      <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--sage); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.25rem;">Deine professionelle Entwicklung</div>
     </div>
 
     <div class="ac-profile-grid">
