@@ -220,9 +220,41 @@ function renderOverview() {
   const container = document.getElementById('dg-content');
   if (!APP.schuelerId) {
     container.innerHTML = `
-      <div class="dg-section">
-        <h2>📋 Übersicht</h2>
-        <p>Kein Klient gewählt. Öffne Klient via HUB: <a href="../hub/">→ HUB</a></p>
+      <div style="max-width: 680px; margin: 3rem auto; text-align: center;">
+        <div style="font-size: 64px; margin-bottom: 1.5rem;">🔍</div>
+        <h2 style="font-family: var(--font-serif, Georgia); font-size: 2rem; font-weight: 400; letter-spacing: -0.03em; margin-bottom: 1rem; color: #0a0a14;">
+          Willkommen in <em style="color: #c64f3d;">CLARO</em>
+        </h2>
+        <p style="font-size: 1.0625rem; color: rgba(10,10,20,0.55); line-height: 1.7; max-width: 48ch; margin: 0 auto 2.5rem; font-weight: 300;">
+          Adaptive Diagnostik für die Jugendhilfe. Starte mit einem Klienten aus dem HUB — oder wähle direkt ein Screening-Instrument.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; text-align: left; margin-bottom: 2rem;">
+          <a href="../hub/" style="text-decoration: none; padding: 1.25rem; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; transition: all 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.04);"
+             onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow='0 1px 3px rgba(0,0,0,0.04)'">
+            <div style="font-size: 24px; margin-bottom: 0.5rem;">🏠</div>
+            <div style="font-family: var(--font-serif, Georgia); font-weight: 500; font-size: 1rem; color: #0a0a14;">Klient wählen</div>
+            <div style="font-size: 0.8125rem; color: rgba(10,10,20,0.45); margin-top: 0.25rem;">Im HUB einen Klienten öffnen</div>
+          </a>
+          <div style="padding: 1.25rem; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; cursor: pointer; transition: all 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.04);"
+               onclick="setTab('triage')"
+               onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow='0 1px 3px rgba(0,0,0,0.04)'">
+            <div style="font-size: 24px; margin-bottom: 0.5rem;">🎯</div>
+            <div style="font-family: var(--font-serif, Georgia); font-weight: 500; font-size: 1rem; color: #0a0a14;">Triage starten</div>
+            <div style="font-size: 0.8125rem; color: rgba(10,10,20,0.45); margin-top: 0.25rem;">5 Fragen, 3 Minuten</div>
+          </div>
+          <div style="padding: 1.25rem; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; cursor: pointer; transition: all 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.04);"
+               onclick="setTab('screening')"
+               onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow='0 1px 3px rgba(0,0,0,0.04)'">
+            <div style="font-size: 24px; margin-bottom: 0.5rem;">📋</div>
+            <div style="font-family: var(--font-serif, Georgia); font-weight: 500; font-size: 1rem; color: #0a0a14;">Direkt screenen</div>
+            <div style="font-size: 0.8125rem; color: rgba(10,10,20,0.45); margin-top: 0.25rem;">PHQ-A, GAD-7, PCL-5, SDQ</div>
+          </div>
+        </div>
+
+        <div style="font-family: var(--font-mono, monospace); font-size: 0.6875rem; color: rgba(10,10,20,0.3); letter-spacing: 0.08em; text-transform: uppercase;">
+          6 validierte Instrumente · 18 Hypothesen-Regeln · ICD-11
+        </div>
       </div>
     `;
     return;
