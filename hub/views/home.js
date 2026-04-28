@@ -334,58 +334,42 @@ const HomeView = (function () {
     const risiko = risikoInfo(s.id);
     const geschichte = klinischeGeschichte(s);
 
+    // Screening-Badges
+    const scr = DB.getScreenings(s.id).filter(x => x.abgeschlossen).sort((a, b) => (b.datum || '').localeCompare(a.datum || ''))[0];
+    const scoreBadges = scr ? Object.entries(scr.scores || {}).map(([id, v]) => {
+      const c = v.severity === 'high' || v.severity === 'critical' ? '#c64f3d' : v.severity === 'mod' ? '#d4a93f' : '#1e7561';
+      return '<span style="padding:2px 8px;font-size:0.6875rem;font-family:var(--font-mono,monospace);border-radius:4px;background:' + c + '12;color:' + c + ';">' + id.toUpperCase() + ' ' + v.score + '</span>';
+    }).join('') : '';
+
+    // ORS Mini-Trend
+    const sitzungen = DB.getNotizen(s.id).filter(n => n.kategorie === 'session').sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
+    const orsPunkte = sitzungen.slice(0, 5).reverse().map(n => n.soap?.ors_total).filter(v => v !== undefined);
+
     return `
-      <div class="pw-card hub-klient-card" data-id="${s.id}" style="border-left: 4px solid ${risiko.farbe};">
-        <div class="pw-card-header">
-          <div class="pw-avatar">${initials(s)}</div>
-          <div class="pw-card-title">
-            <div class="pw-card-name">${Utils.escapeHtml(fullName)}</div>
-            <div class="pw-card-meta">${Utils.escapeHtml(meta) || ''}</div>
+      <div class="hub-card" onclick="showView('profil','${s.id}')" style="cursor: pointer;">
+        <div class="hub-card-top">
+          <div class="hub-card-avatar" style="background: ${risiko.farbe}15; color: ${risiko.farbe};">${initials(s)}</div>
+          <div class="hub-card-identity">
+            <div class="hub-card-name">${Utils.escapeHtml(fullName)}</div>
+            <div class="hub-card-meta">${Utils.escapeHtml(meta)}</div>
           </div>
-          <div class="hub-risiko-badge" style="background: ${risiko.farbe}20; color: ${risiko.farbe}; border: 1px solid ${risiko.farbe}40;">
-            ${risiko.label}
-          </div>
+          <div class="hub-card-status" style="color: ${risiko.farbe};">●</div>
         </div>
 
-        <div class="hub-geschichte">${Utils.escapeHtml(geschichte)}</div>
+        <p class="hub-card-story">${Utils.escapeHtml(geschichte)}</p>
 
-        ${(() => {
-          const scr = DB.getScreenings(s.id).filter(x => x.abgeschlossen).sort((a, b) => (b.datum || '').localeCompare(a.datum || ''))[0];
-          if (!scr) return '';
-          return '<div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:var(--space-2);">' +
-            Object.entries(scr.scores || {}).map(([id, v]) => {
-              const c = v.severity === 'high' || v.severity === 'critical' ? '#DC2626' : v.severity === 'mod' ? '#F59E0B' : '#10B981';
-              return '<span style="padding:1px 6px;font-size:11px;border-radius:3px;background:' + c + '15;color:' + c + ';border:1px solid ' + c + '30;">' + id.toUpperCase() + ' ' + v.score + '</span>';
-            }).join('') +
-          '</div>';
-        })()}
+        ${scoreBadges ? '<div class="hub-card-badges">' + scoreBadges + '</div>' : ''}
 
-        <div class="hub-risiko-erklaerung">
-          <span style="color: ${risiko.farbe};">●</span> ${Utils.escapeHtml(risiko.erklaerung)}
-        </div>
+        ${orsPunkte.length >= 2 ? `
+          <div class="hub-card-trend">
+            ${orsPunkte.map(v => '<div class="hub-card-bar" style="height:' + Math.max(4, v / 40 * 100) + '%;background:' + (v >= 25 ? '#1e7561' : v >= 15 ? '#d4a93f' : '#c64f3d') + ';"></div>').join('')}
+          </div>
+        ` : ''}
 
-        ${(() => {
-          const sitzungen = DB.getNotizen(s.id).filter(n => n.kategorie === 'session').sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
-          const orsPunkte = sitzungen.slice(0, 5).reverse().map(n => n.soap?.ors_total).filter(v => v !== undefined);
-          if (orsPunkte.length < 2) return '';
-          const maxOrs = 40;
-          return `<div class="hub-mini-trend">
-            ${orsPunkte.map(v => `<div class="hub-mini-bar" style="height: ${Math.max(3, v / maxOrs * 100)}%; background: ${v >= 25 ? '#10B981' : v >= 15 ? '#F59E0B' : '#DC2626'};"></div>`).join('')}
-            <div class="hub-mini-label">ORS ${orsPunkte.at(-1)?.toFixed(0) || ''}${orsPunkte.length >= 2 ? (orsPunkte.at(-1) > orsPunkte[0] ? ' ↑' : orsPunkte.at(-1) < orsPunkte[0] ? ' ↓' : ' →') : ''}</div>
-          </div>`;
-        })()}
-
-        <div class="pw-launcher">${APPS.map(app => `
-          <a class="pw-launch-btn" href="${Bridge.deepLink(app.id, { schueler: s.id })}" target="_blank" title="${app.label}">
-            <span class="icon">${app.icon}</span><span>${app.label}</span>
-          </a>
-        `).join('')}</div>
-
-        <div style="margin-top:var(--space-3); display:flex; gap:var(--space-2); flex-wrap: wrap;">
-          <button class="btn" style="flex:1" onclick="showView('profil','${s.id}')">Profil →</button>
-          <a class="btn" href="${Bridge.deepLink('via', { schueler: s.id, mode: 'sitzung' })}" target="_blank" title="Sitzung starten">🎯</a>
-          <a class="btn" href="${Bridge.deepLink('claro', { schueler: s.id, action: 'neu_screening' })}" target="_blank" title="Screening">🔍</a>
-          <button class="pw-btn-icon" onclick="openSchuelerModal('${s.id}')" title="Bearbeiten" style="color:var(--text-muted)">✏️</button>
+        <div class="hub-card-actions" onclick="event.stopPropagation();">
+          <a class="hub-card-action" href="${Bridge.deepLink('via', { schueler: s.id, mode: 'sitzung' })}" target="_blank">Sitzung</a>
+          <a class="hub-card-action" href="${Bridge.deepLink('claro', { schueler: s.id, action: 'neu_screening' })}" target="_blank">Screening</a>
+          <a class="hub-card-action" href="${Bridge.deepLink('codex', { schueler: s.id })}" target="_blank">Material</a>
         </div>
       </div>
     `;
