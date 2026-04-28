@@ -678,27 +678,100 @@ async function loadCdss() {
   return APP.cdssTrees;
 }
 
+const CDSS_VIGNETTEN = [
+  { id: 'v1', chip: 'Schulvermeidung, 14J, Familie kooperativ',
+    titel: 'Schulvermeidung seit 6 Monaten',
+    studien: [
+      { autor: 'Kearney & Silverman 2004', evidenz: 'II', kern: 'SRAS unterscheidet 4 Funktionen der Schulvermeidung: negative Verstärkung (Angst vermeiden), positive Verstärkung (Belohnung zu Hause), Aufmerksamkeit, tangible Verstärker.' },
+      { autor: 'Maynard et al. 2015 (Meta-Analyse)', evidenz: 'I', kern: 'KVT ist die wirksamste Intervention bei angstbedingter Schulvermeidung. Effektstärke d=0.54 für Anwesenheits-Tage.' },
+    ],
+    empfehlungen: ['Funktionsanalyse: WARUM vermeidet? (SRAS durchführen)', 'Bei Angst: graduierte Exposition (S3-Leitlinie)', 'Bei oppositioneller Verweigerung: Verhaltensvertrag + Eltern-Coaching', 'Schule einbeziehen: Vertrauensperson, angepasster Stundenplan', 'GAD-7 + PHQ-A durchführen (Komorbidität häufig)'],
+  },
+  { id: 'v2', chip: 'Ritzen, 13J, Eltern ahnungslos',
+    titel: 'Wiederholtes Ritzen bei 13-Jähriger',
+    studien: [
+      { autor: 'Nock 2010', evidenz: 'II', kern: 'NSSI dient der Emotionsregulation (Spannungsabbau). Suizidalität und NSSI sind verwandt aber distinkt — 70% der NSSI-Betroffenen haben keine Suizidabsicht, aber das Risiko ist erhöht.' },
+      { autor: 'Linehan 1993 (DBT)', evidenz: 'I', kern: 'DBT-Skills (TIPP, Opposite Action, Distress Tolerance) sind die am besten untersuchte Intervention bei NSSI. Überlegen gegenüber TAU.' },
+    ],
+    empfehlungen: ['C-SSRS durchführen — NSSI ≠ suizidal, aber Risiko abklären', 'Funktion verstehen: Wann? Wo? Was davor? Was danach? (Spannungsabbau?)', 'Alternative Skills: Eiswürfel, Sport, rote Farbe auf Haut statt Schnitt', 'Eltern informieren — Schweigepflicht weicht bei Selbstgefährdung', 'PCL-5 wenn Trauma-Verdacht (NSSI häufig bei Trauma)'],
+  },
+  { id: 'v3', chip: 'Wut-Ausbrüche, 12J, ADHS-Verdacht',
+    titel: 'Extreme Wutausbrüche bei 12-Jährigem',
+    studien: [
+      { autor: 'Greene 2014 (CPS)', evidenz: 'II', kern: 'Collaborative Problem Solving: "Kinder benehmen sich gut wenn sie können." Wut entsteht aus fehlenden Skills (Frustrationstoleranz, Flexibilität), nicht aus Bösartigkeit.' },
+      { autor: 'Barkley 2015 (ADHS)', evidenz: 'I', kern: 'Bei ADHS ist Emotionsregulation ein Kerndefizit (nicht nur Aufmerksamkeit). 30-50% der Kinder mit ADHS zeigen signifikante Wutausbrüche. Medikation verbessert auch die Emotionsregulation.' },
+    ],
+    empfehlungen: ['ADHS-Screening (ASRS, Conners) — Wut kann ADHS-Symptom sein', 'SDQ durchführen (Conduct-Subskala)', 'CPS-Methode: Plan B (Empathie → Problem definieren → gemeinsame Lösung)', 'DBT-Skills: TIPP für akute Regulation', 'Eltern-Coaching: "Das Kind kann nicht, es will nicht" reframen'],
+  },
+];
+
 async function renderCdssList() {
   const trees = await loadCdss();
   const container = document.getElementById('ac-content');
   container.innerHTML = `
-    <div style="margin-bottom: var(--space-5);">
-      <h2 style="font-size: 28px; margin-bottom: var(--space-2);">🤖 CDSS — Clinical Decision Support</h2>
-      <p style="color: var(--text-secondary);">Strukturierte Entscheidungshilfen für komplexe Fälle. Jeder Pfad endet in evidenzbasierten Empfehlungen.</p>
-    </div>
-    <div class="ac-pfad-grid">
-      ${trees.map(t => `
-        <div class="ac-pfad" onclick="openCdss('${t.id}')">
-          <div class="ac-pfad-header">
-            <div class="ac-pfad-icon">${t.icon}</div>
-            <div>
-              <div class="ac-pfad-title">${Utils.escapeHtml(t.titel)}</div>
-              <div class="ac-pfad-meta">CDSS-Wizard</div>
-            </div>
-          </div>
-          <div class="ac-pfad-desc">${Utils.escapeHtml(t.intro)}</div>
+    <div style="max-width: 800px; margin: 0 auto;">
+      <div style="margin-bottom: 2rem;">
+        <h2 style="font-family: var(--font-serif); font-weight: 400; font-size: 1.75rem; letter-spacing: -0.03em;">Clinical Decision Support</h2>
+        <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--sage); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.25rem;">
+          Evidenzbasierte Empfehlungen für komplexe Fälle
         </div>
-      `).join('')}
+      </div>
+
+      <div style="margin-bottom: 2rem;">
+        <div style="font-family: var(--font-serif); font-weight: 500; font-size: 1rem; margin-bottom: 0.75rem;">Häufige Vignetten</div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          ${CDSS_VIGNETTEN.map(v => `
+            <button class="btn" onclick="showVignette('${v.id}')" style="font-size: 0.75rem; border-radius: 100px; padding: 0.5rem 1rem;">${Utils.escapeHtml(v.chip)}</button>
+          `).join('')}
+        </div>
+      </div>
+
+      <div id="cdss-vignette-result"></div>
+
+      <div style="margin-top: 2rem;">
+        <div style="font-family: var(--font-serif); font-weight: 500; font-size: 1rem; margin-bottom: 0.75rem;">Entscheidungsbäume</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem;">
+          ${trees.map(t => `
+            <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 2px; padding: 1.25rem; cursor: pointer; transition: all 0.15s;"
+                 onclick="openCdss('${t.id}')" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+              <div style="font-size: 20px; margin-bottom: 0.5rem;">${t.icon}</div>
+              <div style="font-family: var(--font-serif); font-weight: 500; font-size: 0.9375rem;">${Utils.escapeHtml(t.titel)}</div>
+              <div style="font-size: 0.75rem; color: var(--sage); margin-top: 0.25rem;">${Utils.escapeHtml(t.intro.slice(0, 60))}…</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function showVignette(id) {
+  const v = CDSS_VIGNETTEN.find(x => x.id === id);
+  if (!v) return;
+  const el = document.getElementById('cdss-vignette-result');
+  el.innerHTML = `
+    <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 2px; padding: 2rem;">
+      <h3 style="font-family: var(--font-serif); font-weight: 500; font-size: 1.25rem; margin-bottom: 1rem;">${Utils.escapeHtml(v.titel)}</h3>
+
+      <div style="margin-bottom: 1.5rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.625rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem;">Relevante Studien</div>
+        ${v.studien.map(s => `
+          <div style="padding: 0.75rem 1rem; border-left: 2px solid var(--gold); margin-bottom: 0.5rem; background: rgba(212,169,63,0.04);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-weight: 500; font-size: 0.875rem;">${Utils.escapeHtml(s.autor)}</span>
+              <span style="font-family: var(--font-mono); font-size: 0.5625rem; padding: 2px 8px; border: 1px solid var(--line); border-radius: 100px; color: var(--sage);">Evidenz ${s.evidenz}</span>
+            </div>
+            <p style="font-size: 0.8125rem; color: rgba(10,10,20,0.6); margin-top: 0.375rem; line-height: 1.6;">${Utils.escapeHtml(s.kern)}</p>
+          </div>
+        `).join('')}
+      </div>
+
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 0.625rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem;">Empfehlungen (priorisiert)</div>
+        <ol style="padding-left: 1.25rem; font-size: 0.875rem; line-height: 1.8; color: rgba(10,10,20,0.7);">
+          ${v.empfehlungen.map(e => `<li style="margin-bottom: 0.25rem;">${Utils.escapeHtml(e)}</li>`).join('')}
+        </ol>
+      </div>
     </div>
   `;
 }
