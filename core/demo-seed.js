@@ -116,6 +116,16 @@ const DemoSeed = {
     ];
 
     sitzungsDaten.forEach(sz => {
+      // Realistische VAS-Subskalen (0-10), Summe = ors_total
+      const orsSpread = (total) => {
+        const base = total / 4;
+        return { individual: Math.min(10, Math.max(0, base - 0.5)), interpersonal: Math.min(10, Math.max(0, base + 0.3)), social: Math.min(10, Math.max(0, base - 1)), overall: Math.min(10, Math.max(0, base + 1.2)) };
+      };
+      const srsSpread = (total) => {
+        const base = total / 4;
+        return { relationship: Math.min(10, Math.max(0, base + 0.5)), goals: Math.min(10, Math.max(0, base - 0.3)), approach: Math.min(10, Math.max(0, base + 0.2)), overall: Math.min(10, Math.max(0, base - 0.4)) };
+      };
+
       DB.createNotiz({
         schuelerId: lena.id,
         datum: sz.datum,
@@ -126,8 +136,8 @@ const DemoSeed = {
           typ: sz.typ,
           ors_total: sz.ors,
           srs_total: sz.srs,
-          ors: { individual: sz.ors / 4, interpersonal: sz.ors / 4, social: sz.ors / 4, overall: sz.ors / 4 },
-          srs: { relationship: sz.srs / 4, goals: sz.srs / 4, approach: sz.srs / 4, overall: sz.srs / 4 },
+          ors: orsSpread(sz.ors),
+          srs: srsSpread(sz.srs),
           pvt_start: sz.pvt_start,
           pvt_end: sz.pvt_end,
           stimmung_start: sz.stimmung_start,

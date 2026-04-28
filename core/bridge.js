@@ -72,7 +72,8 @@ const Bridge = (function () {
 
   /** Build a deep-link URL to another app. */
   function deepLink(app, params = {}) {
-    const base = `/${app}/`;
+    const resolved = resolveApp(app);
+    const base = `../${resolved}/`;
     const qs = Object.entries(params)
       .filter(([_, v]) => v !== undefined && v !== null && v !== '')
       .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)

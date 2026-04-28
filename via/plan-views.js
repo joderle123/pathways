@@ -173,7 +173,7 @@ function renderKriterienCheck(phaseDef, schuelerId) {
   const screenings = DB.getScreenings(schuelerId).filter(x => x.abgeschlossen);
   const hatT2 = screenings.length >= 2;
   const orsTrend = sitzungen.slice(0, 5).map(n => n.soap?.ors_total).filter(v => v !== undefined);
-  const orsVerbesserung = orsTrend.length >= 2 && orsTrend[0] > orsTrend[orsTrend.length - 1] + 2;
+  const orsVerbesserung = orsTrend.length >= 2 && orsTrend[0] > orsTrend[orsTrend.length - 1] + 5;
   const staerken = DB.getStaerken ? DB.getStaerken(schuelerId) : null;
 
   const checks = (phaseDef.kriterien_zur_naechsten || []).map(k => {
