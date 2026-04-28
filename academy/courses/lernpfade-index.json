@@ -279,11 +279,12 @@
     },
     {
       "id": "bindungstheorie",
-      "titel": "Bindungstheorie & Beziehungsgestaltung",
+      "titel": "Bindungstheorie in der Praxis",
       "icon": "🔗",
       "kategorie": "Klinik",
-      "dauer": "ca. 2.5 Stunden",
-      "xp": 250,
+      "dauer": "ca. 6 Stunden",
+      "schwierigkeit": "Fortgeschritten",
+      "xp": 500,
       "beschreibung": "Von Bowlby über Ainsworth zu Main: Bindungsmuster erkennen, verstehen und in der Begleitung nutzen. Die therapeutische Beziehung als korrigierendes Bindungserleben.",
       "schritte": [
         {
@@ -323,10 +324,37 @@
         },
         {
           "id": 5, "typ": "lektuere", "titel": "ICD-11: Reaktive Bindungsstörung (6B44)",
-          "inhalt": "RAD (Reactive Attachment Disorder): Kind zeigt kaum Bindungsverhalten, sucht selten Trost, wirkt emotional abgeflacht. DSED (Disinhibited Social Engagement Disorder): Kind nähert sich Fremden unterschiedslos, keine Scheu. Beide Störungen erfordern stabile, langfristige Bezugspersonenarbeit — keine kurzfristige Intervention."
+          "inhalt": "RAD (Reactive Attachment Disorder): Kind zeigt kaum Bindungsverhalten, sucht selten Trost, wirkt emotional abgeflacht. DSED (Disinhibited Social Engagement Disorder): Kind nähert sich Fremden unterschiedslos, keine Scheu. Beide Störungen erfordern stabile, langfristige Bezugspersonenarbeit — keine kurzfristige Intervention.\n\nDiagnostische Kriterien RAD (ICD-11 6B44):\n- Beginn vor dem 5. Lebensjahr\n- Pathogene Fürsorge nachweisbar (Vernachlässigung, häufige Wechsel)\n- Widersprüchliches Verhalten: Nähe suchen UND vermeiden\n- Nicht erklärbar durch ASS\n\nDiagnostische Kriterien DSED:\n- Reduzierte Zurückhaltung gegenüber Fremden\n- Bereitschaft, mit Fremden wegzugehen\n- Nicht altersgemäß (>9 Monate)\n- Kann auch bei ausreichender Fürsorge persistieren (nach früher Deprivation)"
         },
         {
-          "id": 6, "typ": "reflexion", "titel": "Praxis-Reflexion",
+          "id": 6, "typ": "lektuere", "titel": "Mentalisierung & Bindung (Fonagy 2002)",
+          "inhalt": "Mentalisierung = die Fähigkeit, eigenes und fremdes Verhalten als Ausdruck innerer Zustände (Gedanken, Gefühle, Wünsche) zu verstehen.\n\nFonagy & Target (2002) zeigten: Sichere Bindung fördert Mentalisierung. Unsichere Bindung hemmt sie. Kinder mit desorganisierter Bindung können oft NICHT verstehen, warum sie sich so fühlen wie sie sich fühlen — weil die Bezugsperson, die ihnen das beibringen sollte, gleichzeitig die Quelle der Angst war.\n\nIn der Praxis:\n- Kind schlägt ein anderes Kind → Frage nicht 'Warum hast du das getan?' (zu kognitiv). Frage: 'Was ist gerade in dir passiert?'\n- Mentalisierung fördern: 'Was denkst du, warum deine Mutter so reagiert hat?'\n- Eigene Mentalisierung modellieren: 'Ich merke, ich bin gerade unsicher. Ich glaube, das liegt daran, dass...'\n- NICHT mentalisieren für das Kind ('Du bist wütend weil...') — sondern MIT dem Kind mentalisieren\n\nWenn Mentalisierung zusammenbricht (in Stress): Zurück zur Regulation (Porges). Erst regulieren, dann mentalisieren."
+        },
+        {
+          "id": 7, "typ": "quiz", "titel": "Quiz: Bindung in der Praxis",
+          "fragen": [
+            {
+              "frage": "Ein 14-Jähriger erzählt dir detailliert von seinem Wochenende, vermeidet aber jede emotionale Äußerung. Welches Bindungsmuster könnte vorliegen?",
+              "optionen": ["Sicher", "Unsicher-vermeidend", "Unsicher-ambivalent", "Desorganisiert"],
+              "korrekt": 1,
+              "erklaerung": "Vermeidende Bindung: Faktisches Erzählen ohne Emotion = Deaktivierungsstrategie. Das Kind hat gelernt, emotionale Bedürfnisse zu unterdrücken um Ablehnung zu vermeiden."
+            },
+            {
+              "frage": "Was fördert Mentalisierung bei Jugendlichen am stärksten?",
+              "optionen": ["Arbeitsblätter ausfüllen", "Die Fachkraft mentalisiert laut mit ('Ich frage mich ob...')", "Belohnungssysteme", "Medikation"],
+              "korrekt": 1,
+              "erklaerung": "Mentalisierung wird durch Modellierung gelernt. Wenn die Fachkraft laut über innere Zustände nachdenkt ('Ich frage mich ob du vielleicht Angst hast, dass...'), lernt der Jugendliche diesen Prozess."
+            },
+            {
+              "frage": "Warum sollte man bei einem Kind mit desorganisierter Bindung besonders konsistent sein?",
+              "optionen": ["Weil es sonst frech wird", "Weil das innere Arbeitsmodell 'Erwachsene sind unberechenbar' korrigiert werden muss", "Weil die Eltern es so wollen", "Weil es im Lehrbuch steht"],
+              "korrekt": 1,
+              "erklaerung": "Desorganisiert gebundene Kinder haben gelernt: 'Die Person die mich schützen soll, ist auch die Person die mich bedroht.' Konsistenz über Monate ist die einzige Korrektur dieses Modells."
+            }
+          ]
+        },
+        {
+          "id": 8, "typ": "reflexion", "titel": "Abschluss-Reflexion",
           "frage": "Denke an einen Klienten: Welches Bindungsmuster zeigt er/sie in der Beziehung zu dir? Welches Muster aktiviert er/sie bei dir? (Gegenübertragung)"
         }
       ]
