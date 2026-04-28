@@ -83,6 +83,11 @@ body { background: var(--bg); }
   box-shadow: var(--shadow-xs);
 }
 .dg-section h2 { font-size: 22px; margin-bottom: var(--space-3); }
+.dg-section-intro {
+  background: var(--info-50, #EFF6FF); border-left: 4px solid var(--info, #3B82F6);
+  padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm);
+  margin-bottom: var(--space-4); font-size: 14px; line-height: var(--line-height-relaxed);
+}
 
 /* ── Instrument Cards ──────────────────────────────────── */
 .dg-instrument-grid {

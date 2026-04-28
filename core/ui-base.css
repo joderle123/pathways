@@ -36,6 +36,7 @@
   --bg-card: #FFFFFF;
   --bg-elevated: #FFFFFF;
   --bg-subtle: #F3F3F2;
+  --bg-hover: #E8E8E6;
   --bg-sidebar: #111113;
   --bg-sidebar-hover: rgba(255,255,255,0.055);
   --bg-sidebar-active: rgba(99, 102, 241, 0.13);
@@ -126,6 +127,7 @@ body.theme-dark {
   --bg-card: #1A1A1D;
   --bg-elevated: #232328;
   --bg-subtle: #18181B;
+  --bg-hover: #27272A;
   --text: #F4F4F5;
   --text-secondary: #D4D4D8;
   --text-light: #A1A1AA;

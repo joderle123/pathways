@@ -611,6 +611,13 @@ const DB = {
     if (migrated > 0) console.log(`[DB] Migrated ${migrated} legacy keys`);
     return migrated;
   },
+
+  getStaerken(schuelerId) {
+    try {
+      const all = JSON.parse(localStorage.getItem('pw_staerken') || '{}');
+      return all[schuelerId] || null;
+    } catch { return null; }
+  },
 };
 
 // Auto-Migrate beim Laden
