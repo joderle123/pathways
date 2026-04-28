@@ -62,9 +62,13 @@ function toggleTheme() {
 
 // ─── Index laden ─────────────────────────────────────────────
 async function loadIndex() {
-  const data = await Utils.safeFetch('data/materials-index.json');
-  if (!data) throw new Error('Index nicht gefunden. Run: node tools/build-search-index.cjs');
-  STATE.index = data;
+  if (typeof MATERIALS_DATA !== 'undefined') {
+    STATE.index = MATERIALS_DATA;
+  } else {
+    const data = await Utils.safeFetch('data/materials-index.json');
+    if (!data) throw new Error('Materialien konnten nicht geladen werden.');
+    STATE.index = data;
+  }
   console.log(`[CODEX] ${STATE.index.count} Materialien geladen`);
 }
 
