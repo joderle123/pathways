@@ -56,25 +56,33 @@ body {
 }
 .lib-search-wrap input {
   width: 100%;
-  padding: var(--space-2) var(--space-2) var(--space-2) 40px;
-  font-size: var(--text-md);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-full);
-  background: var(--bg-subtle);
+  padding: 0.5rem 0.75rem 0.5rem 2.25rem;
+  font-size: 0.8125rem; font-family: var(--font-family);
+  border: 1px solid rgba(245,240,232,0.12);
+  border-radius: 100px;
+  background: rgba(245,240,232,0.06);
+  color: #f5f0e8;
 }
+.lib-search-wrap input::placeholder { color: rgba(245,240,232,0.35); }
 .lib-search-wrap input:focus {
-  background: var(--bg-card);
-  border-color: var(--color-app-library);
-  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+  background: rgba(245,240,232,0.1);
+  border-color: rgba(245,240,232,0.25);
+  box-shadow: 0 0 0 3px rgba(245,240,232,0.05);
+  outline: none;
 }
 .lib-search-icon {
   position: absolute;
   left: 14px; top: 50%; transform: translateY(-50%);
-  font-size: 16px;
-  color: var(--text-muted);
+  font-size: 14px;
+  color: rgba(245,240,232,0.35);
 }
 
-.lib-actions { display: flex; gap: var(--space-2); align-items: center; }
+.lib-actions { display: flex; gap: 0.5rem; align-items: center; }
+.lib-actions .btn {
+  background: rgba(245,240,232,0.08); color: rgba(245,240,232,0.7);
+  border-color: rgba(245,240,232,0.12); font-size: 0.8125rem;
+}
+.lib-actions .btn:hover { background: rgba(245,240,232,0.15); color: #f5f0e8; }
 .lib-actions .btn.active {
   background: var(--accent-50);
   border-color: var(--accent);
@@ -84,18 +92,17 @@ body {
 /* ── Filter Sidebar ────────────────────────────────────────── */
 .lib-filters {
   grid-area: filters;
-  background: var(--bg-card);
-  border-right: 1px solid var(--border);
-  padding: var(--space-4);
+  background: #fff;
+  border-right: 1px solid rgba(0,0,0,0.06);
+  padding: 1.5rem 1rem;
   overflow-y: auto;
 }
 .lib-filters h3 {
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-semibold);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text-muted);
-  margin-bottom: var(--space-3);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.625rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: rgba(10,10,20,0.35);
+  margin-bottom: 0.75rem;
 }
 .lib-filter-group { margin-bottom: var(--space-5); }
 .lib-filter-label {
@@ -135,38 +142,36 @@ body {
 /* ── Main Grid ─────────────────────────────────────────────── */
 .lib-main {
   grid-area: main;
-  padding: var(--space-5);
+  padding: 1.5rem 2rem;
   overflow-y: auto;
 }
 .lib-result-bar {
-  font-size: var(--text-sm);
-  color: var(--text-muted);
-  margin-bottom: var(--space-4);
-  padding: var(--space-2) var(--space-3);
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6875rem; color: rgba(10,10,20,0.35);
+  letter-spacing: 0.04em;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
 }
 .lib-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--space-3);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
 }
 
 /* ── Material Card ─────────────────────────────────────────── */
 .lib-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: var(--space-4);
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 12px;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  transition: var(--transition);
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
 .lib-card:hover {
-  box-shadow: var(--shadow-md);
-  border-color: var(--color-app-library);
-  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transform: translateY(-3px);
 }
 .lib-card-header {
   display: flex;
