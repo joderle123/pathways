@@ -13,18 +13,18 @@ body {
     "filters main"   1fr
     / 260px 1fr;
   min-height: 100vh;
-  background: var(--bg);
+  background: #faf7f0;
 }
 
-/* ── Top Bar ───────────────────────────────────────────────── */
 .lib-topbar {
   grid-area: topbar;
   display: flex;
   align-items: center;
   gap: var(--space-4);
-  padding: 0 var(--space-5);
-  background: var(--bg-card);
-  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  background: #0a0a14;
+  color: rgba(245, 240, 232, 0.9);
+  border-bottom: 1px solid rgba(212, 169, 63, 0.1);
   position: sticky;
   top: 0;
   z-index: 50;
@@ -33,14 +33,21 @@ body {
   display: flex; align-items: center; gap: var(--space-3);
 }
 .lib-logo {
-  width: 40px; height: 40px;
-  background: var(--color-app-library);
-  border-radius: var(--radius-sm);
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, #0284c7, #38bdf8);
+  border-radius: 8px;
   display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);
   font-size: 22px; color: white;
 }
-.lib-app-name { font-weight: var(--font-weight-bold); font-size: var(--text-lg); letter-spacing: 0.5px; }
-.lib-app-tag { font-size: var(--text-xs); color: var(--text-muted); }
+.lib-app-name {
+  font-family: var(--font-serif, Georgia); font-weight: 500;
+  font-size: 1.125rem; letter-spacing: -0.02em; color: #f5f0e8;
+}
+.lib-app-tag {
+  font-family: var(--font-mono, monospace); font-size: 0.625rem;
+  letter-spacing: 0.12em; text-transform: uppercase; color: rgba(212, 169, 63, 0.5);
+}
 
 .lib-search-wrap {
   flex: 1;

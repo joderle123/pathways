@@ -5,31 +5,37 @@
    ============================================================ */
 
 html, body { height: 100%; }
-body { background: var(--bg); }
+body { background: #faf7f0; }
 
-/* ── Top Bar ─────────────────────────────────────────────── */
 .ac-topbar {
   display: flex;
   align-items: center;
   gap: var(--space-4);
-  padding: var(--space-3) var(--space-5);
-  background: linear-gradient(135deg, #0D9488, #14B8A6);
-  color: #fff;
+  padding: 0.875rem 2rem;
+  background: #0a0a14;
+  color: rgba(245, 240, 232, 0.9);
   position: sticky;
   top: 0;
   z-index: 50;
-  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid rgba(212, 169, 63, 0.1);
 }
 .ac-brand { display: flex; gap: var(--space-3); align-items: center; }
 .ac-logo {
-  width: 40px; height: 40px;
-  background: rgba(255,255,255,0.18);
-  border-radius: var(--radius-sm);
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, #0D9488, #14B8A6);
+  border-radius: 8px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 22px;
+  font-size: 18px;
+  box-shadow: 0 2px 8px rgba(20, 184, 166, 0.3);
 }
-.ac-app-name { font-weight: var(--font-weight-bold); font-size: 18px; letter-spacing: 0.5px; }
-.ac-app-tag { font-size: 12px; opacity: 0.9; }
+.ac-app-name {
+  font-family: var(--font-serif, Georgia); font-weight: 500;
+  font-size: 1.125rem; letter-spacing: -0.02em; color: #f5f0e8;
+}
+.ac-app-tag {
+  font-family: var(--font-mono, monospace); font-size: 0.625rem;
+  letter-spacing: 0.12em; text-transform: uppercase; color: rgba(212, 169, 63, 0.5);
+}
 .ac-stats {
   flex: 1;
   display: flex;
@@ -37,7 +43,7 @@ body { background: var(--bg); }
   justify-content: center;
 }
 .ac-xp, .ac-level, .ac-streak {
-  background: rgba(255,255,255,0.18);
+  background: rgba(245, 240, 232, 0.08);
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-full);
   font-weight: var(--font-weight-semibold);
