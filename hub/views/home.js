@@ -349,6 +349,17 @@ const HomeView = (function () {
 
         <div class="hub-geschichte">${Utils.escapeHtml(geschichte)}</div>
 
+        ${(() => {
+          const scr = DB.getScreenings(s.id).filter(x => x.abgeschlossen).sort((a, b) => (b.datum || '').localeCompare(a.datum || ''))[0];
+          if (!scr) return '';
+          return '<div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:var(--space-2);">' +
+            Object.entries(scr.scores || {}).map(([id, v]) => {
+              const c = v.severity === 'high' || v.severity === 'critical' ? '#DC2626' : v.severity === 'mod' ? '#F59E0B' : '#10B981';
+              return '<span style="padding:1px 6px;font-size:11px;border-radius:3px;background:' + c + '15;color:' + c + ';border:1px solid ' + c + '30;">' + id.toUpperCase() + ' ' + v.score + '</span>';
+            }).join('') +
+          '</div>';
+        })()}
+
         <div class="hub-risiko-erklaerung">
           <span style="color: ${risiko.farbe};">●</span> ${Utils.escapeHtml(risiko.erklaerung)}
         </div>
