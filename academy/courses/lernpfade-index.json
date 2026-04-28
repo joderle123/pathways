@@ -2,6 +2,94 @@
   "version": 1,
   "lernpfade": [
     {
+      "id": "polyvagal",
+      "titel": "Polyvagal-Theorie für Pädagogen",
+      "icon": "🧠",
+      "kategorie": "Klinik",
+      "dauer": "ca. 4 Stunden",
+      "schwierigkeit": "Anfänger",
+      "xp": 400,
+      "beschreibung": "Das autonome Nervensystem verstehen und in der täglichen Arbeit nutzen. Von der Theorie zur konkreten Intervention — wie du erkennst ob ein Jugendlicher in Safety, Fight/Flight oder Shutdown ist, und was du tun kannst.",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Modul 1: Was ist die Polyvagal-Theorie?",
+          "inhalt": "Die Polyvagal-Theorie wurde 1994 von Stephen Porges entwickelt und hat unser Verständnis des autonomen Nervensystems grundlegend verändert. Statt der klassischen Zweiteilung (Sympathikus vs. Parasympathikus) beschreibt Porges drei hierarchisch organisierte neuronale Schaltkreise, die unser Verhalten, unsere Emotionen und unsere Beziehungsfähigkeit steuern.\n\nDie drei Zustände:\n\n1. VENTRAL-VAGAL (Sicherheit & soziales Engagement)\nDer ventrale Vagus ist der evolutionär jüngste Schaltkreis. Er ist nur bei Säugetieren voll entwickelt und ermöglicht soziales Engagement: Blickkontakt, Zuhören, Sprechen mit modulierter Stimme, Gesichtsausdruck. Wenn dieser Schaltkreis aktiv ist, fühlen wir uns sicher, verbunden und können lernen. In der Sitzung zeigt sich das an: entspannter Körperhaltung, Blickkontakt, flüssigem Sprechen, Fähigkeit zuzuhören.\n\n2. SYMPATHIKUS (Mobilisierung — Kampf oder Flucht)\nWenn das Nervensystem Gefahr erkennt, schaltet es auf den Sympathikus um. Herzfrequenz steigt, Muskeln spannen sich an, Aufmerksamkeit verengt sich. In der Sitzung: Unruhe, Zappeln, erhöhte Reizbarkeit, schnelles Sprechen, Schwierigkeiten stillzusitzen. Wichtig: Kognitive Arbeit (Gespräch, Reflexion) ist in diesem Zustand stark eingeschränkt, weil der präfrontale Kortex 'offline' geht.\n\n3. DORSAL-VAGAL (Immobilisierung — Shutdown)\nDer evolutionär älteste Schaltkreis. Bei überwältigender Bedrohung schaltet das System ab: Herzfrequenz sinkt, Muskeltonus fällt, Dissoziation kann auftreten. In der Sitzung: glasiger Blick, keine Reaktion auf Ansprache, monotone oder fehlende Stimme, Zusammensacken. Dies ist KEIN Widerstand — es ist eine biologische Schutzreaktion.\n\nDie Hierarchie ist entscheidend: Der Körper versucht immer zuerst den sichersten Zustand (ventral-vagal). Nur wenn das nicht gelingt, eskaliert er zum Sympathikus, und erst als letztes zum dorsal-vagalen Shutdown. Für die Praxis bedeutet das: Wir müssen von unten nach oben arbeiten — erst Sicherheit herstellen, bevor kognitive Arbeit möglich ist.\n\nNeuroception: Porges prägte diesen Begriff für die unbewusste Einschätzung von Sicherheit oder Gefahr durch das Nervensystem. Neuroception geschieht OHNE bewusstes Denken. Ein traumatisiertes Kind kann in einem objektiv sicheren Raum Gefahr 'spüren' — weil seine Neuroception durch vergangene Erfahrungen kalibriert wurde. Das erklärt, warum rationale Argumente ('Du bist doch hier sicher') nicht funktionieren."
+        },
+        {
+          "id": 2, "typ": "quiz", "titel": "Quiz: Die drei Zustände",
+          "fragen": [
+            {
+              "frage": "Ein Schüler sitzt mit verschränkten Armen, wippt mit dem Bein und antwortet gereizt auf jede Frage. In welchem Zustand ist er wahrscheinlich?",
+              "optionen": ["Ventral-vagal (sicher)", "Sympathikus (Kampf/Flucht)", "Dorsal-vagal (Shutdown)", "Normal entspannt"],
+              "korrekt": 1,
+              "erklaerung": "Unruhe, Reizbarkeit und motorische Anspannung sind Zeichen sympathischer Aktivierung. Der Körper ist in 'Kampf-Modus'. Intervention: Verlangsamung, Atemübung, NICHT konfrontieren."
+            },
+            {
+              "frage": "Was bedeutet 'Neuroception'?",
+              "optionen": ["Bewusste Risikoeinschätzung", "Unbewusste Einschätzung von Sicherheit/Gefahr", "Eine Therapiemethode", "Ein Medikament"],
+              "korrekt": 1,
+              "erklaerung": "Neuroception (Porges 2004) ist die unbewusste, automatische Bewertung von Sicherheit oder Gefahr durch das Nervensystem — ohne bewusstes Denken."
+            },
+            {
+              "frage": "Eine Schülerin starrt ins Leere, reagiert nicht auf ihren Namen, ihr Körper ist schlaff. Was passiert neurologisch?",
+              "optionen": ["Sie ist gelangweilt", "Sympathische Aktivierung", "Dorsal-vagaler Shutdown", "Sie simuliert"],
+              "korrekt": 2,
+              "erklaerung": "Glasiger Blick, fehlende Reaktion und Muskelschlaffheit sind Zeichen eines dorsal-vagalen Shutdowns. Dies ist eine biologische Schutzreaktion, KEINE Verweigerung."
+            },
+            {
+              "frage": "In welcher Reihenfolge eskaliert das Nervensystem?",
+              "optionen": ["Shutdown → Kampf → Sicherheit", "Sicherheit → Kampf/Flucht → Shutdown", "Kampf → Sicherheit → Shutdown", "Zufällig"],
+              "korrekt": 1,
+              "erklaerung": "Die polyvagale Hierarchie: Zuerst versucht das System den sichersten Zustand (ventral-vagal). Erst wenn das scheitert: Sympathikus (Kampf/Flucht). Als letztes: dorsal-vagaler Shutdown."
+            },
+            {
+              "frage": "Warum funktioniert 'Du bist doch hier sicher' bei einem traumatisierten Kind oft nicht?",
+              "optionen": ["Das Kind lügt", "Es versteht kein Deutsch", "Die Neuroception überschreibt rationale Argumente", "Es will Aufmerksamkeit"],
+              "korrekt": 2,
+              "erklaerung": "Neuroception geschieht unbewusst und ist durch vergangene Erfahrungen kalibriert. Rationale Argumente erreichen den präfrontalen Kortex — aber der ist bei Bedrohung 'offline'. Man muss über den Körper regulieren, nicht über Worte."
+            }
+          ]
+        },
+        {
+          "id": 3, "typ": "lektuere", "titel": "Modul 2: Co-Regulation — die Brücke zum Kind",
+          "inhalt": "Co-Regulation bedeutet: Ein reguliertes Nervensystem hilft einem dysregulierten Nervensystem, sich zu beruhigen. Das ist die biologische Grundlage therapeutischer Beziehung. Konkret: Deine ruhige Stimme, dein entspannter Gesichtsausdruck, dein langsames Atmen — all das wird vom Nervensystem des Kindes unbewusst registriert und kann es aus dem Kampf/Flucht- oder Shutdown-Modus herausführen. Voraussetzung: DU musst reguliert sein. Wenn du selbst gestresst bist, überträgt sich das."
+        },
+        {
+          "id": 4, "typ": "lektuere", "titel": "Modul 3: Erkennen der Zustände in der Praxis",
+          "inhalt": "Checkliste für die Sitzung: SAFE (ventral-vagal): Blickkontakt, flüssiges Sprechen, entspannte Haltung, kann zuhören, Humor möglich. ACTIVATED (sympathisch): Unruhe, Zappeln, schnelles/lautes Sprechen, Reizbarkeit, kann nicht stillsitzen, Konzentrationsprobleme. FROZEN (dorsal-vagal): Glasiger Blick, leise/monotone Stimme, verlangsamte Reaktionen, Dissoziation, 'nicht da sein'. Dokumentiere den PVT-Status dreimal pro Sitzung: Anfang, Mitte, Ende."
+        },
+        {
+          "id": 5, "typ": "lektuere", "titel": "Modul 4: Interventionen nach PVT-Zustand",
+          "inhalt": "Bei ACTIVATED: (1) Eigenes Tempo verlangsamen. (2) 4-7-8 Atemübung. (3) Bilaterale Stimulation (Butterfly-Hug). (4) Sensorischer Fokus ('Was fühlst du unter deinen Füßen?'). Bei FROZEN: (1) Orientierung geben ('Du bist hier bei mir'). (2) Sensorischer Reiz (kaltes Wasser, Pfefferminzöl). (3) 5-4-3-2-1 Grounding. (4) NICHT anfassen ohne Erlaubnis. (5) Wenn >15 Min: Sitzung sanft beenden. Bei SAFE: Jetzt ist kognitive Arbeit möglich — Gespräch, Reflexion, Skills-Aufbau."
+        },
+        {
+          "id": 6, "typ": "quiz", "titel": "Quiz: Interventionen",
+          "fragen": [
+            {
+              "frage": "Welche Intervention passt bei dorsal-vagalem Shutdown?",
+              "optionen": ["Konfrontatives Gespräch", "5-4-3-2-1 Grounding + kalter Reiz", "Laut ansprechen und schütteln", "Ignorieren bis es vorbeigeht"],
+              "korrekt": 1,
+              "erklaerung": "Grounding und sensorische Reize (Kälte, starker Geruch) helfen dem Nervensystem, sich zu re-orientieren. Konfrontation oder Ignorieren verschlimmern den Zustand."
+            },
+            {
+              "frage": "Was ist die wichtigste Voraussetzung für Co-Regulation?",
+              "optionen": ["Eine bestimmte Technik kennen", "Selbst reguliert sein", "Laut und klar sprechen", "Den Klienten anfassen"],
+              "korrekt": 1,
+              "erklaerung": "Co-Regulation funktioniert nur wenn die Fachkraft selbst in einem regulierten Zustand ist. Das Nervensystem des Kindes registriert unbewusst deinen Zustand."
+            }
+          ]
+        },
+        {
+          "id": 7, "typ": "lektuere", "titel": "Modul 5: PVT im Alltag — jenseits der Sitzung",
+          "inhalt": "Polyvagale Prinzipien gelten überall: Im Klassenraum (Lautstärke, Licht, Sitzordnung beeinflussen Neuroception), im Elterngespräch (gestresste Eltern sind im Sympathikus — erst regulieren, dann informieren), in der Pause (kurze Atemübung für DICH). Tipp: Beginne jede Sitzung mit 30 Sekunden bewusstem Atmen. Nicht als Übung für den Klienten — sondern für DICH."
+        },
+        {
+          "id": 8, "typ": "reflexion", "titel": "Abschluss-Reflexion",
+          "frage": "Beschreibe einen Moment mit einem Klienten, in dem du jetzt — mit PVT-Wissen — verstehst, was neurologisch passiert ist. Was hättest du anders gemacht?"
+        }
+      ]
+    },
+    {
       "id": "trauma-informed",
       "titel": "Trauma-informiert arbeiten",
       "icon": "🌱",
@@ -242,7 +330,6 @@
           "frage": "Denke an einen Klienten: Welches Bindungsmuster zeigt er/sie in der Beziehung zu dir? Welches Muster aktiviert er/sie bei dir? (Gegenübertragung)"
         }
       ]
-    }
     },
     {
       "id": "suizidpraevention",
@@ -291,7 +378,6 @@
           "frage": "Wie fühlst du dich, wenn ein Jugendlicher Suizidgedanken äußert? Welche Unterstützung brauchst DU (Supervision, Kollegiale Beratung)? Selbstfürsorge nach Suizidalitäts-Kontakt ist kein Luxus — es ist Pflicht."
         }
       ]
-    }
     },
     {
       "id": "kvt-jugendliche",
@@ -340,7 +426,6 @@
           "frage": "Führe bei deinem nächsten Klienten mit depressiver Symptomatik ein 3-Spalten-Gedankenprotokoll ein. Dokumentiere: Wie hat der Klient reagiert? Was war schwierig?"
         }
       ]
-    }
     },
     {
       "id": "elternarbeit",
