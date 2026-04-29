@@ -1,0 +1,367 @@
+/* ============================================================
+   DIAGNOSE — Hypothesen-Engine
+   ============================================================
+   Generiert klinische Hypothesen basierend auf Screening-Ergebnissen,
+   Anamnese und ACE-Score. Regelbasiert mit Begründung.
+
+   API:
+     Hypotheses.generate(schuelerId)  → [{ titel, evidence, rationale, themen }]
+   ============================================================ */
+
+const Hypotheses = (function () {
+  // ─── Regeln ────────────────────────────────────────────
+  // Jede Regel: testet Bedingungen, liefert Hypothese mit Begründung
+  const RULES = [
+    {
+      id: 'depression-major',
+      titel: 'Depressive Episode (F32) — Major Depression',
+      themen: ['depressive-stimmungen', 'emotionsregulation', 'verhaltensaktivierung'],
+      icd: 'F32',
+      test: ctx => ctx.phqa >= 15,
+      rationale: ctx => `PHQ-A Score ${ctx.phqa} ≥ 15 (mittelschwer-schwer). Klinische Diagnostik empfohlen.`,
+    },
+    {
+      id: 'depression-mild',
+      titel: 'Leichte depressive Episode',
+      themen: ['depressive-stimmungen', 'wohlbefinden'],
+      icd: 'F32.0',
+      test: ctx => ctx.phqa >= 10 && ctx.phqa < 15,
+      rationale: ctx => `PHQ-A Score ${ctx.phqa} im Bereich leichter Depression.`,
+    },
+    {
+      id: 'gad',
+      titel: 'Generalisierte Angststörung (F41.1)',
+      themen: ['stress-angst', 'achtsamkeit', 'kognitive-umstrukturierung'],
+      icd: 'F41.1',
+      test: ctx => ctx.gad >= 10,
+      rationale: ctx => `GAD-7 Score ${ctx.gad} ≥ 10. Anhaltende Sorgen mit Funktionsbeeinträchtigung wahrscheinlich.`,
+    },
+    {
+      id: 'ptbs',
+      titel: 'PTBS — Posttraumatische Belastungsstörung (ICD-11 6B40 / ICD-10 F43.1)',
+      themen: ['trauma', 'stabilisierung', 'expositionsarbeit'],
+      icd: '6B40',
+      test: ctx => ctx.pcl >= 33,
+      rationale: ctx => {
+        const parts = [`PCL-5 Score ${ctx.pcl} ≥ 33 (Cutoff nach Weathers et al. 2013).`];
+        // ICD-11 KPTBS vs PTBS (korrekte Terminologie statt Typ I/II)
+        const traumaTypen = [ctx.anamnese_ace_sexual_abuse, ctx.anamnese_ace_physical_abuse, ctx.anamnese_ace_domestic_violence, ctx.anamnese_ace_emotional_abuse].filter(Boolean).length;
+        const hatSelbstorgStörung = ctx.phqa >= 10 || ctx.gad >= 10;
+        if (ctx.ace >= 4 && traumaTypen >= 2 && hatSelbstorgStörung) {
+          parts.push('<strong>ICD-11 KPTBS (6B41) wahrscheinlich</strong> — wiederholte/prolongierte Traumatisierung + Störung der Selbstorganisation (Emotionsregulation, negatives Selbstbild, Beziehungsprobleme). Diagnostik nach ICD-11 Kriterien empfohlen.');
+        } else if (ctx.ace >= 4 && traumaTypen >= 2) {
+          parts.push('Komplexe Traumatisierung in der Vorgeschichte. Prüfe ICD-11 KPTBS-Kriterien (Selbstorganisationsstörung?).');
+        } else {
+          parts.push('Einzelne oder begrenzte Traumatisierung. Standard-PTBS-Diagnostik (ICD-11 6B40).');
+        }
+        parts.push(ctx.ace >= 4
+          ? 'Stabilisierung prioritär vor Exposition (Herman 1992, Phase 1: Sicherheit).'
+          : 'Expositionsarbeit nach Stabilisierung möglich.');
+        return parts.join(' ');
+      },
+    },
+    {
+      id: 'adhs',
+      titel: 'ADHS (F90) — Verdacht',
+      themen: ['konzentration-aufmerksamkeit', 'impulskontrolle', 'lernstrategien'],
+      icd: 'F90',
+      test: ctx => ctx.asrs >= 16,
+      rationale: ctx => `ASRS Score ${ctx.asrs}. Vertiefte ADHS-Diagnostik (Conners, ADHS-DC) erwägen.`,
+    },
+    {
+      id: 'sozialverhalten',
+      titel: 'Störung des Sozialverhaltens (F91)',
+      themen: ['wut-aggression', 'impulskontrolle', 'soziale-wahrnehmung'],
+      icd: 'F91',
+      test: ctx => ctx.sdq?.subscales?.conduct >= 4,
+      rationale: ctx => `SDQ Conduct-Subskala ${ctx.sdq.subscales.conduct} ≥ 4 (auffällig).`,
+    },
+    {
+      id: 'essstoerung',
+      titel: 'Essstörungs-Verdacht (F50)',
+      themen: ['essverhalten', 'koerperbild-sexualitaet'],
+      icd: 'F50',
+      test: ctx => ctx.scoff >= 2,
+      rationale: ctx => `SCOFF ${ctx.scoff} ≥ 2 — Verdacht auf gestörtes Essverhalten.`,
+    },
+    {
+      id: 'komorbid-depression-angst',
+      titel: 'Komorbidität Depression + Angst',
+      themen: ['emotionsregulation', 'achtsamkeit', 'depressive-stimmungen'],
+      icd: 'F41.2',
+      test: ctx => ctx.phqa >= 10 && ctx.gad >= 10,
+      rationale: ctx => `Sowohl PHQ-A (${ctx.phqa}) als auch GAD-7 (${ctx.gad}) erhöht. Häufige Komorbidität.`,
+    },
+    {
+      id: 'komorbid-trauma-depression',
+      titel: 'Trauma-bedingte Depression',
+      themen: ['trauma', 'depressive-stimmungen', 'stabilisierung'],
+      icd: 'F43.1+F32',
+      test: ctx => ctx.pcl >= 33 && ctx.phqa >= 10,
+      rationale: ctx => `Trauma-Symptome (PCL-5 ${ctx.pcl}) + Depression (PHQ-A ${ctx.phqa}). Bei Komorbidität: Stabilisierung priorisieren (Herman 1992 Phase 1).`,
+    },
+    {
+      id: 'ace-hochbelastet',
+      titel: 'Hochbelastete Biographie (ACE ≥ 4)',
+      themen: ['trauma', 'resilienz', 'bindungsstoerung'],
+      icd: 'Z61',
+      test: ctx => ctx.ace >= 4,
+      rationale: ctx => `ACE-Score ${ctx.ace} ≥ 4 erhöht Risiko für Depression, Sucht, chronische Erkrankungen (Felitti et al. 1998).`,
+    },
+    {
+      id: 'bindungsstoerung',
+      titel: 'Bindungsstörung (ICD-11 6B44 / ICD-10 F94.1/F94.2)',
+      themen: ['bindung', 'beziehungsaufbau', 'stabilisierung'],
+      icd: '6B44',
+      test: ctx => (ctx.anamnese_ace_emotional_neglect || ctx.anamnese_ace_physical_neglect) && (ctx.anamnese_fam_heim || ctx.anamnese_fam_pflege),
+      rationale: ctx => 'Vernachlässigung + frühe Institutionalisierung/Fremdunterbringung. Reaktive Bindungsstörung (RAD) oder enthemmte Bindungsstörung (DSED) abklären. Strukturiertes Attachment-Assessment empfohlen.',
+    },
+    {
+      id: 'anpassungsstoerung',
+      titel: 'Anpassungsstörung (ICD-11 6B43 / ICD-10 F43.2)',
+      themen: ['krisenbewaeltigung', 'emotionsregulation', 'ressourcenaktivierung'],
+      icd: '6B43',
+      test: ctx => ctx.phqa >= 5 && ctx.phqa < 15 && ctx.pcl < 33 && (ctx.anamnese_schul_wechsel || ctx.anamnese_ace_parent_separation || ctx.anamnese_fam_alleinerziehend),
+      rationale: ctx => `Milde depressive Symptomatik (PHQ-A ${ctx.phqa}) unterhalb PTBS-Schwelle + identifizierter psychosozialer Stressor. Anpassungsreaktion wahrscheinlicher als Major Depression. Verlauf beobachten, Re-Screening in 4-6 Wochen.`,
+    },
+    {
+      id: 'schulphobie',
+      titel: 'Schulphobie / Trennungsangst im Schulkontext (ICD-10 F93.0)',
+      themen: ['trennungsangst', 'exposition', 'elternarbeit'],
+      icd: 'F93.0',
+      test: ctx => ctx.anamnese_schul_phobie && ctx.gad >= 7,
+      rationale: ctx => `Schulphobie (Trennungsangst) bei GAD-7 ${ctx.gad} + Anamnese-Hinweis. Behandlung: graduierte Exposition + Elternarbeit (Eltern-Kind-Trennung üben). Abgrenzung zu Schulangst (F93.1, leistungsbezogen) und Schulverweigerung (F91, oppositionell) prüfen.`,
+    },
+    {
+      id: 'schulverweigerung-oppositionell',
+      titel: 'Schulverweigerung mit oppositionellem Verhalten (ICD-10 F91)',
+      themen: ['wut-aggression', 'impulskontrolle', 'grenzsetzung'],
+      icd: 'F91',
+      test: ctx => ctx.anamnese_schul_verweigerung && (ctx.sdq?.subscales?.conduct >= 4 || ctx.anamnese_schul_absentismus),
+      rationale: ctx => 'Oppositionelle Schulverweigerung + Conduct-Auffälligkeiten. Behandlung: Verhaltenskontrakt, Verstärkerpläne, strukturierte Grenzsetzung. Eltern-Coaching. Cave: Abgrenzung zu angstbedingtem Absentismus.',
+    },
+    {
+      id: 'substanzkonsum',
+      titel: 'Substanzkonsumstörung — Abklärung empfohlen (ICD-10 F1x)',
+      themen: ['substanzkonsum', 'motivational-interviewing', 'harm-reduction'],
+      icd: 'F1x',
+      test: ctx => ctx.anamnese_subst_cannabis || ctx.anamnese_subst_alkohol || ctx.anamnese_subst_andere,
+      rationale: ctx => {
+        const subs = [];
+        if (ctx.anamnese_subst_cannabis) subs.push('Cannabis');
+        if (ctx.anamnese_subst_alkohol) subs.push('Alkohol');
+        if (ctx.anamnese_subst_andere) subs.push('andere Substanzen');
+        return `Substanzkonsum dokumentiert: ${subs.join(', ')}. CRAFFT-Screening empfohlen (Knight et al. 2002). Motivational Interviewing als First-Line. Bei Komorbidität (Depression + Substanz): integrierte Behandlung, nicht sequenziell.`;
+      },
+    },
+    {
+      id: 'schlafstörung',
+      titel: 'Schlafstörung als komorbider Faktor',
+      themen: ['schlafhygiene', 'entspannung', 'psychoedukation'],
+      icd: 'F51',
+      test: ctx => ctx.anamnese_schlaf_einschlaf || ctx.anamnese_schlaf_durchschlaf || ctx.anamnese_schlaf_alptraeume,
+      rationale: ctx => 'Schlafstörung in Anamnese. Schlaf ist Kern-Moderator für Depression (Lovato & Gradisar 2014), Angst und PTBS (Alpträume = PCL-5 Item 2). Schlafhygiene-Intervention als Basismaßnahme. Cave: Bei Alpträumen + Trauma → Imagery Rehearsal Therapy (IRT).',
+    },
+    {
+      id: 'suizidrisiko',
+      titel: '⚠️ Suizidrisiko',
+      themen: ['krisenintervention', 'sicherheitsplan'],
+      icd: 'X71-X83',
+      test: ctx => ctx.phqaItem9 >= 1 || ctx.cssrs?.severity === 'high' || ctx.cssrs?.severity === 'critical',
+      rationale: ctx => `${ctx.phqaItem9 >= 1 ? `PHQ-A Item 9 (Suizidgedanken) ≥ ${ctx.phqaItem9}. ` : ''}${ctx.cssrs ? `C-SSRS Severity: ${ctx.cssrs.severity}. ` : ''}<strong>Sicherheitsplan jetzt erstellen.</strong>`,
+    },
+  ];
+
+  /** Liefert kontextuelle Werte für die Regel-Auswertung. */
+  function buildContext(schuelerId) {
+    const screenings = DB.getScreenings(schuelerId).filter(s => s.abgeschlossen);
+    const latest = screenings.sort((a, b) => (b.datum || '').localeCompare(a.datum || ''))[0];
+
+    const ctx = {
+      schuelerId,
+      phqa: 0, phqaItem9: 0,
+      gad: 0, pcl: 0, asrs: 0, scoff: 0,
+      sdq: null,
+      cssrs: null,
+      ace: 0,
+    };
+
+    // Screening-Scores aus letztem Screening
+    if (latest && latest.scores) {
+      Object.entries(latest.scores).forEach(([instrId, val]) => {
+        if (typeof val === 'object' && val.score !== undefined) {
+          if (instrId === 'phq-a') { ctx.phqa = val.score; ctx.phqaItem9 = val.item9 || 0; }
+          if (instrId === 'gad-7') ctx.gad = val.score;
+          if (instrId === 'pcl-5') ctx.pcl = val.score;
+          if (instrId === 'asrs') ctx.asrs = val.score;
+          if (instrId === 'scoff') ctx.scoff = val.score;
+          if (instrId === 'sdq') ctx.sdq = val;
+        }
+      });
+    }
+
+    // C-SSRS aus pw_risiko
+    const risiko = DB.getRisiko(schuelerId).sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
+    const cssrsRisk = risiko.find(r => r.werte?.cssrs_severity);
+    if (cssrsRisk) ctx.cssrs = cssrsRisk.werte;
+
+    // ACE + Einzel-Flags aus Anamnese
+    const s = DB.getSchuelerById(schuelerId);
+    if (s?.anamnese) {
+      ctx.ace = s.anamnese.filter(id => id.startsWith('ace_')).length;
+      s.anamnese.forEach(id => ctx['anamnese_' + id] = true);
+    }
+
+    return ctx;
+  }
+
+  const SEQUENZIERUNG = {
+    'ptsd': 'Erst stabilisieren (Phase 1 Herman), dann verarbeiten. Trauma-Exposition nicht vor stabiler Allianz.',
+    'komorbid-trauma-depression': 'Stabilisierung priorisieren. Depression oft sekundär zum Trauma.',
+    'suizidrisiko': 'Sicherheitsplan SOFORT. Keine explorative Arbeit bis Risiko abgeklärt.',
+  };
+
+  // Score-Schwellen und Maxima pro Instrument
+  const CUTOFFS = {
+    'phq-a': { cutoff: 10, max: 27 },
+    'gad-7': { cutoff: 10, max: 21 },
+    'pcl-5': { cutoff: 33, max: 80 },
+    'asrs':  { cutoff: 16, max: 72 },
+    'scoff': { cutoff: 2, max: 5 },
+    'sdq-conduct': { cutoff: 4, max: 10 },
+  };
+
+  function proportionalBoost(score, instrumentId) {
+    const c = CUTOFFS[instrumentId];
+    if (!c || score <= 0) return 0;
+    return Math.min(30, ((score - c.cutoff) / (c.max - c.cutoff)) * 30);
+  }
+
+  function konfidenzBerechnen(rule, ctx) {
+    let k = 40;
+
+    // Proportionaler Boost basierend auf Score-Höhe (nicht binär)
+    if (rule.id.includes('depression') && ctx.phqa > 0) {
+      k += 10 + proportionalBoost(ctx.phqa, 'phq-a');
+    }
+    if (rule.id === 'gad' && ctx.gad > 0) {
+      k += 10 + proportionalBoost(ctx.gad, 'gad-7');
+    }
+    if (rule.id === 'ptsd' && ctx.pcl > 0) {
+      k += 10 + proportionalBoost(ctx.pcl, 'pcl-5');
+    }
+    if (rule.id === 'adhs' && ctx.asrs > 0) {
+      k += 10 + proportionalBoost(ctx.asrs, 'asrs');
+    }
+
+    // Cross-Instrument-Korroboration (mehrere Quellen = höhere Konfidenz)
+    if (rule.id.includes('depression') && ctx.gad >= 5) k += 5;
+    if (rule.id === 'gad' && ctx.phqa >= 5) k += 5;
+    if (rule.id === 'ptsd' && ctx.ace >= 2) k += 8;
+    if (rule.id.includes('trauma') && ctx.pcl >= 20) k += 5;
+
+    // Anamnese-Konsistenz
+    if (rule.id.includes('trauma') && ctx.ace >= 4) k += 10;
+    if (rule.id === 'ace-hochbelastet' && ctx.ace >= 6) k += 15;
+
+    // Komorbidität → leicht niedrigere Konfidenz
+    if (rule.id.startsWith('komorbid')) k -= 8;
+
+    // Suizidrisiko immer hoch wenn Daten vorhanden
+    if (rule.id === 'suizidrisiko') k = 90;
+
+    // Temporale Bestätigung: Hypothese aus vorherigem Screening → Boost
+    if (ctx.previousHypotheses?.includes(rule.id)) k += 10;
+
+    return Math.max(20, Math.min(95, k));
+  }
+
+  // Soft-Rules: Vorschläge basierend auf Anamnese OHNE Screening
+  const SOFT_RULES = [
+    { id: 'soft-depression', titel: 'Mögliche Depression — Screening empfohlen', icd: 'F32?', themen: ['depressive-stimmungen'],
+      test: ctx => ctx.ace >= 4 && ctx.phqa === 0,
+      rationale: ctx => `ACE ≥ 4 ohne PHQ-A-Screening. Depressive Symptomatik bei ${Math.round(30 + ctx.ace * 5)}% dieser Population. PHQ-A empfohlen.`,
+      basekonfidenz: 30 },
+    { id: 'soft-trauma', titel: 'Mögliche Trauma-Symptomatik — Screening empfohlen', icd: 'F43?', themen: ['trauma', 'stabilisierung'],
+      test: ctx => (ctx.anamnese_ace_sexual_abuse || ctx.anamnese_ace_physical_abuse || ctx.anamnese_ace_domestic_violence) && ctx.pcl === 0,
+      rationale: ctx => `Trauma-Exposition in Anamnese ohne PCL-5. Abklärung dringend empfohlen.`,
+      basekonfidenz: 35 },
+    { id: 'soft-angst', titel: 'Mögliche Angststörung — Screening empfohlen', icd: 'F41?', themen: ['stress-angst'],
+      test: ctx => ctx.anamnese_schul_absentismus && ctx.gad === 0,
+      rationale: ctx => 'Schulabsentismus in Anamnese ohne GAD-7. Angststörung als häufige Ursache abklären.',
+      basekonfidenz: 25 },
+    { id: 'soft-bindung', titel: 'Mögliche Bindungsstörung — Assessment empfohlen', icd: '6B44?', themen: ['bindung'],
+      test: ctx => (ctx.anamnese_bind_wechsel || ctx.anamnese_bind_desorganisiert || ctx.anamnese_fam_heim) && !ctx.anamnese_bind_bezugsperson_stabil,
+      rationale: ctx => 'Häufiger Bezugspersonenwechsel / Institutionalisierung ohne stabile Bezugsperson. Bindungsdiagnostik empfohlen (z.B. MCAST, Geschichtenergänzung).',
+      basekonfidenz: 30 },
+    { id: 'soft-substanz', titel: 'Substanzkonsum-Screening empfohlen', icd: 'F1x?', themen: ['substanzkonsum'],
+      test: ctx => ctx.anamnese_subst_cannabis || ctx.anamnese_subst_alkohol,
+      rationale: ctx => 'Substanzkonsum in Anamnese. CRAFFT-Screening empfohlen (Knight et al. 2002, Sensitivität 76-96%).',
+      basekonfidenz: 35 },
+    { id: 'soft-ass', titel: 'Hinweise auf Autismus-Spektrum — Abklärung empfohlen', icd: '6A02?', themen: ['autismus', 'soziale-wahrnehmung'],
+      test: ctx => ctx.anamnese_entw_autismus_hinweise,
+      rationale: ctx => 'Hinweise auf ASS in Entwicklungsanamnese. Strukturierte Diagnostik empfohlen (ADOS-2, ADI-R). Cave: ASS wird bei Mädchen häufig spät diagnostiziert.',
+      basekonfidenz: 35 },
+  ];
+
+  function generate(schuelerId) {
+    const ctx = buildContext(schuelerId);
+
+    // Vorherige Hypothesen laden für temporales Tracking
+    const s = DB.getSchuelerById(schuelerId);
+    ctx.previousHypotheses = (s?.hypothesenVerlauf || []).flatMap(h => h.ids || []);
+
+    const hypotheses = [];
+
+    // Harte Regeln (Screening-basiert)
+    RULES.forEach(rule => {
+      try {
+        if (rule.test(ctx)) {
+          hypotheses.push({
+            id: rule.id,
+            titel: rule.titel,
+            icd: rule.icd,
+            themen: rule.themen,
+            rationale: rule.rationale(ctx),
+            konfidenz: konfidenzBerechnen(rule, ctx),
+            sequenzierung: SEQUENZIERUNG[rule.id] || null,
+            status: ctx.previousHypotheses.includes(rule.id) ? 'BESTÄTIGT' : 'NEU',
+          });
+        }
+      } catch (e) {}
+    });
+
+    // Soft-Rules (Anamnese-basiert, nur wenn keine harten Treffer für gleiche Domäne)
+    const harteIds = new Set(hypotheses.map(h => h.id));
+    SOFT_RULES.forEach(rule => {
+      try {
+        if (rule.test(ctx) && !harteIds.has(rule.id.replace('soft-', ''))) {
+          hypotheses.push({
+            id: rule.id,
+            titel: rule.titel,
+            icd: rule.icd,
+            themen: rule.themen,
+            rationale: rule.rationale(ctx),
+            konfidenz: rule.basekonfidenz,
+            sequenzierung: null,
+            status: 'VORLÄUFIG',
+          });
+        }
+      } catch (e) {}
+    });
+
+    hypotheses.sort((a, b) => b.konfidenz - a.konfidenz);
+
+    // Temporales Tracking speichern
+    try {
+      const verlauf = s?.hypothesenVerlauf || [];
+      verlauf.push({ datum: new Date().toISOString(), ids: hypotheses.map(h => h.id) });
+      if (verlauf.length > 20) verlauf.splice(0, verlauf.length - 20);
+      DB.updateSchueler(schuelerId, { hypothesenVerlauf: verlauf });
+    } catch (e) {}
+
+    return hypotheses;
+  }
+
+  return { generate, buildContext, RULES };
+})();

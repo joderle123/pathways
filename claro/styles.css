@@ -1,0 +1,467 @@
+/* ============================================================
+   Pathways DIAGNOSE — Styles
+   ============================================================ */
+
+html, body { height: 100%; }
+body { background: #faf7f0; }
+
+/* ── Top Bar ─────────────────────────────────────────────── */
+.dg-topbar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+  background: var(--ink);
+  color: var(--cream);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--line);
+}
+.dg-brand {
+  display: flex; gap: 0.75rem; align-items: center; flex: 1;
+}
+.dg-logo {
+  width: 2px; height: 28px; background: var(--gold); border-radius: 1px;
+  flex-shrink: 0;
+}
+.dg-app-name {
+  font-family: var(--font-serif);
+  font-weight: 400; font-style: italic; font-size: 1.5rem;
+  letter-spacing: -0.03em; color: var(--cream);
+}
+.dg-app-tag {
+  font-family: var(--font-mono);
+  font-size: 0.625rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold);
+}
+.dg-context {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--sage);
+}
+.dg-actions { display: flex; gap: 0.5rem; }
+.dg-topbar .btn {
+  background: transparent; color: var(--gold);
+  border: 1px solid var(--line); border-radius: 100px;
+  font-family: var(--font-mono); font-size: 0.6875rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 6px 14px;
+}
+.dg-topbar .btn:hover { background: rgba(212, 169, 63, 0.08); }
+
+.dg-tabs {
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 0 2rem;
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+}
+.dg-tab {
+  padding: 0.75rem 1rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  border-bottom: 1px solid transparent;
+  color: var(--sage);
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  margin: 0 0.25rem;
+}
+.dg-tab:hover { color: var(--ink); }
+.dg-tab.active {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  color: var(--ink);
+  border-bottom-color: var(--gold);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ── Main ──────────────────────────────────────────────── */
+.dg-main {
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.dg-section {
+  background: var(--paper);
+  border-radius: 2px;
+  border: 1px solid var(--line);
+  padding: 2.5rem;
+  margin-bottom: var(--space-4);
+  box-shadow: var(--shadow-xs);
+}
+.dg-section h2 { font-size: 22px; margin-bottom: var(--space-3); }
+.dg-section-intro {
+  background: var(--info-50, #EFF6FF); border-left: 4px solid var(--info, #3B82F6);
+  padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm);
+  margin-bottom: var(--space-4); font-size: 14px; line-height: var(--line-height-relaxed);
+}
+
+/* ── Instrument Cards ──────────────────────────────────── */
+.dg-instrument-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-3);
+}
+.dg-instrument {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.dg-instrument:hover {
+  border-color: var(--color-app-diagnose);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+.dg-instrument-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+.dg-instrument-acronym {
+  font-weight: var(--font-weight-bold);
+  font-size: 16px;
+  background: var(--color-app-diagnose);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+}
+.dg-instrument-title {
+  font-weight: var(--font-weight-semibold);
+  font-size: 15px;
+}
+.dg-instrument-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: var(--space-2) 0;
+  line-height: var(--line-height-relaxed);
+}
+.dg-instrument-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  gap: var(--space-3);
+}
+
+/* ── Item Question (Likert) ────────────────────────────── */
+.dg-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  margin-bottom: var(--space-2);
+}
+.dg-item-num {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.dg-item-text {
+  font-size: 16px;
+  margin: var(--space-2) 0;
+}
+.dg-item-opts {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-top: var(--space-3);
+}
+.dg-item-opt {
+  flex: 1;
+  min-width: 80px;
+  padding: var(--space-2) var(--space-3);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  cursor: pointer;
+  text-align: center;
+  font-size: 13px;
+  transition: var(--transition-fast);
+}
+.dg-item-opt:hover { border-color: var(--color-app-diagnose); }
+.dg-item-opt.selected {
+  background: var(--color-app-diagnose);
+  border-color: var(--color-app-diagnose);
+  color: #fff;
+  font-weight: var(--font-weight-semibold);
+}
+.dg-item-opt-val {
+  display: block;
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 2px;
+}
+
+/* ── Result Card ──────────────────────────────────────── */
+.dg-result {
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  margin-top: var(--space-4);
+}
+.dg-result.severity-low { background: #ECFDF5; border: 2px solid #10B981; }
+.dg-result.severity-mod { background: #FEF3C7; border: 2px solid #F59E0B; }
+.dg-result.severity-high { background: #FEE2E2; border: 2px solid #DC2626; }
+.dg-result.severity-critical { background: #991B1B; border: 2px solid #450A0A; color: #fff; }
+
+.dg-score-display {
+  font-size: 56px;
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  margin: var(--space-3) 0;
+}
+
+/* ── Progress Bar ──────────────────────────────────────── */
+.dg-progress {
+  height: 8px;
+  background: var(--bg-subtle);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin: var(--space-3) 0;
+}
+.dg-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-app-diagnose), #FCA5A5);
+}
+
+/* ── 5P Grid ──────────────────────────────────────────── */
+.dg-5p-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-3);
+}
+.dg-5p-card {
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+}
+.dg-5p-card.presenting { border-color: #DC2626; }
+.dg-5p-card.predisposing { border-color: #7C3AED; }
+.dg-5p-card.precipitating { border-color: #F59E0B; }
+.dg-5p-card.perpetuating { border-color: #0EA5E9; }
+.dg-5p-card.protective { border-color: #10B981; }
+
+.dg-5p-card h3 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-2);
+}
+.dg-5p-card textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: var(--space-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+}
+
+/* ── Hypothesen ──────────────────────────────────────── */
+.dg-hypothesis {
+  background: linear-gradient(90deg, var(--bg-card), var(--bg-subtle));
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--color-app-diagnose);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  margin-bottom: var(--space-2);
+}
+.dg-hypothesis-title {
+  font-weight: var(--font-weight-semibold);
+  font-size: 16px;
+  margin-bottom: var(--space-2);
+}
+.dg-hypothesis-evidence {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+.dg-hypothesis-rationale {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--border);
+}
+
+/* ── Verlauf Chart ────────────────────────────────────── */
+.dg-verlauf-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-2);
+  height: 180px;
+  padding: var(--space-3);
+  background: var(--bg-subtle);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+}
+.dg-verlauf-col {
+  flex: 1;
+  min-width: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+.dg-verlauf-bar {
+  width: 80%;
+  background: var(--color-app-diagnose);
+  border-radius: 4px 4px 0 0;
+}
+.dg-verlauf-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  text-align: center;
+}
+
+/* ── Toast ─────────────────────────────────────────────── */
+#toast-container {
+  position: fixed;
+  bottom: 20px; right: 20px;
+  display: flex; flex-direction: column; gap: 8px;
+  z-index: 200;
+}
+.pw-toast {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--color-app-diagnose);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  box-shadow: var(--shadow-lg);
+  font-size: 14px;
+  min-width: 240px;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+.pw-toast.show { opacity: 1; transform: translateX(0); }
+.pw-toast-ok    { border-left-color: #10B981; }
+.pw-toast-info  { border-left-color: var(--info); }
+
+.pw-empty {
+  text-align: center;
+  padding: var(--space-12) var(--space-4);
+  color: var(--text-muted);
+}
+.pw-empty-icon { font-size: 48px; margin-bottom: var(--space-3); }
+
+/* ── Layout mit Live-Hypothesen-Panel ─────────────────────── */
+.dg-layout {
+  display: grid; grid-template-columns: 1fr 280px; gap: var(--space-4);
+}
+@media (max-width: 900px) { .dg-layout { grid-template-columns: 1fr; } }
+
+.dg-hypothesen-panel {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: var(--space-4);
+  position: sticky; top: 80px; max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+.dg-hyp-panel-title {
+  font-weight: var(--font-weight-bold); font-size: 14px;
+  margin-bottom: var(--space-3); color: var(--color-app-claro);
+}
+.dg-hyp-mini {
+  padding: var(--space-2) 0; border-bottom: 1px solid var(--border);
+}
+.dg-hyp-mini:last-child { border-bottom: none; }
+.dg-hyp-mini-title { font-size: 13px; font-weight: var(--font-weight-semibold); }
+.dg-hyp-mini-bar {
+  height: 4px; background: var(--bg-subtle); border-radius: 2px;
+  margin: 4px 0; overflow: hidden;
+}
+.dg-hyp-mini-meta { font-size: 11px; color: var(--text-muted); }
+.dg-hyp-mini-seq {
+  font-size: 11px; color: var(--accent); font-style: italic;
+  margin-top: 2px;
+}
+
+/* ── Triage ───────────────────────────────────────────────── */
+.dg-triage-progress {
+  font-size: 14px; color: var(--text-muted);
+  margin-bottom: var(--space-4);
+}
+.dg-triage-frage {
+  padding: var(--space-4); margin-bottom: var(--space-3);
+  background: var(--bg-card); border: 2px solid var(--border);
+  border-radius: var(--radius); transition: var(--transition);
+}
+.dg-triage-frage.answered { border-color: var(--color-app-claro); background: rgba(239,68,68,0.03); }
+.dg-triage-num {
+  display: inline-block; width: 28px; height: 28px;
+  background: var(--color-app-claro); color: #fff; border-radius: 50%;
+  text-align: center; line-height: 28px; font-weight: var(--font-weight-bold);
+  font-size: 14px; margin-right: var(--space-2);
+}
+.dg-triage-text {
+  display: inline; font-size: 16px; font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-relaxed);
+}
+.dg-triage-opts {
+  display: flex; gap: var(--space-2); flex-wrap: wrap;
+  margin-top: var(--space-3);
+}
+.dg-triage-opt {
+  padding: var(--space-2) var(--space-4); border: 2px solid var(--border);
+  border-radius: var(--radius-sm); background: transparent;
+  cursor: pointer; font-size: 14px; transition: var(--transition-fast);
+}
+.dg-triage-opt:hover { border-color: var(--color-app-claro); }
+.dg-triage-opt.selected {
+  background: var(--color-app-claro); color: #fff;
+  border-color: var(--color-app-claro);
+}
+.dg-triage-result {
+  margin-top: var(--space-5); padding: var(--space-5);
+  background: var(--bg-card); border: 2px solid var(--color-app-claro);
+  border-radius: var(--radius);
+}
+.dg-triage-crisis {
+  background: #FEE2E2; border: 2px solid #DC2626;
+  border-radius: var(--radius-sm); padding: var(--space-3);
+  font-weight: var(--font-weight-semibold); color: #7F1D1D;
+  margin-bottom: var(--space-3);
+}
+.dg-triage-crisis a { color: #7F1D1D; }
+.dg-triage-empfohlen {
+  display: flex; flex-wrap: wrap; gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+/* ── Konfidenz-Anzeige ────────────────────────────────────── */
+.dg-konfidenz {
+  text-align: right; min-width: 60px; font-size: 14px;
+}
+.dg-konfidenz-bar {
+  height: 4px; background: var(--bg-subtle); border-radius: 2px;
+  margin-top: 4px; overflow: hidden; width: 60px;
+}
+.dg-hyp-status {
+  display: inline-block; padding: 1px 8px; border-radius: var(--radius-full);
+  font-size: 11px; font-weight: var(--font-weight-bold); letter-spacing: 0.5px;
+  vertical-align: middle; margin-right: 4px;
+}
+.dg-hyp-status-neu { background: #DBEAFE; color: #1E40AF; }
+.dg-hyp-status-bestätigt, .dg-hyp-status-best\00e4tigt { background: #D1FAE5; color: #065F46; }
+.dg-hyp-status-vorläufig, .dg-hyp-status-vorl\00e4ufig { background: #FEF3C7; color: #92400E; }
+
+.dg-hypothesis-seq {
+  font-size: 13px; color: var(--accent); font-style: italic;
+  padding: var(--space-2) var(--space-3);
+  background: rgba(245,158,11,0.08); border-radius: var(--radius-sm);
+  margin-top: var(--space-2); margin-bottom: var(--space-2);
+}

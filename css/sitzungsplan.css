@@ -1,0 +1,640 @@
+/* ============================================================
+   Pathways Sitzungsplan – Styles
+   Für pädagogische Fachkräfte | Druckoptimiert für A4
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --farbe: #1E4468;          /* Wird per Inline-Style pro Plan überschrieben */
+  --farbe-hell: #EEF4FB;
+  --akzent: #F59E0B;         /* Zeitstreifen / Highlights */
+  --akzent-hell: #FFFBEB;
+  --text: #1E293B;
+  --grau: #64748B;
+  --grau-hell: #94A3B8;
+  --border: #E2E8F0;
+  --border-mid: #CBD5E1;
+  --bg: #F1F5F9;
+  --radius: 10px;
+  --radius-lg: 14px;
+  --shadow: 0 4px 32px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.07);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-size: 12px;
+  color: var(--text);
+  background: var(--bg);
+  padding: 24px 20px;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   SEITE
+   ============================================================ */
+.seite {
+  width: 210mm;
+  min-height: 297mm;
+  background: white;
+  margin: 0 auto 32px;
+  padding: 14mm 17mm 22mm;
+  box-shadow: var(--shadow);
+  border-radius: 12px;
+  page-break-after: always;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================================
+   KOPFZEILE – Gradient-Banner
+   ============================================================ */
+.kopfzeile {
+  background: linear-gradient(135deg, var(--farbe) 0%, color-mix(in srgb, var(--farbe) 70%, #0F172A) 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: -14mm;
+  margin-left: -17mm;
+  margin-right: -17mm;
+  padding: 16px 17mm 14px;
+  margin-bottom: 20px;
+  gap: 14px;
+}
+
+.kopfzeile-links { flex: 1; }
+
+.dok-typ {
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.60);
+  margin-bottom: 3px;
+  font-weight: 600;
+}
+
+.sp-titel {
+  font-size: 17px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  letter-spacing: -0.3px;
+}
+
+.sp-untertitel {
+  font-size: 10px;
+  color: rgba(255,255,255,0.75);
+  font-weight: 500;
+}
+
+.kopfzeile-badges {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.badge {
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 20px;
+  padding: 3px 9px;
+  font-size: 9.5px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.badge-dauer { background: rgba(245,158,11,0.35); border-color: rgba(245,158,11,0.5); }
+
+/* ============================================================
+   META-LEISTE  (Zielgruppe, Alter, Rahmen)
+   ============================================================ */
+.meta-leiste {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.meta-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--farbe-hell);
+  border: 1px solid color-mix(in srgb, var(--farbe) 20%, white);
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--farbe);
+}
+
+/* ============================================================
+   ZIELE & MATERIALIEN (Deckblatt-Box)
+   ============================================================ */
+.deckblatt-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.info-box {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 12px 14px;
+  background: #FAFBFC;
+  box-shadow: var(--shadow-sm);
+}
+
+.info-box-titel {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--farbe);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.info-box ul {
+  padding-left: 14px;
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.info-box li { margin-bottom: 1px; }
+
+.info-box p { font-size: 11px; line-height: 1.65; color: var(--text); }
+
+/* ============================================================
+   PHASEN-ÜBERSICHT (Kompakttabelle auf Deckblatt)
+   ============================================================ */
+.phasen-uebersicht {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.phasen-uebersicht-titel {
+  background: var(--farbe);
+  color: white;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 8px 14px;
+  letter-spacing: 0.3px;
+}
+
+.phasen-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.phasen-table tr { border-bottom: 1px solid var(--border); }
+.phasen-table tr:last-child { border-bottom: none; }
+.phasen-table tr:nth-child(even) { background: #F8FAFC; }
+
+.phasen-table td {
+  padding: 6px 10px;
+  font-size: 10.5px;
+  vertical-align: middle;
+}
+
+.phasen-table .td-zeit {
+  font-weight: 700;
+  color: var(--farbe);
+  white-space: nowrap;
+  width: 80px;
+}
+
+.phasen-table .td-dauer {
+  color: var(--grau);
+  white-space: nowrap;
+  width: 50px;
+  font-size: 10px;
+}
+
+.phasen-table .td-phase { font-weight: 600; }
+
+.phasen-table .td-typ {
+  width: 80px;
+  text-align: right;
+}
+
+.typ-badge {
+  display: inline-block;
+  border-radius: 12px;
+  padding: 2px 7px;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.typ-ankommen  { background: #ECFDF5; color: #065F46; }
+.typ-input     { background: #EFF6FF; color: #1E40AF; }
+.typ-aktivitaet{ background: #FFF7ED; color: #92400E; }
+.typ-pause     { background: #F3F4F6; color: #374151; }
+.typ-reflexion { background: #FDF4FF; color: #6B21A8; }
+.typ-abschluss { background: #F0FDF4; color: #166534; }
+
+/* ============================================================
+   AKTIVITÄTSBLOCK (Detailseiten)
+   ============================================================ */
+.aktivitaet {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.akt-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  background: var(--farbe-hell);
+  border-bottom: 1.5px solid var(--border);
+}
+
+.akt-zeit {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--farbe);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.akt-titel-bereich { min-width: 0; }
+
+.akt-name {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.akt-ziel {
+  font-size: 10px;
+  color: var(--grau);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+.akt-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.akt-dauer {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--akzent);
+  background: var(--akzent-hell);
+  border: 1px solid #FDE68A;
+  border-radius: 8px;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+
+.akt-body {
+  padding: 11px 14px;
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 14px;
+}
+
+.akt-anleitung { }
+
+.akt-anleitung-titel {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--grau);
+  margin-bottom: 6px;
+}
+
+.akt-schritte {
+  font-size: 11px;
+  line-height: 1.7;
+  padding-left: 0;
+  list-style: none;
+  counter-reset: schritt;
+}
+
+.akt-schritte li {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 4px;
+  counter-increment: schritt;
+}
+
+.akt-schritte li::before {
+  content: counter(schritt);
+  background: var(--farbe);
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 9px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.akt-sidebar { border-left: 1.5px solid var(--border); padding-left: 12px; }
+
+.sidebar-block { margin-bottom: 10px; }
+
+.sidebar-titel {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: var(--grau);
+  margin-bottom: 4px;
+}
+
+.sidebar-block ul {
+  padding-left: 13px;
+  font-size: 10.5px;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.sidebar-block p {
+  font-size: 10.5px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.differenzierung {
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+  border-radius: 7px;
+  padding: 7px 9px;
+  margin-top: 6px;
+}
+
+.differenzierung-titel {
+  font-size: 9px;
+  font-weight: 700;
+  color: #92400E;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 3px;
+}
+
+.differenzierung p {
+  font-size: 10px;
+  color: #78350F;
+  line-height: 1.55;
+}
+
+/* ============================================================
+   TRENNLINIE / ÜBERGANG
+   ============================================================ */
+.uebergang {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  color: var(--grau);
+  font-style: italic;
+  margin: -6px 0 10px;
+}
+
+.uebergang::before, .uebergang::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ============================================================
+   PAUSE-BLOCK
+   ============================================================ */
+.pause-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #F8FAFC;
+  border: 1.5px dashed var(--border-mid);
+  border-radius: var(--radius);
+  padding: 8px 14px;
+  margin-bottom: 14px;
+  font-size: 11px;
+  color: var(--grau);
+}
+
+.pause-block strong { color: var(--text); }
+
+/* ============================================================
+   REFLEXIONSLEITFADEN (letzte Seite)
+   ============================================================ */
+.reflexion-block {
+  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+  border: 1.5px solid #FCD34D;
+  border-radius: var(--radius-lg);
+  padding: 13px 15px;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 8px rgba(252,211,77,0.18);
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.reflexion-block-titel {
+  font-size: 11px;
+  font-weight: 700;
+  color: #92400E;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.reflexion-fragen {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.reflexion-frage {
+  font-size: 10.5px;
+  line-height: 1.55;
+  color: #78350F;
+}
+
+.reflexion-frage::before {
+  content: '→ ';
+  font-weight: 700;
+}
+
+.schreiblinie-block {
+  margin-top: 6px;
+}
+
+.schreiblinie {
+  border-bottom: 1.5px solid #E2E8F0;
+  height: 24px;
+  margin-bottom: 2px;
+}
+
+/* ============================================================
+   FACHLICHER HINWEIS
+   ============================================================ */
+.fachhinweis {
+  background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+  border: 1.5px solid #86EFAC;
+  border-radius: var(--radius-lg);
+  padding: 10px 13px;
+  margin-bottom: 13px;
+  font-size: 10.5px;
+  line-height: 1.55;
+  box-shadow: 0 2px 8px rgba(134,239,172,0.18);
+}
+
+.fachhinweis-titel {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #166534;
+  margin-bottom: 4px;
+}
+
+/* ============================================================
+   FUßZEILE
+   ============================================================ */
+.fusszeile {
+  position: absolute;
+  bottom: 9mm;
+  left: 17mm;
+  right: 17mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 8px;
+  color: var(--grau-hell);
+  border-top: 1px solid var(--border);
+  padding-top: 5px;
+}
+
+/* ============================================================
+   DRUCK-LEISTE
+   ============================================================ */
+.druck-leiste {
+  width: 210mm;
+  margin: 0 auto 16px;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.btn-drucken {
+  background: var(--farbe);
+  color: white;
+  border: none;
+  padding: 9px 20px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: opacity 0.15s;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--farbe) 40%, transparent);
+}
+
+.btn-drucken:hover { opacity: 0.88; }
+
+.btn-zurueck {
+  background: white;
+  color: var(--text);
+  border: 1.5px solid var(--border);
+  padding: 9px 18px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s;
+}
+
+.btn-zurueck:hover { background: #F8FAFC; }
+
+/* ============================================================
+   DRUCK-MODUS
+   ============================================================ */
+@media print {
+  @page { size: A4; margin: 0; }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  body { background: white; padding: 0; margin: 0; font-size: 11px; }
+
+  .druck-leiste { display: none !important; }
+
+  .seite {
+    width: 210mm;
+    height: 297mm;
+    min-height: unset;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 14mm 17mm 20mm;
+    overflow: hidden;
+    page-break-after: always;
+    break-after: page;
+    position: relative;
+  }
+
+  .seite:last-of-type {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .kopfzeile {
+    margin-top: -14mm;
+    margin-left: -17mm;
+    margin-right: -17mm;
+    padding-left: 17mm;
+    padding-right: 17mm;
+    background: linear-gradient(135deg, var(--farbe) 0%, color-mix(in srgb, var(--farbe) 70%, #0F172A) 100%) !important;
+  }
+
+  .aktivitaet { box-shadow: none; break-inside: avoid; page-break-inside: avoid; }
+  .reflexion-block { box-shadow: none; break-inside: avoid; }
+  .fachhinweis { box-shadow: none; }
+  .phasen-uebersicht { box-shadow: none; break-inside: avoid; }
+  .info-box { box-shadow: none; }
+  a { text-decoration: none; color: inherit; }
+}

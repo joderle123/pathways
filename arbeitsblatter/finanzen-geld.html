@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Geld &amp; Finanzen</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #16A34A; --farbe-hell: #F0FDF4; }
+    .money-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px; }
+    .money-box { border-radius:8px; padding:10px; }
+    .money-row { display:grid; grid-template-columns:1fr 60px; gap:4px; align-items:center; margin-bottom:5px; font-size:11px; }
+    .money-amount { display:flex; align-items:center; gap:3px; }
+    .money-line { flex:1; border-bottom:1px solid #D1FAE5; height:1px; }
+    .sort-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px; }
+    .sort-box { border-radius:8px; padding:10px; min-height:70px; }
+    .item-tag { display:inline-block; background:white; border:1.5px solid #D1D5DB; border-radius:12px; padding:3px 8px; font-size:10px; margin:2px; }
+    .savings-calc { background:#F0FDF4; border:1.5px solid #86EFAC; border-radius:8px; padding:10px; margin-bottom:8px; }
+    .savings-row { display:flex; align-items:center; gap:8px; font-size:11px; margin-bottom:6px; }
+    .savings-line { flex:1; border-bottom:1px solid #86EFAC; }
+    .interest-visual { display:flex; gap:6px; align-items:flex-end; margin-bottom:8px; }
+    .interest-bar { border-radius:4px 4px 0 0; display:flex; align-items:flex-end; justify-content:center; font-size:9px; font-weight:700; color:white; padding-bottom:2px; }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- ===== SEITE 1 ===== -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">Geld verstehen – Geld gestalten</div>
+      <div class="ab-untertitel">Geld &amp; Finanzen · Kategorie: Alltag &amp; Leben</div>
+    </div>
+    <div class="kopfzeile-icon">💰</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">💡 Geld ist ein Werkzeug – und du kannst es bedienen lernen.</div>
+    <p>Wer weiß, was reinkommt und rausgeht, hat deutlich weniger Stress. Finanzielle Grundkenntnisse sind kein Luxus – sie sind eine Schutzressource. Und: Es gibt keine dummen Fragen zu Geld.</p>
+    <p>🧠 <em>Wusstest du? Unter 18-Jährige in Luxembourg können kein Bankkonto auf eigenen Namen eröffnen – aber viele Banken bieten Jugendkonten mit Zustimmung der Erziehungsberechtigten ab 12 Jahren an.</em></p>
+  </div>
+
+  <!-- Übung 1: Meine Monatskarte -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">1</div>
+      <div class="uebung-titel">Meine monatliche Geldkarte – Was kommt rein, was geht raus?</div>
+    </div>
+    <div class="uebung-beschreibung">Schätze, wenn du die genauen Zahlen nicht kennst. Das Ausfüllen ist schon der erste Schritt.</div>
+    <div class="money-grid">
+      <div class="money-box" style="background:#F0FDF4;border:1.5px solid #86EFAC;">
+        <div style="font-size:12px;font-weight:700;color:#16A34A;margin-bottom:8px;">💚 Einnahmen (monatlich)</div>
+        <div class="money-row"><div>Taschengeld / Unterhalt</div><div class="money-amount"><div class="money-line"></div><span style="font-size:10px;">€</span></div></div>
+        <div class="money-row"><div>Nebenjob</div><div class="money-amount"><div class="money-line"></div><span style="font-size:10px;">€</span></div></div>
+        <div class="money-row"><div>Geschenke / Gelegentliches</div><div class="money-amount"><div class="money-line"></div><span style="font-size:10px;">€</span></div></div>
+        <div class="money-row"><div>Sonstiges:</div><div class="money-amount"><div class="money-line"></div><span style="font-size:10px;">€</span></div></div>
+        <div style="border-top:2px solid #16A34A;padding-top:6px;margin-top:4px;" class="money-row"><div style="font-weight:700;">GESAMT</div><div class="money-amount"><div class="money-line"></div><span style="font-size:10px;">€</span></div></div>
+      </div>
+      <div class="money-box" style="background:#FEF2F2;border:1.5px solid #FECACA;">
+        <div style="font-size:12px;font-weight:700;color:#DC2626;margin-bottom:8px;">❤️ Ausgaben (monatlich)</div>
+        <div class="money-row"><div>Handy / Daten</div><div class="money-amount"><div class="money-line"></div><span style="font-size:10px;">€</span></div></div>
+        <div class="money-row"><div>Essen außer Haus</div><div class="money-amount"><div class="money-line"></div><span style="font-size:10px;">€</span></div></div>
+        <div class="money-row"><div>Freizeit / Ausgehen</div><div class="money-amount"><div class="money-line"></div><span style="font-size:10px;">€</span></div></div>
+        <div class="money-row"><div>Kleidung</div><div class="money-amount"><div class="money-line"></div><span style="font-size:10px;">€</span></div></div>
+        <div class="money-row"><div>Streaming / Apps</div><div class="money-amount"><div class="money-line"></div><span style="font-size:10px;">€</span></div></div>
+        <div class="money-row"><div>Sonstiges:</div><div class="money-amount"><div class="money-line"></div><span style="font-size:10px;">€</span></div></div>
+        <div style="border-top:2px solid #DC2626;padding-top:6px;margin-top:4px;" class="money-row"><div style="font-weight:700;">GESAMT</div><div class="money-amount"><div class="money-line"></div><span style="font-size:10px;">€</span></div></div>
+      </div>
+    </div>
+    <div style="background:#FFFBEB;border:1.5px solid #FDE68A;border-radius:8px;padding:8px;display:flex;gap:12px;align-items:center;font-size:11px;">
+      <span>💚 Einnahmen: _____€</span>
+      <span>—</span>
+      <span>❤️ Ausgaben: _____€</span>
+      <span>=</span>
+      <span style="font-weight:700;">Bilanz: _____€</span>
+    </div>
+  </div>
+
+  <!-- Übung 2: Brauchen vs. Wollen -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">2</div>
+      <div class="uebung-titel">Brauchen oder Wollen? – Sortiere die Karten</div>
+    </div>
+    <div class="uebung-beschreibung">Schreibe diese 10 Dinge in die richtige Box – oder in die Grauzone. Manches ist beides!</div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px;">
+      <span class="item-tag">🍕 Essen außer Haus</span>
+      <span class="item-tag">🚌 Bus zur Schule</span>
+      <span class="item-tag">👟 Teure Sneakers</span>
+      <span class="item-tag">💊 Medikamente</span>
+      <span class="item-tag">🎮 Neues Spiel</span>
+      <span class="item-tag">📚 Schulhefte</span>
+      <span class="item-tag">☕ Kaffee täglich</span>
+      <span class="item-tag">🎁 Geschenk für Freund</span>
+      <span class="item-tag">🧥 Winterjacke</span>
+      <span class="item-tag">💇 Haarschnitt</span>
+    </div>
+    <div class="sort-grid">
+      <div class="sort-box" style="background:#F0FDF4;border:1.5px solid #86EFAC;">
+        <div style="font-size:11px;font-weight:700;color:#16A34A;margin-bottom:5px;">✅ Ich brauche das wirklich</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+      <div class="sort-box" style="background:#FFFBEB;border:1.5px solid #FDE68A;">
+        <div style="font-size:11px;font-weight:700;color:#D97706;margin-bottom:5px;">⭐ Das will ich (Wunsch)</div>
+        <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Geld &amp; Finanzen · Seite 1</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 2 ===== -->
+<div class="seite">
+
+  <!-- Übung 3: Sparziel -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">3</div>
+      <div class="uebung-titel">Mein Sparziel – Von Traum zu Plan</div>
+    </div>
+    <div class="savings-calc">
+      <div style="font-size:12px;font-weight:700;color:#16A34A;margin-bottom:8px;">🎯 Ich spare für:</div>
+      <div class="savings-row"><div style="width:120px;flex-shrink:0;">Was genau?</div><div class="savings-line"></div></div>
+      <div class="savings-row"><div style="width:120px;flex-shrink:0;">Gesamtkosten?</div><div class="savings-line"></div><span style="font-size:10px;flex-shrink:0;">€</span></div>
+      <div class="savings-row"><div style="width:120px;flex-shrink:0;">Ich spare monatlich:</div><div class="savings-line"></div><span style="font-size:10px;flex-shrink:0;">€</span></div>
+      <div class="savings-row"><div style="width:120px;flex-shrink:0;">Ich brauche dafür:</div><div class="savings-line"></div><span style="font-size:10px;flex-shrink:0;">Monate</span></div>
+      <div style="font-size:10px;color:#6B7280;margin-top:4px;">Rechnung: Gesamtkosten ÷ Monatliches Sparen = Anzahl Monate</div>
+    </div>
+    <div style="background:#ECFDF5;border-radius:8px;padding:8px 12px;font-size:11px;">
+      <strong>💡 Spar-Trick:</strong> Lege deinen Sparbetrag direkt am Monatsanfang beiseite – nicht was übrig bleibt.
+    </div>
+  </div>
+
+  <!-- Übung 4: Schulden-Falle verstehen -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">4</div>
+      <div class="uebung-titel">Die Kredit-Falle verstehen – Warum 100 € schnell 130 € werden</div>
+    </div>
+    <div class="uebung-beschreibung">Wer auf Kredit kauft oder zu spät zahlt, zahlt mehr als den eigentlichen Preis.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+      <div style="background:#FEF2F2;border:1.5px solid #FECACA;border-radius:8px;padding:10px;">
+        <div style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:6px;">⚠️ Beispielrechnung: Ratenkauf</div>
+        <div style="font-size:10px;color:#374151;line-height:1.8;">
+          Artikel: 100 €<br>
+          Zinsen: 20 % pro Jahr<br>
+          Nach 1 Jahr: <strong>120 €</strong><br>
+          Nach 2 Jahren: <strong>144 €</strong><br>
+          Nach 3 Jahren: <strong>173 €</strong>
+        </div>
+        <div style="font-size:10px;color:#DC2626;margin-top:6px;font-weight:700;">Du zahlst fast doppelt so viel!</div>
+      </div>
+      <div style="background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:8px;padding:10px;">
+        <div style="font-size:11px;font-weight:700;color:#16A34A;margin-bottom:6px;">✅ Meine Schulden-Liste (falls nötig)</div>
+        <div style="display:grid;grid-template-columns:1fr auto auto;gap:4px;font-size:9px;font-weight:700;border-bottom:1px solid #D1FAE5;padding-bottom:3px;">
+          <div>An wen?</div><div>Betrag</div><div>Bis wann?</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr auto auto;gap:4px;margin-top:4px;">
+          <div style="border-bottom:1px solid #D1FAE5;height:20px;"></div><div style="border-bottom:1px solid #D1FAE5;width:35px;"></div><div style="border-bottom:1px solid #D1FAE5;width:45px;"></div>
+          <div style="border-bottom:1px solid #D1FAE5;height:20px;"></div><div style="border-bottom:1px solid #D1FAE5;width:35px;"></div><div style="border-bottom:1px solid #D1FAE5;width:45px;"></div>
+          <div style="border-bottom:1px solid #D1FAE5;height:20px;"></div><div style="border-bottom:1px solid #D1FAE5;width:35px;"></div><div style="border-bottom:1px solid #D1FAE5;width:45px;"></div>
+        </div>
+        <div style="font-size:10px;color:#16A34A;margin-top:8px;">📞 Hilfe: Caritas Crédit Conseil: <strong>247 86 868</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Übung 5: Finanzrechte -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">5</div>
+      <div class="uebung-titel">Meine Finanzrechte als Minderjährige/r in Luxembourg</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+      <div style="background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:8px;padding:8px;font-size:10px;">
+        <div style="font-weight:700;color:#16A34A;margin-bottom:4px;">✅ Das darf ich</div>
+        <div style="line-height:1.9;">Jugendkonto mit Zustimmung der Eltern<br>Eigenes Geld ausgeben und sparen<br>Ab 15 J. in Ferien arbeiten</div>
+      </div>
+      <div style="background:#FFFBEB;border:1.5px solid #FDE68A;border-radius:8px;padding:8px;font-size:10px;">
+        <div style="font-weight:700;color:#D97706;margin-bottom:4px;">⚠️ Das braucht Zustimmung der Eltern</div>
+        <div style="line-height:1.9;">Verträge abschließen (Handy, Abo)<br>Kredite aufnehmen<br>Ratenkäufe tätigen</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Mein nächster Schritt</div>
+    <p>Was ist <strong>eine Sache</strong> an meinen Finanzen, die ich diese Woche angehe oder verstehen will?</p>
+    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Hinweis für Bezugspersonen</div>
+    Finanzielle Schwierigkeiten bei Jugendlichen sind oft mit Suchtverhalten, sozialer Ausgrenzung oder familiären Belastungen verknüpft. Schulden im Jugendalter können langfristige Folgen haben. <strong>Luxembourg spezifisch:</strong> Unter 18-Jährige haften grundsätzlich nicht für Verträge ohne Einwilligung der Erziehungsberechtigten (Code Civil, Art. 389). Jugendkonten bei Luxemburger Banken (BCEE, BGL, Raiffeisen) ab 12 Jahren möglich. <strong>Beratungsangebote:</strong> Caritas Crédit Conseil (247 86 868), Croix-Rouge Conseil budget (kostenlos), Finanzbildung über guichet.lu. Bei Glücksspiel-Problematik: Croix-Rouge SOS Spielsucht (40 14 014).
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Geld &amp; Finanzen · Seite 2</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pathways — App Hub</title>
+  <meta name="theme-color" content="#6366F1">
+  <link rel="stylesheet" href="core/ui-base.css">
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 5vw;
+      background: linear-gradient(135deg, #faf7f0 0%, #f5f0e8 50%, #ebe5d9 100%);
+      color: #0a0a14;
+    }
+    .hub-logo {
+      font-size: 48px; margin-bottom: 1rem;
+    }
+    .hub-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      margin-bottom: 0.5rem;
+      color: #0a0a14;
+    }
+    .hub-title em { font-style: italic; font-weight: 400; color: #d4a93f; }
+    .hub-subtitle {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1rem, 1.4vw, 1.25rem);
+      color: rgba(10, 10, 20, 0.6);
+      margin-bottom: 3rem;
+      max-width: 52ch;
+      line-height: 1.5;
+    }
+    .hub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 260px));
+      gap: 1.5rem;
+      justify-content: center;
+      width: 100%;
+      max-width: 1200px;
+    }
+    .hub-app {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-decoration: none;
+      color: #0a0a14;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+    .hub-app::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: var(--app-color, #6366F1);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .hub-app:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+    }
+    .hub-app:hover::before { opacity: 1; }
+    .hub-app-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      background: color-mix(in srgb, var(--app-color, #6366F1) 8%, #faf7f0);
+    }
+    .hub-app-name {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+    .hub-app-desc {
+      font-size: 0.8125rem;
+      color: rgba(10, 10, 20, 0.55);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    .hub-app-tag {
+      margin-top: auto;
+      padding: 3px 14px;
+      background: var(--app-color, #6366F1);
+      color: white;
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .hub-workflow {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+    }
+    .hub-footer {
+      margin-top: 4rem;
+      font-size: 0.75rem;
+      color: rgba(10, 10, 20, 0.35);
+      font-family: var(--font-mono);
+      letter-spacing: 0.04em;
+    }
+    .hub-footer a { color: #d4a93f; text-decoration: none; }
+    @media (max-width: 768px) {
+      .hub-grid { grid-template-columns: 1fr; }
+      body { padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hub-logo">🧭</div>
+  <h1 class="hub-title"><em>Pathways</em></h1>
+  <p class="hub-subtitle">Therapeutisches Case-Management für die Bezugsarbeit mit Jugendlichen.<br>5 spezialisierte Apps — ein Ökosystem. Beginne im HUB.</p>
+
+  <div class="hub-workflow" style="max-width: 700px; margin: 0 auto var(--space-6); text-align: left; font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
+    <strong style="color: var(--text);">Typischer Workflow:</strong>
+    <span style="color: #6366F1;">HUB</span> (Klient anlegen) →
+    <span style="color: #EF4444;">CLARO</span> (Screening + Hypothesen) →
+    <span style="color: #10B981;">VIA</span> (Plan erstellen + Sitzungen) →
+    <span style="color: #0EA5E9;">CODEX</span> (Material für Sitzung) →
+    <span style="color: #14B8A6;">ACADEMY</span> (Weiterbildung)
+  </div>
+
+  <div class="hub-grid">
+    <a class="hub-app" href="hub/" style="--app-color: #6366F1;">
+      <div class="hub-app-icon">🏠</div>
+      <div class="hub-app-name">HUB</div>
+      <div class="hub-app-desc">Dein Cockpit. Tagesbriefing, Klienten-Verwaltung, Risiko-Ampel, Krisen-Werkzeuge, Helfer-Netzwerk, Konferenz-Modus.</div>
+      <div class="hub-app-tag">Hier starten</div>
+    </a>
+    <a class="hub-app" href="claro/" style="--app-color: #EF4444;">
+      <div class="hub-app-icon">🔍</div>
+      <div class="hub-app-name">CLARO</div>
+      <div class="hub-app-desc">Adaptive Diagnostik. 5 Triage-Fragen, 6 validierte Instrumente (PHQ-A, GAD-7, PCL-5, SDQ, SCOFF, ASRS), Live-Hypothesen, 5P-Fallformulierung.</div>
+    </a>
+    <a class="hub-app" href="via/" style="--app-color: #10B981;">
+      <div class="hub-app-icon">🛤️</div>
+      <div class="hub-app-name">VIA</div>
+      <div class="hub-app-desc">Plan & Sitzung. 7-Phasen-Roadmap, Heute-Ansicht, Live-Timer, ORS/SRS (Miller & Duncan), PVT-Tracking, SOAP-Dokumentation, Stepped Care.</div>
+    </a>
+    <a class="hub-app" href="codex/" style="--app-color: #0EA5E9;">
+      <div class="hub-app-icon">📚</div>
+      <div class="hub-app-name">CODEX</div>
+      <div class="hub-app-desc">441 Materialien + Eltern-Infoblätter + Therapie-Sequenzen. Kontextuelle Empfehlungen basierend auf Klient-Profil. Persönliche Toolbox.</div>
+    </a>
+    <a class="hub-app" href="academy/" style="--app-color: #14B8A6;">
+      <div class="hub-app-icon">🎓</div>
+      <div class="hub-app-name">ACADEMY</div>
+      <div class="hub-app-desc">9 Lernpfade, Skills-Trainer mit Rollenspielen, CDSS-Wizard, Tages-Impulse, Selbstfürsorge-Check, Karriere-Tracker. XP & Zertifikate.</div>
+    </a>
+  </div>
+
+  <div class="hub-footer">
+    <p>Pathways v3.1 — Designed by Joey Guedes · <a href="core/test.html">Core-Test</a></p>
+    <p style="font-size: 11px; margin-top: 4px;">Alle Daten lokal im Browser (localStorage). Kein Server, kein Tracking. DSGVO-konform.</p>
+  </div>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').then(() => console.log('[SW] Registered'));
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,667 @@
+{
+  "version": 1,
+  "lernpfade": [
+    {
+      "id": "polyvagal",
+      "titel": "Polyvagal-Theorie für Pädagogen",
+      "icon": "🧠",
+      "kategorie": "Klinik",
+      "dauer": "ca. 4 Stunden",
+      "schwierigkeit": "Anfänger",
+      "xp": 400,
+      "beschreibung": "Das autonome Nervensystem verstehen und in der täglichen Arbeit nutzen. Von der Theorie zur konkreten Intervention — wie du erkennst ob ein Jugendlicher in Safety, Fight/Flight oder Shutdown ist, und was du tun kannst.",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Modul 1: Was ist die Polyvagal-Theorie?",
+          "inhalt": "Die Polyvagal-Theorie wurde 1994 von Stephen Porges entwickelt und hat unser Verständnis des autonomen Nervensystems grundlegend verändert. Statt der klassischen Zweiteilung (Sympathikus vs. Parasympathikus) beschreibt Porges drei hierarchisch organisierte neuronale Schaltkreise, die unser Verhalten, unsere Emotionen und unsere Beziehungsfähigkeit steuern.\n\nDie drei Zustände:\n\n1. VENTRAL-VAGAL (Sicherheit & soziales Engagement)\nDer ventrale Vagus ist der evolutionär jüngste Schaltkreis. Er ist nur bei Säugetieren voll entwickelt und ermöglicht soziales Engagement: Blickkontakt, Zuhören, Sprechen mit modulierter Stimme, Gesichtsausdruck. Wenn dieser Schaltkreis aktiv ist, fühlen wir uns sicher, verbunden und können lernen. In der Sitzung zeigt sich das an: entspannter Körperhaltung, Blickkontakt, flüssigem Sprechen, Fähigkeit zuzuhören.\n\n2. SYMPATHIKUS (Mobilisierung — Kampf oder Flucht)\nWenn das Nervensystem Gefahr erkennt, schaltet es auf den Sympathikus um. Herzfrequenz steigt, Muskeln spannen sich an, Aufmerksamkeit verengt sich. In der Sitzung: Unruhe, Zappeln, erhöhte Reizbarkeit, schnelles Sprechen, Schwierigkeiten stillzusitzen. Wichtig: Kognitive Arbeit (Gespräch, Reflexion) ist in diesem Zustand stark eingeschränkt, weil der präfrontale Kortex 'offline' geht.\n\n3. DORSAL-VAGAL (Immobilisierung — Shutdown)\nDer evolutionär älteste Schaltkreis. Bei überwältigender Bedrohung schaltet das System ab: Herzfrequenz sinkt, Muskeltonus fällt, Dissoziation kann auftreten. In der Sitzung: glasiger Blick, keine Reaktion auf Ansprache, monotone oder fehlende Stimme, Zusammensacken. Dies ist KEIN Widerstand — es ist eine biologische Schutzreaktion.\n\nDie Hierarchie ist entscheidend: Der Körper versucht immer zuerst den sichersten Zustand (ventral-vagal). Nur wenn das nicht gelingt, eskaliert er zum Sympathikus, und erst als letztes zum dorsal-vagalen Shutdown. Für die Praxis bedeutet das: Wir müssen von unten nach oben arbeiten — erst Sicherheit herstellen, bevor kognitive Arbeit möglich ist.\n\nNeuroception: Porges prägte diesen Begriff für die unbewusste Einschätzung von Sicherheit oder Gefahr durch das Nervensystem. Neuroception geschieht OHNE bewusstes Denken. Ein traumatisiertes Kind kann in einem objektiv sicheren Raum Gefahr 'spüren' — weil seine Neuroception durch vergangene Erfahrungen kalibriert wurde. Das erklärt, warum rationale Argumente ('Du bist doch hier sicher') nicht funktionieren."
+        },
+        {
+          "id": 2, "typ": "quiz", "titel": "Quiz: Die drei Zustände",
+          "fragen": [
+            {
+              "frage": "Ein Schüler sitzt mit verschränkten Armen, wippt mit dem Bein und antwortet gereizt auf jede Frage. In welchem Zustand ist er wahrscheinlich?",
+              "optionen": ["Ventral-vagal (sicher)", "Sympathikus (Kampf/Flucht)", "Dorsal-vagal (Shutdown)", "Normal entspannt"],
+              "korrekt": 1,
+              "erklaerung": "Unruhe, Reizbarkeit und motorische Anspannung sind Zeichen sympathischer Aktivierung. Der Körper ist in 'Kampf-Modus'. Intervention: Verlangsamung, Atemübung, NICHT konfrontieren."
+            },
+            {
+              "frage": "Was bedeutet 'Neuroception'?",
+              "optionen": ["Bewusste Risikoeinschätzung", "Unbewusste Einschätzung von Sicherheit/Gefahr", "Eine Therapiemethode", "Ein Medikament"],
+              "korrekt": 1,
+              "erklaerung": "Neuroception (Porges 2004) ist die unbewusste, automatische Bewertung von Sicherheit oder Gefahr durch das Nervensystem — ohne bewusstes Denken."
+            },
+            {
+              "frage": "Eine Schülerin starrt ins Leere, reagiert nicht auf ihren Namen, ihr Körper ist schlaff. Was passiert neurologisch?",
+              "optionen": ["Sie ist gelangweilt", "Sympathische Aktivierung", "Dorsal-vagaler Shutdown", "Sie simuliert"],
+              "korrekt": 2,
+              "erklaerung": "Glasiger Blick, fehlende Reaktion und Muskelschlaffheit sind Zeichen eines dorsal-vagalen Shutdowns. Dies ist eine biologische Schutzreaktion, KEINE Verweigerung."
+            },
+            {
+              "frage": "In welcher Reihenfolge eskaliert das Nervensystem?",
+              "optionen": ["Shutdown → Kampf → Sicherheit", "Sicherheit → Kampf/Flucht → Shutdown", "Kampf → Sicherheit → Shutdown", "Zufällig"],
+              "korrekt": 1,
+              "erklaerung": "Die polyvagale Hierarchie: Zuerst versucht das System den sichersten Zustand (ventral-vagal). Erst wenn das scheitert: Sympathikus (Kampf/Flucht). Als letztes: dorsal-vagaler Shutdown."
+            },
+            {
+              "frage": "Warum funktioniert 'Du bist doch hier sicher' bei einem traumatisierten Kind oft nicht?",
+              "optionen": ["Das Kind lügt", "Es versteht kein Deutsch", "Die Neuroception überschreibt rationale Argumente", "Es will Aufmerksamkeit"],
+              "korrekt": 2,
+              "erklaerung": "Neuroception geschieht unbewusst und ist durch vergangene Erfahrungen kalibriert. Rationale Argumente erreichen den präfrontalen Kortex — aber der ist bei Bedrohung 'offline'. Man muss über den Körper regulieren, nicht über Worte."
+            }
+          ]
+        },
+        {
+          "id": 3, "typ": "lektuere", "titel": "Modul 2: Co-Regulation — die Brücke zum Kind",
+          "inhalt": "Co-Regulation bedeutet: Ein reguliertes Nervensystem hilft einem dysregulierten Nervensystem, sich zu beruhigen. Das ist die biologische Grundlage therapeutischer Beziehung. Konkret: Deine ruhige Stimme, dein entspannter Gesichtsausdruck, dein langsames Atmen — all das wird vom Nervensystem des Kindes unbewusst registriert und kann es aus dem Kampf/Flucht- oder Shutdown-Modus herausführen. Voraussetzung: DU musst reguliert sein. Wenn du selbst gestresst bist, überträgt sich das."
+        },
+        {
+          "id": 4, "typ": "lektuere", "titel": "Modul 3: Erkennen der Zustände in der Praxis",
+          "inhalt": "Checkliste für die Sitzung: SAFE (ventral-vagal): Blickkontakt, flüssiges Sprechen, entspannte Haltung, kann zuhören, Humor möglich. ACTIVATED (sympathisch): Unruhe, Zappeln, schnelles/lautes Sprechen, Reizbarkeit, kann nicht stillsitzen, Konzentrationsprobleme. FROZEN (dorsal-vagal): Glasiger Blick, leise/monotone Stimme, verlangsamte Reaktionen, Dissoziation, 'nicht da sein'. Dokumentiere den PVT-Status dreimal pro Sitzung: Anfang, Mitte, Ende."
+        },
+        {
+          "id": 5, "typ": "lektuere", "titel": "Modul 4: Interventionen nach PVT-Zustand",
+          "inhalt": "Bei ACTIVATED: (1) Eigenes Tempo verlangsamen. (2) 4-7-8 Atemübung. (3) Bilaterale Stimulation (Butterfly-Hug). (4) Sensorischer Fokus ('Was fühlst du unter deinen Füßen?'). Bei FROZEN: (1) Orientierung geben ('Du bist hier bei mir'). (2) Sensorischer Reiz (kaltes Wasser, Pfefferminzöl). (3) 5-4-3-2-1 Grounding. (4) NICHT anfassen ohne Erlaubnis. (5) Wenn >15 Min: Sitzung sanft beenden. Bei SAFE: Jetzt ist kognitive Arbeit möglich — Gespräch, Reflexion, Skills-Aufbau."
+        },
+        {
+          "id": 6, "typ": "quiz", "titel": "Quiz: Interventionen",
+          "fragen": [
+            {
+              "frage": "Welche Intervention passt bei dorsal-vagalem Shutdown?",
+              "optionen": ["Konfrontatives Gespräch", "5-4-3-2-1 Grounding + kalter Reiz", "Laut ansprechen und schütteln", "Ignorieren bis es vorbeigeht"],
+              "korrekt": 1,
+              "erklaerung": "Grounding und sensorische Reize (Kälte, starker Geruch) helfen dem Nervensystem, sich zu re-orientieren. Konfrontation oder Ignorieren verschlimmern den Zustand."
+            },
+            {
+              "frage": "Was ist die wichtigste Voraussetzung für Co-Regulation?",
+              "optionen": ["Eine bestimmte Technik kennen", "Selbst reguliert sein", "Laut und klar sprechen", "Den Klienten anfassen"],
+              "korrekt": 1,
+              "erklaerung": "Co-Regulation funktioniert nur wenn die Fachkraft selbst in einem regulierten Zustand ist. Das Nervensystem des Kindes registriert unbewusst deinen Zustand."
+            }
+          ]
+        },
+        {
+          "id": 7, "typ": "lektuere", "titel": "Modul 5: PVT im Alltag — jenseits der Sitzung",
+          "inhalt": "Polyvagale Prinzipien gelten überall: Im Klassenraum (Lautstärke, Licht, Sitzordnung beeinflussen Neuroception), im Elterngespräch (gestresste Eltern sind im Sympathikus — erst regulieren, dann informieren), in der Pause (kurze Atemübung für DICH). Tipp: Beginne jede Sitzung mit 30 Sekunden bewusstem Atmen. Nicht als Übung für den Klienten — sondern für DICH."
+        },
+        {
+          "id": 8, "typ": "reflexion", "titel": "Abschluss-Reflexion",
+          "frage": "Beschreibe einen Moment mit einem Klienten, in dem du jetzt — mit PVT-Wissen — verstehst, was neurologisch passiert ist. Was hättest du anders gemacht?"
+        }
+      ]
+    },
+    {
+      "id": "trauma-informed",
+      "titel": "Trauma-Spezialist (Stufe 1)",
+      "icon": "🌱",
+      "kategorie": "Klinik",
+      "dauer": "ca. 12 Stunden",
+      "schwierigkeit": "Fortgeschritten",
+      "zertifikat": true,
+      "xp": 800,
+      "beschreibung": "Vertiefte Trauma-Kompetenz mit Zertifikat. PTBS vs. KPTBS (ICD-11), Stabilisierungstechniken, Herman-Phasen, Trigger-Analyse, Sekundärtraumatisierung. Voraussetzung: Polyvagal-Pfad abgeschlossen.",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Was ist Trauma?",
+          "inhalt": "Trauma ist eine überwältigende Erfahrung, die das Verarbeitungssystem überfordert. Nach van der Kolk (2014) wird Trauma im Körper gespeichert — nicht als bewusste Erinnerung, sondern als Erregungsmuster. Das Nervensystem bleibt im 'Überlebensmodus' (Fight/Flight/Freeze) hängen, auch wenn die Gefahr vorbei ist."
+        },
+        {
+          "id": 2, "typ": "lektuere", "titel": "Window of Tolerance (Siegel 1999)",
+          "inhalt": "Im 'Toleranzfenster' kann ein Mensch denken, fühlen und handeln. Über dem Fenster: Hyperarousal (Panik, Wut). Unter dem Fenster: Hypoarousal (Erstarrung, Dissoziation). Ziel der Begleitung: das Fenster vergrößern."
+        },
+        {
+          "id": 3, "typ": "quiz", "titel": "Quiz: Window of Tolerance",
+          "fragen": [
+            {
+              "frage": "Eine Schülerin starrt apathisch in die Wand und reagiert nicht. Wo ist sie?",
+              "optionen": ["Im Toleranzfenster", "Hyperarousal", "Hypoarousal", "Normal entspannt"],
+              "korrekt": 2,
+              "erklaerung": "Apathie und fehlende Reaktion sind Zeichen für Hypoarousal — das Nervensystem hat 'abgeschaltet' (Freeze)."
+            },
+            {
+              "frage": "Welche Intervention passt bei Hyperarousal?",
+              "optionen": ["Konfrontation mit Trauma", "Aktivierung", "Beruhigung & Atemübung", "Wegschicken"],
+              "korrekt": 2,
+              "erklaerung": "Bei Hyperarousal hilft Beruhigung (langsame Atmung, sicherer Ort, sanfte Stimme), nicht weitere Aktivierung."
+            }
+          ]
+        },
+        {
+          "id": 4, "typ": "lektuere", "titel": "3 Phasen der Traumatherapie (Herman 1992)",
+          "inhalt": "Phase 1: Sicherheit & Stabilisierung. Phase 2: Erinnerung & Trauer. Phase 3: Reintegration. Wichtig: Phase 1 muss abgeschlossen sein, bevor Phase 2 beginnt. Sonst: Re-Traumatisierung."
+        },
+        {
+          "id": 5, "typ": "lektuere", "titel": "PTBS vs. KPTBS (ICD-11)",
+          "inhalt": "ICD-11 unterscheidet erstmals PTBS (6B40) von Komplexer PTBS (6B41).\n\nPTBS (6B40): Wiedererleben + Vermeidung + Bedrohungserleben. Kann nach einzelnem oder wiederholtem Trauma auftreten.\n\nKPTBS (6B41): Alle PTBS-Symptome PLUS Störung der Selbstorganisation:\n- Affektregulationsstörung (explosive Wut oder emotionale Taubheit)\n- Negatives Selbstkonzept ('Ich bin kaputt, wertlos, schuld')\n- Beziehungsstörung (Schwierigkeiten, Nähe zuzulassen oder Beziehungen aufrechtzuerhalten)\n\nKPTBS tritt typischerweise nach prolongierter/wiederholter Traumatisierung auf (Kindesmisshandlung, häusliche Gewalt über Jahre) — NICHT nach Einzelereignissen.\n\nKlinische Konsequenz: KPTBS braucht LÄNGERE Stabilisierungsphase (Herman Phase 1 kann Monate dauern). Standard-Exposition (wie bei PTBS) kann bei KPTBS retraumatisierend wirken, wenn die Selbstorganisation nicht stabilisiert ist."
+        },
+        {
+          "id": 6, "typ": "lektuere", "titel": "Stabilisierungstechniken für die Praxis",
+          "inhalt": "Phase 1 (Herman): Sicherheit & Stabilisierung. Konkrete Techniken:\n\n1. Sicherer Ort (Imagination): 'Stell dir einen Ort vor wo du dich absolut sicher fühlst. Beschreibe ihn mir — was siehst du, hörst du, riechst du?'\n2. 5-4-3-2-1 Grounding: 5 Dinge sehen, 4 hören, 3 fühlen, 2 riechen, 1 schmecken. Bringt ins Hier-und-Jetzt.\n3. Butterfly-Hug: Arme über Brust kreuzen, abwechselnd links/rechts tippen. Bilaterale Stimulation beruhigt.\n4. Box-Breathing: 4 ein — 4 halten — 4 aus — 4 halten. Aktiviert den Vagus.\n5. Tresor-Technik: 'Packe die belastenden Bilder in einen imaginären Tresor. Schließ ihn ab. Die bleiben dort bis wir sie gemeinsam anschauen — in deinem Tempo.'\n\nWICHTIG: Stabilisierung ist keine Vermeidung. Es ist die Voraussetzung für alles Weitere."
+        },
+        {
+          "id": 7, "typ": "quiz", "titel": "Quiz: Trauma-Kompetenz",
+          "fragen": [
+            {
+              "frage": "Was unterscheidet KPTBS von PTBS nach ICD-11?",
+              "optionen": ["Die Dauer der Symptome", "Zusätzlich Störung der Selbstorganisation", "KPTBS ist leichter", "Nur die Ursache"],
+              "korrekt": 1,
+              "erklaerung": "KPTBS = PTBS-Symptome + Störung der Selbstorganisation (Affektregulation, negatives Selbstkonzept, Beziehungsstörung)."
+            },
+            {
+              "frage": "Warum kann Standard-Expositionstherapie bei KPTBS problematisch sein?",
+              "optionen": ["Sie dauert zu lang", "Die Selbstorganisation muss ZUERST stabilisiert werden", "Klienten mögen es nicht", "Es gibt keine Evidenz"],
+              "korrekt": 1,
+              "erklaerung": "Bei KPTBS ist die Affektregulation gestört. Exposition ohne stabile Selbstorganisation kann retraumatisierend wirken. Deshalb: Phase 1 (Stabilisierung) zuerst, so lange wie nötig."
+            },
+            {
+              "frage": "Was ist der Sinn der Tresor-Technik?",
+              "optionen": ["Trauma vergessen", "Belastende Bilder kontrolliert 'wegpacken' bis zur gemeinsamen Bearbeitung", "Therapie beenden", "Gefühle unterdrücken"],
+              "korrekt": 1,
+              "erklaerung": "Die Tresor-Technik gibt dem Klienten Kontrolle über intrusive Bilder. Es ist NICHT Vermeidung — es ist zeitlich begrenzte Containment-Strategie bis die Bearbeitung sicher möglich ist."
+            }
+          ]
+        },
+        {
+          "id": 8, "typ": "reflexion", "titel": "Abschluss-Reflexion (Zertifikat)",
+          "frage": "Welcher deiner Klienten könnte KPTBS statt PTBS haben? Was würde sich an deiner Arbeit ändern wenn du die Stabilisierungsphase verlängerst? Und: Wie schützt DU dich vor Sekundärtraumatisierung?"
+        }
+      ]
+    },
+    {
+      "id": "motiv-interview",
+      "titel": "Motivational Interviewing",
+      "icon": "💬",
+      "kategorie": "Gesprächsführung",
+      "schwierigkeit": "Fortgeschritten",
+      "dauer": "ca. 5 Stunden",
+      "xp": 500,
+      "beschreibung": "Klientenzentrierte, direktive Methode zur Stärkung der Veränderungsmotivation (Miller & Rollnick 2013).",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Der MI-Geist",
+          "inhalt": "MI basiert auf 4 Säulen: Partnerschaft (mit, nicht an), Akzeptanz (Autonomie respektieren), Empathie (echtes Verstehen), Evokation (aus dem Klienten herausholen, nicht hineinfüllen)."
+        },
+        {
+          "id": 2, "typ": "lektuere", "titel": "OARS — Die 4 Kerntechniken",
+          "inhalt": "Open-ended questions (offene Fragen), Affirmations (Bestärkungen), Reflective listening (Spiegeln), Summaries (Zusammenfassen). Diese 4 Techniken bilden das Handwerkszeug."
+        },
+        {
+          "id": 3, "typ": "quiz", "titel": "Quiz: OARS-Techniken",
+          "fragen": [
+            {
+              "frage": "Welche Frage ist offen (open-ended)?",
+              "optionen": ["Trinkst du oft?", "Magst du Sport?", "Wie ist es für dich, wenn deine Eltern streiten?", "Hast du Freunde?"],
+              "korrekt": 2,
+              "erklaerung": "Open-ended Fragen können nicht mit Ja/Nein beantwortet werden und laden zur Erzählung ein."
+            },
+            {
+              "frage": "Was ist 'Change Talk'?",
+              "optionen": ["Wenn der Klient über Veränderung redet", "Eine MI-Technik", "Ein Therapie-Ziel", "Ein Konflikt"],
+              "korrekt": 0,
+              "erklaerung": "Change Talk ist alle Sprache des Klienten, die Veränderung in eine bestimmte Richtung andeutet — Wunsch, Fähigkeit, Gründe, Bedarf, Verpflichtung."
+            }
+          ]
+        },
+        {
+          "id": 4, "typ": "lektuere", "titel": "Ambivalenz halten",
+          "inhalt": "Klienten sind oft ambivalent ('Ich will aufhören, aber...'). Klassischer Fehler: Mit dem Klienten gegen die Sucht argumentieren. Besser: Ambivalenz reflektieren, beide Seiten sehen lassen, Diskrepanz zwischen Werten und Verhalten herausarbeiten."
+        },
+        {
+          "id": 5, "typ": "lektuere", "titel": "Change Talk erkennen und verstärken",
+          "inhalt": "Change Talk = jede Aussage des Klienten die in Richtung Veränderung zeigt. DARN-CAT:\n\nD — Desire ('Ich WÜNSCHE mir...')\nA — Ability ('Ich KÖNNTE...')\nR — Reasons ('Weil...')\nN — Need ('Ich MUSS...')\nC — Commitment ('Ich WERDE...')\nA — Activation ('Ich bin BEREIT...')\nT — Taking Steps ('Ich habe schon...')\n\nWas tun wenn du Change Talk hörst? Verstärken! Reflektieren, vertiefen, nachfragen. 'Du sagst, du könntest dir vorstellen... erzähl mir mehr.' NICHT übergehen oder relativieren.\n\nSustain Talk (Gegenpart): 'Ich KANN nicht...', 'Es hat keinen SINN...'. Nicht dagegen argumentieren — das verstärkt den Widerstand. Stattdessen: doppelseitige Reflexion ('Du siehst einerseits... und andererseits...')."
+        },
+        {
+          "id": 6, "typ": "lektuere", "titel": "Der Righting Reflex — und wie du ihn vermeidest",
+          "inhalt": "Der Righting Reflex ist der natürliche Impuls der Fachkraft, das Problem sofort zu lösen: 'Du solltest...', 'Hast du schon versucht...', 'Das Beste wäre...'\n\nDas Problem: Je mehr du FOR Veränderung argumentierst, desto mehr argumentiert der Klient GEGEN Veränderung. Das ist ein psychologisches Gesetz (Reaktanz).\n\nBeispiel:\nFachkraft: 'Cannabis ist schädlich für dein Gehirn.' (Righting Reflex)\nKlient: 'Ach, das ist übertrieben. Alle machen das.' (Sustain Talk)\n\nBesser:\nFachkraft: 'Was gefällt dir am Kiffen? Und was gefällt dir nicht?' (Ambivalenz explorieren)\nKlient: 'Naja, es hilft mir einzuschlafen. Aber morgens bin ich total fertig.' (Change Talk!)\n\nRegel: Wer für Veränderung ARGUMENTIEREN sollte, ist der KLIENT — nicht du."
+        },
+        {
+          "id": 7, "typ": "quiz", "titel": "Quiz: MI in der Praxis",
+          "fragen": [
+            {
+              "frage": "Ein Jugendlicher sagt: 'Ich könnte mir vorstellen, weniger zu kiffen.' Was ist das?",
+              "optionen": ["Sustain Talk", "Change Talk (Ability)", "Widerstand", "Höflichkeit"],
+              "korrekt": 1,
+              "erklaerung": "'Ich könnte...' = Ability-Change-Talk (DARN-CAT). Verstärken: 'Du siehst die Möglichkeit. Was müsste passieren damit du es ausprobierst?'"
+            },
+            {
+              "frage": "Was passiert wenn die Fachkraft den Righting Reflex folgt?",
+              "optionen": ["Der Klient fühlt sich verstanden", "Der Klient argumentiert GEGEN Veränderung (Reaktanz)", "Der Klient verändert sich sofort", "Nichts"],
+              "korrekt": 1,
+              "erklaerung": "Psychologische Reaktanz: Je mehr jemand FÜR etwas argumentiert, desto stärker argumentiert das Gegenüber DAGEGEN. MI vermeidet das durch Neutralität und Ambivalenz-Exploration."
+            }
+          ]
+        },
+        {
+          "id": 8, "typ": "reflexion", "titel": "Abschluss-Reflexion",
+          "frage": "Denke an ein Gespräch wo du den Righting Reflex hattest. Was hat der Klient darauf gesagt? Wie könntest du dasselbe Gespräch mit MI-Techniken anders führen?"
+        }
+      ]
+    },
+    {
+      "id": "emotionsregulation",
+      "titel": "Emotionsregulation verstehen",
+      "icon": "🌊",
+      "kategorie": "Klinik",
+      "dauer": "ca. 75 Min",
+      "xp": 150,
+      "beschreibung": "Wie Emotionen entstehen, warum sie eskalieren und welche evidenzbasierten Strategien helfen (Gross 1998, DBT).",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Das Prozess-Modell (Gross 1998)",
+          "inhalt": "Emotion entsteht in 5 Phasen: Situation → Aufmerksamkeit → Bewertung → Reaktion. An jeder Phase kann interveniert werden. Frühe Interventionen (Situation/Aufmerksamkeit) sind effektiver als späte (Reaktions-Unterdrückung)."
+        },
+        {
+          "id": 2, "typ": "lektuere", "titel": "Die DBT-Skills",
+          "inhalt": "Linehan (1993) entwickelte 4 Skill-Module: Achtsamkeit, Distress Tolerance (TIPP), Emotion Regulation (PLEASE, Opposite Action), Interpersonal Effectiveness (DEAR MAN). Empirisch belegt für Borderline, gut adaptierbar für Adoleszente."
+        },
+        {
+          "id": 3, "typ": "quiz", "titel": "Quiz: Emotionsregulation",
+          "fragen": [
+            {
+              "frage": "Welcher Skill nutzt biologische Stressreduktion durch Kälte?",
+              "optionen": ["DEAR MAN", "TIPP", "PLEASE", "Opposite Action"],
+              "korrekt": 1,
+              "erklaerung": "TIPP = Temperatur (kalt), Intensive Bewegung, Paced Breathing, Paired Muscle Relaxation. Kältereiz aktiviert Dive-Reflex und beruhigt schnell."
+            },
+            {
+              "frage": "Was bedeutet 'Opposite Action'?",
+              "optionen": ["Gegen den Klienten", "Das Gegenteil dessen tun, was die Emotion will", "Streit beilegen", "Konflikt vermeiden"],
+              "korrekt": 1,
+              "erklaerung": "Wenn die Emotion (z.B. Angst) zur Vermeidung drängt, hilft das Gegenteil (Annäherung). Bei Wut: Sanftheit. Bei Scham: Sich zeigen."
+            }
+          ]
+        },
+        {
+          "id": 4, "typ": "lektuere", "titel": "Co-Regulation vor Selbstregulation",
+          "inhalt": "Adoleszente haben noch unreife präfrontale Cortex-Funktion. Sie regulieren Emotionen primär durch Beziehung (Co-Regulation). Eine ruhige, präsente Bezugsperson ist die wirksamste Intervention bei akutem Distress."
+        }
+      ]
+    },
+    {
+      "id": "screening-basics",
+      "titel": "Screening-Grundlagen",
+      "icon": "🔍",
+      "kategorie": "Diagnostik",
+      "dauer": "ca. 60 Min",
+      "xp": 120,
+      "beschreibung": "Validierte Screening-Instrumente verstehen, anwenden und interpretieren. PHQ-A, GAD-7, PCL-5, C-SSRS.",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Sensitivität vs. Spezifität",
+          "inhalt": "Sensitivität = wie viele tatsächlich Erkrankte werden erkannt (richtig-positiv). Spezifität = wie viele Gesunde werden korrekt ausgeschlossen (richtig-negativ). Hohe Sensitivität ist wichtiger bei lebensbedrohlichen Diagnosen (Suizid)."
+        },
+        {
+          "id": 2, "typ": "lektuere", "titel": "Cutoff-Werte verstehen",
+          "inhalt": "PHQ-A ≥ 10: leichte Depression, ≥ 15: mittelschwere, ≥ 20: schwere. GAD-7 ≥ 10: klinisch relevante Angst. PCL-5 ≥ 33: PTBS-Verdacht. Wichtig: Cutoffs sind keine Diagnose, sondern ein Anhaltspunkt für vertiefte Diagnostik."
+        },
+        {
+          "id": 3, "typ": "quiz", "titel": "Quiz: Screening-Cutoffs",
+          "fragen": [
+            {
+              "frage": "Ein Jugendlicher hat PHQ-A 18. Was bedeutet das?",
+              "optionen": ["Keine Depression", "Leichte Depression", "Mittelschwere Depression", "Schwere Depression"],
+              "korrekt": 2,
+              "erklaerung": "PHQ-A 15-19 entspricht mittelschwerer Depression. Klinische Abklärung empfohlen."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "krise-management",
+      "titel": "Krisenmanagement",
+      "icon": "🚨",
+      "kategorie": "Krisen",
+      "dauer": "ca. 45 Min",
+      "xp": 100,
+      "beschreibung": "Akut-Interventionen bei Suizidalität, Selbstverletzung, Eskalation. Stanley-Brown Safety Plan.",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Mythen über Suizid-Ansprache",
+          "inhalt": "Mythos: 'Wenn ich nach Suizid frage, bringe ich auf die Idee.' Falsch! Studien zeigen: Direktes, ruhiges Ansprechen senkt Risiko (Dazzi et al. 2014). Klienten fühlen sich gehört, nicht angetrieben."
+        },
+        {
+          "id": 2, "typ": "lektuere", "titel": "Stanley-Brown Safety Plan",
+          "inhalt": "6 Schritte: Warnsignale, eigene Coping-Strategien, soziale Ablenkung, Vertrauenspersonen, Profis kontaktieren, Means Restriction. Goldstandard der Suizidprävention. Wallet-Karte oder Smartphone-Foto immer dabei."
+        },
+        {
+          "id": 3, "typ": "quiz", "titel": "Quiz: Krise",
+          "fragen": [
+            {
+              "frage": "Ein Klient nennt eine konkrete Methode und Zeitpunkt. Wie reagieren?",
+              "optionen": ["Termin für nächste Woche", "Sofort nicht allein lassen + psychiatrische Abklärung", "Eltern fragen", "Beruhigen, abwarten"],
+              "korrekt": 1,
+              "erklaerung": "Konkrete Methode + Zeitpunkt = HÖCHSTES Risiko. Sofortige Intervention erforderlich. CHNP, CHL oder 112."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bindungstheorie",
+      "titel": "Bindungstheorie in der Praxis",
+      "icon": "🔗",
+      "kategorie": "Klinik",
+      "dauer": "ca. 6 Stunden",
+      "schwierigkeit": "Fortgeschritten",
+      "xp": 500,
+      "beschreibung": "Von Bowlby über Ainsworth zu Main: Bindungsmuster erkennen, verstehen und in der Begleitung nutzen. Die therapeutische Beziehung als korrigierendes Bindungserleben.",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Bowlby (1969): Bindung als Überlebenssystem",
+          "inhalt": "Bindung ist kein 'Verwöhnen' — sie ist ein biologisches Überlebenssystem. Kinder sind darauf programmiert, Nähe zu einer Bezugsperson zu suchen, besonders unter Stress. Wenn diese Bezugsperson verfügbar, sensitiv und responsiv reagiert, entsteht sichere Bindung. Ist sie unzuverlässig, abweisend oder bedrohlich, entwickeln sich unsichere Muster."
+        },
+        {
+          "id": 2, "typ": "lektuere", "titel": "Ainsworth (1978): Die 4 Bindungsmuster",
+          "inhalt": "Sicher (Typ B): Kind exploriert frei, sucht bei Stress Nähe, lässt sich beruhigen. Unsicher-vermeidend (Typ A): Kind zeigt wenig Stress bei Trennung, ignoriert Bezugsperson bei Rückkehr — hat gelernt, Bedürfnisse zu unterdrücken. Unsicher-ambivalent (Typ C): Kind klammert, lässt sich schwer beruhigen, wechselt zwischen Nähe und Wut. Desorganisiert (Typ D, Main & Hesse 1990): Widersprüchliches Verhalten — die Bezugsperson ist gleichzeitig Quelle von Sicherheit UND Angst. Häufig bei Misshandlung."
+        },
+        {
+          "id": 3, "typ": "quiz", "titel": "Quiz: Bindungsmuster erkennen",
+          "fragen": [
+            {
+              "frage": "Ein 14-Jähriger kommt zu jeder Sitzung pünktlich, erzählt aber nie Persönliches. Auf direkte Fragen weicht er aus. Welches Bindungsmuster könnte vorliegen?",
+              "optionen": ["Sicher", "Unsicher-vermeidend", "Unsicher-ambivalent", "Desorganisiert"],
+              "korrekt": 1,
+              "erklaerung": "Vermeidende Bindung: Das Kind hat gelernt, emotionale Bedürfnisse zu unterdrücken. Kooperiert oberflächlich, l��sst aber keine echte Nähe zu. Strategie: Geduld, keine Konfrontation, langsam Vertrauen aufbauen."
+            },
+            {
+              "frage": "Eine 12-Jährige ruft dich 5× am Tag an, weint bei jeder Trennung am Ende der Sitzung, und ist wütend wenn du einmal nicht erreichbar bist. Welches Muster?",
+              "optionen": ["Sicher", "Unsicher-vermeidend", "Unsicher-ambivalent", "Desorganisiert"],
+              "korrekt": 2,
+              "erklaerung": "Ambivalente Bindung: Hyper-Aktivierung des Bindungssystems. Das Kind hat gelernt, dass nur massive Signale Aufmerksamkeit bringen. Strategie: Klare, verlässliche Struktur (feste Zeiten, feste Regeln), NICHT reaktiv auf jede Eskalation."
+            },
+            {
+              "frage": "Welches Bindungsmuster ist am stärksten mit Misshandlung assoziiert?",
+              "optionen": ["Sicher", "Unsicher-vermeidend", "Unsicher-ambivalent", "Desorganisiert"],
+              "korrekt": 3,
+              "erklaerung": "Desorganisierte Bindung (Main & Hesse 1990): Die Bezugsperson ist gleichzeitig die einzige Quelle von Trost UND die Quelle der Bedrohung. Das Kind hat kein kohärentes Verhaltensmuster — es erstarrt, nähert sich und weicht gleichzeitig zurück."
+            }
+          ]
+        },
+        {
+          "id": 4, "typ": "lektuere", "titel": "Therapeutische Beziehung als korrigierendes Erleben",
+          "inhalt": "Die Fachkraft wird unvermeidlich zum 'Bindungsobjekt'. Das ist kein Fehler — es ist die Chance. Ein vermeidend gebundener Jugendlicher braucht eine Bezugsperson, die BLEIBT, auch wenn er sie ablehnt. Ein ambivalent gebundener braucht VERLÄSSLICHKEIT, auch wenn er eskaliert. Konsistenz über Monate — das ist die Intervention. Nicht die Technik."
+        },
+        {
+          "id": 5, "typ": "lektuere", "titel": "ICD-11: Reaktive Bindungsstörung (6B44)",
+          "inhalt": "RAD (Reactive Attachment Disorder): Kind zeigt kaum Bindungsverhalten, sucht selten Trost, wirkt emotional abgeflacht. DSED (Disinhibited Social Engagement Disorder): Kind nähert sich Fremden unterschiedslos, keine Scheu. Beide Störungen erfordern stabile, langfristige Bezugspersonenarbeit — keine kurzfristige Intervention.\n\nDiagnostische Kriterien RAD (ICD-11 6B44):\n- Beginn vor dem 5. Lebensjahr\n- Pathogene Fürsorge nachweisbar (Vernachlässigung, häufige Wechsel)\n- Widersprüchliches Verhalten: Nähe suchen UND vermeiden\n- Nicht erklärbar durch ASS\n\nDiagnostische Kriterien DSED:\n- Reduzierte Zurückhaltung gegenüber Fremden\n- Bereitschaft, mit Fremden wegzugehen\n- Nicht altersgemäß (>9 Monate)\n- Kann auch bei ausreichender Fürsorge persistieren (nach früher Deprivation)"
+        },
+        {
+          "id": 6, "typ": "lektuere", "titel": "Mentalisierung & Bindung (Fonagy 2002)",
+          "inhalt": "Mentalisierung = die Fähigkeit, eigenes und fremdes Verhalten als Ausdruck innerer Zustände (Gedanken, Gefühle, Wünsche) zu verstehen.\n\nFonagy & Target (2002) zeigten: Sichere Bindung fördert Mentalisierung. Unsichere Bindung hemmt sie. Kinder mit desorganisierter Bindung können oft NICHT verstehen, warum sie sich so fühlen wie sie sich fühlen — weil die Bezugsperson, die ihnen das beibringen sollte, gleichzeitig die Quelle der Angst war.\n\nIn der Praxis:\n- Kind schlägt ein anderes Kind → Frage nicht 'Warum hast du das getan?' (zu kognitiv). Frage: 'Was ist gerade in dir passiert?'\n- Mentalisierung fördern: 'Was denkst du, warum deine Mutter so reagiert hat?'\n- Eigene Mentalisierung modellieren: 'Ich merke, ich bin gerade unsicher. Ich glaube, das liegt daran, dass...'\n- NICHT mentalisieren für das Kind ('Du bist wütend weil...') — sondern MIT dem Kind mentalisieren\n\nWenn Mentalisierung zusammenbricht (in Stress): Zurück zur Regulation (Porges). Erst regulieren, dann mentalisieren."
+        },
+        {
+          "id": 7, "typ": "quiz", "titel": "Quiz: Bindung in der Praxis",
+          "fragen": [
+            {
+              "frage": "Ein 14-Jähriger erzählt dir detailliert von seinem Wochenende, vermeidet aber jede emotionale Äußerung. Welches Bindungsmuster könnte vorliegen?",
+              "optionen": ["Sicher", "Unsicher-vermeidend", "Unsicher-ambivalent", "Desorganisiert"],
+              "korrekt": 1,
+              "erklaerung": "Vermeidende Bindung: Faktisches Erzählen ohne Emotion = Deaktivierungsstrategie. Das Kind hat gelernt, emotionale Bedürfnisse zu unterdrücken um Ablehnung zu vermeiden."
+            },
+            {
+              "frage": "Was fördert Mentalisierung bei Jugendlichen am stärksten?",
+              "optionen": ["Arbeitsblätter ausfüllen", "Die Fachkraft mentalisiert laut mit ('Ich frage mich ob...')", "Belohnungssysteme", "Medikation"],
+              "korrekt": 1,
+              "erklaerung": "Mentalisierung wird durch Modellierung gelernt. Wenn die Fachkraft laut über innere Zustände nachdenkt ('Ich frage mich ob du vielleicht Angst hast, dass...'), lernt der Jugendliche diesen Prozess."
+            },
+            {
+              "frage": "Warum sollte man bei einem Kind mit desorganisierter Bindung besonders konsistent sein?",
+              "optionen": ["Weil es sonst frech wird", "Weil das innere Arbeitsmodell 'Erwachsene sind unberechenbar' korrigiert werden muss", "Weil die Eltern es so wollen", "Weil es im Lehrbuch steht"],
+              "korrekt": 1,
+              "erklaerung": "Desorganisiert gebundene Kinder haben gelernt: 'Die Person die mich schützen soll, ist auch die Person die mich bedroht.' Konsistenz über Monate ist die einzige Korrektur dieses Modells."
+            }
+          ]
+        },
+        {
+          "id": 8, "typ": "reflexion", "titel": "Abschluss-Reflexion",
+          "frage": "Denke an einen Klienten: Welches Bindungsmuster zeigt er/sie in der Beziehung zu dir? Welches Muster aktiviert er/sie bei dir? (Gegenübertragung)"
+        }
+      ]
+    },
+    {
+      "id": "suizidpraevention",
+      "titel": "Suizidprävention & C-SSRS",
+      "icon": "🛡️",
+      "kategorie": "Sicherheit",
+      "dauer": "ca. 3 Stunden",
+      "schwierigkeit": "Anfänger",
+      "pflichtfortbildung": true,
+      "xp": 350,
+      "beschreibung": "Pflichtfortbildung. C-SSRS anwenden, Sicherheitspläne erstellen, Means Restriction umsetzen, Postvention. Wissen, das Leben rettet.",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Modul 1: Epidemiologie — Suizid bei Jugendlichen",
+          "inhalt": "Suizid ist die zweithäufigste Todesursache bei 15-24-Jährigen weltweit (WHO 2023). In Luxemburg: ca. 70 Suizide pro Jahr (alle Altersgruppen), steigende Tendenz bei Jugendlichen.\n\nRisikofaktoren (nach Bedeutung): (1) Vorheriger Suizidversuch — stärkster Einzelprädiktor (OR >30, Ribeiro et al. 2016). (2) Psychische Erkrankung — Depression, Substanzmissbrauch, Borderline. (3) ACE ≥ 4 — verdreifacht Suizidrisiko (Felitti 1998). (4) LGBTQ+-Identität — 3-4× erhöhtes Risiko (Trevor Project 2022). (5) Zugang zu letalen Mitteln. (6) Kürzlicher Verlust oder Krise. (7) Impulsivität (besonders bei Jungen). (8) Soziale Isolation / Mobbing.\n\nSchutzfaktoren: Stabile Bezugsperson (1 reicht!), Zugehörigkeitsgefühl, Gründe zu leben (Linehan), eingeschränkter Zugang zu Mitteln, religiöse/spirituelle Praxis.\n\nWICHTIG: Fragen nach Suizid erhöht das Risiko NICHT. Meta-Analyse (Dazzi et al. 2014): Kein einziger Hinweis dass Fragen schadet. Das Gegenteil ist belegt — Ansprechen senkt das Risiko."
+        },
+        {
+          "id": 2, "typ": "lektuere", "titel": "Modul 2: C-SSRS — Das Instrument anwenden",
+          "inhalt": "Columbia Suicide Severity Rating Scale (Posner et al. 2011) — der Gold-Standard.\n\n5 Stufen der Suizidgedanken:\nStufe 1: Lebensüberdruss — 'Ich wünschte, ich wäre nicht mehr da.'\nStufe 2: Unspezifische Gedanken — 'Ich habe daran gedacht, mir etwas anzutun.'\nStufe 3: Gedanken MIT Methode — 'Ich habe daran gedacht, Tabletten zu nehmen.'\nStufe 4: Absicht OHNE Plan — 'Ich will es tun, aber weiß nicht wann.'\nStufe 5: Absicht MIT Plan — 'Am Freitag, wenn niemand da ist.'\n\nPlus Verhaltens-Items: Vorbereitende Handlungen? Abschiedsbriefe? Verschenken von Besitz? Suizidversuch aktuell oder lebenszeitlich?\n\nAuswertung:\nStufe 1-2: Beobachten, Schutzfaktoren stärken, Krisennummer geben.\nStufe 3: Sicherheitsplan JETZT + Means Restriction + Folgetermin 48h.\nStufe 4-5: SOFORT psychiatrische Abklärung. Nicht allein lassen. CHNP oder 112.\n\nWICHTIG: Jedes Mal vollständig durchführen. Keine Abkürzungen. Dokumentieren."
+        },
+        {
+          "id": 3, "typ": "quiz", "titel": "Quiz: C-SSRS in der Praxis",
+          "fragen": [
+            {
+              "frage": "Welcher Faktor ist der stärkste Einzelprädiktor für einen Suizidversuch?",
+              "optionen": ["Depression", "Vorheriger Suizidversuch", "Schlechte Noten", "Eltern-Scheidung"],
+              "korrekt": 1,
+              "erklaerung": "Vorheriger Versuch: Odds Ratio >30 (Ribeiro et al. 2016). Depression ist wichtig, aber nicht der stärkste Einzelfaktor."
+            },
+            {
+              "frage": "C-SSRS Stufe 3: 'Ich habe daran gedacht, Tabletten zu nehmen.' Was tust du ZUERST?",
+              "optionen": ["Abwarten und beobachten", "Sicherheitsplan erstellen + Means Restriction", "Sofort 112 anrufen", "Nur Eltern informieren"],
+              "korrekt": 1,
+              "erklaerung": "Stufe 3 = Gedanken MIT Methode. Sicherheitsplan jetzt + Means Restriction (Tabletten sichern mit Eltern). Folgetermin innerhalb 48h. KEIN Notfall, aber auch NICHT abwarten."
+            },
+            {
+              "frage": "Stimmt es, dass Fragen nach Suizid das Risiko erhöht?",
+              "optionen": ["Ja, deshalb vorsichtig sein", "Nein — Meta-Analyse zeigt das Gegenteil", "Nur bei Kindern unter 12", "Kommt auf die Formulierung an"],
+              "korrekt": 1,
+              "erklaerung": "Dazzi et al. 2014 (Meta-Analyse): Kein einziger Hinweis, dass Fragen nach Suizid das Risiko erhöht. Ansprechen kann es sogar senken."
+            },
+            {
+              "frage": "Ab welcher C-SSRS-Stufe ist SOFORTIGE psychiatrische Abklärung nötig?",
+              "optionen": ["Ab Stufe 1", "Ab Stufe 3", "Ab Stufe 4-5", "Nie — immer erst abwarten"],
+              "korrekt": 2,
+              "erklaerung": "Stufe 4 (Absicht ohne Plan) und Stufe 5 (Absicht mit Plan) erfordern sofortige psychiatrische Abklärung. Person NICHT allein lassen."
+            }
+          ]
+        },
+        {
+          "id": 4, "typ": "lektuere", "titel": "Modul 3: Stanley-Brown Sicherheitsplan",
+          "inhalt": "6 Schritte — IMMER gemeinsam mit dem Jugendlichen erstellen, nicht FÜR ihn:\n\n1. Warnsignale: 'Woran merkst DU, dass es dir schlechter geht?' (Gedanken, Gefühle, Verhalten, Situationen)\n2. Eigene Coping-Strategien: 'Was kannst du ALLEIN tun um dich abzulenken?' (Musik, Sport, Spazieren, Tagebuch — ohne andere Menschen)\n3. Soziale Ablenkung: 'Welche Menschen oder Orte helfen dir, OHNE dass du über die Krise sprechen musst?' (Café, Sportverein, Cousin)\n4. Vertrauenspersonen: 'Wem kannst du SAGEN dass es dir schlecht geht?' (2-3 Namen + Telefonnummern)\n5. Professionelle Hilfe: SOS Détresse 45 45 45, Kanner-Jugendtelefon 116 111, Therapeut, Notaufnahme\n6. Umgebung sichern: 'Welche gefährlichen Dinge können wir aus deiner Reichweite entfernen?' (Medikamente zu Eltern, Klingen weg, Alkohol)\n\nPlan als Foto auf dem Handy speichern. Kopie an Bezugsperson. Regelmäßig aktualisieren."
+        },
+        {
+          "id": 5, "typ": "lektuere", "titel": "Modul 4: Means Restriction",
+          "inhalt": "Zugang zu letalen Mitteln einschränken ist die wirksamste Einzelmaßnahme der Suizidprävention. Meta-Analyse (Zalsman et al. 2016): Stärkste Evidenz aller Strategien.\n\nWarum es funktioniert: Die meisten suizidalen Krisen sind zeitlich begrenzt (Minuten bis Stunden). Wenn die primäre Methode nicht verfügbar ist, wechseln die meisten Menschen NICHT zu einer anderen. Die Krise geht vorbei.\n\nPraktisch umsetzen:\n- Medikamente: Vorrat reduzieren, bei Eltern verschließen, Blister statt Flaschen\n- Klingen/Messer: Aus dem Zimmer, in verschlossener Schublade\n- Alkohol: Nicht im Zimmer des Jugendlichen\n- Online: Keine Suizid-Foren, ggf. Filter\n- Eltern einbeziehen: 'Es geht nicht darum, Ihrem Kind zu misstrauen — es geht darum, die Impulsdurchbrechung zu erschweren.'\n\nLegale Situation LU: Schweigepflicht kann bei akuter Selbstgefährdung gebrochen werden (Art. 458 Code pénal)."
+        },
+        {
+          "id": 6, "typ": "lektuere", "titel": "Modul 5: Postvention — nach einem Suizid(versuch)",
+          "inhalt": "Postvention = Intervention NACH einem Suizid oder schweren Versuch im Umfeld.\n\nWenn ein Klient einen Versuch überlebt:\n- Kontakt innerhalb 24h nach Entlassung (höchstes Rückfall-Risiko)\n- Sicherheitsplan aktualisieren\n- Means Restriction verstärken\n- Engmaschige Begleitung (2-3×/Woche) für 4 Wochen\n\nWenn ein Klient stirbt:\n- Eigene Trauer: Du darfst trauern. Das ist keine Schwäche.\n- Supervision SOFORT — nicht in 2 Wochen\n- Kollegiale Beratung, nicht allein verarbeiten\n- Systematische Fallanalyse (was hätte anders sein können? — nicht als Schuldfrage, sondern als Lernprozess)\n- Andere Klienten informieren wenn nötig (Contagion-Risiko bei Jugendlichen!)\n- Papageno-Effekt nutzen: Geschichten von Menschen die Krisen überwunden haben (statt Details des Suizids)\n\nSelbstfürsorge: Suizidalitäts-Kontakt ist emotional die schwerste Arbeit. Plane nach solchen Sitzungen bewusst Erholung ein."
+        },
+        {
+          "id": 7, "typ": "quiz", "titel": "Quiz: Sicherheitsplan & Postvention",
+          "fragen": [
+            {
+              "frage": "Was ist der Hauptgrund warum Means Restriction funktioniert?",
+              "optionen": ["Jugendliche vergessen ihren Plan", "Suizidale Krisen sind oft zeitlich begrenzt", "Eltern passen besser auf", "Medikamente werden teurer"],
+              "korrekt": 1,
+              "erklaerung": "Die meisten suizidalen Krisen dauern Minuten bis Stunden. Wenn die primäre Methode nicht verfügbar ist, geht die Krise oft vorbei — ohne Methodenwechsel."
+            },
+            {
+              "frage": "Wann ist das Rückfall-Risiko nach einem Suizidversuch am höchsten?",
+              "optionen": ["Nach 6 Monaten", "Innerhalb der ersten 24-48h nach Entlassung", "Nach 1 Jahr", "Sofort im Krankenhaus"],
+              "korrekt": 1,
+              "erklaerung": "Die ersten 24-48 Stunden nach Entlassung aus dem Krankenhaus sind die gefährlichste Zeit. Kontakt in diesem Zeitfenster ist lebensrettend."
+            }
+          ]
+        },
+        {
+          "id": 8, "typ": "reflexion", "titel": "Abschluss-Reflexion",
+          "frage": "Wie fühlst du dich nach diesem Modul? Welche Unterstützung brauchst DU um mit Suizidalität bei Jugendlichen umzugehen? Hast du einen Supervision-Termin geplant? Selbstfürsorge nach diesem Thema ist Pflicht, nicht optional."
+        }
+      ]
+    },
+    {
+      "id": "kvt-jugendliche",
+      "titel": "KVT-Grundlagen für Jugendliche",
+      "icon": "🧠",
+      "kategorie": "Klinik",
+      "dauer": "ca. 2 Stunden",
+      "xp": 250,
+      "beschreibung": "Kognitive Verhaltenstherapie adaptiert für Adoleszente. Gedankenprotokolle, Verhaltensexperimente, Exposition. Die meistuntersuchte Therapieform f��r Depression und Angst bei Jugendlichen.",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Das KVT-Modell: Situation → Gedanke → Gefühl → Verhalten",
+          "inhalt": "Beck (1976): Nicht die Situation verursacht das Gefühl, sondern die BEWERTUNG der Situation. Ein Jugendlicher der denkt 'Alle hassen mich' wird sich anders fühlen als einer der denkt 'Heute war ein schwieriger Tag'. KVT macht automatische Gedanken sichtbar und prüft sie auf Realitätsgehalt."
+        },
+        {
+          "id": 2, "typ": "lektuere", "titel": "Kognitive Verzerrungen bei Jugendlichen",
+          "inhalt": "Häufige Denkfehler: Schwarz-Weiß-Denken ('Entweder perfekt oder wertlos'), Katastrophisieren ('Wenn ich durchfalle, ist mein Leben vorbei'), Gedankenlesen ('Sie denkt bestimmt, ich bin dumm'), Übergeneralisieren ('Immer passiert mir das'), Personalisieren ('Es ist meine Schuld'). Bei Jugendlichen: besonders Gedankenlesen und Schwarz-Weiß-Denken (entwicklungsbedingt, präfrontaler Cortex noch reifend)."
+        },
+        {
+          "id": 3, "typ": "quiz", "titel": "Quiz: Kognitive Verzerrungen",
+          "fragen": [
+            {
+              "frage": "'Wenn ich in der Prüfung eine 4 bekomme, bin ich ein totaler Versager.' Welche Verzerrung?",
+              "optionen": ["Gedankenlesen", "Schwarz-Weiß-Denken", "Katastrophisieren", "Personalisieren"],
+              "korrekt": 1,
+              "erklaerung": "Schwarz-Weiß (Alles-oder-Nichts): Kein Mittelweg zwischen 'perfekt' und 'Versager'. KVT-Intervention: Kontinuum-Technik (wo zwischen 0 und 100 liegt eine 4 wirklich?)."
+            },
+            {
+              "frage": "Welche KVT-Technik eignet sich am besten bei sozialer Angst?",
+              "optionen": ["Gedankenprotokoll allein", "Graduierte Exposition", "Nur Entspannung", "Medikation"],
+              "korrekt": 1,
+              "erklaerung": "Meta-Analyse (Hofmann & Smits 2008): Exposition ist der wirksamste Bestandteil der KVT bei Angststörungen. Graduiert = von leicht nach schwer. Kombination mit kognitiver Umstrukturierung am effektivsten."
+            }
+          ]
+        },
+        {
+          "id": 4, "typ": "lektuere", "titel": "Gedankenprotokoll: Das Werkzeug",
+          "inhalt": "5-Spalten-Protokoll: (1) Situation — was ist passiert? (2) Automatischer Gedanke — was ging mir durch den Kopf? (3) Gefühl — welches Gefühl, Stärke 0-100? (4) Evidenz �� was spricht dafür, was dagegen? (5) Alternativer Gedanke + neues Gefühl. Bei Jugendlichen: vereinfachen auf 3 Spalten (Situation-Gedanke-Gefühl) als Einstieg. Digitale Version in CODEX verfügbar."
+        },
+        {
+          "id": 5, "typ": "lektuere", "titel": "Verhaltensaktivierung bei Depression",
+          "inhalt": "Jacobson et al. (2001): Verhaltensaktivierung ist genauso wirksam wie volle KVT bei Depression. Prinzip: Depression → Rückzug → weniger positive Erlebnisse → mehr Depression. Durchbrechen: Aktivitäten planen, auch wenn keine Motivation da ist. 'Tue es zuerst, die Motivation kommt danach.' Wochenplan mit angenehmen + Pflicht-Aktivitäten. Klein anfangen (5 Min. spazieren, nicht 1 Stunde joggen)."
+        },
+        {
+          "id": 6, "typ": "reflexion", "titel": "Praxis-Übung",
+          "frage": "Führe bei deinem nächsten Klienten mit depressiver Symptomatik ein 3-Spalten-Gedankenprotokoll ein. Dokumentiere: Wie hat der Klient reagiert? Was war schwierig?"
+        }
+      ]
+    },
+    {
+      "id": "elternarbeit",
+      "titel": "Elternarbeit professionell gestalten",
+      "icon": "👨‍👩‍👧",
+      "kategorie": "Systemisch",
+      "dauer": "ca. 90 Min",
+      "xp": 200,
+      "beschreibung": "Elterngespräche führen, Widerstand verstehen, Psychoedukation vermitteln, Loyalitätskonflikte navigieren. Die vergessene Hälfte der Jugendarbeit.",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Warum Elternarbeit der Hebel ist",
+          "inhalt": "Meta-Analyse (Weisz et al. 2017): Therapien MIT Elternkomponente zeigen stärkere Effekte als solche ohne. Eltern bestimmen den Kontext: Schlafzeiten, Medienkonsum, Familienklima, Therapie-Compliance. Ohne Eltern arbeiten wir gegen das System."
+        },
+        {
+          "id": 2, "typ": "lektuere", "titel": "Widerstand verstehen (nicht bekämpfen)",
+          "inhalt": "Eltern die 'nicht kooperieren' haben meist Gründe: Scham ('Wir haben versagt'), Angst ('Man nimmt uns das Kind weg'), Kulturelle Unterschiede ('Bei uns geht man nicht zum Psychologen'), Vorerfahrung ('Der letzte Berater hat alles schlimmer gemacht'). MI-Prinzip: Widerstand ist Information, kein Hindernis. Rollenwechsel: Fachkraft als Unterstützer, nicht als Richter."
+        },
+        {
+          "id": 3, "typ": "quiz", "titel": "Quiz: Elterngespräche",
+          "fragen": [
+            {
+              "frage": "Die Mutter sagt: 'Mein Kind ist nicht krank, es ist nur faul.' Wie reagierst du am besten?",
+              "optionen": ["Erklären warum sie falsch liegt", "Ihre Perspektive validieren UND Informationen anbieten", "Schweigen", "Das Kind allein weiterbetreuen"],
+              "korrekt": 1,
+              "erklaerung": "Validieren ('Ich verstehe, dass es so aussehen kann') + Reframing ('Was wenn die Faulheit ein Zeichen von etwas ist, das wir gemeinsam verstehen können?'). Konfrontation verstärkt Widerstand."
+            }
+          ]
+        },
+        {
+          "id": 4, "typ": "lektuere", "titel": "Psychoedukation: Komplexes einfach erklären",
+          "inhalt": "Regeln: (1) Keine Fachsprache — 'Depression' durch 'eine Phase in der das Gehirn zu wenig Energie produziert' ersetzen. (2) Normalisieren — 'Das ist häufiger als Sie denken, 1 von 5 Jugendlichen.' (3) Analogien nutzen — 'Wie ein gebrochener Arm: er heilt, aber er braucht Unterstützung.' (4) Handlungsorientiert — 'Was SIE tun können: ...' (5) Infoblatt mitgeben (aus CODEX)."
+        },
+        {
+          "id": 5, "typ": "reflexion", "titel": "Reflexion",
+          "frage": "Bei welchem Klienten wäre ein Elterngespräch überfällig? Was hält dich davon ab? (Eigene Angst vor Konfrontation? Zeitdruck? Loyalität zum Jugendlichen?)"
+        }
+      ]
+    }
+    ,{
+      "id": "schulverweigerung",
+      "titel": "Schulverweigerung & Schulangst",
+      "icon": "🏫",
+      "kategorie": "Klinik",
+      "dauer": "ca. 4 Stunden",
+      "schwierigkeit": "Anfänger",
+      "xp": 400,
+      "beschreibung": "Drei Formen des Schulabsentismus unterscheiden und gezielt intervenieren: Schulphobie (Trennungsangst), Schulangst (Leistungs-/Sozialangst), Schulverweigerung (oppositionell). Evidenzbasierte Strategien für jede Form.",
+      "schritte": [
+        {
+          "id": 1, "typ": "lektuere", "titel": "Modul 1: Drei Formen — eine entscheidende Unterscheidung",
+          "inhalt": "Schulabsentismus ist NICHT eine Diagnose — es ist ein Symptom mit mindestens drei verschiedenen Ursachen, die völlig unterschiedliche Behandlungen erfordern.\n\n1. SCHULPHOBIE (ICD-10 F93.0, Trennungsangst):\nDas Kind hat Angst, die Bezugsperson zu verlassen — nicht Angst vor der Schule. Typisch: Weinen morgens, somatische Beschwerden (Bauchschmerzen, Übelkeit), am Wochenende symptomfrei, jüngere Kinder (6-12). Die Eltern wissen wo das Kind ist (meistens zu Hause). Behandlung: graduierte Exposition (schrittweise Trennung üben) + Elternarbeit (Eltern müssen loslassen lernen).\n\n2. SCHULANGST (F93.1, Soziale/Leistungsangst):\nDas Kind hat Angst VOR der Schule: Prüfungsangst, soziale Angst (Mobbing, Vorträge), Versagensangst. Typisch: Angst vor bestimmten Fächern oder Situationen, Leistungsabfall, sozialer Rückzug. Behandlung: KVT (kognitive Umstrukturierung + graduierte Exposition), ggf. Schulwechsel bei Mobbing.\n\n3. SCHULVERWEIGERUNG (F91, oppositionell):\nDas Kind WILL nicht — aus Unlust, Opposition, Alternativbeschäftigung (Gaming, Peers). Kein Leidensdruck beim Kind selbst. Die Eltern wissen oft NICHT wo das Kind ist. Typisch: ältere Jugendliche (13+), Regelverstöße, Substanzkonsum. Behandlung: Verhaltensvertrag, klare Konsequenzen (positiv + negativ), Eltern-Coaching.\n\nDie Unterscheidung ist klinisch ENTSCHEIDEND. Schulphobie mit Grenzsetzung zu behandeln macht es schlimmer. Schulverweigerung mit Empathie allein ändert nichts."
+        },
+        {
+          "id": 2, "typ": "quiz", "titel": "Quiz: Differenzierung",
+          "fragen": [
+            {
+              "frage": "Marie, 8, weint jeden Morgen und klammert sich an die Mutter. Am Wochenende ist sie fröhlich. Was liegt wahrscheinlich vor?",
+              "optionen": ["Schulverweigerung (oppositionell)", "Schulangst (Leistungsangst)", "Schulphobie (Trennungsangst)", "ADHS"],
+              "korrekt": 2,
+              "erklaerung": "Klammern an Bezugsperson + jüngeres Alter + symptomfrei am Wochenende = klassische Schulphobie (Trennungsangst). Behandlung: graduierte Trennung, NICHT Zwang."
+            },
+            {
+              "frage": "Tom, 15, schwänzt seit 3 Wochen. Eltern wissen nicht wo er ist. Er zockt nachts und hat neue Freunde. Was liegt vor?",
+              "optionen": ["Schulphobie", "Schulangst", "Schulverweigerung (oppositionell)", "Depression"],
+              "korrekt": 2,
+              "erklaerung": "Eltern wissen nicht wo er ist + keine Angst + Alternativbeschäftigung (Gaming, neue Peers) = oppositionelle Schulverweigerung. Struktur, Konsequenzen, Eltern-Coaching."
+            },
+            {
+              "frage": "Warum ist die Unterscheidung klinisch so wichtig?",
+              "optionen": ["Für die Statistik", "Für die ICD-Kodierung", "Weil die Behandlung fundamental verschieden ist", "Ist nicht so wichtig"],
+              "korrekt": 2,
+              "erklaerung": "Schulphobie mit Grenzsetzung → Verschlimmerung. Schulverweigerung mit nur Empathie → keine Veränderung. Falsche Intervention schadet."
+            }
+          ]
+        },
+        {
+          "id": 3, "typ": "lektuere", "titel": "Modul 2: Diagnostik — wie erkenne ich die Form?",
+          "inhalt": "Diagnostischer Algorithmus:\n\n1. WO ist das Kind? Zu Hause bei Eltern → eher Phobie/Angst. Unterwegs, unklar → eher Verweigerung.\n2. WANN fehlt es? Bestimmte Tage/Fächer → eher Angst. Immer → eher Phobie oder Verweigerung.\n3. WIE reagiert es auf Schulthema? Angst/Panik/Weinen → Phobie/Angst. Gleichgültigkeit/Aggression → Verweigerung.\n4. LEIDET es? Ja (Bauchschmerzen, Schlafstörung) → Phobie/Angst. Nein → Verweigerung.\n\nScreening-Instrumente:\n- GAD-7 (Angst)\n- PHQ-A (Depression — oft komorbid)\n- SDQ (Verhaltensprobleme bei Verweigerung)\n- School Refusal Assessment Scale (SRAS, Kearney & Silverman)"
+        },
+        {
+          "id": 4, "typ": "lektuere", "titel": "Modul 3: Intervention bei Schulphobie",
+          "inhalt": "Evidenzbasierter Ansatz (S3-Leitlinie):\n\n1. Psychoedukation für Eltern: 'Ihr Kind hat echte Angst. Es simuliert nicht. Aber: Vermeidung verstärkt die Angst.'\n2. Graduierte Exposition — Schritt für Schritt:\n   Woche 1: Schulweg gehen (ohne reinzugehen)\n   Woche 2: 1 Stunde im Schulgebäude (Bibliothek, mit Vertrauensperson)\n   Woche 3: 1 Unterrichtsstunde (Lieblingsfach)\n   Woche 4: Halber Tag → ganzer Tag\n3. Eltern-Coaching: Morgens kein Verhandeln. Kurzer Abschied. Nicht zurückkommen.\n4. Begleitperson in der Schule (SePAS, Vertrauenslehrer)\n5. Belohnungssystem für Anwesenheit (nicht für Leistung)\n6. Ggf. SSRI bei schwerer Angst (KJP-Überweisung)"
+        },
+        {
+          "id": 5, "typ": "lektuere", "titel": "Modul 4: Intervention bei Schulangst",
+          "inhalt": "KVT-basiert:\n\n1. Angst-Hierarchie erstellen: Was genau macht Angst? (Mathe-Prüfung? Vor der Klasse sprechen? Umkleide?)\n2. Kognitive Umstrukturierung: 'Wenn ich eine 5 schreibe, bin ich ein Versager' → 'Eine 5 ist unangenehm, aber verändert nicht wer ich bin'\n3. Graduierte Exposition: Von leichtester zu schwerster Situation\n4. Skills-Aufbau: Prüfungsstrategien, Entspannungstechniken, Selbstinstruktion\n5. Schule einbeziehen: Nachteilsausgleich? Mündliche statt schriftliche Prüfungen? Sitzplatz?\n6. Bei Mobbing: Schulisches Anti-Mobbing-Protokoll aktivieren. Ggf. Klassenwechsel. NIEMALS dem Kind die Schuld geben."
+        },
+        {
+          "id": 6, "typ": "lektuere", "titel": "Modul 5: Intervention bei Schulverweigerung",
+          "inhalt": "Strukturiert-verhaltensorientiert:\n\n1. Klare Erwartungen: 'Schule ist Pflicht. Das ist nicht verhandelbar.'\n2. Verhaltensvertrag: Konkret, mit dem Jugendlichen zusammen. Was passiert wenn er geht? Was passiert wenn nicht?\n3. Positive Konsequenzen STÄRKER als negative (Gaming-Zeit als Verstärker, nicht als Strafe)\n4. Morgenroutine strukturieren: Aufstehzeit, Frühstück, Schulweg — nicht verhandelbar\n5. Eltern-Coaching: NICHT morgens verhandeln. Nicht anschreien. Konsequent sein.\n6. Funktionsanalyse: WARUM verweigert? Langeweile → Begabungsdiagnostik. Peers → Sozialarbeit. Substanzen → Suchtberatung.\n7. Multisystemische Therapie (MST) bei schweren Fällen\n\nWICHTIG: Keine Vorwürfe ('Du bist faul'). Aber auch keine falsche Empathie ('Ich verstehe wenn du nicht willst'). Die Haltung: 'Ich sehe dass es schwer ist. Und: du gehst trotzdem. Ich helfe dir dabei.'"
+        },
+        {
+          "id": 7, "typ": "quiz", "titel": "Quiz: Interventionen",
+          "fragen": [
+            {
+              "frage": "Was ist der ERSTE Schritt bei Schulphobie?",
+              "optionen": ["Schulpflicht durchsetzen", "Psychoedukation für Eltern", "Medikation", "Schulwechsel"],
+              "korrekt": 1,
+              "erklaerung": "Eltern müssen verstehen: Das Kind hat echte Angst (kein Simulieren), ABER Vermeidung verstärkt die Angst. Erst Verstehen, dann graduierte Exposition."
+            },
+            {
+              "frage": "Bei oppositioneller Schulverweigerung: Was funktioniert NICHT?",
+              "optionen": ["Verhaltensvertrag", "Nur Empathie ohne Konsequenzen", "Morgenroutine strukturieren", "Positive Verstärker"],
+              "korrekt": 1,
+              "erklaerung": "Empathie allein ändert bei oppositioneller Verweigerung nichts — weil kein Leidensdruck beim Kind besteht. Es braucht Struktur + Konsequenzen + Empathie zusammen."
+            }
+          ]
+        },
+        {
+          "id": 8, "typ": "reflexion", "titel": "Abschluss-Reflexion",
+          "frage": "Hast du aktuell einen Klienten mit Schulabsentismus? Welche der drei Formen liegt wahrscheinlich vor? Was wäre der nächste konkrete Schritt basierend auf dem was du gelernt hast?"
+        }
+      ]
+    }
+  ]
+}

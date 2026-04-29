@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Sitzung 24 — Situations-Karten</title>
+<link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
+<style>
+:root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
+.karten-seite { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 10px; }
+.situations-karte { border: 2.5px solid var(--farbe); border-radius: 16px; padding: 16px 12px; text-align: center; min-height: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: white; }
+.situations-karte-emoji { font-size: 32px; margin-bottom: 6px; }
+.situations-karte-du { font-size: 14px; font-weight: 800; color: #EF4444; margin-bottom: 8px; }
+.situations-karte-aufgabe { font-size: 12px; color: var(--farbe); font-weight: 700; border-top: 1.5px dashed var(--farbe); padding-top: 8px; margin-top: 4px; }
+</style>
+</head>
+<body>
+<div class="druck-leiste"><button class="btn-drucken" onclick="window.print()">🖨️ Drucken + Ausschneiden</button></div>
+
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
+      <div class="ab-titel">Situations-Karten: Du → Ich ✂️💬</div>
+      <div class="ab-untertitel">Ziehe 1 Karte — baue die Du-Botschaft in eine Ich-Botschaft um!</div>
+    </div>
+    <div class="kopfzeile-icon">💬</div>
+  </div>
+  <div class="karten-seite">
+    <div class="situations-karte"><div class="situations-karte-emoji">😤</div><div class="situations-karte-du">„Du hörst mir NIE zu!"</div><div class="situations-karte-aufgabe">→ Baue um: Ich fühle mich... weil... Ich wünsche mir...</div></div>
+    <div class="situations-karte"><div class="situations-karte-emoji">😡</div><div class="situations-karte-du">„Du bist IMMER so gemein!"</div><div class="situations-karte-aufgabe">→ Baue um: Ich fühle mich... weil... Ich wünsche mir...</div></div>
+    <div class="situations-karte"><div class="situations-karte-emoji">😢</div><div class="situations-karte-du">„Du lässt mich immer hängen!"</div><div class="situations-karte-aufgabe">→ Baue um: Ich fühle mich... weil... Ich wünsche mir...</div></div>
+    <div class="situations-karte"><div class="situations-karte-emoji">😒</div><div class="situations-karte-du">„Du nervst total!"</div><div class="situations-karte-aufgabe">→ Baue um: Ich fühle mich... weil... Ich wünsche mir...</div></div>
+    <div class="situations-karte"><div class="situations-karte-emoji">😠</div><div class="situations-karte-du">„Du nimmst einfach meine Sachen!"</div><div class="situations-karte-aufgabe">→ Baue um: Ich fühle mich... weil... Ich wünsche mir...</div></div>
+    <div class="situations-karte"><div class="situations-karte-emoji">🥺</div><div class="situations-karte-du">„Du hast mein Geheimnis verraten!"</div><div class="situations-karte-aufgabe">→ Baue um: Ich fühle mich... weil... Ich wünsche mir...</div></div>
+    <div class="situations-karte"><div class="situations-karte-emoji">😤</div><div class="situations-karte-du">„Du machst dich immer über mich lustig!"</div><div class="situations-karte-aufgabe">→ Baue um: Ich fühle mich... weil... Ich wünsche mir...</div></div>
+    <div class="situations-karte"><div class="situations-karte-emoji">😞</div><div class="situations-karte-du">„Du interessierst dich null für mich!"</div><div class="situations-karte-aufgabe">→ Baue um: Ich fühle mich... weil... Ich wünsche mir...</div></div>
+  </div>
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 24</span>
+    <span>Seite 1 / 1</span>
+  </div>
+</div>
+</body>
+</html>

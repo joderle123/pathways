@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Sitzung 14 — Notfallkarte</title>
+<link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
+<style>
+:root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
+.karten-seite { display: flex; justify-content: center; align-items: center; padding: 30px 10px; }
+.notfallkarte { border: 3px solid var(--farbe); border-radius: 14px; width: 86mm; min-height: 54mm; padding: 12px 14px; background: linear-gradient(135deg, var(--farbe-hell), white); display: flex; flex-direction: column; gap: 6px; }
+.notfallkarte-kopf { display: flex; align-items: center; gap: 8px; border-bottom: 2px solid var(--farbe); padding-bottom: 6px; }
+.notfallkarte-kopf-emoji { font-size: 28px; }
+.notfallkarte-kopf-titel { font-size: 14px; font-weight: 900; color: var(--farbe); text-transform: uppercase; letter-spacing: 0.5px; }
+.notfallkarte-schritt { display: flex; align-items: flex-start; gap: 6px; font-size: 11px; color: #0F172A; line-height: 1.4; }
+.notfallkarte-nummer { background: var(--farbe); color: white; font-weight: 800; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; margin-top: 1px; }
+.notfallkarte-telefone { border-top: 2px solid var(--farbe); padding-top: 6px; margin-top: 4px; display: flex; flex-direction: column; gap: 3px; }
+.notfallkarte-tel { font-size: 11px; font-weight: 800; color: var(--farbe); }
+.notfallkarte-tel-label { font-weight: 600; color: #64748B; font-size: 9px; }
+</style>
+</head>
+<body>
+<div class="druck-leiste"><button class="btn-drucken" onclick="window.print()">🖨️ Drucken + Ausschneiden</button></div>
+
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
+      <div class="ab-titel">Notfallkarte ✂️🆘</div>
+      <div class="ab-untertitel">Ausschneiden, laminieren, immer im Portemonnaie tragen!</div>
+    </div>
+    <div class="kopfzeile-icon">🆘</div>
+  </div>
+  <div class="karten-seite">
+    <div class="notfallkarte">
+      <div class="notfallkarte-kopf">
+        <div class="notfallkarte-kopf-emoji">🆘</div>
+        <div class="notfallkarte-kopf-titel">Meine Notfallkarte</div>
+      </div>
+      <div class="notfallkarte-schritt">
+        <div class="notfallkarte-nummer">1</div>
+        <div><strong>STOPP</strong> — Halte an. Atme 3× tief ein und aus. Du bist nicht allein.</div>
+      </div>
+      <div class="notfallkarte-schritt">
+        <div class="notfallkarte-nummer">2</div>
+        <div><strong>TIPP-Skill</strong> — Eiswürfel ans Gesicht / kaltes Wasser / intensive Bewegung.</div>
+      </div>
+      <div class="notfallkarte-schritt">
+        <div class="notfallkarte-nummer">3</div>
+        <div><strong>Ruf jemanden an</strong> — Vertrauensperson, Freund*in oder eine Hotline.</div>
+      </div>
+      <div class="notfallkarte-schritt">
+        <div class="notfallkarte-nummer">4</div>
+        <div><strong>Sicherer Ort</strong> — Geh dahin, wo du dich sicher fühlst. Warte, bis die Welle vorbei ist.</div>
+      </div>
+      <div class="notfallkarte-telefone">
+        <div class="notfallkarte-tel">📞 116 111 <span class="notfallkarte-tel-label">— Nummer gegen Kummer (kostenlos)</span></div>
+        <div class="notfallkarte-tel">📞 0800 111 0 111 <span class="notfallkarte-tel-label">— Telefonseelsorge (24h)</span></div>
+        <div class="notfallkarte-tel">📞 0800 111 0 222 <span class="notfallkarte-tel-label">— Telefonseelsorge (24h)</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 14</span>
+    <span>Seite 1 / 1</span>
+  </div>
+</div>
+</body>
+</html>

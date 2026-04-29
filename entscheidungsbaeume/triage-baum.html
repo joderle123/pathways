@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entscheidungsbaum – Triage: Dringlichkeit einschätzen</title>
+  <link rel="stylesheet" href="../css/entscheidungsbaum.css">
+  <style>
+    :root { --farbe: #2563EB; --farbe-hell: #EFF6FF; }
+    /* Fallback-Styles falls CSS nicht geladen */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0; background: #f8fafc; color: #1e293b; }
+    .druck-leiste { display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
+    .btn-zurueck { color: var(--farbe); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+    .btn-zurueck:hover { text-decoration: underline; }
+    .btn-drucken { background: var(--farbe); color: #fff; border: none; padding: 8px 18px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; }
+    .btn-drucken:hover { opacity: 0.9; }
+    .eb-container { max-width: 720px; margin: 32px auto; padding: 0 20px; }
+    .eb-titel { text-align: center; margin-bottom: 8px; font-size: 1.6rem; color: #1e293b; }
+    .eb-untertitel { text-align: center; color: #64748b; margin-bottom: 32px; font-size: 0.95rem; }
+    .eb-fortschritt { display: flex; align-items: center; gap: 4px; margin-bottom: 28px; padding: 0 8px; }
+    .eb-fortschritt-punkt { width: 12px; height: 12px; border-radius: 50%; background: #e2e8f0; transition: all 0.3s; flex-shrink: 0; }
+    .eb-fortschritt-punkt.aktiv { background: var(--farbe); transform: scale(1.3); }
+    .eb-fortschritt-punkt.erledigt { background: #22c55e; }
+    .eb-fortschritt-linie { flex: 1; height: 2px; background: #e2e8f0; min-width: 8px; }
+    .eb-fortschritt-linie.erledigt { background: #22c55e; }
+    .eb-schritt { background: #fff; border-radius: 12px; padding: 28px 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04); animation: einblenden 0.3s ease; }
+    @keyframes einblenden { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .eb-schritt-nummer { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: #94a3b8; margin-bottom: 8px; font-weight: 600; }
+    .eb-frage { font-size: 1.2rem; font-weight: 700; margin-bottom: 24px; line-height: 1.4; color: #0f172a; }
+    .eb-optionen { display: flex; flex-direction: column; gap: 10px; }
+    .eb-option { display: block; width: 100%; text-align: left; padding: 14px 20px; border: 2px solid #e2e8f0; border-radius: 8px; background: #fff; cursor: pointer; font-size: 1rem; color: #334155; transition: all 0.2s; font-family: inherit; line-height: 1.4; }
+    .eb-option:hover { border-color: var(--farbe); background: var(--farbe-hell); color: var(--farbe); }
+    .eb-option.gewaehlt { border-color: var(--farbe); background: var(--farbe-hell); color: var(--farbe); font-weight: 600; }
+    .eb-ergebnis { padding: 24px; border-radius: 10px; margin-top: 8px; }
+    .eb-ergebnis.rot { background: #fef2f2; border: 2px solid #fca5a5; }
+    .eb-ergebnis.rot .eb-ergebnis-titel { color: #dc2626; }
+    .eb-ergebnis.gelb { background: #fffbeb; border: 2px solid #fcd34d; }
+    .eb-ergebnis.gelb .eb-ergebnis-titel { color: #d97706; }
+    .eb-ergebnis.gruen { background: #f0fdf4; border: 2px solid #86efac; }
+    .eb-ergebnis.gruen .eb-ergebnis-titel { color: #16a34a; }
+    .eb-ergebnis-titel { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+    .eb-ergebnis-text { line-height: 1.6; color: #334155; }
+    .eb-ergebnis-text ul { margin: 8px 0; padding-left: 20px; }
+    .eb-ergebnis-text li { margin-bottom: 6px; }
+    .eb-zurueck { display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; padding: 8px 16px; border: 1px solid #e2e8f0; border-radius: 6px; background: #fff; cursor: pointer; font-size: 0.9rem; color: #64748b; font-family: inherit; }
+    .eb-zurueck:hover { background: #f8fafc; color: #334155; }
+    .eb-verlauf { margin-top: 32px; }
+    .eb-verlauf-titel { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #94a3b8; margin-bottom: 12px; font-weight: 600; }
+    .eb-verlauf-eintrag { padding: 10px 16px; border-left: 3px solid #e2e8f0; margin-bottom: 8px; font-size: 0.9rem; color: #64748b; }
+    .eb-verlauf-eintrag strong { color: #334155; }
+    .eb-neustart { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; padding: 10px 20px; border: none; border-radius: 6px; background: var(--farbe); color: #fff; cursor: pointer; font-size: 0.95rem; font-family: inherit; }
+    .eb-neustart:hover { opacity: 0.9; }
+    .eb-hinweis { font-size: 0.82rem; color: #94a3b8; text-align: center; margin-top: 24px; font-style: italic; }
+    @media print { .druck-leiste, .eb-zurueck, .eb-neustart { display: none !important; } .eb-schritt { box-shadow: none; border: 1px solid #e2e8f0; } body { background: #fff; } }
+  </style>
+</head>
+<body>
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">&larr; Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<div class="eb-container">
+  <h1 class="eb-titel">Triage: Dringlichkeit einschätzen</h1>
+  <p class="eb-untertitel">Systematische Ersteinschätzung bei Neuaufnahme oder akutem Vorfall</p>
+
+  <div id="fortschritt" class="eb-fortschritt"></div>
+  <div id="wizard"></div>
+  <div id="verlauf"></div>
+  <p class="eb-hinweis">Dieses Instrument ersetzt keine klinische Beurteilung. Im Zweifel immer Fachperson hinzuziehen.</p>
+</div>
+
+<script>
+(function() {
+  const schritte = [
+    {
+      id: 'gefahr',
+      frage: 'Besteht akute Gefahr für den Jugendlichen oder andere Personen?',
+      optionen: [
+        {
+          text: 'Ja – es besteht unmittelbare Gefahr',
+          ergebnis: {
+            farbe: 'rot',
+            titel: 'SOFORT: Notfallprotokoll aktivieren',
+            text: '<ul><li><strong>112 anrufen</strong> (Rettungsdienst / Polizei)</li><li>Situation sichern, Jugendlichen nicht allein lassen</li><li>Leitung sofort informieren</li><li>Dokumentation im Nachgang (Vorfallprotokoll)</li><li><strong>Luxemburg:</strong> Police 113 / SAMU 112</li></ul>'
+          }
+        },
+        { text: 'Nein – keine unmittelbare Gefahr', naechster: 'suizidalitaet' }
+      ]
+    },
+    {
+      id: 'suizidalitaet',
+      frage: 'Gibt es Hinweise auf Suizidalität oder Selbstverletzung?',
+      optionen: [
+        {
+          text: 'Ja – Hinweise vorhanden',
+          ergebnis: {
+            farbe: 'gelb',
+            titel: 'C-SSRS Screening durchführen',
+            text: '<ul><li><strong>Columbia Suicide Severity Rating Scale (C-SSRS)</strong> anwenden</li><li>Sicherheitsplan erstellen (Safety Plan Intervention nach Stanley & Brown)</li><li>Fachärztliche Konsultation einleiten</li><li>Engmaschige Begleitung sicherstellen (keine Alleinsituation)</li><li><strong>Luxemburg:</strong> SOS Détresse: 45 45 45 / Kanner-Jugendtelefon: 116 111</li><li>Bei akuter Suizidalität → zurück zu Schritt 1 (Notfallprotokoll)</li></ul>'
+          }
+        },
+        { text: 'Nein – keine Hinweise', naechster: 'kindeswohl' }
+      ]
+    },
+    {
+      id: 'kindeswohl',
+      frage: 'Liegt eine Kindeswohlgefährdung vor (gemäss Jugendschutzgesetz / Art. 7 Loi ASFT)?',
+      optionen: [
+        {
+          text: 'Ja – Kindeswohlgefährdung erkennbar',
+          ergebnis: {
+            farbe: 'rot',
+            titel: 'Signalement an OPJ / SCAS einleiten',
+            text: '<ul><li><strong>Signalement</strong> gemäss institutionellem Verfahren erstellen</li><li>Office de la Protection de la Jeunesse (OPJ) kontaktieren</li><li>Service Central d\'Assistance Sociale (SCAS) informieren</li><li>Dokumentation: Beobachtungen, Zeitpunkt, beteiligte Personen</li><li>Leitung und zuständige Fachkraft informieren</li><li><strong>Achtung:</strong> Meldepflicht nach Art. 7 – Unterlassung kann strafrechtlich relevant sein</li></ul>'
+          }
+        },
+        { text: 'Nein – keine Hinweise auf Kindeswohlgefährdung', naechster: 'gewalt' }
+      ]
+    },
+    {
+      id: 'gewalt',
+      frage: 'Berichtet der Jugendliche von aktuellen Gewalterfahrungen (physisch, psychisch, sexuell)?',
+      optionen: [
+        {
+          text: 'Ja – Gewalterfahrungen berichtet',
+          ergebnis: {
+            farbe: 'gelb',
+            titel: 'Sicherheitsplan erstellen + ggf. Meldung',
+            text: '<ul><li>Sicherheitsplan gemeinsam mit dem Jugendlichen erarbeiten</li><li>Prüfen: Ist der Jugendliche in der aktuellen Unterbringung sicher?</li><li>Bei häuslicher Gewalt: Kontakt zu Beratungsstelle herstellen</li><li><strong>Luxemburg:</strong> Femmes en Détresse: 12 60 76 00 / Helpline Violence: 2060 1060</li><li>Prüfung Signalement-Pflicht (siehe Schritt 3)</li><li>Dokumentation und Information an Leitung</li></ul>'
+          }
+        },
+        { text: 'Nein – keine aktuellen Gewalterfahrungen', naechster: 'krise' }
+      ]
+    },
+    {
+      id: 'krise',
+      frage: 'Zeigt der Jugendliche Anzeichen einer akuten psychischen Krise?',
+      optionen: [
+        {
+          text: 'Ja – akute Krise erkennbar (z. B. Panikattacke, Dissoziation, starke Erregung)',
+          ergebnis: {
+            farbe: 'gelb',
+            titel: 'Krisenintervention + fachärztliche Abklärung',
+            text: '<ul><li>Krisenintervention nach institutionellem Protokoll</li><li>Erdungsübungen und Stabilisierungstechniken anbieten</li><li>Ruhe und Sicherheit vermitteln</li><li>Fachärztliche Abklärung zeitnah organisieren</li><li><strong>Luxemburg:</strong> Service de Psychiatrie Infanto-Juvénile am CHL</li><li>Krisenintervention dokumentieren</li><li>Follow-up innerhalb von 24 Stunden planen</li></ul>'
+          }
+        },
+        { text: 'Nein – keine akute psychische Krise', naechster: 'substanz' }
+      ]
+    },
+    {
+      id: 'substanz',
+      frage: 'Gibt es aktiven Substanzkonsum mit Gefährdungspotenzial?',
+      optionen: [
+        {
+          text: 'Ja – riskanter Substanzkonsum',
+          ergebnis: {
+            farbe: 'gelb',
+            titel: 'Suchtberatung einbinden',
+            text: '<ul><li>Konsummuster und Gefährdungsgrad einschätzen (CRAFFT-Screening)</li><li>Motivierende Gesprächsführung anwenden</li><li>Suchtberatung einschalten</li><li><strong>Luxemburg:</strong> CNS Ettelbrück: Suchtambulanz / Impuls asbl / Jugend- an Drogenhëllef</li><li>Bei Intoxikation: medizinische Versorgung priorisieren (112)</li><li>Regelmässige Verlaufsbeobachtung dokumentieren</li></ul>'
+          }
+        },
+        {
+          text: 'Nein – kein auffälliger Substanzkonsum',
+          ergebnis: {
+            farbe: 'gruen',
+            titel: 'Reguläre Aufnahme / Standardprozedere',
+            text: '<ul><li><strong>Screening-Instrumente</strong> anwenden (SDQ, CRAFFT nach Bedarf)</li><li>Intake-Gespräch planen und durchführen</li><li>Bezugsperson zuteilen</li><li>Erste Zielvereinbarung im Hilfeplan festhalten</li><li>Kennenlernphase mit niederschwelligen Angeboten gestalten</li><li>Nächster Termin innerhalb von 7 Tagen</li></ul>'
+          }
+        }
+      ]
+    }
+  ];
+
+  let aktuellerSchritt = 0;
+  const verlaufListe = [];
+  const schrittMap = {};
+  schritte.forEach((s, i) => { schrittMap[s.id] = i; });
+
+  function renderFortschritt() {
+    const container = document.getElementById('fortschritt');
+    let html = '';
+    for (let i = 0; i < schritte.length; i++) {
+      const zustand = i < aktuellerSchritt ? 'erledigt' : (i === aktuellerSchritt ? 'aktiv' : '');
+      html += '<div class="eb-fortschritt-punkt ' + zustand + '"></div>';
+      if (i < schritte.length - 1) {
+        html += '<div class="eb-fortschritt-linie ' + (i < aktuellerSchritt ? 'erledigt' : '') + '"></div>';
+      }
+    }
+    container.innerHTML = html;
+  }
+
+  function renderVerlauf() {
+    const container = document.getElementById('verlauf');
+    if (verlaufListe.length === 0) { container.innerHTML = ''; return; }
+    let html = '<div class="eb-verlauf"><div class="eb-verlauf-titel">Bisheriger Verlauf</div>';
+    verlaufListe.forEach(function(v) {
+      html += '<div class="eb-verlauf-eintrag"><strong>' + v.frage + '</strong><br>→ ' + v.antwort + '</div>';
+    });
+    html += '</div>';
+    container.innerHTML = html;
+  }
+
+  function renderSchritt() {
+    const schritt = schritte[aktuellerSchritt];
+    const container = document.getElementById('wizard');
+    let html = '<div class="eb-schritt">';
+    html += '<div class="eb-schritt-nummer">Schritt ' + (aktuellerSchritt + 1) + ' von ' + schritte.length + '</div>';
+    html += '<div class="eb-frage">' + schritt.frage + '</div>';
+    html += '<div class="eb-optionen">';
+    schritt.optionen.forEach(function(opt, idx) {
+      html += '<button class="eb-option" data-index="' + idx + '">' + opt.text + '</button>';
+    });
+    html += '</div>';
+    if (aktuellerSchritt > 0) {
+      html += '<button class="eb-zurueck" id="btn-zurueck">&larr; Zurück</button>';
+    }
+    html += '</div>';
+    container.innerHTML = html;
+
+    container.querySelectorAll('.eb-option').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const idx = parseInt(this.getAttribute('data-index'));
+        waehleOption(idx);
+      });
+    });
+
+    const zurueckBtn = document.getElementById('btn-zurueck');
+    if (zurueckBtn) {
+      zurueckBtn.addEventListener('click', function() { zurueck(); });
+    }
+
+    renderFortschritt();
+    renderVerlauf();
+  }
+
+  function waehleOption(idx) {
+    const schritt = schritte[aktuellerSchritt];
+    const option = schritt.optionen[idx];
+
+    verlaufListe.push({ frage: schritt.frage, antwort: option.text });
+
+    if (option.ergebnis) {
+      zeigeErgebnis(option.ergebnis);
+    } else if (option.naechster) {
+      aktuellerSchritt = schrittMap[option.naechster];
+      renderSchritt();
+    }
+  }
+
+  function zeigeErgebnis(ergebnis) {
+    const container = document.getElementById('wizard');
+    let html = '<div class="eb-schritt">';
+    html += '<div class="eb-schritt-nummer">Ergebnis</div>';
+    html += '<div class="eb-ergebnis ' + ergebnis.farbe + '">';
+    html += '<div class="eb-ergebnis-titel">' + ergebnis.titel + '</div>';
+    html += '<div class="eb-ergebnis-text">' + ergebnis.text + '</div>';
+    html += '</div>';
+    html += '<button class="eb-zurueck" id="btn-zurueck">&larr; Zurück zum letzten Schritt</button>';
+    html += ' <button class="eb-neustart" id="btn-neustart">↻ Neu starten</button>';
+    html += '</div>';
+    container.innerHTML = html;
+
+    document.getElementById('btn-zurueck').addEventListener('click', function() {
+      verlaufListe.pop();
+      renderSchritt();
+    });
+    document.getElementById('btn-neustart').addEventListener('click', function() { neustart(); });
+
+    renderFortschritt();
+    renderVerlauf();
+  }
+
+  function zurueck() {
+    if (verlaufListe.length > 0) {
+      verlaufListe.pop();
+      // Find previous step from verlauf
+      if (verlaufListe.length === 0) {
+        aktuellerSchritt = 0;
+      } else {
+        const letzteFrage = verlaufListe[verlaufListe.length - 1];
+        for (let i = 0; i < schritte.length; i++) {
+          if (schritte[i].frage === letzteFrage.frage) {
+            // Find the option that was chosen to get the next step
+            for (let j = 0; j < schritte[i].optionen.length; j++) {
+              if (schritte[i].optionen[j].text === letzteFrage.antwort && schritte[i].optionen[j].naechster) {
+                aktuellerSchritt = schrittMap[schritte[i].optionen[j].naechster];
+                renderSchritt();
+                return;
+              }
+            }
+          }
+        }
+      }
+    } else {
+      aktuellerSchritt = 0;
+    }
+    renderSchritt();
+  }
+
+  function neustart() {
+    aktuellerSchritt = 0;
+    verlaufListe.length = 0;
+    renderSchritt();
+  }
+
+  renderSchritt();
+})();
+</script>
+</body>
+</html>

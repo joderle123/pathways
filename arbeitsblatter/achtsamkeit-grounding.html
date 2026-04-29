@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Achtsamkeit &amp; Grounding</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #059669; --farbe-hell: #ECFDF5; }
+    .grounding-card { background: var(--farbe-hell); border: 1.5px solid #6EE7B7; border-radius: 10px; padding: 12px; text-align: center; }
+    .grounding-nr { font-size: 22px; font-weight: 900; color: var(--farbe); }
+    .atem-step { display: flex; align-items: center; gap: 10px; background: var(--farbe-hell); border-radius: 8px; padding: 8px 12px; font-size: 11px; }
+    .atem-nr { width: 28px; height: 28px; border-radius: 50%; background: var(--farbe); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex-shrink: 0; }
+    .tipp-card { border: 1.5px solid #6EE7B7; border-radius: 10px; padding: 10px; background: var(--farbe-hell); }
+    .koffer-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: white; border: 1.5px solid #6EE7B7; border-radius: 8px; font-size: 11px; }
+    .tracker-row { display: grid; grid-template-columns: 130px repeat(7,1fr); gap: 0; font-size: 10px; }
+    .tracker-cell { border: 1px solid #D1FAE5; padding: 6px 4px; text-align: center; }
+    .tracker-header { background: var(--farbe); color: white; font-weight: 700; padding: 6px 4px; text-align: center; font-size: 10px; }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- SEITE 1 -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">Hier &amp; Jetzt — Achtsamkeit und Grounding</div>
+      <div class="ab-untertitel">Achtsamkeit &amp; Grounding · Kategorie: Emotionen &amp; Wohlbefinden</div>
+    </div>
+    <div class="kopfzeile-icon">🧘</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">🧘 Dein Körper ist immer im Hier und Jetzt — nur dein Kopf reist.</div>
+    <p>Wenn Gedanken rasen, Angst aufsteigt oder du dich "nicht echt" fühlst: <strong>Grounding bringt dich zurück.</strong> Diese Übungen aktivieren dein Nervensystem und sagen deinem Gehirn: "Ich bin sicher."</p>
+    <p>🧠 <em>Wusstest du? Achtsamkeit verändert messbar dein Gehirn. Nach nur 8 Wochen Übung schrumpft die Amygdala (Angst-Zentrum) und der präfrontale Cortex (Denk-Zentrum) wird stärker.</em></p>
+  </div>
+
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">1</div><div class="uebung-titel">5-4-3-2-1 Grounding-Technik</div></div>
+    <div class="uebung-beschreibung">Wenn du dich überwältigt, ängstlich oder "neben dir" fühlst — nutze deine 5 Sinne um dich zu erden:</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:8px;">
+      <div class="grounding-card">
+        <div class="grounding-nr">5</div>
+        <div style="font-size:18px;">👁️</div>
+        <div style="font-size:10px;font-weight:700;color:var(--farbe);">SEHEN</div>
+        <div style="font-size:9px;color:var(--grau);">5 Dinge die du siehst</div>
+        <div class="schreiblinie" style="margin-top:6px;"></div>
+      </div>
+      <div class="grounding-card">
+        <div class="grounding-nr">4</div>
+        <div style="font-size:18px;">👂</div>
+        <div style="font-size:10px;font-weight:700;color:var(--farbe);">HÖREN</div>
+        <div style="font-size:9px;color:var(--grau);">4 Geräusche</div>
+        <div class="schreiblinie" style="margin-top:6px;"></div>
+      </div>
+      <div class="grounding-card">
+        <div class="grounding-nr">3</div>
+        <div style="font-size:18px;">✋</div>
+        <div style="font-size:10px;font-weight:700;color:var(--farbe);">FÜHLEN</div>
+        <div style="font-size:9px;color:var(--grau);">3 Berührungen</div>
+        <div class="schreiblinie" style="margin-top:6px;"></div>
+      </div>
+      <div class="grounding-card">
+        <div class="grounding-nr">2</div>
+        <div style="font-size:18px;">👃</div>
+        <div style="font-size:10px;font-weight:700;color:var(--farbe);">RIECHEN</div>
+        <div style="font-size:9px;color:var(--grau);">2 Gerüche</div>
+        <div class="schreiblinie" style="margin-top:6px;"></div>
+      </div>
+      <div class="grounding-card">
+        <div class="grounding-nr">1</div>
+        <div style="font-size:18px;">👅</div>
+        <div style="font-size:10px;font-weight:700;color:var(--farbe);">SCHMECKEN</div>
+        <div style="font-size:9px;color:var(--grau);">1 Geschmack</div>
+        <div class="schreiblinie" style="margin-top:6px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">2</div><div class="uebung-titel">Body-Scan Light — Reise durch deinen Körper</div></div>
+    <div class="uebung-beschreibung">Schließe die Augen. Geh langsam von unten nach oben durch deinen Körper. Wie angespannt bist du (1=entspannt, 10=sehr angespannt)?</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:8px;">
+      <div style="background:var(--farbe-hell);border-radius:8px;padding:8px;text-align:center;font-size:11px;">
+        <div style="font-size:20px;">🦶</div><strong>Füße &amp; Beine</strong><br>Anspannung: __/10
+      </div>
+      <div style="background:var(--farbe-hell);border-radius:8px;padding:8px;text-align:center;font-size:11px;">
+        <div style="font-size:20px;">🫁</div><strong>Bauch &amp; Brust</strong><br>Anspannung: __/10
+      </div>
+      <div style="background:var(--farbe-hell);border-radius:8px;padding:8px;text-align:center;font-size:11px;">
+        <div style="font-size:20px;">💆</div><strong>Schultern &amp; Kopf</strong><br>Anspannung: __/10
+      </div>
+    </div>
+    <div style="font-size:11px;">Wo ist die meiste Anspannung? Was könntest du tun, um sie zu lösen? <div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fusszeile"><span>Pathways · Therapeutic Case Management</span><span>Achtsamkeit & Grounding · Seite 1</span></div>
+</div>
+
+<!-- SEITE 2 -->
+<div class="seite">
+
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">3</div><div class="uebung-titel">Atemübungen — 3 Techniken zum Ausprobieren</div></div>
+    <div class="uebung-beschreibung">Atmen ist der schnellste Weg, dein Nervensystem zu beruhigen. Probiere alle drei und finde deinen Favoriten:</div>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:8px;">
+      <div style="display:grid;grid-template-columns:90px 1fr;gap:10px;background:var(--farbe-hell);border-radius:8px;padding:10px;">
+        <div style="text-align:center;">
+          <div style="font-size:11px;font-weight:800;color:var(--farbe);">BOX BREATHING</div>
+          <div style="font-size:28px;margin:4px 0;">📦</div>
+        </div>
+        <div style="font-size:11px;">
+          <strong>4-4-4-4:</strong> Einatmen (4 Sek.) → Halten (4 Sek.) → Ausatmen (4 Sek.) → Halten (4 Sek.) → Wiederholen.<br>
+          <span style="color:var(--grau);">Wird von Navy SEALs und Profisportlern genutzt. Beruhigt in 2-3 Minuten.</span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:90px 1fr;gap:10px;background:var(--farbe-hell);border-radius:8px;padding:10px;">
+        <div style="text-align:center;">
+          <div style="font-size:11px;font-weight:800;color:var(--farbe);">4-7-8 TECHNIK</div>
+          <div style="font-size:28px;margin:4px 0;">🌙</div>
+        </div>
+        <div style="font-size:11px;">
+          <strong>Einatmen (4) → Halten (7) → Ausatmen (8).</strong> 3-4 Mal wiederholen.<br>
+          <span style="color:var(--grau);">Besonders gut zum Einschlafen. Aktiviert den Parasympathikus ("Ruhemodus").</span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:90px 1fr;gap:10px;background:var(--farbe-hell);border-radius:8px;padding:10px;">
+        <div style="text-align:center;">
+          <div style="font-size:11px;font-weight:800;color:var(--farbe);">BAUCHATMUNG</div>
+          <div style="font-size:28px;margin:4px 0;">🫁</div>
+        </div>
+        <div style="font-size:11px;">
+          <strong>Hand auf den Bauch.</strong> Einatmen: Bauch hebt sich wie ein Ballon. Ausatmen: Bauch sinkt. Die Brust bewegt sich kaum.<br>
+          <span style="color:var(--grau);">Einfachste Technik. Überall anwendbar — Schule, Bus, Bett.</span>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:11px;">Mein Favorit: <span style="border-bottom:1px dashed var(--border);display:inline-block;width:200px;"></span></div>
+  </div>
+
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">4</div><div class="uebung-titel">TIPP-Skills — Sofortige Krisenhilfe (DBT)</div></div>
+    <div class="uebung-beschreibung">Wenn nichts anderes mehr hilft — diese 4 Techniken wirken sofort auf dein Nervensystem:</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+      <div class="tipp-card">
+        <div style="font-size:18px;text-align:center;">🧊</div>
+        <div style="font-size:11px;font-weight:800;color:var(--farbe);text-align:center;">T — Temperatur</div>
+        <div style="font-size:10px;color:var(--grau);text-align:center;">Eiswürfel in die Hand, kaltes Wasser ins Gesicht, Kühlpack in den Nacken</div>
+        <label class="check-label" style="margin-top:4px;"><input type="checkbox"><span style="font-size:10px;">Will ich ausprobieren</span></label>
+      </div>
+      <div class="tipp-card">
+        <div style="font-size:18px;text-align:center;">🏃</div>
+        <div style="font-size:11px;font-weight:800;color:var(--farbe);text-align:center;">I — Intensive Bewegung</div>
+        <div style="font-size:10px;color:var(--grau);text-align:center;">30 Sekunden Treppen rennen, Jumping Jacks, Sprint auf der Stelle</div>
+        <label class="check-label" style="margin-top:4px;"><input type="checkbox"><span style="font-size:10px;">Will ich ausprobieren</span></label>
+      </div>
+      <div class="tipp-card">
+        <div style="font-size:18px;text-align:center;">🌬️</div>
+        <div style="font-size:11px;font-weight:800;color:var(--farbe);text-align:center;">P — Paced Breathing</div>
+        <div style="font-size:10px;color:var(--grau);text-align:center;">Ausatmen doppelt so lang wie Einatmen (4 ein, 8 aus)</div>
+        <label class="check-label" style="margin-top:4px;"><input type="checkbox"><span style="font-size:10px;">Will ich ausprobieren</span></label>
+      </div>
+      <div class="tipp-card">
+        <div style="font-size:18px;text-align:center;">💪</div>
+        <div style="font-size:11px;font-weight:800;color:var(--farbe);text-align:center;">P — Progressive Muskelentspannung</div>
+        <div style="font-size:10px;color:var(--grau);text-align:center;">Fäuste ballen (5 Sek.) → loslassen. Schultern hochziehen → loslassen.</div>
+        <label class="check-label" style="margin-top:4px;"><input type="checkbox"><span style="font-size:10px;">Will ich ausprobieren</span></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="fusszeile"><span>Pathways · Therapeutic Case Management</span><span>Achtsamkeit & Grounding · Seite 2</span></div>
+</div>
+
+<!-- SEITE 3 -->
+<div class="seite">
+
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">5</div><div class="uebung-titel">Mein Notfall-Koffer — 5 Strategien die funktionieren</div></div>
+    <div class="uebung-beschreibung">Stell dir einen Koffer vor, in dem du alles hast, was dich erdet. Fülle ihn mit deinen 5 besten Strategien:</div>
+    <div style="background:var(--farbe-hell);border:2px solid #6EE7B7;border-radius:12px;padding:14px;margin-bottom:8px;">
+      <div style="text-align:center;font-size:28px;margin-bottom:8px;">🧳</div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div class="koffer-item"><span style="font-weight:800;color:var(--farbe);">1.</span><span style="flex:1;border-bottom:1px dashed var(--border);height:16px;"></span></div>
+        <div class="koffer-item"><span style="font-weight:800;color:var(--farbe);">2.</span><span style="flex:1;border-bottom:1px dashed var(--border);height:16px;"></span></div>
+        <div class="koffer-item"><span style="font-weight:800;color:var(--farbe);">3.</span><span style="flex:1;border-bottom:1px dashed var(--border);height:16px;"></span></div>
+        <div class="koffer-item"><span style="font-weight:800;color:var(--farbe);">4.</span><span style="flex:1;border-bottom:1px dashed var(--border);height:16px;"></span></div>
+        <div class="koffer-item"><span style="font-weight:800;color:var(--farbe);">5.</span><span style="flex:1;border-bottom:1px dashed var(--border);height:16px;"></span></div>
+      </div>
+    </div>
+    <div style="font-size:10px;color:var(--grau);">Ideen: Musik hören, kaltes Wasser, Atemübung, Person anrufen, spazieren gehen, Eis essen, schreiben, Tier streicheln …</div>
+  </div>
+
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">6</div><div class="uebung-titel">Achtsames Gehen — Walking Meditation</div></div>
+    <div class="uebung-beschreibung">Du brauchst nur 5 Minuten und einen ruhigen Ort. Folge den 5 Schritten:</div>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px;">
+      <div class="atem-step"><div class="atem-nr">1</div><div><strong>Langsam gehen.</strong> Bewusst einen Fuß vor den anderen setzen. Kein Ziel.</div></div>
+      <div class="atem-step"><div class="atem-nr">2</div><div><strong>Füße spüren.</strong> Wie fühlt sich der Boden an? Hart, weich, warm, kalt?</div></div>
+      <div class="atem-step"><div class="atem-nr">3</div><div><strong>Umgebung wahrnehmen.</strong> Was siehst du? Was hörst du? Was riechst du?</div></div>
+      <div class="atem-step"><div class="atem-nr">4</div><div><strong>Atem beobachten.</strong> Einatmen. Ausatmen. Nichts verändern — nur beobachten.</div></div>
+      <div class="atem-step"><div class="atem-nr">5</div><div><strong>Dankbarkeit.</strong> Nenne 1 Sache, für die du gerade dankbar bist.</div></div>
+    </div>
+    <div style="font-size:11px;">Wo könnte ich achtsam gehen? <span style="border-bottom:1px dashed var(--border);display:inline-block;width:250px;"></span></div>
+  </div>
+
+  <div class="fusszeile"><span>Pathways · Therapeutic Case Management</span><span>Achtsamkeit & Grounding · Seite 3</span></div>
+</div>
+
+<!-- SEITE 4 -->
+<div class="seite">
+
+  <div class="uebung">
+    <div class="uebung-header"><div class="uebung-nr">7</div><div class="uebung-titel">Mein Achtsamkeits-Wochenplan</div></div>
+    <div class="uebung-beschreibung">Eine Übung pro Tag — nur 5 Minuten. Setze ein ✓ wenn du es geschafft hast:</div>
+    <div style="overflow-x:auto;margin:8px 0;">
+      <div class="tracker-row">
+        <div class="tracker-header">Übung</div>
+        <div class="tracker-header">Mo</div><div class="tracker-header">Di</div><div class="tracker-header">Mi</div><div class="tracker-header">Do</div><div class="tracker-header">Fr</div><div class="tracker-header">Sa</div><div class="tracker-header">So</div>
+      </div>
+      <div class="tracker-row">
+        <div class="tracker-cell" style="text-align:left;font-weight:600;">🌬️ Atemübung</div>
+        <div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div>
+      </div>
+      <div class="tracker-row" style="background:var(--farbe-hell);">
+        <div class="tracker-cell" style="text-align:left;font-weight:600;">🧘 Body-Scan</div>
+        <div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div>
+      </div>
+      <div class="tracker-row">
+        <div class="tracker-cell" style="text-align:left;font-weight:600;">🚶 Achtsames Gehen</div>
+        <div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div>
+      </div>
+      <div class="tracker-row" style="background:var(--farbe-hell);">
+        <div class="tracker-cell" style="text-align:left;font-weight:600;">🧊 TIPP-Skill</div>
+        <div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div>
+      </div>
+      <div class="tracker-row">
+        <div class="tracker-cell" style="text-align:left;font-weight:600;">👁️ 5-4-3-2-1</div>
+        <div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div><div class="tracker-cell">☐</div>
+      </div>
+    </div>
+    <div style="font-size:10px;color:var(--grau);">Tipp: Starte mit einer Übung. Erst wenn sie zur Gewohnheit wird, füge eine zweite hinzu.</div>
+  </div>
+
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Reflexion</div>
+    <p>Welche Übung hat dir am meisten geholfen? In welcher Situation wirst du sie einsetzen?</p>
+    <div class="schreiblinien">
+      <div class="schreiblinie"></div>
+      <div class="schreiblinie"></div>
+      <div class="schreiblinie"></div>
+    </div>
+  </div>
+
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
+    <strong>ICD-10:</strong> F43.0 Akute Belastungsreaktion · F43.1 PTBS · F41.1 Generalisierte Angststörung · F44 Dissoziative Störungen · F45.0 Somatisierungsstörung.<br>
+    <strong>Methoden:</strong> MBSR (Mindfulness-Based Stress Reduction, Kabat-Zinn 1990) — evidenzbasiert bei Angst, Depression, Schmerz. DBT Distress Tolerance Skills (Linehan 1993) — TIPP-Skills als Sofortintervention bei hoher Erregung. Polyvagaltheorie (Porges 2011) — Grounding aktiviert den ventralen Vagus (Sicherheits-System). ACT (Hayes 2004) — Achtsamkeit als Defusion von belastenden Gedanken.<br>
+    <strong>5-4-3-2-1:</strong> Klassische Grounding-Technik, besonders wirksam bei Dissoziation und Flashbacks. Body-Scan nach Kabat-Zinn als Interozeptionstraining.<br>
+    <strong>Luxemburg — Anlaufstellen:</strong> CHNP Kinder- und Jugendpsychiatrie (stationär/ambulant) · Jonk Demokratie / Jugendtelefon 116 111 · SOS Détresse 454545 · CePAS (Centre Psycho-Social) für Schulkontext.
+  </div>
+
+  <div class="fussnote">
+    <p>📎 Dieses Arbeitsblatt gehört zu deiner persönlichen Dokumentation. Es wird vertraulich behandelt.</p>
+    <p style="font-size:9px;color:#94A3B8;">Pathways · Joey Guedes-Tool · Achtsamkeit & Grounding · v1.0</p>
+  </div>
+
+  <div class="fusszeile"><span>Pathways · Therapeutic Case Management</span><span>Achtsamkeit & Grounding · Seite 4</span></div>
+</div>
+
+</body>
+</html>

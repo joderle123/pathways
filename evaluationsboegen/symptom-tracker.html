@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Evaluationsbogen – Symptom-Tracker (Wöchentlich)</title>
+  <link rel="stylesheet" href="../css/evaluationsbogen.css">
+  <style>:root { --farbe: #0891B2; --farbe-hell: #ECFEFF; }</style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- SEITE 1 -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Evaluation</div>
+      <div class="ab-titel">Symptom-Tracker (Wöchentlich)</div>
+      <div class="ab-untertitel">Wöchentliche Selbsteinschätzung · Verlaufsdiagnostik</div>
+    </div>
+    <div class="kopfzeile-icon">📊</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Woche vom</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">bis</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">📋 Anleitung</div>
+    <p>Bewerte für jedes Thema, wie stark du es in der vergangenen Woche erlebt hast. Kreuze pro Zeile <strong>einen</strong> Kreis an. Sei ehrlich — es gibt keine richtigen oder falschen Antworten. Der Bogen hilft dir und deiner Bezugsperson, Veränderungen über die Zeit zu erkennen.</p>
+  </div>
+
+  <table class="likert-grid">
+    <thead>
+      <tr>
+        <th>Bereich</th>
+        <th>0<br><span style="font-weight:500;text-transform:none;letter-spacing:0;">Gar nicht</span></th>
+        <th>1<br><span style="font-weight:500;text-transform:none;letter-spacing:0;">Wenig</span></th>
+        <th>2<br><span style="font-weight:500;text-transform:none;letter-spacing:0;">Mittel</span></th>
+        <th>3<br><span style="font-weight:500;text-transform:none;letter-spacing:0;">Stark</span></th>
+        <th>4<br><span style="font-weight:500;text-transform:none;letter-spacing:0;">Sehr stark</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>😔 Niedergeschlagene Stimmung</td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+      </tr>
+      <tr>
+        <td>😴 Schlafprobleme</td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+      </tr>
+      <tr>
+        <td>🍽️ Appetitveränderungen</td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+      </tr>
+      <tr>
+        <td>🔋 Energielosigkeit</td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+      </tr>
+      <tr>
+        <td>🧠 Konzentrationsprobleme</td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+      </tr>
+      <tr>
+        <td>😰 Ängste / Sorgen</td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+      </tr>
+      <tr>
+        <td>👥 Rückzug von sozialen Kontakten</td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+      </tr>
+      <tr>
+        <td>💔 Niedriges Selbstwertgefühl</td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+      </tr>
+      <tr>
+        <td>🏫 Schwierigkeiten mit dem Schulbesuch</td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+      </tr>
+      <tr>
+        <td>🚬 Substanzkonsum (Alkohol, Cannabis etc.)</td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+      </tr>
+      <tr>
+        <td>🩹 Selbstverletzung</td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+      </tr>
+      <tr>
+        <td>⚠️ Suizidgedanken</td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+        <td><span class="likert-kreis"></span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="fusszeile">
+    <span>Pathways · Symptom-Tracker</span>
+    <span>Vertraulich · Seite 1 von 2</span>
+  </div>
+</div>
+
+<!-- SEITE 2 -->
+<div class="seite">
+  <div class="auswertung">
+    <div class="auswertung-titel">📊 Auswertung</div>
+    <div class="score-zeile">
+      <span class="score-label">Gesamtpunktzahl (Summe aller Werte)</span>
+      <span class="score-linie"></span>
+      <span class="score-wert">/ 48</span>
+    </div>
+    <div class="score-zeile">
+      <span class="score-label">Durchschnitt pro Item (Gesamtpunktzahl ÷ 12)</span>
+      <span class="score-linie"></span>
+      <span class="score-wert">/ 4.0</span>
+    </div>
+    <div class="score-zeile">
+      <span class="score-label">Veränderung zur Vorwoche</span>
+      <span class="score-linie"></span>
+      <span class="score-wert">+/−</span>
+    </div>
+
+    <div class="interpretation">
+      <div style="font-size:10px;font-weight:700;color:var(--farbe);margin-bottom:6px;">Interpretationshilfe</div>
+      <div class="interpretation-zeile">
+        <div class="interpretation-balken" style="background:#22C55E;"></div>
+        <span class="interpretation-range">0 – 12</span>
+        <span class="interpretation-label">Geringe Belastung — Weiter beobachten, positive Entwicklung bestätigen</span>
+      </div>
+      <div class="interpretation-zeile">
+        <div class="interpretation-balken" style="background:#EAB308;"></div>
+        <span class="interpretation-range">13 – 24</span>
+        <span class="interpretation-label">Moderate Belastung — Gezielte Unterstützung in belasteten Bereichen</span>
+      </div>
+      <div class="interpretation-zeile">
+        <div class="interpretation-balken" style="background:#F97316;"></div>
+        <span class="interpretation-range">25 – 36</span>
+        <span class="interpretation-label">Hohe Belastung — Intensivierung der Begleitung, Fachperson einbeziehen</span>
+      </div>
+      <div class="interpretation-zeile">
+        <div class="interpretation-balken" style="background:#EF4444;"></div>
+        <span class="interpretation-range">37 – 48</span>
+        <span class="interpretation-label">Sehr hohe Belastung — Sofortige fachliche Abklärung, Krisenplan prüfen</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">✍️</div>
+      <div class="uebung-titel">Was war diese Woche besonders?</div>
+    </div>
+    <div class="uebung-beschreibung">Gab es besondere Ereignisse, Erfolge oder Schwierigkeiten? Was möchtest du deiner Bezugsperson mitteilen?</div>
+    <div class="schreiblinien">
+      <div class="schreiblinie"></div>
+      <div class="schreiblinie"></div>
+      <div class="schreiblinie"></div>
+      <div class="schreiblinie"></div>
+    </div>
+  </div>
+
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🧑‍⚕️ Hinweis für die Bezugsperson</div>
+    <p><strong>Scoring:</strong> Addieren Sie die Werte aller 12 Items (Range 0–48). Tragen Sie den Gesamtwert und den Durchschnitt ein. Vergleichen Sie die Werte wöchentlich, um Trends zu erkennen. Ein Anstieg von ≥5 Punkten gegenüber der Vorwoche sollte zeitnah thematisiert werden.</p>
+    <p><strong>Kritische Items:</strong> Die Items 10 (Substanzkonsum), 11 (Selbstverletzung) und 12 (Suizidgedanken) erfordern bei jedem Wert ≥2 eine sofortige Nachbesprechung und ggf. Einleitung des Krisenprotokolls. Bei Item 12 ≥1 ist immer ein vertiefendes Gespräch zu führen.</p>
+    <p><strong>Verlaufsdokumentation:</strong> Übertragen Sie die wöchentlichen Gesamtwerte in eine Verlaufstabelle, um dem Jugendlichen Fortschritte sichtbar zu machen. Stagnation über 4+ Wochen kann auf eine notwendige Anpassung der Begleitung hinweisen.</p>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Symptom-Tracker</span>
+    <span>Vertraulich · Seite 2 von 2</span>
+  </div>
+</div>
+
+</body>
+</html>

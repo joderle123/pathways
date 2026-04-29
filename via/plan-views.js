@@ -1,0 +1,710 @@
+/* ============================================================
+   VIA — Plan-Views (aus ehem. ROADMAP)
+   ============================================================ */
+
+// APP wird von via/app.js bereitgestellt
+
+// VIA Classification of Character Strengths (Peterson & Seligman 2004)
+// Validiert für Jugendliche: VIA Youth Survey (Park & Peterson 2006)
+// 6 Tugenden → 24 Stärken, hier auf 18 jugendrelevante reduziert
+const STAERKEN = [
+  { id: 'kreativitaet', label: 'Kreativität', tugend: 'Weisheit', desc: 'Neue Ideen finden, Probleme originell lösen' },
+  { id: 'neugier', label: 'Neugier', tugend: 'Weisheit', desc: 'Interesse an der Welt, Dinge herausfinden wollen' },
+  { id: 'urteilsvermoegen', label: 'Urteilsvermögen', tugend: 'Weisheit', desc: 'Dinge von verschiedenen Seiten betrachten' },
+  { id: 'lernfreude', label: 'Lernfreude', tugend: 'Weisheit', desc: 'Neue Dinge lernen wollen' },
+  { id: 'mut', label: 'Tapferkeit / Mut', tugend: 'Mut', desc: 'Sich trauen, auch wenn es schwierig ist' },
+  { id: 'ausdauer', label: 'Ausdauer', tugend: 'Mut', desc: 'Dranbleiben, nicht aufgeben' },
+  { id: 'ehrlichkeit', label: 'Ehrlichkeit', tugend: 'Mut', desc: 'Wahrhaftig sein, zu sich stehen' },
+  { id: 'begeisterung', label: 'Begeisterung / Vitalität', tugend: 'Mut', desc: 'Energie, Lebensfreude' },
+  { id: 'freundlichkeit', label: 'Freundlichkeit', tugend: 'Menschlichkeit', desc: 'Hilfsbereit sein, sich um andere kümmern' },
+  { id: 'bindungsfaehigkeit', label: 'Bindungsfähigkeit', tugend: 'Menschlichkeit', desc: 'Enge Beziehungen aufbauen und pflegen' },
+  { id: 'soziale_intelligenz', label: 'Soziale Intelligenz', tugend: 'Menschlichkeit', desc: 'Gefühle anderer erkennen, sich anpassen' },
+  { id: 'teamwork', label: 'Teamwork', tugend: 'Gerechtigkeit', desc: 'In Gruppen gut zusammenarbeiten' },
+  { id: 'fairness', label: 'Fairness', tugend: 'Gerechtigkeit', desc: 'Alle gleich behandeln' },
+  { id: 'selbstregulation', label: 'Selbstregulation', tugend: 'Mäßigung', desc: 'Gefühle und Impulse kontrollieren' },
+  { id: 'vergebung', label: 'Vergebung', tugend: 'Mäßigung', desc: 'Anderen eine zweite Chance geben' },
+  { id: 'humor', label: 'Humor', tugend: 'Transzendenz', desc: 'Lachen, andere zum Lachen bringen' },
+  { id: 'dankbarkeit', label: 'Dankbarkeit', tugend: 'Transzendenz', desc: 'Das Gute im Leben bemerken' },
+  { id: 'hoffnung', label: 'Hoffnung / Optimismus', tugend: 'Transzendenz', desc: 'An eine gute Zukunft glauben' },
+];
+
+// showToast, toggleTheme, applyTheme bereitgestellt von via/app.js
+
+async function loadPhasen() {
+  if (APP.phasen) return APP.phasen;
+  if (typeof PHASE_TEMPLATES_DATA !== 'undefined') {
+    APP.phasen = PHASE_TEMPLATES_DATA.phasen;
+  } else {
+    const data = await Utils.safeFetch('phases/phase-templates.json');
+    if (!data) { showToast('Phase-Templates konnten nicht geladen werden', 'error'); return []; }
+    APP.phasen = data.phasen;
+  }
+  return APP.phasen;
+}
+
+function getOrCreateRoadmap() {
+  let rm = DB.getRoadmap(APP.schuelerId);
+  if (!rm) {
+    // Migration: alte data.js-Variante hat ROADMAP_PHASEN. Wir nutzen lokale phase-templates.json
+    rm = {
+      id: DB.generateId(),
+      schuelerId: APP.schuelerId,
+      screeningId: null,
+      phasen: APP.phasen.map(p => ({
+        nr: p.nr,
+        status: p.nr === 0 ? 'aktiv' : 'offen',
+        startDatum: p.nr === 0 ? new Date().toISOString().split('T')[0] : null,
+        endDatum: null,
+        themen: [],
+        notizen: '',
+        ziele: [],
+      })),
+      erstellt: new Date().toISOString(),
+      geaendert: new Date().toISOString(),
+    };
+    DB.saveRoadmap(rm);
+  }
+  // Sicherstellen, dass ziele-Array existiert
+  rm.phasen.forEach(p => { if (!p.ziele) p.ziele = []; });
+  return rm;
+}
+
+function setPlanTab(name) {
+  APP.activeTab = name;
+  document.querySelectorAll('.via-sub-tab').forEach(el => el.classList.toggle('active', el.dataset.tab === name));
+  if (name === 'phasen') renderPhasen();
+  else if (name === 'ziele') renderZiele();
+  else if (name === 'staerken') renderStaerken();
+  else if (name === 'report') renderReport();
+}
+
+// ─── Phasen ───────────────────────────────────────────────
+async function renderPhasen() {
+  await loadPhasen();
+  const container = document.getElementById('via-content');
+  if (!APP.schuelerId) {
+    container.innerHTML = `<div class="rm-section"><h2>🎯 7-Phasen-Roadmap</h2><p>Kein Klient gewählt.</p></div>`;
+    return;
+  }
+  const rm = getOrCreateRoadmap();
+  const aktivePhase = rm.phasen.find(p => p.status === 'aktiv');
+  const currentNr = APP.currentPhase ?? aktivePhase?.nr ?? 0;
+  const phaseDef = APP.phasen[currentNr];
+  const phaseStatus = rm.phasen.find(p => p.nr === currentNr);
+
+  // Stepper
+  const stepperHtml = APP.phasen.map(p => {
+    const status = rm.phasen.find(x => x.nr === p.nr);
+    const isActive = p.nr === currentNr;
+    const isDone = status?.status === 'abgeschlossen';
+    return `
+      <div class="rm-step ${isActive ? 'active' : ''} ${isDone ? 'done' : ''}" onclick="setCurrentPhase(${p.nr})">
+        <div class="rm-step-icon">${p.icon}</div>
+        <div class="rm-step-num">Phase ${p.nr}</div>
+        <div class="rm-step-name">${p.name}</div>
+      </div>
+    `;
+  }).join('');
+
+  container.innerHTML = `
+    <div class="rm-stepper">${stepperHtml}</div>
+
+    <div class="rm-phase-detail" style="border-top: 4px solid ${phaseDef.color};">
+      <div class="rm-phase-header">
+        <div class="rm-phase-icon-big" style="background: ${phaseDef.color}22;">${phaseDef.icon}</div>
+        <div>
+          <h2>Phase ${phaseDef.nr}: ${phaseDef.name}</h2>
+          <div class="rm-phase-meta">${phaseDef.dauer} · Status: ${phaseStatus?.status || 'offen'}</div>
+        </div>
+      </div>
+
+      <div class="rm-phase-ziel">
+        <strong>🎯 Ziel:</strong> ${Utils.escapeHtml(phaseDef.ziel)}
+      </div>
+
+      <h3>Fokus-Aktivitäten</h3>
+      <ul style="line-height: var(--line-height-relaxed); margin-bottom: var(--space-4);">
+        ${phaseDef.fokus.map(f => `<li>${Utils.escapeHtml(f)}</li>`).join('')}
+      </ul>
+
+      <h3>Übergangs-Kriterien — Bereit für nächste Phase?</h3>
+      ${renderKriterienCheck(phaseDef, APP.schuelerId)}
+
+      ${phaseStatus?.reflexion ? `
+        <div style="background: rgba(16,185,129,0.06); border: 1px solid var(--color-app-via); border-radius: var(--radius-sm); padding: var(--space-4); margin-bottom: var(--space-4);">
+          <h3 style="color: var(--color-app-via); margin-bottom: var(--space-2);">🎓 Abschluss-Reflexion (${Utils.formatDate(phaseStatus.reflexion.datum)})</h3>
+          ${phaseStatus.reflexion.gut ? `<div style="margin-bottom: var(--space-2);"><strong>Was hat funktioniert:</strong> ${Utils.escapeHtml(phaseStatus.reflexion.gut)}</div>` : ''}
+          ${phaseStatus.reflexion.schwierig ? `<div style="margin-bottom: var(--space-2);"><strong>Was war schwierig:</strong> ${Utils.escapeHtml(phaseStatus.reflexion.schwierig)}</div>` : ''}
+          ${phaseStatus.reflexion.hypothese ? `<div><strong>Hypothese:</strong> ${Utils.escapeHtml(phaseStatus.reflexion.hypothese)}</div>` : ''}
+        </div>
+      ` : ''}
+
+      <h3>Notizen zu dieser Phase</h3>
+      <textarea id="phase-notizen" rows="4" style="width: 100%; padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: inherit;">${Utils.escapeHtml(phaseStatus?.notizen || '')}</textarea>
+
+      <div class="rm-phase-status">
+        ${phaseStatus?.status !== 'aktiv' ? `<button class="btn btn-primary" onclick="setPhaseStatus(${currentNr},'aktiv')">▶️ Als aktiv markieren</button>` : ''}
+        ${phaseStatus?.status === 'aktiv' ? `<button class="btn" onclick="setPhaseStatus(${currentNr},'abgeschlossen')">✓ Abschließen + nächste Phase aktivieren</button>` : ''}
+        <button class="btn" onclick="savePhaseNotizen(${currentNr})">💾 Notizen speichern</button>
+      </div>
+    </div>
+  `;
+}
+
+function setCurrentPhase(nr) {
+  APP.currentPhase = nr;
+  renderPhasen();
+}
+
+function setPhaseStatus(nr, status) {
+  if (status === 'abgeschlossen') {
+    renderPhaseReflexion(nr);
+    return;
+  }
+  applyPhaseStatus(nr, status);
+}
+
+function renderKriterienCheck(phaseDef, schuelerId) {
+  if (!schuelerId || !phaseDef.kriterien_zur_naechsten) {
+    return `<ul style="line-height: var(--line-height-relaxed); margin-bottom: var(--space-4); color: var(--text-secondary);">
+      ${(phaseDef.kriterien_zur_naechsten || []).map(k => `<li>⬜ ${Utils.escapeHtml(k)}</li>`).join('')}
+    </ul>`;
+  }
+
+  const sitzungen = DB.getNotizen(schuelerId).filter(n => n.kategorie === 'session').sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
+  const letzte3SRS = sitzungen.slice(0, 3).map(n => n.soap?.srs_total).filter(v => v !== undefined);
+  const avgSRS = letzte3SRS.length ? letzte3SRS.reduce((a, b) => a + b, 0) / letzte3SRS.length : 0;
+  const screenings = DB.getScreenings(schuelerId).filter(x => x.abgeschlossen);
+  const hatT2 = screenings.length >= 2;
+  const orsTrend = sitzungen.slice(0, 5).map(n => n.soap?.ors_total).filter(v => v !== undefined);
+  const orsVerbesserung = orsTrend.length >= 2 && orsTrend[0] > orsTrend[orsTrend.length - 1] + 5;
+  const staerken = DB.getStaerken ? DB.getStaerken(schuelerId) : null;
+
+  const checks = (phaseDef.kriterien_zur_naechsten || []).map(k => {
+    const kLow = k.toLowerCase();
+    let erfuellt = false;
+    if (kLow.includes('allianz') || kLow.includes('beziehung')) erfuellt = avgSRS >= 32;
+    else if (kLow.includes('screening') || kLow.includes('t2')) erfuellt = hatT2;
+    else if (kLow.includes('verbesserung') || kLow.includes('fortschritt')) erfuellt = orsVerbesserung;
+    else if (kLow.includes('sitzung')) erfuellt = sitzungen.length >= 3;
+    else if (kLow.includes('stärken') || kLow.includes('ressourcen')) erfuellt = !!staerken;
+    return { text: k, erfuellt };
+  });
+
+  const alleErfuellt = checks.every(c => c.erfuellt);
+  const erfuelltCount = checks.filter(c => c.erfuellt).length;
+
+  return `
+    <div style="margin-bottom: var(--space-4);">
+      <ul style="line-height: var(--line-height-relaxed); list-style: none; padding: 0;">
+        ${checks.map(c => `
+          <li style="padding: var(--space-2) 0; display: flex; gap: var(--space-2); align-items: center;">
+            <span style="font-size: 16px;">${c.erfuellt ? '✅' : '⬜'}</span>
+            <span style="color: ${c.erfuellt ? '#059669' : 'var(--text-secondary)'};">${Utils.escapeHtml(c.text)}</span>
+          </li>
+        `).join('')}
+      </ul>
+      <div style="font-size: 13px; color: ${alleErfuellt ? '#059669' : 'var(--text-muted)'}; margin-top: var(--space-2);">
+        ${erfuelltCount}/${checks.length} Kriterien erfüllt.
+        ${alleErfuellt ? '<strong>Phase kann abgeschlossen werden.</strong>' : 'Noch nicht alle Kriterien erreicht (Übergang trotzdem möglich).'}
+      </div>
+    </div>
+  `;
+}
+
+function renderPhaseReflexion(nr) {
+  const container = document.getElementById('via-content');
+  const phaseDef = APP.phasen?.[nr];
+  container.innerHTML = `
+    <div class="rm-section" style="max-width: 700px;">
+      <h2>🎓 Phase ${nr} abschließen — Reflexion</h2>
+      <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">
+        Bevor diese Phase endet: kurze Reflexion. Was hat funktioniert, was hat überrascht?
+        Klinisches Wachstum wird dokumentiert.
+      </p>
+      <div style="margin-bottom: var(--space-3);">
+        <label style="font-weight: var(--font-weight-semibold); display: block; margin-bottom: 4px;">Was hat in dieser Phase gut funktioniert?</label>
+        <textarea id="refl-gut" rows="3" style="width: 100%; padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: inherit;"></textarea>
+      </div>
+      <div style="margin-bottom: var(--space-3);">
+        <label style="font-weight: var(--font-weight-semibold); display: block; margin-bottom: 4px;">Was hat überrascht oder war schwierig?</label>
+        <textarea id="refl-schwierig" rows="3" style="width: 100%; padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: inherit;"></textarea>
+      </div>
+      <div style="margin-bottom: var(--space-3);">
+        <label style="font-weight: var(--font-weight-semibold); display: block; margin-bottom: 4px;">Welche Hypothese hat sich bestätigt / verändert?</label>
+        <textarea id="refl-hypothese" rows="2" style="width: 100%; padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: inherit;"></textarea>
+      </div>
+      <div style="display: flex; gap: var(--space-2);">
+        <button class="btn btn-primary" onclick="confirmPhaseAbschluss(${nr})">✓ Phase abschließen + Reflexion speichern</button>
+        <button class="btn" onclick="renderPhasen()">Abbrechen</button>
+      </div>
+    </div>
+  `;
+}
+
+function confirmPhaseAbschluss(nr) {
+  const reflexion = {
+    gut: document.getElementById('refl-gut')?.value || '',
+    schwierig: document.getElementById('refl-schwierig')?.value || '',
+    hypothese: document.getElementById('refl-hypothese')?.value || '',
+    datum: new Date().toISOString(),
+  };
+  applyPhaseStatus(nr, 'abgeschlossen', reflexion);
+}
+
+function applyPhaseStatus(nr, status, reflexion) {
+  const rm = getOrCreateRoadmap();
+  const p = rm.phasen.find(x => x.nr === nr);
+  if (!p) return;
+  p.status = status;
+  if (status === 'aktiv') p.startDatum = p.startDatum || new Date().toISOString().split('T')[0];
+  if (status === 'abgeschlossen') {
+    p.endDatum = new Date().toISOString().split('T')[0];
+    if (reflexion) p.reflexion = reflexion;
+    const next = rm.phasen.find(x => x.nr === nr + 1);
+    if (next && next.status === 'offen') {
+      next.status = 'aktiv';
+      next.startDatum = new Date().toISOString().split('T')[0];
+    }
+    rm.phasen.forEach(x => { if (x.nr !== nr && x.nr !== nr+1 && x.status === 'aktiv') x.status = 'offen'; });
+  } else if (status === 'aktiv') {
+    rm.phasen.forEach(x => { if (x.nr !== nr && x.status === 'aktiv') x.status = 'offen'; });
+  }
+  DB.saveRoadmap(rm);
+  showToast(`Phase ${nr}: Status → ${status}`, 'ok');
+  Bridge.notify('roadmap_updated', { schuelerId: APP.schuelerId, phaseNr: nr, status });
+  renderPhasen();
+}
+
+function savePhaseNotizen(nr) {
+  const text = document.getElementById('phase-notizen').value;
+  const rm = getOrCreateRoadmap();
+  const p = rm.phasen.find(x => x.nr === nr);
+  if (p) { p.notizen = text; DB.saveRoadmap(rm); showToast('Notizen gespeichert', 'ok'); }
+}
+
+// ─── SMART-Ziele ──────────────────────────────────────────
+const GAS_LABELS = [
+  { val: -2, label: 'Deutlich unter Erwartung', color: '#DC2626', icon: '⬇️' },
+  { val: -1, label: 'Etwas unter Erwartung', color: '#F59E0B', icon: '↓' },
+  { val: 0, label: 'Erwartetes Ergebnis', color: '#10B981', icon: '✓' },
+  { val: 1, label: 'Über Erwartung', color: '#059669', icon: '↑' },
+  { val: 2, label: 'Deutlich über Erwartung', color: '#047857', icon: '⬆️' },
+];
+
+function renderGoalCard(g) {
+  const gas = g.gas !== undefined ? g.gas : (g.status === 'erreicht' ? 0 : null);
+  const gasInfo = GAS_LABELS.find(x => x.val === gas);
+  const buttons = GAS_LABELS.map(gl => {
+    const sel = gas === gl.val;
+    return '<button style="flex:1;padding:4px 2px;font-size:10px;border:1px solid ' + (sel ? gl.color : 'var(--border)') + ';background:' + (sel ? gl.color + '15' : 'transparent') + ';color:' + (sel ? gl.color : 'var(--text-muted)') + ';border-radius:var(--radius-sm);cursor:pointer;font-weight:' + (sel ? '700' : '400') + ';" onclick="setGAS(\'' + g.id + '\',' + g.phaseNr + ',' + gl.val + ')" title="' + gl.label + '">' + gl.icon + '</button>';
+  }).join('');
+
+  return '<div class="rm-goal ' + (gas !== null && gas >= 0 ? 'done' : '') + '">' +
+    '<div style="display:flex;justify-content:space-between;align-items:flex-start;">' +
+      '<div class="rm-goal-title">' + (gasInfo ? gasInfo.icon + ' ' : '') + Utils.escapeHtml(g.titel || g.text || '?') + '</div>' +
+    '</div>' +
+    (g.beschreibung ? '<div style="font-size:13px;color:var(--text-secondary);margin:var(--space-2) 0;">' + Utils.escapeHtml(g.beschreibung) + '</div>' : '') +
+    '<div class="rm-goal-meta">' +
+      '<span>Phase ' + g.phaseNr + ': ' + (APP.phasen?.[g.phaseNr]?.name || '') + '</span>' +
+      (g.terminiert ? '<span>📅 ' + Utils.formatDate(g.terminiert) + '</span>' : '') +
+    '</div>' +
+    '<div style="display:flex;gap:2px;margin-top:var(--space-2);">' + buttons + '</div>' +
+    (gasInfo ? '<div style="font-size:11px;color:' + gasInfo.color + ';margin-top:4px;">' + gasInfo.label + '</div>' : '<div style="font-size:11px;color:var(--text-muted);margin-top:4px;">GAS bewerten →</div>') +
+  '</div>';
+}
+
+async function renderZiele() {
+  await loadPhasen();
+  const container = document.getElementById('via-content');
+  if (!APP.schuelerId) {
+    container.innerHTML = `<div class="rm-section"><h2>🎲 SMART-Ziele</h2><p>Kein Klient gewählt.</p></div>`;
+    return;
+  }
+  const rm = getOrCreateRoadmap();
+  const allGoals = rm.phasen.flatMap(p => (p.ziele || []).map(g => ({ ...g, phaseNr: p.nr })));
+
+  container.innerHTML = `
+    <div class="rm-section">
+      <h2>🎲 SMART-Ziele</h2>
+      <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">
+        Spezifisch, Messbar, Attraktiv (klient-relevant), Realistisch, Terminiert.
+        Ziele werden Phasen zugeordnet.
+      </p>
+      <button class="btn btn-primary" onclick="addZiel()" style="margin-bottom: var(--space-4);">+ Neues SMART-Ziel</button>
+
+      ${allGoals.length === 0
+        ? '<div class="pw-empty"><div class="pw-empty-icon">🎯</div><p>Noch keine Ziele definiert.</p></div>'
+        : allGoals.map(g => renderGoalCard(g)).join('')
+      }
+    </div>
+  `;
+}
+
+async function addZiel() {
+  const rm = getOrCreateRoadmap();
+  const phaseOptions = (APP.phasen || []).map(p => ({ value: String(p.nr), label: `Phase ${p.nr}: ${p.name}` }));
+  const aktive = rm.phasen.find(p => p.status === 'aktiv');
+
+  const data = await Utils.modalForm({
+    title: 'Neues SMART-Ziel',
+    fields: [
+      { id: 'titel', label: 'Spezifisch + Messbar — Was genau?', required: true, placeholder: 'z.B. "3× pro Woche 20 Min. Sport"' },
+      { id: 'beschreibung', label: 'Attraktiv + Realistisch — Warum?', type: 'textarea', rows: 2, placeholder: 'Begründung und Motivation' },
+      { id: 'phaseNr', label: 'Welche Phase?', type: 'select', options: phaseOptions, value: String(aktive?.nr || 0) },
+      { id: 'terminiert', label: 'Terminiert — Bis wann?', type: 'date' },
+    ],
+  });
+  if (!data) return;
+
+  const phaseNr = parseInt(data.phaseNr, 10);
+  const phase = rm.phasen.find(p => p.nr === phaseNr);
+  if (!phase) { showToast('Ungültige Phase', 'info'); return; }
+  if (!phase.ziele) phase.ziele = [];
+
+  phase.ziele.push({
+    id: DB.generateId(),
+    titel: data.titel,
+    beschreibung: data.beschreibung,
+    terminiert: data.terminiert,
+    status: 'offen',
+    erstellt: new Date().toISOString(),
+  });
+  DB.saveRoadmap(rm);
+  showToast('SMART-Ziel angelegt', 'ok');
+  renderZiele();
+}
+
+function setGAS(id, phaseNr, gasVal) {
+  const rm = getOrCreateRoadmap();
+  const phase = rm.phasen.find(p => p.nr === phaseNr);
+  if (!phase) return;
+  const z = (phase.ziele || []).find(x => x.id === id);
+  if (!z) return;
+  z.gas = gasVal;
+  z.status = gasVal >= 0 ? 'erreicht' : 'offen';
+  z.gasBewertetAm = new Date().toISOString();
+  if (gasVal >= 0 && !z.erreichtAm) z.erreichtAm = new Date().toISOString();
+  DB.saveRoadmap(rm);
+  renderZiele();
+}
+
+function toggleZiel(id, phaseNr) { setGAS(id, phaseNr, 0); }
+
+// ─── Stärken-Profil ───────────────────────────────────────
+const STORAGE_STAERKEN = 'pw_staerken';
+function getStaerken() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_STAERKEN) || '{}'); } catch { return {}; }
+}
+function saveStaerkenAll(map) { localStorage.setItem(STORAGE_STAERKEN, JSON.stringify(map)); }
+
+function renderStaerken() {
+  const container = document.getElementById('via-content');
+  if (!APP.schuelerId) {
+    container.innerHTML = `<div class="rm-section"><h2>💪 Stärken-Profil</h2><p>Kein Klient gewählt.</p></div>`;
+    return;
+  }
+  const all = getStaerken();
+  const data = all[APP.schuelerId] || {};
+
+  // Gruppieren nach Tugend
+  const tugenden = {};
+  STAERKEN.forEach((s, i) => {
+    if (!tugenden[s.tugend]) tugenden[s.tugend] = [];
+    tugenden[s.tugend].push({ ...s, idx: i });
+  });
+
+  // Top-Stärken und Entwicklungsfelder berechnen
+  const bewertet = STAERKEN.map((s, i) => ({ ...s, val: data[i] || 5 })).sort((a, b) => b.val - a.val);
+  const top3 = bewertet.filter(s => s.val >= 7).slice(0, 3);
+  const entwicklung = bewertet.filter(s => s.val <= 4).slice(0, 3);
+
+  // SVG Radar-Chart
+  const radarSize = 280, radarCx = radarSize / 2, radarCy = radarSize / 2, radarR = 110;
+  const n = STAERKEN.length;
+  const radarPoints = STAERKEN.map((s, i) => {
+    const angle = (i / n) * 2 * Math.PI - Math.PI / 2;
+    const val = (data[i] || 5) / 10;
+    return {
+      x: radarCx + radarR * val * Math.cos(angle),
+      y: radarCy + radarR * val * Math.sin(angle),
+      lx: radarCx + (radarR + 14) * Math.cos(angle),
+      ly: radarCy + (radarR + 14) * Math.sin(angle),
+      label: s.label.slice(0, 6),
+    };
+  });
+  const radarPath = radarPoints.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ') + ' Z';
+  const radarGrid = [0.25, 0.5, 0.75, 1].map(f =>
+    STAERKEN.map((_, i) => {
+      const angle = (i / n) * 2 * Math.PI - Math.PI / 2;
+      return `${radarCx + radarR * f * Math.cos(angle)},${radarCy + radarR * f * Math.sin(angle)}`;
+    }).join(' ')
+  );
+
+  container.innerHTML = `
+    <div class="rm-section">
+      <h2>💪 Stärken-Profil</h2>
+      <p style="color: var(--text-secondary); margin-bottom: var(--space-2);">
+        Basierend auf VIA Classification of Character Strengths (Peterson & Seligman 2004, Youth Survey: Park & Peterson 2006).
+        18 Stärken in 6 Tugenden. Bewertung 1-10 gemeinsam mit dem Klienten.
+      </p>
+
+      <div style="text-align: center; margin: var(--space-3) 0;">
+        <svg width="${radarSize}" height="${radarSize}" viewBox="0 0 ${radarSize} ${radarSize}">
+          ${radarGrid.map(pts => `<polygon points="${pts}" fill="none" stroke="var(--border)" stroke-width="0.5"/>`).join('')}
+          <polygon points="${radarPoints.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ')}" fill="rgba(16,185,129,0.15)" stroke="var(--color-app-via)" stroke-width="2"/>
+          ${radarPoints.map(p => `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3" fill="var(--color-app-via)"/>`).join('')}
+          ${radarPoints.map(p => `<text x="${p.lx.toFixed(1)}" y="${p.ly.toFixed(1)}" text-anchor="middle" dominant-baseline="middle" font-size="8" fill="var(--text-muted)">${p.label}</text>`).join('')}
+        </svg>
+      </div>
+
+      ${top3.length ? `
+        <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-4);">
+          ${top3.map(s => `<span style="padding: var(--space-2) var(--space-3); background: #D1FAE5; color: #065F46; border-radius: var(--radius-full); font-size: 13px; font-weight: 600;">⭐ ${s.label} (${s.val})</span>`).join('')}
+          ${entwicklung.map(s => `<span style="padding: var(--space-2) var(--space-3); background: #FEF3C7; color: #92400E; border-radius: var(--radius-full); font-size: 13px;">📈 ${s.label} (${s.val})</span>`).join('')}
+        </div>
+      ` : ''}
+
+      ${Object.entries(tugenden).map(([tugend, items]) => `
+        <div style="margin-bottom: var(--space-4);">
+          <h3 style="font-size: 15px; color: var(--color-app-via); margin-bottom: var(--space-2);">${tugend}</h3>
+          ${items.map(s => {
+            const val = data[s.idx] || 5;
+            return `
+              <div class="rm-strength">
+                <div class="rm-strength-name">
+                  <span title="${Utils.escapeHtml(s.desc)}">${s.label}</span>
+                  <span style="color: var(--color-app-via); font-weight: var(--font-weight-bold);">${val}/10</span>
+                </div>
+                <div class="rm-strength-bar"><div class="rm-strength-fill" style="width: ${val * 10}%;"></div></div>
+                <input type="range" min="1" max="10" value="${val}" oninput="updateStaerke(${s.idx}, this.value)">
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `).join('')}
+
+      <div style="margin-top: var(--space-4); display: flex; gap: var(--space-2);">
+        <button class="btn btn-primary" onclick="saveStaerkenForKlient()">💾 Speichern</button>
+        <button class="btn" onclick="Bridge.notify('staerken_updated', { schuelerId: APP.schuelerId })">↗ An andere Apps senden</button>
+      </div>
+    </div>
+  `;
+}
+
+function updateStaerke(idx, val) {
+  const all = getStaerken();
+  if (!all[APP.schuelerId]) all[APP.schuelerId] = {};
+  all[APP.schuelerId][idx] = parseInt(val, 10);
+  saveStaerkenAll(all);
+  renderStaerken();
+}
+
+function saveStaerkenForKlient() {
+  showToast('Stärken-Profil aktualisiert', 'ok');
+  Bridge.notify('staerken_updated', { schuelerId: APP.schuelerId });
+}
+
+// ─── Förderplan-Report (druckbar) ─────────────────────────
+async function renderReport() {
+  await loadPhasen();
+  const container = document.getElementById('via-content');
+  if (!APP.schuelerId) {
+    container.innerHTML = `<div class="rm-section"><h2>📄 Förderplan</h2><p>Kein Klient gewählt.</p></div>`;
+    return;
+  }
+  const s = DB.getSchuelerById(APP.schuelerId);
+  const rm = getOrCreateRoadmap();
+  const allGoals = rm.phasen.flatMap(p => (p.ziele || []).map(g => ({ ...g, phaseNr: p.nr })));
+  const ff = DB.getFallformulierung(APP.schuelerId);
+
+  container.innerHTML = `
+    <div style="margin-bottom: var(--space-3); display: flex; gap: var(--space-2); flex-wrap: wrap;">
+      <button class="btn btn-primary" onclick="window.print()">🖨️ Drucken / PDF</button>
+      <button class="btn" onclick="exportReportText()">📄 Als Text exportieren</button>
+      <button class="btn" onclick="generateKonferenzVorlage()">🤝 Konferenz-Vorlage</button>
+    </div>
+
+    <div class="rm-section">
+      <h1 style="margin-bottom: var(--space-3);">Förderplan</h1>
+      <h2>${Utils.escapeHtml(`${s?.vorname || ''} ${s?.nachname || ''}`.trim() || 'Klient')}</h2>
+      <div style="color: var(--text-muted); margin-bottom: var(--space-4);">
+        Erstellt: ${Utils.formatDate(rm.erstellt)} · Geändert: ${Utils.formatDate(rm.geaendert)}
+      </div>
+
+      <h3>Phasen-Übersicht</h3>
+      ${rm.phasen.map((p, i) => {
+        const def = APP.phasen[p.nr];
+        return `
+          <div style="display: flex; gap: var(--space-2); padding: var(--space-2); border-left: 4px solid ${def.color}; margin-bottom: var(--space-2);">
+            <div style="font-size: 24px;">${def.icon}</div>
+            <div style="flex: 1;">
+              <strong>Phase ${p.nr}: ${def.name}</strong>
+              <span style="margin-left: var(--space-2); padding: 2px 8px; border-radius: var(--radius-full); background: var(--bg-subtle); font-size: 11px;">${p.status}</span>
+              ${p.startDatum ? `<div style="font-size: 12px; color: var(--text-muted);">${Utils.formatDate(p.startDatum)} ${p.endDatum ? '→ ' + Utils.formatDate(p.endDatum) : ''}</div>` : ''}
+              ${p.notizen ? `<div style="font-size: 13px; margin-top: 4px;">${Utils.escapeHtml(p.notizen)}</div>` : ''}
+            </div>
+          </div>
+        `;
+      }).join('')}
+
+      ${allGoals.length ? `
+        <h3 style="margin-top: var(--space-5);">SMART-Ziele (${allGoals.length})</h3>
+        ${allGoals.map(g => `
+          <div style="padding: var(--space-2); border-bottom: 1px solid var(--border);">
+            ${g.status === 'erreicht' ? '✓' : '○'} <strong>${Utils.escapeHtml(g.titel || g.text)}</strong>
+            <div style="font-size: 12px; color: var(--text-muted);">Phase ${g.phaseNr}${g.terminiert ? ' · ' + Utils.formatDate(g.terminiert) : ''}</div>
+          </div>
+        `).join('')}
+      ` : ''}
+
+      ${ff?.hypothese ? `
+        <h3 style="margin-top: var(--space-5);">Hypothese (5P)</h3>
+        <div style="padding: var(--space-3); background: var(--bg-subtle); border-radius: var(--radius-sm); white-space: pre-wrap;">${Utils.escapeHtml(ff.hypothese)}</div>
+      ` : ''}
+
+      ${(() => {
+        const screenings = DB.getScreenings(APP.schuelerId).filter(x => x.abgeschlossen).sort((a, b) => (a.datum || '').localeCompare(b.datum || ''));
+        if (!screenings.length) return '';
+        return `<h3 style="margin-top: var(--space-5);">Screening-Verlauf (${screenings.length} Messzeitpunkte)</h3>
+          <table style="width: 100%; font-size: 13px; border-collapse: collapse;">
+            <tr style="background: var(--bg-subtle);"><th style="text-align: left; padding: 6px;">Datum</th>
+            ${Object.keys(screenings.at(-1)?.scores || {}).map(id => `<th style="padding: 6px;">${id.toUpperCase()}</th>`).join('')}</tr>
+            ${screenings.map(scr => `<tr>
+              <td style="padding: 6px; border-bottom: 1px solid var(--border);">${Utils.formatDate(scr.datum)}</td>
+              ${Object.entries(scr.scores || {}).map(([id, val]) => `<td style="padding: 6px; border-bottom: 1px solid var(--border); text-align: center;">${val.score}/${val.max}</td>`).join('')}
+            </tr>`).join('')}
+          </table>`;
+      })()}
+
+      ${(() => {
+        const sitzungen = DB.getNotizen(APP.schuelerId).filter(n => n.kategorie === 'session').sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
+        if (!sitzungen.length) return '';
+        const orsTrend = sitzungen.slice(0, 5).reverse().map(n => n.soap?.ors_total).filter(v => v !== undefined);
+        return `<h3 style="margin-top: var(--space-5);">Sitzungen (${sitzungen.length})</h3>
+          <div style="font-size: 13px; margin-bottom: var(--space-2);">
+            ${orsTrend.length >= 2 ? `ORS-Trend: ${orsTrend.map(v => v.toFixed(0)).join(' → ')} (Δ ${(orsTrend.at(-1) - orsTrend[0]).toFixed(1)})` : ''}
+          </div>`;
+      })()}
+
+      ${(() => {
+        const helfer = DB.getHelfer(APP.schuelerId);
+        if (!helfer.length) return '';
+        return `<h3 style="margin-top: var(--space-5);">Helfer-Netzwerk (${helfer.length})</h3>
+          <table style="width: 100%; font-size: 13px; border-collapse: collapse;">
+            ${helfer.map(h => `<tr><td style="padding: 4px; border-bottom: 1px solid var(--border);"><strong>${Utils.escapeHtml(h.name || '?')}</strong></td><td style="padding: 4px;">${Utils.escapeHtml(h.rolle || '')}</td><td style="padding: 4px;">${h.telefon || ''}</td></tr>`).join('')}
+          </table>`;
+      })()}
+
+      <div style="margin-top: var(--space-8); padding-top: var(--space-4); border-top: 2px solid var(--border); font-size: 12px; color: var(--text-muted);">
+        Pathways Förderplan · Generiert am ${new Date().toLocaleDateString('de-DE')} · Vertraulich
+      </div>
+    </div>
+  `;
+}
+
+function generateKonferenzVorlage() {
+  const s = DB.getSchuelerById(APP.schuelerId);
+  if (!s) return;
+  const name = `${s.vorname || ''} ${s.nachname || ''}`.trim();
+  const rm = getOrCreateRoadmap();
+  const aktivePhase = rm.phasen.find(p => p.status === 'aktiv');
+  const screenings = DB.getScreenings(APP.schuelerId).filter(x => x.abgeschlossen).sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
+  const sitzungen = DB.getNotizen(APP.schuelerId).filter(n => n.kategorie === 'session');
+  const helfer = DB.getHelfer(APP.schuelerId);
+  const allGoals = rm.phasen.flatMap(p => (p.ziele || []).map(g => ({ ...g, phaseNr: p.nr })));
+  const aceCount = (s.anamnese || []).filter(id => id.startsWith('ace_')).length;
+  const ff = DB.getFallformulierung?.(APP.schuelerId);
+
+  const lines = [
+    'PATHWAYS — KONFERENZ-VORBEREITUNG',
+    '═══════════════════════════════════',
+    `Klient: ${name}`,
+    `Datum: ${new Date().toLocaleDateString('de-DE')}`,
+    `Klasse: ${s.klasse || '—'} · Geburtsdatum: ${s.geburtsdatum ? Utils.formatDate(s.geburtsdatum) : '—'}`,
+    `ACE: ${aceCount}/10 · Sitzungen: ${sitzungen.length} · Screenings: ${screenings.length}`,
+    '',
+    '1. AKTUELLE LAGE',
+    '───────────────────────────────────',
+    aktivePhase ? `Phase ${aktivePhase.nr} seit ${aktivePhase.startDatum ? Utils.formatDate(aktivePhase.startDatum) : '?'}` : 'Keine aktive Phase',
+    aktivePhase?.themen?.length ? `Themen: ${aktivePhase.themen.join(', ')}` : '',
+    screenings.length ? `Letztes Screening (${Utils.formatDate(screenings[0].datum)}): ${Object.entries(screenings[0].scores || {}).map(([id, v]) => `${id.toUpperCase()} ${v.score}/${v.max}`).join(', ')}` : '',
+    ff?.hypothese ? `Hypothese: ${ff.hypothese}` : '',
+    '',
+    '2. ZIELE (SMART)',
+    '───────────────────────────────────',
+    ...allGoals.map(g => `${g.gas !== undefined && g.gas >= 0 ? '✓' : '○'} ${g.titel} (Phase ${g.phaseNr}${g.gas !== undefined ? `, GAS: ${g.gas}` : ''})`),
+    '',
+    '3. HELFER-NETZWERK',
+    '───────────────────────────────────',
+    ...helfer.map(h => `${h.name} (${h.rolle || '—'}) — ${h.informiert ? 'informiert' : 'nicht informiert'}${h.notiz ? ' — ' + h.notiz : ''}`),
+    '',
+    '4. DISKUSSIONSPUNKTE (vorbereiten)',
+    '───────────────────────────────────',
+    '□ Fortschritt seit letzter Konferenz',
+    '□ Anpassung der Ziele nötig?',
+    '□ Phase-Übergang?',
+    '□ Eltern-Perspektive',
+    '□ Schul-Perspektive',
+    '□ Nächste Schritte + Verantwortlichkeiten',
+    '',
+    '5. BESCHLÜSSE (in Konferenz ausfüllen)',
+    '───────────────────────────────────',
+    '',
+    '',
+    '═══════════════════════════════════',
+    'Generiert von Pathways · Vertraulich',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `konferenz-${name.replace(/\s/g, '-')}-${new Date().toISOString().split('T')[0]}.txt`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('Konferenz-Vorlage heruntergeladen', 'ok');
+}
+
+function exportReportText() {
+  const s = DB.getSchuelerById(APP.schuelerId);
+  const rm = getOrCreateRoadmap();
+  const allGoals = rm.phasen.flatMap(p => (p.ziele || []).map(g => ({ ...g, phaseNr: p.nr })));
+  const lines = [
+    'PATHWAYS — FÖRDERPLAN',
+    '═══════════════════════════════════',
+    `Klient: ${s?.vorname || ''} ${s?.nachname || ''}`,
+    `Erstellt: ${Utils.formatDate(rm.erstellt)}`,
+    '',
+    'PHASEN',
+    '═══════════════════════════════════',
+  ];
+  rm.phasen.forEach(p => {
+    const def = APP.phasen[p.nr];
+    lines.push(`Phase ${p.nr}: ${def.name} [${p.status}]`);
+    if (p.startDatum) lines.push(`  Start: ${Utils.formatDate(p.startDatum)}`);
+    if (p.notizen) lines.push(`  Notiz: ${p.notizen}`);
+    lines.push('');
+  });
+  if (allGoals.length) {
+    lines.push('SMART-ZIELE');
+    lines.push('═══════════════════════════════════');
+    allGoals.forEach(g => {
+      lines.push(`${g.status === 'erreicht' ? '✓' : '○'} ${g.titel || g.text} (Phase ${g.phaseNr})`);
+    });
+  }
+  const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `foerderplan-${s?.nachname || 'klient'}-${new Date().toISOString().split('T')[0]}.txt`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ─── Bridge ───────────────────────────────────────────────
+Bridge.subscribe('screening_completed', e => {
+  if (e.schuelerId === APP.schuelerId) showToast('Screening abgeschlossen — Hypothesen-Empfehlungen prüfen', 'info');
+});
+
+// updateContext und Bootstrap werden von via/app.js bereitgestellt

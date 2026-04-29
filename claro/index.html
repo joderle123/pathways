@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pathways CLARO — Diagnostik</title>
+  <meta name="theme-color" content="#EF4444">
+  <link rel="stylesheet" href="../core/ui-base.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-app="claro">
+
+<!-- ─── Top Bar ────────────────────────────────────────────── -->
+<header class="dg-topbar">
+  <div class="dg-brand">
+    <span class="dg-logo"></span>
+    <div>
+      <div class="dg-app-name">CLARO</div>
+      <div class="dg-app-tag">Diagnostik</div>
+    </div>
+  </div>
+  <div class="dg-context" id="dg-context">— ohne Klient —</div>
+  <div class="dg-actions">
+    <button class="btn" onclick="toggleTheme()" title="Theme">🌓</button>
+    <a class="btn" href="../hub/" title="Zum Hub">← HUB</a>
+  </div>
+</header>
+
+<!-- ─── Tabs ─────────────────────────────────────────────── -->
+<nav class="dg-tabs">
+  <button class="dg-tab active" data-tab="overview" onclick="setTab('overview')">📋 Übersicht</button>
+  <button class="dg-tab" data-tab="triage" onclick="setTab('triage')">🎯 Triage (5 Fragen)</button>
+  <button class="dg-tab" data-tab="screening" onclick="setTab('screening')">🔍 Screening</button>
+  <button class="dg-tab" data-tab="hypothesen" onclick="setTab('hypothesen')">🧠 Hypothesen</button>
+  <button class="dg-tab" data-tab="5p" onclick="setTab('5p')">📐 5P-Fallformulierung</button>
+  <button class="dg-tab" data-tab="icd" onclick="setTab('icd')">🏥 ICD-Mapper</button>
+  <button class="dg-tab" data-tab="verlauf" onclick="setTab('verlauf')">📈 Verlauf (T1/T2/T3)</button>
+</nav>
+
+<main class="dg-main">
+  <div class="dg-layout">
+    <div id="dg-content"></div>
+    <aside class="dg-hypothesen-panel" id="dg-hyp-panel" style="display: none;"></aside>
+  </div>
+</main>
+
+<!-- ─── Toast ──────────────────────────────────────────────── -->
+<div id="toast-container"></div>
+
+<!-- ─── Core ──────────────────────────────────────────────── -->
+<script src="../core/db.js"></script>
+<script src="../core/bridge.js"></script>
+<script src="../core/utils.js"></script>
+
+<!-- ─── App-Modules ───────────────────────────────────────── -->
+<script src="../core/instruments.js"></script>
+<script src="../core/hypotheses-engine.js"></script>
+<script src="formulation/5p-builder.js"></script>
+<script src="icd/mapper.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

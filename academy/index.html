@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pathways ACADEMY — Weiterbildung</title>
+  <meta name="theme-color" content="#14B8A6">
+  <link rel="stylesheet" href="../core/ui-base.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-app="academy">
+
+<!-- ─── Top Bar ────────────────────────────────────────────── -->
+<header class="ac-topbar">
+  <div class="ac-brand">
+    <span class="ac-logo"></span>
+    <div>
+      <div class="ac-app-name">ACADEMY</div>
+      <div class="ac-app-tag">Weiterbildung &amp; Skills</div>
+    </div>
+  </div>
+  <div class="ac-stats" id="ac-gamification">
+    <span class="ac-xp">⭐ <span id="ac-xp-num">0</span> XP</span>
+    <span class="ac-level">Level <span id="ac-level-num">1</span></span>
+    <span class="ac-streak">🔥 <span id="ac-streak-num">0</span> Tage</span>
+  </div>
+  <div class="ac-actions">
+    <button class="btn" onclick="toggleTheme()" title="Theme">🌓</button>
+    <a class="btn" href="../hub/" title="Zum Hub">← HUB</a>
+  </div>
+</header>
+
+<!-- ─── Tabs ─────────────────────────────────────────────── -->
+<nav class="ac-tabs">
+  <button class="ac-tab active" data-tab="impuls" onclick="setTab('impuls')">💡 Tages-Impuls</button>
+  <button class="ac-tab" data-tab="lernpfade" onclick="setTab('lernpfade')">📚 Lernpfade</button>
+  <button class="ac-tab" data-tab="cdss" onclick="setTab('cdss')">🤖 CDSS Wizard</button>
+  <button class="ac-tab" data-tab="wissenstest" onclick="setTab('wissenstest')">🎯 Wissenstest</button>
+  <button class="ac-tab" data-tab="skills" onclick="setTab('skills')">🎭 Skills-Trainer</button>
+  <button class="ac-tab" data-tab="selbstfuersorge" onclick="setTab('selbstfuersorge')">💚 Selbstfürsorge</button>
+  <button class="ac-tab" data-tab="profil" onclick="setTab('profil')">👤 Karriere-Profil</button>
+</nav>
+
+<!-- ─── Main ─────────────────────────────────────────────── -->
+<main class="ac-main">
+  <div id="ac-content"></div>
+</main>
+
+<!-- ─── Toast ─────────────────────────────────────────────── -->
+<div id="toast-container"></div>
+
+<!-- ─── Core ─────────────────────────────────────────────── -->
+<script src="../core/db.js"></script>
+<script src="../core/bridge.js"></script>
+<script src="../core/utils.js"></script>
+
+<!-- ─── Data (inline statt fetch, wegen file:// Kompatibilität) ── -->
+<script src="courses/lernpfade-data.js"></script>
+<script src="cdss/decision-trees-data.js"></script>
+
+<!-- ─── App-Modules ─────────────────────────────────────── -->
+<script src="quiz/engine.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

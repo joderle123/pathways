@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Sitzung 19 — Mut-Challenge-Karten</title>
+<link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
+<style>
+:root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
+.karten-seite { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; padding: 10px; }
+.spiel-karte { border: 2.5px solid var(--farbe); border-radius: 16px; padding: 14px 10px; text-align: center; min-height: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: white; }
+.spiel-karte-emoji { font-size: 36px; margin-bottom: 6px; }
+.spiel-karte-name { font-size: 13px; font-weight: 800; color: #0F172A; margin-bottom: 4px; line-height: 1.3; }
+.spiel-karte-level { font-size: 11px; font-weight: 800; color: var(--farbe); margin-top: 6px; }
+.level-leicht { border-color: #22C55E; }
+.level-leicht .spiel-karte-level { color: #22C55E; }
+.level-mittel { border-color: #F59E0B; }
+.level-mittel .spiel-karte-level { color: #F59E0B; }
+.level-schwer { border-color: #EF4444; }
+.level-schwer .spiel-karte-level { color: #EF4444; }
+</style>
+</head>
+<body>
+<div class="druck-leiste"><button class="btn-drucken" onclick="window.print()">🖨️ Drucken + Ausschneiden</button></div>
+
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
+      <div class="ab-titel">Mut-Challenge-Karten ✂️🦁</div>
+      <div class="ab-untertitel">Von leicht bis mutig — zieh eine Karte und trau dich!</div>
+    </div>
+    <div class="kopfzeile-icon">🦁</div>
+  </div>
+  <div class="karten-seite">
+    <div class="spiel-karte level-leicht"><div class="spiel-karte-emoji">👋</div><div class="spiel-karte-name">Sag heute zu jemandem Neues „Hallo".</div><div class="spiel-karte-level">⭐ Leicht</div></div>
+    <div class="spiel-karte level-leicht"><div class="spiel-karte-emoji">😊</div><div class="spiel-karte-name">Mach jemandem ein ehrliches Kompliment.</div><div class="spiel-karte-level">⭐ Leicht</div></div>
+    <div class="spiel-karte level-leicht"><div class="spiel-karte-emoji">❓</div><div class="spiel-karte-name">Stell im Unterricht eine Frage — egal welche.</div><div class="spiel-karte-level">⭐ Leicht</div></div>
+    <div class="spiel-karte level-leicht"><div class="spiel-karte-emoji">🍽️</div><div class="spiel-karte-name">Setz dich in der Mensa neben jemanden, mit dem du noch nie geredet hast.</div><div class="spiel-karte-level">⭐ Leicht</div></div>
+    <div class="spiel-karte level-mittel"><div class="spiel-karte-emoji">🙋</div><div class="spiel-karte-name">Melde dich freiwillig für etwas in der Klasse.</div><div class="spiel-karte-level">⭐⭐ Mittel</div></div>
+    <div class="spiel-karte level-mittel"><div class="spiel-karte-emoji">🙏</div><div class="spiel-karte-name">Bitte jemanden um Hilfe, den du nicht so gut kennst.</div><div class="spiel-karte-level">⭐⭐ Mittel</div></div>
+    <div class="spiel-karte level-mittel"><div class="spiel-karte-emoji">💬</div><div class="spiel-karte-name">Sag jemandem ehrlich, wie du dich fühlst.</div><div class="spiel-karte-level">⭐⭐ Mittel</div></div>
+    <div class="spiel-karte level-mittel"><div class="spiel-karte-emoji">🚫</div><div class="spiel-karte-name">Sag freundlich „Nein" zu etwas, das du nicht willst.</div><div class="spiel-karte-level">⭐⭐ Mittel</div></div>
+    <div class="spiel-karte level-schwer"><div class="spiel-karte-emoji">🎤</div><div class="spiel-karte-name">Halte eine kurze Rede oder präsentiere etwas vor anderen.</div><div class="spiel-karte-level">⭐⭐⭐ Mutig!</div></div>
+    <div class="spiel-karte level-schwer"><div class="spiel-karte-emoji">💔</div><div class="spiel-karte-name">Entschuldige dich bei jemandem, bei dem es überfällig ist.</div><div class="spiel-karte-level">⭐⭐⭐ Mutig!</div></div>
+    <div class="spiel-karte level-schwer"><div class="spiel-karte-emoji">🆕</div><div class="spiel-karte-name">Probiere eine Aktivität aus, die du noch nie gemacht hast.</div><div class="spiel-karte-level">⭐⭐⭐ Mutig!</div></div>
+    <div class="spiel-karte level-schwer"><div class="spiel-karte-emoji">🫶</div><div class="spiel-karte-name">Erzähl einer Vertrauensperson von etwas, das dich belastet.</div><div class="spiel-karte-level">⭐⭐⭐ Mutig!</div></div>
+  </div>
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 19</span>
+    <span>Seite 1 / 1</span>
+  </div>
+</div>
+</body>
+</html>

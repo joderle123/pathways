@@ -1,0 +1,371 @@
+{
+  "version": 1,
+  "trees": [
+    {
+      "id": "depression-suizid",
+      "titel": "Depression mit Suizidgedanken",
+      "icon": "🌧️",
+      "intro": "Ein Klient zeigt depressive Symptome und äußert Lebensüberdruss. Was tun?",
+      "start": "q1",
+      "nodes": {
+        "q1": {
+          "frage": "Wie lange dauern die Symptome?",
+          "optionen": [
+            { "label": "< 2 Wochen, situativ", "next": "q2_kurz" },
+            { "label": "≥ 2 Wochen, anhaltend", "next": "q2_lang" }
+          ]
+        },
+        "q2_kurz": {
+          "frage": "Liegt eine konkrete Belastung vor (z.B. Trennung, Tod)?",
+          "optionen": [
+            { "label": "Ja", "next": "out_anpassung" },
+            { "label": "Nein, einfach 'so'", "next": "out_beobachten" }
+          ]
+        },
+        "q2_lang": {
+          "frage": "Sind die Suizidgedanken konkret (Plan, Methode)?",
+          "optionen": [
+            { "label": "Ja, mit Plan/Methode", "next": "out_akut" },
+            { "label": "Nein, nur Wünsche", "next": "out_depression" }
+          ]
+        },
+        "out_anpassung": {
+          "outcome": "Anpassungsstörung mit depressiver Reaktion (F43.21)",
+          "empfehlung": [
+            "Stützende Gespräche, Belastungsbewältigung",
+            "Krisenintervention bei Bedarf",
+            "C-SSRS dokumentieren",
+            "Re-Evaluation in 4-6 Wochen",
+            "Bei Verschlechterung: Therapie-Empfehlung"
+          ],
+          "module": ["trauma-informed", "krise-management"]
+        },
+        "out_beobachten": {
+          "outcome": "Subklinisch — wachsame Begleitung",
+          "empfehlung": [
+            "Schutzfaktoren stärken (Beziehungen, Bewegung, Schlaf)",
+            "Wohlbefinden tracken (WHO-5 wöchentlich)",
+            "Bei Verschlechterung: Re-Screening"
+          ]
+        },
+        "out_akut": {
+          "outcome": "🚨 AKUTE SUIZIDGEFAHR — Sofort handeln",
+          "empfehlung": [
+            "C-SSRS strukturiert durchführen",
+            "Sicherheitsplan jetzt erstellen (Stanley-Brown)",
+            "Person nicht allein lassen",
+            "Eltern/Bezugspersonen verständigen",
+            "Überweisung an CHNP Jugendpsychiatrie (26 82 28 28) oder bei Lebensgefahr 112"
+          ],
+          "module": ["krise-management"]
+        },
+        "out_depression": {
+          "outcome": "Depressive Episode (F32) — strukturierte Intervention",
+          "empfehlung": [
+            "PHQ-A durchführen (Schweregrad bestimmen)",
+            "Verhaltensaktivierung beginnen",
+            "Sicherheitsplan vorsorglich erstellen",
+            "Wöchentliche Begleitung",
+            "Bei mittelschwer-schwer: Therapie-Indikation"
+          ],
+          "module": ["screening-basics", "motiv-interview"]
+        }
+      }
+    },
+    {
+      "id": "selbstverletzung",
+      "titel": "Selbstverletzung",
+      "icon": "🩸",
+      "intro": "Ein Klient hat Selbstverletzungen. Welche Funktion hat das Verhalten und welche Intervention passt?",
+      "start": "q1",
+      "nodes": {
+        "q1": {
+          "frage": "Mit welcher Funktion verletzt sich der Klient?",
+          "optionen": [
+            { "label": "Spannungsabbau (zu viel Druck)", "next": "out_spannung" },
+            { "label": "Bestrafung (Schuld, Selbsthass)", "next": "out_schuld" },
+            { "label": "Dissoziation überwinden ('etwas spüren')", "next": "out_diss" },
+            { "label": "Hilferuf / Kommunikation", "next": "out_kommunikation" }
+          ]
+        },
+        "out_spannung": {
+          "outcome": "Funktion: Affekt-Regulation",
+          "empfehlung": [
+            "Alternative Skills: Eiswürfel, kalte Dusche, intensive Bewegung",
+            "DBT-Skills (TIPP) einführen",
+            "Trigger-Analyse: Wann steigt die Spannung?",
+            "Frühwarn-System aufbauen"
+          ],
+          "module": ["emotionsregulation"]
+        },
+        "out_schuld": {
+          "outcome": "Funktion: Selbstbestrafung — komplexer Pfad",
+          "empfehlung": [
+            "Trauma-Anamnese (häufig: Missbrauch, Vernachlässigung)",
+            "Schemata identifizieren (Schemtherapie)",
+            "Selbstmitgefühl aufbauen (Neff-Übungen)",
+            "Therapie-Empfehlung dringend"
+          ],
+          "module": ["trauma-informed"]
+        },
+        "out_diss": {
+          "outcome": "Funktion: Anti-Dissoziation — Trauma-Indikator",
+          "empfehlung": [
+            "Trauma-Screening (PCL-5)",
+            "Stabilisierung vor Exposition (Phase 1!)",
+            "Grounding-Techniken (5-4-3-2-1, Body-Scan)",
+            "Spezialisierte Trauma-Therapie"
+          ],
+          "module": ["trauma-informed"]
+        },
+        "out_kommunikation": {
+          "outcome": "Funktion: Hilferuf / Beziehungs-Signal",
+          "empfehlung": [
+            "Konflikt-Anamnese (Familie, Schule, Beziehungen)",
+            "Bezugspersonen-System aktivieren",
+            "Kommunikations-Skills aufbauen (Ich-Botschaften)",
+            "Verstärkungs-Falle vermeiden: Aufmerksamkeit für Selbstausdruck statt Verletzung"
+          ],
+          "module": ["motiv-interview"]
+        }
+      }
+    },
+    {
+      "id": "schulverweigerung",
+      "titel": "Schulverweigerung",
+      "icon": "🏫",
+      "intro": "Klient geht nicht mehr in die Schule. Welcher Typ liegt vor und welche Strategie passt?",
+      "start": "q1",
+      "nodes": {
+        "q1": {
+          "frage": "Was steht im Vordergrund?",
+          "optionen": [
+            { "label": "Angst (Panik, Bauchschmerzen morgens)", "next": "q2_angst" },
+            { "label": "Mobbing / Konflikt mit Mitschülern", "next": "out_mobbing" },
+            { "label": "Familie hält zurück (z.B. Mama braucht Klient zuhause)", "next": "out_parentif" },
+            { "label": "Demotivation, sieht keinen Sinn", "next": "out_demotiv" }
+          ]
+        },
+        "q2_angst": {
+          "frage": "Beginnt die Angst beim Verlassen des Hauses?",
+          "optionen": [
+            { "label": "Ja — Trennungsangst", "next": "out_trennung" },
+            { "label": "Nein — eher in der Schule selbst", "next": "out_schulangst" }
+          ]
+        },
+        "out_trennung": {
+          "outcome": "Trennungsangst (F93.0)",
+          "empfehlung": [
+            "Schritt-für-Schritt-Exposition",
+            "Eltern coachen (kein Helikopter, aber Sicherheit)",
+            "Kurze Schulbesuche zu Beginn",
+            "Therapie KVT-basiert"
+          ]
+        },
+        "out_schulangst": {
+          "outcome": "Schul-spezifische Angst (oft soziale Phobie)",
+          "empfehlung": [
+            "GAD-7 / Soziale-Phobie-Screening",
+            "Schulpsychologe einbeziehen",
+            "Sichere Person in der Schule finden",
+            "Expositionstherapie"
+          ]
+        },
+        "out_mobbing": {
+          "outcome": "Mobbing-Konstellation",
+          "empfehlung": [
+            "Mobbing-Screening: Häufigkeit, Methode, Täter",
+            "Schulinterne Mobbing-Stelle informieren",
+            "Stärkung des Klienten (kein 'durchhalten')",
+            "Bei massivem Mobbing: Schulwechsel erwägen"
+          ]
+        },
+        "out_parentif": {
+          "outcome": "Parentifizierung — komplexes Familiensystem",
+          "empfehlung": [
+            "Familien-Anamnese (kranke/abhängige Eltern?)",
+            "Helfersystem für die Familie aufbauen (entlastet den Klienten)",
+            "ONE / Sozialdienst einbeziehen",
+            "Kind-sein ermöglichen"
+          ]
+        },
+        "out_demotiv": {
+          "outcome": "Motivationskrise",
+          "empfehlung": [
+            "MI-Gespräch: Was ist dem Klienten wichtig?",
+            "Diskrepanz: Werte vs. aktuelles Verhalten",
+            "Realistische Ziele aushandeln",
+            "Erfolge sichtbar machen"
+          ],
+          "module": ["motiv-interview"]
+        }
+      }
+    },
+    {
+      "id": "substanzkonsum",
+      "titel": "Substanzkonsum bei Jugendlichen",
+      "icon": "🌿",
+      "intro": "Ein Klient berichtet über Substanzkonsum. Wie gehst du evidenzbasiert vor?",
+      "start": "q1",
+      "nodes": {
+        "q1": {
+          "frage": "Welche Substanz?",
+          "optionen": [
+            { "label": "Cannabis", "next": "q2_cannabis" },
+            { "label": "Alkohol", "next": "q2_alkohol" },
+            { "label": "Andere (Amphetamine, MDMA, Opioide)", "next": "out_spezialist" }
+          ]
+        },
+        "q2_cannabis": {
+          "frage": "Häufigkeit?",
+          "optionen": [
+            { "label": "Gelegentlich (< 1×/Woche)", "next": "out_harm_reduction" },
+            { "label": "Regelmäßig (> 3×/Woche)", "next": "q3_abhaengig" }
+          ]
+        },
+        "q2_alkohol": {
+          "frage": "Binge-Drinking (> 5 Getränke pro Anlass)?",
+          "optionen": [
+            { "label": "Nein, moderater Konsum", "next": "out_harm_reduction" },
+            { "label": "Ja, regelmäßig", "next": "q3_abhaengig" }
+          ]
+        },
+        "q3_abhaengig": {
+          "frage": "Anzeichen für Abhängigkeit? (Kontrollverlust, Toleranz, Entzug, Vernachlässigung von Pflichten)",
+          "optionen": [
+            { "label": "Nein", "next": "out_mi" },
+            { "label": "Ja, ≥ 2 Kriterien", "next": "out_suchtberatung" }
+          ]
+        },
+        "out_harm_reduction": {
+          "ergebnis": "Harm Reduction + Psychoedukation",
+          "empfehlung": [
+            "Nicht moralisieren — Funktion des Konsums verstehen",
+            "Harm-Reduction-Strategien (nicht allein konsumieren, Notfallnummern, keine Mischsubstanzen)",
+            "Psychoedukation: Cannabis & Gehirnentwicklung (Frontallappen reift bis 25)",
+            "CRAFFT-Screening durchführen (Knight et al. 2002)",
+            "Re-Assessment in 4 Wochen"
+          ],
+          "module": ["motiv-interview"]
+        },
+        "out_mi": {
+          "ergebnis": "Motivational Interviewing + CRAFFT",
+          "empfehlung": [
+            "MI-Ansatz: Ambivalenz explorieren, nicht konfrontieren",
+            "CRAFFT-Score bestimmen (≥ 2 = klinisch relevant)",
+            "Funktionsanalyse: Warum konsumiert der Klient? (Coping, Peer-Druck, Langeweile)",
+            "Alternative Coping-Strategien aufbauen",
+            "Elterngespräch erwägen (nur wenn Kindeswohl gefährdet)"
+          ],
+          "module": ["motiv-interview"]
+        },
+        "out_suchtberatung": {
+          "ergebnis": "Überweisung an Suchtberatung",
+          "empfehlung": [
+            "Abhängigkeitskriterien erfüllt → Fachberatung nötig",
+            "In Luxemburg: CePT (Centre de Prévention des Toxicomanies)",
+            "Begleitend: Komorbidität abklären (Depression, PTBS, ADHS häufig)",
+            "Therapeutische Beziehung aufrechterhalten (nicht fallenlassen)",
+            "Eltern informieren bei Minderjährigen"
+          ],
+          "module": ["motiv-interview"]
+        },
+        "out_spezialist": {
+          "ergebnis": "Sofortige Überweisung an Suchtmedizin",
+          "empfehlung": [
+            "Andere Substanzen (Stimulanzien, Opioide) erfordern sofortige Fachberatung",
+            "CePT oder CHNP kontaktieren",
+            "Urin-Screening ggf. durch Hausarzt",
+            "Sicherheit: Überdosis-Risiko besprechen",
+            "Naloxon-Nasenspray wenn Opioide (falls verfügbar)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "aggression",
+      "titel": "Aggression & Gewalt bei Jugendlichen",
+      "icon": "😡",
+      "intro": "Ein Klient zeigt aggressives Verhalten. Deeskalation oder Eskalation? Was steckt dahinter?",
+      "start": "q1",
+      "nodes": {
+        "q1": {
+          "frage": "Ist der Klient akut aggressiv?",
+          "optionen": [
+            { "label": "Ja — akute Eskalation", "next": "out_deeskalation" },
+            { "label": "Nein — berichtet über vergangene Aggression", "next": "q2" }
+          ]
+        },
+        "q2": {
+          "frage": "Welcher Kontext?",
+          "optionen": [
+            { "label": "Reaktive Aggression (Provokation → Wut → Handlung)", "next": "q3_reaktiv" },
+            { "label": "Proaktive Aggression (geplant, instrumentell, zur Zielerreichung)", "next": "out_conduct" },
+            { "label": "Unklar", "next": "q3_unklar" }
+          ]
+        },
+        "q3_reaktiv": {
+          "frage": "Gibt es Trauma-Hinweise?",
+          "optionen": [
+            { "label": "Ja — Trauma-Hintergrund bekannt", "next": "out_trauma_aggression" },
+            { "label": "Nein — eher Frustration/Impulskontrolle", "next": "out_dbt_skills" }
+          ]
+        },
+        "q3_unklar": {
+          "frage": "SDQ Conduct-Subskala oder ähnliche Daten vorhanden?",
+          "optionen": [
+            { "label": "Ja, Conduct ≥ 4", "next": "out_conduct" },
+            { "label": "Nein / unauffällig", "next": "out_dbt_skills" }
+          ]
+        },
+        "out_deeskalation": {
+          "ergebnis": "Akute Deeskalation — SAFE-Protokoll",
+          "empfehlung": [
+            "Eigene Sicherheit zuerst — Distanz, Fluchtweg sichern",
+            "Ruhig, langsam sprechen. Keine Drohungen, keine Ultimaten",
+            "Gefühle benennen: 'Ich sehe, du bist sehr wütend'",
+            "Pause anbieten: 'Magst du 5 Minuten rausgehen?'",
+            "Bei physischer Gewalt: Raum verlassen, ggf. Polizei (113)",
+            "Nach Beruhigung: Ursache klären (Trigger, Substanzen, Trauma)"
+          ]
+        },
+        "out_trauma_aggression": {
+          "ergebnis": "Trauma-bedingte Aggression → Stabilisierung",
+          "empfehlung": [
+            "Aggression als Überlebensreaktion verstehen (Fight-Response, Porges)",
+            "Nicht bestrafen — regulieren. Das Nervensystem ist aktiviert, nicht der Wille",
+            "Trigger-Analyse: Was hat die Aggression ausgelöst? (Sensorisch, relational, kontextuell)",
+            "Sicherheit ZUERST (Herman Phase 1), dann Trauma-Bearbeitung",
+            "DBT-Skills für Distress Tolerance (TIPP, Opposite Action)",
+            "PCL-5 durchführen wenn noch nicht geschehen"
+          ],
+          "module": ["trauma-informed", "emotionsregulation"]
+        },
+        "out_dbt_skills": {
+          "ergebnis": "Impulskontrolle & Emotionsregulation (DBT-Skills)",
+          "empfehlung": [
+            "Funktionsanalyse: Wann, wo, mit wem eskaliert es?",
+            "DBT TIPP-Skills für akute Situationen (Temperatur, Intensive Bewegung, Paced Breathing)",
+            "Wut-Protokoll: Trigger → Gedanke → Emotion → Handlung → Konsequenz",
+            "Opposite Action: Bei Wut → Sanftheit üben (Stimme senken, Hände öffnen)",
+            "Eltern-Coaching: Wie reagieren Eltern auf Aggression? (Eskalationszirkel durchbrechen)",
+            "Re-Assessment in 4 Wochen (SDQ)"
+          ],
+          "module": ["emotionsregulation"]
+        },
+        "out_conduct": {
+          "ergebnis": "Störung des Sozialverhaltens (F91) — strukturiertes Vorgehen",
+          "empfehlung": [
+            "Multisystemische Therapie (MST, Henggeler) erwägen — stärkste Evidenz",
+            "Funktionelle Familientherapie (FFT) als Alternative",
+            "Verhaltensvertrag mit klaren Konsequenzen (positiv + negativ)",
+            "Schule einbeziehen: Anti-Gewalt-Training, Classroom Management",
+            "Psychiatrische Abklärung: ADHS-Komorbidität? (häufig bei F91)",
+            "Risikofaktoren: Peer-Gruppe, Substanzkonsum, Waffenzugang"
+          ],
+          "module": ["emotionsregulation"]
+        }
+      }
+    }
+  ]
+}

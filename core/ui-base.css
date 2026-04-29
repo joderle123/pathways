@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap');
+
+/* ============================================================
+   Pathways Core — UI Base
+   ============================================================
+   Design-System basierend auf pathways_manifest.html.
+   Fraunces (headings) + DM Sans (body) + IBM Plex Mono (labels).
+   ============================================================ */
+
+:root {
+  /* ── Manifest Palette ── */
+  --ink: #0a0a14;
+  --ink-warm: #1a1410;
+  --cream: #f5f0e8;
+  --cream-soft: #ebe5d9;
+  --paper: #faf7f0;
+  --gold: #d4a93f;
+  --gold-soft: #b8902f;
+  --gold-glow: #f0d680;
+  --rust: #a3501f;
+  --coral: #c64f3d;
+  --teal: #1e7561;
+  --teal-soft: #4ba893;
+  --sage: #889186;
+  --plum: #5a3a4f;
+  --line: rgba(212, 169, 63, 0.15);
+  --line-warm: rgba(245, 240, 232, 0.08);
+
+  /* ── Legacy compat ── */
+  --primary: #6366F1;
+  --primary-light: #818CF8;
+  --primary-dark: #4F46E5;
+  --primary-50: #EEF2FF;
+  --primary-100: #E0E7FF;
+  --primary-200: #C7D2FE;
+  --primary-glow: rgba(99, 102, 241, 0.14);
+  --secondary: #10B981;
+  --secondary-50: #ECFDF5;
+  --secondary-100: #D1FAE5;
+  --accent: var(--gold);
+  --accent-50: #FFFBEB;
+  --danger: #EF4444;
+  --danger-50: #FEF2F2;
+  --danger-dark: #DC2626;
+  --info: #3B82F6;
+  --info-50: #EFF6FF;
+
+  /* ── Backgrounds ── */
+  --bg: var(--paper);
+  --bg-card: #FFFFFF;
+  --bg-elevated: #FFFFFF;
+  --bg-subtle: var(--cream);
+  --bg-hover: var(--cream-soft);
+  --bg-sidebar: var(--ink);
+  --bg-sidebar-hover: rgba(245, 240, 232, 0.05);
+  --bg-sidebar-active: rgba(212, 169, 63, 0.1);
+
+  /* ── Text ── */
+  --text: var(--ink);
+  --text-secondary: #3F3F46;
+  --text-light: var(--sage);
+  --text-muted: var(--sage);
+  --text-on-primary: #FFFFFF;
+
+  /* ── Borders ── */
+  --border: var(--line);
+  --border-light: rgba(212, 169, 63, 0.08);
+  --border: #E4E4E7;
+  --border-light: #EFEFEF;
+  --border-focus: var(--primary);
+
+  /* ── Typography (Manifest: DM Sans + Fraunces) ── */
+  --font-family: 'DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-md: 0.875rem;
+  --text-lg: 1rem;
+  --text-xl: 1.125rem;
+  --text-2xl: 1.25rem;
+  --text-3xl: 1.5rem;
+  --text-4xl: 2rem;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.65;
+
+  /* ── Spacing (4px grid) ── */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  /* ── Shadows ── */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.03), 0 1px 1px rgba(0,0,0,0.02);
+  --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+  --shadow-md: 0 2px 6px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
+  --shadow-lg: 0 4px 12px rgba(0,0,0,0.05), 0 16px 40px rgba(0,0,0,0.08);
+  --shadow-xl: 0 8px 24px rgba(0,0,0,0.07), 0 24px 56px rgba(0,0,0,0.1);
+
+  /* ── Radii ── */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 22px;
+  --radius-2xl: 28px;
+  --radius-full: 9999px;
+
+  /* ── Pathways App-Identitäten (1 Farbe pro App) ── */
+  --color-app-hub:         #6366F1; /* Indigo — was case */
+  --color-app-claro:       #EF4444; /* Red — was diagnose */
+  --color-app-via:         #10B981; /* Emerald — was roadmap+session */
+  --color-app-codex:       #0EA5E9; /* Sky — was library+parents */
+  --color-app-academy:     #14B8A6; /* Teal */
+  /* Legacy aliases (backwards compat) */
+  --color-app-case:        #6366F1;
+  --color-app-diagnose:    #EF4444;
+  --color-app-roadmap:     #10B981;
+  --color-app-session:     #8B5CF6;
+  --color-app-library:     #0EA5E9;
+  --color-app-crisis:      #DC2626;
+  --color-app-parents:     #F59E0B;
+
+  /* ── Motion ── */
+  --transition: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── Dark Mode (auto via .theme-dark on body) ── */
+body.theme-dark {
+  --bg: #0F0F11;
+  --bg-card: #1A1A1D;
+  --bg-elevated: #232328;
+  --bg-subtle: #18181B;
+  --bg-hover: #27272A;
+  --text: #F4F4F5;
+  --text-secondary: #D4D4D8;
+  --text-light: #A1A1AA;
+  --text-muted: #71717A;
+  --border: #27272A;
+  --border-light: #3F3F46;
+}
+
+/* ── Reset ── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+::selection {
+  background: var(--primary-100);
+  color: var(--primary-dark);
+}
+
+html, body {
+  font-family: var(--font-family);
+  font-size: var(--text-md);
+  color: var(--text);
+  background: var(--paper);
+  background-image:
+    radial-gradient(circle at 80% 0%, rgba(212, 169, 63, 0.04) 0%, transparent 50%),
+    linear-gradient(rgba(212, 169, 63, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 12rem;
+  line-height: var(--line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "liga", "kern";
+  font-weight: var(--font-weight-normal);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: -0.02em;
+  line-height: var(--line-height-tight);
+}
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-xl); }
+
+/* ── Buttons (gemeinsame Basis) ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-family);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+.btn:hover { background: var(--cream); border-color: var(--gold-soft); }
+.btn:hover { border-color: var(--text-light); box-shadow: var(--shadow-xs); }
+.btn-primary { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.btn-primary:hover { background: var(--ink-warm); }
+
+.btn-gold {
+  background: transparent; color: var(--gold); border: 1px solid var(--line);
+  font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.18em;
+  text-transform: uppercase; border-radius: 100px; padding: 6px 14px;
+}
+.btn-gold:hover { background: rgba(212, 169, 63, 0.08); }
+.btn-danger { background: var(--danger); color: #fff; border-color: var(--danger); }
+
+/* ── App-Header (jede App nutzt diesen) ── */
+.pw-app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-card);
+}
+.pw-app-header h1 {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-semibold);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ── App-spezifische Akzentlinie ── */
+[data-app="hub"]       { --section-color: var(--color-app-hub); }
+[data-app="claro"]     { --section-color: var(--color-app-claro); }
+[data-app="via"]       { --section-color: var(--color-app-via); }
+[data-app="codex"]     { --section-color: var(--color-app-codex); }
+[data-app="academy"]   { --section-color: var(--color-app-academy); }
+/* Legacy selectors */
+[data-app="case"]      { --section-color: var(--color-app-case); }
+[data-app="diagnose"]  { --section-color: var(--color-app-diagnose); }
+[data-app="roadmap"]   { --section-color: var(--color-app-roadmap); }
+[data-app="session"]   { --section-color: var(--color-app-session); }
+[data-app="library"]   { --section-color: var(--color-app-library); }
+[data-app="crisis"]    { --section-color: var(--color-app-crisis); }
+[data-app="parents"]   { --section-color: var(--color-app-parents); }
+
+/* ── Modal Form Component (Utils.modalForm) ── */
+.pw-mf-form { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-4); }
+.pw-mf-label { display: flex; flex-direction: column; gap: 4px; font-size: 14px; font-weight: 500; }
+.pw-mf-label input, .pw-mf-label textarea, .pw-mf-label select {
+  padding: var(--space-2) var(--space-3); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); font-family: inherit; font-size: 14px;
+  background: var(--bg); color: var(--text);
+}
+.pw-mf-label input:focus, .pw-mf-label textarea:focus, .pw-mf-label select:focus {
+  outline: none; border-color: var(--section-color, var(--primary));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--section-color, var(--primary)) 15%, transparent);
+}
+.pw-mf-check { display: flex; align-items: center; gap: var(--space-2); font-size: 14px; cursor: pointer; }
+
+/* ── Print Styles (global) ── */
+@media print {
+  body { background: white !important; color: black !important; font-size: 11pt; }
+  .pw-sidebar, .pw-app-header, .pw-tabs, .pw-modal,
+  .via-topbar, .via-modes, .via-tabs,
+  .dg-topbar, .dg-tabs,
+  .lib-topbar, .codex-sections, .lib-filters,
+  .ac-topbar, .ac-tabs, .ac-gamification,
+  .cr-topbar, .cr-tabs,
+  #toast-container, .pw-launcher, .pw-btn-icon,
+  button, .btn, nav, aside, header { display: none !important; }
+  .pw-main, .via-main, .dg-main, .lib-main, .ac-main, .cr-main {
+    padding: 0 !important; margin: 0 !important; max-width: 100% !important;
+  }
+  .pw-card, .pw-section, .rm-section, .se-section, .dg-section, .cr-section, .ac-section {
+    box-shadow: none !important; border: 1px solid #ccc !important;
+    page-break-inside: avoid;
+  }
+  a { color: black !important; text-decoration: none !important; }
+  a[href]:after { content: none !important; }
+  h1 { font-size: 18pt; }
+  h2 { font-size: 14pt; }
+  h3 { font-size: 12pt; }
+}

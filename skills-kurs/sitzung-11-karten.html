@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Sitzung 11 — Stressor-Karten</title>
+<link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
+<style>
+:root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
+.karten-seite { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; padding: 10px; }
+.spiel-karte { border: 2.5px solid var(--farbe); border-radius: 16px; padding: 14px 10px; text-align: center; min-height: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: white; }
+.spiel-karte-emoji { font-size: 36px; margin-bottom: 6px; }
+.spiel-karte-name { font-size: 13px; font-weight: 800; color: #0F172A; margin-bottom: 6px; line-height: 1.3; }
+.spiel-karte-frage { font-size: 11px; font-weight: 700; color: var(--farbe); margin-top: 8px; }
+.stress-skala { display: flex; gap: 3px; margin-top: 6px; }
+.stress-skala span { width: 18px; height: 18px; border: 1.5px solid var(--farbe); border-radius: 50%; font-size: 9px; display: flex; align-items: center; justify-content: center; color: #64748B; }
+</style>
+</head>
+<body>
+<div class="druck-leiste"><button class="btn-drucken" onclick="window.print()">🖨️ Drucken + Ausschneiden</button></div>
+
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
+      <div class="ab-titel">Stressor-Karten ✂️</div>
+      <div class="ab-untertitel">Lies die Situation — wie gestresst wärst du? Kreise eine Zahl ein!</div>
+    </div>
+    <div class="kopfzeile-icon">😰</div>
+  </div>
+  <div class="karten-seite">
+    <div class="spiel-karte"><div class="spiel-karte-emoji">📝</div><div class="spiel-karte-name">Morgen ist eine wichtige Prüfung — und du hast kaum gelernt.</div><div class="stress-skala"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">😡</div><div class="spiel-karte-name">Du hattest einen heftigen Streit mit deinen Eltern.</div><div class="stress-skala"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">📱</div><div class="spiel-karte-name">Dein Handy ist kaputt gegangen.</div><div class="stress-skala"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">👥</div><div class="spiel-karte-name">Dein bester Freund / deine beste Freundin ignoriert dich plötzlich.</div><div class="stress-skala"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">🏫</div><div class="spiel-karte-name">Du wirst vor der ganzen Klasse aufgerufen und weißt die Antwort nicht.</div><div class="stress-skala"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">🚌</div><div class="spiel-karte-name">Du hast den Bus verpasst und kommst zu spät.</div><div class="stress-skala"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">💬</div><div class="spiel-karte-name">Jemand verbreitet Gerüchte über dich in der Schule.</div><div class="stress-skala"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">📸</div><div class="spiel-karte-name">Jemand postet ein peinliches Foto von dir online.</div><div class="stress-skala"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">🏠</div><div class="spiel-karte-name">Deine Eltern streiten sich laut zu Hause.</div><div class="stress-skala"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">🎤</div><div class="spiel-karte-name">Du musst ein Referat vor der ganzen Schule halten.</div><div class="stress-skala"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">❌</div><div class="spiel-karte-name">Du wurdest nicht zur Party eingeladen, alle anderen schon.</div><div class="stress-skala"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="spiel-karte"><div class="spiel-karte-emoji">🐶</div><div class="spiel-karte-name">Dein Haustier ist krank und muss zum Tierarzt.</div><div class="stress-skala"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+  </div>
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 11</span>
+    <span>Seite 1 / 1</span>
+  </div>
+</div>
+</body>
+</html>

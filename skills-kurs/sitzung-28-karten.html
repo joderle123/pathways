@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Sitzung 28 — Netzwerk-Karte (Scheckkarte)</title>
+<link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
+<style>
+:root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
+.schneide-linie { border-top: 2px dashed #94A3B8; margin: 20px 0; position: relative; }
+.schneide-linie::before { content: "✂️ hier ausschneiden"; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: white; padding: 0 10px; font-size: 11px; color: #94A3B8; }
+.kredit-karte { border: 2.5px solid var(--farbe); border-radius: 14px; padding: 14px 18px; background: linear-gradient(135deg, var(--farbe-hell) 0%, white 100%); width: 85.6mm; height: 53.98mm; box-sizing: border-box; margin: 0 auto; display: flex; flex-direction: column; justify-content: space-between; }
+.kk-titel { font-size: 11px; font-weight: 800; color: var(--farbe); text-align: center; margin-bottom: 4px; }
+.kk-row { display: flex; gap: 10px; margin-bottom: 2px; }
+.kk-feld { flex: 1; }
+.kk-label { font-size: 8px; font-weight: 800; color: var(--farbe); text-transform: uppercase; }
+.kk-linie { border-bottom: 1px solid #CBD5E1; height: 13px; }
+.kk-notfall { background: #FEF2F2; border: 1.5px solid #EF4444; border-radius: 6px; padding: 3px 6px; margin-top: 3px; }
+.kk-notfall-titel { font-size: 7px; font-weight: 800; color: #EF4444; text-align: center; }
+.kk-notfall-nr { font-size: 9px; font-weight: 700; text-align: center; line-height: 1.4; }
+.kk-hilfe { margin-top: 3px; }
+.kk-hilfe-label { font-size: 8px; font-weight: 800; color: var(--farbe); }
+.kk-hilfe-linie { border-bottom: 1px solid #CBD5E1; height: 13px; }
+</style>
+</head>
+<body>
+<div class="druck-leiste"><button class="btn-drucken" onclick="window.print()">🖨️ Drucken + Ausschneiden</button></div>
+
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
+      <div class="ab-titel">Netzwerk-Karte ✂️🕸️</div>
+      <div class="ab-untertitel">Scheckkarten-Format — ausschneiden und immer dabei haben!</div>
+    </div>
+    <div class="kopfzeile-icon">💪</div>
+  </div>
+
+  <div class="einfach-box">
+    <div class="einfach-box-icon">✂️</div>
+    <div class="einfach-box-titel">Anleitung</div>
+    <p>Schneide die Karten entlang der gestrichelten Linie aus. Fülle sie mit ECHTEN Namen und Nummern aus. Stecke eine Karte in dein Portemonnaie, Mäppchen oder deine Handyhülle — du hast sie dann IMMER dabei!</p>
+  </div>
+
+  <!-- Karte 1 -->
+  <div class="schneide-linie"></div>
+  <div class="kredit-karte">
+    <div class="kk-titel">🕸️ Meine Netzwerk-Karte</div>
+    <div class="kk-row">
+      <div class="kk-feld">
+        <div class="kk-label">👤 Vertrauensperson 1 (Name + Tel.)</div>
+        <div class="kk-linie"></div>
+        <div class="kk-linie"></div>
+      </div>
+      <div class="kk-feld">
+        <div class="kk-label">👤 Vertrauensperson 2 (Name + Tel.)</div>
+        <div class="kk-linie"></div>
+        <div class="kk-linie"></div>
+      </div>
+    </div>
+    <div class="kk-notfall">
+      <div class="kk-notfall-titel">🚨 NOTFALL-NUMMERN</div>
+      <div class="kk-notfall-nr">📞 116 111 &nbsp;·&nbsp; 📞 0800 45 45 45 &nbsp;·&nbsp; 🚑 112</div>
+    </div>
+    <div class="kk-hilfe">
+      <div class="kk-hilfe-label">💬 Mein Hilfe-Satz:</div>
+      <div class="kk-hilfe-linie"></div>
+    </div>
+  </div>
+  <div class="schneide-linie"></div>
+
+  <!-- Karte 2 (Kopie) -->
+  <div class="kredit-karte">
+    <div class="kk-titel">🕸️ Meine Netzwerk-Karte</div>
+    <div class="kk-row">
+      <div class="kk-feld">
+        <div class="kk-label">👤 Vertrauensperson 1 (Name + Tel.)</div>
+        <div class="kk-linie"></div>
+        <div class="kk-linie"></div>
+      </div>
+      <div class="kk-feld">
+        <div class="kk-label">👤 Vertrauensperson 2 (Name + Tel.)</div>
+        <div class="kk-linie"></div>
+        <div class="kk-linie"></div>
+      </div>
+    </div>
+    <div class="kk-notfall">
+      <div class="kk-notfall-titel">🚨 NOTFALL-NUMMERN</div>
+      <div class="kk-notfall-nr">📞 116 111 &nbsp;·&nbsp; 📞 0800 45 45 45 &nbsp;·&nbsp; 🚑 112</div>
+    </div>
+    <div class="kk-hilfe">
+      <div class="kk-hilfe-label">💬 Mein Hilfe-Satz:</div>
+      <div class="kk-hilfe-linie"></div>
+    </div>
+  </div>
+  <div class="schneide-linie"></div>
+
+  <!-- Karte 3 (Kopie) -->
+  <div class="kredit-karte">
+    <div class="kk-titel">🕸️ Meine Netzwerk-Karte</div>
+    <div class="kk-row">
+      <div class="kk-feld">
+        <div class="kk-label">👤 Vertrauensperson 1 (Name + Tel.)</div>
+        <div class="kk-linie"></div>
+        <div class="kk-linie"></div>
+      </div>
+      <div class="kk-feld">
+        <div class="kk-label">👤 Vertrauensperson 2 (Name + Tel.)</div>
+        <div class="kk-linie"></div>
+        <div class="kk-linie"></div>
+      </div>
+    </div>
+    <div class="kk-notfall">
+      <div class="kk-notfall-titel">🚨 NOTFALL-NUMMERN</div>
+      <div class="kk-notfall-nr">📞 116 111 &nbsp;·&nbsp; 📞 0800 45 45 45 &nbsp;·&nbsp; 🚑 112</div>
+    </div>
+    <div class="kk-hilfe">
+      <div class="kk-hilfe-label">💬 Mein Hilfe-Satz:</div>
+      <div class="kk-hilfe-linie"></div>
+    </div>
+  </div>
+  <div class="schneide-linie"></div>
+
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 28</span>
+    <span>Seite 1 / 1</span>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Sitzung 5 — Gedanken-Sortier-Karten</title>
+<link rel="stylesheet" href="../css/arbeitsblatt-einfach.css">
+<style>
+:root { --farbe: #0D9488; --farbe-hell: #F0FDFA; }
+.karten-seite { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 10px; }
+.gedanke-karte { border: 2.5px solid; border-radius: 16px; padding: 16px 14px; text-align: center; min-height: 110px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.gedanke-text { font-size: 16px; font-weight: 700; color: var(--text); line-height: 1.4; font-style: italic; }
+.gedanke-frage { font-size: 12px; color: var(--grau); margin-top: 8px; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="druck-leiste"><button class="btn-drucken" onclick="window.print()">🖨️ Drucken + Ausschneiden</button></div>
+
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">CDSE · Pathways · Skills-Kurs · Karten</div>
+      <div class="ab-titel">Gedanken-Sortier-Karten ✂️💭</div>
+      <div class="ab-untertitel">Sortiere: 💚 Hilfreich, 🧡 Neutral oder ❤️‍🔥 Unhilfreich?</div>
+    </div>
+    <div class="kopfzeile-icon">💭</div>
+  </div>
+
+  <div class="karten-seite">
+    <div class="gedanke-karte" style="border-color:#64748B;">
+      <div class="gedanke-text">„Ich bin zu dumm für die Schule."</div>
+      <div class="gedanke-frage">💚 🧡 oder ❤️‍🔥?</div>
+    </div>
+    <div class="gedanke-karte" style="border-color:#64748B;">
+      <div class="gedanke-text">„Ich gebe mein Bestes, das reicht."</div>
+      <div class="gedanke-frage">💚 🧡 oder ❤️‍🔥?</div>
+    </div>
+    <div class="gedanke-karte" style="border-color:#64748B;">
+      <div class="gedanke-text">„Was gibt es heute zu essen?"</div>
+      <div class="gedanke-frage">💚 🧡 oder ❤️‍🔥?</div>
+    </div>
+    <div class="gedanke-karte" style="border-color:#64748B;">
+      <div class="gedanke-text">„Niemand mag mich."</div>
+      <div class="gedanke-frage">💚 🧡 oder ❤️‍🔥?</div>
+    </div>
+    <div class="gedanke-karte" style="border-color:#64748B;">
+      <div class="gedanke-text">„Morgen wird bestimmt besser."</div>
+      <div class="gedanke-frage">💚 🧡 oder ❤️‍🔥?</div>
+    </div>
+    <div class="gedanke-karte" style="border-color:#64748B;">
+      <div class="gedanke-text">„Es hat sowieso keinen Sinn."</div>
+      <div class="gedanke-frage">💚 🧡 oder ❤️‍🔥?</div>
+    </div>
+    <div class="gedanke-karte" style="border-color:#64748B;">
+      <div class="gedanke-text">„Ich hab das schon mal geschafft."</div>
+      <div class="gedanke-frage">💚 🧡 oder ❤️‍🔥?</div>
+    </div>
+    <div class="gedanke-karte" style="border-color:#64748B;">
+      <div class="gedanke-text">„Wie spät ist es eigentlich?"</div>
+      <div class="gedanke-frage">💚 🧡 oder ❤️‍🔥?</div>
+    </div>
+    <div class="gedanke-karte" style="border-color:#64748B;">
+      <div class="gedanke-text">„Alle schauen mich an und lachen."</div>
+      <div class="gedanke-frage">💚 🧡 oder ❤️‍🔥?</div>
+    </div>
+    <div class="gedanke-karte" style="border-color:#64748B;">
+      <div class="gedanke-text">„Ich kann um Hilfe bitten."</div>
+      <div class="gedanke-frage">💚 🧡 oder ❤️‍🔥?</div>
+    </div>
+    <div class="gedanke-karte" style="border-color:#64748B;">
+      <div class="gedanke-text">„Das wird nie besser."</div>
+      <div class="gedanke-frage">💚 🧡 oder ❤️‍🔥?</div>
+    </div>
+    <div class="gedanke-karte" style="border-color:#64748B;">
+      <div class="gedanke-text">„Cool, das hab ich noch nie probiert!"</div>
+      <div class="gedanke-frage">💚 🧡 oder ❤️‍🔥?</div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:12px; font-size:14px; color:var(--grau);">
+    Tipp: Manche Gedanken sind nicht eindeutig — diskutiert darüber! Es gibt kein "richtig" oder "falsch".
+  </div>
+
+  <div class="fusszeile">
+    <span>Skills-Kurs · Karten · Sitzung 5</span>
+    <span>Seite 1 / 1</span>
+  </div>
+</div>
+</body>
+</html>

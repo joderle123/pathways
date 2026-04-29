@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fallbeispiel: Helikopter-Eltern</title>
+<style>
+  :root { --farbe: #0EA5E9; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 20px; background: #F8FAFC; color: #1F2937; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; }
+  .fb-wrap { max-width: 820px; margin: 0 auto; }
+  .fb-kopf { background: linear-gradient(135deg, var(--farbe), #0284C7); color: #fff; border-radius: 14px; padding: 22px 26px; margin-bottom: 18px; box-shadow: 0 10px 30px rgba(14,165,233,0.25); }
+  .fb-kopf-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.9; font-weight: 700; margin-bottom: 6px; }
+  .fb-kopf h1 { margin: 0 0 4px; font-size: 24px; font-weight: 800; }
+  .fb-kopf-sub { font-size: 14px; opacity: 0.92; }
+  .fb-karte { background: #fff; border: 1px solid #E5E7EB; border-radius: 14px; padding: 20px 24px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  .fb-karte h2 { margin: 0 0 12px; font-size: 17px; font-weight: 700; color: var(--farbe); display: flex; align-items: center; gap: 8px; }
+  .fb-karte h3 { margin: 14px 0 6px; font-size: 14px; font-weight: 700; color: #374151; }
+  .fb-karte p { margin: 0 0 10px; font-size: 14px; }
+  .fb-vignette { background: #FEF3C7; border-left: 4px solid #D97706; padding: 16px 20px; border-radius: 0 10px 10px 0; margin-bottom: 14px; font-size: 14.5px; color: #78350F; }
+  .fb-vignette-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #92400E; margin-bottom: 8px; }
+  .fb-stammdaten { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; margin-bottom: 14px; }
+  .fb-stamm-item { background: #F3F4F6; padding: 8px 12px; border-radius: 8px; font-size: 12.5px; }
+  .fb-stamm-label { font-weight: 700; color: #6B7280; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 2px; }
+  .fb-leitfrage { background: #EFF6FF; border-left: 4px solid #3B82F6; padding: 14px 18px; border-radius: 0 10px 10px 0; margin-bottom: 10px; }
+  .fb-leitfrage-nr { display: inline-block; width: 24px; height: 24px; border-radius: 50%; background: #3B82F6; color: #fff; font-size: 12px; font-weight: 700; text-align: center; line-height: 24px; margin-right: 8px; }
+  .fb-leitfrage strong { color: #1E40AF; }
+  .fb-spoiler { background: #F0FDF4; border: 1px solid #86EFAC; border-radius: 10px; padding: 0; margin: 10px 0 14px; overflow: hidden; }
+  .fb-spoiler summary { cursor: pointer; padding: 12px 16px; font-weight: 700; color: #166534; font-size: 13.5px; background: #DCFCE7; user-select: none; }
+  .fb-spoiler summary:hover { background: #BBF7D0; }
+  .fb-spoiler[open] summary { border-bottom: 1px solid #86EFAC; }
+  .fb-spoiler-inhalt { padding: 14px 18px; font-size: 13.5px; color: #14532D; }
+  .fb-spoiler-inhalt ul { margin: 8px 0; padding-left: 22px; }
+  .fb-spoiler-inhalt li { margin-bottom: 5px; }
+  .fb-rot { background: #FEF2F2; border-left: 4px solid #DC2626; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 14px; color: #7F1D1D; margin-bottom: 12px; }
+  .fb-gruen { background: #F0FDF4; border-left: 4px solid #16A34A; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 14px; color: #14532D; margin-bottom: 12px; }
+  .fb-takeaway { background: linear-gradient(135deg, #F0F9FF, #E0F2FE); border: 2px solid var(--farbe); border-radius: 14px; padding: 20px 24px; margin-top: 18px; }
+  .fb-takeaway h2 { color: var(--farbe); margin-top: 0; }
+  .fb-takeaway ul { margin: 0; padding-left: 20px; }
+  .fb-takeaway li { margin-bottom: 8px; font-size: 14px; }
+  .fb-dialog { background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 10px; padding: 12px 16px; margin: 10px 0; }
+  .fb-dialog-zeile { margin-bottom: 8px; font-size: 13.5px; }
+  .fb-dialog-sprecher { font-weight: 700; color: var(--farbe); margin-right: 6px; }
+  .fb-dialog-zeile.eltern .fb-dialog-sprecher { color: #DC2626; }
+  .fb-dialog-zeile.kind .fb-dialog-sprecher { color: #0D9488; }
+</style>
+</head>
+<body>
+<div class="fb-wrap">
+
+  <div class="fb-kopf">
+    <div class="fb-kopf-label">🎭 Fallbeispiel · Modul 09</div>
+    <h1>Helikopter-Eltern: Der Fall Leonie</h1>
+    <div class="fb-kopf-sub">Vignette · Leitfragen · Fachanalyse · Take-aways</div>
+  </div>
+
+  <div class="fb-karte">
+    <h2>📋 Stammdaten</h2>
+    <div class="fb-stammdaten">
+      <div class="fb-stamm-item"><span class="fb-stamm-label">Jugendliche</span>Leonie, 16 J.</div>
+      <div class="fb-stamm-item"><span class="fb-stamm-label">Setting</span>Internatsschule</div>
+      <div class="fb-stamm-item"><span class="fb-stamm-label">Familie</span>Einzelkind, beide Eltern Akademiker</div>
+      <div class="fb-stamm-item"><span class="fb-stamm-label">Vorstellungsgrund</span>Leistungsdruck, Ängste</div>
+      <div class="fb-stamm-item"><span class="fb-stamm-label">Dauer</span>Seit 6 Monaten in Bezugsarbeit</div>
+    </div>
+
+    <h2>🎬 Die Situation</h2>
+    <div class="fb-vignette">
+      <div class="fb-vignette-label">Vignette</div>
+      Leonie ist seit 6 Monaten bei dir in Bezugsarbeit. Sie ist eine intelligente, sensible Jugendliche, die sehr hohe Ansprüche an sich selbst stellt. Die Mutter, Frau M., ruft dich seit Beginn mindestens <strong>zweimal pro Woche</strong> an — heute ist es bereits der dritte Anruf in dieser Woche. Sie fragt detailliert nach: Hat Leonie gefrühstückt? Hat sie ihre Matheaufgaben gemacht? Warum hat sie am Wochenende zwei statt drei Stunden gelernt? Gestern hat Frau M. ohne Absprache die Hausaufgabenliste ergänzt und dir per E-Mail geschickt „damit Sie den Überblick behalten".
+      <br><br>
+      Leonie selbst sagt dir in der letzten Einzelstunde mit Tränen in den Augen: <em>„Ich halt das nicht mehr aus. Egal was ich mache, es reicht nie. Ich will einfach nur weg."</em> Gleichzeitig weigert sie sich, mit ihrer Mutter zu sprechen — sie hat Angst, sie zu enttäuschen.
+      <br><br>
+      Heute Morgen kommt Frau M. persönlich ins Internat, ohne Anmeldung. Sie will sofort mit dir reden.
+    </div>
+  </div>
+
+  <div class="fb-karte">
+    <h2>🧠 Leitfragen — Deine Analyse</h2>
+    <p style="color:#6B7280;font-size:13px;margin-bottom:14px;">Nimm dir jeweils 1–2 Minuten. Formuliere deine Antwort innerlich oder auf Papier, <strong>bevor</strong> du die Fachanalyse aufklappst.</p>
+
+    <div class="fb-leitfrage">
+      <span class="fb-leitfrage-nr">1</span>
+      <strong>Was ist hier gerade los?</strong> Welche Dynamik erkennst du zwischen Mutter, Leonie und dir als Bezugsperson?
+    </div>
+    <details class="fb-spoiler">
+      <summary>🔍 Fachanalyse aufklappen</summary>
+      <div class="fb-spoiler-inhalt">
+        <p><strong>Klassisches Helikopter-Muster — mit drei Betroffenen:</strong></p>
+        <ul>
+          <li><strong>Mutter:</strong> Überhöhte Kontrolle als Angstregulation. Ihre Sorge ist echt — nicht böse gemeint, aber übergriffig. Sie delegiert ihre Angst an dich und Leonie.</li>
+          <li><strong>Leonie:</strong> Zeigt bereits Dekompensation: „Ich halt das nicht mehr aus." → Risiko für depressive Episode, Selbstwert-Einbruch, möglicher Ausstiegsgedanke („nur weg"). Gleichzeitig Loyalitätskonflikt: will Mutter nicht enttäuschen.</li>
+          <li><strong>Du:</strong> Wirst in eine Dreiecks-Kommunikation gezogen, in der die Mutter über dich mit Leonie kommuniziert. Das schwächt die direkte Eltern-Kind-Beziehung und überlastet dich.</li>
+        </ul>
+        <p><strong>Fachbegriff:</strong> „Enmeshment" (Minuchin) — verschwommene Grenzen zwischen Mutter-Kind; die Mutter erlebt Leonies Erfolg als eigenen Selbstwert.</p>
+      </div>
+    </details>
+
+    <div class="fb-leitfrage">
+      <span class="fb-leitfrage-nr">2</span>
+      <strong>Warum handelt die Mutter so?</strong> Welche Hypothesen hast du zur Motivation hinter dem Kontrollverhalten?
+    </div>
+    <details class="fb-spoiler">
+      <summary>🔍 Fachanalyse aufklappen</summary>
+      <div class="fb-spoiler-inhalt">
+        <p>Helikopter-Verhalten hat <strong>selten böse Absicht</strong> — es speist sich aus:</p>
+        <ul>
+          <li><strong>Angst:</strong> Vor Versagen des Kindes, vor eigener Bedeutungslosigkeit, vor Kontrollverlust. Oft eigene Verlusterfahrungen (Trennung, Tod, eigene unsichere Bindung).</li>
+          <li><strong>Selbstwert über das Kind:</strong> „Wenn mein Kind gut ist, bin ich eine gute Mutter." → Kind als Narzisstisches Objekt.</li>
+          <li><strong>Kulturell/generational:</strong> In Akademiker-Familien oft internalisierter Leistungsdruck.</li>
+          <li><strong>Kompensation:</strong> Eigene Biografie (z.B. abwesende Eltern) → „Ich mache es besser."</li>
+        </ul>
+        <p class="fb-gruen" style="margin-top:10px;"><strong>Klinisches Prinzip:</strong> Hinter Kontrolle steckt Angst. Wenn du die Angst siehst, kannst du mit ihr arbeiten — gegen die Kontrolle anzukämpfen eskaliert nur.</p>
+      </div>
+    </details>
+
+    <div class="fb-leitfrage">
+      <span class="fb-leitfrage-nr">3</span>
+      <strong>Was darfst du jetzt NICHT tun?</strong> Welche Reaktionen wären fachlich und pädagogisch problematisch?
+    </div>
+    <details class="fb-spoiler">
+      <summary>🔍 Fachanalyse aufklappen</summary>
+      <div class="fb-spoiler-inhalt">
+        <div class="fb-rot" style="margin-bottom:10px;">
+          <strong>❌ Nicht tun:</strong>
+          <ul style="margin:6px 0 0;padding-left:20px;">
+            <li>Frau M. einfach die geforderten Infos geben → verstärkt Kontrolle, schwächt Leonies Autonomie.</li>
+            <li>Frau M. abblocken („Rufen Sie nicht mehr an") → Eskalation, Vertrauensbruch, mögliche Beschwerde bei der Leitung.</li>
+            <li>Leonie „schützen" durch Abschirmen der Mutter → Leonie lernt nicht, selbst mit ihrer Mutter zu kommunizieren.</li>
+            <li>Der Mutter die Schuld geben („Sie sind übergriffig") → defensiv, verstärkt Widerstand.</li>
+            <li>Leonies Satz „Ich will nur weg" als Pubertätsspruch abtun → möglicher suizidaler Hintergrund, muss exploriert werden.</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <div class="fb-leitfrage">
+      <span class="fb-leitfrage-nr">4</span>
+      <strong>Wie reagierst du JETZT auf Frau M. vor der Tür?</strong> Skizziere deinen Gesprächseinstieg in 2–3 Sätzen.
+    </div>
+    <details class="fb-spoiler">
+      <summary>🔍 Musterdialog aufklappen</summary>
+      <div class="fb-spoiler-inhalt">
+        <div class="fb-dialog">
+          <div class="fb-dialog-zeile eltern"><span class="fb-dialog-sprecher">Frau M.:</span> „Ich muss SOFORT mit Ihnen reden. Leonie ist gestern nicht ans Telefon gegangen."</div>
+          <div class="fb-dialog-zeile"><span class="fb-dialog-sprecher">Du:</span> „Frau M., ich sehe, dass Sie gerade sehr besorgt sind. Kommen Sie bitte rein, wir setzen uns. <em>(Pause, ruhiger Ton.)</em> Ich nehme Ihre Sorge ernst. Gleichzeitig ist es wichtig, dass wir einen Rahmen finden, in dem Leonie Raum hat, uns beiden zu vertrauen. Haben Sie 20 Minuten? Ich möchte das sorgfältig mit Ihnen besprechen."</div>
+        </div>
+        <p><strong>Was passiert in dieser Reaktion:</strong></p>
+        <ul>
+          <li><strong>Validieren</strong> der Sorge ohne sie zu verstärken</li>
+          <li><strong>Setting stabilisieren</strong> (reinkommen, setzen = Tempo rausnehmen)</li>
+          <li><strong>Rahmen ankündigen</strong> (wir brauchen Struktur)</li>
+          <li><strong>Zeitbegrenzung</strong> schützt dich vor Endlos-Gespräch</li>
+        </ul>
+      </div>
+    </details>
+
+    <div class="fb-leitfrage">
+      <span class="fb-leitfrage-nr">5</span>
+      <strong>Wie baust du mittelfristig einen tragfähigen Rahmen auf?</strong> Was vereinbarst du mit Mutter UND Leonie?
+    </div>
+    <details class="fb-spoiler">
+      <summary>🔍 Fachanalyse aufklappen</summary>
+      <div class="fb-spoiler-inhalt">
+        <p><strong>Drei-Punkte-Plan — mit allen Beteiligten transparent:</strong></p>
+        <ul>
+          <li><strong>1. Kommunikations-Rahmen mit Frau M.:</strong> Festgelegter Rückruf-Termin 1× pro Woche (z.B. Freitag 17:00). Keine Spontananrufe außer bei akuter Gefahr. Schriftliche Vereinbarung.</li>
+          <li><strong>2. Eigenverantwortung für Leonie stärken:</strong> Leonie ruft ihre Mutter 2× pro Woche selbst an (feste Zeiten, sie bestimmt die Inhalte). Ziel: direkte Beziehung, nicht über dich.</li>
+          <li><strong>3. Psychische Einschätzung Leonie:</strong> „Ich will weg" muss sauber exploriert werden → Suizidalitäts-Screening (C-SSRS), ggf. psychologische Anbindung. Mutter wird nach klinischer Einschätzung einbezogen.</li>
+        </ul>
+        <p class="fb-gruen" style="margin-top:10px;"><strong>Haltung:</strong> Du bist nicht Schiedsrichterin. Du bist Rahmensetzerin, die <em>beide</em> ernst nimmt und Leonies Autonomie schrittweise stützt.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="fb-takeaway">
+    <h2>🎯 Take-aways — Was du aus diesem Fall mitnimmst</h2>
+    <ul>
+      <li><strong>Hinter Kontrolle steckt Angst.</strong> Erst die Angst anerkennen, dann den Rahmen setzen — nie umgekehrt.</li>
+      <li><strong>Helikopter-Eltern sind nicht deine Gegner.</strong> Sie sind (angst-)überfordert. Deine Rolle: Kooperation bei gleichzeitig klaren Grenzen.</li>
+      <li><strong>Triangulation erkennen und unterbrechen:</strong> Wenn du zur Übermittlerin zwischen Eltern und Kind wirst, schwächt das die direkte Beziehung. Baue sie aktiv wieder auf.</li>
+      <li><strong>Schriftliche Rahmen</strong> (Kommunikations-Vereinbarung) entlasten dich und machen Struktur nachvollziehbar.</li>
+      <li><strong>„Ich will weg" ist immer ein Ausrufezeichen</strong> — kein Pubertätsspruch. Explizit nachfragen, Suizidalität einschätzen.</li>
+      <li><strong>Autonomie wächst in kleinen Schritten.</strong> Leonies erste eigenen Mutter-Anrufe sind ein Lernfeld — nicht ein fertiges Produkt.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

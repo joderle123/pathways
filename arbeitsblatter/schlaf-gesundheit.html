@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Arbeitsblatt – Schlaf & Gesundheit</title>
+  <link rel="stylesheet" href="../css/arbeitsblatt.css">
+  <style>
+    :root { --farbe: #1D4ED8; --farbe-hell: #EFF6FF; }
+    .nacht-box { display:grid; grid-template-columns:repeat(7,1fr); gap:5px; margin-bottom:10px; }
+    .nacht-tag { background:var(--farbe-hell); border:1.5px solid #BFDBFE; border-radius:8px; padding:6px 4px; text-align:center; font-size:10px; }
+    .nacht-tag .tag-name { font-weight:700; color:var(--farbe); font-size:11px; margin-bottom:4px; }
+    .nacht-tag .mond { font-size:18px; margin-bottom:3px; }
+    .nacht-linie { border-bottom:1px dashed #93C5FD; height:14px; margin:3px 0; }
+    .schlaf-bubble { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px; }
+    .bubble-item { background:var(--farbe-hell); border:1.5px solid #BFDBFE; border-radius:10px; padding:7px 9px; font-size:11px; cursor:default; }
+    .bubble-item:hover { background:#DBEAFE; }
+    .atem-kreis { display:flex; gap:10px; align-items:center; justify-content:center; margin:8px 0; }
+    .atem-schritt { border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:10px; color:white; text-align:center; line-height:1.2; }
+    .abend-schritt { display:flex; align-items:center; gap:10px; background:#F8FAFF; border-radius:8px; padding:8px 10px; margin-bottom:6px; }
+    .schritt-nr { background:var(--farbe); color:white; border-radius:50%; width:22px; height:22px; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0; }
+    .emoji-skala { display:flex; justify-content:space-between; background:#F0F4FF; border-radius:8px; padding:6px; margin:6px 0; }
+    .emoji-skala span { font-size:16px; text-align:center; flex:1; }
+  </style>
+</head>
+<body>
+
+<div class="druck-leiste">
+  <a class="btn-zurueck" href="../index.html">← Zurück zur App</a>
+  <button class="btn-drucken" onclick="window.print()">🖨️ Drucken / PDF</button>
+</div>
+
+<!-- ===== SEITE 1 ===== -->
+<div class="seite">
+  <div class="kopfzeile">
+    <div class="kopfzeile-links">
+      <div class="schule-label">Pathways · Joey Guedes</div>
+      <div class="ab-titel">Warum bin ich immer so müde?</div>
+      <div class="ab-untertitel">Schlaf & Gesundheit · Kategorie: Gesundheit &amp; Körper</div>
+    </div>
+    <div class="kopfzeile-icon">🌙</div>
+  </div>
+
+  <div class="schuelerinfo">
+    <div class="info-feld"><div class="info-feld-label">Name</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Datum</div><div class="info-feld-linie"></div></div>
+    <div class="info-feld"><div class="info-feld-label">Mit</div><div class="info-feld-linie"></div></div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-titel">💡 Dein Gehirn braucht Schlaf – wirklich.</div>
+    <p>Während du schläfst, löscht dein Gehirn Abfallstoffe raus, verarbeitet Erlebnisse und festigt Erinnerungen. Ohne Schlaf funktioniert <em>nichts</em> richtig. <strong>Das ist keine Schwäche – das ist Biologie.</strong></p>
+    <p>🧠 <em>Wusstest du? Jugendliche brauchen biologisch 8–10 Stunden Schlaf – mehr als Erwachsene. Euer Gehirn baut sich noch komplett um. Wer schläft, lernt besser, ist stabiler und hat mehr Energie. Kein Witz.</em></p>
+  </div>
+
+  <!-- Übung 1 – Schlaf-Tagebuch visuell -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">1</div>
+      <div class="uebung-titel">Mein Schlaf-Check – 7 Nächte im Blick 🌙</div>
+    </div>
+    <div class="uebung-beschreibung">
+      Schreibe für jede Nacht: Einschlafzeit → Aufwachzeit. Male die Box dunkel aus wenn du gut geschlafen hast.
+    </div>
+    <div class="nacht-box">
+      <div class="nacht-tag"><div class="tag-name">Mo</div><div class="mond">🌙</div><div class="nacht-linie"></div><div style="font-size:9px;color:#6B7280;">ein →</div><div class="nacht-linie"></div><div style="font-size:9px;color:#6B7280;">auf →</div><div class="nacht-linie"></div></div>
+      <div class="nacht-tag"><div class="tag-name">Di</div><div class="mond">🌙</div><div class="nacht-linie"></div><div style="font-size:9px;color:#6B7280;">ein →</div><div class="nacht-linie"></div><div style="font-size:9px;color:#6B7280;">auf →</div><div class="nacht-linie"></div></div>
+      <div class="nacht-tag"><div class="tag-name">Mi</div><div class="mond">🌙</div><div class="nacht-linie"></div><div style="font-size:9px;color:#6B7280;">ein →</div><div class="nacht-linie"></div><div style="font-size:9px;color:#6B7280;">auf →</div><div class="nacht-linie"></div></div>
+      <div class="nacht-tag"><div class="tag-name">Do</div><div class="mond">🌙</div><div class="nacht-linie"></div><div style="font-size:9px;color:#6B7280;">ein →</div><div class="nacht-linie"></div><div style="font-size:9px;color:#6B7280;">auf →</div><div class="nacht-linie"></div></div>
+      <div class="nacht-tag"><div class="tag-name">Fr</div><div class="mond">🌙</div><div class="nacht-linie"></div><div style="font-size:9px;color:#6B7280;">ein →</div><div class="nacht-linie"></div><div style="font-size:9px;color:#6B7280;">auf →</div><div class="nacht-linie"></div></div>
+      <div class="nacht-tag"><div class="tag-name">Sa</div><div class="mond">🌙</div><div class="nacht-linie"></div><div style="font-size:9px;color:#6B7280;">ein →</div><div class="nacht-linie"></div><div style="font-size:9px;color:#6B7280;">auf →</div><div class="nacht-linie"></div></div>
+      <div class="nacht-tag"><div class="tag-name">So</div><div class="mond">🌙</div><div class="nacht-linie"></div><div style="font-size:9px;color:#6B7280;">ein →</div><div class="nacht-linie"></div><div style="font-size:9px;color:#6B7280;">auf →</div><div class="nacht-linie"></div></div>
+    </div>
+    <div style="font-size:11px;margin-bottom:4px;">Wie ausgeruht habe ich mich diese Woche gefühlt? Kreise an:</div>
+    <div class="emoji-skala">
+      <span title="total kaputt">😴</span><span title="müde">😪</span><span title="so lala">😑</span><span title="ganz ok">🙂</span><span title="gut erholt">😄</span><span title="top Form">⚡</span>
+    </div>
+  </div>
+
+  <!-- Übung 2 – Schlaf-Saboteure -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">2</div>
+      <div class="uebung-titel">Schlaf-Saboteure – was ruiniert meinen Schlaf? Kreise ein!</div>
+    </div>
+    <div class="uebung-beschreibung">Kreise alles ein, was bei dir vorkommt. Mehrfach geht auch.</div>
+    <div class="schlaf-bubble">
+      <div class="bubble-item">📱 Handy im Bett</div>
+      <div class="bubble-item">☕ Koffein am Abend</div>
+      <div class="bubble-item">🎮 Gaming bis spät</div>
+      <div class="bubble-item">💡 Helles Licht um 23 Uhr</div>
+      <div class="bubble-item">💭 Gedankenkarussell</div>
+      <div class="bubble-item">🎵 Musik/Videos in Schleife</div>
+      <div class="bubble-item">🛌 Kein fester Schlafrhythmus</div>
+      <div class="bubble-item">😟 Stress / Streit am Abend</div>
+      <div class="bubble-item">🌡️ Zimmer zu warm</div>
+      <div class="bubble-item">🍕 Essen kurz vor Bett</div>
+      <div class="bubble-item">🔊 Lärm / Stimmen</div>
+      <div class="bubble-item">📲 Social Media Doom-Scroll</div>
+    </div>
+    <div style="font-size:11px;">Mein schlimmster Saboteur Nr. 1: <span style="border-bottom:1px solid #93C5FD;display:inline-block;width:200px;">&nbsp;</span></div>
+  </div>
+
+  <!-- Übung 3 – Ranking -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">3</div>
+      <div class="uebung-titel">Schlaf-Killer Ranking – bringe sie in Reihenfolge 🏆</div>
+    </div>
+    <div class="uebung-beschreibung">Schreibe die 5 größten Schlaf-Killer aus Übung 2 hier von schlimmst (#1) bis weniger schlimm (#5):</div>
+    <div style="display:flex;flex-direction:column;gap:5px;">
+      <div class="abend-schritt"><div class="schritt-nr">#1</div><div style="flex:1;border-bottom:1px dashed #93C5FD;height:16px;"></div><span style="font-size:10px;color:#6B7280;">→ größter Feind</span></div>
+      <div class="abend-schritt"><div class="schritt-nr">#2</div><div style="flex:1;border-bottom:1px dashed #93C5FD;height:16px;"></div></div>
+      <div class="abend-schritt"><div class="schritt-nr">#3</div><div style="flex:1;border-bottom:1px dashed #93C5FD;height:16px;"></div></div>
+      <div class="abend-schritt"><div class="schritt-nr">#4</div><div style="flex:1;border-bottom:1px dashed #93C5FD;height:16px;"></div></div>
+      <div class="abend-schritt"><div class="schritt-nr">#5</div><div style="flex:1;border-bottom:1px dashed #93C5FD;height:16px;"></div></div>
+    </div>
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Schlaf &amp; Gesundheit · Seite 1</span>
+  </div>
+</div>
+
+<!-- ===== SEITE 2 ===== -->
+<div class="seite">
+
+  <!-- Übung 4 – 4-7-8 Atemtechnik -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">4</div>
+      <div class="uebung-titel">4-7-8 Atemtechnik zum Einschlafen – jetzt ausprobieren! 🫁</div>
+    </div>
+    <div class="uebung-beschreibung">Diese Technik aktiviert deinen Ruhenerv (Parasympathikus) und bremst Gedankenkarussell. Einfach, kostenlos, super wirksam.</div>
+    <div class="atem-kreis">
+      <div class="atem-schritt" style="width:70px;height:70px;background:#1D4ED8;font-size:11px;">4 Sek.<br>✨ einatmen</div>
+      <div style="font-size:20px;color:#93C5FD;">→</div>
+      <div class="atem-schritt" style="width:70px;height:70px;background:#1e3a8a;font-size:11px;">7 Sek.<br>🤫 halten</div>
+      <div style="font-size:20px;color:#93C5FD;">→</div>
+      <div class="atem-schritt" style="width:70px;height:70px;background:#3B82F6;font-size:11px;">8 Sek.<br>💨 ausatmen</div>
+      <div style="font-size:20px;color:#93C5FD;">→</div>
+      <div class="atem-schritt" style="width:55px;height:55px;background:#10B981;font-size:10px;">3× wieder&shy;holen</div>
+    </div>
+    <div style="background:#EFF6FF;border-radius:8px;padding:8px;font-size:11px;text-align:center;">
+      Jetzt probieren! Wie fühlt sich dein Kopf danach an? <span style="border-bottom:1px dashed #93C5FD;display:inline-block;width:180px;">&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- Übung 5 – Abendritual-Planer -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">5</div>
+      <div class="uebung-titel">Mein Abendritual in 5 Schritten – plane dein perfektes Einschlaf-Setup 🌙</div>
+    </div>
+    <div class="uebung-beschreibung">Ein festes Ritual sagt deinem Gehirn: "Runterfahren jetzt!" Gestalte deins – es darf komplett zu dir passen.</div>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:10px;">
+      <div class="abend-schritt"><div class="schritt-nr">1</div><div style="font-size:11px;width:130px;color:#374151;">Handy-Stopp um:</div><div style="flex:1;border-bottom:1px dashed #93C5FD;height:16px;"></div></div>
+      <div class="abend-schritt"><div class="schritt-nr">2</div><div style="font-size:11px;width:130px;color:#374151;">Stattdessen mache ich:</div><div style="flex:1;border-bottom:1px dashed #93C5FD;height:16px;"></div></div>
+      <div class="abend-schritt"><div class="schritt-nr">3</div><div style="font-size:11px;width:130px;color:#374151;">Entspannungsritual:</div><div style="flex:1;border-bottom:1px dashed #93C5FD;height:16px;"></div></div>
+      <div class="abend-schritt"><div class="schritt-nr">4</div><div style="font-size:11px;width:130px;color:#374151;">Gedanken ablegen:</div><div style="flex:1;border-bottom:1px dashed #93C5FD;height:16px;"></div></div>
+      <div class="abend-schritt" style="background:var(--farbe-hell);border:1px solid #BFDBFE;"><div class="schritt-nr">💤</div><div style="font-size:11px;width:130px;color:var(--farbe);font-weight:700;">Ziel-Schlafzeit:</div><div style="flex:1;border-bottom:1px dashed #93C5FD;height:16px;"></div></div>
+    </div>
+
+    <div style="background:#F0FDF4;border:1px solid #86EFAC;border-radius:8px;padding:8px;font-size:11px;">
+      <strong>🧠 Wusstest du?</strong> Blaues Licht vom Handy stoppt die Ausschüttung von Melatonin – dem Schlafhormon. Schon 30 Minuten Handy-Pause vor dem Schlafen macht einen spürbaren Unterschied. Das ist Wissenschaft, keine Einbildung.
+    </div>
+  </div>
+
+  <!-- Body Scan mini -->
+  <div class="uebung">
+    <div class="uebung-header">
+      <div class="uebung-nr">💆</div>
+      <div class="uebung-titel">Body Scan – 60-Sekunden-Einschlafhilfe</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;font-size:11px;">
+      <div style="background:#EFF6FF;border-radius:6px;padding:6px;">🦶 Zehen → warm werden lassen</div>
+      <div style="background:#EFF6FF;border-radius:6px;padding:6px;">🦵 Beine → sinken lassen</div>
+      <div style="background:#EFF6FF;border-radius:6px;padding:6px;">🫁 Bauch → mit Ausatmen lockerlassen</div>
+      <div style="background:#EFF6FF;border-radius:6px;padding:6px;">💪 Schultern → fallen lassen</div>
+      <div style="background:#EFF6FF;border-radius:6px;padding:6px;">😌 Kiefer → locker, Zunge loslassen</div>
+      <div style="background:#EFF6FF;border-radius:6px;padding:6px;">🧠 Stirn → glatt, keine Falten</div>
+    </div>
+  </div>
+
+  <div class="reflexion">
+    <div class="reflexion-titel">💬 Reflexion</div>
+    <p>Was würde sich in deinem Alltag verändern, wenn du regelmäßig gut schlafen würdest? Was wäre als Erstes besser?</p>
+    <div class="schreiblinien"><div class="schreiblinie"></div><div class="schreiblinie"></div><div class="schreiblinie"></div></div>
+  </div>
+
+  <div class="fachhinweis">
+    <div class="fachhinweis-titel">🎓 Fachlicher Hinweis für Bezugspersonen</div>
+    <strong>ICD-10:</strong> F51.0 (nichtorganische Insomnie), G47.0 (Einschlaf-/Durchschlafstörungen). Schlafmangel ist häufig Prodromal- und Komorbiditätssymptom bei Depression (F32/F33), Angststörungen (F41) und ADHS (F90). Screening: Pittsburgh Sleep Quality Index (PSQI), BEARS-Screening für Jugendliche. <strong>Chronobiologie:</strong> Jugendliche haben biologisch verzögerte Melatoninausschüttung (Chronotyp „Eule") – frühe Schulzeiten wirken sich nachweislich negativ auf kognitive Leistung und psychische Gesundheit aus. Ggf. Schule informieren. <strong>CBT-I</strong> (Kognitive Verhaltenstherapie für Insomnie) ist Goldstandard. 4-7-8-Atemtechnik = Aktivierung des Parasympathikus (N. vagus). Bei persistierender Insomnie: schlafmedizinische Abklärung, Melatonin (niedrig dosiert) nur nach ärztlicher Rücksprache.
+  </div>
+
+  <div class="fusszeile">
+    <span>Pathways · Therapeutic Case Management</span>
+    <span>Schlaf &amp; Gesundheit · Seite 2</span>
+  </div>
+</div>
+
+</body>
+</html>
