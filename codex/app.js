@@ -7,6 +7,7 @@
 
 const STATE = {
   index: null,         // { version, materials: [...] }
+  searchIndex: null,   // { version, materialCount, tokens: { token: [materialIdx,...] } }
   query: '',
   filters: { typ: new Set(), schwierigkeit: new Set() },
   sort: 'title',
@@ -21,6 +22,12 @@ const KEYS = {
   THEME: 'pw_app_codex_theme',
   THEME_LEGACY: 'pw_app_library_theme',
 };
+
+// ─── Browser-nativer Such-Index ─────────────────────────────
+const SEARCH_INDEX_KEY = 'pathways_codex_search_index';
+const SEARCH_INDEX_VERSION = 1;
+const SEARCH_FIELDS = ['titel', 'beschreibung', 'typ', 'label', 'kategorie', 'inhalt'];
+const SEARCH_ARRAY_FIELDS = ['keywords', 'schlagwoerter'];
 
 // ─── Storage ─────────────────────────────────────────────────
 function loadBookmarks() {
@@ -72,17 +79,54 @@ async function loadIndex() {
   console.log(`[CODEX] ${STATE.index.count} Materialien geladen`);
 }
 
-// ─── Suche & Filter ──────────────────────────────────────────
-function search(materials, query) {
+// ─── Tokenizer (Lowercase + Sonderzeichen-Strip + Min-Länge 2) ──
+function tokenize(text) {
+  if (!text) return [];
+  return String(text)
+    .toLowerCase()
+    .replace(/[^a-z0-9äöüß]+/g, ' ')
+    .split(' ')
+    .filter(t => t.length >= 2);
+}
+
+// ─── Suche via invertiertem Index (Score nach matchenden Tokens) ──
+function search(materials, query, idx) {
   if (!query) return materials;
-  const q = query.toLowerCase().trim();
-  const tokens = q.split(/\s+/).filter(Boolean);
-  return materials.filter(m => {
-    const haystack = [
-      m.titel, m.beschreibung, m.typ, m.label, ...(m.keywords || []), m.datei
-    ].join(' ').toLowerCase();
-    return tokens.every(t => haystack.includes(t));
+  const queryTokens = tokenize(query);
+  if (!queryTokens.length) return materials;
+
+  // Fallback ohne Index: linear AND-Suche
+  if (!idx || !idx.tokens) {
+    return materials.filter(m => {
+      const haystack = [
+        m.titel, m.beschreibung, m.typ, m.label, ...(m.keywords || []), m.datei
+      ].join(' ').toLowerCase();
+      return queryTokens.every(t => haystack.includes(t));
+    });
+  }
+
+  const scores = new Map();
+  const indexTokens = Object.keys(idx.tokens);
+
+  queryTokens.forEach(qt => {
+    indexTokens.forEach(it => {
+      let s = 0;
+      if (it === qt) s = 3;
+      else if (it.startsWith(qt)) s = 2;
+      else if (it.includes(qt)) s = 1;
+      if (s > 0) {
+        idx.tokens[it].forEach(mi => {
+          scores.set(mi, (scores.get(mi) || 0) + s);
+        });
+      }
+    });
   });
+
+  if (scores.size === 0) return [];
+  return [...scores.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .map(([mi]) => materials[mi])
+    .filter(Boolean);
 }
 
 function filter(materials) {
@@ -235,7 +279,7 @@ function saveDetailNote(pfad) {
 // ─── Render ─────────────────────────────────────────────────
 function render() {
   const all = STATE.index.materials;
-  const filtered = sortMaterials(filter(search(all, STATE.query)));
+  const filtered = sortMaterials(filter(search(all, STATE.query, STATE.searchIndex)));
   const grid = document.getElementById('lib-grid');
   const empty = document.getElementById('lib-empty');
   const bar = document.getElementById('result-bar');
@@ -410,6 +454,93 @@ function buildSearchSuggestions() {
   if (input) input.setAttribute('list', 'search-suggestions');
 }
 
+// ─── Lade-Indikator für Index-Build ─────────────────────────
+function showIndexBuildProgress(done, total) {
+  const grid = document.getElementById('lib-grid');
+  if (!grid) return;
+  const pct = total ? Math.round((done / total) * 100) : 0;
+  grid.innerHTML = `
+    <div class="codex-index-building">
+      <div class="codex-index-spinner"></div>
+      <h3>Such-Index wird gebaut…</h3>
+      <p class="codex-index-progress">${done}/${total} Materialien</p>
+      <div class="codex-index-bar"><div class="codex-index-bar-fill" style="width: ${pct}%"></div></div>
+      <p class="codex-index-hint">Einmaliger Vorgang — wird im Browser gespeichert.</p>
+    </div>
+  `;
+}
+
+// ─── Index-Aufbau (asynchron, Chunks für UI-Responsiveness) ──
+function buildSearchIndex(materials, onProgress) {
+  return new Promise(resolve => {
+    const tokens = {};
+    const total = materials.length;
+    const CHUNK = 25;
+    let i = 0;
+
+    function step() {
+      const end = Math.min(i + CHUNK, total);
+      for (; i < end; i++) {
+        const m = materials[i];
+        const parts = [];
+        SEARCH_FIELDS.forEach(f => { if (m[f]) parts.push(m[f]); });
+        SEARCH_ARRAY_FIELDS.forEach(f => {
+          if (Array.isArray(m[f])) parts.push(m[f].join(' '));
+        });
+        if (m.datei) parts.push(m.datei);
+        const tokenSet = new Set(tokenize(parts.join(' ')));
+        tokenSet.forEach(t => {
+          if (!tokens[t]) tokens[t] = [];
+          tokens[t].push(i);
+        });
+      }
+      if (onProgress) onProgress(i, total);
+      if (i < total) {
+        setTimeout(step, 0);
+      } else {
+        resolve({
+          version: SEARCH_INDEX_VERSION,
+          materialCount: total,
+          builtAt: new Date().toISOString(),
+          tokens,
+        });
+      }
+    }
+    step();
+  });
+}
+
+// ─── Cache-Lookup oder Neu-Aufbau ───────────────────────────
+async function loadOrBuildSearchIndex(materials) {
+  try {
+    const raw = localStorage.getItem(SEARCH_INDEX_KEY);
+    if (raw) {
+      const cached = JSON.parse(raw);
+      if (cached
+          && cached.version === SEARCH_INDEX_VERSION
+          && cached.materialCount === materials.length
+          && cached.tokens) {
+        console.log(`[CODEX] Such-Index aus localStorage (${cached.materialCount} Materialien, ${Object.keys(cached.tokens).length} Tokens)`);
+        return cached;
+      }
+    }
+  } catch (e) {
+    console.warn('[CODEX] Cache-Read fehlgeschlagen:', e);
+  }
+
+  console.log(`[CODEX] Baue Such-Index für ${materials.length} Materialien…`);
+  const idx = await buildSearchIndex(materials, (done, total) => {
+    showIndexBuildProgress(done, total);
+  });
+  try {
+    localStorage.setItem(SEARCH_INDEX_KEY, JSON.stringify(idx));
+    console.log(`[CODEX] Such-Index gecacht (${Object.keys(idx.tokens).length} Tokens)`);
+  } catch (e) {
+    console.warn('[CODEX] Cache-Write fehlgeschlagen (Quota?):', e);
+  }
+  return idx;
+}
+
 // ─── Bootstrap ──────────────────────────────────────────────
 async function init() {
   applyTheme();
@@ -420,15 +551,18 @@ async function init() {
   try {
     await loadIndex();
   } catch (e) {
+    console.error('[CODEX] loadIndex fehlgeschlagen:', e);
     document.getElementById('lib-grid').innerHTML = `
       <div class="pw-empty">
         <div class="pw-empty-icon">⚠️</div>
-        <h2>Index fehlt</h2>
-        <p>Bitte einmalig im Projekt-Root ausführen:</p>
-        <pre style="background: var(--bg-subtle); padding: 12px; border-radius: 8px;">node tools/build-search-index.cjs</pre>
+        <h2>Materialien konnten nicht geladen werden</h2>
+        <p>Bitte die Seite neu laden. Wenn der Fehler bleibt, Browser-Cache leeren.</p>
       </div>`;
     return;
   }
+
+  // Such-Index browser-nativ aufbauen (Cache via localStorage)
+  STATE.searchIndex = await loadOrBuildSearchIndex(STATE.index.materials);
 
   buildFilterUI();
   buildSearchSuggestions();
