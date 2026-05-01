@@ -32,135 +32,428 @@ function toggleTheme() {
   localStorage.setItem(KEYS.THEME, document.body.classList.contains('theme-dark') ? 'dark' : 'light');
 }
 
-// ─── 5 Triage-Fragen (Manifest: adaptive Diagnostik) ────────
+// ─── TAB 1: TRIAGE — 5 Fragen → Instrumenten-Empfehlung ──────
+// Mapping (Spec):
+//   Stimmung→PHQ-A · Angst→GAD-7+SCARED · Trauma→PCL-5
+//   Verhalten→SDQ · Substanzen→CRAFFT · Konzentration→ASRS · Beziehungen→SDQ-Peer
+// SCARED + CRAFFT sind noch nicht in INSTRUMENTS implementiert (Tab 2).
 const TRIAGE_FRAGEN = [
-  { id: 'stimmung', frage: 'Wie ist die Stimmung des Klienten aktuell?', optionen: [
-    { label: 'Unauffällig', domaenen: [] },
-    { label: 'Gedrückt / traurig', domaenen: ['phq-a'] },
-    { label: 'Ängstlich / angespannt', domaenen: ['gad-7'] },
-    { label: 'Gereizt / aggressiv', domaenen: ['sdq'] },
-  ]},
-  { id: 'stimmung_dauer', frage: 'Seit wann?', bedingung: () => triageAntworten.stimmung >= 1,
+  {
+    id: 'bereich',
+    typ: 'single',
+    frage: 'Welcher Bereich macht aktuell die größten Sorgen?',
     optionen: [
-      { label: '< 2 Wochen (situativ)', domaenen: [], hinweis: 'Möglicherweise Anpassungsreaktion' },
-      { label: '2-4 Wochen', domaenen: [], hinweis: 'Klinisch relevant' },
-      { label: '> 1 Monat (anhaltend)', domaenen: ['phq-a', 'gad-7'], hinweis: 'Chronifizierung möglich' },
-    ]},
-  { id: 'trauma', frage: 'Gibt es Hinweise auf belastende Erlebnisse (Gewalt, Verlust, Unfall)?', optionen: [
-    { label: 'Nein / unklar', domaenen: [] },
-    { label: 'Ja — aktive Symptome (Flashbacks, Alpträume, Vermeidung)', domaenen: ['pcl-5'] },
-    { label: 'Ja — aber aktuell stabil', domaenen: [] },
-  ]},
-  { id: 'trauma_typ', frage: 'Welche Art?', bedingung: () => triageAntworten.trauma >= 1,
+      { id: 'stimmung',      label: '🌧️ Stimmung',          instruments: ['phq-a'],          reason: 'Stimmungsproblematik im Vordergrund' },
+      { id: 'angst',         label: '😰 Angst',             instruments: ['gad-7', 'scared'], reason: 'Angst-Symptomatik im Vordergrund' },
+      { id: 'verhalten',     label: '⚡ Verhalten',         instruments: ['sdq'],            reason: 'Externalisierende Auffälligkeiten (Conduct/Hyperaktiv)' },
+      { id: 'konzentration', label: '🎯 Konzentration',     instruments: ['asrs'],           reason: 'Aufmerksamkeits-/Konzentrationsprobleme' },
+      { id: 'trauma',        label: '🌪️ Trauma',            instruments: ['pcl-5'],          reason: 'Trauma als Hauptthema (DSM-5 Kriterium A prüfen)' },
+      { id: 'beziehungen',   label: '🤝 Beziehungen',       instruments: ['sdq'],            reason: 'Beziehungsproblematik (SDQ Peer-Subskala)' },
+    ],
+  },
+  {
+    id: 'dauer',
+    typ: 'single',
+    frage: 'Wie lange bestehen die Beschwerden?',
     optionen: [
-      { label: 'Einmaliges Ereignis (Unfall, Tod, Überfall)', domaenen: ['pcl-5'], hinweis: 'Typ-I Trauma → Exposition nach Stabilisierung' },
-      { label: 'Wiederholte / langfristige Belastung (Missbrauch, Gewalt zu Hause)', domaenen: ['pcl-5'], hinweis: 'Mögliche KPTBS → Stabilisierung priorisieren' },
-    ]},
-  { id: 'verhalten', frage: 'Fallen externalisierende Verhaltensweisen auf?', optionen: [
-    { label: 'Nein', domaenen: [] },
-    { label: 'Konzentration / Unruhe / Zappeligkeit', domaenen: ['asrs'] },
-    { label: 'Regelverstöße / Aggression / Lügen', domaenen: ['sdq'] },
-    { label: 'Beides (Konzentration + Verhalten)', domaenen: ['asrs', 'sdq'] },
-  ]},
-  { id: 'schule', frage: 'Gibt es Schulprobleme?', optionen: [
-    { label: 'Nein', domaenen: [] },
-    { label: 'Absentismus (fehlt häufig)', domaenen: ['gad-7'], hinweis: 'Schulphobie vs. Schulverweigerung abklären' },
-    { label: 'Leistungseinbruch', domaenen: ['phq-a'], hinweis: 'Depression? Konzentration? Familiärer Stress?' },
-    { label: 'Mobbing', domaenen: ['gad-7', 'sdq'], hinweis: 'Soziale Angst + Conduct prüfen' },
-  ]},
-  { id: 'essen', frage: 'Gibt es Auffälligkeiten beim Essverhalten?', optionen: [
-    { label: 'Nein', domaenen: [] },
-    { label: 'Ja — Gewichtsverlust / restriktiv', domaenen: ['scoff'] },
-    { label: 'Ja — Essattacken / Erbrechen', domaenen: ['scoff'] },
-  ]},
-  { id: 'suizid', frage: 'Wurden Suizidgedanken oder Selbstverletzung geäußert?', optionen: [
-    { label: 'Nein', domaenen: [] },
-    { label: 'Ja — aktuell', domaenen: ['phq-a'], crisis: true },
-    { label: 'Ja — in der Vergangenheit', domaenen: ['phq-a'] },
-  ]},
+      { id: 'akut',      label: '< 2 Wochen',     hinweis: 'Akut — F43.2 Anpassungsreaktion möglich. Re-Eval in 2 Wochen.' },
+      { id: 'subakut',   label: '2–8 Wochen',     hinweis: 'Subakut — klinisch relevant, Screening indiziert.' },
+      { id: 'mittel',    label: '2–6 Monate',     hinweis: 'Persistierend — vollständige Diagnostik empfohlen.' },
+      { id: 'chronisch', label: '> 6 Monate',     hinweis: 'Chronisch — konsolidierte Störung möglich, längere Behandlungsdauer einplanen.' },
+    ],
+  },
+  {
+    id: 'beeintraechtigung',
+    typ: 'slider',
+    frage: 'Wie stark ist die Beeinträchtigung im Alltag (Schule · Familie · Peers)?',
+    min: 0, max: 10, defaultValue: 5,
+    skalaText: ['keine', 'minimal', 'mild', 'mild', 'mittel', 'mittel', 'mittel', 'stark', 'stark', 'sehr stark', 'extrem'],
+  },
+  {
+    id: 'risiken',
+    typ: 'multi',
+    frage: 'Akute Risiken vorhanden? (Mehrfachauswahl)',
+    optionen: [
+      { id: 'suizid',     label: '☠️ Suizidgedanken',           crisis: true, instruments: ['phq-a'],          reason: 'Suizidalität — PHQ-A Item-9 + C-SSRS verpflichtend' },
+      { id: 'svv',        label: '🩸 Selbstverletzung',         crisis: true, instruments: ['phq-a'],          reason: 'Selbstverletzendes Verhalten (NSSI / Suizid-Risiko abklären)' },
+      { id: 'substanzen', label: '🌿 Substanzmissbrauch',                     instruments: ['crafft'],         reason: 'Riskanter Substanzkonsum (CRAFFT validiert für 12-21 J.)' },
+      { id: 'gewalt',     label: '👊 Gewalt (gegen sich/andere)',             instruments: ['sdq', 'pcl-5'],   reason: 'Gewalt-Exposition / -Ausübung (Conduct + PTBS prüfen)' },
+      { id: 'keine',      label: '✓ Keine akuten Risiken',     exclusive: true },
+    ],
+  },
+  {
+    id: 'kontext',
+    typ: 'multi',
+    frage: 'Welcher Kontext liegt vor? (Mehrfachauswahl)',
+    optionen: [
+      { id: 'schule',      label: '🏫 Schule' },
+      { id: 'familie',     label: '👨‍👩‍👧 Familie' },
+      { id: 'peers',       label: '👥 Peers',        instruments: ['sdq'],   reason: 'Peer-Konflikte (SDQ Peer-Probleme)' },
+      { id: 'verlust',     label: '🕊️ Verlust',      instruments: ['pcl-5'], reason: 'Verlust-Erfahrung — PTBS-/Trauerreaktion abgrenzen' },
+      { id: 'trauma',      label: '🌪️ Trauma',       instruments: ['pcl-5'], reason: 'Trauma-Kontext angegeben' },
+      { id: 'uebergaenge', label: '🔄 Übergänge' },
+    ],
+  },
 ];
 
-let triageAntworten = {};
+// ─── Triage-State (in Memory, persistiert pro Klient via localStorage) ──
+const TRIAGE_KEY = 'pw_claro_triage';
+let triageState = {
+  bereich: null,
+  dauer: null,
+  beeintraechtigung: null,
+  risiken: new Set(),
+  kontext: new Set(),
+};
+let triageLoadedForKlient = undefined;
 
-function setTriageAntwort(frageId, optIdx) {
-  triageAntworten[frageId] = optIdx;
+function loadTriageForKlient(schuelerId) {
+  if (!schuelerId) return null;
+  try {
+    const all = JSON.parse(localStorage.getItem(TRIAGE_KEY) || '{}');
+    return all[schuelerId] || null;
+  } catch { return null; }
+}
+
+function ensureTriageLoaded() {
+  if (triageLoadedForKlient === APP.schuelerId) return;
+  triageLoadedForKlient = APP.schuelerId;
+  const saved = loadTriageForKlient(APP.schuelerId);
+  triageState = {
+    bereich: saved?.bereich || null,
+    dauer: saved?.dauer || null,
+    beeintraechtigung: (saved && saved.beeintraechtigung != null) ? saved.beeintraechtigung : null,
+    risiken: new Set(saved?.risiken || []),
+    kontext: new Set(saved?.kontext || []),
+  };
+}
+
+function setTriageSingle(frageId, optId) {
+  triageState[frageId] = optId;
   renderTriage();
 }
 
-function getTriageEmpfehlungen() {
-  const empfohlen = new Set();
-  let crisisFlag = false;
-  TRIAGE_FRAGEN.forEach(f => {
-    const idx = triageAntworten[f.id];
-    if (idx !== undefined) {
-      const opt = f.optionen[idx];
-      opt.domaenen.forEach(d => empfohlen.add(d));
-      if (opt.crisis) crisisFlag = true;
-    }
+function toggleTriageMulti(frageId, optId) {
+  const f = TRIAGE_FRAGEN.find(x => x.id === frageId);
+  const opt = f.optionen.find(o => o.id === optId);
+  const set = triageState[frageId];
+  if (opt.exclusive) {
+    // "Keine"-Option: clear all, toggle this one alone
+    if (set.has(optId)) set.delete(optId);
+    else { set.clear(); set.add(optId); }
+  } else {
+    // Normale Option: entferne ggf. exclusive-Optionen, toggle this
+    f.optionen.forEach(o => { if (o.exclusive) set.delete(o.id); });
+    if (set.has(optId)) set.delete(optId);
+    else set.add(optId);
+  }
+  renderTriage();
+}
+
+function onTriageSliderInput(val) {
+  triageState.beeintraechtigung = Number(val);
+  const display = document.getElementById('dg-triage-slider-display');
+  if (display) {
+    const f = TRIAGE_FRAGEN.find(x => x.id === 'beeintraechtigung');
+    display.textContent = `${val}/10 · ${f.skalaText[val] || ''}`;
+  }
+  // Live-Update der Empfehlungs-Box ohne Slider-Refresh
+  const result = document.getElementById('dg-triage-result-zone');
+  if (result) result.innerHTML = renderTriageResult();
+}
+
+function resetTriage() {
+  triageState = { bereich: null, dauer: null, beeintraechtigung: null, risiken: new Set(), kontext: new Set() };
+  renderTriage();
+}
+
+// ─── Empfehlungs-Engine (Score = Anzahl Trigger pro Instrument) ──
+function getTriageRecommendations() {
+  const recommendations = {}; // { id: { reasons: Set, score: n } }
+  const crisisReasons = [];
+
+  function addRec(instId, reason) {
+    if (!recommendations[instId]) recommendations[instId] = { reasons: new Set(), score: 0 };
+    recommendations[instId].reasons.add(reason);
+    recommendations[instId].score++;
+  }
+
+  // Q1 bereich
+  const f1 = TRIAGE_FRAGEN[0];
+  if (triageState.bereich) {
+    const opt = f1.optionen.find(o => o.id === triageState.bereich);
+    (opt?.instruments || []).forEach(i => addRec(i, opt.reason));
+  }
+
+  // Q4 risiken
+  const f4 = TRIAGE_FRAGEN[3];
+  triageState.risiken.forEach(rid => {
+    const opt = f4.optionen.find(o => o.id === rid);
+    if (opt?.crisis) crisisReasons.push(opt.label);
+    (opt?.instruments || []).forEach(i => addRec(i, opt.reason));
   });
-  const sichtbare = TRIAGE_FRAGEN.filter(f => !f.bedingung || f.bedingung());
-  const alleBeantwortet = sichtbare.every(f => triageAntworten[f.id] !== undefined);
-  return { empfohlen: [...empfohlen], crisisFlag, alleBeantwortet };
+
+  // Q5 kontext
+  const f5 = TRIAGE_FRAGEN[4];
+  triageState.kontext.forEach(kid => {
+    const opt = f5.optionen.find(o => o.id === kid);
+    (opt?.instruments || []).forEach(i => addRec(i, opt.reason));
+  });
+
+  const sorted = Object.entries(recommendations)
+    .map(([id, v]) => ({ id, reasons: [...v.reasons], score: v.score }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 4);
+
+  const sichtbareFragenBeantwortet =
+    triageState.bereich !== null
+    && triageState.dauer !== null
+    && triageState.beeintraechtigung !== null
+    && triageState.risiken.size > 0
+    && triageState.kontext.size > 0;
+
+  return { sorted, crisisReasons, alleBeantwortet: sichtbareFragenBeantwortet };
+}
+
+// ─── Instrument-Info (Fallback für noch nicht implementierte) ──
+const TRIAGE_INSTRUMENT_FALLBACK = {
+  'scared': { acronym: 'SCARED', titel: 'Childhood Anxiety Disorders (41 Items)', icon: '😨' },
+  'crafft': { acronym: 'CRAFFT', titel: 'Substanzkonsum-Screening (6 Items)',     icon: '🌿' },
+};
+function getInstrumentInfo(id) {
+  return INSTRUMENTS[id] || TRIAGE_INSTRUMENT_FALLBACK[id] || { acronym: id, titel: id, icon: '📋' };
+}
+function isInstrumentAvailable(id) {
+  return !!INSTRUMENTS[id] && typeof INSTRUMENTS[id].eval === 'function';
+}
+
+// ─── Triage speichern ───────────────────────────────────────
+function saveTriage() {
+  if (!APP.schuelerId) { showToast('Kein Klient gewählt — bitte erst aus dem HUB öffnen.', 'info'); return; }
+  const rec = getTriageRecommendations();
+  const data = {
+    bereich: triageState.bereich,
+    dauer: triageState.dauer,
+    beeintraechtigung: triageState.beeintraechtigung,
+    risiken: [...triageState.risiken],
+    kontext: [...triageState.kontext],
+    recommendations: rec.sorted.map(r => r.id),
+    crisisReasons: rec.crisisReasons,
+    datum: new Date().toISOString(),
+  };
+  try {
+    const all = JSON.parse(localStorage.getItem(TRIAGE_KEY) || '{}');
+    all[APP.schuelerId] = data;
+    localStorage.setItem(TRIAGE_KEY, JSON.stringify(all));
+  } catch (e) {
+    showToast('Speichern fehlgeschlagen', 'info');
+    return;
+  }
+
+  if (rec.crisisReasons.length) {
+    DB.addRisiko(APP.schuelerId, {
+      sicherheit: 'rot',
+      source: 'claro-triage',
+      crisis: rec.crisisReasons,
+    });
+    Bridge.notify('crisis_alert', { schuelerId: APP.schuelerId, severity: 'high', source: 'triage' });
+  }
+  Bridge.notify('triage_completed', {
+    schuelerId: APP.schuelerId,
+    recommendations: data.recommendations,
+    crisis: rec.crisisReasons.length > 0,
+  });
+  showToast('Triage gespeichert', 'ok');
+  renderTriage();
+}
+
+function renderTriageResult() {
+  const { sorted, crisisReasons, alleBeantwortet } = getTriageRecommendations();
+  if (!alleBeantwortet) {
+    const offen = [
+      triageState.bereich === null && 'Bereich',
+      triageState.dauer === null && 'Dauer',
+      triageState.beeintraechtigung === null && 'Beeinträchtigung',
+      triageState.risiken.size === 0 && 'Risiken',
+      triageState.kontext.size === 0 && 'Kontext',
+    ].filter(Boolean);
+    return `<div class="dg-triage-pending">
+      Noch offen: ${offen.map(t => Utils.escapeHtml(t)).join(' · ')}
+    </div>`;
+  }
+
+  const dauerOpt = TRIAGE_FRAGEN[1].optionen.find(o => o.id === triageState.dauer);
+  const sliderText = TRIAGE_FRAGEN[2].skalaText[triageState.beeintraechtigung] || '';
+  const beeintraechtigungHigh = triageState.beeintraechtigung >= 7;
+
+  return `
+    <div class="dg-triage-result">
+      <h3>📋 Empfohlene Screening-Instrumente</h3>
+
+      ${crisisReasons.length ? `
+        <div class="dg-triage-crisis">
+          <div style="font-weight:700; font-size:15px; margin-bottom:4px;">⚠️ Akutes Risiko erkannt</div>
+          <div style="margin-bottom:8px;">${crisisReasons.map(r => Utils.escapeHtml(r)).join(' · ')}</div>
+          <div style="font-size:13px;">
+            <strong>C-SSRS-Trigger:</strong> Columbia-Suicide-Severity-Rating-Scale durchführen.
+            ${APP.schuelerId
+              ? `<a href="../hub/?schueler=${APP.schuelerId}&view=crisis" class="btn" style="margin-left:8px;">→ C-SSRS im HUB</a>`
+              : ''}
+          </div>
+        </div>
+      ` : ''}
+
+      <div style="font-size:13px; color: var(--text-muted); margin: var(--space-2) 0 var(--space-3);">
+        Dauer: <strong>${Utils.escapeHtml(dauerOpt?.label || '—')}</strong> ·
+        Beeinträchtigung: <strong>${triageState.beeintraechtigung}/10 (${Utils.escapeHtml(sliderText)})</strong>
+        ${beeintraechtigungHigh ? ' · <span style="color:#DC2626; font-weight:600;">starke Funktionseinschränkung</span>' : ''}
+      </div>
+      ${dauerOpt?.hinweis ? `<div class="dg-triage-hinweis">💡 ${Utils.escapeHtml(dauerOpt.hinweis)}</div>` : ''}
+
+      ${sorted.length === 0 ? `
+        <p style="color: var(--text-muted); margin: var(--space-3) 0;">
+          Kein spezifisches Instrument indiziert. Allgemeines SDQ-Screening als Übersicht erwägen.
+        </p>
+        <button class="btn" onclick="startScreening('sdq')">📋 SDQ starten</button>
+      ` : `
+        <div class="dg-triage-rec-list">
+          ${sorted.map(rec => {
+            const inst = getInstrumentInfo(rec.id);
+            const verfuegbar = isInstrumentAvailable(rec.id);
+            return `
+              <div class="dg-triage-rec ${verfuegbar ? '' : 'unavailable'}">
+                <div class="dg-triage-rec-head">
+                  <div class="dg-triage-rec-acronym">${inst.icon || '📋'} ${Utils.escapeHtml(inst.acronym)}</div>
+                  <div class="dg-triage-rec-score">${rec.score}× Trigger</div>
+                </div>
+                <div class="dg-triage-rec-titel">${Utils.escapeHtml(inst.titel)}</div>
+                <ul class="dg-triage-rec-reasons">
+                  ${rec.reasons.map(r => `<li>${Utils.escapeHtml(r)}</li>`).join('')}
+                </ul>
+                ${verfuegbar
+                  ? `<button class="btn btn-primary" onclick="startScreening('${rec.id}')">→ ${Utils.escapeHtml(inst.acronym)} starten</button>`
+                  : `<button class="btn" disabled title="Wird in einer späteren Iteration ergänzt">→ ${Utils.escapeHtml(inst.acronym)} (noch nicht verfügbar)</button>`
+                }
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `}
+
+      <div style="margin-top: var(--space-4); display:flex; gap:var(--space-2); flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="saveTriage()" ${APP.schuelerId ? '' : 'disabled title="Kein Klient gewählt"'}>💾 Triage speichern</button>
+        <button class="btn" onclick="resetTriage()">🔄 Triage zurücksetzen</button>
+      </div>
+    </div>
+  `;
 }
 
 function renderTriage() {
+  ensureTriageLoaded();
   const container = document.getElementById('dg-content');
-  const { empfohlen, crisisFlag, alleBeantwortet } = getTriageEmpfehlungen();
-  const beantwortet = Object.keys(triageAntworten).length;
+  const beantwortet = [
+    triageState.bereich !== null,
+    triageState.dauer !== null,
+    triageState.beeintraechtigung !== null,
+    triageState.risiken.size > 0,
+    triageState.kontext.size > 0,
+  ].filter(Boolean).length;
+
+  const saved = loadTriageForKlient(APP.schuelerId);
+  const sliderF = TRIAGE_FRAGEN[2];
+  const sliderVal = triageState.beeintraechtigung ?? sliderF.defaultValue;
+  const sliderTextNow = sliderF.skalaText[sliderVal] || '';
 
   container.innerHTML = `
     <div class="dg-section">
       <h2>🎯 Triage — 5 Fragen in 3 Minuten</h2>
       <div class="dg-section-intro">
-        Beantworte 5 kurze Fragen. CLARO berechnet dann, welche Screening-Instrumente
-        wirklich nötig sind — und überspringt den Rest. <strong>Nur die richtigen Fragen, nie alle.</strong>
+        Beantworte 5 kurze Fragen. CLARO berechnet, welche Screening-Instrumente
+        wirklich nötig sind — und überspringt den Rest.
+        ${saved
+          ? `<div style="margin-top:6px; font-size:12px; color:var(--text-muted);">Zuletzt gespeichert: ${Utils.formatDate(saved.datum)}</div>`
+          : ''}
       </div>
 
-      <div class="dg-triage-progress">${beantwortet}/${TRIAGE_FRAGEN.filter(f => !f.bedingung || f.bedingung()).length} beantwortet</div>
+      <div class="dg-triage-progress">${beantwortet}/5 beantwortet</div>
 
-      ${TRIAGE_FRAGEN.filter(f => !f.bedingung || f.bedingung()).map((f, fi) => {
-        const gewaehlt = triageAntworten[f.id];
-        const gewaehlteOpt = gewaehlt !== undefined ? f.optionen[gewaehlt] : null;
-        return `
-          <div class="dg-triage-frage ${gewaehlt !== undefined ? 'answered' : ''}">
-            <div class="dg-triage-num">${fi + 1}</div>
-            <div class="dg-triage-text">${Utils.escapeHtml(f.frage)}</div>
-            <div class="dg-triage-opts">
-              ${f.optionen.map((opt, oi) => `
-                <button class="dg-triage-opt ${gewaehlt === oi ? 'selected' : ''}"
-                        onclick="setTriageAntwort('${f.id}', ${oi})">
-                  ${Utils.escapeHtml(opt.label)}
-                </button>
-              `).join('')}
-            </div>
-            ${gewaehlteOpt?.hinweis ? `<div style="font-size: 12px; color: var(--color-app-claro); font-style: italic; margin-top: 4px;">💡 ${Utils.escapeHtml(gewaehlteOpt.hinweis)}</div>` : ''}
-          </div>
-        `;
-      }).join('')}
-
-      ${alleBeantwortet ? `
-        <div class="dg-triage-result">
-          <h3>Empfohlene Screening-Instrumente</h3>
-          ${crisisFlag ? `<div class="dg-triage-crisis">⚠️ Suizidalität angegeben — <a href="../hub/?schueler=${APP.schuelerId}&view=crisis">C-SSRS im HUB durchführen</a></div>` : ''}
-          ${empfohlen.length > 0 ? `
-            <div class="dg-triage-empfohlen">
-              ${empfohlen.map(instId => {
-                const inst = INSTRUMENTS[instId];
-                return inst ? `<button class="btn btn-primary" onclick="startScreening('${instId}')" style="margin: 4px;">
-                  ${inst.icon} ${inst.acronym} — ${inst.titel}
-                </button>` : '';
-              }).join('')}
-            </div>
-            <div style="margin-top: var(--space-3); font-size: 13px; color: var(--text-muted);">
-              ${INSTRUMENT_LIST.length - empfohlen.length} Instrumente übersprungen — nicht indiziert.
-            </div>
-          ` : `<p style="color: var(--text-muted);">Keine spezifischen Instrumente empfohlen. Allgemeines SDQ-Screening erwägen.</p>
-              <button class="btn" onclick="startScreening('sdq')" style="margin-top: var(--space-2);">📋 SDQ starten</button>`}
-          <div style="margin-top: var(--space-4);">
-            <button class="btn" onclick="triageAntworten={}; renderTriage();">🔄 Triage zurücksetzen</button>
-          </div>
+      <!-- Q1: Bereich (single) -->
+      <div class="dg-triage-frage ${triageState.bereich !== null ? 'answered' : ''}">
+        <div class="dg-triage-num">1</div>
+        <div class="dg-triage-text">${Utils.escapeHtml(TRIAGE_FRAGEN[0].frage)}</div>
+        <div class="dg-triage-opts">
+          ${TRIAGE_FRAGEN[0].optionen.map(o => `
+            <button class="dg-triage-opt ${triageState.bereich === o.id ? 'selected' : ''}"
+                    onclick="setTriageSingle('bereich', '${o.id}')">${Utils.escapeHtml(o.label)}</button>
+          `).join('')}
         </div>
-      ` : ''}
+      </div>
+
+      <!-- Q2: Dauer (single) -->
+      <div class="dg-triage-frage ${triageState.dauer !== null ? 'answered' : ''}">
+        <div class="dg-triage-num">2</div>
+        <div class="dg-triage-text">${Utils.escapeHtml(TRIAGE_FRAGEN[1].frage)}</div>
+        <div class="dg-triage-opts">
+          ${TRIAGE_FRAGEN[1].optionen.map(o => `
+            <button class="dg-triage-opt ${triageState.dauer === o.id ? 'selected' : ''}"
+                    onclick="setTriageSingle('dauer', '${o.id}')">${Utils.escapeHtml(o.label)}</button>
+          `).join('')}
+        </div>
+        ${triageState.dauer ? (() => {
+          const opt = TRIAGE_FRAGEN[1].optionen.find(x => x.id === triageState.dauer);
+          return opt?.hinweis ? `<div class="dg-triage-hinweis">💡 ${Utils.escapeHtml(opt.hinweis)}</div>` : '';
+        })() : ''}
+      </div>
+
+      <!-- Q3: Beeinträchtigung (slider) -->
+      <div class="dg-triage-frage ${triageState.beeintraechtigung !== null ? 'answered' : ''}">
+        <div class="dg-triage-num">3</div>
+        <div class="dg-triage-text">${Utils.escapeHtml(sliderF.frage)}</div>
+        <div class="dg-triage-slider-row">
+          <span class="dg-triage-slider-bound">0 keine</span>
+          <input type="range" class="dg-triage-slider" id="dg-triage-slider-input"
+                 min="0" max="10" value="${sliderVal}"
+                 oninput="onTriageSliderInput(this.value)">
+          <span class="dg-triage-slider-bound">10 extrem</span>
+        </div>
+        <div class="dg-triage-slider-display" id="dg-triage-slider-display">${sliderVal}/10 · ${Utils.escapeHtml(sliderTextNow)}</div>
+        ${triageState.beeintraechtigung === null
+          ? `<button class="btn btn-sm" style="margin-top:8px;" onclick="onTriageSliderInput(${sliderVal})">Wert übernehmen</button>`
+          : ''}
+      </div>
+
+      <!-- Q4: Risiken (multi) -->
+      <div class="dg-triage-frage ${triageState.risiken.size > 0 ? 'answered' : ''}">
+        <div class="dg-triage-num">4</div>
+        <div class="dg-triage-text">${Utils.escapeHtml(TRIAGE_FRAGEN[3].frage)}</div>
+        <div class="dg-triage-opts">
+          ${TRIAGE_FRAGEN[3].optionen.map(o => `
+            <button class="dg-triage-opt dg-triage-multi ${triageState.risiken.has(o.id) ? 'selected' : ''} ${o.crisis ? 'crisis' : ''}"
+                    onclick="toggleTriageMulti('risiken', '${o.id}')">
+              <span class="dg-triage-multi-mark">${triageState.risiken.has(o.id) ? '✓' : '○'}</span>
+              ${Utils.escapeHtml(o.label)}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Q5: Kontext (multi) -->
+      <div class="dg-triage-frage ${triageState.kontext.size > 0 ? 'answered' : ''}">
+        <div class="dg-triage-num">5</div>
+        <div class="dg-triage-text">${Utils.escapeHtml(TRIAGE_FRAGEN[4].frage)}</div>
+        <div class="dg-triage-opts">
+          ${TRIAGE_FRAGEN[4].optionen.map(o => `
+            <button class="dg-triage-opt dg-triage-multi ${triageState.kontext.has(o.id) ? 'selected' : ''}"
+                    onclick="toggleTriageMulti('kontext', '${o.id}')">
+              <span class="dg-triage-multi-mark">${triageState.kontext.has(o.id) ? '✓' : '○'}</span>
+              ${Utils.escapeHtml(o.label)}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Empfehlungs-Block -->
+      <div id="dg-triage-result-zone">${renderTriageResult()}</div>
     </div>
   `;
 }
