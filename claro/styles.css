@@ -151,7 +151,99 @@ body { background: #faf7f0; }
   color: var(--text-muted);
   display: flex;
   gap: var(--space-3);
+  flex-wrap: wrap;
 }
+.dg-instrument-quelle {
+  margin-top: var(--space-3);
+  padding-top: var(--space-2);
+  border-top: 1px dashed var(--border);
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ── Severity-Badges (5 Stufen) ────────────────────────────── */
+.dg-severity-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 100px;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+.dg-sev-minimal  { background: #ECFDF5; color: #065F46; }
+.dg-sev-leicht   { background: #FEF3C7; color: #92400E; }
+.dg-sev-mittel   { background: #FED7AA; color: #9A3412; }
+.dg-sev-schwer   { background: #FEE2E2; color: #991B1B; }
+.dg-sev-kritisch { background: #991B1B; color: #fff; }
+
+/* ── Result-Card-Erweiterungen ─────────────────────────────── */
+.dg-result-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: var(--space-2);
+}
+.dg-result-eyebrow {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.dg-result-text { text-align: center; margin-bottom: var(--space-3); }
+.dg-result-alert {
+  margin-top: var(--space-3); padding: var(--space-3) var(--space-4);
+  background: rgba(220, 38, 38, 0.12);
+  border: 2px solid #DC2626;
+  border-radius: var(--radius-sm);
+  color: #7F1D1D;
+}
+.dg-result-alert-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+.dg-result-alert p { margin: 0 0 var(--space-2); font-size: 13px; line-height: 1.5; }
+.dg-result-alert .btn { color: #fff; background: #DC2626; border-color: #DC2626; }
+.dg-result-alert .btn:hover { background: #B91C1C; }
+.dg-result-detail {
+  margin-top: var(--space-3); padding: var(--space-3);
+  background: var(--bg-subtle); border-radius: var(--radius-sm);
+  border-left: 3px solid var(--border);
+}
+.dg-result-detail strong { font-size: 13px; }
+.dg-result-quelle {
+  margin-top: var(--space-3); padding-top: var(--space-2);
+  border-top: 1px dashed var(--border);
+  font-family: var(--font-mono, monospace);
+  font-size: 11px; color: var(--text-muted);
+  line-height: 1.5;
+}
+.dg-result-actions {
+  margin-top: var(--space-4); display: flex; gap: var(--space-2);
+  justify-content: center; flex-wrap: wrap;
+}
+
+/* ── Subscale-Grid (SDQ + SCARED) ──────────────────────────── */
+.dg-subscale-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+.dg-subscale {
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-card); border-radius: var(--radius-sm);
+  border-left: 3px solid var(--border);
+}
+.dg-subscale-label { font-size: 11px; color: var(--text-muted); }
+.dg-subscale-val { font-size: 20px; font-weight: 700; }
+.dg-subscale-cutoff { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* ── DSM-5-Grid für PCL-5 ──────────────────────────────────── */
+.dg-dsm5-grid {
+  display: flex; gap: var(--space-3); margin-top: var(--space-2);
+  font-size: 13px; flex-wrap: wrap;
+}
+.dg-dsm5-summary { margin-top: var(--space-2); font-size: 13px; font-weight: 600; }
 
 /* ── Item Question (Likert) ────────────────────────────── */
 .dg-item {

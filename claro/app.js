@@ -638,30 +638,53 @@ function renderOverview() {
 }
 
 // ─── Tab: Screening (Liste oder Wizard) ──────────────────────
+// Hauptinstrumente in der von Tab 2 spezifizierten Reihenfolge
+const PRIMARY_INSTRUMENTS = ['phq-a', 'gad-7', 'pcl-5', 'sdq', 'crafft', 'scared'];
+
+function renderInstrumentCard(inst) {
+  return `
+    <div class="dg-instrument" onclick="startScreening('${inst.id}')">
+      <div class="dg-instrument-header">
+        <span style="font-size: 24px;">${inst.icon}</span>
+        <span class="dg-instrument-acronym">${inst.acronym}</span>
+      </div>
+      <div class="dg-instrument-title">${Utils.escapeHtml(inst.titel)}</div>
+      ${inst.kurzbeschreibung
+        ? `<div class="dg-instrument-desc">${Utils.escapeHtml(inst.kurzbeschreibung)}</div>`
+        : `<div class="dg-instrument-desc">${inst.items.length} Items · ${Utils.escapeHtml(inst.timeFrame || '')}</div>`}
+      <div class="dg-instrument-meta">
+        <span>📋 ${inst.items.length} Items</span>
+        <span>⏱️ ~${Math.ceil(inst.items.length * 0.4)} min</span>
+        <span>ICD: ${inst.icd.join(', ')}</span>
+      </div>
+      ${inst.quelle ? `<div class="dg-instrument-quelle">📚 ${Utils.escapeHtml(inst.quelle)}</div>` : ''}
+    </div>
+  `;
+}
+
 function renderScreeningList() {
   const container = document.getElementById('dg-content');
+  const primary = PRIMARY_INSTRUMENTS
+    .map(id => INSTRUMENT_LIST.find(i => i.id === id))
+    .filter(Boolean);
+  const extras = INSTRUMENT_LIST.filter(i => !PRIMARY_INSTRUMENTS.includes(i.id));
+
   container.innerHTML = `
     <div class="dg-section">
       <h2>🔍 Screening-Instrumente</h2>
       <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">
-        ${INSTRUMENT_LIST.length} validierte Instrumente verfügbar. Wähle eines, um zu starten.
+        ${primary.length} validierte Hauptinstrumente${extras.length ? ` · ${extras.length} weitere` : ''}.
+        Klick auf eine Karte startet den Screening-Wizard.
       </p>
       <div class="dg-instrument-grid">
-        ${INSTRUMENT_LIST.map(inst => `
-          <div class="dg-instrument" onclick="startScreening('${inst.id}')">
-            <div class="dg-instrument-header">
-              <span style="font-size: 24px;">${inst.icon}</span>
-              <span class="dg-instrument-acronym">${inst.acronym}</span>
-            </div>
-            <div class="dg-instrument-title">${Utils.escapeHtml(inst.titel)}</div>
-            <div class="dg-instrument-desc">${inst.items.length} Items · ${inst.timeFrame || ''}</div>
-            <div class="dg-instrument-meta">
-              <span>ICD: ${inst.icd.join(', ')}</span>
-              <span>~${Math.ceil(inst.items.length * 0.5)} min</span>
-            </div>
-          </div>
-        `).join('')}
+        ${primary.map(renderInstrumentCard).join('')}
       </div>
+      ${extras.length ? `
+        <h3 style="margin-top: var(--space-5);">Weitere Instrumente</h3>
+        <div class="dg-instrument-grid">
+          ${extras.map(renderInstrumentCard).join('')}
+        </div>
+      ` : ''}
     </div>
   `;
 }
@@ -721,58 +744,126 @@ function renderScreeningWizard() {
         </div>
       `}).join('')}
 
-      ${result ? `
-        <div class="dg-result severity-${result.severity}">
-          <div style="text-align: center; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: var(--space-2);">Auswertung</div>
-          <div class="dg-score-display">${result.score} / ${result.max}</div>
-          <h3 style="text-align: center;">${result.label}</h3>
-          ${result.flagSuicide ? `<div style="margin-top: var(--space-3); padding: var(--space-3); background: rgba(220,38,38,0.18); border-radius: var(--radius-sm); border: 2px solid #DC2626; font-weight: 600;">⚠️ Suizidgedanken angegeben — C-SSRS im HUB durchführen. Ansprechen erhöht Risiko NICHT (Dazzi et al. 2014).</div>` : ''}
-          ${result.dsm5 ? `
-            <div style="margin-top: var(--space-3); padding: var(--space-3); background: var(--bg-subtle); border-radius: var(--radius-sm);">
-              <strong>DSM-5 Kriterien-Prüfung (Weathers et al. 2013):</strong>
-              <div style="display: flex; gap: var(--space-3); margin-top: var(--space-2); font-size: 13px;">
-                <span>${result.dsm5.critB ? '✅' : '❌'} Kriterium B (Wiedererleben)</span>
-                <span>${result.dsm5.critC ? '✅' : '❌'} Kriterium C (Vermeidung)</span>
-                <span>${result.dsm5.critD ? '✅' : '❌'} Kriterium D (Neg. Kognition)</span>
-                <span>${result.dsm5.critE ? '✅' : '❌'} Kriterium E (Arousal)</span>
-              </div>
-              <div style="margin-top: var(--space-2); font-size: 13px; font-weight: 600; color: ${result.dsm5.met ? '#DC2626' : '#F59E0B'};">
-                ${result.dsm5.met ? 'Alle 4 DSM-5-Kriterien erfüllt → PTBS wahrscheinlich' : 'Nicht alle Kriterien erfüllt → Differentialdiagnostik empfohlen'}
-              </div>
-            </div>
-          ` : ''}
-          ${result.subscales ? `
-            <div style="margin-top: var(--space-3);">
-              <strong style="font-size: 14px;">SDQ-Subskalen (Goodman 1997, Normwerte Selbstauskunft 11-17J):</strong>
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--space-2); margin-top: var(--space-2);">
-                ${[
-                  ['Emotional', result.subscales.emotional, result.subCutoffs?.emotional],
-                  ['Conduct', result.subscales.conduct, result.subCutoffs?.conduct],
-                  ['Hyperaktiv', result.subscales.hyperact, result.subCutoffs?.hyperact],
-                  ['Peer', result.subscales.peer, result.subCutoffs?.peer],
-                  ['Prosozial', result.subscales.prosocial, result.subCutoffs?.prosocial],
-                ].map(([label, val, cutoff]) => {
-                  const farbe = cutoff === 'auffällig' ? '#DC2626' : cutoff === 'grenzwertig' ? '#F59E0B' : '#10B981';
-                  return '<div style="padding: var(--space-2); background: var(--bg-subtle); border-radius: var(--radius-sm); border-left: 3px solid ' + farbe + ';">' +
-                    '<div style="font-size: 12px; color: var(--text-muted);">' + label + '</div>' +
-                    '<div style="font-size: 18px; font-weight: 700; color: ' + farbe + ';">' + val + '</div>' +
-                    '<div style="font-size: 11px; color: ' + farbe + ';">' + (cutoff || '') + '</div>' +
-                  '</div>';
-                }).join('')}
-              </div>
-            </div>
-          ` : ''}
-          <div style="margin-top: var(--space-4); display: flex; gap: var(--space-2); justify-content: center; flex-wrap: wrap;">
-            ${APP.schuelerId ? `<button class="btn btn-primary" onclick="saveScreening()">💾 Im Klient-Profil speichern</button>` : ''}
-            ${result.flagSuicide ? `<a class="btn" href="../hub/?schueler=${APP.schuelerId}&view=crisis" target="_blank">→ C-SSRS im HUB</a>` : ''}
-            <button class="btn" onclick="startScreening('${APP.currentInstrument.id}')">🔄 Neu</button>
-          </div>
-        </div>
-      ` : `
+      ${result ? renderScreeningResult(result, inst) : `
         <div style="text-align: center; color: var(--text-muted); margin-top: var(--space-4);">
           ${Object.keys(APP.scores).length} / ${inst.items.length} beantwortet
         </div>
       `}
+    </div>
+  `;
+}
+
+// ─── Wizard-Result-Renderer (Severity-Badge, Subscales, Flags) ──
+const SEVERITY_LABEL_DE = {
+  minimal: 'Minimal', leicht: 'Leicht', mittel: 'Mittel', schwer: 'Schwer', kritisch: 'Kritisch',
+};
+
+function renderSeverityBadge(result) {
+  const key = result.severityLabel || ({
+    low: 'minimal', mod: 'leicht', high: 'schwer', critical: 'kritisch',
+  })[result.severity] || 'minimal';
+  return `<span class="dg-severity-badge dg-sev-${key}">${SEVERITY_LABEL_DE[key] || key}</span>`;
+}
+
+function renderSubscalesBlock(instId, result) {
+  let title, rows;
+  if (instId === 'sdq') {
+    title = 'SDQ-Subskalen (Goodman 1997, Normwerte Selbstauskunft 11-17J)';
+    rows = [
+      ['Emotional',  result.subscales.emotional, result.subCutoffs?.emotional],
+      ['Conduct',    result.subscales.conduct,   result.subCutoffs?.conduct],
+      ['Hyperaktiv', result.subscales.hyperact,  result.subCutoffs?.hyperact],
+      ['Peer',       result.subscales.peer,      result.subCutoffs?.peer],
+      ['Prosozial',  result.subscales.prosocial, result.subCutoffs?.prosocial],
+    ];
+  } else if (instId === 'scared') {
+    title = 'SCARED-Subskalen (Birmaher et al. 1999, Cutoffs: Panik≥7 · GAD≥9 · SAD≥5 · SoPh≥8 · Schule≥3)';
+    rows = [
+      ['Panik / Somatisch', result.subscales.panic,  result.subCutoffs?.panic],
+      ['GAD',                result.subscales.gad,    result.subCutoffs?.gad],
+      ['Trennungsangst',    result.subscales.sad,    result.subCutoffs?.sad],
+      ['Soziale Phobie',    result.subscales.social, result.subCutoffs?.social],
+      ['Schulvermeidung',   result.subscales.school, result.subCutoffs?.school],
+    ];
+  } else {
+    return '';
+  }
+  return `
+    <div class="dg-result-detail">
+      <strong>${Utils.escapeHtml(title)}:</strong>
+      <div class="dg-subscale-grid">
+        ${rows.map(([label, val, cutoff]) => {
+          const farbe = cutoff === 'auffällig' ? '#DC2626' : cutoff === 'grenzwertig' ? '#F59E0B' : '#10B981';
+          return `
+            <div class="dg-subscale" style="border-left-color:${farbe};">
+              <div class="dg-subscale-label">${Utils.escapeHtml(label)}</div>
+              <div class="dg-subscale-val" style="color:${farbe};">${val}</div>
+              <div class="dg-subscale-cutoff" style="color:${farbe};">${Utils.escapeHtml(cutoff || '')}</div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function renderScreeningResult(result, inst) {
+  const isCritical = result.severity === 'critical';
+  const showCSSRS = isCritical || result.flagSuicide;
+  return `
+    <div class="dg-result severity-${result.severity}">
+      <div class="dg-result-header">
+        <div class="dg-result-eyebrow">Auswertung</div>
+        ${renderSeverityBadge(result)}
+      </div>
+      <div class="dg-score-display">${result.score} / ${result.max}</div>
+      <h3 class="dg-result-text">${Utils.escapeHtml(result.label)}</h3>
+
+      ${showCSSRS ? `
+        <div class="dg-result-alert">
+          <div class="dg-result-alert-title">⚠️ ${result.flagSuicide ? 'Suizidalität geflaggt' : 'Kritischer Wert'}</div>
+          <p>Strukturierte Risiko-Abklärung indiziert. C-SSRS (Columbia-Suicide-Severity-Rating-Scale) durchführen.
+          ${result.flagSuicide ? ' Direktes Ansprechen erhöht das Risiko NICHT (Dazzi et al. 2014).' : ''}</p>
+          ${APP.schuelerId
+            ? `<a class="btn btn-primary" href="../hub/?schueler=${APP.schuelerId}&view=crisis" target="_blank">→ C-SSRS im HUB starten</a>`
+            : `<span style="font-size:12px; color:var(--text-muted);">Klient aus HUB öffnen, um C-SSRS zu starten.</span>`}
+        </div>
+      ` : ''}
+
+      ${result.flagHighRisk ? `
+        <div class="dg-result-detail" style="border-left:3px solid #DC2626;">
+          <strong>Hochrisiko-Marker (CRAFFT):</strong>
+          <ul style="margin: var(--space-2) 0 0; padding-left: var(--space-4); font-size: 13px;">
+            ${result.carRisk  ? '<li>🚗 Mitfahrt mit intoxiziertem Fahrer (Item 1 / C)</li>' : ''}
+            ${result.blackout ? '<li>💭 Blackout während Konsum (Item 4 / F — Kontrollverlust)</li>' : ''}
+          </ul>
+        </div>
+      ` : ''}
+
+      ${result.dsm5 ? `
+        <div class="dg-result-detail">
+          <strong>DSM-5 Kriterien-Prüfung (Weathers et al. 2013):</strong>
+          <div class="dg-dsm5-grid">
+            <span>${result.dsm5.critB ? '✅' : '❌'} Kriterium B (Wiedererleben)</span>
+            <span>${result.dsm5.critC ? '✅' : '❌'} Kriterium C (Vermeidung)</span>
+            <span>${result.dsm5.critD ? '✅' : '❌'} Kriterium D (Neg. Kognition)</span>
+            <span>${result.dsm5.critE ? '✅' : '❌'} Kriterium E (Arousal)</span>
+          </div>
+          <div class="dg-dsm5-summary" style="color:${result.dsm5.met ? '#DC2626' : '#F59E0B'};">
+            ${result.dsm5.met ? 'Alle 4 DSM-5-Kriterien erfüllt → PTBS wahrscheinlich' : 'Nicht alle Kriterien erfüllt → Differentialdiagnostik empfohlen'}
+          </div>
+        </div>
+      ` : ''}
+
+      ${result.subscales ? renderSubscalesBlock(inst.id, result) : ''}
+
+      ${inst.quelle ? `<div class="dg-result-quelle">📚 ${Utils.escapeHtml(inst.quelle)}</div>` : ''}
+
+      <div class="dg-result-actions">
+        ${APP.schuelerId ? `<button class="btn btn-primary" onclick="saveScreening()">💾 Im Klient-Profil speichern</button>` : ''}
+        <button class="btn" onclick="startScreening('${inst.id}')">🔄 Neu starten</button>
+        <button class="btn" onclick="setTab('screening')">← Zurück zur Liste</button>
+      </div>
     </div>
   `;
 }
